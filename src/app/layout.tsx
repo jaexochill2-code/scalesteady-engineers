@@ -30,7 +30,8 @@ export const metadata: Metadata = {
   description: "We build and manage the outbound infrastructure that fills your calendar with qualified meetings. No ad spend. No guesswork. Fully owned by you.",
   keywords: "Outbound Infrastructure, Sales Automation, Revenue Pipelines, B2B Acquisition, Pipeline Engineers",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/brand/logos/scalesteady_clean_monogram.png",
+    apple: "/brand/logos/scalesteady_clean_monogram.png",
   },
 };
 

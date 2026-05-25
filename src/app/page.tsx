@@ -35,23 +35,26 @@ export default function Home() {
           className="hero-image-pane absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block"
           style={{ width: "58%" }}
         >
-          <Image
-            src="/hero-team.jpeg"
-            alt="ScaleSteady Pipeline Engineers strategy session"
-            width={2752}
-            height={1536}
-            priority
-            unoptimized
-            className="w-full h-auto block"
-          />
-          {/* Right-edge gradient — cream blend */}
-          <div
-            className="absolute inset-y-0 right-0"
-            style={{
-              width: "22%",
-              background: "linear-gradient(to right, transparent 0%, rgba(250,248,246,0.5) 55%, #FAF8F6 100%)",
-            }}
-          />
+          {/* hero-photo-reveal: inner wrapper avoids transform conflict with -translate-y-1/2 on outer pane */}
+          <div className="hero-photo-reveal">
+            <Image
+              src="/hero-team.jpeg"
+              alt="ScaleSteady Pipeline Engineers strategy session"
+              width={2752}
+              height={1536}
+              priority
+              unoptimized
+              className="w-full h-auto block"
+            />
+            {/* Right-edge gradient — cream blend */}
+            <div
+              className="absolute inset-y-0 right-0"
+              style={{
+                width: "22%",
+                background: "linear-gradient(to right, transparent 0%, rgba(250,248,246,0.5) 55%, #FAF8F6 100%)",
+              }}
+            />
+          </div>
         </div>
 
         {/* Cream panel — right 42% */}
@@ -91,14 +94,14 @@ export default function Home() {
             </h1>
 
             <p
-              className="font-sans mt-6"
+              className="font-sans hero-body-copy mt-6"
               style={{ fontSize: "17px", lineHeight: "1.72", color: "#3D3D3D", maxWidth: "370px" }}
             >
               We build and manage the outbound infrastructure that fills your calendar with qualified meetings. No ad spend. No guesswork. Fully owned by you.
             </p>
 
-            {/* CTA — Sapphire #1B4F8A */}
-            <div className="mt-8">
+            {/* CTA zone — enters as unit after body copy */}
+            <div className="hero-cta-wrap mt-8">
               <Link
                 href="/contact"
                 className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold rounded-full transition-all duration-300"
@@ -113,7 +116,7 @@ export default function Home() {
                 Book a discovery call
               </Link>
               <p
-                className="font-sans mt-3"
+                className="font-sans hero-risk-text mt-3"
                 style={{ fontSize: "12px", color: "#9E9E9E", letterSpacing: "0.01em" }}
               >
                 15 minutes. No commitment.

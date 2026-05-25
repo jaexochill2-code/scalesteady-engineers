@@ -86,6 +86,53 @@ a { color: inherit; text-decoration: none; }
 .hero-section { contain: layout; }
 .hero-image-pane img { will-change: transform; }
 
+/* ── HERO ENTRANCE SEQUENCE ──────────────────── */
+/*
+ * Validated sequence (CXL/NNG B2B research):
+ *   0.10s — photo:    scale 1.03→1.00 + opacity (focus-pull)
+ *   0.00s — headline: word-by-word reveal (staggered 0–0.45s)
+ *   0.55s — body:     fade-up 14px
+ *   0.75s — cta:      fade-up 8px
+ *   0.90s — anchor:   pure fade
+ * fill-mode: both — elements invisible before delay, persist after
+ */
+
+@keyframes heroPhotoReveal {
+  from { opacity: 0; transform: scale(1.03); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Photo: inner wrapper — avoids conflict with translateY(-50%) on outer pane */
+.hero-photo-reveal {
+  position: relative;
+  animation: heroPhotoReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+/* Body copy — enters after headline words */
+.hero-body-copy {
+  animation: heroFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
+}
+
+/* CTA zone — action element enters last in hero hierarchy */
+.hero-cta-wrap {
+  animation: heroFadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.75s both;
+}
+
+/* Risk anchor — subordinate whisper, barely-there fade */
+.hero-risk-text {
+  animation: heroFadeIn 0.45s ease 0.9s both;
+}
+
 @keyframes wordReveal {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -155,8 +202,12 @@ a { color: inherit; text-decoration: none; }
 
 /* ── REDUCED MOTION ─────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .hero-word { animation: none !important; opacity: 1 !important; }
-  .aos-element { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero-word        { animation: none !important; opacity: 1 !important; }
+  .hero-photo-reveal { animation: none !important; opacity: 1 !important; transform: scale(1) !important; }
+  .hero-body-copy   { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .hero-cta-wrap    { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .hero-risk-text   { animation: none !important; opacity: 1 !important; }
+  .aos-element      { opacity: 1 !important; transform: none !important; transition: none !important; }
   .hero-cta-btn::after { display: none; }
-  .service-card { transition: none !important; }
+  .service-card     { transition: none !important; }
 }

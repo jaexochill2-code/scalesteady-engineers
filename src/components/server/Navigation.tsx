@@ -40,18 +40,18 @@ export default function Navigation() {
               priority
             />
           </div>
-          <div className="flex flex-col" style={{ gap: "5px" }}>
-            {/* Wordmark — Ellevest: ALL CAPS, 600 weight, open tracking */}
+          <div className="flex flex-col" style={{ gap: "3px" }}>
+            {/* Wordmark -- Plus Jakarta Sans: geometric, premium, 2026 B2B standard */}
             <span
-              className="font-sans leading-none block"
-              style={{ fontSize: "15px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#111111" }}
+              className="font-brand leading-none block"
+              style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#111111" }}
             >
               ScaleSteady
             </span>
-            {/* Descriptor — subordinate, slightly lighter */}
+            {/* Descriptor -- always visible, even on mobile */}
             <span
-              className="font-sans block hidden sm:block"
-              style={{ fontSize: "9px", fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase", color: "#111111", opacity: 0.5 }}
+              className="font-brand block"
+              style={{ fontSize: "8px", fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", color: "#111111", opacity: 0.4 }}
             >
               Pipeline Engineers
             </span>
@@ -135,8 +135,8 @@ export default function Navigation() {
           <div className="pt-5">
             <Link
               href="/contact"
-              className="flex items-center justify-center font-sans font-semibold rounded-full"
-              style={{ fontSize: "14px", color: "#FFFFFF", background: "#0D2B4A", padding: "14px 0" }}
+              className="flex items-center justify-center font-brand font-semibold"
+              style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#FFFFFF", background: "#111111", padding: "14px 0", borderRadius: "0px" }}
             >
               Book a call
             </Link>

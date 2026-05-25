@@ -138,29 +138,43 @@ export default function Home() {
               style={{ objectPosition: "center 35%" }}
             />
             <div
-              className="absolute inset-0 flex flex-col justify-center px-8 sm:px-12"
-              style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.55))" }}
+              className="absolute inset-0 flex flex-col justify-end px-6 sm:px-10 pb-12"
+              style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.72) 100%)" }}
             >
-              <div className="space-y-6">
+              <div className="space-y-5" style={{ maxWidth: "480px" }}>
                 <h1
-                  className="font-serif font-normal text-white drop-shadow-lg"
-                  style={{ fontSize: "clamp(44px, 10vw, 68px)", lineHeight: "1.06", letterSpacing: "-0.025em" }}
+                  className="font-serif font-normal text-white"
+                  style={{ fontSize: "clamp(36px, 9vw, 56px)", lineHeight: "1.08", letterSpacing: "-0.02em" }}
                 >
                   The experts in your <span className="italic">pipeline&apos;s</span> care.
                 </h1>
                 <p
-                  className="font-sans leading-relaxed max-w-md"
-                  style={{ fontSize: "17px", color: "rgba(255,255,255,0.8)" }}
+                  className="font-sans leading-relaxed"
+                  style={{ fontSize: "15px", color: "rgba(255,255,255,0.75)", maxWidth: "360px" }}
                 >
                   Outbound infrastructure that fills your calendar. No ad spend, fully owned by you.
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center font-sans font-semibold rounded-full shadow-lg"
-                  style={{ fontSize: "15px", color: "#FFFFFF", background: "#111111", padding: "14px 36px", borderRadius: "0px" }}
+                  className="inline-flex items-center justify-center font-brand font-semibold"
+                  style={{
+                    fontSize: "11px",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: "#FFFFFF",
+                    background: "#111111",
+                    padding: "14px 36px",
+                    borderRadius: "0px",
+                  }}
                 >
                   Book a discovery call
                 </Link>
+                <p
+                  className="font-sans"
+                  style={{ fontSize: "11px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.01em" }}
+                >
+                  15 minutes. No commitment.
+                </p>
               </div>
             </div>
           </div>

@@ -127,33 +127,43 @@ export default function Home() {
 
           </div>
 
-          {/* Mobile */}
-          <div className="lg:hidden absolute inset-0 z-10">
-            <Image
-              src="/hero-team.jpeg"
-              alt="Strategy session"
-              fill
-              unoptimized
-              className="object-cover -z-10"
-              style={{ objectPosition: "center 80%" }}
-            />
+          {/* Mobile — split-stack: photo top, copy bottom on cream */}
+          <div className="lg:hidden flex flex-col w-full h-full">
+            {/* Photo pane — natural aspect, no overlay, no crop hacks */}
+            <div className="relative w-full" style={{ flex: "1 1 50%" }}>
+              <Image
+                src="/hero-team.jpeg"
+                alt="ScaleSteady team strategy session"
+                fill
+                unoptimized
+                className="object-cover"
+                style={{ objectPosition: "center 60%" }}
+              />
+              {/* Bottom fade into cream */}
+              <div
+                className="absolute inset-x-0 bottom-0"
+                style={{ height: "60px", background: "linear-gradient(to bottom, transparent, #FAF8F6)" }}
+              />
+            </div>
+
+            {/* Copy pane — solid cream, no contrast issues */}
             <div
-              className="absolute inset-0 flex flex-col justify-end px-6 sm:px-10 pb-10"
-              style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.85) 100%)" }}
+              className="px-6 sm:px-10 pb-8"
+              style={{ background: "#FAF8F6", flex: "0 0 auto" }}
             >
-              <div className="space-y-5" style={{ maxWidth: "480px" }}>
-                <h1
-                  className="font-serif font-normal text-white"
-                  style={{ fontSize: "clamp(36px, 9vw, 56px)", lineHeight: "1.08", letterSpacing: "-0.02em" }}
-                >
-                  The experts in your <span className="italic">pipeline&apos;s</span> care.
-                </h1>
-                <p
-                  className="font-sans leading-relaxed"
-                  style={{ fontSize: "15px", color: "rgba(255,255,255,0.75)", maxWidth: "360px" }}
-                >
-                  Outbound infrastructure that fills your calendar. No ad spend, fully owned by you.
-                </p>
+              <h1
+                className="font-serif font-normal"
+                style={{ fontSize: "clamp(32px, 8vw, 48px)", lineHeight: "1.1", letterSpacing: "-0.02em", color: "#0D2B4A" }}
+              >
+                The experts in your <span className="italic">pipeline&apos;s</span> care.
+              </h1>
+              <p
+                className="font-sans mt-4"
+                style={{ fontSize: "15px", lineHeight: "1.7", color: "#3D3D3D", maxWidth: "360px" }}
+              >
+                Outbound infrastructure that fills your calendar. No ad spend, fully owned by you.
+              </p>
+              <div className="mt-6">
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center font-brand font-semibold"
@@ -170,8 +180,8 @@ export default function Home() {
                   Book a discovery call
                 </Link>
                 <p
-                  className="font-sans"
-                  style={{ fontSize: "11px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.01em" }}
+                  className="font-sans mt-3"
+                  style={{ fontSize: "11px", color: "#9E9E9E", letterSpacing: "0.01em" }}
                 >
                   15 minutes. No commitment.
                 </p>

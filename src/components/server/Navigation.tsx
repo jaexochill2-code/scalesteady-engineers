@@ -68,7 +68,7 @@ export default function Navigation() {
                 style={{
                   fontSize: "14px",
                   fontWeight: active ? 600 : 400,
-                  color: active ? "#1A6B50" : "#111111",
+                  color: active ? "#1B4F8A" : "#111111",
                   letterSpacing: "-0.01em",
                 }}
               >
@@ -87,7 +87,7 @@ export default function Navigation() {
               fontSize: "13.5px",
               letterSpacing: "-0.01em",
               color: "#FFFFFF",
-              background: "#1A6B50",
+              background: "#1B4F8A",
               padding: "10px 22px",
             }}
           >
@@ -132,7 +132,7 @@ export default function Navigation() {
             <Link
               href="/contact"
               className="flex items-center justify-center font-sans font-semibold rounded-full"
-              style={{ fontSize: "14px", color: "#FFFFFF", background: "#0F3B2E", padding: "14px 0" }}
+              style={{ fontSize: "14px", color: "#FFFFFF", background: "#0D2B4A", padding: "14px 0" }}
             >
               Book a call
             </Link>

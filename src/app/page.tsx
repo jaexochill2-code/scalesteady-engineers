@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen overflow-x-hidden" style={{ background: "#FAF8F6" }}>
 
-      {/* ── HERO — 95svh: scroll provocation, manifesto peeks below fold ── */}
+      {/* ── HERO — 95svh: scroll provocation ── */}
       <section
         className="hero-section relative w-full -mt-[80px]"
         style={{ height: "95svh", minHeight: "640px" }}
@@ -52,7 +52,6 @@ export default function Home() {
               background: "linear-gradient(to right, transparent 0%, rgba(250,248,246,0.5) 55%, #FAF8F6 100%)",
             }}
           />
-
         </div>
 
         {/* Cream panel — right 42% */}
@@ -98,7 +97,7 @@ export default function Home() {
               We build and manage the outbound infrastructure that fills your calendar with qualified meetings. No ad spend. No guesswork. Fully owned by you.
             </p>
 
-            {/* ── CTA — now visible at fold, 52px height ── */}
+            {/* CTA — Sapphire #1B4F8A */}
             <div className="mt-8">
               <Link
                 href="/contact"
@@ -107,13 +106,12 @@ export default function Home() {
                   fontSize: "15px",
                   letterSpacing: "0.01em",
                   color: "#FFFFFF",
-                  background: "#1A6B50",
+                  background: "#1B4F8A",
                   padding: "18px 44px",
                 }}
               >
                 Book a discovery call
               </Link>
-              {/* Risk reversal anchor — Baymard/CXL validated */}
               <p
                 className="font-sans mt-3"
                 style={{ fontSize: "12px", color: "#9E9E9E", letterSpacing: "0.01em" }}
@@ -154,7 +152,7 @@ export default function Home() {
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center font-sans font-semibold rounded-full shadow-lg"
-                  style={{ fontSize: "15px", color: "#1A6B50", background: "#FFFFFF", padding: "14px 36px" }}
+                  style={{ fontSize: "15px", color: "#1B4F8A", background: "#FFFFFF", padding: "14px 36px" }}
                 >
                   Book a discovery call
                 </Link>
@@ -166,7 +164,7 @@ export default function Home() {
 
       </section>
 
-      {/* ── CLIENT BAR — own section, proof zone with visual rule ── */}
+      {/* ── CLIENT BAR — proof zone ── */}
       <section
         className="hidden lg:block"
         style={{ background: "#FFFFFF", borderTop: "1px solid #E8E8E8", borderBottom: "1px solid #E8E8E8" }}
@@ -196,15 +194,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── MANIFESTO ── */}
-      <section style={{ background: "#081F18", padding: "clamp(96px, 11vw, 160px) 0" }}>
+      {/* ── MANIFESTO — Void #050D1C ── */}
+      <section style={{ background: "#050D1C", padding: "clamp(96px, 11vw, 160px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "960px" }}>
           <blockquote
             className="font-serif font-normal"
             style={{ fontSize: "clamp(26px, 3.8vw, 52px)", lineHeight: "1.18", color: "#FFFFFF" }}
           >
             &ldquo;Most growth partners treat outbound like a creative campaign. We treat it like{" "}
-            <span className="italic" style={{ color: "#7EC8A4" }}>structural engineering</span>.
+            <span className="italic" style={{ color: "#7EC4E0" }}>structural engineering</span>.
             If your systems don&apos;t have built-in redundancy, they are liabilities.&rdquo;
           </blockquote>
         </div>
@@ -237,7 +235,7 @@ export default function Home() {
                   style={{ minHeight: "280px" }}
                 >
                   <h3
-                    className="font-sans font-bold mb-4 group-hover:text-[#1A6B50] transition-colors duration-300"
+                    className="font-sans font-bold mb-4 group-hover:text-[#1B4F8A] transition-colors duration-300"
                     style={{ fontSize: "19px", lineHeight: "1.3", color: "#0A0A0A" }}
                   >
                     {card.title}
@@ -251,7 +249,7 @@ export default function Home() {
                   <Link
                     href="/services"
                     className="inline-flex items-center gap-2 font-sans font-semibold mt-8 group-hover:gap-3 transition-all duration-300"
-                    style={{ fontSize: "13px", color: "#1A6B50" }}
+                    style={{ fontSize: "13px", color: "#1B4F8A" }}
                   >
                     <span>Learn more</span>
                     <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">&rarr;</span>
@@ -264,8 +262,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── METRICS ── */}
-      <section style={{ background: "#0F3B2E", padding: "clamp(96px, 11vw, 160px) 0" }}>
+      {/* ── METRICS — Deep Navy #0D2B4A ── */}
+      <section style={{ background: "#0D2B4A", padding: "clamp(96px, 11vw, 160px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-center">
 
@@ -322,8 +320,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FINAL CTA ── */}
-      <section style={{ background: "#081F18", padding: "clamp(96px, 11vw, 160px) 0" }}>
+      {/* ── FINAL CTA — Void #050D1C ── */}
+      <section style={{ background: "#050D1C", padding: "clamp(96px, 11vw, 160px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24 text-center" style={{ maxWidth: "768px" }}>
           <h2
             className="font-serif font-normal text-white"
@@ -349,7 +347,7 @@ export default function Home() {
             style={{
               fontSize: "15px",
               letterSpacing: "0.01em",
-              color: "#1A6B50",
+              color: "#1B4F8A",
               background: "#FFFFFF",
               padding: "18px 48px",
             }}

@@ -8,58 +8,58 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full border-b border-[#e2dfd5] bg-brand-cashmere">
+    <header className="fixed top-0 left-0 z-50 w-full border-b border-brand-border bg-brand-cashmere/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
         
-        {/* Responsive Brand Logo — Renders full horizontal lockup universally, matching source material */}
+        {/* Responsive Brand Logo */}
         <Link href="/" className="flex items-center group">
           <Logo variant="full" size="sm" className="transition-transform group-hover:scale-[1.01]" />
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden items-center space-x-8 md:flex">
+        <nav className="hidden items-center space-x-10 md:flex">
           <Link 
             href="/services" 
-            className="font-sans text-[15px] font-medium text-brand-charcoal hover:text-brand-green transition-colors"
+            className="font-sans text-[15px] font-semibold text-brand-charcoal/80 hover:text-brand-orange transition-colors"
           >
             Services
           </Link>
           <Link 
             href="/work" 
-            className="font-sans text-[15px] font-medium text-brand-charcoal hover:text-brand-green transition-colors"
+            className="font-sans text-[15px] font-semibold text-brand-charcoal/80 hover:text-brand-orange transition-colors"
           >
             Work
           </Link>
           <Link 
             href="/team" 
-            className="font-sans text-[15px] font-medium text-brand-charcoal hover:text-brand-green transition-colors"
+            className="font-sans text-[15px] font-semibold text-brand-charcoal/80 hover:text-brand-orange transition-colors"
           >
             Team
           </Link>
           <Link 
             href="/process" 
-            className="font-sans text-[15px] font-medium text-brand-charcoal hover:text-brand-green transition-colors"
+            className="font-sans text-[15px] font-semibold text-brand-charcoal/80 hover:text-brand-orange transition-colors"
           >
             Process
           </Link>
         </nav>
 
-        {/* Desktop CTA Button */}
+        {/* Desktop CTA Button — Bold White text on Arc Orange for ultimate premium contrast */}
         <div className="hidden md:block">
           <Link 
             href="/contact" 
-            className="inline-flex items-center justify-center bg-brand-green px-6 py-2.5 rounded-full font-sans text-[15px] font-medium text-white hover:bg-brand-burgundy transition-all duration-300 transform active:scale-95"
+            className="inline-flex items-center justify-center bg-brand-orange px-6 py-3 rounded-full font-sans text-sm font-bold uppercase tracking-wider text-white hover:bg-brand-charcoal transition-all duration-300 transform active:scale-95 shadow-sm shadow-brand-orange/20"
           >
-            Book a call
+            Book a discovery call
           </Link>
         </div>
 
-        {/* Mobile Hamburger Button — Matches the clean, thin-line Ellevest style */}
+        {/* Mobile Hamburger Button */}
         <div className="flex md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
             type="button"
-            className="inline-flex items-center justify-center p-2 text-brand-charcoal hover:text-brand-green focus:outline-none transition-colors"
+            className="inline-flex items-center justify-center p-2 text-brand-charcoal hover:text-brand-orange focus:outline-none transition-colors"
             aria-controls="mobile-menu"
             aria-expanded={isOpen}
           >
@@ -89,48 +89,48 @@ export default function Navigation() {
 
       </div>
 
-      {/* Mobile Dropdown Menu Overlay — Clean absolute drop below the border edge */}
+      {/* Mobile Dropdown Menu Overlay */}
       {isOpen && (
         <div 
-          className="absolute top-full left-0 w-full bg-brand-cashmere border-b border-[#e2dfd5] md:hidden shadow-lg z-40"
+          className="absolute top-full left-0 w-full bg-brand-cashmere border-b border-brand-border md:hidden shadow-lg z-40 animate-fade-in"
           id="mobile-menu"
         >
           <div className="px-6 py-8 space-y-6 flex flex-col items-center text-center">
             <Link 
               href="/services" 
               onClick={() => setIsOpen(false)}
-              className="block font-sans text-lg font-medium text-brand-charcoal hover:text-brand-green transition-colors py-2"
+              className="block font-sans text-lg font-semibold text-brand-charcoal hover:text-brand-orange transition-colors py-2"
             >
               Services
             </Link>
             <Link 
               href="/work" 
               onClick={() => setIsOpen(false)}
-              className="block font-sans text-lg font-medium text-brand-charcoal hover:text-brand-green transition-colors py-2"
+              className="block font-sans text-lg font-semibold text-brand-charcoal hover:text-brand-orange transition-colors py-2"
             >
               Work
             </Link>
             <Link 
               href="/team" 
               onClick={() => setIsOpen(false)}
-              className="block font-sans text-lg font-medium text-brand-charcoal hover:text-brand-green transition-colors py-2"
+              className="block font-sans text-lg font-semibold text-brand-charcoal hover:text-brand-orange transition-colors py-2"
             >
               Team
             </Link>
             <Link 
               href="/process" 
               onClick={() => setIsOpen(false)}
-              className="block font-sans text-lg font-medium text-brand-charcoal hover:text-brand-green transition-colors py-2"
+              className="block font-sans text-lg font-semibold text-brand-charcoal hover:text-brand-orange transition-colors py-2"
             >
               Process
             </Link>
-            <div className="pt-4 w-full max-w-[200px]">
+            <div className="pt-4 w-full max-w-[260px]">
               <Link 
                 href="/contact" 
                 onClick={() => setIsOpen(false)}
-                className="flex w-full items-center justify-center bg-brand-green px-6 py-3 rounded-full font-sans text-[15px] font-medium text-white hover:bg-brand-burgundy transition-all duration-300 transform active:scale-95 text-center"
+                className="flex w-full items-center justify-center bg-brand-orange px-6 py-3.5 rounded-full font-sans text-xs font-bold uppercase tracking-wider text-white hover:bg-brand-charcoal transition-all duration-300 transform active:scale-95 text-center shadow-md shadow-brand-orange/10"
               >
-                Book a call
+                Book a discovery call
               </Link>
             </div>
           </div>

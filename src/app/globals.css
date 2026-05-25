@@ -1,14 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  /* Core Ellevest Source Color Tokens */
-  --color-brand-charcoal: #2b2928;
-  --color-brand-cashmere: #f7f5f0;
-  --color-brand-burgundy: #441e1e;
-  --color-brand-green: #537a44;
-  --color-brand-teal: #183642;
-  --color-brand-pistachio: #d8e2d4;
+  /* Brand Source Color Tokens — Cleaned & Rigorously Organized */
+  --color-brand-charcoal: #181716;
+  --color-brand-cashmere: #fcfbf9;
+  --color-brand-orange: #e8541a;
+  --color-brand-blue: #1a3a5c;
+  --color-brand-blue-dark: #0d1f33;
   --color-brand-gold: #c0a060;
+  --color-brand-gray: #686662;
+  --color-brand-border: #e6e4de;
+
+  /* Legacy overrides mapped cleanly for backwards compatibility */
+  --color-brand-green: #e8541a; /* Map green to orange for global CTA sync */
+  --color-brand-burgundy: #1a3a5c; /* Map burgundy to Signal Blue for authority sections */
+  --color-brand-pistachio: #e6e4de; /* Map pistachio to refined structural gray */
+  --color-brand-teal: #0d1f33; /* Map teal to deep signal blue */
 
   /* Typography Fonts */
   --font-serif: var(--font-fraunces), serif;
@@ -17,8 +24,8 @@
 }
 
 :root {
-  --background: #f7f5f0;
-  --foreground: #2b2928;
+  --background: #fcfbf9;
+  --foreground: #181716;
 }
 
 /* Global Reset and Smooth Scroll baselines */
@@ -38,7 +45,7 @@ body {
 
 /* Custom Selection Style */
 ::selection {
-  background-color: var(--color-brand-green);
+  background-color: var(--color-brand-orange);
   color: var(--color-brand-cashmere);
 }
 
@@ -64,10 +71,10 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-brand-pistachio);
+  background: var(--color-brand-border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-brand-green);
+  background: var(--color-brand-orange);
 }

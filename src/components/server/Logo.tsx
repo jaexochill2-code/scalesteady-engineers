@@ -3,9 +3,9 @@ import Image from "next/image";
 
 // Statically import high-resolution cropped assets.
 // Next.js automatically handles cache-busting via hash generation and optimizes dimensions.
-import logoTransparent from "../../../public/brand/logos/pipeline-engineers-logo-transparent.png";
-import logoAbstract from "../../../public/brand/logos/pipeline-engineers-logo-abstract-variant.png";
-import logoReversed from "../../../public/brand/logos/pipeline-engineers-logo-reversed-dark.png";
+import logoTransparent from "../../../public/brand/logos/scalesteady_clean_logo.png";
+import logoAbstract from "../../../public/brand/logos/scalesteady_clean_monogram.png";
+import logoReversed from "../../../public/brand/logos/scalesteady_clean_logo_reversed.png";
 
 interface LogoProps {
   variant?: "full" | "monogram" | "reversed";

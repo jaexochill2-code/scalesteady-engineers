@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  /* Core Ellevest Source Color Tokens */
+  --color-brand-charcoal: #2b2928;
+  --color-brand-cashmere: #f7f5f0;
+  --color-brand-burgundy: #441e1e;
+  --color-brand-green: #537a44;
+  --color-brand-teal: #183642;
+  --color-brand-pistachio: #d8e2d4;
+  --color-brand-gold: #c0a060;
+
+  /* Typography Fonts */
+  --font-serif: var(--font-fraunces), serif;
+  --font-sans: var(--font-inter), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+}
+
+:root {
+  --background: #f7f5f0;
+  --foreground: #2b2928;
+}
+
+/* Global Reset and Smooth Scroll baselines */
+html,
+body {
+  background-color: var(--color-brand-cashmere);
+  color: var(--color-brand-charcoal);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom Selection Style */
+::selection {
+  background-color: var(--color-brand-green);
+  color: var(--color-brand-cashmere);
+}
+
+/* Base Headings & Links Reset */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-cashmere);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-pistachio);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-green);
+}

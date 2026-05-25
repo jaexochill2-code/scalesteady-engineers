@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, JetBrains_Mono, Plus_Jakarta_Sans, Barlow_Semi_Condensed } from "next/font/google";
+import { Playfair_Display, DM_Sans, JetBrains_Mono, Plus_Jakarta_Sans, Barlow_Semi_Condensed } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/client/SmoothScroll";
 import Navigation from "@/components/server/Navigation";
@@ -13,10 +13,15 @@ const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const inter = Inter({
+// DM Sans: closest Google Fonts match to Google Sans (proprietary)
+// Colophon Foundry -- optically corrected geometric grotesque, humanist proportions
+// Variable font: one import covers 100-900 weight range
+// Used by Linear, premium fintech, 2025-2026 B2B tier upgrade from Inter
+const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
+  axes: ["opsz"],  // optical size axis for body vs display use
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -58,7 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} ${jetbrainsMono.variable} ${plusJakarta.variable} ${barlowSemiCondensed.variable} h-full antialiased`}
+      className={`${playfair.variable} ${dmSans.variable} ${jetbrainsMono.variable} ${plusJakarta.variable} ${barlowSemiCondensed.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
 

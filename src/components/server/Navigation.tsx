@@ -51,7 +51,7 @@ export default function Navigation() {
             {/* Descriptor -- always visible, even on mobile */}
             <span
               className="font-brand block"
-              style={{ fontSize: "8px", fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", color: "#111111", opacity: 0.4 }}
+              style={{ fontSize: "8px", fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", color: "#C4431B", opacity: 0.7 }}
             >
               Pipeline Engineers
             </span>

@@ -72,7 +72,7 @@ export default function Home() {
           {/* Desktop copy */}
           <div
             className="hidden lg:flex flex-col justify-center h-full px-12 xl:px-16 2xl:px-20"
-            style={{ width: "42%", borderLeft: "3px solid #1B4F8A", paddingLeft: "clamp(32px, 3vw, 56px)" }}
+            style={{ width: "42%", borderLeft: "3px solid #C4431B", paddingLeft: "clamp(32px, 3vw, 56px)" }}
           >
 
             <h1
@@ -89,7 +89,7 @@ export default function Home() {
               <br />
               <span className="hero-word" style={{ animationDelay: "0.18s", marginRight: "0.22em" }}>in</span>
               <span className="hero-word" style={{ animationDelay: "0.27s", marginRight: "0.22em" }}>your</span>
-              <span className="hero-word italic" style={{ animationDelay: "0.36s", marginRight: "0.22em", color: "#1B4F8A" }}>pipeline&apos;s</span>
+              <span className="hero-word italic" style={{ animationDelay: "0.36s", marginRight: "0.22em", color: "#C4431B" }}>pipeline&apos;s</span>
               <span className="hero-word" style={{ animationDelay: "0.45s" }}>care.</span>
             </h1>
 
@@ -149,13 +149,13 @@ export default function Home() {
             {/* Copy pane — solid cream, no contrast issues */}
             <div
               className="px-6 sm:px-10 pb-8 pt-2"
-              style={{ background: "#FAF8F6", flex: "0 0 auto", borderLeft: "3px solid #1B4F8A", marginLeft: "24px" }}
+              style={{ background: "#FAF8F6", flex: "0 0 auto", borderLeft: "3px solid #C4431B", marginLeft: "24px" }}
             >
               <h1
                 className="font-serif font-normal"
                 style={{ fontSize: "clamp(32px, 8vw, 48px)", lineHeight: "1.1", letterSpacing: "-0.02em", color: "#0D2B4A" }}
               >
-                The experts in your <span className="italic" style={{ color: "#1B4F8A" }}>pipeline&apos;s</span> care.
+                The experts in your <span className="italic" style={{ color: "#C4431B" }}>pipeline&apos;s</span> care.
               </h1>
               <p
                 className="font-sans mt-4"
@@ -315,7 +315,7 @@ export default function Home() {
               className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-10 lg:pl-12"
               style={{ borderLeft: "1px solid rgba(255,255,255,0.1)" }}
             >
-              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px", borderTop: "3px solid #C4431B", paddingTop: "20px" }}>
                 <span
                   className="block font-mono font-extrabold text-white"
                   style={{ fontSize: "clamp(56px, 7vw, 88px)", lineHeight: 1, letterSpacing: "-0.03em" }}
@@ -329,7 +329,7 @@ export default function Home() {
                   Across all managed sending domains, averaged over 90 days.
                 </p>
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px", borderTop: "3px solid #C4431B", paddingTop: "20px" }}>
                 <span
                   className="block font-mono font-extrabold text-white"
                   style={{ fontSize: "clamp(56px, 7vw, 88px)", lineHeight: 1, letterSpacing: "-0.03em" }}

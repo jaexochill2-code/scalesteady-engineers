@@ -31,7 +31,7 @@ export default function Navigation() {
 
         {/* Wordmark — stacked, single typeface, two weights */}
         <Link href="/" className="flex items-center gap-3.5 flex-shrink-0">
-          <div className="relative flex-shrink-0" style={{ width: "40px", height: "40px" }}>
+          <div className="relative flex-shrink-0" style={{ width: "48px", height: "48px" }}>
             <Image
               src={logoAbstract}
               alt="ScaleSteady"
@@ -40,28 +40,18 @@ export default function Navigation() {
               priority
             />
           </div>
-          <div className="flex flex-col" style={{ gap: "3px" }}>
-            <span
-              className="font-sans leading-none block"
-              style={{
-                fontSize: "16px",
-                fontWeight: 800,
-                letterSpacing: "-0.025em",
-                color: "#111111",
-              }}
-            >
-              ScaleSteady
+          <div className="flex flex-col" style={{ gap: "4px" }}>
+            {/* Wordmark — split color, single typeface */}
+            <span className="font-sans leading-none block" style={{ fontSize: "17px", fontWeight: 800, letterSpacing: "-0.03em" }}>
+              <span style={{ color: "#111111" }}>Scale</span><span style={{ color: "#C4431B" }}>Steady</span>
             </span>
+            {/* Descriptor — same typeface, whisper weight, fully subordinate */}
             <span
-              className="font-serif italic leading-none block hidden sm:block"
-              style={{
-                fontSize: "11.5px",
-                fontWeight: 400,
-                letterSpacing: "0.01em",
-                color: "#1A6B50",
-              }}
+              className="font-sans block hidden sm:block"
+              style={{ fontSize: "9.5px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}
             >
-              Pipeline Engineers
+              <span style={{ color: "#C4431B" }}>Pipeline</span>
+              <span style={{ color: "#ABABAB" }}> Engineers</span>
             </span>
           </div>
         </Link>

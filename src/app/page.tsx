@@ -81,7 +81,7 @@ export default function Home() {
                 fontSize: "clamp(48px, 5.5vw, 92px)",
                 lineHeight: "1.08",
                 letterSpacing: "-0.02em",
-                color: "#111111",
+                color: "#050D1C",
               }}
             >
               <span className="hero-word" style={{ animationDelay: "0s", marginRight: "0.22em" }}>The</span>
@@ -110,7 +110,7 @@ export default function Home() {
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   color: "#FFFFFF",
-                  background: "#1B4F8A",
+                  background: "#111111",
                   padding: "18px 44px",
                   borderRadius: "0px",
                 }}
@@ -157,7 +157,7 @@ export default function Home() {
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center font-sans font-semibold rounded-full shadow-lg"
-                  style={{ fontSize: "15px", color: "#1B4F8A", background: "#FFFFFF", padding: "14px 36px" }}
+                  style={{ fontSize: "15px", color: "#FFFFFF", background: "#111111", padding: "14px 36px", borderRadius: "0px" }}
                 >
                   Book a discovery call
                 </Link>
@@ -353,7 +353,7 @@ export default function Home() {
               fontSize: "12px",
               letterSpacing: "0.08em",
               textTransform: "uppercase",
-              color: "#1B4F8A",
+              color: "#050D1C",
               background: "#FFFFFF",
               padding: "18px 48px",
               borderRadius: "0px",

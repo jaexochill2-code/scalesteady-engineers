@@ -90,7 +90,7 @@ export default function Navigation() {
               letterSpacing: "0.08em",
               textTransform: "uppercase",
               color: "#FFFFFF",
-              background: "#1B4F8A",
+              background: "#111111",
               padding: "11px 24px",
               borderRadius: "0px",
             }}

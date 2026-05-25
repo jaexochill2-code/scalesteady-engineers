@@ -40,18 +40,20 @@ export default function Navigation() {
               priority
             />
           </div>
-          <div className="flex flex-col" style={{ gap: "4px" }}>
-            {/* Wordmark — split color, single typeface */}
-            <span className="font-sans leading-none block" style={{ fontSize: "17px", fontWeight: 800, letterSpacing: "-0.03em" }}>
-              <span style={{ color: "#111111" }}>Scale</span><span style={{ color: "#111111" }}>Steady</span>
+          <div className="flex flex-col" style={{ gap: "5px" }}>
+            {/* Wordmark — Ellevest: ALL CAPS, 600 weight, open tracking */}
+            <span
+              className="font-sans leading-none block"
+              style={{ fontSize: "15px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#111111" }}
+            >
+              ScaleSteady
             </span>
-            {/* Descriptor — same typeface, whisper weight, fully subordinate */}
+            {/* Descriptor — subordinate, slightly lighter */}
             <span
               className="font-sans block hidden sm:block"
-              style={{ fontSize: "9.5px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}
+              style={{ fontSize: "9px", fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase", color: "#111111", opacity: 0.5 }}
             >
-              <span style={{ color: "#111111" }}>Pipeline</span>
-              <span style={{ color: "#111111" }}> Engineers</span>
+              Pipeline Engineers
             </span>
           </div>
         </Link>
@@ -78,17 +80,19 @@ export default function Navigation() {
           })}
         </nav>
 
-        {/* CTA -- lighter mid-green, prominent on white */}
+        {/* CTA — rectangular, Ellevest-principle */}
         <div className="hidden md:flex items-center flex-shrink-0">
           <Link
             href="/contact"
-            className="font-sans font-semibold rounded-full transition-colors duration-200"
+            className="font-sans font-semibold transition-colors duration-200"
             style={{
-              fontSize: "13.5px",
-              letterSpacing: "-0.01em",
+              fontSize: "12px",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
               color: "#FFFFFF",
-              background: "#1B4F8A",
-              padding: "10px 22px",
+              background: "#111111",
+              padding: "11px 24px",
+              borderRadius: "0px",
             }}
           >
             Book a call

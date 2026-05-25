@@ -104,13 +104,15 @@ export default function Home() {
             <div className="hero-cta-wrap mt-8">
               <Link
                 href="/contact"
-                className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold rounded-full transition-all duration-300"
+                className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold transition-all duration-300"
                 style={{
-                  fontSize: "15px",
-                  letterSpacing: "0.01em",
+                  fontSize: "12px",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
                   color: "#FFFFFF",
                   background: "#1B4F8A",
                   padding: "18px 44px",
+                  borderRadius: "0px",
                 }}
               >
                 Book a discovery call
@@ -346,13 +348,15 @@ export default function Home() {
           </p>
           <Link
             href="/contact"
-            className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold rounded-full transition-all duration-300"
+            className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold transition-all duration-300"
             style={{
-              fontSize: "15px",
-              letterSpacing: "0.01em",
+              fontSize: "12px",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
               color: "#1B4F8A",
               background: "#FFFFFF",
               padding: "18px 48px",
+              borderRadius: "0px",
             }}
           >
             Book a discovery call

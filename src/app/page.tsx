@@ -135,7 +135,7 @@ export default function Home() {
               fill
               unoptimized
               className="object-cover -z-10"
-              style={{ objectPosition: "center 65%" }}
+              style={{ objectPosition: "center 80%" }}
             />
             <div
               className="absolute inset-0 flex flex-col justify-end px-6 sm:px-10 pb-10"

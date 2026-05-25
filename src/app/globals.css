@@ -83,6 +83,14 @@ a { color: inherit; text-decoration: none; }
 ::-webkit-scrollbar-thumb { background: var(--ink-border); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
 
+/* Mobile hero: tighter crop, less wasted ceiling space */
+@media (max-width: 1023px) {
+  .hero-section {
+    height: 75svh !important;
+    min-height: 560px !important;
+  }
+}
+
 /* ── HERO ─────────────────────────────────────── */
 .hero-section { contain: layout; }
 .hero-image-pane img { will-change: transform; }

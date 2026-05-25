@@ -43,15 +43,15 @@ export default function Navigation() {
           <div className="flex flex-col" style={{ gap: "4px" }}>
             {/* Wordmark — split color, single typeface */}
             <span className="font-sans leading-none block" style={{ fontSize: "17px", fontWeight: 800, letterSpacing: "-0.03em" }}>
-              <span style={{ color: "#111111" }}>Scale</span><span style={{ color: "#C4431B" }}>Steady</span>
+              <span style={{ color: "#111111" }}>Scale</span><span style={{ color: "#111111" }}>Steady</span>
             </span>
             {/* Descriptor — same typeface, whisper weight, fully subordinate */}
             <span
               className="font-sans block hidden sm:block"
               style={{ fontSize: "9.5px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}
             >
-              <span style={{ color: "#C4431B" }}>Pipeline</span>
-              <span style={{ color: "#ABABAB" }}> Engineers</span>
+              <span style={{ color: "#111111" }}>Pipeline</span>
+              <span style={{ color: "#111111" }}> Engineers</span>
             </span>
           </div>
         </Link>

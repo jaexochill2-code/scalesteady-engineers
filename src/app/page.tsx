@@ -72,7 +72,7 @@ export default function Home() {
           {/* Desktop copy */}
           <div
             className="hidden lg:flex flex-col justify-center h-full px-12 xl:px-16 2xl:px-20"
-            style={{ width: "42%" }}
+            style={{ width: "42%", borderLeft: "3px solid #1B4F8A", paddingLeft: "clamp(32px, 3vw, 56px)" }}
           >
 
             <h1
@@ -89,7 +89,7 @@ export default function Home() {
               <br />
               <span className="hero-word" style={{ animationDelay: "0.18s", marginRight: "0.22em" }}>in</span>
               <span className="hero-word" style={{ animationDelay: "0.27s", marginRight: "0.22em" }}>your</span>
-              <span className="hero-word italic" style={{ animationDelay: "0.36s", marginRight: "0.22em" }}>pipeline&apos;s</span>
+              <span className="hero-word italic" style={{ animationDelay: "0.36s", marginRight: "0.22em", color: "#1B4F8A" }}>pipeline&apos;s</span>
               <span className="hero-word" style={{ animationDelay: "0.45s" }}>care.</span>
             </h1>
 
@@ -110,7 +110,7 @@ export default function Home() {
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   color: "#FFFFFF",
-                  background: "#111111",
+                  background: "#1B4F8A",
                   padding: "18px 44px",
                   borderRadius: "0px",
                 }}
@@ -148,14 +148,14 @@ export default function Home() {
 
             {/* Copy pane — solid cream, no contrast issues */}
             <div
-              className="px-6 sm:px-10 pb-8"
-              style={{ background: "#FAF8F6", flex: "0 0 auto" }}
+              className="px-6 sm:px-10 pb-8 pt-2"
+              style={{ background: "#FAF8F6", flex: "0 0 auto", borderLeft: "3px solid #1B4F8A", marginLeft: "24px" }}
             >
               <h1
                 className="font-serif font-normal"
                 style={{ fontSize: "clamp(32px, 8vw, 48px)", lineHeight: "1.1", letterSpacing: "-0.02em", color: "#0D2B4A" }}
               >
-                The experts in your <span className="italic">pipeline&apos;s</span> care.
+                The experts in your <span className="italic" style={{ color: "#1B4F8A" }}>pipeline&apos;s</span> care.
               </h1>
               <p
                 className="font-sans mt-4"
@@ -172,7 +172,7 @@ export default function Home() {
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
                     color: "#FFFFFF",
-                    background: "#111111",
+                    background: "#1B4F8A",
                     padding: "14px 36px",
                     borderRadius: "0px",
                   }}

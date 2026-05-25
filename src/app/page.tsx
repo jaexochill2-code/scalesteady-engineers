@@ -127,10 +127,10 @@ export default function Home() {
 
           </div>
 
-          {/* Mobile — split-stack: photo top, copy bottom on cream */}
-          <div className="lg:hidden flex flex-col w-full h-full">
-            {/* Photo pane — natural aspect, no overlay, no crop hacks */}
-            <div className="relative w-full" style={{ flex: "1 1 50%" }}>
+          {/* Mobile -- split-stack: photo top, copy bottom on cream */}
+          <div className="lg:hidden flex flex-col w-full">
+            {/* Photo pane -- explicit height, Image fill needs sized parent */}
+            <div className="relative w-full" style={{ height: "50svh", minHeight: "280px" }}>
               <Image
                 src="/hero-team.jpeg"
                 alt="ScaleSteady team strategy session"

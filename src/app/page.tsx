@@ -27,16 +27,16 @@ export default function Home() {
       {/* ── HERO — 95svh: scroll provocation ── */}
       <section
         className="hero-section relative w-full -mt-[80px]"
-        style={{ height: "95svh", minHeight: "640px" }}
+        style={{ height: "88svh", minHeight: "600px" }}
       >
 
         {/* Image pane */}
         <div
           className="hero-image-pane absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block"
-          style={{ width: "58%" }}
+          style={{ width: "58%", height: "100%" }}
         >
           {/* hero-photo-reveal: inner wrapper avoids transform conflict with -translate-y-1/2 on outer pane */}
-          <div className="hero-photo-reveal">
+          <div className="hero-photo-reveal" style={{ height: "100%" }}>
             <Image
               src="/hero-team.jpeg"
               alt="ScaleSteady Pipeline Engineers strategy session"
@@ -44,7 +44,7 @@ export default function Home() {
               height={1536}
               priority
               unoptimized
-              className="w-full h-auto block"
+              className="w-full h-full object-cover object-center block"
             />
             {/* Right-edge gradient — cream blend */}
             <div

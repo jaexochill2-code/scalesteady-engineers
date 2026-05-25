@@ -71,9 +71,14 @@ export default function Home() {
 
           {/* Desktop copy */}
           <div
-            className="hidden lg:flex flex-col justify-center h-full px-12 xl:px-16 2xl:px-20"
-            style={{ width: "42%", borderLeft: "3px solid #C4431B", paddingLeft: "clamp(32px, 3vw, 56px)" }}
+            className="hidden lg:flex flex-col justify-center h-full px-12 xl:px-16 2xl:px-20 relative"
+            style={{ width: "42%", paddingLeft: "clamp(40px, 3.5vw, 64px)" }}
           >
+            {/* Terracotta brand rule — anchored accent, stops at natural content boundary */}
+            <div
+              className="absolute left-0"
+              style={{ top: "50%", transform: "translateY(-50%)", width: "3px", height: "260px", background: "#C4431B" }}
+            />
 
             <h1
               className="font-serif font-normal"

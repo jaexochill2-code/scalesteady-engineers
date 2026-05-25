@@ -41,14 +41,14 @@ export default function Navigation() {
             />
           </div>
           <div className="flex flex-col" style={{ gap: "4px" }}>
-            {/* Wordmark: 800w + tight tracking = matches icon mass */}
+            {/* Wordmark: Barlow Semi Condensed 800w -- engineering precision, matches icon geometry */}
             <span
-              className="font-brand leading-none block"
-              style={{ fontSize: "15.5px", fontWeight: 800, letterSpacing: "0.03em", textTransform: "uppercase", color: "#111111" }}
+              className="leading-none block"
+              style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 800, letterSpacing: "0.05em", textTransform: "uppercase", color: "#111111" }}
             >
               ScaleSteady
             </span>
-            {/* Descriptor: terracotta, wide tracking, airy contrast to bold wordmark */}
+            {/* Descriptor: Plus Jakarta Sans -- contrast between condensed wordmark and geometric sub-label */}
             <span
               className="font-brand block"
               style={{ fontSize: "7.5px", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "#C4431B", opacity: 1 }}

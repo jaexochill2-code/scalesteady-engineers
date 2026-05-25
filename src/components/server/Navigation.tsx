@@ -136,7 +136,7 @@ export default function Navigation() {
             <Link
               href="/contact"
               className="flex items-center justify-center font-brand font-semibold"
-              style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#FFFFFF", background: "#111111", padding: "14px 0", borderRadius: "0px" }}
+              style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#FFFFFF", background: "#1B4F8A", padding: "14px 0", borderRadius: "0px" }}
             >
               Book a call
             </Link>

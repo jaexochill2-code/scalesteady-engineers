@@ -135,11 +135,11 @@ export default function Home() {
               fill
               unoptimized
               className="object-cover -z-10"
-              style={{ objectPosition: "center 35%" }}
+              style={{ objectPosition: "center 65%" }}
             />
             <div
-              className="absolute inset-0 flex flex-col justify-end px-6 sm:px-10 pb-12"
-              style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.72) 100%)" }}
+              className="absolute inset-0 flex flex-col justify-end px-6 sm:px-10 pb-10"
+              style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.85) 100%)" }}
             >
               <div className="space-y-5" style={{ maxWidth: "480px" }}>
                 <h1

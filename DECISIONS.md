@@ -6,29 +6,28 @@
 ## 2026-05-25
 
 ### D-001 · Brand Name
-**Decision:** ScaleSteady (with "Pipeline Engineers" as the category descriptor / subtitle)
-**Rationale:** The brand identity lockup features **ScaleSteady** as the premium Didone serif wordmark (the main name), and **Pipeline Engineers** as the tracked monospace sans-serif subtitle. This aligns with the provided high-resolution brand logo master files exactly and matches the Ellevest visual structure (EV circular badge + ELLEVEST).
+**Decision:** Pipeline Engineers (not ScaleSteady, not another alternative)
+**Rationale:** "It creates structure and curiosity" — user's own words. Pipeline = infrastructure/flow/systems. Engineers = precision/expertise/accountability. The two-word compound communicates the brand thesis before a single line of copy.
 **Status:** LOCKED
-
 
 ### D-002 · Primary Logo Style
 **Decision:** Pentagram-level wordmark — clean, structured, geometric
 **Reference:** `design/brand/logos/pipeline-engineers-logo-master.png`
 **Status:** LOCKED (master file) — variants available for different contexts
 
-### D-003 · Primary Accent Color (Updated)
-**Decision:** Brand Green (`#537a44`) as primary accent/CTA color
-**Rationale:** Overridden per user request to stick exactly to the color palette of the Ellevest source material. Forest green represents organic growth, trust, positive action, and absolute brand integrity.
+### D-003 · Primary Accent Color
+**Decision:** Arc Orange (`#e8541a`) as primary accent/CTA color
+**Rationale:** Engineering/industrial context. Orange = energy, heat, flow, the color of physical pipelines, warning (attention-demanding). Differentiates from Ellevest's green. Not a startup orange — a dark, saturated, serious orange.
 **Status:** LOCKED
 
-### D-004 · Authority Background Color (Updated)
-**Decision:** Brand Burgundy (`#441e1e`) for dark authority sections and alternate dark blocks
-**Rationale:** Overridden per user request to match the Ellevest source material. A rich, high-luxury burgundy that signals deep corporate status, prestige, and executive safety.
+### D-004 · Authority Background Color
+**Decision:** Signal Blue (`#1a3a5c`) for dark authority sections and footer
+**Rationale:** Deep navy-adjacent. Communicates: serious, established, trustworthy, not flashy. The "we've been doing this a long time" color.
 **Status:** LOCKED
 
-### D-005 · Primary Background (Updated)
-**Decision:** Brand Cashmere (`#f7f5f0`) warm neutral
-**Rationale:** Match the exact warm off-white/linen tone from the Ellevest source material. Provides a tactile, premium editorial canvas that avoids sterile pure whites or cheap digital greys.
+### D-005 · Primary Background
+**Decision:** Warm off-white (`#f8f7f4`) not pure white
+**Rationale:** Pure white (#ffffff) reads as sterile/clinical or cheap. The warm off-white reads as premium, considered, like quality paper or linen. Borrowed directly from Ellevest's background tone.
 **Status:** LOCKED
 
 ### D-006 · Display Typography
@@ -37,7 +36,7 @@
 **Status:** LOCKED (pending final type pairing confirmation in build)
 
 ### D-007 · Technical Stack
-**Decision:** Next.js 16 (App Router) + Tailwind v4 + GSAP + Lenis + Motion v12
+**Decision:** Next.js 15 (App Router) + Tailwind v4 + GSAP + Lenis + Motion v12
 **Rationale:** Best-in-class for this production level. PPR for performance. Tailwind v4 CSS-first for design token control. GSAP industry standard for complex scroll animation. Lenis for smooth scroll synced with GSAP.
 **Status:** LOCKED
 
@@ -47,7 +46,7 @@
 **Status:** LOCKED
 
 ### D-009 · Navigation Structure
-**Decision:** `Services · Work · Team · Process` + `[Book a call]`
+**Decision:** `Services · Work · Team · Process` + `[Book a discovery call →]`
 **Rationale:** 4 links max. Expensive/confident brands don't need 12 menu items. Every link is a product/trust signal, not a utility link. CTA in nav = single point of action.
 **Status:** LOCKED
 

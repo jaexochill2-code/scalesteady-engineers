@@ -36,7 +36,7 @@ export default function Logo({ variant = "full", className = "", size = "md" }: 
   };
 
   const src = sources[variant];
-  const alt = variant === "monogram" ? "Pipeline Engineers Monogram" : "Pipeline Engineers Logo";
+  const alt = variant === "monogram" ? "ScaleSteady Monogram" : "ScaleSteady Logo";
 
   // Strategic blend mode settings for JPEG assets
   // - Multiply makes a white JPEG background transparent on light backgrounds

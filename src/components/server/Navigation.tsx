@@ -1,141 +1,155 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Logo from "@/components/server/Logo";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
+import logoAbstract from "../../../public/brand/logos/scalesteady_clean_monogram.png";
+
+const NAV_LINKS = [
+  { href: "/services", label: "Services" },
+  { href: "/work", label: "Work" },
+  { href: "/team", label: "Our Team" },
+  { href: "/process", label: "Process" },
+];
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => { setIsOpen(false); }, [pathname]);
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full border-b border-brand-border bg-brand-cashmere/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
-        
-        {/* Responsive Brand Logo */}
-        <Link href="/" className="flex items-center group">
-          <Logo variant="full" size="sm" className="transition-transform group-hover:scale-[1.01]" />
+    <header
+      className="fixed top-0 left-0 z-50 w-full bg-white"
+      style={{ borderBottom: "1px solid #E8E8E8" }}
+    >
+      <div
+        className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10 lg:px-14"
+        style={{ height: "80px" }}
+      >
+
+        {/* Wordmark — stacked, single typeface, two weights */}
+        <Link href="/" className="flex items-center gap-3.5 flex-shrink-0">
+          <div className="relative flex-shrink-0" style={{ width: "40px", height: "40px" }}>
+            <Image
+              src={logoAbstract}
+              alt="ScaleSteady"
+              className="object-contain mix-blend-multiply"
+              fill
+              priority
+            />
+          </div>
+          <div className="flex flex-col" style={{ gap: "3px" }}>
+            <span
+              className="font-sans leading-none block"
+              style={{
+                fontSize: "16px",
+                fontWeight: 800,
+                letterSpacing: "-0.025em",
+                color: "#111111",
+              }}
+            >
+              ScaleSteady
+            </span>
+            <span
+              className="font-serif italic leading-none block hidden sm:block"
+              style={{
+                fontSize: "11.5px",
+                fontWeight: 400,
+                letterSpacing: "0.01em",
+                color: "#1A6B50",
+              }}
+            >
+              Pipeline Engineers
+            </span>
+          </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden items-center space-x-10 md:flex">
-          <Link 
-            href="/services" 
-            className="font-sans text-[15px] font-semibold text-brand-charcoal/80 hover:text-brand-orange transition-colors"
-          >
-            Services
-          </Link>
-          <Link 
-            href="/work" 
-            className="font-sans text-[15px] font-semibold text-brand-charcoal/80 hover:text-brand-orange transition-colors"
-          >
-            Work
-          </Link>
-          <Link 
-            href="/team" 
-            className="font-sans text-[15px] font-semibold text-brand-charcoal/80 hover:text-brand-orange transition-colors"
-          >
-            Team
-          </Link>
-          <Link 
-            href="/process" 
-            className="font-sans text-[15px] font-semibold text-brand-charcoal/80 hover:text-brand-orange transition-colors"
-          >
-            Process
-          </Link>
+        {/* Nav links — full black, clean */}
+        <nav className="hidden md:flex items-center gap-8">
+          {NAV_LINKS.map(({ href, label }) => {
+            const active = pathname === href;
+            return (
+              <Link
+                key={href}
+                href={href}
+                className="font-sans transition-colors duration-150"
+                style={{
+                  fontSize: "14px",
+                  fontWeight: active ? 600 : 400,
+                  color: active ? "#1A6B50" : "#111111",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                {label}
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* Desktop CTA Button — Bold White text on Arc Orange for ultimate premium contrast */}
-        <div className="hidden md:block">
-          <Link 
-            href="/contact" 
-            className="inline-flex items-center justify-center bg-brand-orange px-6 py-3 rounded-full font-sans text-sm font-bold uppercase tracking-wider text-white hover:bg-brand-charcoal transition-all duration-300 transform active:scale-95 shadow-sm shadow-brand-orange/20"
+        {/* CTA -- lighter mid-green, prominent on white */}
+        <div className="hidden md:flex items-center flex-shrink-0">
+          <Link
+            href="/contact"
+            className="font-sans font-semibold rounded-full transition-colors duration-200"
+            style={{
+              fontSize: "13.5px",
+              letterSpacing: "-0.01em",
+              color: "#FFFFFF",
+              background: "#1A6B50",
+              padding: "10px 22px",
+            }}
           >
-            Book a discovery call
+            Book a call
           </Link>
         </div>
 
-        {/* Mobile Hamburger Button */}
-        <div className="flex md:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            type="button"
-            className="inline-flex items-center justify-center p-2 text-brand-charcoal hover:text-brand-orange focus:outline-none transition-colors"
-            aria-controls="mobile-menu"
-            aria-expanded={isOpen}
-          >
-            <span className="sr-only">Open main menu</span>
-            <div className="relative w-6 h-5 flex flex-col justify-between items-center group">
-              {/* Top line */}
-              <span 
-                className={`block w-6 h-0.5 bg-current transform transition-transform duration-300 ease-in-out ${
-                  isOpen ? "rotate-45 translate-y-[9px]" : ""
-                }`} 
-              />
-              {/* Middle line */}
-              <span 
-                className={`block w-6 h-0.5 bg-current transition-opacity duration-300 ease-in-out ${
-                  isOpen ? "opacity-0" : "opacity-100"
-                }`} 
-              />
-              {/* Bottom line */}
-              <span 
-                className={`block w-6 h-0.5 bg-current transform transition-transform duration-300 ease-in-out ${
-                  isOpen ? "-rotate-45 -translate-y-[9px]" : ""
-                }`} 
-              />
-            </div>
-          </button>
-        </div>
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          type="button"
+          className="flex md:hidden items-center justify-center p-2 focus:outline-none"
+          style={{ color: "#111111" }}
+          aria-label="Toggle menu"
+        >
+          <div className="relative w-5 h-[14px] flex flex-col justify-between">
+            <span className={`block w-full bg-current transform transition-all duration-300 origin-center ${isOpen ? "rotate-45 translate-y-[6.5px]" : ""}`} style={{ height: "1.5px" }} />
+            <span className={`block w-full bg-current transition-all duration-200 ${isOpen ? "opacity-0" : ""}`} style={{ height: "1.5px" }} />
+            <span className={`block w-full bg-current transform transition-all duration-300 origin-center ${isOpen ? "-rotate-45 -translate-y-[6.5px]" : ""}`} style={{ height: "1.5px" }} />
+          </div>
+        </button>
 
       </div>
 
-      {/* Mobile Dropdown Menu Overlay */}
-      {isOpen && (
-        <div 
-          className="absolute top-full left-0 w-full bg-brand-cashmere border-b border-brand-border md:hidden shadow-lg z-40 animate-fade-in"
-          id="mobile-menu"
-        >
-          <div className="px-6 py-8 space-y-6 flex flex-col items-center text-center">
-            <Link 
-              href="/services" 
-              onClick={() => setIsOpen(false)}
-              className="block font-sans text-lg font-semibold text-brand-charcoal hover:text-brand-orange transition-colors py-2"
+      {/* Mobile menu */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ${isOpen ? "max-h-screen" : "max-h-0"}`}
+        style={{ background: "#FFFFFF", borderTop: "1px solid #E8E8E8" }}
+      >
+        <div className="px-6 pt-4 pb-8 flex flex-col gap-1">
+          {NAV_LINKS.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className="font-sans py-3 transition-colors"
+              style={{ fontSize: "15px", fontWeight: 500, color: "#111111", borderBottom: "1px solid #F0F0F0" }}
             >
-              Services
+              {label}
             </Link>
-            <Link 
-              href="/work" 
-              onClick={() => setIsOpen(false)}
-              className="block font-sans text-lg font-semibold text-brand-charcoal hover:text-brand-orange transition-colors py-2"
+          ))}
+          <div className="pt-5">
+            <Link
+              href="/contact"
+              className="flex items-center justify-center font-sans font-semibold rounded-full"
+              style={{ fontSize: "14px", color: "#FFFFFF", background: "#0F3B2E", padding: "14px 0" }}
             >
-              Work
+              Book a call
             </Link>
-            <Link 
-              href="/team" 
-              onClick={() => setIsOpen(false)}
-              className="block font-sans text-lg font-semibold text-brand-charcoal hover:text-brand-orange transition-colors py-2"
-            >
-              Team
-            </Link>
-            <Link 
-              href="/process" 
-              onClick={() => setIsOpen(false)}
-              className="block font-sans text-lg font-semibold text-brand-charcoal hover:text-brand-orange transition-colors py-2"
-            >
-              Process
-            </Link>
-            <div className="pt-4 w-full max-w-[260px]">
-              <Link 
-                href="/contact" 
-                onClick={() => setIsOpen(false)}
-                className="flex w-full items-center justify-center bg-brand-orange px-6 py-3.5 rounded-full font-sans text-xs font-bold uppercase tracking-wider text-white hover:bg-brand-charcoal transition-all duration-300 transform active:scale-95 text-center shadow-md shadow-brand-orange/10"
-              >
-                Book a discovery call
-              </Link>
-            </div>
           </div>
         </div>
-      )}
+      </div>
+
     </header>
   );
 }

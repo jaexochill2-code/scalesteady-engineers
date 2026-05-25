@@ -1,35 +1,34 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/client/SmoothScroll";
 import Navigation from "@/components/server/Navigation";
 import Footer from "@/components/server/Footer";
 
-// Load premium editorial variable serif font
-const fraunces = Fraunces({
+// High-contrast editorial serif -- authoritative, high-fashion, Ellevest-register
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-serif",
   display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-// Load primary prose readable sans font
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-sans",
   display: "swap",
 });
 
-// Load systems monospace technical data font
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
+  variable: "--font-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Pipeline Engineers — Revenue Infrastructure & Autonomous Deal Flow",
-  description: "Stop renting volatile ad campaigns. Own the autonomous outbound infrastructure that acquires commercial contracts with mathematical certainty.",
-  keywords: "Outbound Infrastructure, Sales Automation, Revenue Pipelines, B2B Acquisition, Systems Engineering",
+  title: "ScaleSteady | Pipeline Engineers",
+  description: "We build and manage the outbound infrastructure that fills your calendar with qualified meetings. No ad spend. No guesswork. Fully owned by you.",
+  keywords: "Outbound Infrastructure, Sales Automation, Revenue Pipelines, B2B Acquisition, Pipeline Engineers",
   icons: {
     icon: "/favicon.ico",
   },
@@ -43,22 +42,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${playfair.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-pipeline-white text-pipeline-black font-sans selection:bg-arc-orange selection:text-pipeline-white">
-        
-        {/* Active Global Smooth Scrolling */}
+      <body className="min-h-full flex flex-col font-sans">
+
         <SmoothScroll>
-          
           <Navigation />
-          
-          {/* Main Content Node — Offset by 88px header height to accommodate position: fixed */}
-          <main className="flex-grow pt-[88px]">
+          <main className="flex-grow" style={{ paddingTop: "80px" }}>
             {children}
           </main>
-          
           <Footer />
-          
         </SmoothScroll>
 
       </body>

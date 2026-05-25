@@ -1,280 +1,210 @@
 import Link from "next/link";
-import Logo from "@/components/server/Logo";
+import Image from "next/image";
+import CountUp from "@/components/client/CountUp";
+import AnimateOnScroll from "@/components/client/AnimateOnScroll";
+
+const SERVICES = [
+  {
+    title: "Outbound Email Engines",
+    desc: "We deploy and manage 50+ secondary sending domains with programmatic SPF, DKIM, and DMARC authentication. Your deliverability becomes a controlled variable, not a gamble.",
+  },
+  {
+    title: "Operational Middleware",
+    desc: "Positive replies route directly into your CRM, triggering automated booking sequences. No manual handoff, no lost leads, no lag between interest and action.",
+  },
+  {
+    title: "Data Mining & Intent Signals",
+    desc: "Real-time permit monitoring and intent extraction targeting high-ticket buyers at the exact moment they enter the market. Your list is always live.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="w-full bg-brand-cashmere min-h-screen">
-      
-      {/* SECTION 01 — HERO */}
-      <section className="relative flex min-h-[90vh] items-center justify-center px-6 py-20 md:px-8 bg-brand-cashmere overflow-hidden">
-        
-        {/* Background grid line pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(#e6e4de_1.5px,transparent_1.5px)] [background-size:32px_32px] opacity-80"></div>
-        
-        <div className="relative mx-auto w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
-          {/* Left Text Node */}
-          <div className="lg:col-span-7 space-y-8 text-left z-10">
-            <span className="inline-block font-mono text-xs uppercase tracking-widest text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full font-bold">
-              Outbound Infrastructure
-            </span>
-            <h1 className="font-serif text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight text-brand-charcoal max-w-2xl">
-              The engineers of your outbound <span className="italic font-normal text-brand-orange font-serif">deal flow</span>
+    <div className="w-full min-h-screen overflow-x-hidden" style={{ background: "#FAF8F6" }}>
+
+      {/* ── HERO ─────────────────────────────────────── */}
+      <section className="hero-section relative w-full -mt-[80px]" style={{ height: "100svh", minHeight: "680px" }}>
+
+        {/* Image pane -- 58vw, vertically centered, zero crop */}
+        <div className="hero-image-pane absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block" style={{ width: "58%" }}>
+          <Image
+            src="/hero-team.jpeg"
+            alt="ScaleSteady Pipeline Engineers strategy session"
+            width={2752}
+            height={1536}
+            priority unoptimized
+            className="w-full h-auto block"
+          />
+          <div className="absolute inset-y-0 right-0" style={{ width: "22%", background: "linear-gradient(to right, transparent 0%, rgba(250,248,246,0.5) 55%, #FAF8F6 100%)" }} />
+        </div>
+
+        {/* Cream panel right 42% */}
+        <div className="absolute inset-y-0 right-0 hidden lg:block" style={{ width: "42%", background: "#FAF8F6" }} />
+
+        {/* Content */}
+        <div className="relative h-full flex items-center justify-end" style={{ paddingTop: "80px" }}>
+
+          {/* Desktop copy */}
+          <div className="hidden lg:flex flex-col justify-center h-full px-12 xl:px-16 2xl:px-20" style={{ width: "42%" }}>
+
+            <h1 className="font-serif font-normal leading-none" style={{ fontSize: "clamp(48px, 5.5vw, 92px)", lineHeight: "1.1", letterSpacing: "-0.02em", color: "#111111" }}>
+              <span className="hero-word" style={{ animationDelay: "0s", marginRight: "0.22em" }}>The</span>
+              <span className="hero-word" style={{ animationDelay: "0.09s" }}>experts</span>
+              <br />
+              <span className="hero-word" style={{ animationDelay: "0.18s", marginRight: "0.22em" }}>in</span>
+              <span className="hero-word" style={{ animationDelay: "0.27s", marginRight: "0.22em" }}>your</span>
+              <span className="hero-word italic" style={{ animationDelay: "0.36s", marginRight: "0.22em" }}>pipeline&apos;s</span>
+              <span className="hero-word" style={{ animationDelay: "0.45s" }}>care.</span>
             </h1>
-            <p className="font-sans text-base md:text-lg leading-relaxed text-brand-charcoal/80 max-w-xl">
-              Stop renting volatile ad campaigns that break the moment you stop paying. We install the permanent outbound infrastructure that gives your team total ownership of your pipeline.
+
+            <p className="font-sans mt-7" style={{ fontSize: "17px", lineHeight: "1.72", color: "#3D3D3D", maxWidth: "370px" }}>
+              We build and manage the outbound infrastructure that fills your calendar with qualified meetings. No ad spend. No guesswork. Fully owned by you.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link 
-                href="/contact" 
-                className="inline-flex items-center justify-center bg-brand-orange px-8 py-4 rounded-full font-sans text-sm font-bold uppercase tracking-wider text-white hover:bg-brand-charcoal transition-all duration-300 transform active:scale-95 shadow-md shadow-brand-orange/20"
+
+            <div className="mt-9">
+              <Link
+                href="/contact"
+                className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold rounded-full transition-all duration-300"
+                style={{ fontSize: "15px", letterSpacing: "0.01em", color: "#FFFFFF", background: "#1A6B50", padding: "16px 40px" }}
               >
                 Book a discovery call
               </Link>
-              <Link 
-                href="/services" 
-                className="inline-flex items-center justify-center border-2 border-brand-charcoal/80 px-8 py-4 rounded-full font-sans text-sm font-bold uppercase tracking-wider text-brand-charcoal hover:bg-brand-orange hover:text-white hover:border-brand-orange transition-all duration-300 transform active:scale-95"
-              >
-                Explore the pipeline
-              </Link>
             </div>
-            
-            {/* Low friction subtext */}
-            <p className="font-sans text-xs text-brand-charcoal/50 max-w-xs font-semibold">
-              A 15-minute technical audit. Blueprints included regardless of fit.
-            </p>
+
           </div>
-          
-          {/* Right System Schematic (Clean, high-contrast, premium engineering look) */}
-          <div className="lg:col-span-5 flex justify-center items-center relative h-[380px] lg:h-[480px]">
-            <div className="w-full max-w-md h-full border-2 border-brand-border rounded-2xl bg-white p-6 flex flex-col justify-between shadow-lg relative overflow-hidden">
-              <div className="absolute top-0 right-0 h-40 w-40 bg-brand-orange/5 rounded-full blur-3xl"></div>
-              
-              <div className="flex justify-between items-center border-b border-brand-border pb-4 font-mono text-[9px] uppercase tracking-wider text-brand-charcoal/60 font-bold">
-                <span>Active Routing Relays</span>
-                <span className="text-brand-orange flex items-center gap-1.5 font-bold">
-                  <span className="h-2 w-2 rounded-full bg-brand-orange animate-pulse"></span>
-                  OPERATIONAL
-                </span>
-              </div>
-              
-              {/* Schematic flow */}
-              <div className="my-auto space-y-6 relative py-4">
-                
-                {/* Flow Node 1: Sourcing */}
-                <div className="flex items-center justify-between border-2 border-brand-border p-3.5 rounded-xl bg-brand-cashmere/40">
-                  <div className="flex items-center space-x-3">
-                    <span className="h-2.5 w-2.5 rounded-full bg-brand-orange"></span>
-                    <span className="font-mono text-xs text-brand-charcoal font-bold">Intent Signals</span>
-                  </div>
-                  <span className="font-mono text-[10px] text-brand-charcoal/60 font-bold">Clay / Scraping</span>
-                </div>
 
-                {/* Arrow indicator */}
-                <div className="flex justify-center my-1">
-                  <svg className="h-5 w-5 stroke-brand-orange" fill="none" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                  </svg>
-                </div>
-
-                {/* Flow Node 2: SMTP Nodes */}
-                <div className="flex items-center justify-between border-2 border-brand-border p-3.5 rounded-xl bg-brand-cashmere/40">
-                  <div className="flex items-center space-x-3">
-                    <span className="h-2.5 w-2.5 rounded-full bg-brand-orange"></span>
-                    <span className="font-mono text-xs text-brand-charcoal font-bold">SMTP Sending Nodes</span>
-                  </div>
-                  <span className="font-mono text-[10px] text-brand-charcoal/60 font-bold">50+ Managed Domains</span>
-                </div>
-
-                {/* Arrow indicator */}
-                <div className="flex justify-center my-1">
-                  <svg className="h-5 w-5 stroke-brand-orange" fill="none" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                  </svg>
-                </div>
-
-                {/* Flow Node 3: Target Inbox */}
-                <div className="flex items-center justify-between border-2 border-brand-orange bg-brand-orange/5 p-3.5 rounded-xl">
-                  <div className="flex items-center space-x-3">
-                    <span className="h-2.5 w-2.5 rounded-full bg-brand-orange animate-pulse"></span>
-                    <span className="font-mono text-xs text-brand-charcoal font-bold">Primary Inbox Delivery</span>
-                  </div>
-                  <span className="font-mono text-[10px] text-brand-orange font-extrabold">98.4% RATE</span>
-                </div>
-
-              </div>
-              
-              <div className="border-t border-brand-border pt-4 flex justify-between items-center font-mono text-[10px] text-brand-charcoal/50 font-bold">
-                <span>DNS Security: DMARC REJECT</span>
-                <span className="text-brand-orange">Warmup: Active</span>
+          {/* Mobile */}
+          <div className="lg:hidden absolute inset-0 z-10">
+            <Image src="/hero-team.jpeg" alt="Strategy session" fill unoptimized className="object-cover -z-10" style={{ objectPosition: "center 35%" }} />
+            <div className="absolute inset-0 flex flex-col justify-center px-8 sm:px-12" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.55))" }}>
+              <div className="space-y-6">
+                <h1 className="font-serif font-normal text-white drop-shadow-lg" style={{ fontSize: "clamp(44px, 10vw, 68px)", lineHeight: "1.06", letterSpacing: "-0.025em" }}>
+                  The experts in your <span className="italic">pipeline&apos;s</span> care.
+                </h1>
+                <p className="font-sans leading-relaxed max-w-md" style={{ fontSize: "17px", color: "rgba(255,255,255,0.8)" }}>
+                  Outbound infrastructure that fills your calendar. No ad spend, fully owned by you.
+                </p>
+                <Link href="/contact" className="inline-flex items-center justify-center font-sans font-semibold rounded-full shadow-lg" style={{ fontSize: "15px", color: "#1A6B50", background: "#FFFFFF", padding: "14px 36px" }}>
+                  Book a discovery call
+                </Link>
               </div>
             </div>
           </div>
-          
-        </div>
-      </section>
 
-      {/* SECTION 02 — AUTHORITY STRIP */}
-      <section className="border-y border-brand-border bg-brand-border/10 py-8 px-6 md:px-8 text-center">
-        <div className="mx-auto w-full max-w-7xl">
-          <span className="block font-mono text-[10px] uppercase tracking-widest text-brand-charcoal/50 mb-6 font-bold">
-            Trusted by leaders in industrial and high-ticket services
-          </span>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-70 grayscale contrast-125">
-            <span className="font-serif text-lg font-bold tracking-widest text-brand-charcoal">TARRANT MECHANICAL INC.</span>
-            <span className="font-serif text-lg font-bold tracking-widest text-brand-charcoal">AESTHETICS CLINIC GROUP</span>
-            <span className="font-serif text-lg font-bold tracking-widest text-brand-charcoal">APEX LEASING CORP</span>
-            <span className="font-serif text-lg font-bold tracking-widest text-brand-charcoal">FLOOR CONTRACTING SERVICES</span>
+        </div>
+
+        {/* Client bar */}
+        <div className="absolute bottom-0 right-0 hidden lg:block" style={{ width: "42%", borderTop: "1px solid #E0E0E0", background: "#FAF8F6" }}>
+          <div className="px-12 xl:px-16 2xl:px-20 py-5 flex items-center gap-10 xl:gap-14">
+            {["Tarrant Mechanical", "Aesthetics Clinic Group", "Apex Leasing", "Floor Contracting"].map((n) => (
+              <span key={n} className="font-sans font-medium uppercase" style={{ fontSize: "11px", letterSpacing: "0.06em", color: "#9E9E9E" }}>{n}</span>
+            ))}
           </div>
         </div>
+
       </section>
 
-      {/* SECTION 03 — MANIFESTO */}
-      <section className="px-6 py-24 md:px-8 bg-brand-cashmere">
-        <div className="mx-auto w-full max-w-4xl space-y-10 text-center">
-          <span className="font-mono text-xs uppercase tracking-widest text-brand-orange font-bold">
-            The Outbound Paradigm
-          </span>
-          <blockquote className="font-serif text-3xl md:text-5xl font-bold leading-snug text-brand-charcoal">
-            "Most growth partners treat outbound outreach like a creative campaign. We treat it like <span className="italic font-normal text-brand-orange font-serif">structural engineering</span>. If your systems don't have built-in redundancy, automatic failure-safes, and clean data pipelines, they aren't systems. They are liabilities."
+      {/* ── MANIFESTO ─────────────────────────────────── */}
+      <section style={{ background: "#081F18", padding: "clamp(96px, 11vw, 160px) 0" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "960px" }}>
+          <blockquote className="font-serif font-normal" style={{ fontSize: "clamp(26px, 3.8vw, 52px)", lineHeight: "1.18", color: "#FFFFFF" }}>
+            &ldquo;Most growth partners treat outbound like a creative campaign. We treat it like{" "}
+            <span className="italic" style={{ color: "#7EC8A4" }}>structural engineering</span>.
+            If your systems don&apos;t have built-in redundancy, they are liabilities.&rdquo;
           </blockquote>
-          <div className="pt-4">
-            <span className="block font-mono text-xs uppercase tracking-widest text-brand-charcoal/60 font-bold">Office of the Director • Pipeline Engineers</span>
-          </div>
         </div>
       </section>
 
-      {/* SECTION 04 — SERVICES INDEX */}
-      <section className="px-6 py-24 md:px-8 bg-brand-border/10 border-t border-brand-border">
-        <div className="mx-auto w-full max-w-7xl space-y-16">
-          
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="space-y-4">
-              <span className="font-mono text-xs uppercase tracking-widest text-brand-orange font-bold">Custom Operations Build</span>
-              <h2 className="font-serif text-4xl md:text-5xl font-bold text-brand-charcoal">The Revenue Pipelines</h2>
-            </div>
-            <p className="font-sans text-sm text-brand-charcoal/70 max-w-sm font-medium">
-              We install three core infrastructure layers directly into your enterprise stack, giving you complete asset control.
-            </p>
-          </div>
+      {/* ── SERVICES ──────────────────────────────────── */}
+      <section style={{ background: "#FFFFFF", padding: "clamp(96px, 11vw, 160px) 0" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            {/* Service Card 1 */}
-            <div className="border-2 border-brand-border bg-white p-8 rounded-2xl flex flex-col justify-between h-[340px] transition-all duration-300 hover:shadow-lg hover:border-brand-orange/60 group">
-              <div className="space-y-6">
-                <span className="font-mono text-xs uppercase tracking-widest text-brand-charcoal/40 font-bold">01 / Infrastructure</span>
-                <h3 className="font-serif text-2xl font-bold text-brand-charcoal group-hover:text-brand-orange transition-colors">Outbound Email Engines</h3>
-                <p className="font-sans text-sm text-brand-charcoal/75 leading-relaxed font-medium">
-                  Programmatic deployment of 50+ secondary sending domains, manual authentication (SPF/DKIM/DMARC), and custom tracking channels.
-                </p>
-              </div>
-              <Link href="/services" className="font-mono text-xs font-bold uppercase tracking-wider text-brand-orange inline-flex items-center space-x-2 group-hover:translate-x-1 transition-transform">
-                <span>View Blueprint</span>
-                <span>→</span>
-              </Link>
-            </div>
-
-            {/* Service Card 2 */}
-            <div className="border-2 border-brand-border bg-white p-8 rounded-2xl flex flex-col justify-between h-[340px] transition-all duration-300 hover:shadow-lg hover:border-brand-orange/60 group">
-              <div className="space-y-6">
-                <span className="font-mono text-xs uppercase tracking-widest text-brand-charcoal/40 font-bold">02 / Automation</span>
-                <h3 className="font-serif text-2xl font-bold text-brand-charcoal group-hover:text-brand-orange transition-colors">Operational Automation</h3>
-                <p className="font-sans text-sm text-brand-charcoal/75 leading-relaxed font-medium">
-                  Clean middleware linkages routing positive email responses directly into your primary CRM, triggering instant booking follow-ups.
-                </p>
-              </div>
-              <Link href="/services" className="font-mono text-xs font-bold uppercase tracking-wider text-brand-orange inline-flex items-center space-x-2 group-hover:translate-x-1 transition-transform">
-                <span>View Blueprint</span>
-                <span>→</span>
-              </Link>
-            </div>
-
-            {/* Service Card 3 */}
-            <div className="border-2 border-brand-border bg-white p-8 rounded-2xl flex flex-col justify-between h-[340px] transition-all duration-300 hover:shadow-lg hover:border-brand-orange/60 group">
-              <div className="space-y-6">
-                <span className="font-mono text-xs uppercase tracking-widest text-brand-charcoal/40 font-bold">03 / Data Mining</span>
-                <h3 className="font-serif text-2xl font-bold text-brand-charcoal group-hover:text-brand-orange transition-colors">Data Mining & Scraping</h3>
-                <p className="font-sans text-sm text-brand-charcoal/75 leading-relaxed font-medium">
-                  Real-time permit monitoring, Google review scraping, and recruitment triggers to target companies showing highly active buying intent.
-                </p>
-              </div>
-              <Link href="/services" className="font-mono text-xs font-bold uppercase tracking-wider text-brand-orange inline-flex items-center space-x-2 group-hover:translate-x-1 transition-transform">
-                <span>View Blueprint</span>
-                <span>→</span>
-              </Link>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* SECTION 05 — BIG METRIC PROOF (ENFORCING SIGNAL BLUE #1a3a5c BACKGROUND) */}
-      <section className="bg-brand-blue text-brand-cashmere py-28 px-6 md:px-8 border-y-2 border-brand-blue-dark relative overflow-hidden shadow-inner">
-        {/* Elegant watermark logo */}
-        <div className="absolute -right-16 -bottom-16 h-80 w-80 opacity-5 pointer-events-none text-brand-orange">
-          <Logo variant="monogram" size="lg" className="h-full w-full" />
-        </div>
-        
-        <div className="absolute inset-0 bg-[radial-gradient(rgba(232,84,26,0.1)_1.5px,transparent_1.5px)] [background-size:32px_32px] opacity-35"></div>
-        <div className="mx-auto w-full max-w-7xl relative grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
-          <div className="lg:col-span-5 space-y-6">
-            <span className="font-mono text-xs uppercase tracking-widest text-brand-orange bg-brand-orange/15 px-3.5 py-1 rounded-full font-bold">
-              Performance Audit
-            </span>
-            <h2 className="font-serif text-4xl md:text-5xl font-bold leading-tight text-white">
-              Data that commands respect
+          <div className="mb-16 sm:mb-20">
+            <h2 className="font-serif font-bold" style={{ fontSize: "clamp(36px, 4.5vw, 64px)", lineHeight: "1.05", color: "#111111" }}>
+              What we build
             </h2>
-            <p className="font-sans text-sm text-brand-cashmere/80 leading-relaxed max-w-md font-medium">
-              We do not measure campaign vanity metrics like impressions or views. We audit the only numbers that matter: deliverability, responses, and new booked assets.
+            <p className="font-sans mt-4" style={{ fontSize: "15px", lineHeight: "1.75", color: "#6B6B6B", maxWidth: "520px" }}>
+              Three infrastructure layers installed directly into your stack. You own every domain, every list, every automation.
             </p>
           </div>
 
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-12 border-l-2 border-brand-cashmere/10 pl-6 lg:pl-12">
-            
-            <div className="space-y-3">
-              <span className="block font-mono text-6xl md:text-8xl font-extrabold text-brand-orange tracking-tighter">98.4%</span>
-              <span className="block font-mono text-xs uppercase tracking-widest text-brand-cashmere/60 font-bold">[Primary Inbox Placement]</span>
-              <p className="font-sans text-xs text-brand-cashmere/75 leading-relaxed font-medium">
-                Programmatic scaling bypasses traditional ISP spam traps completely.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              <span className="block font-mono text-6xl md:text-8xl font-extrabold text-white tracking-tighter">+284%</span>
-              <span className="block font-mono text-xs uppercase tracking-widest text-brand-cashmere/60 font-bold">[Deal-Flow Expansion]</span>
-              <p className="font-sans text-xs text-brand-cashmere/75 leading-relaxed font-medium">
-                Net-new commercial deal flow triggered within 120 days of deployment.
-              </p>
-            </div>
-
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {SERVICES.map((card, i) => (
+              <AnimateOnScroll key={card.title} delay={i * 120}>
+                <div className="service-card rounded-[20px] p-8 xl:p-10 flex flex-col group cursor-default" style={{ minHeight: "280px" }}>
+                  <h3 className="font-sans font-bold mb-4 group-hover:text-[#1A6B50] transition-colors duration-300" style={{ fontSize: "19px", lineHeight: "1.3", color: "#0A0A0A" }}>
+                    {card.title}
+                  </h3>
+                  <p className="font-sans mb-auto" style={{ fontSize: "14px", lineHeight: "1.75", color: "#6B6B6B" }}>
+                    {card.desc}
+                  </p>
+                  <Link href="/services" className="inline-flex items-center gap-2 font-sans font-semibold mt-8 group-hover:gap-3 transition-all duration-300" style={{ fontSize: "13px", color: "#1A6B50" }}>
+                    <span>Learn more</span>
+                    <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">&rarr;</span>
+                  </Link>
+                </div>
+              </AnimateOnScroll>
+            ))}
           </div>
 
         </div>
       </section>
 
-      {/* SECTION 06 — THE ADVISORY / CONTACT CTA */}
-      <section className="bg-brand-cashmere py-28 px-6 md:px-8">
-        <div className="mx-auto w-full max-w-3xl text-center space-y-8">
-          <span className="font-mono text-xs uppercase tracking-widest text-brand-orange font-bold">
-            Technical Brief Reservation
-          </span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-brand-charcoal leading-tight">
-            Schedule a technical blueprint brief
-          </h2>
-          <p className="font-sans text-base text-brand-charcoal/70 leading-relaxed max-w-xl mx-auto font-medium">
-            Meet directly with our systems engineers. We will analyze your market space, map your target commercial contractors or clinics, and outline the exact secondary domain pipeline we’d install. Blueprints are yours to keep.
-          </p>
-          <div className="pt-6">
-            <Link 
-              href="/contact" 
-              className="inline-flex items-center justify-center bg-brand-orange px-10 py-4 rounded-full font-sans text-sm font-bold uppercase tracking-wider text-white hover:bg-brand-charcoal transition-all duration-300 transform active:scale-95 shadow-md shadow-brand-orange/20"
-            >
-              Book a discovery call
-            </Link>
+      {/* ── METRICS ───────────────────────────────────── */}
+      <section style={{ background: "#0F3B2E", padding: "clamp(96px, 11vw, 160px) 0" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-center">
+
+            <div className="lg:col-span-5" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+              <h2 className="font-serif font-bold text-white" style={{ fontSize: "clamp(34px, 4vw, 56px)", lineHeight: "1.08" }}>
+                Infrastructure<br />doesn&apos;t lie.
+              </h2>
+              <p className="font-sans" style={{ fontSize: "15px", lineHeight: "1.75", color: "rgba(255,255,255,0.55)", maxWidth: "340px" }}>
+                We track deliverability, response quality, and net-new booked deals. Nothing else matters.
+              </p>
+            </div>
+
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-10 lg:pl-12" style={{ borderLeft: "1px solid rgba(255,255,255,0.1)" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <span className="block font-mono font-extrabold text-white" style={{ fontSize: "clamp(56px, 7vw, 88px)", lineHeight: 1, letterSpacing: "-0.03em" }}>
+                  <CountUp endValue={98.4} decimals={1} suffix="%" />
+                </span>
+                <span className="block font-sans font-medium" style={{ fontSize: "13px", color: "rgba(255,255,255,0.45)" }}>Primary inbox placement rate</span>
+                <p className="font-sans" style={{ fontSize: "13px", lineHeight: "1.7", color: "rgba(255,255,255,0.4)" }}>
+                  Across all managed sending domains, averaged over 90 days.
+                </p>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <span className="block font-mono font-extrabold text-white" style={{ fontSize: "clamp(56px, 7vw, 88px)", lineHeight: 1, letterSpacing: "-0.03em" }}>
+                  +<CountUp endValue={284} suffix="%" />
+                </span>
+                <span className="block font-sans font-medium" style={{ fontSize: "13px", color: "rgba(255,255,255,0.45)" }}>Net-new deal flow increase</span>
+                <p className="font-sans" style={{ fontSize: "13px", lineHeight: "1.7", color: "rgba(255,255,255,0.4)" }}>
+                  Qualified pipeline generated within 120 days of deployment.
+                </p>
+              </div>
+            </div>
+
           </div>
+        </div>
+      </section>
+
+      {/* ── FINAL CTA ─────────────────────────────────── */}
+      <section style={{ background: "#081F18", padding: "clamp(96px, 11vw, 160px) 0" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24 text-center" style={{ maxWidth: "768px" }}>
+          <h2 className="font-serif font-normal text-white" style={{ fontSize: "clamp(40px, 5.5vw, 72px)", lineHeight: "1.08" }}>
+            Let&apos;s talk about<br />your pipeline.
+          </h2>
+          <p className="font-sans mt-6 mb-10" style={{ fontSize: "16px", lineHeight: "1.75", color: "rgba(255,255,255,0.5)", maxWidth: "480px", margin: "24px auto 40px" }}>
+            15 minutes with our team. We&apos;ll map your market, outline the infrastructure, and give you the blueprint. Yours to keep regardless of fit.
+          </p>
+          <Link
+            href="/contact"
+            className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold rounded-full transition-all duration-300"
+            style={{ fontSize: "15px", letterSpacing: "0.01em", color: "#1A6B50", background: "#FFFFFF", padding: "18px 48px" }}
+          >
+            Book a discovery call
+          </Link>
         </div>
       </section>
 

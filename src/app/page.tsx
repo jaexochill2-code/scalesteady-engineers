@@ -81,7 +81,7 @@ export default function Home() {
                 fontSize: "clamp(48px, 5.5vw, 92px)",
                 lineHeight: "1.08",
                 letterSpacing: "-0.02em",
-                color: "#050D1C",
+                color: "#0D2B4A",
               }}
             >
               <span className="hero-word" style={{ animationDelay: "0s", marginRight: "0.22em" }}>The</span>
@@ -353,7 +353,7 @@ export default function Home() {
               fontSize: "12px",
               letterSpacing: "0.08em",
               textTransform: "uppercase",
-              color: "#050D1C",
+              color: "#0D2B4A",
               background: "#FFFFFF",
               padding: "18px 48px",
               borderRadius: "0px",

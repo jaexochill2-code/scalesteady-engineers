@@ -40,18 +40,18 @@ export default function Navigation() {
               priority
             />
           </div>
-          <div className="flex flex-col" style={{ gap: "3px" }}>
-            {/* Wordmark -- Plus Jakarta Sans: geometric, premium, 2026 B2B standard */}
+          <div className="flex flex-col" style={{ gap: "4px" }}>
+            {/* Wordmark: 800w + tight tracking = matches icon mass */}
             <span
               className="font-brand leading-none block"
-              style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#111111" }}
+              style={{ fontSize: "15.5px", fontWeight: 800, letterSpacing: "0.03em", textTransform: "uppercase", color: "#111111" }}
             >
               ScaleSteady
             </span>
-            {/* Descriptor -- always visible, even on mobile */}
+            {/* Descriptor: terracotta, wide tracking, airy contrast to bold wordmark */}
             <span
               className="font-brand block"
-              style={{ fontSize: "8px", fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", color: "#C4431B", opacity: 0.7 }}
+              style={{ fontSize: "7.5px", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "#C4431B", opacity: 1 }}
             >
               Pipeline Engineers
             </span>

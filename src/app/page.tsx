@@ -44,7 +44,8 @@ export default function Home() {
               height={1536}
               priority
               unoptimized
-              className="w-full h-full object-cover object-center block"
+              className="w-full h-full object-cover block"
+              style={{ objectPosition: "70% center" }}
             />
             {/* Right-edge gradient — cream blend */}
             <div

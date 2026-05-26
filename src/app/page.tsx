@@ -230,7 +230,7 @@ export default function Home() {
 
       {/* BRIDGE */}
       <section style={{ background: "#FAF8F6", padding: "clamp(56px, 7vw, 96px) 0" }}>
-        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "720px" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "760px" }}>
 
           <p
             className="font-sans font-semibold uppercase"
@@ -244,27 +244,55 @@ export default function Home() {
             style={{ fontSize: "clamp(28px, 3.8vw, 48px)", lineHeight: "1.14", letterSpacing: "-0.02em", color: "#0D2B4A", marginBottom: "24px" }}
           >
             ScaleSteady builds the outreach system that keeps your pipeline full.
-            We take you from depending on word of mouth to knowing exactly where your next customer is coming from.
+            We take you from depending on word of mouth to knowing exactly where
+            your next customer is coming from.
           </h2>
 
           <p
             className="font-sans"
-            style={{ fontSize: "16px", lineHeight: "1.78", color: "#4A4A4A", marginBottom: "18px" }}
+            style={{ fontSize: "16px", lineHeight: "1.8", color: "#4A4A4A", marginBottom: "40px" }}
           >
-            We have been doing this for two years, working with HVAC companies, roofing contractors,
-            health clinics, and other local service businesses. We set up the outreach system, get it
-            running, and work it until your calendar is filling consistently. Over 40 businesses have
-            gone through this process with us.
+            We have spent two years building this for local service businesses in HVAC,
+            roofing, home services, and health. The playbook works the same across every
+            vertical because the problem is the same: you need a consistent way to bring
+            in new business that does not depend on referrals or ad spend. Every client we
+            work with ends our engagement with a system they fully own and a calendar that
+            keeps filling.
           </p>
 
-          <p
-            className="font-sans"
-            style={{ fontSize: "16px", lineHeight: "1.78", color: "#4A4A4A" }}
+          {/* Proof strip */}
+          <div
+            className="grid grid-cols-1 sm:grid-cols-3"
+            style={{ borderTop: "1px solid #E2DDD8" }}
           >
-            Everything we build stays with you. Not in our system, not tied to a monthly retainer.
-            The email accounts, the prospect lists, the automation sequences go directly into your
-            business. Once it is running, you do not need us to keep it going.
-          </p>
+            {[
+              { label: "Industries served", value: "HVAC, Roofing, Health & Home Services" },
+              { label: "What you keep", value: "Every account, list, and sequence we build" },
+              { label: "Contract terms", value: "No retainer. No lock-in. Ever." },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="py-6 pr-8"
+                style={{
+                  borderRight: i < 2 ? "1px solid #E2DDD8" : "none",
+                  paddingLeft: i === 0 ? 0 : "32px",
+                }}
+              >
+                <p
+                  className="font-sans font-semibold uppercase"
+                  style={{ fontSize: "10px", letterSpacing: "0.12em", color: "#ABABAB", marginBottom: "8px" }}
+                >
+                  {item.label}
+                </p>
+                <p
+                  className="font-sans"
+                  style={{ fontSize: "14px", lineHeight: "1.55", color: "#0D2B4A" }}
+                >
+                  {item.value}
+                </p>
+              </div>
+            ))}
+          </div>
 
         </div>
       </section>

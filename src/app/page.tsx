@@ -240,9 +240,9 @@ export default function Home() {
             className="font-serif font-normal"
             style={{ fontSize: "clamp(28px, 3.8vw, 48px)", lineHeight: "1.14", letterSpacing: "-0.02em", color: "#0D2B4A", marginBottom: "24px" }}
           >
-            We build the outreach system that keeps your pipeline full.
-            We take you from depending on word of mouth to knowing exactly where
-            your next customer is coming from.
+            We are an outbound company. Most local service businesses depend on referrals to grow.
+            Referrals are unpredictable. We build the email outreach system that brings in new
+            customers whether or not the referrals are coming in.
           </h2>
 
           <p

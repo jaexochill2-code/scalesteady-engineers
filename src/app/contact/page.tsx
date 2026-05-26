@@ -143,7 +143,7 @@ export default function ContactPage() {
           </p>
           <h1
             style={{
-              fontFamily: "var(--font-display, serif)",
+              fontFamily: "var(--font-serif, serif)",
               fontSize: "clamp(36px, 5vw, 64px)",
               fontWeight: 400,
               color: "#FAF8F6",
@@ -248,7 +248,7 @@ export default function ContactPage() {
         {/* Headline */}
         <h1
           style={{
-            fontFamily: "var(--font-display, serif)",
+            fontFamily: "var(--font-serif, serif)",
             fontSize: "clamp(44px, 5.5vw, 76px)",
             fontWeight: 400,
             lineHeight: "1.03",

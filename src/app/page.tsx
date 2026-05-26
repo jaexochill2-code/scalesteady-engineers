@@ -230,67 +230,46 @@ export default function Home() {
 
       {/* ── BRIDGE: Authority + Identity Offer ── */}
       <section style={{ background: "#FAF8F6", padding: "clamp(64px, 8vw, 112px) 0" }}>
-        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "860px" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "800px" }}>
 
-          {/* Authority anchor */}
           <p
             className="font-sans font-semibold uppercase"
             style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B", marginBottom: "28px" }}
           >
-            Outbound Infrastructure Specialists — 2 Years, 40+ Systems Built
+            Outbound Infrastructure — Est. 2 Years
           </p>
 
-          {/* Identity declaration */}
           <h2
             className="font-serif font-normal"
-            style={{ fontSize: "clamp(32px, 4.2vw, 56px)", lineHeight: "1.1", letterSpacing: "-0.02em", color: "#0D2B4A" }}
+            style={{ fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.12", letterSpacing: "-0.02em", color: "#0D2B4A", marginBottom: "28px" }}
           >
-            ScaleSteady is a company that specializes in one thing:
-            moving service businesses from{" "}
-            <span style={{ color: "rgba(13,43,74,0.35)", textDecoration: "line-through", textDecorationColor: "rgba(13,43,74,0.2)" }}>
-              referral-dependent
-            </span>
+            ScaleSteady is an outbound infrastructure company.
+            We specialize in moving service businesses from{" "}
+            <span style={{ color: "rgba(13,43,74,0.3)", textDecoration: "line-through", textDecorationColor: "rgba(13,43,74,0.15)", fontStyle: "italic" }}>referral-dependent</span>
             {" "}to{" "}
-            <span className="italic" style={{ color: "#C4431B" }}>system-powered.</span>
+            <span style={{ color: "#C4431B", fontStyle: "italic" }}>system-powered.</span>
           </h2>
 
-          {/* Direct statement — no fluff */}
           <p
-            className="font-sans mt-7"
-            style={{ fontSize: "18px", lineHeight: "1.72", color: "#4A4A4A", maxWidth: "680px" }}
+            className="font-sans"
+            style={{ fontSize: "17px", lineHeight: "1.78", color: "#4A4A4A", marginBottom: "20px" }}
           >
-            We build the outbound infrastructure, the data layer, and the automation
-            that fills your calendar with qualified meetings — without referrals,
-            without ad spend, and without you chasing anyone.
-            You own everything we build. It runs when you&apos;re not in the room.
+            For two years, we have built outbound systems for small service businesses — the
+            sending infrastructure, the data layer, the automation. Over 40 systems deployed.
+            Every client we work with goes from waiting on referrals to owning a pipeline that
+            fills their calendar without them chasing a single lead.
           </p>
 
-          {/* Social proof bar */}
-          <div
-            className="flex flex-wrap items-center gap-8 mt-10 pt-10"
-            style={{ borderTop: "1px solid #E8E4DF" }}
+          <p
+            className="font-sans"
+            style={{ fontSize: "17px", lineHeight: "1.78", color: "#4A4A4A" }}
           >
-            {[
-              { stat: "40+", label: "Pipeline systems built" },
-              { stat: "2 yrs", label: "In the outbound space" },
-              { stat: "100%", label: "Client infrastructure ownership" },
-            ].map((item) => (
-              <div key={item.stat} className="flex items-baseline gap-3">
-                <span
-                  className="font-serif font-normal"
-                  style={{ fontSize: "clamp(28px, 3.5vw, 40px)", color: "#0D2B4A", lineHeight: 1 }}
-                >
-                  {item.stat}
-                </span>
-                <span
-                  className="font-sans"
-                  style={{ fontSize: "13px", color: "#8A8A8A", lineHeight: "1.4", maxWidth: "100px" }}
-                >
-                  {item.label}
-                </span>
-              </div>
-            ))}
-          </div>
+            We are not an agency. We do not manage campaigns on your behalf and send you a
+            monthly report. We build the infrastructure directly into your business — the
+            domains, the data, the sequences. When the engagement ends, it is yours.
+            You are not dependent on us, not dependent on Google, not under any
+            platform&apos;s mercy. That is the point.
+          </p>
 
         </div>
       </section>

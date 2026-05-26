@@ -507,8 +507,229 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* ── PRICING ── */}
+      <section style={{ background: "#FAF8F6", padding: "clamp(96px, 11vw, 160px) 0" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
+
+          {/* Eyebrow */}
+          <p
+            className="font-sans font-semibold uppercase mb-6"
+            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B" }}
+          >
+            Pricing
+          </p>
+
+          {/* Headline */}
+          <h2
+            className="font-serif font-bold mb-6"
+            style={{ fontSize: "clamp(30px, 3.8vw, 50px)", lineHeight: "1.1", color: "#111111", maxWidth: "620px" }}
+          >
+            The average local service client is worth $3,000 to $15,000. Do the math.
+          </h2>
+
+          {/* ROI strip */}
+          <p
+            className="font-sans mb-16"
+            style={{ fontSize: "13px", color: "#6B6B6B", borderLeft: "2px solid #E8E8E8", paddingLeft: "16px" }}
+          >
+            Email averages $36 returned for every $1 spent. Source: Litmus State of Email, 2024.
+          </p>
+
+          {/* Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-3" style={{ alignItems: "stretch" }}>
+
+            {/* SCALE */}
+            <div className="flex flex-col p-8 xl:p-10" style={{ border: "1px solid #E8E8E8", background: "#FFFFFF" }}>
+              <p
+                className="font-sans font-semibold uppercase mb-6"
+                style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#6B6B6B" }}
+              >
+                Scale
+              </p>
+              <div className="mb-1">
+                <span className="font-serif font-bold" style={{ fontSize: "clamp(42px, 5vw, 60px)", lineHeight: 1, color: "#111111" }}>$999</span>
+                <span className="font-sans" style={{ fontSize: "14px", color: "#6B6B6B" }}>/mo</span>
+              </div>
+              <p className="font-sans mb-8" style={{ fontSize: "12px", color: "#ABABAB" }}>
+                A $5,000 client covers 5 months at this tier.
+              </p>
+              <div style={{ width: "100%", height: "1px", background: "#E8E8E8", marginBottom: "28px" }} />
+              <ul className="flex flex-col gap-4 mb-auto font-sans" style={{ fontSize: "13.5px", color: "#3D3D3D" }}>
+                {[
+                  "100 email inboxes",
+                  "20 routing domains — more people find your business",
+                  "75,000 emails sent per month",
+                  "We build your lead list and full market research",
+                  "Unlimited outreach sequences",
+                  "1 dedicated marketing professional — works your account only",
+                  "Everything we build belongs to you",
+                ].map((f) => (
+                  <li key={f} className="flex items-start gap-3">
+                    <span style={{ color: "#C4431B", flexShrink: 0, marginTop: "2px", fontSize: "12px" }}>✓</span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-10 flex flex-col gap-3">
+                <a
+                  href="/contact"
+                  className="font-sans font-semibold text-center"
+                  style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#111111", border: "1px solid #111111", padding: "14px 24px", display: "block" }}
+                >
+                  Get started
+                </a>
+                <a
+                  href="/contact"
+                  className="font-sans text-center"
+                  style={{ fontSize: "12px", color: "#ABABAB", textDecoration: "underline", display: "block" }}
+                >
+                  Book a call first
+                </a>
+              </div>
+            </div>
+
+            {/* GROWTH — featured */}
+            <div
+              className="flex flex-col p-8 xl:p-10 relative"
+              style={{ background: "#0D2B4A", border: "1px solid #0D2B4A", marginTop: "-20px", marginBottom: "-20px", zIndex: 10, boxShadow: "0 24px 64px rgba(13,43,74,0.25)" }}
+            >
+              <div className="mb-6 flex items-center justify-between">
+                <p
+                  className="font-sans font-semibold uppercase"
+                  style={{ fontSize: "10px", letterSpacing: "0.16em", color: "rgba(255,255,255,0.45)" }}
+                >
+                  Growth
+                </p>
+                <span
+                  className="font-sans font-bold uppercase"
+                  style={{ fontSize: "9px", letterSpacing: "0.12em", color: "#FFFFFF", background: "#C4431B", padding: "4px 10px" }}
+                >
+                  Most Popular
+                </span>
+              </div>
+              <div className="mb-1">
+                <span className="font-serif font-bold" style={{ fontSize: "clamp(42px, 5vw, 60px)", lineHeight: 1, color: "#FFFFFF" }}>$699</span>
+                <span className="font-sans" style={{ fontSize: "14px", color: "rgba(255,255,255,0.35)" }}>/mo</span>
+              </div>
+              <p className="font-sans mb-8" style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
+                A $5,000 client covers 7 months at this tier.
+              </p>
+              <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.1)", marginBottom: "28px" }} />
+              <ul className="flex flex-col gap-4 mb-auto font-sans" style={{ fontSize: "13.5px", color: "rgba(255,255,255,0.75)" }}>
+                {[
+                  "50 email inboxes",
+                  "10 routing domains — more people find your business",
+                  "37,500 emails sent per month",
+                  "We build your lead list and full market research",
+                  "3 outreach sequences — battle-tested playbook",
+                  "Everything we build belongs to you",
+                ].map((f) => (
+                  <li key={f} className="flex items-start gap-3">
+                    <span style={{ color: "#C4431B", flexShrink: 0, marginTop: "2px", fontSize: "12px" }}>✓</span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-10 flex flex-col gap-3">
+                <a
+                  href="/contact"
+                  className="font-sans font-semibold text-center"
+                  style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#0D2B4A", background: "#FFFFFF", padding: "14px 24px", display: "block" }}
+                >
+                  Get started
+                </a>
+                <a
+                  href="/contact"
+                  className="font-sans text-center"
+                  style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)", textDecoration: "underline", display: "block" }}
+                >
+                  Book a call first
+                </a>
+              </div>
+            </div>
+
+            {/* STARTER */}
+            <div className="flex flex-col p-8 xl:p-10" style={{ border: "1px solid #E8E8E8", background: "#FFFFFF" }}>
+              <p
+                className="font-sans font-semibold uppercase mb-6"
+                style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#6B6B6B" }}
+              >
+                Starter
+              </p>
+              <div className="mb-1">
+                <span className="font-serif font-bold" style={{ fontSize: "clamp(42px, 5vw, 60px)", lineHeight: 1, color: "#111111" }}>$399</span>
+                <span className="font-sans" style={{ fontSize: "14px", color: "#6B6B6B" }}>/mo</span>
+              </div>
+              <p className="font-sans mb-8" style={{ fontSize: "12px", color: "#ABABAB" }}>
+                A $5,000 client covers 12 months at this tier.
+              </p>
+              <div style={{ width: "100%", height: "1px", background: "#E8E8E8", marginBottom: "28px" }} />
+              <ul className="flex flex-col gap-4 mb-auto font-sans" style={{ fontSize: "13.5px", color: "#3D3D3D" }}>
+                {[
+                  "20 email inboxes",
+                  "4 routing domains — more people find your business",
+                  "15,000 emails sent per month",
+                  "We build your lead list — you never prospect manually again",
+                  "1 outreach sequence — same playbook we use for our own clients",
+                  "Everything we build belongs to you",
+                ].map((f) => (
+                  <li key={f} className="flex items-start gap-3">
+                    <span style={{ color: "#C4431B", flexShrink: 0, marginTop: "2px", fontSize: "12px" }}>✓</span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-10 flex flex-col gap-3">
+                <a
+                  href="/contact"
+                  className="font-sans font-semibold text-center"
+                  style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#111111", border: "1px solid #111111", padding: "14px 24px", display: "block" }}
+                >
+                  Get started
+                </a>
+                <a
+                  href="/contact"
+                  className="font-sans text-center"
+                  style={{ fontSize: "12px", color: "#ABABAB", textDecoration: "underline", display: "block" }}
+                >
+                  Book a call first
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Ownership */}
+          <div className="mt-12 text-center">
+            <p
+              className="font-sans"
+              style={{ fontSize: "14px", lineHeight: "1.75", color: "#6B6B6B", maxWidth: "560px", margin: "0 auto" }}
+            >
+              The accounts, the lists, the sequences. They belong to you. Cancel anytime and keep everything we built.
+            </p>
+          </div>
+
+          {/* FAQ */}
+          <div className="mt-20" style={{ maxWidth: "640px" }}>
+            {[
+              { q: "Do I need technical knowledge to run this?", a: "No. We handle the setup. You respond to interested prospects." },
+              { q: "What happens to my accounts if I cancel?", a: "They stay with you. We hand over everything on the last day." },
+              { q: "How long before emails go out?", a: "Setup takes 7 to 14 days. We warm the accounts first so your deliverability is protected from day one." },
+            ].map((item, i) => (
+              <div key={i} style={{ borderTop: "1px solid #E8E8E8", padding: "24px 0" }}>
+                <p className="font-sans font-semibold mb-3" style={{ fontSize: "14px", color: "#111111" }}>{item.q}</p>
+                <p className="font-sans" style={{ fontSize: "14px", lineHeight: "1.7", color: "#6B6B6B" }}>{item.a}</p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
       {/* ── FINAL CTA — Void #050D1C ── */}
       <section style={{ background: "#050D1C", padding: "clamp(96px, 11vw, 160px) 0" }}>
+
         <div className="mx-auto px-8 sm:px-12 lg:px-24 text-center" style={{ maxWidth: "768px" }}>
           <h2
             className="font-serif font-normal text-white"

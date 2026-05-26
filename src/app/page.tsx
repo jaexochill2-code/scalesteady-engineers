@@ -288,7 +288,7 @@ export default function Home() {
                     step="5000"
                     value={emailVolume}
                     onChange={(e) => setEmailVolume(parseInt(e.target.value))}
-                    className="w-full h-1.5 bg-[#EAEAEA] rounded-lg appearance-none cursor-ew-resize accent-[#C4431B] outline-none"
+                    className="pipeline-slider w-full h-1.5 bg-[#EAEAEA] rounded-lg appearance-none cursor-ew-resize accent-[#C4431B] outline-none"
                     style={{
                       background: `linear-gradient(to right, #C4431B 0%, #C4431B ${(emailVolume - 10000) / 90000 * 100}%, #EAEAEA ${(emailVolume - 10000) / 90000 * 100}%, #EAEAEA 100%)`
                     }}

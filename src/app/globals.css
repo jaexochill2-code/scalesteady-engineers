@@ -222,6 +222,42 @@ a { color: inherit; text-decoration: none; }
   transform: translateX(6px);
 }
 
+/* Premium customized range slider styling */
+.pipeline-slider {
+  -webkit-appearance: none;
+  appearance: none;
+}
+.pipeline-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #C4431B;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 2px 8px rgba(196, 67, 27, 0.25);
+  cursor: ew-resize;
+  transition: transform 0.1s ease, background-color 0.1s ease;
+}
+.pipeline-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #0D2B4A;
+}
+.pipeline-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #C4431B;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 2px 8px rgba(196, 67, 27, 0.25);
+  cursor: ew-resize;
+  transition: transform 0.1s ease, background-color 0.1s ease;
+}
+.pipeline-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  background: #0D2B4A;
+}
+
 /* ── REDUCED MOTION ─────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .hero-word        { animation: none !important; opacity: 1 !important; }

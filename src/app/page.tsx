@@ -403,86 +403,100 @@ export default function Home() {
       </section>
 
 
+
       {/* ── DEFINITIVE RESULTS ── */}
-      <section style={{ background: "#050D1C", padding: "clamp(96px, 11vw, 160px) 0" }}>
+      <section style={{ background: "#050D1C", padding: "clamp(64px, 7vw, 96px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
-          {/* Pattern interrupt */}
+          {/* Pattern interrupt headline → number in one visual beat */}
           <p
             className="font-serif"
             style={{
-              fontSize: "clamp(30px, 4vw, 52px)",
-              lineHeight: "1.15",
-              letterSpacing: "-0.025em",
+              fontSize: "clamp(26px, 3.2vw, 42px)",
+              lineHeight: "1.2",
+              letterSpacing: "-0.02em",
               color: "#C4431B",
               fontWeight: 400,
-              maxWidth: "640px",
+              maxWidth: "600px",
             }}
           >
             The worst thing that can happen in 60&nbsp;days:
           </p>
 
-          {/* Hero number */}
-          <div style={{ marginTop: "clamp(56px, 6vw, 80px)" }}>
+          <p
+            className="font-serif font-bold"
+            style={{
+              fontSize: "clamp(72px, 11vw, 140px)",
+              lineHeight: 0.85,
+              color: "#FFFFFF",
+              letterSpacing: "-0.03em",
+              marginTop: "clamp(24px, 3vw, 40px)",
+            }}
+          >
+            30,000<span style={{ color: "#C4431B" }}>+</span>
+          </p>
+          <p
+            className="font-sans"
+            style={{
+              fontSize: "clamp(15px, 1.6vw, 18px)",
+              lineHeight: "1.6",
+              color: "rgba(255,255,255,0.5)",
+              maxWidth: "480px",
+              marginTop: "16px",
+            }}
+          >
+            people in your market hear your name for the first time. Without a single door knock, business card, or cold call.
+          </p>
+
+          {/* The math -- showing the work, not hiding it */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-10" style={{ marginTop: "clamp(48px, 5vw, 64px)" }}>
+
+            <div>
+              <p className="font-sans" style={{ fontSize: "15px", lineHeight: "1.75", color: "rgba(255,255,255,0.5)" }}>
+                30,000 emails. ~2% reply rate. That is <strong style={{ color: "#FFFFFF" }}>600 real conversations</strong> -- not impressions, not clicks -- with people who never knew you existed. Enough to fill your calendar for months.
+              </p>
+            </div>
+
+            <div>
+              <p className="font-sans" style={{ fontSize: "15px", lineHeight: "1.75", color: "rgba(255,255,255,0.5)" }}>
+                97.6% of those emails land in the <strong style={{ color: "#FFFFFF" }}>primary inbox</strong>. Not promotions. Not spam. Verified across every domain we have ever built.{" "}
+                <span style={{ fontSize: "10px", fontFamily: "monospace", color: "rgba(255,255,255,0.18)" }}>GlockApps 2026</span>
+              </p>
+            </div>
+
+            <div>
+              <p className="font-sans" style={{ fontSize: "15px", lineHeight: "1.75", color: "rgba(255,255,255,0.5)" }}>
+                Walk away tomorrow. <strong style={{ color: "#FFFFFF" }}>Keep everything</strong>. The domains, the contact lists, the sequences. Run it yourself, hire someone else, or just have it. It is yours whether you stay or not.
+              </p>
+            </div>
+
+            <div>
+              <p className="font-sans" style={{ fontSize: "15px", lineHeight: "1.75", color: "rgba(255,255,255,0.5)" }}>
+                <strong style={{ color: "#FFFFFF" }}>You run your business. We run the machine.</strong> No setup on your end. No learning curve. No logins. We handle every technical layer so you never have to.
+              </p>
+            </div>
+
+          </div>
+
+          {/* Anchor line -- the single strongest point, elevated */}
+          <div style={{ marginTop: "clamp(48px, 5vw, 64px)" }}>
             <p
-              className="font-serif font-bold"
+              className="font-serif italic"
               style={{
-                fontSize: "clamp(80px, 12vw, 160px)",
-                lineHeight: 0.85,
-                color: "#FFFFFF",
-                letterSpacing: "-0.03em",
+                fontSize: "clamp(20px, 2.5vw, 30px)",
+                lineHeight: "1.35",
+                color: "rgba(255,255,255,0.85)",
+                maxWidth: "640px",
               }}
             >
-              30,000<span style={{ color: "#C4431B" }}>+</span>
-            </p>
-            <p
-              className="font-sans"
-              style={{
-                fontSize: "clamp(16px, 1.8vw, 20px)",
-                lineHeight: "1.55",
-                color: "rgba(255,255,255,0.55)",
-                maxWidth: "520px",
-                marginTop: "20px",
-              }}
-            >
-              people in your area now know your name. Without a single door knock, business card, or cold call.
+              If we are booking meetings, you are booking meetings.
             </p>
           </div>
 
-          {/* Supporting outcomes -- editorial vertical flow */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-20 gap-y-12" style={{ marginTop: "clamp(64px, 7vw, 96px)" }}>
-
-            <div>
-              <p className="font-sans" style={{ fontSize: "16px", lineHeight: "1.75", color: "rgba(255,255,255,0.55)" }}>
-                Around <strong style={{ color: "#FFFFFF" }}>600 of them reply</strong>. Tens of them become first-time clients -- people who had never heard of you before they opened your email.
-              </p>
-            </div>
-
-            <div>
-              <p className="font-sans" style={{ fontSize: "16px", lineHeight: "1.75", color: "rgba(255,255,255,0.55)" }}>
-                Your emails land in their <strong style={{ color: "#FFFFFF" }}>main inbox, not spam</strong>. 97.6% of the time.{" "}
-                <span style={{ fontSize: "10px", fontFamily: "monospace", color: "rgba(255,255,255,0.2)" }}>[GlockApps 2026]</span>
-              </p>
-            </div>
-
-            <div>
-              <p className="font-sans" style={{ fontSize: "16px", lineHeight: "1.75", color: "rgba(255,255,255,0.55)" }}>
-                You <strong style={{ color: "#FFFFFF" }}>own everything</strong> we build. The emails, the contacts, the infrastructure. Walk away tomorrow -- you keep it all.
-              </p>
-            </div>
-
-            <div>
-              <p className="font-sans" style={{ fontSize: "16px", lineHeight: "1.75", color: "rgba(255,255,255,0.55)" }}>
-                You do not set anything up. You do not learn anything. <strong style={{ color: "#FFFFFF" }}>You do not touch the technology</strong>.
-              </p>
-            </div>
-
-          </div>
-
-          {/* 4th wall */}
-          <div style={{ marginTop: "clamp(72px, 8vw, 112px)", paddingTop: "40px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-            <p className="font-sans" style={{ fontSize: "14px", lineHeight: "1.75", color: "rgba(255,255,255,0.25)", maxWidth: "560px" }}>
-              We are 5 people. Not an agency. This is the same playbook we run for our own outreach -- and our clients who found success with it. If we are booking meetings, you are booking meetings.
+          {/* 4th wall -- personality, not a tombstone */}
+          <div style={{ marginTop: "clamp(40px, 4vw, 56px)", paddingTop: "28px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+            <p className="font-sans" style={{ fontSize: "13px", lineHeight: "1.8", color: "rgba(255,255,255,0.25)", maxWidth: "540px" }}>
+              5 highly caffeinated people who are obsessed with cold email. You will not be handed off to an SDR. You will not talk to an account manager. You talk to us -- the same people who warm the domains, write the sequences, and read the replies. This is the same playbook we run for our own pipeline.
             </p>
           </div>
 

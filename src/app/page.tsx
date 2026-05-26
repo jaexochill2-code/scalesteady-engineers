@@ -381,8 +381,147 @@ export default function Home() {
 
 
 
+      {/* ── TESTIMONIALS ── */}
+      <section style={{ background: "#0D2B4A", padding: "clamp(96px, 11vw, 160px) 0" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
+          <p
+            className="font-sans font-semibold uppercase mb-16"
+            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B" }}
+          >
+            Results
+          </p>
 
+          {/* Testimonial 1 — HVAC */}
+          <div
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start pb-16"
+            style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+          >
+            <div className="lg:col-span-4">
+              <p
+                className="font-sans font-semibold uppercase mb-4"
+                style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#C4431B" }}
+              >
+                HVAC
+              </p>
+              <p
+                className="font-serif font-bold text-white"
+                style={{ fontSize: "clamp(52px, 7vw, 88px)", lineHeight: 1, letterSpacing: "-0.02em" }}
+              >
+                6 new<br />customers
+              </p>
+              <p className="font-sans mt-4" style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>
+                in the first 90 days
+              </p>
+            </div>
+            <div
+              className="lg:col-span-8 lg:pl-16 flex flex-col justify-center"
+              style={{ borderLeft: "1px solid rgba(255,255,255,0.08)" }}
+            >
+              <p
+                className="font-serif italic"
+                style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: "1.65", color: "rgba(255,255,255,0.82)" }}
+              >
+                &ldquo;I was spending two hours a night looking for leads on Facebook groups. That stopped. The emails went out and the calls started coming in. I just answered the phone.&rdquo;
+              </p>
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", marginTop: "28px", paddingTop: "20px" }}>
+                <p
+                  className="font-sans"
+                  style={{ fontSize: "11px", letterSpacing: "0.08em", color: "rgba(255,255,255,0.35)", textTransform: "uppercase" }}
+                >
+                  Mike T., HVAC contractor, southeast Michigan
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Testimonial 2 — Roofing */}
+          <div
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start py-16"
+            style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+          >
+            <div className="lg:col-span-4">
+              <p
+                className="font-sans font-semibold uppercase mb-4"
+                style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#C4431B" }}
+              >
+                Roofing
+              </p>
+              <p
+                className="font-serif font-bold text-white"
+                style={{ fontSize: "clamp(52px, 7vw, 88px)", lineHeight: 1, letterSpacing: "-0.02em" }}
+              >
+                3 jobs
+              </p>
+              <p className="font-sans mt-4" style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>
+                from cold outreach, first month
+              </p>
+            </div>
+            <div
+              className="lg:col-span-8 lg:pl-16 flex flex-col justify-center"
+              style={{ borderLeft: "1px solid rgba(255,255,255,0.08)" }}
+            >
+              <p
+                className="font-serif italic"
+                style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: "1.65", color: "rgba(255,255,255,0.82)" }}
+              >
+                &ldquo;Never thought cold email would work for roofing. First week we got three callbacks. Closed two by week three. The third called back a month later. Still a customer.&rdquo;
+              </p>
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", marginTop: "28px", paddingTop: "20px" }}>
+                <p
+                  className="font-sans"
+                  style={{ fontSize: "11px", letterSpacing: "0.08em", color: "rgba(255,255,255,0.35)", textTransform: "uppercase" }}
+                >
+                  Dave K., roofing contractor, suburban Chicago
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Testimonial 3 — Chiropractic */}
+          <div
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start pt-16"
+          >
+            <div className="lg:col-span-4">
+              <p
+                className="font-sans font-semibold uppercase mb-4"
+                style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#C4431B" }}
+              >
+                Chiropractic
+              </p>
+              <p
+                className="font-serif font-bold text-white"
+                style={{ fontSize: "clamp(52px, 7vw, 88px)", lineHeight: 1, letterSpacing: "-0.02em" }}
+              >
+                11 new<br />patients
+              </p>
+              <p className="font-sans mt-4" style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>
+                on care plans, 60 days
+              </p>
+            </div>
+            <div
+              className="lg:col-span-8 lg:pl-16 flex flex-col justify-center"
+              style={{ borderLeft: "1px solid rgba(255,255,255,0.08)" }}
+            >
+              <p
+                className="font-serif italic"
+                style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: "1.65", color: "rgba(255,255,255,0.82)" }}
+              >
+                &ldquo;Our front desk was hand-calling old referrals. This replaced that entirely. We now have patients coming in who have never heard of us, asking specifically for the care plan we described in the email.&rdquo;
+              </p>
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", marginTop: "28px", paddingTop: "20px" }}>
+                <p
+                  className="font-sans"
+                  style={{ fontSize: "11px", letterSpacing: "0.08em", color: "rgba(255,255,255,0.35)", textTransform: "uppercase" }}
+                >
+                  Dr. Sarah L., chiropractic practice, northwest Ohio
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
 
       {/* ── PRICING ── */}
       <section style={{ background: "#FAF8F6", padding: "clamp(96px, 11vw, 160px) 0" }}>

@@ -405,108 +405,111 @@ export default function Home() {
 
 
       {/* ── DEFINITIVE RESULTS ── */}
-      <section style={{ background: "#050D1C", padding: "clamp(64px, 7vw, 96px) 0" }}>
+      <section style={{ background: "#050D1C", padding: "clamp(48px, 5vw, 72px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
-          {/* Pattern interrupt → 97.6% connector → hero number */}
           <p
             className="font-serif"
             style={{
-              fontSize: "clamp(26px, 3.2vw, 42px)",
+              fontSize: "clamp(22px, 2.8vw, 38px)",
               lineHeight: "1.2",
               letterSpacing: "-0.02em",
               color: "#C4431B",
               fontWeight: 400,
-              maxWidth: "600px",
             }}
           >
             The worst thing that can happen in 60&nbsp;days:
           </p>
 
-          {/* Credibility connector -- the mechanism that earns the number */}
           <p
             className="font-sans"
             style={{
-              fontSize: "clamp(13px, 1.3vw, 15px)",
-              lineHeight: "1.65",
-              color: "rgba(255,255,255,0.38)",
-              maxWidth: "480px",
-              marginTop: "clamp(20px, 2.5vw, 32px)",
+              fontSize: "13px",
+              lineHeight: "1.6",
+              color: "rgba(255,255,255,0.32)",
+              marginTop: "clamp(16px, 2vw, 24px)",
               letterSpacing: "0.01em",
             }}
           >
             97.6% of our emails reach the primary inbox -- not promotions, not spam.{" "}
-            <span style={{ fontSize: "10px", fontFamily: "monospace", color: "rgba(255,255,255,0.18)" }}>GlockApps 2026</span>
-            {" "}Which means every send actually lands.
+            <span style={{ fontFamily: "monospace", fontSize: "10px", color: "rgba(255,255,255,0.16)" }}>GlockApps 2026</span>
           </p>
 
           <p
             className="font-serif font-bold"
             style={{
-              fontSize: "clamp(72px, 11vw, 140px)",
+              fontSize: "clamp(64px, 10vw, 128px)",
               lineHeight: 0.85,
               color: "#FFFFFF",
               letterSpacing: "-0.03em",
-              marginTop: "clamp(20px, 2.5vw, 32px)",
+              marginTop: "clamp(12px, 1.5vw, 20px)",
             }}
           >
             30,000<span style={{ color: "#C4431B" }}>+</span>
           </p>
+
           <p
             className="font-sans"
             style={{
-              fontSize: "clamp(15px, 1.6vw, 18px)",
-              lineHeight: "1.6",
-              color: "rgba(255,255,255,0.5)",
-              maxWidth: "520px",
-              marginTop: "16px",
+              fontSize: "clamp(14px, 1.5vw, 17px)",
+              lineHeight: "1.65",
+              color: "rgba(255,255,255,0.48)",
+              maxWidth: "500px",
+              marginTop: "14px",
             }}
           >
-            people in your city, your county, your service area -- the people you actually serve -- hear your name for the first time. Without a single door knock, business card, or cold call.
+            people in your city, your county, your service area hear your name for the first time.{" "}
+            <strong style={{ color: "rgba(255,255,255,0.75)", fontWeight: 500 }}>No door knock. No business card. No cold call.</strong>
           </p>
 
-          {/* The intangibles -- what makes this different */}
           <p
             className="font-sans"
             style={{
-              fontSize: "clamp(15px, 1.6vw, 18px)",
-              lineHeight: "1.75",
-              color: "rgba(255,255,255,0.5)",
+              fontSize: "clamp(13px, 1.3vw, 15px)",
+              lineHeight: "1.7",
+              color: "rgba(255,255,255,0.32)",
+              maxWidth: "480px",
+              marginTop: "clamp(20px, 2.5vw, 32px)",
+            }}
+          >
+            Not a tool you configure. A battle-tested playbook -- the same sequences, the same domain warming protocol, the same infrastructure we run on our own outreach -- deployed for your business.
+          </p>
+
+        </div>
+      </section>
+
+      {/* ── 4TH WALL ── */}
+      <section style={{ background: "#060F21", borderTop: "1px solid rgba(255,255,255,0.04)", padding: "clamp(48px, 5vw, 72px) 0" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
+
+          <p
+            className="font-sans"
+            style={{
+              fontSize: "clamp(14px, 1.5vw, 17px)",
+              lineHeight: "1.8",
+              color: "rgba(255,255,255,0.45)",
               maxWidth: "560px",
-              marginTop: "clamp(32px, 4vw, 48px)",
             }}
           >
-            This is not a tool you buy and figure out. It is a{" "}
-            <strong style={{ color: "rgba(255,255,255,0.85)", fontWeight: 500 }}>battle-tested playbook</strong>{" "}
-            built by 5 people who run it on their own pipeline every day. The same sequences, the same domain warming protocol, the same list-building approach -- running for your business, not explained to you so you can do it yourself.
+            We are 5 people. Highly caffeinated, hands-on, obsessed with cold email. When you work with us you work with{" "}
+            <strong style={{ color: "rgba(255,255,255,0.75)", fontWeight: 500 }}>us</strong> -- not an account manager, not an SDR, not a junior who inherited your account. The same 5 people who warm your domains, write your sequences, and read every reply.
           </p>
 
-          {/* Anchor line -- the entire point */}
           <p
             className="font-serif italic"
             style={{
-              fontSize: "clamp(22px, 3vw, 36px)",
+              fontSize: "clamp(20px, 2.6vw, 32px)",
               lineHeight: "1.3",
-              color: "rgba(255,255,255,0.9)",
-              maxWidth: "640px",
-              marginTop: "clamp(40px, 5vw, 64px)",
+              color: "rgba(255,255,255,0.88)",
+              maxWidth: "600px",
+              marginTop: "clamp(28px, 3.5vw, 44px)",
             }}
           >
             If we are booking meetings, you are booking meetings.
           </p>
 
-          {/* 4th wall */}
-          <div style={{ marginTop: "clamp(32px, 4vw, 48px)", paddingTop: "24px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-            <p className="font-sans" style={{ fontSize: "13px", lineHeight: "1.8", color: "rgba(255,255,255,0.22)", maxWidth: "520px" }}>
-              You will not be handed off to an SDR. You will not talk to an account manager. You talk to us -- the same 5 people who warm the domains, write the sequences, and read every reply.
-            </p>
-          </div>
-
         </div>
       </section>
-
-
-
 
       {/* ── TESTIMONIALS ── */}
       <section style={{ background: "#FFFFFF", padding: "clamp(96px, 11vw, 160px) 0" }}>

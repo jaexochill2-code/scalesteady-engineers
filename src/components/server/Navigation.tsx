@@ -1,23 +1,18 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import logoAbstract from "../../../public/brand/logos/scalesteady_clean_monogram.png";
 
 const NAV_LINKS = [
-  { href: "/services", label: "Services" },
-  { href: "/work", label: "Work" },
-  { href: "/team", label: "Our Team" },
-  { href: "/process", label: "Process" },
+  { href: "#approach", label: "How We Work" },
+  { href: "#results",  label: "Results"     },
+  { href: "#team",     label: "Our Team"    },
 ];
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => { setIsOpen(false); }, [pathname]);
 
   return (
     <header
@@ -29,7 +24,7 @@ export default function Navigation() {
         style={{ height: "80px" }}
       >
 
-        {/* Wordmark — stacked, single typeface, two weights */}
+        {/* Wordmark */}
         <Link href="/" className="flex items-center gap-3.5 flex-shrink-0">
           <div className="relative flex-shrink-0" style={{ width: "48px", height: "48px" }}>
             <Image
@@ -41,46 +36,36 @@ export default function Navigation() {
             />
           </div>
           <div className="flex flex-col" style={{ gap: "4px" }}>
-            {/* Wordmark: Barlow Semi Condensed 800w -- engineering precision, matches icon geometry */}
             <span
               className="leading-none block"
               style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 800, letterSpacing: "0.05em", textTransform: "uppercase", color: "#111111" }}
             >
               ScaleSteady
             </span>
-            {/* Descriptor: Plus Jakarta Sans -- contrast between condensed wordmark and geometric sub-label */}
             <span
               className="font-brand block"
-              style={{ fontSize: "7.5px", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "#C4431B", opacity: 1 }}
+              style={{ fontSize: "7.5px", fontWeight: 500, letterSpacing: "0.22em", textTransform: "uppercase", color: "#C4431B" }}
             >
-              Pipeline Engineers
+              Outbound Engineers
             </span>
           </div>
         </Link>
 
-        {/* Nav links — full black, clean */}
+        {/* Nav links -- anchor scroll */}
         <nav className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map(({ href, label }) => {
-            const active = pathname === href;
-            return (
-              <Link
-                key={href}
-                href={href}
-                className="font-sans transition-colors duration-150"
-                style={{
-                  fontSize: "14px",
-                  fontWeight: active ? 600 : 400,
-                  color: active ? "#1B4F8A" : "#111111",
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                {label}
-              </Link>
-            );
-          })}
+          {NAV_LINKS.map(({ href, label }) => (
+            <a
+              key={href}
+              href={href}
+              className="font-sans transition-colors duration-150"
+              style={{ fontSize: "14px", fontWeight: 400, color: "#111111", letterSpacing: "-0.01em" }}
+            >
+              {label}
+            </a>
+          ))}
         </nav>
 
-        {/* CTA — rectangular, Ellevest-principle */}
+        {/* CTA */}
         <div className="hidden md:flex items-center flex-shrink-0">
           <Link
             href="/contact"
@@ -123,14 +108,15 @@ export default function Navigation() {
       >
         <div className="px-6 pt-4 pb-8 flex flex-col gap-1">
           {NAV_LINKS.map(({ href, label }) => (
-            <Link
+            <a
               key={href}
               href={href}
+              onClick={() => setIsOpen(false)}
               className="font-sans py-3 transition-colors"
               style={{ fontSize: "15px", fontWeight: 500, color: "#111111", borderBottom: "1px solid #F0F0F0" }}
             >
               {label}
-            </Link>
+            </a>
           ))}
           <div className="pt-5">
             <Link

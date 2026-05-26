@@ -202,7 +202,7 @@ export default function Home() {
 
 
       {/* ── THE OUTBOUND TRUTHS ── */}
-      <section style={{ background: "#FAF8F6", padding: "clamp(64px, 12vw, 160px) 0" }}>
+      <section id="approach" style={{ background: "#FAF8F6", padding: "clamp(64px, 12vw, 160px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "800px" }}>
           
           {/* Left-anchored accent border + tactile hover focus group */}
@@ -480,7 +480,7 @@ export default function Home() {
 
 
       {/* ── TESTIMONIALS ── */}
-      <section style={{ background: "#FFFFFF", padding: "clamp(64px, 11vw, 160px) 0" }}>
+      <section id="results" style={{ background: "#FFFFFF", padding: "clamp(64px, 11vw, 160px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           <p
@@ -830,7 +830,7 @@ export default function Home() {
       </section>
 
       {/* ── TEAM ── */}
-      <section style={{ background: "#03080F", padding: "clamp(72px, 8vw, 112px) 0" }}>
+      <section id="team" style={{ background: "#03080F", padding: "clamp(72px, 8vw, 112px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           <p
@@ -931,47 +931,6 @@ export default function Home() {
             ))}
           </div>
 
-        </div>
-      </section>
-
-
-      {/* ── FINAL CTA — Void #050D1C ── */}
-      <section style={{ background: "#050D1C", padding: "clamp(96px, 11vw, 160px) 0" }}>
-
-        <div className="mx-auto px-8 sm:px-12 lg:px-24 text-center" style={{ maxWidth: "768px" }}>
-          <h2
-            className="font-serif font-normal text-white"
-            style={{ fontSize: "clamp(40px, 5.5vw, 72px)", lineHeight: "1.08" }}
-          >
-            Let&apos;s talk about<br />your pipeline.
-          </h2>
-          <p
-            className="font-sans"
-            style={{
-              fontSize: "16px",
-              lineHeight: "1.75",
-              color: "rgba(255,255,255,0.5)",
-              maxWidth: "480px",
-              margin: "24px auto 40px",
-            }}
-          >
-            15 minutes with our team. We&apos;ll map your market, outline the infrastructure, and give you the blueprint. Yours to keep regardless of fit.
-          </p>
-          <Link
-            href="/contact"
-            className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold transition-all duration-300"
-            style={{
-              fontSize: "12px",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              color: "#0D2B4A",
-              background: "#FFFFFF",
-              padding: "18px 48px",
-              borderRadius: "0px",
-            }}
-          >
-            Book a discovery call
-          </Link>
         </div>
       </section>
 

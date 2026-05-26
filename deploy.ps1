@@ -19,7 +19,11 @@ git -C $ProjectRoot add -A
 git -C $ProjectRoot commit -m $Message
 
 Write-Host "Pushing to git (record only)..." -ForegroundColor Gray
-git -C $ProjectRoot push origin main 2>$null
+try {
+    git -C $ProjectRoot push origin main 2>&1 | Out-Null
+} catch {
+    Write-Host "Git push warning (non-fatal): $_" -ForegroundColor Yellow
+}
 
 Write-Host "Deploying to production via Vercel CLI..." -ForegroundColor Cyan
 npx vercel --prod --yes --token $env:VERCEL_TOKEN

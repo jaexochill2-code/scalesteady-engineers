@@ -269,15 +269,43 @@ export default function Home() {
       <section style={{ background: "#0D2B4A", padding: "clamp(72px, 9vw, 120px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
-          {/* Section label */}
-          <div className="mb-12">
+          {/* ── Identity statement ── */}
+          <div className="mb-16">
             <p
-              className="font-sans font-semibold uppercase"
-              style={{ fontSize: "11px", letterSpacing: "0.14em", color: "rgba(255,255,255,0.3)" }}
+              className="font-serif font-normal"
+              style={{
+                fontSize: "clamp(24px, 3vw, 40px)",
+                lineHeight: "1.35",
+                color: "rgba(255,255,255,0.9)",
+                letterSpacing: "-0.02em",
+                maxWidth: "820px",
+              }}
             >
-              Two types of business
+              There&apos;s a gap between the outreach you know you should be doing and what you&apos;re actually doing. Every month that gap costs you clients{" "}
+              <span style={{ color: "#C4431B" }}>you&apos;ll never know you lost.</span>
+            </p>
+            <p
+              className="font-serif font-normal"
+              style={{
+                fontSize: "clamp(24px, 3vw, 40px)",
+                lineHeight: "1.35",
+                color: "#FFFFFF",
+                letterSpacing: "-0.02em",
+                fontWeight: 600,
+                marginTop: "24px",
+              }}
+            >
+              We close it.
             </p>
           </div>
+
+          {/* Bridge to chart */}
+          <p
+            className="font-sans font-semibold uppercase mb-8"
+            style={{ fontSize: "10px", letterSpacing: "0.16em", color: "rgba(255,255,255,0.25)" }}
+          >
+            Two types of business
+          </p>
 
           {/* Two columns: current self → future self */}
           <div className="grid grid-cols-1 lg:grid-cols-2">

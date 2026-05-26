@@ -25,7 +25,7 @@ const CLIENTS = ["Tarrant Mechanical", "Aesthetics Clinic Group", "Apex Leasing"
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen overflow-x-hidden" style={{ background: "#FAF8F6" }}>
+    <div className="w-full min-h-screen overflow-x-hidden pb-16 lg:pb-0" style={{ background: "#FAF8F6" }}>
 
       {/* ── HERO — 95svh: scroll provocation ── */}
       <section
@@ -142,7 +142,7 @@ export default function Home() {
                 fill
                 unoptimized
                 className="object-cover"
-                style={{ objectPosition: "center 60%" }}
+                style={{ objectPosition: "center 30%" }}
               />
               {/* Bottom fade into cream */}
               <div
@@ -153,8 +153,8 @@ export default function Home() {
 
             {/* Copy pane — solid cream, no contrast issues */}
             <div
-              className="px-6 sm:px-10 pb-8 pt-2"
-              style={{ background: "#FAF8F6", flex: "0 0 auto", borderLeft: "3px solid #C4431B", marginLeft: "24px" }}
+              className="px-5 sm:px-10 pb-8 pt-2"
+              style={{ background: "#FAF8F6", flex: "0 0 auto", borderLeft: "3px solid #C4431B", marginLeft: "16px" }}
             >
               <h1
                 className="font-serif font-normal"
@@ -165,21 +165,21 @@ export default function Home() {
               </h1>
               <p
                 className="font-sans mt-4"
-                style={{ fontSize: "15px", lineHeight: "1.7", color: "#3D3D3D", maxWidth: "360px" }}
+                style={{ fontSize: "16px", lineHeight: "1.7", color: "#3D3D3D", maxWidth: "360px" }}
               >
                 We build the same system for your business.
               </p>
               <div className="mt-6">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center font-brand font-semibold"
+                  className="inline-flex items-center justify-center font-brand font-semibold w-full"
                   style={{
-                    fontSize: "11px",
+                    fontSize: "12px",
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
                     color: "#FFFFFF",
                     background: "#1B4F8A",
-                    padding: "14px 36px",
+                    padding: "16px 36px",
                     borderRadius: "0px",
                   }}
                 >
@@ -187,7 +187,7 @@ export default function Home() {
                 </Link>
                 <p
                   className="font-sans mt-3"
-                  style={{ fontSize: "11px", color: "#9E9E9E", letterSpacing: "0.01em" }}
+                  style={{ fontSize: "12px", color: "#9E9E9E", letterSpacing: "0.01em" }}
                 >
                   15 minutes. No commitment.
                 </p>
@@ -202,7 +202,7 @@ export default function Home() {
 
 
       {/* ── THE OUTBOUND TRUTHS ── */}
-      <section style={{ background: "#FAF8F6", padding: "clamp(100px, 12vw, 160px) 0" }}>
+      <section style={{ background: "#FAF8F6", padding: "clamp(64px, 12vw, 160px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "800px" }}>
           
           {/* Left-anchored accent border + tactile hover focus group */}
@@ -438,7 +438,7 @@ export default function Home() {
           <p
             className="font-serif font-bold"
             style={{
-              fontSize: "clamp(64px, 10vw, 128px)",
+              fontSize: "clamp(44px, 10vw, 128px)",
               lineHeight: 0.85,
               color: "#FFFFFF",
               letterSpacing: "-0.03em",
@@ -480,7 +480,7 @@ export default function Home() {
 
 
       {/* ── TESTIMONIALS ── */}
-      <section style={{ background: "#FFFFFF", padding: "clamp(96px, 11vw, 160px) 0" }}>
+      <section style={{ background: "#FFFFFF", padding: "clamp(64px, 11vw, 160px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           <p
@@ -876,17 +876,17 @@ export default function Home() {
           {/* Divider */}
           <div style={{ width: "40px", height: "1px", background: "rgba(255,255,255,0.1)", margin: "clamp(36px, 4.5vw, 56px) 0" }} />
 
-          {/* Team photos */}
-          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+          {/* Team thumbnails -- copy is the star, photos are the credit line */}
+          <div className="grid grid-cols-3 sm:grid-cols-5" style={{ gap: "10px" }}>
             {[
-              { src: "/team/emma.jpg",    name: "Emma Hawthorne", title: "Co-Founder \u00b7 Email Infrastructure", scale: 1,    pos: "center top" },
-              { src: "/team/fred.jpg",    name: "Fred Khong",     title: "Co-Founder \u00b7 Client Care",         scale: 1.45, pos: "center 12%" },
-              { src: "/team/amy.jpg",     name: "Amy Chen",       title: "Messaging & Marketing",                 scale: 1.28, pos: "center 8%"  },
-              { src: "/team/brandon.jpg", name: "Brandon Mercer", title: "IT & Deliverability",                   scale: 1,    pos: "center top" },
-              { src: "/team/david.jpg",   name: "David Chang",    title: "AI & Sequence Automation",              scale: 1,    pos: "center top" },
+              { src: "/team/emma.jpg",    name: "Emma Hawthorne", title: "Co-Founder \u00b7 Email Infra",    scale: 1,    pos: "center top" },
+              { src: "/team/fred.jpg",    name: "Fred Khong",     title: "Co-Founder \u00b7 Client Care",    scale: 1.45, pos: "center 12%" },
+              { src: "/team/amy.jpg",     name: "Amy Chen",       title: "Messaging & Marketing",            scale: 1.28, pos: "center 8%"  },
+              { src: "/team/brandon.jpg", name: "Brandon Mercer", title: "IT & Deliverability",              scale: 1,    pos: "center top" },
+              { src: "/team/david.jpg",   name: "David Chang",    title: "AI & Sequence Automation",         scale: 1,    pos: "center top" },
             ].map((m) => (
-              <div key={m.name} style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                <div style={{ width: "160px", height: "160px", overflow: "hidden", borderRadius: "2px", flexShrink: 0 }}>
+              <div key={m.name} style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                <div className="team-photo-wrap" style={{ width: "100%", aspectRatio: "1 / 1", overflow: "hidden", borderRadius: "2px" }}>
                   <img
                     className="team-photo"
                     src={m.src}
@@ -899,8 +899,8 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <p className="font-sans" style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.82)", lineHeight: 1.3 }}>{m.name}</p>
-                  <p className="font-sans" style={{ fontSize: "9px", color: "rgba(255,255,255,0.32)", marginTop: "3px", letterSpacing: "0.04em", textTransform: "uppercase" }}>{m.title}</p>
+                  <p className="font-sans" style={{ fontSize: "10px", fontWeight: 500, color: "rgba(255,255,255,0.6)", lineHeight: 1.3 }}>{m.name}</p>
+                  <p className="font-sans" style={{ fontSize: "8px", color: "rgba(255,255,255,0.22)", marginTop: "2px", letterSpacing: "0.04em", textTransform: "uppercase" }}>{m.title}</p>
                 </div>
               </div>
             ))}
@@ -949,6 +949,44 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      {/* ── STICKY MOBILE CTA ── */}
+      <div
+        className="lg:hidden fixed bottom-0 left-0 right-0 z-50"
+        style={{
+          background: "rgba(5,13,28,0.96)",
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
+          borderTop: "1px solid rgba(255,255,255,0.07)",
+          padding: "10px 20px",
+          display: "flex",
+          alignItems: "center",
+          gap: "12px",
+        }}
+      >
+        <p
+          className="font-sans"
+          style={{ fontSize: "10px", color: "rgba(255,255,255,0.32)", lineHeight: 1.5, flexShrink: 0 }}
+        >
+          15 min.<br />No commitment.
+        </p>
+        <Link
+          href="/contact"
+          className="font-sans font-semibold inline-flex items-center justify-center"
+          style={{
+            fontSize: "11px",
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "#FFFFFF",
+            background: "#1B4F8A",
+            padding: "13px 20px",
+            borderRadius: "0px",
+            flex: "1",
+          }}
+        >
+          Book a discovery call
+        </Link>
+      </div>
 
     </div>
   );

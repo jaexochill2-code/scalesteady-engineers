@@ -1,0 +1,20 @@
+const { chromium } = require('playwright');
+(async () => {
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('https://scalesteady-engineers.vercel.app/contact', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(1500);
+  await page.click('button:has-text("Health")');
+  await page.fill('input[type="date"]', '2026-06-05');
+  await page.selectOption('select', '10:00 AM');
+  await page.fill('input[placeholder="Jane Smith"]', 'Test Lead');
+  await page.fill('input[placeholder*="jane@company"]', 'test@scalesteady.com');
+  await page.fill('textarea', 'Automated verification test submission');
+  await page.click('button[type="submit"]');
+  await page.waitForTimeout(4000);
+  await page.screenshot({ path: 'booking_success.png' });
+  const h1 = await page.textContent('h1').catch(() => 'no h1');
+  console.log('H1 after submit:', h1);
+  await browser.close();
+})();

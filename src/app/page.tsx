@@ -673,7 +673,9 @@ export default function Home() {
               </ul>
               <div className="mt-10 flex flex-col gap-3">
                 <a
-                  href="/contact"
+                  href="https://www.paypal.com/ncp/payment/96DL2TPTP2TJN"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-sans font-semibold text-center"
                   style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#111111", border: "1px solid #111111", padding: "14px 24px", display: "block" }}
                 >
@@ -734,7 +736,9 @@ export default function Home() {
               </ul>
               <div className="mt-10 flex flex-col gap-3">
                 <a
-                  href="/contact"
+                  href="https://www.paypal.com/ncp/payment/JYRU3Y9S7UNR8"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-sans font-semibold text-center"
                   style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#0D2B4A", background: "#FFFFFF", padding: "14px 24px", display: "block" }}
                 >
@@ -784,7 +788,9 @@ export default function Home() {
               </ul>
               <div className="mt-10 flex flex-col gap-3">
                 <a
-                  href="/contact"
+                  href="https://www.paypal.com/ncp/payment/XBEZZBKM8VQYG"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-sans font-semibold text-center"
                   style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#111111", border: "1px solid #111111", padding: "14px 24px", display: "block" }}
                 >

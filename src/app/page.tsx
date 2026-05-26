@@ -506,7 +506,7 @@ export default function Home() {
             className="font-serif font-bold mb-5"
             style={{ fontSize: "clamp(36px, 4.5vw, 58px)", lineHeight: "1.08", color: "#111111" }}
           >
-            One new client pays for this.
+            Once we close you one high-ticket deal, it pays for itself.
           </h2>
 
           {/* ROI strip */}

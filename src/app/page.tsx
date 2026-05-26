@@ -206,13 +206,13 @@ export default function Home() {
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "800px" }}>
           
           {/* Left-anchored accent border + tactile hover focus group */}
-          <div className="focus-group flex flex-col gap-12 border-l-[3px] pl-8 sm:pl-10" style={{ borderColor: "#C4431B" }}>
+          <div className="focus-group flex flex-col gap-8 border-l-[3px] pl-8 sm:pl-10" style={{ borderColor: "#C4431B" }}>
             
             <p
               className="font-sans"
               style={{
-                fontSize: "clamp(24px, 3.2vw, 36px)",
-                lineHeight: "1.4",
+                fontSize: "clamp(28px, 3.8vw, 46px)",
+                lineHeight: "1.25",
                 color: "#0D2B4A",
                 fontWeight: 400,
                 letterSpacing: "-0.02em",
@@ -224,11 +224,11 @@ export default function Home() {
             <p
               className="font-sans"
               style={{
-                fontSize: "clamp(24px, 3.2vw, 36px)",
-                lineHeight: "1.4",
+                fontSize: "clamp(15px, 1.7vw, 20px)",
+                lineHeight: "1.65",
                 color: "#3D3D3D",
                 fontWeight: 400,
-                letterSpacing: "-0.02em",
+                letterSpacing: "-0.01em",
               }}
             >
               Networking is slow. Cold calling is unsexy. <strong style={{ color: "#1B4F8A", fontWeight: 600 }}>Automation scales</strong>.
@@ -237,11 +237,11 @@ export default function Home() {
             <p
               className="font-sans"
               style={{
-                fontSize: "clamp(24px, 3.2vw, 36px)",
-                lineHeight: "1.4",
+                fontSize: "clamp(15px, 1.7vw, 20px)",
+                lineHeight: "1.65",
                 color: "#3D3D3D",
                 fontWeight: 400,
-                letterSpacing: "-0.02em",
+                letterSpacing: "-0.01em",
               }}
             >
               The math is clear: a 1% response on 50,000 targeted emails delivers 500 active conversations. That is your <strong style={{ color: "#1B4F8A", fontWeight: 600 }}>physical floor</strong>.
@@ -250,11 +250,12 @@ export default function Home() {
             <p
               className="font-sans"
               style={{
-                fontSize: "clamp(24px, 3.2vw, 36px)",
+                fontSize: "clamp(18px, 2.2vw, 26px)",
                 lineHeight: "1.4",
                 color: "#0D2B4A",
                 fontWeight: 600,
                 letterSpacing: "-0.02em",
+                marginTop: "40px",
               }}
             >
               The technology is ready -- the only question is whether you build this asset now, or <strong style={{ color: "#C4431B", fontWeight: 600 }}>wait until the market standard forces you to catch up.</strong>

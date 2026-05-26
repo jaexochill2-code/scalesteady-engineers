@@ -228,149 +228,136 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── THE TRANSITION & MATRIX — Visually Rich Bridging Section ── */}
-      <section style={{ background: "#FAF8F6", padding: "clamp(80px, 10vw, 140px) 0", borderBottom: "1px solid #E8E8E8" }}>
+      {/* ── TRANSITION — Hormozi open-loop hook ── */}
+      <section style={{ background: "#FAF8F6", padding: "clamp(72px, 9vw, 120px) 0", borderBottom: "1px solid #E8E8E8" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
-          
-          {/* Visual Preamble / Bridging Solutions Statement */}
-          <div className="relative pl-8 sm:pl-10 mb-16 max-w-4xl">
-            {/* Terracotta Visual Guide Line */}
-            <div 
-              className="absolute left-0 top-0 bottom-0" 
-              style={{ width: "3px", background: "#C4431B" }}
-            />
-            
+
+          {/* Hook: self-identification in 3 words */}
+          <div className="relative pl-8 sm:pl-10 mb-14 max-w-3xl">
+            <div className="absolute left-0 top-0 bottom-0" style={{ width: "3px", background: "#C4431B" }} />
             <span className="font-sans font-bold uppercase block mb-3" style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#1B4F8A" }}>
-              THE MISSION
+              Sound familiar?
             </span>
-            <h2 className="font-serif font-normal mb-6" style={{ fontSize: "clamp(36px, 4.5vw, 56px)", lineHeight: "1.12", color: "#111111", letterSpacing: "-0.01em" }}>
-              From chasing handshakes to owning a <span className="italic font-normal" style={{ color: "#C4431B" }}>predictable engine.</span>
+            <h2 className="font-serif font-normal mb-4" style={{ fontSize: "clamp(32px, 4vw, 52px)", lineHeight: "1.1", color: "#111111", letterSpacing: "-0.02em" }}>
+              You&apos;re good at your trade.<br />
+              <span className="italic" style={{ color: "#C4431B" }}>Getting new clients is the job you hate.</span>
             </h2>
-            <p className="font-sans text-[16px] sm:text-[17px] leading-relaxed text-[#3D3D3D]" style={{ maxWidth: "720px" }}>
-              You didn&apos;t build a top-tier local business to spend your nights chasing down bad form-fills or paying agencies for &ldquo;impressions.&rdquo; We build private outbound systems that land pre-qualified commercial bookings straight onto your calendar. No ad spend. No monthly retainers. Just a pipeline you own forever.
+            <p className="font-sans" style={{ fontSize: "16px", lineHeight: "1.7", color: "#6B6B6B", maxWidth: "560px" }}>
+              We fix that. One system. No ad spend. No agency retainers. Jobs land on your calendar while you run your crew.
             </p>
           </div>
 
-          {/* The Matrix Box */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            {/* Left side: THE HUSTLE (The Word-of-Mouth Drag) */}
-            <div className="bg-white border border-[#E8E8E8] p-8 xl:p-10 flex flex-col relative group cursor-default transition-all duration-300 hover:border-[#CCCCCC]">
-              <div className="mb-8">
-                <span className="font-sans font-bold uppercase block mb-2" style={{ fontSize: "10px", letterSpacing: "0.1em", color: "#ABABAB" }}>01 / THE HUSTLE</span>
-                <h3 className="font-serif font-normal" style={{ fontSize: "24px", color: "#3D3D3D" }}>Traditional Client Chasing</h3>
+          {/* The Matrix */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-px" style={{ border: "1px solid #E8E8E8", background: "#E8E8E8" }}>
+
+            {/* Left: BEFORE */}
+            <div className="bg-white p-8 xl:p-10 flex flex-col">
+              <div className="mb-8 flex items-center gap-3">
+                <div style={{ width: "28px", height: "28px", background: "#FDF3F1", border: "1px solid #F5C7BC", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="3">
+                    <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </div>
+                <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.12em", color: "#ABABAB" }}>Right now</span>
               </div>
 
-              <ul className="flex flex-col gap-8 font-sans" style={{ fontSize: "14.5px", color: "#6B6B6B" }}>
-                <li className="flex items-start gap-4">
-                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="2.5">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
+              <ul className="flex flex-col gap-7 font-sans" style={{ fontSize: "14px" }}>
+                <li className="flex items-start gap-3">
+                  <svg className="w-4 h-4 flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                   </svg>
                   <span>
-                    <strong className="block text-[#111111] mb-1">Feeding the Google meter.</strong>
-                    Paying $45 a click for tire-kickers who just want a free estimate, then bounce off your site forever.
-                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#ABABAB] hover:text-[#1B4F8A]">
-                      [?]
-                      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
-                        <strong>Source:</strong> ClickPatrol™ 2026 B2B Index: Search bids spike past $30–$70 CPC. LanderLab 2026: Average B2B landing pages bounce 70–90% of visitors.
+                    <strong className="block text-[#111111] mb-0.5">Paying $45 a click. Getting tire-kickers.</strong>
+                    <span style={{ color: "#888888" }}>Search ads eat your budget. Nobody books.
+                      <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#CCCCCC] hover:text-[#1B4F8A]">[?]
+                        <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
+                          <strong>Source:</strong> ClickPatrol™ 2026: B2B search CPCs average $30–$70. LanderLab 2026: 70–90% of B2B landing page visitors bounce without converting.
+                        </span>
                       </span>
                     </span>
                   </span>
                 </li>
-                <li className="flex items-start gap-4">
-                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="2.5">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                <li className="flex items-start gap-3">
+                  <svg className="w-4 h-4 flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                   </svg>
                   <span>
-                    <strong className="block text-[#111111] mb-1">Staring at a blank calendar.</strong>
-                    Praying the phone rings so your crew isn&apos;t sitting on their hands at $25 an hour on active payroll.
+                    <strong className="block text-[#111111] mb-0.5">Monday morning. Calendar&apos;s empty.</strong>
+                    <span style={{ color: "#888888" }}>Crew&apos;s on the clock. You&apos;re praying the phone rings.</span>
                   </span>
                 </li>
-                <li className="flex items-start gap-4">
-                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="2.5">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                <li className="flex items-start gap-3">
+                  <svg className="w-4 h-4 flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                   </svg>
                   <span>
-                    <strong className="block text-[#111111] mb-1">The retainer money pit.</strong>
-                    Writing a fat check to a marketing agency every month for &ldquo;impressions&rdquo; while your inbox stays bone dry.
+                    <strong className="block text-[#111111] mb-0.5">Agency took $3k. Sent you a report.</strong>
+                    <span style={{ color: "#888888" }}>Impressions up. Phone didn&apos;t ring. They shrug.</span>
                   </span>
                 </li>
               </ul>
             </div>
 
-            {/* Right side: THE ENGINE (The Outbound Leverage) */}
-            <div className="bg-white border-2 border-[#1B4F8A] p-8 xl:p-10 flex flex-col relative group cursor-default transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(27,79,138,0.06)]">
-              {/* Premium Highlight Tag */}
-              <div 
-                className="absolute top-0 right-0"
-                style={{ 
-                  background: "#1B4F8A", 
-                  color: "#FFFFFF", 
-                  fontSize: "9px", 
-                  letterSpacing: "0.15em", 
-                  textTransform: "uppercase", 
-                  padding: "5px 12px", 
-                  fontWeight: "700" 
-                }}
-              >
-                Recommended
+            {/* Right: AFTER */}
+            <div className="bg-white p-8 xl:p-10 flex flex-col relative" style={{ borderLeft: "2px solid #1B4F8A" }}>
+              <div style={{ position: "absolute", top: 0, right: 0, background: "#1B4F8A", color: "#fff", fontSize: "9px", letterSpacing: "0.15em", textTransform: "uppercase", padding: "5px 12px", fontWeight: 700 }}>
+                With ScaleSteady
               </div>
 
-              <div className="mb-8">
-                <span className="font-sans font-bold uppercase block mb-2" style={{ fontSize: "10px", letterSpacing: "0.15em", color: "#1B4F8A" }}>02 / THE ENGINE</span>
-                <h3 className="font-serif font-bold" style={{ fontSize: "24px", color: "#111111" }}>Programmatic Outbound</h3>
+              <div className="mb-8 flex items-center gap-3">
+                <div style={{ width: "28px", height: "28px", background: "#EEF3FA", border: "1px solid #B8CBE8", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.12em", color: "#1B4F8A" }}>After 30 days</span>
               </div>
 
-              <ul className="flex flex-col gap-8 font-sans mb-8" style={{ fontSize: "14.5px", color: "#3D3D3D" }}>
-                <li className="flex items-start gap-4">
-                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
+              <ul className="flex flex-col gap-7 font-sans mb-8" style={{ fontSize: "14px" }}>
+                <li className="flex items-start gap-3">
+                  <svg className="w-4 h-4 flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span>
-                    <strong className="block text-[#111111] mb-1">Straight to the source.</strong>
-                    Bypassing the bidding wars. Landing custom offers directly in the primary inboxes of building managers, commercial realtors, or medical offices for pennies.
-                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#1B4F8A]">
-                      [?]
-                      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
-                        <strong>Source:</strong> Smartlead &amp; Winnr 2026 Infrastructure Ledgers: Amortized mailbox volume ($120/mo for 10k sends) + validated B2B scrapes at $0.025/lead.
+                    <strong className="block text-[#111111] mb-0.5">$0.04 per contact. Sent to decision-makers.</strong>
+                    <span style={{ color: "#555555" }}>Direct to the inbox of property managers, office administrators, and local buyers.
+                      <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#AAAAAA] hover:text-[#1B4F8A]">[?]
+                        <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
+                          <strong>Source:</strong> Smartlead &amp; Winnr 2026: Amortized at $120/mo per 10k sends. Scrape cost $0.025/lead validated.
+                        </span>
                       </span>
                     </span>
                   </span>
                 </li>
-                <li className="flex items-start gap-4">
-                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
+                <li className="flex items-start gap-3">
+                  <svg className="w-4 h-4 flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span>
-                    <strong className="block text-[#111111] mb-1">Pre-booked, warm meetings.</strong>
-                    Waking up to qualified, warm calls booked directly onto your Google Calendar—no cold calling, no chasing down bad form-fills.
+                    <strong className="block text-[#111111] mb-0.5">Wake up. Calendar has 3 calls on it.</strong>
+                    <span style={{ color: "#555555" }}>Warm, pre-qualified. They already said yes to the meeting.</span>
                   </span>
                 </li>
-                <li className="flex items-start gap-4">
-                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
+                <li className="flex items-start gap-3">
+                  <svg className="w-4 h-4 flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span>
-                    <strong className="block text-[#111111] mb-1">An asset you own forever.</strong>
-                    50+ custom sending domains running with automated warmups and security records. A repeatable system that you own outright—no marketing hostage situations.
-                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#1B4F8A]">
-                      [?]
-                      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
-                        <strong>Source:</strong> GlockApps 2026 Enterprise Outbound Audit: fully warmed multi-domain arrays maintain a 98.4% primary placement rate.
+                    <strong className="block text-[#111111] mb-0.5">You own the pipeline. Forever.</strong>
+                    <span style={{ color: "#555555" }}>50+ domains. Your list. Your system. No agency can hold it hostage.
+                      <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#AAAAAA] hover:text-[#1B4F8A]">[?]
+                        <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
+                          <strong>Source:</strong> GlockApps 2026: Fully warmed multi-domain arrays hold 98.4% primary inbox placement.
+                        </span>
                       </span>
                     </span>
                   </span>
                 </li>
               </ul>
 
-              {/* Footnote Citation Salutation */}
-              <div className="mt-auto pt-6 border-t border-[#E8E8E8] flex justify-between items-start gap-8">
-                <span className="font-mono text-[9px] text-[#ABABAB] uppercase tracking-wider">Verification Sources</span>
-                <p className="font-sans text-[10.5px] text-[#888888] leading-normal max-width-[48ch] text-right">
-                  PPC data based on <strong>ClickPatrol™ 2026</strong> &amp; <strong>First Page Sage</strong> averages. Outbound deliverability audited via <strong>GlockApps</strong> &amp; <strong>Smartlead</strong>.
+              <div className="mt-auto pt-6 border-t border-[#E8E8E8]">
+                <p className="font-sans text-[10px] text-[#AAAAAA] leading-relaxed">
+                  Data: <strong>ClickPatrol™ 2026</strong> · <strong>First Page Sage 2026</strong> · <strong>GlockApps 2026</strong>
                 </p>
               </div>
             </div>

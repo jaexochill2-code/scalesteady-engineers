@@ -400,9 +400,10 @@ export default function Home() {
           </div>
 
           {/* ── Definitive Results ── */}
-          <div className="mt-20 pt-16" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+          <div className="mt-0 -mx-8 sm:-mx-12 lg:-mx-24 px-8 sm:px-12 lg:px-24 py-20 lg:py-24" style={{ background: "#C4431B" }}>
 
             {/* Pattern interrupt */}
+            <div className="mx-auto" style={{ maxWidth: "1280px" }}>
             <p
               className="font-serif"
               style={{
@@ -411,17 +412,17 @@ export default function Home() {
                 letterSpacing: "-0.025em",
                 color: "#FFFFFF",
                 fontWeight: 400,
-                maxWidth: "600px",
-                marginBottom: "64px",
+                maxWidth: "700px",
+                marginBottom: "72px",
               }}
             >
               The worst thing that can happen in 60&nbsp;days:
             </p>
 
-            {/* ── Hero stat + supporting facts ── */}
+            {/* ── Hero outcome + supporting outcomes ── */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-0">
 
-              {/* Left: Hero number */}
+              {/* Left: The number that matters */}
               <div className="lg:col-span-5">
                 <p
                   className="font-serif font-bold"
@@ -432,82 +433,56 @@ export default function Home() {
                     letterSpacing: "-0.03em",
                   }}
                 >
-                  30,000<span style={{ color: "#C4431B" }}>+</span>
+                  30,000<span style={{ color: "rgba(255,255,255,0.5)" }}>+</span>
                 </p>
                 <p
                   className="font-sans mt-5"
-                  style={{ fontSize: "15px", lineHeight: "1.65", color: "rgba(255,255,255,0.55)", maxWidth: "380px" }}
+                  style={{ fontSize: "16px", lineHeight: "1.65", color: "rgba(255,255,255,0.85)", maxWidth: "400px" }}
                 >
-                  decision-makers in your market who now know your name -- without a single door knock, business card, or cold call.
+                  people in your area now know your name. Without a single door knock, business card, or cold call.
                 </p>
               </div>
 
-              {/* Right: Supporting facts -- editorial stack */}
-              <div className="lg:col-span-6 lg:col-start-7 flex flex-col gap-10" style={{ paddingLeft: "24px", borderLeft: "1px solid rgba(255,255,255,0.1)" }}>
+              {/* Right: What that actually means for them */}
+              <div className="lg:col-span-6 lg:col-start-7 flex flex-col gap-12" style={{ paddingLeft: "28px", borderLeft: "1px solid rgba(255,255,255,0.25)" }}>
 
-                {/* Fact 1: Deliverability */}
                 <div>
-                  <p className="font-serif font-bold" style={{ fontSize: "clamp(28px, 3vw, 38px)", color: "#FFFFFF", lineHeight: 1, marginBottom: "8px" }}>
-                    97.6%
+                  <p className="font-sans" style={{ fontSize: "15px", lineHeight: "1.7", color: "rgba(255,255,255,0.85)" }}>
+                    Around <strong style={{ color: "#FFFFFF" }}>600 of them reply</strong>. Tens of them become first-time clients -- people who had never heard of you before they opened your email.
                   </p>
-                  <p className="font-sans" style={{ fontSize: "13.5px", lineHeight: "1.65", color: "rgba(255,255,255,0.45)" }}>
-                    inbox placement rate. Your emails land in main inboxes, not spam.{" "}
-                    <span className="relative inline-block group/tip cursor-help font-mono text-[10px] text-[rgba(255,255,255,0.2)] hover:text-white">[verified]
-                      <span className="absolute bottom-full left-0 mb-2 w-56 bg-[#1B4F8A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
+                </div>
+
+                <div>
+                  <p className="font-sans" style={{ fontSize: "15px", lineHeight: "1.7", color: "rgba(255,255,255,0.85)" }}>
+                    Your emails land in their <strong style={{ color: "#FFFFFF" }}>main inbox, not spam</strong>. 97.6% of the time.{" "}
+                    <span className="relative inline-block group/tip cursor-help font-mono text-[10px] text-[rgba(255,255,255,0.5)] hover:text-white">[verified]
+                      <span className="absolute bottom-full left-0 mb-2 w-56 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
                         <strong>Source:</strong> GlockApps 2026 deliverability audit across ScaleSteady client domains.
                       </span>
                     </span>
                   </p>
                 </div>
 
-                {/* Fact 2: Ownership */}
                 <div>
-                  <p className="font-sans font-semibold" style={{ fontSize: "14px", color: "rgba(255,255,255,0.8)", lineHeight: "1.6", marginBottom: "4px" }}>
-                    Everything we build is yours.
-                  </p>
-                  <p className="font-sans" style={{ fontSize: "13.5px", lineHeight: "1.65", color: "rgba(255,255,255,0.4)" }}>
-                    The infrastructure, the contact list, the domains. Walk away tomorrow and you keep it all. Run whatever you want on it, whenever you want.
+                  <p className="font-sans" style={{ fontSize: "15px", lineHeight: "1.7", color: "rgba(255,255,255,0.85)" }}>
+                    You <strong style={{ color: "#FFFFFF" }}>own everything</strong> we build. The emails, the contacts, the infrastructure. Walk away tomorrow -- you keep it all. Run it yourself, hire someone else, or just have it. It is yours.
                   </p>
                 </div>
 
-                {/* Fact 3: Market research */}
                 <div>
-                  <p className="font-sans font-semibold" style={{ fontSize: "14px", color: "rgba(255,255,255,0.8)", lineHeight: "1.6", marginBottom: "4px" }}>
-                    2 market-tested outreach angles.
-                  </p>
-                  <p className="font-sans" style={{ fontSize: "13.5px", lineHeight: "1.65", color: "rgba(255,255,255,0.4)" }}>
-                    Researched from your local market before a single email is written.
+                  <p className="font-sans" style={{ fontSize: "15px", lineHeight: "1.7", color: "rgba(255,255,255,0.85)" }}>
+                    You do not have to set anything up. You do not have to learn anything. <strong style={{ color: "#FFFFFF" }}>You do not have to touch the technology</strong>.
                   </p>
                 </div>
 
               </div>
             </div>
 
-            {/* Delineation */}
-            <p className="font-sans mt-16" style={{ fontSize: "13px", lineHeight: "1.7", color: "rgba(255,255,255,0.35)" }}>
-              These are controllable outputs. Not projections.
-            </p>
-
-            {/* ── Observed benchmarks ── */}
-            <div
-              className="mt-12 p-8 lg:p-10"
-              style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}
-            >
-              <p
-                className="font-sans font-semibold uppercase mb-5"
-                style={{ fontSize: "10px", letterSpacing: "0.16em", color: "rgba(255,255,255,0.25)" }}
-              >
-                What we see across clients
-              </p>
-              <p className="font-sans" style={{ fontSize: "15px", lineHeight: "1.8", color: "rgba(255,255,255,0.55)", maxWidth: "580px" }}>
-                A ~2% reply rate. Tens of first-time clients who walked through the door from outreach alone -- people who had never heard of them before they showed up in their inbox.
-              </p>
-            </div>
-
             {/* 4th wall */}
-            <p className="font-sans mt-12" style={{ fontSize: "13px", lineHeight: "1.75", color: "rgba(255,255,255,0.25)", maxWidth: "520px" }}>
+            <p className="font-sans mt-20" style={{ fontSize: "13px", lineHeight: "1.75", color: "rgba(255,255,255,0.45)", maxWidth: "540px" }}>
               We are 5 people. Not an agency. This is the same playbook we run for our own outreach -- and our clients who found success with it. If we are booking meetings, you are booking meetings.
             </p>
+            </div>
 
           </div>
 

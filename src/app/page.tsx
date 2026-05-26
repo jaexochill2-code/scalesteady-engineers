@@ -202,7 +202,7 @@ export default function Home() {
 
 
       {/* ── THE OUTBOUND TRUTHS ── */}
-      <section id="approach" style={{ background: "#FAF8F6", padding: "clamp(64px, 12vw, 160px) 0" }}>
+      <section id="approach" style={{ background: "#0D2B4A", padding: "clamp(64px, 12vw, 160px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "800px" }}>
           
           {/* Left-anchored accent border + tactile hover focus group */}
@@ -213,12 +213,12 @@ export default function Home() {
               style={{
                 fontSize: "clamp(28px, 3.8vw, 46px)",
                 lineHeight: "1.25",
-                color: "#0D2B4A",
+                color: "rgba(255,255,255,0.95)",
                 fontWeight: 400,
                 letterSpacing: "-0.02em",
               }}
             >
-              Outbound is the single most predictable way to acquire clients -- because you control the <strong style={{ color: "#C4431B", fontWeight: 600 }}>volume, the targeting, and the math</strong>.
+              Outbound is the single most predictable way to acquire clients -- because you control the <strong style={{ color: "#E8714A", fontWeight: 600 }}>volume, the targeting, and the math</strong>.
             </p>
 
             <p
@@ -226,12 +226,12 @@ export default function Home() {
               style={{
                 fontSize: "clamp(15px, 1.7vw, 20px)",
                 lineHeight: "1.65",
-                color: "#3D3D3D",
+                color: "rgba(255,255,255,0.6)",
                 fontWeight: 400,
                 letterSpacing: "-0.01em",
               }}
             >
-              Networking is slow. Cold calling is unsexy. <strong style={{ color: "#1B4F8A", fontWeight: 600 }}>Automation scales</strong>.
+              Networking is slow. Cold calling is unsexy. <strong style={{ color: "#7EC4E0", fontWeight: 600 }}>Automation scales</strong>.
             </p>
 
             <p
@@ -239,12 +239,12 @@ export default function Home() {
               style={{
                 fontSize: "clamp(15px, 1.7vw, 20px)",
                 lineHeight: "1.65",
-                color: "#3D3D3D",
+                color: "rgba(255,255,255,0.6)",
                 fontWeight: 400,
                 letterSpacing: "-0.01em",
               }}
             >
-              The math is clear: a 1% response on 50,000 targeted emails delivers 500 active conversations. That is your <strong style={{ color: "#1B4F8A", fontWeight: 600 }}>physical floor</strong>.
+              The math is clear: a 1% response on 50,000 targeted emails delivers 500 active conversations. That is your <strong style={{ color: "#7EC4E0", fontWeight: 600 }}>physical floor</strong>.
             </p>
 
             <p
@@ -252,13 +252,13 @@ export default function Home() {
               style={{
                 fontSize: "clamp(18px, 2.2vw, 26px)",
                 lineHeight: "1.4",
-                color: "#0D2B4A",
+                color: "rgba(255,255,255,0.95)",
                 fontWeight: 600,
                 letterSpacing: "-0.02em",
                 marginTop: "40px",
               }}
             >
-              The technology is ready -- the only question is whether you build this asset now, or <strong style={{ color: "#C4431B", fontWeight: 600 }}>wait until the market standard forces you to catch up.</strong>
+              The technology is ready -- the only question is whether you build this asset now, or <strong style={{ color: "#E8714A", fontWeight: 600 }}>wait until the market standard forces you to catch up.</strong>
             </p>
 
           </div>

@@ -729,7 +729,7 @@ export default function Home() {
                 className="font-serif font-bold"
                 style={{ fontSize: "clamp(44px, 5.5vw, 68px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
               >
-                24,000
+                15,000
               </p>
               <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
                 emails sent per month, exactly as quoted
@@ -739,7 +739,7 @@ export default function Home() {
                 className="font-serif italic mb-auto"
                 style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
               >
-                &ldquo;They told us upfront how many emails go out every month. Twenty-four thousand. Every Monday the report confirmed it. I have worked with people who promise volume and cannot tell you what actually went out. These guys could. Every number they quoted on day one showed up in the report.&rdquo;
+                &ldquo;Honestly I almost didn&apos;t sign up. I&apos;ve been burned by marketing guys before. But these guys showed me the price, told me exactly how many emails go out, and gave me a timeline. Fifteen thousand a month. Every Monday I get a report and the numbers match. No surprises, no upsells. Just organized people who do what they said they&apos;d do.&rdquo;
               </p>
               <div style={{ borderTop: "1px solid #E8E8E8", marginTop: "32px", paddingTop: "20px" }}>
                 <p className="font-sans" style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
@@ -778,7 +778,7 @@ export default function Home() {
                 className="font-serif italic mb-auto"
                 style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
               >
-                &ldquo;Second month we closed a roofing contract worth twelve thousand. That one job paid for two and a half years of this service. I stopped doing the math after that because it stopped being a question. The system keeps running.&rdquo;
+                &ldquo;I figured it was another agency that&apos;d take my money and disappear. Second month a reply came in, turned into a twelve thousand dollar re-roof. One job. Paid for the whole year and then some. I don&apos;t even think about it anymore, it just runs in the background and leads show up.&rdquo;
               </p>
               <div style={{ borderTop: "1px solid #E8E8E8", marginTop: "32px", paddingTop: "20px" }}>
                 <p className="font-sans" style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
@@ -812,7 +812,7 @@ export default function Home() {
                 className="font-serif italic mb-auto"
                 style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
               >
-                &ldquo;Signed up Monday. By Wednesday all 20 email accounts were built and the domains were set up. Two weeks of warmup and the first emails went to market on day fourteen. Every Monday I get a short note: who replied, what they said, what is next. I have never once had to chase them.&rdquo;
+                &ldquo;I run a small practice, I don&apos;t have time to chase vendors. Signed up on Monday, by Wednesday they had everything built. Two weeks later emails were going out. Every Monday I get a quick update -- who replied, what they said, what&apos;s next. Short, clear, no fluff. I have never had to follow up with them once.&rdquo;
               </p>
               <div style={{ borderTop: "1px solid #E8E8E8", marginTop: "32px", paddingTop: "20px" }}>
                 <p className="font-sans" style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>

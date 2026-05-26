@@ -242,8 +242,129 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── THE PARADIGM PIVOT MATRIX — Scannable Side-by-Side ── */}
+      <section style={{ background: "#FAF8F6", padding: "clamp(64px, 8vw, 120px) 0", borderBottom: "1px solid #E8E8E8" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
+          
+          {/* Header */}
+          <div className="mb-12">
+            <span className="font-sans font-semibold uppercase block mb-3" style={{ fontSize: "10px", letterSpacing: "0.15em", color: "#1B4F8A" }}>
+              The Operational Pivot
+            </span>
+            <h2 className="font-serif font-bold" style={{ fontSize: "clamp(32px, 4vw, 54px)", lineHeight: "1.1", color: "#111111" }}>
+              Legacy drag vs. Sapphire leverage.
+            </h2>
+          </div>
+
+          {/* The Matrix Box */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            {/* Left side: BEFORE (The Drag) */}
+            <div className="bg-white border border-[#E8E8E8] p-8 xl:p-10 flex flex-col relative group cursor-default transition-all duration-300 hover:border-[#CCCCCC]">
+              <div className="mb-8">
+                <span className="font-sans font-bold uppercase block mb-2" style={{ fontSize: "10px", letterSpacing: "0.1em", color: "#ABABAB" }}>BEFORE</span>
+                <h3 className="font-serif font-normal" style={{ fontSize: "24px", color: "#3D3D3D" }}>The Manual Drag</h3>
+              </div>
+
+              <ul className="flex flex-col gap-6 font-sans" style={{ fontSize: "14px", color: "#6B6B6B" }}>
+                <li className="flex items-start gap-4">
+                  <span className="flex-shrink-0 mt-1 font-bold" style={{ color: "#ABABAB" }}>—</span>
+                  <span>
+                    <strong>$35.00 PPC Bidding Waste</strong>
+                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#ABABAB] hover:text-[#1B4F8A]">
+                      [?]
+                      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
+                        <strong>Source:</strong> ClickPatrol™ 2026 B2B Index: Search bids spike past $30–$70 CPC. LanderLab 2026: Average B2B landing pages bounce 70–90% of visitors.
+                      </span>
+                    </span>
+                    <br />
+                    Paying ad networks for high-friction search clicks that bounce off your page without converting.
+                  </span>
+                </li>
+                <li className="flex items-start gap-4">
+                  <span className="flex-shrink-0 mt-1 font-bold" style={{ color: "#ABABAB" }}>—</span>
+                  <span>
+                    <strong>Dry Calendar Dry Spells</strong><br />
+                    Waking up to empty schedules, hoping word-of-mouth accidents keep your expensive sales reps busy.
+                  </span>
+                </li>
+                <li className="flex items-start gap-4">
+                  <span className="flex-shrink-0 mt-1 font-bold" style={{ color: "#ABABAB" }}>—</span>
+                  <span>
+                    <strong>Manual Drafting Fatigue</strong><br />
+                    Copy-pasting pitches manually every single evening, capping your growth by your own physical exhaustion.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Right side: AFTER (The Leverage) */}
+            <div className="bg-white border border-[#E8E8E8] p-8 xl:p-10 flex flex-col relative group cursor-default transition-all duration-300 hover:border-[#1B4F8A] hover:shadow-[0_20px_50px_rgba(27,79,138,0.06)]">
+              <div className="mb-8">
+                <span className="font-sans font-bold uppercase block mb-2" style={{ fontSize: "10px", letterSpacing: "0.1em", color: "#1B4F8A" }}>AFTER</span>
+                <h3 className="font-serif font-bold" style={{ fontSize: "24px", color: "#111111" }}>The Sapphire Leverage</h3>
+              </div>
+
+              <ul className="flex flex-col gap-6 font-sans mb-8" style={{ fontSize: "14px", color: "#3D3D3D" }}>
+                <li className="flex items-start gap-4">
+                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="2.5">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  <span>
+                    <strong>$0.04 Direct Executive Reach</strong>
+                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#1B4F8A]">
+                      [?]
+                      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
+                        <strong>Source:</strong> Smartlead &amp; Winnr 2026 Infrastructure Ledgers: Amortized mailbox volume ($120/mo for 10k sends) + validated B2B scrapes at $0.025/lead.
+                      </span>
+                    </span>
+                    <br />
+                    Bypassing search auctions entirely to land hyper-personalized offers straight into target primary inboxes.
+                  </span>
+                </li>
+                <li className="flex items-start gap-4">
+                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="2.5">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  <span>
+                    <strong>Automated Inbound Calendar</strong><br />
+                    Waking up daily to pre-qualified discovery calls automatically populated directly onto your sales calendar.
+                  </span>
+                </li>
+                <li className="flex items-start gap-4">
+                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="2.5">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  <span>
+                    <strong>Fully Owned Outbound Engine</strong>
+                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#1B4F8A]">
+                      [?]
+                      <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
+                        <strong>Source:</strong> GlockApps 2026 Enterprise Outbound Audit: fully warmed multi-domain arrays maintain a 98.4% primary placement rate.
+                      </span>
+                    </span>
+                    <br />
+                    50+ custom domains running with automated warmups and security records. Your delivery is a controlled variable, not a gamble.
+                  </span>
+                </li>
+              </ul>
+
+              {/* Footnote Citation Salutation */}
+              <div className="mt-auto pt-6 border-t border-[#E8E8E8] flex justify-between items-start gap-8">
+                <span className="font-mono text-[9px] text-[#ABABAB] uppercase tracking-wider">Verification Sources</span>
+                <p className="font-sans text-[10.5px] text-[#888888] leading-normal max-width-[48ch] text-right">
+                  PPC data based on <strong>ClickPatrol™ 2026</strong> &amp; <strong>First Page Sage</strong> averages. Outbound deliverability audited via <strong>GlockApps</strong> &amp; <strong>Smartlead</strong>.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* ── SERVICES ── */}
       <section style={{ background: "#FFFFFF", padding: "clamp(96px, 11vw, 160px) 0" }}>
+
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           <div className="mb-16 sm:mb-20">

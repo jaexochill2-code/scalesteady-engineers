@@ -705,7 +705,8 @@ export default function Home() {
                   "4 routing domains — more people find your business",
                   "15,000 emails sent per month",
                   "We build your lead list — you never prospect manually again",
-                  "1 outreach sequence — same playbook we use for our own clients",
+                  "Local market research included — we identify the 2 highest-converting angles for your market before a word is written",
+                  "Full tech stack, warmup, DNS, and configuration done for you — nothing to set up on your end",
                   "Everything we build belongs to you",
                 ].map((f) => (
                   <li key={f} className="flex items-start gap-3">

@@ -587,7 +587,7 @@ export default function Home() {
                 <span className="font-sans" style={{ fontSize: "14px", color: "#6B6B6B" }}>/mo</span>
               </div>
               <p className="font-sans mb-8" style={{ fontSize: "12px", color: "#ABABAB" }}>
-                A $5,000 client covers 5 months at this tier.
+                For established businesses with regional reach and a team to handle volume. A small or local-only market will saturate this.
               </p>
               <div style={{ width: "100%", height: "1px", background: "#E8E8E8", marginBottom: "28px" }} />
               <ul className="flex flex-col gap-4 mb-auto font-sans" style={{ fontSize: "13.5px", color: "#3D3D3D" }}>
@@ -648,7 +648,7 @@ export default function Home() {
                 <span className="font-sans" style={{ fontSize: "14px", color: "rgba(255,255,255,0.35)" }}>/mo</span>
               </div>
               <p className="font-sans mb-8" style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
-                A $5,000 client covers 7 months at this tier.
+                The right fit for most growing local service businesses covering a metro area or multiple service lines.
               </p>
               <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.1)", marginBottom: "28px" }} />
               <ul className="flex flex-col gap-4 mb-auto font-sans" style={{ fontSize: "13.5px", color: "rgba(255,255,255,0.75)" }}>
@@ -697,7 +697,7 @@ export default function Home() {
                 <span className="font-sans" style={{ fontSize: "14px", color: "#6B6B6B" }}>/mo</span>
               </div>
               <p className="font-sans mb-8" style={{ fontSize: "12px", color: "#ABABAB" }}>
-                A $5,000 client covers 12 months at this tier.
+                For solo operators and small practices with a defined local market. Enough volume to work it without burning through it.
               </p>
               <div style={{ width: "100%", height: "1px", background: "#E8E8E8", marginBottom: "28px" }} />
               <ul className="flex flex-col gap-4 mb-auto font-sans" style={{ fontSize: "13.5px", color: "#3D3D3D" }}>

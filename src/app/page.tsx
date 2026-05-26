@@ -228,141 +228,101 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── TRANSITION — Hormozi open-loop hook ── */}
+      {/* ── IDENTITY SHIFT — Two ways to run a local business ── */}
       <section style={{ background: "#FAF8F6", padding: "clamp(72px, 9vw, 120px) 0", borderBottom: "1px solid #E8E8E8" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
-          {/* Hook: self-identification in 3 words */}
-          <div className="relative pl-8 sm:pl-10 mb-14 max-w-3xl">
-            <div className="absolute left-0 top-0 bottom-0" style={{ width: "3px", background: "#C4431B" }} />
-            <span className="font-sans font-bold uppercase block mb-3" style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#1B4F8A" }}>
-              Sound familiar?
-            </span>
-            <h2 className="font-serif font-normal mb-4" style={{ fontSize: "clamp(32px, 4vw, 52px)", lineHeight: "1.1", color: "#111111", letterSpacing: "-0.02em" }}>
-              You&apos;re good at your trade.<br />
-              <span className="italic" style={{ color: "#C4431B" }}>Getting new clients is the job you hate.</span>
+          {/* One sentence. No bow. */}
+          <div className="mb-12">
+            <h2 className="font-serif font-normal" style={{ fontSize: "clamp(28px, 3.5vw, 46px)", lineHeight: "1.15", color: "#111111", letterSpacing: "-0.02em" }}>
+              There are two ways to run a local service business.
             </h2>
-            <p className="font-sans" style={{ fontSize: "16px", lineHeight: "1.7", color: "#6B6B6B", maxWidth: "560px" }}>
-              We fix that. One system. No ad spend. No agency retainers. Jobs land on your calendar while you run your crew.
-            </p>
           </div>
 
-          {/* The Matrix */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-px" style={{ border: "1px solid #E8E8E8", background: "#E8E8E8" }}>
+          {/* Two columns: current self → future self */}
+          <div className="grid grid-cols-1 lg:grid-cols-2" style={{ border: "1px solid #E8E8E8" }}>
 
-            {/* Left: BEFORE */}
-            <div className="bg-white p-8 xl:p-10 flex flex-col">
-              <div className="mb-8 flex items-center gap-3">
-                <div style={{ width: "28px", height: "28px", background: "#FDF3F1", border: "1px solid #F5C7BC", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="3">
-                    <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                </div>
-                <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.12em", color: "#ABABAB" }}>Right now</span>
+            {/* Left: Current self */}
+            <div className="bg-white p-8 xl:p-10 flex flex-col" style={{ borderRight: "1px solid #E8E8E8" }}>
+              <div className="mb-7 flex items-center gap-3">
+                <div style={{ width: "6px", height: "6px", background: "#CCCCCC", borderRadius: "50%" }} />
+                <span className="font-sans font-semibold uppercase" style={{ fontSize: "10px", letterSpacing: "0.14em", color: "#AAAAAA" }}>Running on referrals</span>
               </div>
 
-              <ul className="flex flex-col gap-7 font-sans" style={{ fontSize: "14px" }}>
+              <ul className="flex flex-col gap-6 font-sans" style={{ fontSize: "14.5px" }}>
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="2.5">
-                    <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                  <span>
-                    <strong className="block text-[#111111] mb-0.5">Paying $45 a click. Getting tire-kickers.</strong>
-                    <span style={{ color: "#888888" }}>Search ads eat your budget. Nobody books.
-                      <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#CCCCCC] hover:text-[#1B4F8A]">[?]
-                        <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
-                          <strong>Source:</strong> ClickPatrol™ 2026: B2B search CPCs average $30–$70. LanderLab 2026: 70–90% of B2B landing page visitors bounce without converting.
-                        </span>
+                  <span style={{ color: "#CCCCCC", marginTop: "2px", flexShrink: 0 }}>—</span>
+                  <span style={{ color: "#777777" }}>New work comes from who you know. When it's slow, there&apos;s not much you can do about it.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span style={{ color: "#CCCCCC", marginTop: "2px", flexShrink: 0 }}>—</span>
+                  <span style={{ color: "#777777" }}>Good months and slow months. Never sure which one&apos;s coming.
+                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#DDDDDD] hover:text-[#1B4F8A]">[?]
+                      <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
+                        <strong>Source:</strong> ClickPatrol™ 2026: B2B search CPCs average $30–$70. LanderLab 2026: 70–90% of visitors leave without contacting.
                       </span>
                     </span>
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="2.5">
-                    <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                  <span>
-                    <strong className="block text-[#111111] mb-0.5">Monday morning. Calendar&apos;s empty.</strong>
-                    <span style={{ color: "#888888" }}>Crew&apos;s on the clock. You&apos;re praying the phone rings.</span>
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="2.5">
-                    <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                  <span>
-                    <strong className="block text-[#111111] mb-0.5">Agency took $3k. Sent you a report.</strong>
-                    <span style={{ color: "#888888" }}>Impressions up. Phone didn&apos;t ring. They shrug.</span>
-                  </span>
+                  <span style={{ color: "#CCCCCC", marginTop: "2px", flexShrink: 0 }}>—</span>
+                  <span style={{ color: "#777777" }}>More clients means more of your own time on sales. Growth has a ceiling.</span>
                 </li>
               </ul>
             </div>
 
-            {/* Right: AFTER */}
-            <div className="bg-white p-8 xl:p-10 flex flex-col relative" style={{ borderLeft: "2px solid #1B4F8A" }}>
-              <div style={{ position: "absolute", top: 0, right: 0, background: "#1B4F8A", color: "#fff", fontSize: "9px", letterSpacing: "0.15em", textTransform: "uppercase", padding: "5px 12px", fontWeight: 700 }}>
-                With ScaleSteady
+            {/* Right: Future self */}
+            <div className="bg-white p-8 xl:p-10 flex flex-col relative" style={{ borderTop: "3px solid #1B4F8A" }}>
+              <div className="mb-7 flex items-center gap-3">
+                <div style={{ width: "6px", height: "6px", background: "#1B4F8A", borderRadius: "50%" }} />
+                <span className="font-sans font-semibold uppercase" style={{ fontSize: "10px", letterSpacing: "0.14em", color: "#1B4F8A" }}>Running on outbound</span>
               </div>
 
-              <div className="mb-8 flex items-center gap-3">
-                <div style={{ width: "28px", height: "28px", background: "#EEF3FA", border: "1px solid #B8CBE8", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </div>
-                <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.12em", color: "#1B4F8A" }}>After 30 days</span>
-              </div>
-
-              <ul className="flex flex-col gap-7 font-sans mb-8" style={{ fontSize: "14px" }}>
+              <ul className="flex flex-col gap-6 font-sans mb-8" style={{ fontSize: "14.5px" }}>
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span>
-                    <strong className="block text-[#111111] mb-0.5">$0.04 per contact. Sent to decision-makers.</strong>
-                    <span style={{ color: "#555555" }}>Direct to the inbox of property managers, office administrators, and local buyers.
-                      <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#AAAAAA] hover:text-[#1B4F8A]">[?]
-                        <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
-                          <strong>Source:</strong> Smartlead &amp; Winnr 2026: Amortized at $120/mo per 10k sends. Scrape cost $0.025/lead validated.
-                        </span>
+                  <span style={{ color: "#333333" }}>New work comes from a system, not from who called this week.
+                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#AAAAAA] hover:text-[#1B4F8A]">[?]
+                      <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
+                        <strong>Source:</strong> Smartlead &amp; Winnr 2026: $0.04/contact average vs. $45+ per search click. GlockApps 2026: 98.4% inbox reach on warmed domains.
                       </span>
                     </span>
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span>
-                    <strong className="block text-[#111111] mb-0.5">Wake up. Calendar has 3 calls on it.</strong>
-                    <span style={{ color: "#555555" }}>Warm, pre-qualified. They already said yes to the meeting.</span>
-                  </span>
+                  <span style={{ color: "#333333" }}>Calls booked into your calendar before your day starts. You focus on the work.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0 mt-1" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span>
-                    <strong className="block text-[#111111] mb-0.5">You own the pipeline. Forever.</strong>
-                    <span style={{ color: "#555555" }}>50+ domains. Your list. Your system. No agency can hold it hostage.
-                      <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#AAAAAA] hover:text-[#1B4F8A]">[?]
-                        <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
-                          <strong>Source:</strong> GlockApps 2026: Fully warmed multi-domain arrays hold 98.4% primary inbox placement.
-                        </span>
-                      </span>
-                    </span>
-                  </span>
+                  <span style={{ color: "#333333" }}>The system is yours. 50+ sending domains. Your contacts. No one can take it away.</span>
                 </li>
               </ul>
 
-              <div className="mt-auto pt-6 border-t border-[#E8E8E8]">
-                <p className="font-sans text-[10px] text-[#AAAAAA] leading-relaxed">
+              <div className="mt-auto pt-5 border-t border-[#E8E8E8]">
+                <p className="font-sans text-[10px] text-[#BBBBBB] leading-relaxed">
                   Data: <strong>ClickPatrol™ 2026</strong> · <strong>First Page Sage 2026</strong> · <strong>GlockApps 2026</strong>
                 </p>
               </div>
             </div>
 
           </div>
+
+          {/* The bridge — we move you across */}
+          <div className="mt-8 flex items-center gap-6">
+            <div style={{ height: "1px", flex: 1, background: "#E8E8E8" }} />
+            <p className="font-sans text-center flex-shrink-0" style={{ fontSize: "13px", color: "#888888" }}>
+              We move you from the left to the right.
+            </p>
+            <div style={{ height: "1px", flex: 1, background: "#E8E8E8" }} />
+          </div>
+
         </div>
       </section>
 

@@ -846,23 +846,23 @@ export default function Home() {
               className="font-sans"
               style={{ fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: "1.85", color: "rgba(255,255,255,0.45)" }}
             >
-              Hiring us means working with a small team of people who built this system on their own pipeline before running it for anyone else.
+              Hiring us means working with a small team with two years of running this exact system -- on their own outreach and for every client they have taken on.
             </p>
 
             <p
               className="font-sans"
               style={{ fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: "1.85", color: "rgba(255,255,255,0.45)", marginTop: "clamp(16px, 2vw, 22px)" }}
             >
-              We manage the day-to-day ourselves.{" "}
+              We run the day-to-day ourselves.{" "}
               <strong style={{ color: "rgba(255,255,255,0.75)", fontWeight: 500 }}>The same five people</strong>{" "}
-              who set up your domains, wrote your sequences, and built your contact list are the ones reading your replies on a Tuesday. There is no account manager in between. No junior who inherited your file. No one who says &ldquo;let me loop in the team.&rdquo;
+              who set up your domains, wrote your sequences, and identified your contacts are the ones reading your replies on a Tuesday. You step directly into a strict, structured workflow -- the same one we have run for two years, and the same one our clients are booking meetings from right now.
             </p>
 
             <p
               className="font-sans"
               style={{ fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: "1.85", color: "rgba(255,255,255,0.45)", marginTop: "clamp(16px, 2vw, 22px)" }}
             >
-              The workflow we run for you is the same one we trust with our own name. We know when it breaks because we feel it first.
+              No account manager. No junior who inherited your file. No one who says &ldquo;let me loop in the team.&rdquo;
             </p>
 
             <p

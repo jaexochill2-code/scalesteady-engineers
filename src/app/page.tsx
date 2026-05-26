@@ -362,79 +362,129 @@ export default function Home() {
 
 
 
-      {/* ── DEFINITIVE RESULTS ── */}
-      <section style={{ background: "#050D1C", padding: "clamp(48px, 5vw, 72px) 0" }}>
+      {/* ── DEFINITIVE RESULTS -- The Irony Section ── */}
+      <section style={{ background: "#050D1C", padding: "clamp(72px, 8vw, 112px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
+          {/* Irony opener */}
           <p
             className="font-serif"
             style={{
-              fontSize: "clamp(22px, 2.8vw, 38px)",
-              lineHeight: "1.2",
+              fontSize: "clamp(26px, 3.5vw, 44px)",
+              lineHeight: "1.15",
               letterSpacing: "-0.02em",
               color: "#C4431B",
               fontWeight: 400,
+              maxWidth: "640px",
             }}
           >
             The worst thing that can happen in 60&nbsp;days:
           </p>
 
+          {/* Deliverability connector -- this is WHY 30,000 is real */}
           <p
             className="font-sans"
             style={{
               fontSize: "13px",
-              lineHeight: "1.6",
-              color: "rgba(255,255,255,0.32)",
-              marginTop: "clamp(16px, 2vw, 24px)",
-              letterSpacing: "0.01em",
+              lineHeight: "1.65",
+              color: "rgba(255,255,255,0.30)",
+              marginTop: "clamp(20px, 2.5vw, 32px)",
+              maxWidth: "520px",
             }}
           >
             97.6% of our emails reach the primary inbox -- not promotions, not spam.{" "}
-            <span style={{ fontFamily: "monospace", fontSize: "10px", color: "rgba(255,255,255,0.16)" }}>GlockApps 2026</span>
+            <span style={{ fontFamily: "monospace", fontSize: "10px", color: "rgba(255,255,255,0.14)" }}>GlockApps 2026</span>
           </p>
 
+          {/* The number */}
           <p
             className="font-serif font-bold"
             style={{
-              fontSize: "clamp(44px, 10vw, 128px)",
+              fontSize: "clamp(56px, 10vw, 140px)",
               lineHeight: 0.85,
               color: "#FFFFFF",
               letterSpacing: "-0.03em",
-              marginTop: "clamp(12px, 1.5vw, 20px)",
+              marginTop: "clamp(16px, 2vw, 28px)",
             }}
           >
             30,000<span style={{ color: "#C4431B" }}>+</span>
           </p>
 
+          {/* Market awareness -- local, visceral */}
           <p
             className="font-sans"
             style={{
-              fontSize: "clamp(14px, 1.5vw, 17px)",
+              fontSize: "clamp(15px, 1.6vw, 18px)",
               lineHeight: "1.65",
-              color: "rgba(255,255,255,0.48)",
-              maxWidth: "500px",
-              marginTop: "14px",
+              color: "rgba(255,255,255,0.50)",
+              maxWidth: "520px",
+              marginTop: "16px",
             }}
           >
             people in your city, your county, your service area hear your name for the first time.{" "}
-            <strong style={{ color: "rgba(255,255,255,0.75)", fontWeight: 500 }}>No door knock. No business card. No cold call.</strong>
+            <strong style={{ color: "rgba(255,255,255,0.80)", fontWeight: 500 }}>
+              No door knock. No business card. No cold call.
+            </strong>
           </p>
 
-          <p
-            className="font-sans"
-            style={{
-              fontSize: "clamp(13px, 1.3vw, 15px)",
-              lineHeight: "1.7",
-              color: "rgba(255,255,255,0.32)",
-              maxWidth: "480px",
-              marginTop: "clamp(20px, 2.5vw, 32px)",
-            }}
-          >
-            Not a tool you configure. A battle-tested playbook -- the same sequences, the same domain warming protocol, the same infrastructure we run on our own outreach -- deployed for your business.
-          </p>
+          {/* ── The ownership payoff -- the irony closer ── */}
+          <div style={{ marginTop: "clamp(48px, 5vw, 72px)", borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "clamp(36px, 4vw, 56px)" }}>
+
+            <p
+              className="font-sans"
+              style={{
+                fontSize: "clamp(15px, 1.5vw, 17px)",
+                lineHeight: "1.75",
+                color: "rgba(255,255,255,0.42)",
+                maxWidth: "640px",
+                marginBottom: "clamp(28px, 3vw, 40px)",
+              }}
+            >
+              And you <strong style={{ color: "#FFFFFF" }}>keep everything</strong> we build. The accounts,
+              the lists, the sequences. They belong to you.
+            </p>
+
+            {/* Ownership grid -- 2 col, tight, no bloat */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-6" style={{ maxWidth: "740px" }}>
+              {[
+                { label: "Sending domains", detail: "Warmed, authenticated, DMARC-compliant -- registered in your name." },
+                { label: "Email inboxes", detail: "Trusted accounts with established sender reputation. Ready for any campaign you run." },
+                { label: "Verified lead list", detail: "Every contact in your TAM, cleaned and validated. Your market, mapped." },
+                { label: "Outreach sequences", detail: "Battle-tested copy and cadences. Use them again, modify them, hand them to your team." },
+              ].map((item) => (
+                <div key={item.label} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                  <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#C4431B", marginTop: "8px", flexShrink: 0 }} />
+                  <div>
+                    <p className="font-sans" style={{ fontSize: "14px", fontWeight: 600, color: "rgba(255,255,255,0.80)", marginBottom: "4px" }}>
+                      {item.label}
+                    </p>
+                    <p className="font-sans" style={{ fontSize: "13px", lineHeight: "1.6", color: "rgba(255,255,255,0.30)" }}>
+                      {item.detail}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Irony close -- the floor, not a projection */}
+            <p
+              className="font-sans"
+              style={{
+                fontSize: "clamp(14px, 1.4vw, 16px)",
+                lineHeight: "1.7",
+                color: "rgba(255,255,255,0.25)",
+                maxWidth: "560px",
+                marginTop: "clamp(36px, 4vw, 52px)",
+              }}
+            >
+              Cancel anytime and keep everything we built. That is the <strong style={{ color: "rgba(255,255,255,0.55)" }}>floor</strong> -- not a projection.
+            </p>
+
+          </div>
 
         </div>
       </section>
+
 
 
       {/* ── TESTIMONIALS ── */}

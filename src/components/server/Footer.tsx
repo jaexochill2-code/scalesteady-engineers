@@ -43,22 +43,6 @@ export default function Footer() {
               >
                 Outbound Engineers
               </p>
-              <a
-                href="/contact"
-                className="font-sans font-semibold inline-flex items-center justify-center self-start"
-                style={{
-                  fontSize: "11px",
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: "#FFFFFF",
-                  background: "#1B4F8A",
-                  padding: "11px 24px",
-                  borderRadius: "0px",
-                  marginTop: "8px",
-                }}
-              >
-                Book a discovery call
-              </a>
             </div>
 
             {/* Col 2: Navigation */}

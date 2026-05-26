@@ -131,6 +131,17 @@ export default function Footer() {
               >
                 224.487.7847
               </a>
+              <a
+                href="mailto:help@scalesteady.co"
+                className="font-sans"
+                style={{
+                  fontSize: "13px",
+                  color: "rgba(255,255,255,0.55)",
+                  letterSpacing: "0.01em",
+                }}
+              >
+                help@scalesteady.co
+              </a>
             </div>
 
           </div>

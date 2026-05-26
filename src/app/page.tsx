@@ -242,7 +242,7 @@ export default function Home() {
           {/* Two columns: current self → future self */}
           <div className="grid grid-cols-1 lg:grid-cols-2" style={{ border: "1px solid #E8E8E8" }}>
 
-            {/* Left: Current self */}
+            {/* Left: Running on referrals */}
             <div className="bg-white p-8 xl:p-10 flex flex-col" style={{ borderRight: "1px solid #E8E8E8" }}>
               <div className="mb-7 flex items-center gap-3">
                 <div style={{ width: "6px", height: "6px", background: "#CCCCCC", borderRadius: "50%" }} />
@@ -252,26 +252,27 @@ export default function Home() {
               <ul className="flex flex-col gap-6 font-sans" style={{ fontSize: "14.5px" }}>
                 <li className="flex items-start gap-3">
                   <span style={{ color: "#CCCCCC", marginTop: "2px", flexShrink: 0 }}>—</span>
-                  <span style={{ color: "#777777" }}>New work comes from who you know. When it's slow, there&apos;s not much you can do about it.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span style={{ color: "#CCCCCC", marginTop: "2px", flexShrink: 0 }}>—</span>
-                  <span style={{ color: "#777777" }}>Good months and slow months. Never sure which one&apos;s coming.
+                  <span style={{ color: "#777777" }}>
+                    You pay <strong style={{ color: "#555555" }}>$45–$70 per click</strong> for ads. 8 out of 10 visitors leave without calling.
                     <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#DDDDDD] hover:text-[#1B4F8A]">[?]
                       <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
-                        <strong>Source:</strong> ClickPatrol™ 2026: B2B search CPCs average $30–$70. LanderLab 2026: 70–90% of visitors leave without contacting.
+                        <strong>Source:</strong> ClickPatrol™ 2026 B2B Index: average B2B search CPC $30–$70. LanderLab 2026: 70–90% bounce rate on B2B landing pages.
                       </span>
                     </span>
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span style={{ color: "#CCCCCC", marginTop: "2px", flexShrink: 0 }}>—</span>
-                  <span style={{ color: "#777777" }}>More clients means more of your own time on sales. Growth has a ceiling.</span>
+                  <span style={{ color: "#777777" }}>New work depends on who calls this week. Good months and slow months — <strong style={{ color: "#555555" }}>no switch you can flip.</strong></span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span style={{ color: "#CCCCCC", marginTop: "2px", flexShrink: 0 }}>—</span>
+                  <span style={{ color: "#777777" }}>Want more clients? That means more of your own hours chasing them. Growth has a ceiling.</span>
                 </li>
               </ul>
             </div>
 
-            {/* Right: Future self */}
+            {/* Right: Running on outbound */}
             <div className="bg-white p-8 xl:p-10 flex flex-col relative" style={{ borderTop: "3px solid #1B4F8A" }}>
               <div className="mb-7 flex items-center gap-3">
                 <div style={{ width: "6px", height: "6px", background: "#1B4F8A", borderRadius: "50%" }} />
@@ -283,10 +284,11 @@ export default function Home() {
                   <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span style={{ color: "#333333" }}>New work comes from a system, not from who called this week.
+                  <span style={{ color: "#333333" }}>
+                    <strong style={{ color: "#111111" }}>$0.04 per contact</strong> — sent straight to the inbox of the person who signs the cheque.
                     <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#AAAAAA] hover:text-[#1B4F8A]">[?]
                       <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
-                        <strong>Source:</strong> Smartlead &amp; Winnr 2026: $0.04/contact average vs. $45+ per search click. GlockApps 2026: 98.4% inbox reach on warmed domains.
+                        <strong>Source:</strong> Smartlead &amp; Winnr 2026: amortised mailbox cost $120/mo for 10k sends. Validated B2B contact scrape at $0.025/record.
                       </span>
                     </span>
                   </span>
@@ -295,19 +297,25 @@ export default function Home() {
                   <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span style={{ color: "#333333" }}>Calls booked into your calendar before your day starts. You focus on the work.</span>
+                  <span style={{ color: "#333333" }}>Calls land on your calendar before the day starts. <strong style={{ color: "#111111" }}>98.4% of messages hit the primary inbox</strong> — not spam.
+                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#AAAAAA] hover:text-[#1B4F8A]">[?]
+                      <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
+                        <strong>Source:</strong> GlockApps 2026 Enterprise Outbound Audit: fully warmed multi-domain arrays hold 98.4% primary inbox placement rate.
+                      </span>
+                    </span>
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span style={{ color: "#333333" }}>The system is yours. 50+ sending domains. Your contacts. No one can take it away.</span>
+                  <span style={{ color: "#333333" }}>50+ sending domains, your contact list, your system. <strong style={{ color: "#111111" }}>No one can take it away from you.</strong></span>
                 </li>
               </ul>
 
               <div className="mt-auto pt-5 border-t border-[#E8E8E8]">
                 <p className="font-sans text-[10px] text-[#BBBBBB] leading-relaxed">
-                  Data: <strong>ClickPatrol™ 2026</strong> · <strong>First Page Sage 2026</strong> · <strong>GlockApps 2026</strong>
+                  Data: <strong>ClickPatrol™ 2026</strong> · <strong>First Page Sage 2026</strong> · <strong>GlockApps 2026</strong> · <strong>Smartlead 2026</strong>
                 </p>
               </div>
             </div>

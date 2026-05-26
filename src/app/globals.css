@@ -209,6 +209,18 @@ a { color: inherit; text-decoration: none; }
   opacity: 1;
   transform: translateY(0);
 }
+/* Tactile Focus Group for high-impact typography flow */
+.focus-group p {
+  transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0.85;
+}
+.focus-group:hover p {
+  opacity: 0.4;
+}
+.focus-group p:hover {
+  opacity: 1 !important;
+  transform: translateX(6px);
+}
 
 /* ── REDUCED MOTION ─────────────────────────── */
 @media (prefers-reduced-motion: reduce) {

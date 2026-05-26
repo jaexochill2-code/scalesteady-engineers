@@ -30,7 +30,7 @@ export default function Home() {
       {/* ── HERO -- Full-bleed cinematic ── */}
       <section
         className="hero-section relative w-full -mt-[80px]"
-        style={{ height: "95svh", minHeight: "680px", overflow: "hidden" }}
+        style={{ height: "clamp(580px, 85svh, 95svh)", minHeight: "580px", overflow: "hidden" }}
       >
         {/* Background: photo + dark overlay */}
         <div className="absolute inset-0">
@@ -490,7 +490,7 @@ export default function Home() {
 
 
       {/* ── PRICING ── */}
-      <section id="pricing" style={{ background: "#FAF8F6", padding: "clamp(96px, 11vw, 160px) 0" }}>
+      <section id="pricing" style={{ background: "#FAF8F6", padding: "clamp(64px, 11vw, 160px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           {/* Eyebrow */}
@@ -519,9 +519,16 @@ export default function Home() {
 
           {/* Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-3" style={{ alignItems: "stretch" }}>
+            <style>{`
+              @media (max-width: 1023px) {
+                .pricing-steady { order: 1 !important; }
+                .pricing-scale { order: 2 !important; margin-top: 0 !important; margin-bottom: 0 !important; }
+                .pricing-fullsend { order: 3 !important; }
+              }
+            `}</style>
 
-            {/* SCALE */}
-            <div className="flex flex-col p-8 xl:p-10" style={{ border: "1px solid #E8E8E8", background: "#FFFFFF" }}>
+            {/* FULL SEND */}
+            <div className="pricing-fullsend flex flex-col p-8 xl:p-10" style={{ border: "1px solid #E8E8E8", background: "#FFFFFF" }}>
               <p
                 className="font-sans font-semibold uppercase mb-6"
                 style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#6B6B6B" }}
@@ -575,7 +582,7 @@ export default function Home() {
 
             {/* GROWTH — featured */}
             <div
-              className="flex flex-col p-8 xl:p-10 relative"
+              className="pricing-scale flex flex-col p-8 xl:p-10 relative"
               style={{ background: "#0D2B4A", border: "1px solid #0D2B4A", marginTop: "-20px", marginBottom: "-20px", zIndex: 10, boxShadow: "0 24px 64px rgba(13,43,74,0.25)" }}
             >
               <div className="mb-6 flex items-center justify-between">
@@ -637,7 +644,7 @@ export default function Home() {
             </div>
 
             {/* STARTER */}
-            <div className="flex flex-col p-8 xl:p-10" style={{ border: "1px solid #E8E8E8", background: "#FFFFFF" }}>
+            <div className="pricing-steady flex flex-col p-8 xl:p-10" style={{ border: "1px solid #E8E8E8", background: "#FFFFFF" }}>
               <p
                 className="font-sans font-semibold uppercase mb-6"
                 style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#6B6B6B" }}
@@ -695,7 +702,7 @@ export default function Home() {
 
 
       {/* ── TESTIMONIALS ── */}
-      <section id="results" style={{ background: "#FFFFFF", padding: "clamp(64px, 9vw, 112px) 0" }}>
+      <section id="results" style={{ background: "#FFFFFF", padding: "clamp(48px, 9vw, 112px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           <p

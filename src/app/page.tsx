@@ -846,7 +846,7 @@ export default function Home() {
               className="font-sans"
               style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.8", color: "rgba(255,255,255,0.72)", fontWeight: 500 }}
             >
-              Your campaign will be run inside a strict, battle-tested workflow -- the same one we use on our own outreach, and the same one that has produced results for every client we have worked with.
+              Hiring us means working with a small team of 5 passionate, hands-on people -- which means your campaign will be run inside a strict, battle-tested workflow. The same one we use on our own outreach. The same one that has been booking meetings for every client we have worked with.
             </p>
 
             <p
@@ -863,12 +863,39 @@ export default function Home() {
               No account manager. No junior who inherited your file. No one who says &ldquo;let me loop in the team.&rdquo;
             </p>
 
-            <p
-              className="font-serif italic"
-              style={{ fontSize: "clamp(20px, 2.6vw, 30px)", lineHeight: "1.3", color: "rgba(255,255,255,0.88)", marginTop: "clamp(28px, 3.5vw, 44px)" }}
+            {/* Pull quote -- the payoff, Option C: border + split-weight */}
+            <div
+              style={{
+                borderLeft: "3px solid #C4431B",
+                paddingLeft: "clamp(20px, 2.5vw, 28px)",
+                marginTop: "clamp(40px, 5vw, 64px)",
+              }}
             >
-              If we are booking meetings, you are booking meetings.
-            </p>
+              <p
+                className="font-serif italic"
+                style={{
+                  fontSize: "clamp(22px, 3vw, 42px)",
+                  lineHeight: "1.25",
+                  color: "rgba(255,255,255,0.38)",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                If we are booking meetings,
+              </p>
+              <p
+                className="font-serif italic"
+                style={{
+                  fontSize: "clamp(22px, 3vw, 42px)",
+                  lineHeight: "1.25",
+                  color: "#FFFFFF",
+                  fontWeight: 600,
+                  letterSpacing: "-0.01em",
+                  marginTop: "4px",
+                }}
+              >
+                you are booking meetings.
+              </p>
+            </div>
           </div>
 
           {/* Divider */}

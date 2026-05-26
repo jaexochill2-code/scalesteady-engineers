@@ -579,7 +579,7 @@ export default function Home() {
                 className="font-sans font-semibold uppercase mb-6"
                 style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#6B6B6B" }}
               >
-                Scale
+                Full Send
               </p>
               <div className="mb-1">
                 <span className="font-serif font-bold" style={{ fontSize: "clamp(42px, 5vw, 60px)", lineHeight: 1, color: "#111111" }}>$999</span>
@@ -590,14 +590,15 @@ export default function Home() {
               </p>
               <div style={{ width: "100%", height: "1px", background: "#E8E8E8", marginBottom: "28px" }} />
               <ul className="flex flex-col gap-4 mb-auto font-sans" style={{ fontSize: "13.5px", color: "#3D3D3D" }}>
+                <p className="font-sans mb-3" style={{ fontSize: "11px", letterSpacing: "0.1em", color: "#9E9E9E", textTransform: "uppercase" }}>
+                  Everything in Scale, plus:
+                </p>
                 {[
                   "100 email inboxes",
-                  "20 routing domains — more people find your business",
+                  "20 routing domains",
                   "75,000 emails sent per month",
-                  "We build your lead list and full market research",
                   "Unlimited outreach sequences",
                   "1 dedicated account manager — single point of contact, works hand in hand with you",
-                  "Everything we build belongs to you",
                 ].map((f) => (
                   <li key={f} className="flex items-start gap-3">
                     <span style={{ color: "#C4431B", flexShrink: 0, marginTop: "2px", fontSize: "12px" }}>✓</span>
@@ -633,7 +634,7 @@ export default function Home() {
                   className="font-sans font-semibold uppercase"
                   style={{ fontSize: "10px", letterSpacing: "0.16em", color: "rgba(255,255,255,0.45)" }}
                 >
-                  Growth
+                  Scale
                 </p>
                 <span
                   className="font-sans font-bold uppercase"
@@ -651,13 +652,14 @@ export default function Home() {
               </p>
               <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.1)", marginBottom: "28px" }} />
               <ul className="flex flex-col gap-4 mb-auto font-sans" style={{ fontSize: "13.5px", color: "rgba(255,255,255,0.75)" }}>
+                <p className="font-sans mb-3" style={{ fontSize: "11px", letterSpacing: "0.1em", color: "rgba(255,255,255,0.25)", textTransform: "uppercase" }}>
+                  Everything in Steady, plus:
+                </p>
                 {[
                   "50 email inboxes",
-                  "10 routing domains — more people find your business",
+                  "10 routing domains",
                   "37,500 emails sent per month",
-                  "We build your lead list and full market research",
-                  "3 outreach sequences — battle-tested playbook",
-                  "Everything we build belongs to you",
+                  "3 outreach sequences",
                 ].map((f) => (
                   <li key={f} className="flex items-start gap-3">
                     <span style={{ color: "#C4431B", flexShrink: 0, marginTop: "2px", fontSize: "12px" }}>✓</span>
@@ -689,7 +691,7 @@ export default function Home() {
                 className="font-sans font-semibold uppercase mb-6"
                 style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#6B6B6B" }}
               >
-                Starter
+                Steady
               </p>
               <div className="mb-1">
                 <span className="font-serif font-bold" style={{ fontSize: "clamp(42px, 5vw, 60px)", lineHeight: 1, color: "#111111" }}>$399</span>

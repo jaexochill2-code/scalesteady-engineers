@@ -379,19 +379,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── MANIFESTO — Void #050D1C ── */}
-      <section style={{ background: "#050D1C", padding: "clamp(96px, 11vw, 160px) 0" }}>
-        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "960px" }}>
-          <blockquote
-            className="font-serif font-normal"
-            style={{ fontSize: "clamp(26px, 3.8vw, 52px)", lineHeight: "1.18", color: "#FFFFFF" }}
-          >
-            &ldquo;Most growth partners treat outbound like a creative campaign. We treat it like{" "}
-            <span className="italic" style={{ color: "#7EC4E0" }}>structural engineering</span>.
-            If your systems don&apos;t have built-in redundancy, they are liabilities.&rdquo;
-          </blockquote>
-        </div>
-      </section>
+
 
 
 

@@ -24,8 +24,6 @@ const SERVICES = [
 const CLIENTS = ["Tarrant Mechanical", "Aesthetics Clinic Group", "Apex Leasing", "Floor Contracting"];
 
 export default function Home() {
-  const [emailVolume, setEmailVolume] = useState(50000);
-
   return (
     <div className="w-full min-h-screen overflow-x-hidden" style={{ background: "#FAF8F6" }}>
 
@@ -236,106 +234,18 @@ export default function Home() {
               Networking is slow. Cold calling is unsexy. <strong style={{ color: "#1B4F8A", fontWeight: 600 }}>Automation scales</strong>.
             </p>
 
-            <div className="flex flex-col gap-8 w-full max-w-xl my-2">
-              <p
-                className="font-sans"
-                style={{
-                  fontSize: "clamp(24px, 3.2vw, 36px)",
-                  lineHeight: "1.4",
-                  color: "#3D3D3D",
-                  fontWeight: 400,
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                The math is clear: a 1% response on <strong style={{ color: "#0D2B4A", fontWeight: 600 }}>{emailVolume.toLocaleString()}</strong> targeted emails delivers <strong style={{ color: "#C4431B", fontWeight: 600 }}>{Math.round(emailVolume * 0.01).toLocaleString()}</strong> active conversations. That is your <strong style={{ color: "#1B4F8A", fontWeight: 600 }}>physical floor</strong>.
-              </p>
-
-              {/* Interactive Telemetry Card */}
-              <div 
-                className="w-full bg-white border border-[#EBEBEB] p-6 sm:p-8 rounded-[12px]"
-                style={{ boxShadow: "0 12px 32px rgba(0,0,0,0.03)" }}
-              >
-                {/* Header */}
-                <div className="flex items-center justify-between border-b border-[#F0F0F0] pb-4 mb-6">
-                  <div className="flex items-center gap-2">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    <span className="font-mono text-[10px] tracking-widest text-[#1B4F8A] font-bold uppercase">
-                      SYSTEM TELEMETRY · PIPELINE MATH
-                    </span>
-                  </div>
-                  <span className="font-mono text-[9px] text-[#BBBBBB] tracking-wider font-semibold uppercase">
-                    MODEL v2.84
-                  </span>
-                </div>
-
-                {/* Slider */}
-                <div className="mb-8">
-                  <div className="flex justify-between items-end mb-3">
-                    <span className="font-sans text-[11px] font-bold uppercase tracking-wider text-[#6B6B6B]">
-                      Adjust Monthly Volume
-                    </span>
-                    <span className="font-mono text-base font-bold text-[#0D2B4A]">
-                      {emailVolume.toLocaleString()} emails
-                    </span>
-                  </div>
-                  <input
-                    type="range"
-                    min="10000"
-                    max="100000"
-                    step="5000"
-                    value={emailVolume}
-                    onChange={(e) => setEmailVolume(parseInt(e.target.value))}
-                    className="pipeline-slider w-full h-1.5 bg-[#EAEAEA] rounded-lg appearance-none cursor-ew-resize accent-[#C4431B] outline-none"
-                    style={{
-                      background: `linear-gradient(to right, #C4431B 0%, #C4431B ${(emailVolume - 10000) / 90000 * 100}%, #EAEAEA ${(emailVolume - 10000) / 90000 * 100}%, #EAEAEA 100%)`
-                    }}
-                  />
-                  <div className="flex justify-between font-mono text-[10px] text-[#AEAEAE] mt-2">
-                    <span>10K/mo</span>
-                    <span>50K/mo</span>
-                    <span>100K/mo</span>
-                  </div>
-                </div>
-
-                {/* Readout Columns */}
-                <div className="grid grid-cols-3 gap-3 sm:gap-4 text-center mb-6">
-                  <div className="flex flex-col gap-1 p-3 bg-[#FAF8F6] border border-[#F0F0F0] rounded-sm">
-                    <span className="font-mono text-[9px] sm:text-[10px] tracking-wider text-[#9E9E9E] font-bold uppercase">
-                      REACH
-                    </span>
-                    <span className="font-sans font-extrabold text-[#0D2B4A]" style={{ fontSize: "clamp(16px, 2.5vw, 22px)" }}>
-                      {emailVolume.toLocaleString()}
-                    </span>
-                  </div>
-                  
-                  <div className="flex flex-col gap-1 p-3 bg-[#FAF8F6] border border-[#F0F0F0] rounded-sm">
-                    <span className="font-mono text-[9px] sm:text-[10px] tracking-wider text-[#9E9E9E] font-bold uppercase">
-                      RESPONSES (1%)
-                    </span>
-                    <span className="font-sans font-extrabold text-[#C4431B]" style={{ fontSize: "clamp(16px, 2.5vw, 22px)" }}>
-                      {Math.round(emailVolume * 0.01).toLocaleString()}
-                    </span>
-                  </div>
-                  
-                  <div className="flex flex-col gap-1 p-3 bg-[#FAF8F6] border border-[#F0F0F0] rounded-sm">
-                    <span className="font-mono text-[9px] sm:text-[10px] tracking-wider text-[#9E9E9E] font-bold uppercase">
-                      MEETINGS (20%)
-                    </span>
-                    <span className="font-sans font-extrabold text-[#1B4F8A]" style={{ fontSize: "clamp(16px, 2.5vw, 22px)" }}>
-                      {Math.round(emailVolume * 0.01 * 0.20).toLocaleString()}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Monospace Formula Tag */}
-                <div className="font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-[#1B4F8A] font-bold p-3 bg-[#FAF8F6] border border-[#E0E0E0] rounded-sm text-center">
-                  [ {emailVolume.toLocaleString()} SEND ➔ {Math.round(emailVolume * 0.01).toLocaleString()} CONVERSATIONS ➔ {Math.round(emailVolume * 0.01 * 0.20).toLocaleString()} BOOKED MEETINGS ]
-                </div>
-              </div>
-            </div>
+            <p
+              className="font-sans"
+              style={{
+                fontSize: "clamp(24px, 3.2vw, 36px)",
+                lineHeight: "1.4",
+                color: "#3D3D3D",
+                fontWeight: 400,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              The math is clear: a 1% response on 50,000 targeted emails delivers 500 active conversations. That is your <strong style={{ color: "#1B4F8A", fontWeight: 600 }}>physical floor</strong>.
+            </p>
 
             <p
               className="font-sans"

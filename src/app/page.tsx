@@ -328,13 +328,46 @@ export default function Home() {
 
           </div>
 
-          {/* The bridge — we move you across */}
-          <div className="mt-8 flex items-center gap-6">
-            <div style={{ height: "1px", flex: 1, background: "rgba(255,255,255,0.12)" }} />
-            <p className="font-sans text-center flex-shrink-0" style={{ fontSize: "13px", color: "rgba(255,255,255,0.35)" }}>
-              We move you from the left to the right.
-            </p>
-            <div style={{ height: "1px", flex: 1, background: "rgba(255,255,255,0.12)" }} />
+          {/* ── The declaration — identity shift mic drop ── */}
+          <div className="mt-16 pt-12" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
+
+              {/* The statement */}
+              <div className="flex-1">
+                <p className="font-sans font-semibold uppercase mb-4" style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#7EC4E0" }}>
+                  What we do
+                </p>
+                <h3 className="font-serif font-normal" style={{ fontSize: "clamp(32px, 4vw, 54px)", lineHeight: "1.1", letterSpacing: "-0.02em", color: "#FFFFFF" }}>
+                  We move you{" "}
+                  <span style={{ color: "rgba(255,255,255,0.3)", fontStyle: "italic", textDecoration: "line-through", textDecorationColor: "rgba(255,255,255,0.2)" }}>from here</span>
+                  <span style={{ display: "inline-flex", alignItems: "center", margin: "0 0.3em", color: "#7EC4E0" }}>
+                    <svg width="40" height="16" viewBox="0 0 40 16" fill="none" style={{ verticalAlign: "middle" }}>
+                      <line x1="0" y1="8" x2="32" y2="8" stroke="#7EC4E0" strokeWidth="1.5"/>
+                      <polyline points="26,2 34,8 26,14" fill="none" stroke="#7EC4E0" strokeWidth="1.5" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <span style={{ color: "#FFFFFF" }}>to here.</span>
+                </h3>
+                <p className="font-sans mt-5" style={{ fontSize: "15px", lineHeight: "1.7", color: "rgba(255,255,255,0.45)", maxWidth: "480px" }}>
+                  Not with a retainer. Not with an ad budget. With infrastructure you own — and a calendar that fills itself.
+                </p>
+              </div>
+
+              {/* The CTA — decision moment */}
+              <div className="flex-shrink-0">
+                <a href="/contact"
+                  className="inline-flex items-center justify-center font-sans font-semibold transition-all duration-300 hover:bg-[#7EC4E0] hover:text-[#0D2B4A] group"
+                  style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#0D2B4A", background: "#FFFFFF", padding: "18px 44px", borderRadius: "0px", display: "inline-flex", gap: "10px" }}
+                >
+                  Book a discovery call
+                  <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
+                </a>
+                <p className="font-sans mt-3" style={{ fontSize: "11px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.01em" }}>
+                  15 minutes. No commitment.
+                </p>
+              </div>
+
+            </div>
           </div>
 
         </div>

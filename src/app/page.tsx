@@ -875,83 +875,34 @@ export default function Home() {
       </section>
 
       {/* ── TEAM ── */}
-      <section style={{ background: "#03080F", padding: "clamp(64px, 7vw, 96px) 0" }}>
+      <section style={{ background: "#03080F", padding: "clamp(48px, 5vw, 72px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           <p
             className="font-sans font-semibold uppercase"
-            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B", marginBottom: "clamp(28px, 3.5vw, 44px)" }}
+            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B", marginBottom: "clamp(24px, 3vw, 36px)" }}
           >
             The people behind it
           </p>
 
-          {/* Row 1: team specialists */}
-          <div style={{ display: "flex", gap: "6px", marginBottom: "6px" }}>
-
-            {/* Amy Chen */}
-            <div style={{ flex: 1, position: "relative", aspectRatio: "3/4", overflow: "hidden", borderRadius: "2px", background: "linear-gradient(165deg, #0C1A2A 0%, #060E1C 100%)" }}>
-              {/* <img src="/team/amy.jpg" alt="Amy Chen" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} /> */}
-              <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span className="font-serif" style={{ fontSize: "36px", color: "rgba(255,255,255,0.05)", fontStyle: "italic", userSelect: "none" }}>AC</span>
+          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+            {[
+              { src: "/team/emma.jpg",    name: "Emma Hawthorne", title: "Co-Founder \u00b7 Email Infrastructure" },
+              { src: "/team/fred.jpg",    name: "Fred Khong",     title: "Co-Founder \u00b7 Client Care" },
+              { src: "/team/amy.jpg",     name: "Amy Chen",       title: "Messaging & Marketing" },
+              { src: "/team/brandon.jpg", name: "Brandon Mercer", title: "IT & Deliverability" },
+              { src: "/team/david.jpg",   name: "David Chang",    title: "AI & Sequence Automation" },
+            ].map((m) => (
+              <div key={m.name} style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                <div style={{ width: "160px", height: "160px", overflow: "hidden", borderRadius: "2px", flexShrink: 0 }}>
+                  <img src={m.src} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
+                </div>
+                <div>
+                  <p className="font-sans" style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.82)", lineHeight: 1.3 }}>{m.name}</p>
+                  <p className="font-sans" style={{ fontSize: "9px", color: "rgba(255,255,255,0.32)", marginTop: "3px", letterSpacing: "0.04em", textTransform: "uppercase" }}>{m.title}</p>
+                </div>
               </div>
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(3,8,15,0.96) 0%, transparent 52%)" }} />
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "18px 16px" }}>
-                <p className="font-sans" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.92)", lineHeight: 1.2 }}>Amy Chen</p>
-                <p className="font-sans" style={{ fontSize: "9px", color: "rgba(255,255,255,0.36)", marginTop: "5px", letterSpacing: "0.05em", textTransform: "uppercase" }}>Messaging &amp; Marketing</p>
-              </div>
-            </div>
-
-            {/* Brandon Mercer */}
-            <div style={{ flex: 1, position: "relative", aspectRatio: "3/4", overflow: "hidden", borderRadius: "2px", background: "linear-gradient(165deg, #0C1A2A 0%, #060E1C 100%)" }}>
-              {/* <img src="/team/brandon.jpg" alt="Brandon Mercer" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} /> */}
-              <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span className="font-serif" style={{ fontSize: "36px", color: "rgba(255,255,255,0.05)", fontStyle: "italic", userSelect: "none" }}>BM</span>
-              </div>
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(3,8,15,0.96) 0%, transparent 52%)" }} />
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "18px 16px" }}>
-                <p className="font-sans" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.92)", lineHeight: 1.2 }}>Brandon Mercer</p>
-                <p className="font-sans" style={{ fontSize: "9px", color: "rgba(255,255,255,0.36)", marginTop: "5px", letterSpacing: "0.05em", textTransform: "uppercase" }}>IT &amp; Deliverability</p>
-              </div>
-            </div>
-
-            {/* David Chang */}
-            <div style={{ flex: 1, position: "relative", aspectRatio: "3/4", overflow: "hidden", borderRadius: "2px", background: "linear-gradient(165deg, #0C1A2A 0%, #060E1C 100%)" }}>
-              {/* <img src="/team/david.jpg" alt="David Chang" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} /> */}
-              <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span className="font-serif" style={{ fontSize: "36px", color: "rgba(255,255,255,0.05)", fontStyle: "italic", userSelect: "none" }}>DC</span>
-              </div>
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(3,8,15,0.96) 0%, transparent 52%)" }} />
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "18px 16px" }}>
-                <p className="font-sans" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.92)", lineHeight: 1.2 }}>David Chang</p>
-                <p className="font-sans" style={{ fontSize: "9px", color: "rgba(255,255,255,0.36)", marginTop: "5px", letterSpacing: "0.05em", textTransform: "uppercase" }}>AI &amp; Sequence Automation</p>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Row 2: co-founders, same card width, centered */}
-          <div style={{ display: "flex", gap: "6px", justifyContent: "center" }}>
-
-            {/* Emma Hawthorne */}
-            <div style={{ width: "calc(33.333% - 4px)", position: "relative", aspectRatio: "3/4", overflow: "hidden", borderRadius: "2px" }}>
-              <img src="/team/emma.jpg" alt="Emma Hawthorne" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(3,8,15,0.96) 0%, rgba(3,8,15,0.3) 35%, transparent 62%)" }} />
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "18px 16px" }}>
-                <p className="font-sans" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.92)", lineHeight: 1.2 }}>Emma Hawthorne</p>
-                <p className="font-sans" style={{ fontSize: "9px", color: "rgba(255,255,255,0.36)", marginTop: "5px", letterSpacing: "0.05em", textTransform: "uppercase" }}>Co-Founder · Email Infrastructure</p>
-              </div>
-            </div>
-
-            {/* Fred Khong */}
-            <div style={{ width: "calc(33.333% - 4px)", position: "relative", aspectRatio: "3/4", overflow: "hidden", borderRadius: "2px" }}>
-              <img src="/team/fred.png" alt="Fred Khong" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(3,8,15,0.96) 0%, rgba(3,8,15,0.3) 35%, transparent 62%)" }} />
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "18px 16px" }}>
-                <p className="font-sans" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.92)", lineHeight: 1.2 }}>Fred Khong</p>
-                <p className="font-sans" style={{ fontSize: "9px", color: "rgba(255,255,255,0.36)", marginTop: "5px", letterSpacing: "0.05em", textTransform: "uppercase" }}>Co-Founder · Client Care</p>
-              </div>
-            </div>
-
+            ))}
           </div>
 
         </div>

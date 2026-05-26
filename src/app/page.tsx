@@ -844,21 +844,21 @@ export default function Home() {
           <div style={{ maxWidth: "680px" }}>
             <p
               className="font-sans"
-              style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "rgba(255,255,255,0.6)", fontWeight: 500 }}
+              style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.8", color: "rgba(255,255,255,0.72)", fontWeight: 500 }}
             >
-              We are five people. That matters more than it sounds.
+              You will step into a strict, battle-tested workflow. Not a version we built for clients -- the exact same system we have run on our own outreach for two years, and that our clients are booking meetings from right now.
             </p>
 
             <p
               className="font-sans"
-              style={{ fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: "1.85", color: "rgba(255,255,255,0.42)", marginTop: "clamp(16px, 2vw, 22px)" }}
+              style={{ fontSize: "clamp(13px, 1.4vw, 16px)", lineHeight: "1.85", color: "rgba(255,255,255,0.38)", marginTop: "clamp(16px, 2vw, 22px)" }}
             >
-              Because it means you are not handed to a team. You are plugged directly into the same strict, battle-tested workflow we run on our own outreach -- the same sequences, the same domain setup, the same reply management -- that our clients have been booking meetings from for two years.
+              We are five people. The same ones who research your market, write your sequences, and read your replies on a Tuesday. Small enough that there is no other version of this.
             </p>
 
             <p
               className="font-sans"
-              style={{ fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: "1.85", color: "rgba(255,255,255,0.42)", marginTop: "clamp(16px, 2vw, 22px)" }}
+              style={{ fontSize: "clamp(13px, 1.4vw, 16px)", lineHeight: "1.85", color: "rgba(255,255,255,0.38)", marginTop: "clamp(14px, 1.8vw, 20px)" }}
             >
               No account manager. No junior who inherited your file. No one who says &ldquo;let me loop in the team.&rdquo;
             </p>

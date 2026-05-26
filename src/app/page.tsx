@@ -56,7 +56,7 @@ export default function Home() {
         {/* Content -- vertically centered, full-width */}
         <div
           className="relative h-full flex flex-col justify-center"
-          style={{ paddingTop: "80px" }}
+          style={{ paddingTop: "100px" }}
         >
           <div
             className="mx-auto w-full px-8 sm:px-12 lg:px-24"

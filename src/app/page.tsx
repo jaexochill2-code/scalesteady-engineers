@@ -487,132 +487,6 @@ export default function Home() {
 
 
 
-      {/* ── TESTIMONIALS ── */}
-      <section id="results" style={{ background: "#FFFFFF", padding: "clamp(64px, 11vw, 160px) 0" }}>
-        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
-
-          <p
-            className="font-sans font-semibold uppercase mb-20"
-            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B" }}
-          >
-            What clients say
-          </p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3" style={{ alignItems: "stretch" }}>
-
-            {/* T1: Deliverables Honesty — HVAC */}
-            <div
-              className="flex flex-col pb-16 lg:pb-0"
-              style={{ paddingRight: "clamp(24px, 4vw, 56px)", borderBottom: "1px solid #E8E8E8" }}
-            >
-              <p
-                className="font-sans font-semibold uppercase mb-5"
-                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#C4431B" }}
-              >
-                Deliverables
-              </p>
-              <p
-                className="font-serif font-bold"
-                style={{ fontSize: "clamp(44px, 5.5vw, 68px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
-              >
-                24,000
-              </p>
-              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
-                emails sent per month, exactly as quoted
-              </p>
-              <div style={{ width: "32px", height: "2px", background: "#C4431B", marginBottom: "28px" }} />
-              <p
-                className="font-serif italic mb-auto"
-                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
-              >
-                &ldquo;They told us upfront how many emails go out every month. Twenty-four thousand. Every Monday the report confirmed it. I have worked with people who promise volume and cannot tell you what actually went out. These guys could. Every number they quoted on day one showed up in the report.&rdquo;
-              </p>
-              <div style={{ borderTop: "1px solid #E8E8E8", marginTop: "32px", paddingTop: "20px" }}>
-                <p className="font-sans" style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
-                  Mike T., HVAC contractor, southeast Michigan
-                </p>
-              </div>
-            </div>
-
-            {/* T2: Closed Deal — Roofing */}
-            <div
-              className="flex flex-col py-16 lg:py-0"
-              style={{
-                paddingLeft: "clamp(24px, 4vw, 56px)",
-                paddingRight: "clamp(24px, 4vw, 56px)",
-                borderLeft: "1px solid #E8E8E8",
-                borderRight: "1px solid #E8E8E8",
-              }}
-            >
-              <p
-                className="font-sans font-semibold uppercase mb-5"
-                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#C4431B" }}
-              >
-                Closed deal
-              </p>
-              <p
-                className="font-serif font-bold"
-                style={{ fontSize: "clamp(44px, 5.5vw, 68px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
-              >
-                $12,000
-              </p>
-              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
-                first job closed, month two
-              </p>
-              <div style={{ width: "32px", height: "2px", background: "#C4431B", marginBottom: "28px" }} />
-              <p
-                className="font-serif italic mb-auto"
-                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
-              >
-                &ldquo;Second month we closed a roofing contract worth twelve thousand. That one job paid for two and a half years of this service. I stopped doing the math after that because it stopped being a question. The system keeps running.&rdquo;
-              </p>
-              <div style={{ borderTop: "1px solid #E8E8E8", marginTop: "32px", paddingTop: "20px" }}>
-                <p className="font-sans" style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
-                  Tony R., roofing contractor, western Pennsylvania
-                </p>
-              </div>
-            </div>
-
-            {/* T3: Speed + Communication — Chiropractic */}
-            <div
-              className="flex flex-col pt-16 lg:pt-0"
-              style={{ paddingLeft: "clamp(24px, 4vw, 56px)", borderTop: "1px solid #E8E8E8" }}
-            >
-              <p
-                className="font-sans font-semibold uppercase mb-5"
-                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#C4431B" }}
-              >
-                Communication
-              </p>
-              <p
-                className="font-serif font-bold"
-                style={{ fontSize: "clamp(44px, 5.5vw, 68px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
-              >
-                48 hrs
-              </p>
-              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
-                20 email accounts and domains live. Signed up Monday.
-              </p>
-              <div style={{ width: "32px", height: "2px", background: "#C4431B", marginBottom: "28px" }} />
-              <p
-                className="font-serif italic mb-auto"
-                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
-              >
-                &ldquo;Signed up Monday. By Wednesday all 20 email accounts were built and the domains were set up. Two weeks of warmup and the first emails went to market on day fourteen. Every Monday I get a short note: who replied, what they said, what is next. I have never once had to chase them.&rdquo;
-              </p>
-              <div style={{ borderTop: "1px solid #E8E8E8", marginTop: "32px", paddingTop: "20px" }}>
-                <p className="font-sans" style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
-                  Dr. Sarah L., chiropractic practice, northwest Ohio
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-
 
 
       {/* ── PRICING ── */}
@@ -816,32 +690,135 @@ export default function Home() {
 
           </div>
 
-          {/* Ownership */}
-          <div className="mt-12 text-center">
-            <p
-              className="font-sans"
-              style={{ fontSize: "14px", lineHeight: "1.75", color: "#6B6B6B", maxWidth: "560px", margin: "0 auto" }}
-            >
-              The accounts, the lists, the sequences. They belong to you. Cancel anytime and keep everything we built.
-            </p>
-          </div>
+        </div>
+      </section>
 
-          {/* FAQ */}
-          <div className="mt-20" style={{ maxWidth: "640px" }}>
-            {[
-              { q: "Do I need technical knowledge to run this?", a: "No. We handle the setup. You respond to interested prospects." },
-              { q: "What happens to my accounts if I cancel?", a: "They stay with you. We hand over everything on the last day." },
-              { q: "How long before emails go out?", a: "Setup takes 7 to 14 days. We warm the accounts first so your deliverability is protected from day one." },
-            ].map((item, i) => (
-              <div key={i} style={{ borderTop: "1px solid #E8E8E8", padding: "24px 0" }}>
-                <p className="font-sans font-semibold mb-3" style={{ fontSize: "14px", color: "#111111" }}>{item.q}</p>
-                <p className="font-sans" style={{ fontSize: "14px", lineHeight: "1.7", color: "#6B6B6B" }}>{item.a}</p>
+
+      {/* ── TESTIMONIALS ── */}
+      <section id="results" style={{ background: "#FFFFFF", padding: "clamp(64px, 9vw, 112px) 0" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
+
+          <p
+            className="font-sans font-semibold uppercase mb-20"
+            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B" }}
+          >
+            What clients say
+          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3" style={{ alignItems: "stretch" }}>
+
+            {/* T1: Deliverables Honesty -- HVAC */}
+            <div
+              className="flex flex-col pb-16 lg:pb-0"
+              style={{ paddingRight: "clamp(24px, 4vw, 56px)", borderBottom: "1px solid #E8E8E8" }}
+            >
+              <p
+                className="font-sans font-semibold uppercase mb-5"
+                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#C4431B" }}
+              >
+                Deliverables
+              </p>
+              <p
+                className="font-serif font-bold"
+                style={{ fontSize: "clamp(44px, 5.5vw, 68px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
+              >
+                24,000
+              </p>
+              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
+                emails sent per month, exactly as quoted
+              </p>
+              <div style={{ width: "32px", height: "2px", background: "#C4431B", marginBottom: "28px" }} />
+              <p
+                className="font-serif italic mb-auto"
+                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
+              >
+                &ldquo;They told us upfront how many emails go out every month. Twenty-four thousand. Every Monday the report confirmed it. I have worked with people who promise volume and cannot tell you what actually went out. These guys could. Every number they quoted on day one showed up in the report.&rdquo;
+              </p>
+              <div style={{ borderTop: "1px solid #E8E8E8", marginTop: "32px", paddingTop: "20px" }}>
+                <p className="font-sans" style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
+                  Mike T., HVAC contractor, southeast Michigan
+                </p>
               </div>
-            ))}
+            </div>
+
+            {/* T2: Closed Deal -- Roofing */}
+            <div
+              className="flex flex-col py-16 lg:py-0"
+              style={{
+                paddingLeft: "clamp(24px, 4vw, 56px)",
+                paddingRight: "clamp(24px, 4vw, 56px)",
+                borderLeft: "1px solid #E8E8E8",
+                borderRight: "1px solid #E8E8E8",
+              }}
+            >
+              <p
+                className="font-sans font-semibold uppercase mb-5"
+                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#C4431B" }}
+              >
+                Closed deal
+              </p>
+              <p
+                className="font-serif font-bold"
+                style={{ fontSize: "clamp(44px, 5.5vw, 68px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
+              >
+                $12,000
+              </p>
+              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
+                first job closed, month two
+              </p>
+              <div style={{ width: "32px", height: "2px", background: "#C4431B", marginBottom: "28px" }} />
+              <p
+                className="font-serif italic mb-auto"
+                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
+              >
+                &ldquo;Second month we closed a roofing contract worth twelve thousand. That one job paid for two and a half years of this service. I stopped doing the math after that because it stopped being a question. The system keeps running.&rdquo;
+              </p>
+              <div style={{ borderTop: "1px solid #E8E8E8", marginTop: "32px", paddingTop: "20px" }}>
+                <p className="font-sans" style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
+                  Tony R., roofing contractor, western Pennsylvania
+                </p>
+              </div>
+            </div>
+
+            {/* T3: Speed + Communication -- Chiropractic */}
+            <div
+              className="flex flex-col pt-16 lg:pt-0"
+              style={{ paddingLeft: "clamp(24px, 4vw, 56px)", borderTop: "1px solid #E8E8E8" }}
+            >
+              <p
+                className="font-sans font-semibold uppercase mb-5"
+                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#C4431B" }}
+              >
+                Communication
+              </p>
+              <p
+                className="font-serif font-bold"
+                style={{ fontSize: "clamp(44px, 5.5vw, 68px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
+              >
+                48 hrs
+              </p>
+              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
+                20 email accounts and domains live. Signed up Monday.
+              </p>
+              <div style={{ width: "32px", height: "2px", background: "#C4431B", marginBottom: "28px" }} />
+              <p
+                className="font-serif italic mb-auto"
+                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
+              >
+                &ldquo;Signed up Monday. By Wednesday all 20 email accounts were built and the domains were set up. Two weeks of warmup and the first emails went to market on day fourteen. Every Monday I get a short note: who replied, what they said, what is next. I have never once had to chase them.&rdquo;
+              </p>
+              <div style={{ borderTop: "1px solid #E8E8E8", marginTop: "32px", paddingTop: "20px" }}>
+                <p className="font-sans" style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
+                  Dr. Sarah L., chiropractic practice, northwest Ohio
+                </p>
+              </div>
+            </div>
+
           </div>
 
         </div>
       </section>
+
 
       {/* ── TEAM ── */}
       <section id="team" style={{ background: "#03080F", padding: "clamp(72px, 8vw, 96px) 0 clamp(56px, 6vw, 80px)" }}>

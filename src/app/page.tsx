@@ -429,7 +429,7 @@ export default function Home() {
                 30,000+
               </p>
               <p className="font-sans" style={{ fontSize: "15px", lineHeight: "1.6", color: "rgba(255,255,255,0.55)" }}>
-                decision-makers in your market who now know your name.
+                decision-makers in your market who now know your name -- without a single door knock, business card, or cold call.
               </p>
             </div>
 

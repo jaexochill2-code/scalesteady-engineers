@@ -562,7 +562,7 @@ export default function Home() {
                   "75,000 emails sent per month",
                   "We build your lead list and full market research",
                   "Unlimited outreach sequences",
-                  "1 dedicated marketing professional — works your account only",
+                  "1 dedicated account manager — single point of contact, works hand in hand with you",
                   "Everything we build belongs to you",
                 ].map((f) => (
                   <li key={f} className="flex items-start gap-3">

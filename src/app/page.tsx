@@ -1,3 +1,6 @@
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import CountUp from "@/components/client/CountUp";
@@ -198,37 +201,66 @@ export default function Home() {
 
 
 
-      {/* BRIDGE */}
-      <section style={{ background: "#FAF8F6", padding: "clamp(56px, 7vw, 96px) 0" }}>
-        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "760px" }}>
+      {/* ── THE OUTBOUND TRUTHS ── */}
+      <section style={{ background: "#FAF8F6", padding: "clamp(100px, 12vw, 160px) 0" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "800px" }}>
+          
+          {/* Left-anchored accent border + tactile hover focus group */}
+          <div className="focus-group flex flex-col gap-12 border-l-[3px] pl-8 sm:pl-10" style={{ borderColor: "#C4431B" }}>
+            
+            <p
+              className="font-sans"
+              style={{
+                fontSize: "clamp(24px, 3.2vw, 36px)",
+                lineHeight: "1.4",
+                color: "#0D2B4A",
+                fontWeight: 400,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Outbound is the single most predictable way to acquire clients -- because you control the <strong style={{ color: "#C4431B", fontWeight: 600 }}>volume, the targeting, and the math</strong>.
+            </p>
 
-          <p
-            className="font-sans font-semibold uppercase"
-            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B", marginBottom: "24px" }}
-          >
-            Outbound Systems for Service Businesses
-          </p>
+            <p
+              className="font-sans"
+              style={{
+                fontSize: "clamp(24px, 3.2vw, 36px)",
+                lineHeight: "1.4",
+                color: "#3D3D3D",
+                fontWeight: 400,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Networking is slow. Cold calling is unsexy. <strong style={{ color: "#1B4F8A", fontWeight: 600 }}>Automation scales</strong>.
+            </p>
 
-          <h2
-            className="font-serif font-normal"
-            style={{ fontSize: "clamp(28px, 3.8vw, 48px)", lineHeight: "1.14", letterSpacing: "-0.02em", color: "#0D2B4A", marginBottom: "24px" }}
-          >
-            We are an outbound company. Most local service businesses depend on referrals to grow.
-            Referrals are unpredictable. We build the email outreach system that brings in new
-            customers whether or not the referrals are coming in.
-          </h2>
+            <p
+              className="font-sans"
+              style={{
+                fontSize: "clamp(24px, 3.2vw, 36px)",
+                lineHeight: "1.4",
+                color: "#3D3D3D",
+                fontWeight: 400,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              The math is clear: a 1% response on 50,000 targeted emails delivers 500 active conversations. That is your <strong style={{ color: "#1B4F8A", fontWeight: 600 }}>physical floor</strong>.
+            </p>
 
-          <p
-            className="font-sans"
-            style={{ fontSize: "16px", lineHeight: "1.8", color: "#4A4A4A" }}
-          >
-            We have spent two years building outreach systems for HVAC companies,
-            roofing contractors, health clinics, and home service businesses. We set up
-            the email infrastructure, build the prospect lists, write the sequences, and
-            run the outreach. When the engagement ends, the accounts, the lists, and the
-            automations are yours.
-          </p>
+            <p
+              className="font-sans"
+              style={{
+                fontSize: "clamp(24px, 3.2vw, 36px)",
+                lineHeight: "1.4",
+                color: "#0D2B4A",
+                fontWeight: 600,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              The technology is ready -- the only question is whether you build this asset now, or wait until the market standard forces you to catch up.
+            </p>
 
+          </div>
         </div>
       </section>
 
@@ -507,6 +539,8 @@ export default function Home() {
 
         </div>
       </section>
+
+
 
 
       {/* ── PRICING ── */}

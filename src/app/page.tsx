@@ -846,14 +846,14 @@ export default function Home() {
               className="font-sans"
               style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.8", color: "rgba(255,255,255,0.72)", fontWeight: 500 }}
             >
-              You will step into a strict, battle-tested workflow. Not a version we built for clients -- the exact same system we have run on our own outreach for two years, and that our clients are booking meetings from right now.
+              Your campaign will be run inside a strict, battle-tested workflow -- the same one we use on our own outreach, and the same one that has produced results for every client we have worked with.
             </p>
 
             <p
               className="font-sans"
               style={{ fontSize: "clamp(13px, 1.4vw, 16px)", lineHeight: "1.85", color: "rgba(255,255,255,0.38)", marginTop: "clamp(16px, 2vw, 22px)" }}
             >
-              We are five people. The same ones who research your market, write your sequences, and read your replies on a Tuesday. Small enough that there is no other version of this.
+              The same people who read your replies every Tuesday. Research your market. Compose your emails. Warm your domains. Rewrite your subject line when it underperforms. All five of us. Every time.
             </p>
 
             <p

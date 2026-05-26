@@ -608,7 +608,7 @@ export default function Home() {
 
 
       {/* ── PRICING ── */}
-      <section style={{ background: "#FAF8F6", padding: "clamp(96px, 11vw, 160px) 0" }}>
+      <section id="pricing" style={{ background: "#FAF8F6", padding: "clamp(96px, 11vw, 160px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           {/* Eyebrow */}

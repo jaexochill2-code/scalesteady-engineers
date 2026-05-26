@@ -250,49 +250,14 @@ export default function Home() {
 
           <p
             className="font-sans"
-            style={{ fontSize: "16px", lineHeight: "1.8", color: "#4A4A4A", marginBottom: "40px" }}
+            style={{ fontSize: "16px", lineHeight: "1.8", color: "#4A4A4A" }}
           >
-            We have spent two years building this for local service businesses in HVAC,
-            roofing, home services, and health. The playbook works the same across every
-            vertical because the problem is the same: you need a consistent way to bring
-            in new business that does not depend on referrals or ad spend. Every client we
-            work with ends our engagement with a system they fully own and a calendar that
-            keeps filling.
+            We have spent two years building outreach systems for HVAC companies,
+            roofing contractors, health clinics, and home service businesses. We set up
+            the email infrastructure, build the prospect lists, write the sequences, and
+            run the outreach. When the engagement ends, the accounts, the lists, and the
+            automations are yours.
           </p>
-
-          {/* Proof strip */}
-          <div
-            className="grid grid-cols-1 sm:grid-cols-3"
-            style={{ borderTop: "1px solid #E2DDD8" }}
-          >
-            {[
-              { label: "Industries served", value: "HVAC, Roofing, Health & Home Services" },
-              { label: "What you keep", value: "Every account, list, and sequence we build" },
-              { label: "Contract terms", value: "No retainer. No lock-in. Ever." },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="py-6 pr-8"
-                style={{
-                  borderRight: i < 2 ? "1px solid #E2DDD8" : "none",
-                  paddingLeft: i === 0 ? 0 : "32px",
-                }}
-              >
-                <p
-                  className="font-sans font-semibold uppercase"
-                  style={{ fontSize: "10px", letterSpacing: "0.12em", color: "#ABABAB", marginBottom: "8px" }}
-                >
-                  {item.label}
-                </p>
-                <p
-                  className="font-sans"
-                  style={{ fontSize: "14px", lineHeight: "1.55", color: "#0D2B4A" }}
-                >
-                  {item.value}
-                </p>
-              </div>
-            ))}
-          </div>
 
         </div>
       </section>

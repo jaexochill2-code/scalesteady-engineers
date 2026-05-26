@@ -413,14 +413,14 @@ export default function Home() {
                 24,000
               </p>
               <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
-                contacts built and delivered, exactly as quoted
+                emails sent per month, exactly as quoted
               </p>
               <div style={{ width: "32px", height: "2px", background: "#C4431B", marginBottom: "28px" }} />
               <p
                 className="font-serif italic mb-auto"
                 style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
               >
-                &ldquo;Every marketing company I&apos;ve dealt with is fuzzy about what you are actually getting. These guys put it in writing before we started. List size, emails per month, warmup schedule. Every Monday the report hit my inbox. The numbers matched. Not approximately. Exactly.&rdquo;
+                &ldquo;They told us upfront how many emails go out every month. Twenty-four thousand. Every Monday the report confirmed it. I have worked with people who promise volume and cannot tell you what actually went out. These guys could. Every number they quoted on day one showed up in the report.&rdquo;
               </p>
               <div style={{ borderTop: "1px solid #E8E8E8", marginTop: "32px", paddingTop: "20px" }}>
                 <p className="font-sans" style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
@@ -484,17 +484,17 @@ export default function Home() {
                 className="font-serif font-bold"
                 style={{ fontSize: "clamp(44px, 5.5vw, 68px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
               >
-                Day 14
+                48 hrs
               </p>
               <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
-                first emails live. Signed up on a Monday.
+                20 email accounts and domains live. Signed up Monday.
               </p>
               <div style={{ width: "32px", height: "2px", background: "#C4431B", marginBottom: "28px" }} />
               <p
                 className="font-serif italic mb-auto"
                 style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
               >
-                &ldquo;Signed up Monday. List built by Thursday. Warmup ran two weeks and on day fourteen the first emails went out. Every Monday I get a short note: here is who replied, here is what they said, here is what is next. I have never once had to chase them.&rdquo;
+                &ldquo;Signed up Monday. By Wednesday all 20 email accounts were built and the domains were set up. Two weeks of warmup and the first emails went to market on day fourteen. Every Monday I get a short note: who replied, what they said, what is next. I have never once had to chase them.&rdquo;
               </p>
               <div style={{ borderTop: "1px solid #E8E8E8", marginTop: "32px", paddingTop: "20px" }}>
                 <p className="font-sans" style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>

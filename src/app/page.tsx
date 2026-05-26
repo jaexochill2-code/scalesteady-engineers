@@ -299,15 +299,8 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Bridge to chart */}
-          <p
-            className="font-sans font-semibold uppercase mb-8"
-            style={{ fontSize: "10px", letterSpacing: "0.16em", color: "rgba(255,255,255,0.25)" }}
-          >
-            Two types of business
-          </p>
 
-          {/* Two columns: current self → future self */}
+          {/* Two columns: current self -> future self */}
           <div className="grid grid-cols-1 lg:grid-cols-2">
 
             {/* Left: Referral-dependent */}
@@ -406,35 +399,84 @@ export default function Home() {
 
           </div>
 
-          {/* ── Declaration ── */}
-          <div className="mt-14 pt-12" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
+          {/* ── Definitive Results: Pattern Interrupt + 4th Wall ── */}
+          <div className="mt-16 pt-14" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
 
-              <div className="flex-1">
-                <h3 className="font-serif font-normal" style={{ fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.1", letterSpacing: "-0.02em", color: "#FFFFFF" }}>
-                  We don&apos;t find you leads.
-                  <br />
-                  <span className="italic" style={{ color: "#7EC4E0" }}>We build the system</span> that does.
-                </h3>
-                <p className="font-sans mt-4" style={{ fontSize: "15px", lineHeight: "1.7", color: "rgba(255,255,255,0.45)", maxWidth: "480px" }}>
-                  Infrastructure you own. A pipeline that runs without you. A calendar that fills itself.
-                </p>
-              </div>
+            {/* Pattern interrupt */}
+            <h3
+              className="font-serif font-normal"
+              style={{
+                fontSize: "clamp(26px, 3.2vw, 42px)",
+                lineHeight: "1.25",
+                letterSpacing: "-0.02em",
+                color: "rgba(255,255,255,0.9)",
+                maxWidth: "720px",
+                marginBottom: "48px",
+              }}
+            >
+              The worst thing that can happen in 60 days:
+            </h3>
 
-              <div className="flex-shrink-0">
-                <a href="/contact"
-                  className="inline-flex items-center gap-3 font-sans font-semibold transition-all duration-300 hover:bg-[#7EC4E0] hover:text-[#0D2B4A] group"
-                  style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#0D2B4A", background: "#FFFFFF", padding: "18px 44px" }}
-                >
-                  Book a discovery call
-                  <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-                </a>
-                <p className="font-sans mt-3" style={{ fontSize: "11px", color: "rgba(255,255,255,0.25)" }}>
-                  15 minutes. No commitment.
-                </p>
-              </div>
-
+            {/* Hero number with contrast */}
+            <div className="mb-14" style={{ paddingLeft: "20px", borderLeft: "3px solid #C4431B" }}>
+              <p className="font-sans mb-3" style={{ fontSize: "14px", lineHeight: "1.6", color: "rgba(255,255,255,0.4)" }}>
+                You currently reach maybe 100 new people a week. Door knocks. Business cards. A Facebook post your cousin liked.
+              </p>
+              <p
+                className="font-serif font-bold"
+                style={{ fontSize: "clamp(52px, 7vw, 88px)", lineHeight: 1, color: "#FFFFFF", margin: "16px 0 12px" }}
+              >
+                30,000+
+              </p>
+              <p className="font-sans" style={{ fontSize: "15px", lineHeight: "1.6", color: "rgba(255,255,255,0.55)" }}>
+                decision-makers in your market who now know your name.
+              </p>
             </div>
+
+            {/* Supporting controllable outputs */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mb-14">
+              {[
+                { num: "20", label: "warmed inboxes, authenticated domains, and DNS -- built, configured, and owned by you" },
+                { num: "2", label: "tested outreach angles based on local market research -- before a word is written" },
+                { num: "1", label: "growing, verified contact list of decision-makers in your TAM" },
+              ].map((item) => (
+                <div key={item.num + item.label}>
+                  <p
+                    className="font-serif font-bold"
+                    style={{ fontSize: "clamp(32px, 3.5vw, 44px)", lineHeight: 1, color: "#FFFFFF", marginBottom: "10px" }}
+                  >
+                    {item.num}
+                  </p>
+                  <p className="font-sans" style={{ fontSize: "13px", lineHeight: "1.6", color: "rgba(255,255,255,0.4)" }}>
+                    {item.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Delineation: controllable vs observed */}
+            <p className="font-sans" style={{ fontSize: "14px", lineHeight: "1.7", color: "rgba(255,255,255,0.5)", maxWidth: "640px" }}>
+              That is the infrastructure -- the things we control, measure, and deliver regardless.
+            </p>
+
+            {/* Observed benchmarks */}
+            <div className="mt-10 pt-10" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+              <p
+                className="font-sans font-semibold uppercase mb-6"
+                style={{ fontSize: "10px", letterSpacing: "0.16em", color: "rgba(255,255,255,0.25)" }}
+              >
+                What we see across clients
+              </p>
+              <p className="font-sans" style={{ fontSize: "15px", lineHeight: "1.8", color: "rgba(255,255,255,0.55)", maxWidth: "600px" }}>
+                A ~2% reply rate. Tens of first-time clients who walked through the door from outreach alone -- people who had never heard of them before they showed up in their inbox.
+              </p>
+            </div>
+
+            {/* 4th wall -- casual, dropped in, no spotlight */}
+            <p className="font-sans mt-12" style={{ fontSize: "13px", lineHeight: "1.75", color: "rgba(255,255,255,0.3)", maxWidth: "520px" }}>
+              We are 5 people. Not an agency. This is the same playbook we run for our own outreach -- and our clients who found success with it. If we are booking meetings, you are booking meetings.
+            </p>
+
           </div>
 
         </div>

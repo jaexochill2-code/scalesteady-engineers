@@ -397,6 +397,8 @@ export default function Home() {
               </div>
             </div>
 
+          </div>{/* end chart grid */}
+
         </div>
       </section>
 

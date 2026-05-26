@@ -228,32 +228,70 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── BRIDGE: Pain preamble — cream, tight, visceral ── */}
+      {/* ── BRIDGE: Authority + Identity Offer ── */}
       <section style={{ background: "#FAF8F6", padding: "clamp(64px, 8vw, 112px) 0" }}>
-        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "840px", textAlign: "center" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "860px" }}>
+
+          {/* Authority anchor */}
           <p
             className="font-sans font-semibold uppercase"
-            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B", marginBottom: "20px" }}
+            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B", marginBottom: "28px" }}
           >
-            The real problem
+            Outbound Infrastructure Specialists — 2 Years, 40+ Systems Built
           </p>
+
+          {/* Identity declaration */}
           <h2
             className="font-serif font-normal"
-            style={{ fontSize: "clamp(32px, 4.5vw, 58px)", lineHeight: "1.1", letterSpacing: "-0.02em", color: "#0D2B4A" }}
+            style={{ fontSize: "clamp(32px, 4.2vw, 56px)", lineHeight: "1.1", letterSpacing: "-0.02em", color: "#0D2B4A" }}
           >
-            Most service businesses don&apos;t have a leads problem.
-            They have a <span className="italic" style={{ color: "#C4431B" }}>system</span> problem.
+            ScaleSteady is a company that specializes in one thing:
+            moving service businesses from{" "}
+            <span style={{ color: "rgba(13,43,74,0.35)", textDecoration: "line-through", textDecorationColor: "rgba(13,43,74,0.2)" }}>
+              referral-dependent
+            </span>
+            {" "}to{" "}
+            <span className="italic" style={{ color: "#C4431B" }}>system-powered.</span>
           </h2>
+
+          {/* Direct statement — no fluff */}
           <p
-            className="font-sans mt-6"
-            style={{ fontSize: "17px", lineHeight: "1.78", color: "#5A5A5A", maxWidth: "660px", margin: "24px auto 0" }}
+            className="font-sans mt-7"
+            style={{ fontSize: "18px", lineHeight: "1.72", color: "#4A4A4A", maxWidth: "680px" }}
           >
-            Work comes in through referrals. The referrals come when they come.
-            Good month, bad month — you have no lever to pull.
-            You&apos;re not running a business. You&apos;re riding one.
-            The owners who break out of that don&apos;t hustle harder.
-            They install a system that runs whether they&apos;re selling or not.
+            We build the outbound infrastructure, the data layer, and the automation
+            that fills your calendar with qualified meetings — without referrals,
+            without ad spend, and without you chasing anyone.
+            You own everything we build. It runs when you&apos;re not in the room.
           </p>
+
+          {/* Social proof bar */}
+          <div
+            className="flex flex-wrap items-center gap-8 mt-10 pt-10"
+            style={{ borderTop: "1px solid #E8E4DF" }}
+          >
+            {[
+              { stat: "40+", label: "Pipeline systems built" },
+              { stat: "2 yrs", label: "In the outbound space" },
+              { stat: "100%", label: "Client infrastructure ownership" },
+            ].map((item) => (
+              <div key={item.stat} className="flex items-baseline gap-3">
+                <span
+                  className="font-serif font-normal"
+                  style={{ fontSize: "clamp(28px, 3.5vw, 40px)", color: "#0D2B4A", lineHeight: 1 }}
+                >
+                  {item.stat}
+                </span>
+                <span
+                  className="font-sans"
+                  style={{ fontSize: "13px", color: "#8A8A8A", lineHeight: "1.4", maxWidth: "100px" }}
+                >
+                  {item.label}
+                </span>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 

@@ -6,7 +6,7 @@ import AnimateOnScroll from "@/components/client/AnimateOnScroll";
 const SERVICES = [
   {
     title: "Outbound Infrastructure",
-    desc: "50+ dedicated sending domains. Programmatic SPF, DKIM, DMARC. Warmed, monitored, and rotated so your deliverability is an engineered outcome — not a daily gamble.",
+    desc: "50+ dedicated sending domains. Programmatic SPF, DKIM, DMARC. Warmed, monitored, and rotated so your deliverability is a predictable outcome, not a daily gamble.",
   },
   {
     title: "Pipeline Automation",
@@ -14,7 +14,7 @@ const SERVICES = [
   },
   {
     title: "Intent-Based Targeting",
-    desc: "We pull real-time buying signals — permit filings, hiring activity, funding announcements — and build a live list of buyers who entered the market this week. Not last quarter.",
+    desc: "We pull real-time buying signals from permit filings, hiring activity, and funding announcements, and build a live list of buyers who entered the market this week. Not last quarter.",
   },
 ];
 
@@ -83,26 +83,22 @@ export default function Home() {
             <h1
               className="font-serif font-normal"
               style={{
-                fontSize: "clamp(48px, 5.5vw, 92px)",
+                fontSize: "clamp(42px, 5vw, 80px)",
                 lineHeight: "1.08",
                 letterSpacing: "-0.02em",
                 color: "#0D2B4A",
               }}
             >
-              <span className="hero-word" style={{ animationDelay: "0s", marginRight: "0.22em" }}>The</span>
-              <span className="hero-word" style={{ animationDelay: "0.09s" }}>experts</span>
+              <span className="hero-word" style={{ animationDelay: "0s" }}>If you&apos;re here,</span>
               <br />
-              <span className="hero-word" style={{ animationDelay: "0.18s", marginRight: "0.22em" }}>in</span>
-              <span className="hero-word" style={{ animationDelay: "0.27s", marginRight: "0.22em" }}>your</span>
-              <span className="hero-word italic" style={{ animationDelay: "0.36s", marginRight: "0.22em", color: "#C4431B" }}>pipeline&apos;s</span>
-              <span className="hero-word" style={{ animationDelay: "0.45s" }}>care.</span>
+              <span className="hero-word italic" style={{ animationDelay: "0.12s", color: "#C4431B" }}>the email worked.</span>
             </h1>
 
             <p
               className="font-sans hero-body-copy mt-6"
-              style={{ fontSize: "17px", lineHeight: "1.72", color: "#3D3D3D", maxWidth: "370px" }}
+              style={{ fontSize: "17px", lineHeight: "1.72", color: "#3D3D3D", maxWidth: "340px" }}
             >
-              We build and manage the outbound infrastructure that fills your calendar with qualified meetings. No ad spend. No guesswork. Fully owned by you.
+              We build the same system for your business.
             </p>
 
             {/* CTA zone — enters as unit after body copy */}
@@ -160,13 +156,14 @@ export default function Home() {
                 className="font-serif font-normal"
                 style={{ fontSize: "clamp(32px, 8vw, 48px)", lineHeight: "1.1", letterSpacing: "-0.02em", color: "#0D2B4A" }}
               >
-                The experts in your <span className="italic" style={{ color: "#C4431B" }}>pipeline&apos;s</span> care.
+                If you&apos;re here,{" "}
+                <span className="italic" style={{ color: "#C4431B" }}>the email worked.</span>
               </h1>
               <p
                 className="font-sans mt-4"
                 style={{ fontSize: "15px", lineHeight: "1.7", color: "#3D3D3D", maxWidth: "360px" }}
               >
-                Outbound infrastructure that fills your calendar. No ad spend, fully owned by you.
+                We build the same system for your business.
               </p>
               <div className="mt-6">
                 <Link

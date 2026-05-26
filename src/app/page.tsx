@@ -228,141 +228,123 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── IDENTITY SHIFT — Two ways to run a local business ── */}
+      {/* ── IDENTITY SHIFT ── */}
       <section style={{ background: "#0D2B4A", padding: "clamp(72px, 9vw, 120px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
-          {/* One sentence. No bow. */}
-          <div className="mb-12">
-            <h2 className="font-serif font-normal" style={{ fontSize: "clamp(28px, 3.5vw, 46px)", lineHeight: "1.15", color: "#FFFFFF", letterSpacing: "-0.02em" }}>
-              There are two ways to run a local service business.
-            </h2>
-          </div>
+          {/* Two columns: current self → future self — no preamble, columns do the work */}
+          <div className="grid grid-cols-1 lg:grid-cols-2">
 
-          {/* Two columns: current self → future self */}
-          <div className="grid grid-cols-1 lg:grid-cols-2" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
-
-            {/* Left: Running on referrals */}
-            <div className="p-8 xl:p-10 flex flex-col" style={{ borderRight: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.04)" }}>
-              <div className="mb-7 flex items-center gap-3">
-                <div style={{ width: "6px", height: "6px", background: "rgba(255,255,255,0.25)", borderRadius: "50%" }} />
-                <span className="font-sans font-semibold uppercase" style={{ fontSize: "10px", letterSpacing: "0.14em", color: "rgba(255,255,255,0.35)" }}>Running on referrals</span>
+            {/* Left: Referral-dependent — dark, muted, recognisable */}
+            <div className="p-8 xl:p-12 flex flex-col" style={{ background: "rgba(0,0,0,0.25)", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <div className="mb-8 flex items-center gap-3">
+                <div style={{ width: "8px", height: "8px", background: "rgba(255,255,255,0.2)", borderRadius: "50%" }} />
+                <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.16em", color: "rgba(255,255,255,0.3)" }}>Referral-dependent</span>
               </div>
 
-              <ul className="flex flex-col gap-6 font-sans" style={{ fontSize: "14.5px" }}>
-                {/* Pain 1: Ad cost */}
+              <ul className="flex flex-col gap-7 font-sans" style={{ fontSize: "14.5px" }}>
                 <li className="flex items-start gap-3">
-                  <span style={{ color: "rgba(255,255,255,0.2)", marginTop: "2px", flexShrink: 0 }}>—</span>
-                  <span style={{ color: "rgba(255,255,255,0.45)" }}>
-                    You pay <strong style={{ color: "rgba(255,255,255,0.65)" }}>$45–$70 per click</strong> on ads. 8 out of 10 visitors leave without calling.
+                  <span style={{ color: "rgba(255,255,255,0.25)", marginTop: "3px", flexShrink: 0 }}>—</span>
+                  <span style={{ color: "rgba(255,255,255,0.5)" }}>
+                    Paying <strong style={{ color: "rgba(255,255,255,0.7)" }}>$45–$70 per click</strong> on ads. 8 out of 10 leave without calling.
                     <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[rgba(255,255,255,0.2)] hover:text-white">[?]
                       <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#1B4F8A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
-                        <strong>Source:</strong> ClickPatrol™ 2026 B2B Index: average B2B search CPC $30–$70. LanderLab 2026: 70–90% bounce rate on B2B landing pages.
+                        <strong>Source:</strong> ClickPatrol™ 2026 B2B Index: avg B2B search CPC $30–$70. LanderLab 2026: 70–90% bounce rate on B2B landing pages.
                       </span>
                     </span>
                   </span>
                 </li>
-                {/* Pain 2: Unpredictable pipeline */}
                 <li className="flex items-start gap-3">
-                  <span style={{ color: "rgba(255,255,255,0.2)", marginTop: "2px", flexShrink: 0 }}>—</span>
-                  <span style={{ color: "rgba(255,255,255,0.45)" }}>Work comes in when it comes in. Slow week? <strong style={{ color: "rgba(255,255,255,0.65)" }}>There&apos;s no switch to flip.</strong></span>
+                  <span style={{ color: "rgba(255,255,255,0.25)", marginTop: "3px", flexShrink: 0 }}>—</span>
+                  <span style={{ color: "rgba(255,255,255,0.5)" }}>Work comes in when it comes in. Slow week? <strong style={{ color: "rgba(255,255,255,0.7)" }}>No switch to flip.</strong></span>
                 </li>
-                {/* Pain 3: Growth requires your time */}
                 <li className="flex items-start gap-3">
-                  <span style={{ color: "rgba(255,255,255,0.2)", marginTop: "2px", flexShrink: 0 }}>—</span>
-                  <span style={{ color: "rgba(255,255,255,0.45)" }}>Want more work? That means more time <em>you</em> spend chasing it. You are the engine.</span>
+                  <span style={{ color: "rgba(255,255,255,0.25)", marginTop: "3px", flexShrink: 0 }}>—</span>
+                  <span style={{ color: "rgba(255,255,255,0.5)" }}>Want more work? That means more time <em>you</em> spend chasing it. You are the engine.</span>
                 </li>
               </ul>
             </div>
 
-            {/* Right: Running on outbound */}
-            <div className="p-8 xl:p-10 flex flex-col relative" style={{ borderTop: "3px solid #7EC4E0", background: "rgba(255,255,255,0.07)" }}>
-              <div className="mb-7 flex items-center gap-3">
-                <div style={{ width: "6px", height: "6px", background: "#7EC4E0", borderRadius: "50%" }} />
-                <span className="font-sans font-semibold uppercase" style={{ fontSize: "10px", letterSpacing: "0.14em", color: "#7EC4E0" }}>Running on outbound</span>
+            {/* Right: Outbound-powered — WHITE card, max contrast = the other side */}
+            <div className="p-8 xl:p-12 flex flex-col" style={{ background: "#FFFFFF", borderTop: "4px solid #1B4F8A" }}>
+              <div className="mb-8 flex items-center gap-3">
+                <div style={{ width: "8px", height: "8px", background: "#1B4F8A", borderRadius: "50%" }} />
+                <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#1B4F8A" }}>Outbound-powered</span>
               </div>
 
-              <ul className="flex flex-col gap-6 font-sans mb-8" style={{ fontSize: "14.5px" }}>
-                {/* Fix 1: Cost per contact */}
+              <ul className="flex flex-col gap-7 font-sans mb-8" style={{ fontSize: "14.5px" }}>
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#7EC4E0" strokeWidth="3">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span style={{ color: "rgba(255,255,255,0.8)" }}>
-                    <strong style={{ color: "#FFFFFF" }}>$0.04 per contact</strong> — straight to the person who signs the cheque. No auction, no middleman.
-                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[rgba(255,255,255,0.2)] hover:text-white">[?]
-                      <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#1B4F8A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
+                  <span style={{ color: "#444444" }}>
+                    <strong style={{ color: "#111111" }}>$0.04 per contact</strong> — straight to the person who signs the cheque. No auction, no middleman.
+                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#CCCCCC] hover:text-[#1B4F8A]">[?]
+                      <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
                         <strong>Source:</strong> Smartlead &amp; Winnr 2026: amortised mailbox cost $120/mo for 10k sends. Validated B2B contact scrape at $0.025/record.
                       </span>
                     </span>
                   </span>
                 </li>
-                {/* Fix 2: Predictable bookings */}
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#7EC4E0" strokeWidth="3">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span style={{ color: "rgba(255,255,255,0.8)" }}>Calls land on your calendar before the day starts. <strong style={{ color: "#FFFFFF" }}>98.4% hit the primary inbox</strong> — not spam, not missed.
-                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[rgba(255,255,255,0.2)] hover:text-white">[?]
-                      <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#1B4F8A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
+                  <span style={{ color: "#444444" }}>Calls on your calendar before the day starts. <strong style={{ color: "#111111" }}>98.4% hit the primary inbox</strong> — not spam, not missed.
+                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#CCCCCC] hover:text-[#1B4F8A]">[?]
+                      <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
                         <strong>Source:</strong> GlockApps 2026 Enterprise Outbound Audit: fully warmed multi-domain infrastructure holds 98.4% primary inbox placement.
                       </span>
                     </span>
                   </span>
                 </li>
-                {/* Fix 3: You own it, not dependent on anyone */}
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#7EC4E0" strokeWidth="3">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span style={{ color: "rgba(255,255,255,0.8)" }}>We build the system <strong style={{ color: "#FFFFFF" }}>directly into your business.</strong> Not rented from Google. Not owned by an agency. Yours.</span>
+                  <span style={{ color: "#444444" }}>We build the system <strong style={{ color: "#111111" }}>into your business.</strong> Not Google&apos;s. Not an agency&apos;s. Yours.</span>
                 </li>
               </ul>
 
-              <div className="mt-auto pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-                <p className="font-sans text-[10px] leading-relaxed" style={{ color: "rgba(255,255,255,0.25)" }}>
-                  Data: <strong>ClickPatrol™ 2026</strong> · <strong>First Page Sage 2026</strong> · <strong>GlockApps 2026</strong> · <strong>Smartlead 2026</strong>
+              <div className="mt-auto pt-5" style={{ borderTop: "1px solid #EEEEEE" }}>
+                <p className="font-sans text-[10px] text-[#BBBBBB] leading-relaxed">
+                  Data: <strong>ClickPatrol™ 2026</strong> · <strong>GlockApps 2026</strong> · <strong>Smartlead 2026</strong>
                 </p>
               </div>
             </div>
 
           </div>
 
-          {/* ── The declaration — identity shift mic drop ── */}
-          <div className="mt-16 pt-12" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+          {/* ── Declaration — identity shift mic drop ── */}
+          <div className="mt-14 pt-12" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
 
-              {/* The statement */}
               <div className="flex-1">
-                <p className="font-sans font-semibold uppercase mb-4" style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#7EC4E0" }}>
-                  What we do
-                </p>
-                <h3 className="font-serif font-normal" style={{ fontSize: "clamp(32px, 4vw, 54px)", lineHeight: "1.1", letterSpacing: "-0.02em", color: "#FFFFFF" }}>
+                <h3 className="font-serif font-normal" style={{ fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.1", letterSpacing: "-0.02em", color: "#FFFFFF" }}>
                   We move you{" "}
-                  <span style={{ color: "rgba(255,255,255,0.3)", fontStyle: "italic", textDecoration: "line-through", textDecorationColor: "rgba(255,255,255,0.2)" }}>from here</span>
-                  <span style={{ display: "inline-flex", alignItems: "center", margin: "0 0.3em", color: "#7EC4E0" }}>
-                    <svg width="40" height="16" viewBox="0 0 40 16" fill="none" style={{ verticalAlign: "middle" }}>
-                      <line x1="0" y1="8" x2="32" y2="8" stroke="#7EC4E0" strokeWidth="1.5"/>
-                      <polyline points="26,2 34,8 26,14" fill="none" stroke="#7EC4E0" strokeWidth="1.5" strokeLinejoin="round"/>
+                  <span style={{ color: "rgba(255,255,255,0.25)", fontStyle: "italic", textDecoration: "line-through", textDecorationColor: "rgba(255,255,255,0.15)" }}>from here</span>
+                  <span style={{ display: "inline-flex", alignItems: "center", margin: "0 0.25em" }}>
+                    <svg width="36" height="14" viewBox="0 0 36 14" fill="none">
+                      <line x1="0" y1="7" x2="28" y2="7" stroke="#7EC4E0" strokeWidth="1.5"/>
+                      <polyline points="22,2 30,7 22,12" fill="none" stroke="#7EC4E0" strokeWidth="1.5" strokeLinejoin="round"/>
                     </svg>
                   </span>
                   <span style={{ color: "#FFFFFF" }}>to here.</span>
                 </h3>
-                <p className="font-sans mt-5" style={{ fontSize: "15px", lineHeight: "1.7", color: "rgba(255,255,255,0.45)", maxWidth: "480px" }}>
-                  Not with a retainer. Not with an ad budget. With infrastructure you own — and a calendar that fills itself.
+                <p className="font-sans mt-4" style={{ fontSize: "15px", lineHeight: "1.7", color: "rgba(255,255,255,0.4)", maxWidth: "440px" }}>
+                  No retainer. No ad spend. Infrastructure you own — and a calendar that fills itself.
                 </p>
               </div>
 
-              {/* The CTA — decision moment */}
               <div className="flex-shrink-0">
                 <a href="/contact"
-                  className="inline-flex items-center justify-center font-sans font-semibold transition-all duration-300 hover:bg-[#7EC4E0] hover:text-[#0D2B4A] group"
-                  style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#0D2B4A", background: "#FFFFFF", padding: "18px 44px", borderRadius: "0px", display: "inline-flex", gap: "10px" }}
+                  className="inline-flex items-center gap-3 font-sans font-semibold transition-all duration-300 hover:bg-[#7EC4E0] hover:text-[#0D2B4A] group"
+                  style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#0D2B4A", background: "#FFFFFF", padding: "18px 44px" }}
                 >
                   Book a discovery call
                   <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
                 </a>
-                <p className="font-sans mt-3" style={{ fontSize: "11px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.01em" }}>
+                <p className="font-sans mt-3" style={{ fontSize: "11px", color: "rgba(255,255,255,0.25)" }}>
                   15 minutes. No commitment.
                 </p>
               </div>

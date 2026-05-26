@@ -228,109 +228,140 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── THE PARADIGM PIVOT MATRIX — Scannable Side-by-Side ── */}
-      <section style={{ background: "#FAF8F6", padding: "clamp(64px, 8vw, 120px) 0", borderBottom: "1px solid #E8E8E8" }}>
+      {/* ── THE TRANSITION & MATRIX — Visually Rich Bridging Section ── */}
+      <section style={{ background: "#FAF8F6", padding: "clamp(80px, 10vw, 140px) 0", borderBottom: "1px solid #E8E8E8" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
           
-          {/* Header */}
-          <div className="mb-12">
-            <span className="font-sans font-semibold uppercase block mb-3" style={{ fontSize: "10px", letterSpacing: "0.15em", color: "#1B4F8A" }}>
-              The Operational Pivot
+          {/* Visual Preamble / Bridging Solutions Statement */}
+          <div className="relative pl-8 sm:pl-10 mb-16 max-w-4xl">
+            {/* Terracotta Visual Guide Line */}
+            <div 
+              className="absolute left-0 top-0 bottom-0" 
+              style={{ width: "3px", background: "#C4431B" }}
+            />
+            
+            <span className="font-sans font-bold uppercase block mb-3" style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#1B4F8A" }}>
+              THE MISSION
             </span>
-            <h2 className="font-serif font-bold" style={{ fontSize: "clamp(32px, 4vw, 54px)", lineHeight: "1.1", color: "#111111" }}>
-              Legacy drag vs. Sapphire leverage.
+            <h2 className="font-serif font-normal mb-6" style={{ fontSize: "clamp(36px, 4.5vw, 56px)", lineHeight: "1.12", color: "#111111", letterSpacing: "-0.01em" }}>
+              From chasing handshakes to owning a <span className="italic font-normal" style={{ color: "#C4431B" }}>predictable engine.</span>
             </h2>
+            <p className="font-sans text-[16px] sm:text-[17px] leading-relaxed text-[#3D3D3D]" style={{ maxWidth: "720px" }}>
+              You didn&apos;t build a top-tier local business to spend your nights chasing down bad form-fills or paying agencies for &ldquo;impressions.&rdquo; We build private outbound systems that land pre-qualified commercial bookings straight onto your calendar. No ad spend. No monthly retainers. Just a pipeline you own forever.
+            </p>
           </div>
 
           {/* The Matrix Box */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             
-            {/* Left side: BEFORE (The Drag) */}
+            {/* Left side: THE HUSTLE (The Word-of-Mouth Drag) */}
             <div className="bg-white border border-[#E8E8E8] p-8 xl:p-10 flex flex-col relative group cursor-default transition-all duration-300 hover:border-[#CCCCCC]">
               <div className="mb-8">
-                <span className="font-sans font-bold uppercase block mb-2" style={{ fontSize: "10px", letterSpacing: "0.1em", color: "#ABABAB" }}>BEFORE</span>
-                <h3 className="font-serif font-normal" style={{ fontSize: "24px", color: "#3D3D3D" }}>The Manual Drag</h3>
+                <span className="font-sans font-bold uppercase block mb-2" style={{ fontSize: "10px", letterSpacing: "0.1em", color: "#ABABAB" }}>01 / THE HUSTLE</span>
+                <h3 className="font-serif font-normal" style={{ fontSize: "24px", color: "#3D3D3D" }}>Traditional Client Chasing</h3>
               </div>
 
-              <ul className="flex flex-col gap-6 font-sans" style={{ fontSize: "14px", color: "#6B6B6B" }}>
+              <ul className="flex flex-col gap-8 font-sans" style={{ fontSize: "14.5px", color: "#6B6B6B" }}>
                 <li className="flex items-start gap-4">
-                  <span className="flex-shrink-0 mt-1 font-bold" style={{ color: "#ABABAB" }}>—</span>
+                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
                   <span>
-                    <strong>$35.00 PPC Bidding Waste</strong>
+                    <strong className="block text-[#111111] mb-1">Feeding the Google meter.</strong>
+                    Paying $45 a click for tire-kickers who just want a free estimate, then bounce off your site forever.
                     <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#ABABAB] hover:text-[#1B4F8A]">
                       [?]
                       <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
                         <strong>Source:</strong> ClickPatrol™ 2026 B2B Index: Search bids spike past $30–$70 CPC. LanderLab 2026: Average B2B landing pages bounce 70–90% of visitors.
                       </span>
                     </span>
-                    <br />
-                    Paying ad networks for high-friction search clicks that bounce off your page without converting.
                   </span>
                 </li>
                 <li className="flex items-start gap-4">
-                  <span className="flex-shrink-0 mt-1 font-bold" style={{ color: "#ABABAB" }}>—</span>
+                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
                   <span>
-                    <strong>Dry Calendar Dry Spells</strong><br />
-                    Waking up to empty schedules, hoping word-of-mouth accidents keep your expensive sales reps busy.
+                    <strong className="block text-[#111111] mb-1">Staring at a blank calendar.</strong>
+                    Praying the phone rings so your crew isn&apos;t sitting on their hands at $25 an hour on active payroll.
                   </span>
                 </li>
                 <li className="flex items-start gap-4">
-                  <span className="flex-shrink-0 mt-1 font-bold" style={{ color: "#ABABAB" }}>—</span>
+                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
                   <span>
-                    <strong>Manual Drafting Fatigue</strong><br />
-                    Copy-pasting pitches manually every single evening, capping your growth by your own physical exhaustion.
+                    <strong className="block text-[#111111] mb-1">The retainer money pit.</strong>
+                    Writing a fat check to a marketing agency every month for &ldquo;impressions&rdquo; while your inbox stays bone dry.
                   </span>
                 </li>
               </ul>
             </div>
 
-            {/* Right side: AFTER (The Leverage) */}
-            <div className="bg-white border border-[#E8E8E8] p-8 xl:p-10 flex flex-col relative group cursor-default transition-all duration-300 hover:border-[#1B4F8A] hover:shadow-[0_20px_50px_rgba(27,79,138,0.06)]">
-              <div className="mb-8">
-                <span className="font-sans font-bold uppercase block mb-2" style={{ fontSize: "10px", letterSpacing: "0.1em", color: "#1B4F8A" }}>AFTER</span>
-                <h3 className="font-serif font-bold" style={{ fontSize: "24px", color: "#111111" }}>The Sapphire Leverage</h3>
+            {/* Right side: THE ENGINE (The Outbound Leverage) */}
+            <div className="bg-white border-2 border-[#1B4F8A] p-8 xl:p-10 flex flex-col relative group cursor-default transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(27,79,138,0.06)]">
+              {/* Premium Highlight Tag */}
+              <div 
+                className="absolute top-0 right-0"
+                style={{ 
+                  background: "#1B4F8A", 
+                  color: "#FFFFFF", 
+                  fontSize: "9px", 
+                  letterSpacing: "0.15em", 
+                  textTransform: "uppercase", 
+                  padding: "5px 12px", 
+                  fontWeight: "700" 
+                }}
+              >
+                Recommended
               </div>
 
-              <ul className="flex flex-col gap-6 font-sans mb-8" style={{ fontSize: "14px", color: "#3D3D3D" }}>
+              <div className="mb-8">
+                <span className="font-sans font-bold uppercase block mb-2" style={{ fontSize: "10px", letterSpacing: "0.15em", color: "#1B4F8A" }}>02 / THE ENGINE</span>
+                <h3 className="font-serif font-bold" style={{ fontSize: "24px", color: "#111111" }}>Programmatic Outbound</h3>
+              </div>
+
+              <ul className="flex flex-col gap-8 font-sans mb-8" style={{ fontSize: "14.5px", color: "#3D3D3D" }}>
                 <li className="flex items-start gap-4">
-                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="2.5">
+                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span>
-                    <strong>$0.04 Direct Executive Reach</strong>
+                    <strong className="block text-[#111111] mb-1">Straight to the source.</strong>
+                    Bypassing the bidding wars. Landing custom offers directly in the primary inboxes of building managers, commercial realtors, or medical offices for pennies.
                     <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#1B4F8A]">
                       [?]
                       <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
                         <strong>Source:</strong> Smartlead &amp; Winnr 2026 Infrastructure Ledgers: Amortized mailbox volume ($120/mo for 10k sends) + validated B2B scrapes at $0.025/lead.
                       </span>
                     </span>
-                    <br />
-                    Bypassing search auctions entirely to land hyper-personalized offers straight into target primary inboxes.
                   </span>
                 </li>
                 <li className="flex items-start gap-4">
-                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="2.5">
+                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span>
-                    <strong>Automated Inbound Calendar</strong><br />
-                    Waking up daily to pre-qualified discovery calls automatically populated directly onto your sales calendar.
+                    <strong className="block text-[#111111] mb-1">Pre-booked, warm meetings.</strong>
+                    Waking up to qualified, warm calls booked directly onto your Google Calendar—no cold calling, no chasing down bad form-fills.
                   </span>
                 </li>
                 <li className="flex items-start gap-4">
-                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="2.5">
+                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span>
-                    <strong>Fully Owned Outbound Engine</strong>
+                    <strong className="block text-[#111111] mb-1">An asset you own forever.</strong>
+                    50+ custom sending domains running with automated warmups and security records. A repeatable system that you own outright—no marketing hostage situations.
                     <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#1B4F8A]">
                       [?]
                       <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
                         <strong>Source:</strong> GlockApps 2026 Enterprise Outbound Audit: fully warmed multi-domain arrays maintain a 98.4% primary placement rate.
                       </span>
                     </span>
-                    <br />
-                    50+ custom domains running with automated warmups and security records. Your delivery is a controlled variable, not a gamble.
                   </span>
                 </li>
               </ul>

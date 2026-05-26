@@ -27,178 +27,136 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen overflow-x-hidden pb-16 lg:pb-0" style={{ background: "#FAF8F6" }}>
 
-      {/* ── HERO — 95svh: scroll provocation ── */}
+      {/* ── HERO -- Full-bleed cinematic ── */}
       <section
         className="hero-section relative w-full -mt-[80px]"
-        style={{ height: "88svh", minHeight: "600px" }}
+        style={{ height: "95svh", minHeight: "680px", overflow: "hidden" }}
       >
-
-        {/* Image pane */}
-        <div
-          className="hero-image-pane absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block"
-          style={{ width: "58%", height: "100%" }}
-        >
-          {/* hero-photo-reveal: inner wrapper avoids transform conflict with -translate-y-1/2 on outer pane */}
-          <div className="hero-photo-reveal" style={{ height: "100%" }}>
-            <Image
-              src="/hero-team.jpeg"
-              alt="ScaleSteady outbound infrastructure team"
-              width={2752}
-              height={1536}
-              priority
-              unoptimized
-              className="w-full h-full object-cover block"
-              style={{ objectPosition: "70% center" }}
-            />
-            {/* Right-edge gradient — cream blend */}
-            <div
-              className="absolute inset-y-0 right-0"
-              style={{
-                width: "22%",
-                background: "linear-gradient(to right, transparent 0%, rgba(250,248,246,0.5) 55%, #FAF8F6 100%)",
-              }}
-            />
-          </div>
+        {/* Background: photo + dark overlay */}
+        <div className="absolute inset-0">
+          <Image
+            src="/hero-team.jpeg"
+            alt="ScaleSteady outbound infrastructure team"
+            fill
+            priority
+            unoptimized
+            className="object-cover"
+            style={{ objectPosition: "60% center" }}
+          />
+          {/* Cinematic dark overlay */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(3,8,15,0.93) 0%, rgba(13,43,74,0.88) 55%, rgba(3,8,15,0.80) 100%)",
+            }}
+          />
         </div>
 
-        {/* Cream panel — right 42% */}
+        {/* Content -- vertically centered, full-width */}
         <div
-          className="absolute inset-y-0 right-0 hidden lg:block"
-          style={{ width: "42%", background: "#FAF8F6" }}
-        />
-
-        {/* Content */}
-        <div
-          className="relative h-full flex items-center justify-end"
+          className="relative h-full flex flex-col justify-center"
           style={{ paddingTop: "80px" }}
         >
-
-          {/* Desktop copy */}
           <div
-            className="hidden lg:flex flex-col justify-center h-full px-12 xl:px-16 2xl:px-20 relative"
-            style={{ width: "42%", paddingLeft: "clamp(40px, 3.5vw, 64px)" }}
+            className="mx-auto w-full px-8 sm:px-12 lg:px-24"
+            style={{ maxWidth: "1280px" }}
           >
-            {/* Terracotta brand rule — anchored accent, stops at natural content boundary */}
+            {/* Overline -- market positioning signal */}
             <div
-              className="absolute left-0"
-              style={{ top: "50%", transform: "translateY(-50%)", width: "3px", height: "260px", background: "#C4431B" }}
-            />
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                marginBottom: "clamp(20px, 3vw, 36px)",
+              }}
+            >
+              <div style={{ width: "28px", height: "2px", background: "#C4431B", flexShrink: 0 }} />
+              <span
+                className="font-sans"
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 600,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  color: "#C4431B",
+                }}
+              >
+                Outbound Infrastructure
+              </span>
+            </div>
 
+            {/* Headline -- commanding scale */}
             <h1
               className="font-serif font-normal"
               style={{
-                fontSize: "clamp(42px, 5vw, 80px)",
-                lineHeight: "1.08",
-                letterSpacing: "-0.02em",
-                color: "#0D2B4A",
+                fontSize: "clamp(52px, 8.5vw, 120px)",
+                lineHeight: "1.02",
+                letterSpacing: "-0.03em",
+                color: "#FAF8F6",
+                maxWidth: "900px",
               }}
             >
-              <span className="hero-word" style={{ animationDelay: "0s" }}>If you&apos;re here,</span>
-              <br />
-              <span className="hero-word italic" style={{ animationDelay: "0.12s", color: "#C4431B" }}>the email worked.</span>
+              <span className="hero-word block" style={{ animationDelay: "0s" }}>
+                If you&apos;re here,
+              </span>
+              <span
+                className="hero-word block italic"
+                style={{ animationDelay: "0.12s", color: "#C4431B" }}
+              >
+                the email worked.
+              </span>
             </h1>
 
+            {/* Subheadline */}
             <p
-              className="font-sans hero-body-copy mt-6"
-              style={{ fontSize: "17px", lineHeight: "1.72", color: "#3D3D3D", maxWidth: "340px" }}
+              className="font-sans hero-body-copy"
+              style={{
+                fontSize: "clamp(15px, 1.6vw, 20px)",
+                lineHeight: "1.65",
+                color: "rgba(250,248,246,0.50)",
+                maxWidth: "440px",
+                marginTop: "clamp(16px, 2.5vw, 28px)",
+              }}
             >
               We build the same system for your business.
             </p>
 
-            {/* CTA zone — enters as unit after body copy */}
-            <div className="hero-cta-wrap mt-8">
+            {/* CTA zone */}
+            <div
+              className="hero-cta-wrap flex flex-col sm:flex-row items-start sm:items-center gap-4"
+              style={{ marginTop: "clamp(28px, 4vw, 48px)" }}
+            >
               <Link
                 href="/contact"
                 className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold transition-all duration-300"
                 style={{
                   fontSize: "12px",
-                  letterSpacing: "0.08em",
+                  letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   color: "#FFFFFF",
-                  background: "#1B4F8A",
-                  padding: "18px 44px",
+                  background: "#C4431B",
+                  padding: "18px 48px",
                   borderRadius: "0px",
+                  flexShrink: 0,
                 }}
               >
                 Book a discovery call
               </Link>
               <p
-                className="font-sans hero-risk-text mt-3"
-                style={{ fontSize: "12px", color: "#9E9E9E", letterSpacing: "0.01em" }}
+                className="font-sans hero-risk-text"
+                style={{
+                  fontSize: "12px",
+                  color: "rgba(250,248,246,0.30)",
+                  letterSpacing: "0.01em",
+                }}
               >
                 15 minutes. No commitment.
               </p>
             </div>
-
           </div>
-
-          {/* Mobile -- split-stack: photo top, copy bottom on cream */}
-          <div className="lg:hidden flex flex-col w-full">
-            {/* Photo pane -- explicit height, Image fill needs sized parent */}
-            <div className="relative w-full" style={{ height: "50svh", minHeight: "280px" }}>
-              <Image
-                src="/hero-team.jpeg"
-                alt="ScaleSteady team strategy session"
-                fill
-                unoptimized
-                className="object-cover"
-                style={{ objectPosition: "center 30%" }}
-              />
-              {/* Bottom fade into cream */}
-              <div
-                className="absolute inset-x-0 bottom-0"
-                style={{ height: "60px", background: "linear-gradient(to bottom, transparent, #FAF8F6)" }}
-              />
-            </div>
-
-            {/* Copy pane — solid cream, no contrast issues */}
-            <div
-              className="px-5 sm:px-10 pb-8 pt-2"
-              style={{ background: "#FAF8F6", flex: "0 0 auto", borderLeft: "3px solid #C4431B", marginLeft: "16px" }}
-            >
-              <h1
-                className="font-serif font-normal"
-                style={{ fontSize: "clamp(32px, 8vw, 48px)", lineHeight: "1.1", letterSpacing: "-0.02em", color: "#0D2B4A" }}
-              >
-                If you&apos;re here,{" "}
-                <span className="italic" style={{ color: "#C4431B" }}>the email worked.</span>
-              </h1>
-              <p
-                className="font-sans mt-4"
-                style={{ fontSize: "16px", lineHeight: "1.7", color: "#3D3D3D", maxWidth: "360px" }}
-              >
-                We build the same system for your business.
-              </p>
-              <div className="mt-6">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center font-brand font-semibold w-full"
-                  style={{
-                    fontSize: "12px",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    color: "#FFFFFF",
-                    background: "#1B4F8A",
-                    padding: "16px 36px",
-                    borderRadius: "0px",
-                  }}
-                >
-                  Book a discovery call
-                </Link>
-                <p
-                  className="font-sans mt-3"
-                  style={{ fontSize: "12px", color: "#9E9E9E", letterSpacing: "0.01em" }}
-                >
-                  15 minutes. No commitment.
-                </p>
-              </div>
-            </div>
-          </div>
-
         </div>
-
       </section>
-
 
 
       {/* ── THE OUTBOUND TRUTHS ── */}

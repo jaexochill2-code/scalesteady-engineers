@@ -425,7 +425,7 @@ export default function Home() {
             What clients say
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3">
+          <div className="grid grid-cols-1 lg:grid-cols-3" style={{ alignItems: "stretch" }}>
 
             {/* T1: Deliverables Honesty — HVAC */}
             <div
@@ -465,9 +465,8 @@ export default function Home() {
             <div
               className="flex flex-col py-16 lg:py-0"
               style={{
-                padding: "clamp(24px, 4vw, 56px)",
-                borderTop: "1px solid #E8E8E8",
-                borderBottom: "1px solid #E8E8E8",
+                paddingLeft: "clamp(24px, 4vw, 56px)",
+                paddingRight: "clamp(24px, 4vw, 56px)",
                 borderLeft: "1px solid #E8E8E8",
                 borderRight: "1px solid #E8E8E8",
               }}

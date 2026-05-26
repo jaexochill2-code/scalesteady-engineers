@@ -544,66 +544,41 @@ export default function Home() {
               </a>
             </div>
 
-            {/* RIGHT: Team roster -- placeholder frames */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-
-              {/* Row 1 -- Co-founders */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-                {[
-                  { initials: "EH", name: "Emma Hawthorne", title: "Co-Founder · Email Infrastructure" },
-                  { initials: "FK", name: "Fred Khong",     title: "Co-Founder · Client Care" },
-                ].map((m) => (
-                  <div key={m.initials}>
-                    <div
-                      style={{
-                        background: "linear-gradient(160deg, rgba(196,67,27,0.07) 0%, rgba(255,255,255,0.02) 100%)",
-                        border: "1px solid rgba(255,255,255,0.07)",
-                        borderRadius: "3px",
-                        aspectRatio: "3 / 4",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        overflow: "hidden",
-                      }}
-                    >
-                      {/* Replace comment with: <img src="/team/emma.jpg" alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
-                      <span className="font-serif" style={{ fontSize: "28px", color: "rgba(255,255,255,0.1)", fontStyle: "italic", userSelect: "none" }}>{m.initials}</span>
-                    </div>
-                    <p className="font-sans" style={{ fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.72)", marginTop: "8px", letterSpacing: "0.01em" }}>{m.name}</p>
-                    <p className="font-sans" style={{ fontSize: "10px", color: "#C4431B", marginTop: "2px", letterSpacing: "0.04em", textTransform: "uppercase" }}>{m.title}</p>
+            {/* RIGHT: Team -- small headshots, byline style */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "18px", alignSelf: "center" }}>
+              {[
+                { initials: "EH", name: "Emma Hawthorne", title: "Co-Founder · Email Infrastructure" },
+                { initials: "FK", name: "Fred Khong",     title: "Co-Founder · Client Care" },
+                { initials: "AC", name: "Amy Chen",       title: "Messaging & Marketing" },
+                { initials: "BM", name: "Brandon Mercer", title: "IT & Deliverability" },
+                { initials: "DC", name: "David Chang",    title: "AI & Sequence Automation" },
+              ].map((m) => (
+                <div key={m.initials} style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                  {/* Headshot circle -- swap contents with real <img> when available */}
+                  <div
+                    style={{
+                      width: "52px",
+                      height: "52px",
+                      borderRadius: "50%",
+                      flexShrink: 0,
+                      background: "linear-gradient(145deg, rgba(196,67,27,0.12) 0%, rgba(255,255,255,0.04) 100%)",
+                      border: "1px solid rgba(255,255,255,0.09)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      overflow: "hidden",
+                    }}
+                  >
+                    {/* <img src={`/team/${m.initials.toLowerCase()}.jpg`} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
+                    <span className="font-sans" style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.22)", letterSpacing: "0.04em" }}>{m.initials}</span>
                   </div>
-                ))}
-              </div>
-
-              {/* Row 2 -- Team */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "12px" }}>
-                {[
-                  { initials: "AC", name: "Amy Chen",       title: "Messaging & Marketing" },
-                  { initials: "BM", name: "Brandon Mercer", title: "IT & Deliverability" },
-                  { initials: "DC", name: "David Chang",    title: "AI & Sequence Automation" },
-                ].map((m) => (
-                  <div key={m.initials}>
-                    <div
-                      style={{
-                        background: "linear-gradient(160deg, rgba(196,67,27,0.05) 0%, rgba(255,255,255,0.02) 100%)",
-                        border: "1px solid rgba(255,255,255,0.06)",
-                        borderRadius: "3px",
-                        aspectRatio: "3 / 4",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        overflow: "hidden",
-                      }}
-                    >
-                      {/* Replace comment with: <img src="/team/[name].jpg" alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
-                      <span className="font-serif" style={{ fontSize: "22px", color: "rgba(255,255,255,0.08)", fontStyle: "italic", userSelect: "none" }}>{m.initials}</span>
-                    </div>
-                    <p className="font-sans" style={{ fontSize: "11px", fontWeight: 600, color: "rgba(255,255,255,0.65)", marginTop: "7px", letterSpacing: "0.01em" }}>{m.name}</p>
-                    <p className="font-sans" style={{ fontSize: "9px", color: "#C4431B", marginTop: "2px", letterSpacing: "0.04em", textTransform: "uppercase" }}>{m.title}</p>
+                  {/* Name + title */}
+                  <div>
+                    <p className="font-sans" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.7)", lineHeight: 1.2 }}>{m.name}</p>
+                    <p className="font-sans" style={{ fontSize: "10px", color: "rgba(255,255,255,0.28)", marginTop: "3px", letterSpacing: "0.03em" }}>{m.title}</p>
                   </div>
-                ))}
-              </div>
-
+                </div>
+              ))}
             </div>
           </div>
         </div>

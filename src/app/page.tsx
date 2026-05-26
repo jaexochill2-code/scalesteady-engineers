@@ -844,23 +844,21 @@ export default function Home() {
           <div style={{ maxWidth: "680px" }}>
             <p
               className="font-sans"
-              style={{ fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: "1.85", color: "rgba(255,255,255,0.45)" }}
+              style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "rgba(255,255,255,0.6)", fontWeight: 500 }}
             >
-              Hiring us means working with a small team with two years of running this exact system -- on their own outreach and for every client they have taken on.
+              We are five people. That matters more than it sounds.
             </p>
 
             <p
               className="font-sans"
-              style={{ fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: "1.85", color: "rgba(255,255,255,0.45)", marginTop: "clamp(16px, 2vw, 22px)" }}
+              style={{ fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: "1.85", color: "rgba(255,255,255,0.42)", marginTop: "clamp(16px, 2vw, 22px)" }}
             >
-              We run the day-to-day ourselves.{" "}
-              <strong style={{ color: "rgba(255,255,255,0.75)", fontWeight: 500 }}>The same five people</strong>{" "}
-              who set up your domains, wrote your sequences, and identified your contacts are the ones reading your replies on a Tuesday. You step directly into a strict, structured workflow -- the same one we have run for two years, and the same one our clients are booking meetings from right now.
+              Because it means you are not handed to a team. You are plugged directly into the same strict, battle-tested workflow we run on our own outreach -- the same sequences, the same domain setup, the same reply management -- that our clients have been booking meetings from for two years.
             </p>
 
             <p
               className="font-sans"
-              style={{ fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: "1.85", color: "rgba(255,255,255,0.45)", marginTop: "clamp(16px, 2vw, 22px)" }}
+              style={{ fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: "1.85", color: "rgba(255,255,255,0.42)", marginTop: "clamp(16px, 2vw, 22px)" }}
             >
               No account manager. No junior who inherited your file. No one who says &ldquo;let me loop in the team.&rdquo;
             </p>

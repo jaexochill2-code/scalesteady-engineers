@@ -243,7 +243,7 @@ export default function Home() {
             className="font-serif font-normal"
             style={{ fontSize: "clamp(28px, 3.8vw, 48px)", lineHeight: "1.14", letterSpacing: "-0.02em", color: "#0D2B4A", marginBottom: "24px" }}
           >
-            ScaleSteady builds the outreach system that keeps your pipeline full.
+            We build the outreach system that keeps your pipeline full.
             We take you from depending on word of mouth to knowing exactly where
             your next customer is coming from.
           </h2>

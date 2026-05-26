@@ -546,39 +546,47 @@ export default function Home() {
 
             {/* RIGHT: Team -- small headshots, byline style */}
             <div style={{ display: "flex", flexDirection: "column", gap: "18px", alignSelf: "center" }}>
+
+              {/* Emma Hawthorne -- real photo */}
+              <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                <div style={{ width: "52px", height: "52px", borderRadius: "50%", flexShrink: 0, border: "1px solid rgba(255,255,255,0.09)", overflow: "hidden" }}>
+                  <img src="/team/emma.jpg" alt="Emma Hawthorne" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
+                </div>
+                <div>
+                  <p className="font-sans" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.7)", lineHeight: 1.2 }}>Emma Hawthorne</p>
+                  <p className="font-sans" style={{ fontSize: "10px", color: "rgba(255,255,255,0.28)", marginTop: "3px", letterSpacing: "0.03em" }}>Co-Founder · Email Infrastructure</p>
+                </div>
+              </div>
+
+              {/* Fred Khong -- real photo */}
+              <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                <div style={{ width: "52px", height: "52px", borderRadius: "50%", flexShrink: 0, border: "1px solid rgba(255,255,255,0.09)", overflow: "hidden" }}>
+                  <img src="/team/fred.png" alt="Fred Khong" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
+                </div>
+                <div>
+                  <p className="font-sans" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.7)", lineHeight: 1.2 }}>Fred Khong</p>
+                  <p className="font-sans" style={{ fontSize: "10px", color: "rgba(255,255,255,0.28)", marginTop: "3px", letterSpacing: "0.03em" }}>Co-Founder · Client Care</p>
+                </div>
+              </div>
+
+              {/* Amy, Brandon, David -- placeholders */}
               {[
-                { initials: "EH", name: "Emma Hawthorne", title: "Co-Founder · Email Infrastructure" },
-                { initials: "FK", name: "Fred Khong",     title: "Co-Founder · Client Care" },
                 { initials: "AC", name: "Amy Chen",       title: "Messaging & Marketing" },
                 { initials: "BM", name: "Brandon Mercer", title: "IT & Deliverability" },
                 { initials: "DC", name: "David Chang",    title: "AI & Sequence Automation" },
               ].map((m) => (
                 <div key={m.initials} style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-                  {/* Headshot circle -- swap contents with real <img> when available */}
-                  <div
-                    style={{
-                      width: "52px",
-                      height: "52px",
-                      borderRadius: "50%",
-                      flexShrink: 0,
-                      background: "linear-gradient(145deg, rgba(196,67,27,0.12) 0%, rgba(255,255,255,0.04) 100%)",
-                      border: "1px solid rgba(255,255,255,0.09)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      overflow: "hidden",
-                    }}
-                  >
-                    {/* <img src={`/team/${m.initials.toLowerCase()}.jpg`} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
+                  <div style={{ width: "52px", height: "52px", borderRadius: "50%", flexShrink: 0, background: "linear-gradient(145deg, rgba(196,67,27,0.12) 0%, rgba(255,255,255,0.04) 100%)", border: "1px solid rgba(255,255,255,0.09)", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+                    {/* <img src={`/team/${m.name.split(" ")[0].toLowerCase()}.jpg`} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
                     <span className="font-sans" style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.22)", letterSpacing: "0.04em" }}>{m.initials}</span>
                   </div>
-                  {/* Name + title */}
                   <div>
                     <p className="font-sans" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.7)", lineHeight: 1.2 }}>{m.name}</p>
                     <p className="font-sans" style={{ fontSize: "10px", color: "rgba(255,255,255,0.28)", marginTop: "3px", letterSpacing: "0.03em" }}>{m.title}</p>
                   </div>
                 </div>
               ))}
+
             </div>
           </div>
         </div>

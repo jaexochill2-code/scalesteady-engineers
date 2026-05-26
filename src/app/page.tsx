@@ -479,35 +479,103 @@ export default function Home() {
       </section>
 
       {/* ── 4TH WALL ── */}
-      <section style={{ background: "#060F21", borderTop: "1px solid rgba(255,255,255,0.04)", padding: "clamp(48px, 5vw, 72px) 0" }}>
+      <section style={{ background: "#060F21", borderTop: "1px solid rgba(255,255,255,0.04)", padding: "clamp(56px, 6vw, 80px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(40px, 6vw, 80px)", alignItems: "center" }}>
 
-          <p
-            className="font-sans"
-            style={{
-              fontSize: "clamp(14px, 1.5vw, 17px)",
-              lineHeight: "1.8",
-              color: "rgba(255,255,255,0.45)",
-              maxWidth: "560px",
-            }}
-          >
-            We are 5 people. Highly caffeinated, hands-on, obsessed with cold email. When you work with us you work with{" "}
-            <strong style={{ color: "rgba(255,255,255,0.75)", fontWeight: 500 }}>us</strong> -- not an account manager, not an SDR, not a junior who inherited your account. The same 5 people who warm your domains, write your sequences, and read every reply.
-          </p>
+            {/* LEFT: Copy + anchor */}
+            <div>
+              <p
+                className="font-sans"
+                style={{
+                  fontSize: "clamp(14px, 1.5vw, 17px)",
+                  lineHeight: "1.85",
+                  color: "rgba(255,255,255,0.45)",
+                }}
+              >
+                We are 5 people. Highly caffeinated, hands-on, obsessed with cold email. When you work with us you work with{" "}
+                <strong style={{ color: "rgba(255,255,255,0.78)", fontWeight: 500 }}>us</strong>{" "}
+                -- not an account manager, not an SDR, not a junior who inherited your account. The same 5 people who warm your domains, write your sequences, and read every reply.
+              </p>
 
-          <p
-            className="font-serif italic"
-            style={{
-              fontSize: "clamp(20px, 2.6vw, 32px)",
-              lineHeight: "1.3",
-              color: "rgba(255,255,255,0.88)",
-              maxWidth: "600px",
-              marginTop: "clamp(28px, 3.5vw, 44px)",
-            }}
-          >
-            If we are booking meetings, you are booking meetings.
-          </p>
+              <p
+                className="font-serif italic"
+                style={{
+                  fontSize: "clamp(20px, 2.6vw, 30px)",
+                  lineHeight: "1.3",
+                  color: "rgba(255,255,255,0.88)",
+                  marginTop: "clamp(28px, 3.5vw, 44px)",
+                }}
+              >
+                If we are booking meetings, you are booking meetings.
+              </p>
+            </div>
 
+            {/* RIGHT: Team roster */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+
+              {/* Row 1 -- Co-founders */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+                {[
+                  { initials: "EH", name: "Emma Hawthorne", title: "Co-Founder · Email Infrastructure" },
+                  { initials: "FK", name: "Fred Khong",     title: "Co-Founder · Client Care" },
+                ].map((m) => (
+                  <div key={m.initials}>
+                    <div
+                      style={{
+                        background: "linear-gradient(160deg, rgba(196,67,27,0.07) 0%, rgba(255,255,255,0.02) 100%)",
+                        border: "1px solid rgba(255,255,255,0.07)",
+                        borderRadius: "3px",
+                        aspectRatio: "3 / 4",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        overflow: "hidden",
+                        position: "relative",
+                      }}
+                    >
+                      {/* swap src below with real photo */}
+                      {/* <img src="/team/emma.jpg" alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
+                      <span className="font-serif" style={{ fontSize: "28px", color: "rgba(255,255,255,0.1)", fontStyle: "italic", userSelect: "none" }}>{m.initials}</span>
+                    </div>
+                    <p className="font-sans" style={{ fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.72)", marginTop: "8px", letterSpacing: "0.01em" }}>{m.name}</p>
+                    <p className="font-sans" style={{ fontSize: "10px", color: "#C4431B", marginTop: "2px", letterSpacing: "0.04em", textTransform: "uppercase" }}>{m.title}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Row 2 -- Team */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "12px" }}>
+                {[
+                  { initials: "AC", name: "Amy Chen",       title: "Messaging & Marketing" },
+                  { initials: "BM", name: "Brandon Mercer", title: "IT & Deliverability" },
+                  { initials: "DC", name: "David Chang",    title: "AI & Sequence Automation" },
+                ].map((m) => (
+                  <div key={m.initials}>
+                    <div
+                      style={{
+                        background: "linear-gradient(160deg, rgba(196,67,27,0.05) 0%, rgba(255,255,255,0.02) 100%)",
+                        border: "1px solid rgba(255,255,255,0.06)",
+                        borderRadius: "3px",
+                        aspectRatio: "3 / 4",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        overflow: "hidden",
+                      }}
+                    >
+                      {/* swap src below with real photo */}
+                      {/* <img src={`/team/${m.initials.toLowerCase()}.jpg`} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
+                      <span className="font-serif" style={{ fontSize: "22px", color: "rgba(255,255,255,0.08)", fontStyle: "italic", userSelect: "none" }}>{m.initials}</span>
+                    </div>
+                    <p className="font-sans" style={{ fontSize: "11px", fontWeight: 600, color: "rgba(255,255,255,0.65)", marginTop: "7px", letterSpacing: "0.01em" }}>{m.name}</p>
+                    <p className="font-sans" style={{ fontSize: "9px", color: "#C4431B", marginTop: "2px", letterSpacing: "0.04em", textTransform: "uppercase" }}>{m.title}</p>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </div>
         </div>
       </section>
 

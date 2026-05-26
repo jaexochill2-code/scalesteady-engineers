@@ -256,3 +256,8 @@ a { color: inherit; text-decoration: none; }
   .hero-cta-btn::after { display: none; }
   .service-card     { transition: none !important; }
 }
+
+/* ── STICKY MOBILE CTA: force hide on desktop ─ */
+@media (min-width: 1024px) {
+  .mobile-cta-bar { display: none !important; }
+}

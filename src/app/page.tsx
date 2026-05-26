@@ -830,7 +830,7 @@ export default function Home() {
       </section>
 
       {/* ── TEAM ── */}
-      <section id="team" style={{ background: "#03080F", padding: "clamp(72px, 8vw, 112px) 0" }}>
+      <section id="team" style={{ background: "#03080F", padding: "clamp(72px, 8vw, 96px) 0 clamp(56px, 6vw, 80px)" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           <p
@@ -902,7 +902,7 @@ export default function Home() {
           <div style={{ width: "40px", height: "1px", background: "rgba(255,255,255,0.1)", margin: "clamp(36px, 4.5vw, 56px) 0" }} />
 
           {/* Team thumbnails -- copy is the star, photos are the credit line */}
-          <div className="grid grid-cols-3 sm:grid-cols-5" style={{ gap: "10px" }}>
+          <div className="grid grid-cols-3 sm:grid-cols-5" style={{ gap: "10px", maxWidth: "720px" }}>
             {[
               { src: "/team/emma.jpg",    name: "Emma Hawthorne", title: "Co-Founder \u00b7 Email Infra",    scale: 1,    pos: "center top" },
               { src: "/team/fred.jpg",    name: "Fred Khong",     title: "Co-Founder \u00b7 Client Care",    scale: 1.45, pos: "center 12%" },
@@ -936,7 +936,7 @@ export default function Home() {
 
       {/* ── STICKY MOBILE CTA ── */}
       <div
-        className="lg:hidden fixed bottom-0 left-0 right-0 z-50"
+        className="mobile-cta-bar lg:hidden fixed bottom-0 left-0 right-0 z-50"
         style={{
           background: "rgba(5,13,28,0.96)",
           backdropFilter: "blur(10px)",

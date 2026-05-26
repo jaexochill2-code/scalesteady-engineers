@@ -837,7 +837,7 @@ export default function Home() {
             className="font-sans font-semibold uppercase"
             style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B", marginBottom: "clamp(32px, 4vw, 48px)" }}
           >
-            The people behind it
+            We are ScaleSteady
           </p>
 
           {/* Copy */}

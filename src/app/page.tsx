@@ -39,12 +39,13 @@ export default function Home() {
           <div className="hero-photo-reveal" style={{ height: "100%" }}>
             <Image
               src="/hero-team.jpeg"
-              alt="ScaleSteady Pipeline Engineers strategy session"
+              alt="ScaleSteady outbound infrastructure team"
               width={2752}
               height={1536}
               priority
               unoptimized
-              className="w-full h-full object-cover object-center block"
+              className="w-full h-full block"
+              style={{ objectFit: "contain", objectPosition: "center center", background: "#0D2B4A" }}
             />
             {/* Right-edge gradient — cream blend */}
             <div
@@ -195,35 +196,7 @@ export default function Home() {
 
       </section>
 
-      {/* ── CLIENT BAR — proof zone ── */}
-      <section
-        className="hidden lg:block"
-        style={{ background: "#FFFFFF", borderTop: "1px solid #E8E8E8", borderBottom: "1px solid #E8E8E8" }}
-      >
-        <div
-          className="mx-auto px-8 sm:px-12 lg:px-24 flex items-center gap-4"
-          style={{ maxWidth: "1280px", paddingTop: "18px", paddingBottom: "18px" }}
-        >
-          <span
-            className="font-sans font-semibold uppercase flex-shrink-0"
-            style={{ fontSize: "10px", letterSpacing: "0.1em", color: "#C4C4C4" }}
-          >
-            Trusted by
-          </span>
-          <div style={{ width: "1px", height: "16px", background: "#E8E8E8", flexShrink: 0 }} />
-          <div className="flex items-center gap-10 xl:gap-16">
-            {CLIENTS.map((n) => (
-              <span
-                key={n}
-                className="font-sans font-medium uppercase"
-                style={{ fontSize: "11px", letterSpacing: "0.07em", color: "#ABABAB" }}
-              >
-                {n}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* BRIDGE */}
       <section style={{ background: "#FAF8F6", padding: "clamp(56px, 7vw, 96px) 0" }}>

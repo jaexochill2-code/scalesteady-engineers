@@ -557,18 +557,18 @@ export default function Home() {
 
           {/* Headline */}
           <h2
-            className="font-serif font-bold mb-6"
-            style={{ fontSize: "clamp(30px, 3.8vw, 50px)", lineHeight: "1.1", color: "#111111", maxWidth: "620px" }}
+            className="font-serif font-bold mb-5"
+            style={{ fontSize: "clamp(36px, 4.5vw, 58px)", lineHeight: "1.08", color: "#111111" }}
           >
-            The average local service client is worth $3,000 to $15,000. Do the math.
+            One new client pays for this.
           </h2>
 
           {/* ROI strip */}
           <p
             className="font-sans mb-16"
-            style={{ fontSize: "13px", color: "#6B6B6B", borderLeft: "2px solid #E8E8E8", paddingLeft: "16px" }}
+            style={{ fontSize: "13px", color: "#6B6B6B", borderLeft: "2px solid #C4431B", paddingLeft: "14px" }}
           >
-            Email averages $36 returned for every $1 spent. Source: Litmus State of Email, 2024.
+            $36 returned per $1 spent on email. Litmus, 2024.
           </p>
 
           {/* Cards */}

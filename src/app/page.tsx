@@ -36,7 +36,7 @@ export default function Home() {
         {/* Image pane */}
         <div
           className="hero-image-pane absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block"
-          style={{ width: "58%", height: "100%" }}
+          style={{ width: "48%", height: "100%" }}
         >
           {/* hero-photo-reveal: inner wrapper avoids transform conflict with -translate-y-1/2 on outer pane */}
           <div className="hero-photo-reveal" style={{ height: "100%" }}>
@@ -50,21 +50,26 @@ export default function Home() {
               className="w-full h-full object-cover block"
               style={{ objectPosition: "70% center" }}
             />
-            {/* Right-edge gradient — cream blend */}
+            {/* Right-edge gradient — cinematic cream blend */}
             <div
               className="absolute inset-y-0 right-0"
               style={{
-                width: "22%",
-                background: "linear-gradient(to right, transparent 0%, rgba(250,248,246,0.5) 55%, #FAF8F6 100%)",
+                width: "38%",
+                background: "linear-gradient(to right, transparent 0%, rgba(250,248,246,0.3) 35%, rgba(250,248,246,0.85) 70%, #FAF8F6 100%)",
               }}
             />
           </div>
         </div>
 
-        {/* Cream panel — right 42% */}
+        {/* Cream panel — right 52% with subtle dot-grid texture */}
         <div
           className="absolute inset-y-0 right-0 hidden lg:block"
-          style={{ width: "42%", background: "#FAF8F6" }}
+          style={{
+            width: "52%",
+            background: "#FAF8F6",
+            backgroundImage: "radial-gradient(circle, rgba(180,160,140,0.12) 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+          }}
         />
 
         {/* Content */}
@@ -75,21 +80,21 @@ export default function Home() {
 
           {/* Desktop copy */}
           <div
-            className="hidden lg:flex flex-col justify-center h-full px-12 xl:px-16 2xl:px-20 relative"
-            style={{ width: "42%", paddingLeft: "clamp(40px, 3.5vw, 64px)" }}
+            className="hidden lg:flex flex-col justify-center h-full relative"
+            style={{ width: "52%", paddingLeft: "clamp(56px, 5vw, 88px)", paddingRight: "clamp(40px, 4vw, 72px)" }}
           >
-            {/* Terracotta brand rule — anchored accent, stops at natural content boundary */}
+            {/* Terracotta brand rule — tall, anchored left */}
             <div
               className="absolute left-0"
-              style={{ top: "50%", transform: "translateY(-50%)", width: "3px", height: "260px", background: "#C4431B" }}
+              style={{ top: "50%", transform: "translateY(-50%)", width: "4px", height: "320px", background: "linear-gradient(to bottom, transparent 0%, #C4431B 20%, #C4431B 80%, transparent 100%)" }}
             />
 
             <h1
               className="font-serif font-normal"
               style={{
-                fontSize: "clamp(42px, 5vw, 80px)",
-                lineHeight: "1.08",
-                letterSpacing: "-0.02em",
+                fontSize: "clamp(52px, 7vw, 110px)",
+                lineHeight: "1.04",
+                letterSpacing: "-0.03em",
                 color: "#0D2B4A",
               }}
             >
@@ -100,23 +105,23 @@ export default function Home() {
 
             <p
               className="font-sans hero-body-copy mt-6"
-              style={{ fontSize: "17px", lineHeight: "1.72", color: "#3D3D3D", maxWidth: "340px" }}
+              style={{ fontSize: "18px", lineHeight: "1.7", color: "#5A5A5A", maxWidth: "420px", fontWeight: 400 }}
             >
               We build the same system for your business.
             </p>
 
-            {/* CTA zone — enters as unit after body copy */}
-            <div className="hero-cta-wrap mt-8">
+            {/* CTA zone */}
+            <div className="hero-cta-wrap mt-8" style={{ maxWidth: "420px" }}>
               <Link
                 href="/contact"
-                className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold transition-all duration-300"
+                className="hero-cta-btn flex items-center justify-center font-sans font-semibold transition-all duration-300 w-full"
                 style={{
                   fontSize: "12px",
-                  letterSpacing: "0.08em",
+                  letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   color: "#FFFFFF",
                   background: "#1B4F8A",
-                  padding: "18px 44px",
+                  padding: "20px 44px",
                   borderRadius: "0px",
                 }}
               >
@@ -128,6 +133,27 @@ export default function Home() {
               >
                 15 minutes. No commitment.
               </p>
+
+              {/* Stat chips — visual trust row */}
+              <div
+                className="flex items-center gap-0 mt-6"
+                style={{ borderTop: "1px solid rgba(13,43,74,0.1)", paddingTop: "20px" }}
+              >
+                <div className="flex flex-col" style={{ paddingRight: "20px" }}>
+                  <span style={{ fontSize: "22px", fontWeight: 700, color: "#0D2B4A", letterSpacing: "-0.03em", lineHeight: 1 }}>97.6%</span>
+                  <span style={{ fontSize: "10px", color: "#9E9E9E", letterSpacing: "0.07em", textTransform: "uppercase", marginTop: "4px" }}>inbox rate</span>
+                </div>
+                <div style={{ width: "1px", height: "32px", background: "rgba(13,43,74,0.12)", flexShrink: 0 }} />
+                <div className="flex flex-col" style={{ padding: "0 20px" }}>
+                  <span style={{ fontSize: "22px", fontWeight: 700, color: "0D2B4A", letterSpacing: "-0.03em", lineHeight: 1 }}>$0.04</span>
+                  <span style={{ fontSize: "10px", color: "#9E9E9E", letterSpacing: "0.07em", textTransform: "uppercase", marginTop: "4px" }}>per contact</span>
+                </div>
+                <div style={{ width: "1px", height: "32px", background: "rgba(13,43,74,0.12)", flexShrink: 0 }} />
+                <div className="flex flex-col" style={{ paddingLeft: "20px" }}>
+                  <span style={{ fontSize: "22px", fontWeight: 700, color: "#0D2B4A", letterSpacing: "-0.03em", lineHeight: 1 }}>60</span>
+                  <span style={{ fontSize: "10px", color: "#9E9E9E", letterSpacing: "0.07em", textTransform: "uppercase", marginTop: "4px" }}>day ramp</span>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -202,23 +228,31 @@ export default function Home() {
 
 
       {/* ── THE OUTBOUND TRUTHS ── */}
-      <section id="approach" style={{ background: "#FAF8F6", padding: "clamp(64px, 12vw, 160px) 0" }}>
-        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "800px" }}>
-          
+      <section id="approach" style={{ background: "#FAF8F6", padding: "clamp(72px, 12vw, 160px) 0 clamp(64px, 10vw, 140px)" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "860px" }}>
+
+          {/* Section eyebrow */}
+          <div
+            className="font-sans mb-10"
+            style={{ fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(13,43,74,0.35)", fontWeight: 600 }}
+          >
+            01 &mdash; The Case for Outbound
+          </div>
+
           {/* Left-anchored accent border + tactile hover focus group */}
-          <div className="focus-group flex flex-col gap-8 border-l-[3px] pl-8 sm:pl-10" style={{ borderColor: "#C4431B" }}>
+          <div className="focus-group flex flex-col gap-8 border-l-[3px] pl-8 sm:pl-12" style={{ borderColor: "#C4431B" }}>
             
             <p
               className="font-sans"
               style={{
-                fontSize: "clamp(28px, 3.8vw, 46px)",
-                lineHeight: "1.25",
+                fontSize: "clamp(32px, 4.5vw, 60px)",
+                lineHeight: "1.18",
                 color: "#0D2B4A",
                 fontWeight: 400,
-                letterSpacing: "-0.02em",
+                letterSpacing: "-0.03em",
               }}
             >
-              Outbound is the single most predictable way to acquire clients -- because you control the <strong style={{ color: "#C4431B", fontWeight: 600 }}>volume, the targeting, and the math</strong>.
+              Outbound is the single most predictable way to acquire clients -- because you control the <strong style={{ color: "#C4431B", fontWeight: 700 }}>volume, the targeting, and the math</strong>.
             </p>
 
             <p

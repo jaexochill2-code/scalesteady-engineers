@@ -250,6 +250,7 @@ export default function Home() {
               </div>
 
               <ul className="flex flex-col gap-6 font-sans" style={{ fontSize: "14.5px" }}>
+                {/* Pain 1: Ad cost */}
                 <li className="flex items-start gap-3">
                   <span style={{ color: "#CCCCCC", marginTop: "2px", flexShrink: 0 }}>—</span>
                   <span style={{ color: "#777777" }}>
@@ -261,13 +262,15 @@ export default function Home() {
                     </span>
                   </span>
                 </li>
+                {/* Pain 2: Unpredictable pipeline */}
                 <li className="flex items-start gap-3">
                   <span style={{ color: "#CCCCCC", marginTop: "2px", flexShrink: 0 }}>—</span>
-                  <span style={{ color: "#777777" }}>New work depends on who calls this week. Good months and slow months — <strong style={{ color: "#555555" }}>no switch you can flip.</strong></span>
+                  <span style={{ color: "#777777" }}>Work comes in when it comes in. Slow week? <strong style={{ color: "#555555" }}>There&apos;s no switch to flip.</strong></span>
                 </li>
+                {/* Pain 3: Growth requires your time */}
                 <li className="flex items-start gap-3">
                   <span style={{ color: "#CCCCCC", marginTop: "2px", flexShrink: 0 }}>—</span>
-                  <span style={{ color: "#777777" }}>Want more clients? That means more of your own hours chasing them. Growth has a ceiling.</span>
+                  <span style={{ color: "#777777" }}>Want more work? That means more time <em>you</em> spend chasing it. You are the engine.</span>
                 </li>
               </ul>
             </div>
@@ -280,12 +283,13 @@ export default function Home() {
               </div>
 
               <ul className="flex flex-col gap-6 font-sans mb-8" style={{ fontSize: "14.5px" }}>
+                {/* Fix 1: Cost per contact */}
                 <li className="flex items-start gap-3">
                   <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span style={{ color: "#333333" }}>
-                    <strong style={{ color: "#111111" }}>$0.04 per contact</strong> — sent straight to the inbox of the person who signs the cheque.
+                    <strong style={{ color: "#111111" }}>$0.04 per contact</strong> — sent straight to the person who signs the cheque. No auction, no middleman.
                     <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#AAAAAA] hover:text-[#1B4F8A]">[?]
                       <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
                         <strong>Source:</strong> Smartlead &amp; Winnr 2026: amortised mailbox cost $120/mo for 10k sends. Validated B2B contact scrape at $0.025/record.
@@ -293,23 +297,25 @@ export default function Home() {
                     </span>
                   </span>
                 </li>
+                {/* Fix 2: Predictable bookings */}
                 <li className="flex items-start gap-3">
                   <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span style={{ color: "#333333" }}>Calls land on your calendar before the day starts. <strong style={{ color: "#111111" }}>98.4% of messages hit the primary inbox</strong> — not spam.
+                  <span style={{ color: "#333333" }}>Booked calls on your calendar before your day starts. <strong style={{ color: "#111111" }}>98.4% land in the primary inbox</strong> — not spam, not missed.
                     <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#AAAAAA] hover:text-[#1B4F8A]">[?]
                       <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
-                        <strong>Source:</strong> GlockApps 2026 Enterprise Outbound Audit: fully warmed multi-domain arrays hold 98.4% primary inbox placement rate.
+                        <strong>Source:</strong> GlockApps 2026 Enterprise Outbound Audit: fully warmed multi-domain infrastructure holds 98.4% primary inbox placement.
                       </span>
                     </span>
                   </span>
                 </li>
+                {/* Fix 3: You own it, not dependent on anyone */}
                 <li className="flex items-start gap-3">
                   <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  <span style={{ color: "#333333" }}>50+ sending domains, your contact list, your system. <strong style={{ color: "#111111" }}>No one can take it away from you.</strong></span>
+                  <span style={{ color: "#333333" }}>We build the infrastructure <strong style={{ color: "#111111" }}>into your business.</strong> Not rented from Google. Not managed by an agency. Yours to keep.</span>
                 </li>
               </ul>
 

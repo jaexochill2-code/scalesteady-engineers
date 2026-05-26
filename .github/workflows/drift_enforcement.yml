@@ -1,0 +1,27 @@
+name: DP-02 Drift Enforcement
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  drift-check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Execute DP-02 Drift Protocol
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      shell: pwsh
+      run: |
+        .github/scripts/ci_drift_check.ps1

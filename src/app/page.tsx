@@ -879,15 +879,24 @@ export default function Home() {
           {/* Team photos */}
           <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
             {[
-              { src: "/team/emma.jpg",    name: "Emma Hawthorne", title: "Co-Founder \u00b7 Email Infrastructure" },
-              { src: "/team/fred.jpg",    name: "Fred Khong",     title: "Co-Founder \u00b7 Client Care" },
-              { src: "/team/amy.jpg",     name: "Amy Chen",       title: "Messaging & Marketing" },
-              { src: "/team/brandon.jpg", name: "Brandon Mercer", title: "IT & Deliverability" },
-              { src: "/team/david.jpg",   name: "David Chang",    title: "AI & Sequence Automation" },
+              { src: "/team/emma.jpg",    name: "Emma Hawthorne", title: "Co-Founder \u00b7 Email Infrastructure", scale: 1,    pos: "center top" },
+              { src: "/team/fred.jpg",    name: "Fred Khong",     title: "Co-Founder \u00b7 Client Care",         scale: 1.45, pos: "center 12%" },
+              { src: "/team/amy.jpg",     name: "Amy Chen",       title: "Messaging & Marketing",                 scale: 1.28, pos: "center 8%"  },
+              { src: "/team/brandon.jpg", name: "Brandon Mercer", title: "IT & Deliverability",                   scale: 1,    pos: "center top" },
+              { src: "/team/david.jpg",   name: "David Chang",    title: "AI & Sequence Automation",              scale: 1,    pos: "center top" },
             ].map((m) => (
               <div key={m.name} style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                 <div style={{ width: "160px", height: "160px", overflow: "hidden", borderRadius: "2px", flexShrink: 0 }}>
-                  <img src={m.src} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
+                  <img
+                    className="team-photo"
+                    src={m.src}
+                    alt={m.name}
+                    style={{
+                      objectPosition: m.pos,
+                      transform: m.scale !== 1 ? `scale(${m.scale})` : undefined,
+                      transformOrigin: "center top",
+                    }}
+                  />
                 </div>
                 <div>
                   <p className="font-sans" style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.82)", lineHeight: 1.3 }}>{m.name}</p>

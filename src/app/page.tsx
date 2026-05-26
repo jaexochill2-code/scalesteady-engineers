@@ -228,47 +228,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── BRIDGE: Authority + Identity Offer ── */}
-      <section style={{ background: "#FAF8F6", padding: "clamp(64px, 8vw, 112px) 0" }}>
-        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "800px" }}>
+      {/* ── BRIDGE ── */}
+      <section style={{ background: "#FAF8F6", padding: "clamp(56px, 7vw, 96px) 0" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "720px" }}>
 
           <p
             className="font-sans font-semibold uppercase"
-            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B", marginBottom: "28px" }}
+            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B", marginBottom: "24px" }}
           >
-            Outbound Infrastructure — Est. 2 Years
+            Outbound Infrastructure Specialists
           </p>
 
           <h2
             className="font-serif font-normal"
-            style={{ fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.12", letterSpacing: "-0.02em", color: "#0D2B4A", marginBottom: "28px" }}
+            style={{ fontSize: "clamp(28px, 3.8vw, 48px)", lineHeight: "1.14", letterSpacing: "-0.02em", color: "#0D2B4A", marginBottom: "24px" }}
           >
-            ScaleSteady is an outbound infrastructure company.
-            We specialize in moving service businesses from{" "}
-            <span style={{ color: "rgba(13,43,74,0.3)", textDecoration: "line-through", textDecorationColor: "rgba(13,43,74,0.15)", fontStyle: "italic" }}>referral-dependent</span>
-            {" "}to{" "}
-            <span style={{ color: "#C4431B", fontStyle: "italic" }}>system-powered.</span>
+            ScaleSteady builds outbound systems for service businesses.
+            We move you from{" "}
+            <span style={{ textDecoration: "line-through", color: "rgba(13,43,74,0.3)" }}>referral-dependent</span>
+            {" "}to system-powered.
           </h2>
 
           <p
             className="font-sans"
-            style={{ fontSize: "17px", lineHeight: "1.78", color: "#4A4A4A", marginBottom: "20px" }}
+            style={{ fontSize: "16px", lineHeight: "1.75", color: "#4A4A4A", marginBottom: "16px" }}
           >
-            For two years, we have built outbound systems for small service businesses — the
-            sending infrastructure, the data layer, the automation. Over 40 systems deployed.
-            Every client we work with goes from waiting on referrals to owning a pipeline that
-            fills their calendar without them chasing a single lead.
+            We have been doing this for two years. Over 40 businesses. We build the email
+            infrastructure, pull the right prospect data, and automate what happens when
+            someone replies. Your calendar fills. You stop waiting on referrals.
           </p>
 
           <p
             className="font-sans"
-            style={{ fontSize: "17px", lineHeight: "1.78", color: "#4A4A4A" }}
+            style={{ fontSize: "16px", lineHeight: "1.75", color: "#4A4A4A" }}
           >
-            We are not an agency. We do not manage campaigns on your behalf and send you a
-            monthly report. We build the infrastructure directly into your business — the
-            domains, the data, the sequences. When the engagement ends, it is yours.
-            You are not dependent on us, not dependent on Google, not under any
-            platform&apos;s mercy. That is the point.
+            We are not an agency. When we are done, everything is yours. The domains,
+            the lists, the sequences. You own it. No retainer. No dependency. Not on us,
+            not on any platform.
           </p>
 
         </div>

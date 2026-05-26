@@ -481,9 +481,9 @@ export default function Home() {
       {/* ── 4TH WALL ── */}
       <section style={{ background: "#060F21", borderTop: "1px solid rgba(255,255,255,0.04)", padding: "clamp(56px, 6vw, 80px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
-          <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(40px, 6vw, 80px)", alignItems: "center" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(48px, 7vw, 96px)", alignItems: "center" }}>
 
-            {/* LEFT: Copy + anchor */}
+            {/* LEFT: The copy */}
             <div>
               <p
                 className="font-sans"
@@ -493,9 +493,24 @@ export default function Home() {
                   color: "rgba(255,255,255,0.45)",
                 }}
               >
-                We are 5 people. Highly caffeinated, hands-on, obsessed with cold email. When you work with us you work with{" "}
-                <strong style={{ color: "rgba(255,255,255,0.78)", fontWeight: 500 }}>us</strong>{" "}
-                -- not an account manager, not an SDR, not a junior who inherited your account. The same 5 people who warm your domains, write your sequences, and read every reply.
+                Most vendors win the deal and hand you to someone else.
+                The person who sold you never touches your account again.{" "}
+                <strong style={{ color: "rgba(255,255,255,0.75)", fontWeight: 500 }}>
+                  We are 5 people.
+                </strong>{" "}
+                The same person who built your sequence reads your replies. The same person who warmed your domains rewrites your subject line when it underperforms. No handoff. No escalation path. Just the people who built it.
+              </p>
+
+              <p
+                className="font-sans"
+                style={{
+                  fontSize: "clamp(13px, 1.3vw, 15px)",
+                  lineHeight: "1.75",
+                  color: "rgba(255,255,255,0.28)",
+                  marginTop: "clamp(20px, 2.5vw, 28px)",
+                }}
+              >
+                We run this exact system on our own outreach. Which means your reply rate is our report card too.
               </p>
 
               <p
@@ -509,9 +524,27 @@ export default function Home() {
               >
                 If we are booking meetings, you are booking meetings.
               </p>
+
+              <a
+                href="/team"
+                className="font-sans"
+                style={{
+                  display: "inline-block",
+                  fontSize: "12px",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: "#C4431B",
+                  marginTop: "clamp(20px, 2.5vw, 28px)",
+                  textDecoration: "none",
+                  borderBottom: "1px solid rgba(196,67,27,0.3)",
+                  paddingBottom: "2px",
+                }}
+              >
+                Meet the team
+              </a>
             </div>
 
-            {/* RIGHT: Team roster */}
+            {/* RIGHT: Team roster -- placeholder frames */}
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
 
               {/* Row 1 -- Co-founders */}
@@ -531,11 +564,9 @@ export default function Home() {
                         alignItems: "center",
                         justifyContent: "center",
                         overflow: "hidden",
-                        position: "relative",
                       }}
                     >
-                      {/* swap src below with real photo */}
-                      {/* <img src="/team/emma.jpg" alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
+                      {/* Replace comment with: <img src="/team/emma.jpg" alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
                       <span className="font-serif" style={{ fontSize: "28px", color: "rgba(255,255,255,0.1)", fontStyle: "italic", userSelect: "none" }}>{m.initials}</span>
                     </div>
                     <p className="font-sans" style={{ fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.72)", marginTop: "8px", letterSpacing: "0.01em" }}>{m.name}</p>
@@ -564,8 +595,7 @@ export default function Home() {
                         overflow: "hidden",
                       }}
                     >
-                      {/* swap src below with real photo */}
-                      {/* <img src={`/team/${m.initials.toLowerCase()}.jpg`} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
+                      {/* Replace comment with: <img src="/team/[name].jpg" alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
                       <span className="font-serif" style={{ fontSize: "22px", color: "rgba(255,255,255,0.08)", fontStyle: "italic", userSelect: "none" }}>{m.initials}</span>
                     </div>
                     <p className="font-sans" style={{ fontSize: "11px", fontWeight: 600, color: "rgba(255,255,255,0.65)", marginTop: "7px", letterSpacing: "0.01em" }}>{m.name}</p>

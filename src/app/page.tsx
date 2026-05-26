@@ -478,51 +478,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 4TH WALL ── */}
-      <section style={{ background: "#060F21", borderTop: "1px solid rgba(255,255,255,0.04)", padding: "clamp(72px, 8vw, 112px) 0" }}>
-        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "860px" }}>
-
-          <p
-            className="font-sans"
-            style={{
-              fontSize: "clamp(14px, 1.5vw, 17px)",
-              lineHeight: "1.85",
-              color: "rgba(255,255,255,0.45)",
-            }}
-          >
-            Most vendors win the deal and hand you to someone else.
-            The person who sold you never touches your account again.{" "}
-            <strong style={{ color: "rgba(255,255,255,0.75)", fontWeight: 500 }}>
-              We are 5 people.
-            </strong>{" "}
-            The same person who built your sequence reads your replies. The same person who warmed your domains rewrites your subject line when it underperforms. No handoff. No escalation path. Just the people who built it.
-          </p>
-
-          <p
-            className="font-sans"
-            style={{
-              fontSize: "clamp(13px, 1.3vw, 15px)",
-              lineHeight: "1.75",
-              color: "rgba(255,255,255,0.28)",
-              marginTop: "clamp(20px, 2.5vw, 28px)",
-            }}
-          >
-            We run this exact system on our own outreach. Which means your reply rate is our report card too.
-          </p>
-
-          <p
-            className="font-serif italic"
-            style={{
-              fontSize: "clamp(20px, 2.6vw, 30px)",
-              lineHeight: "1.3",
-              color: "rgba(255,255,255,0.88)",
-              marginTop: "clamp(28px, 3.5vw, 44px)",
-            }}
-          >
-            If we are booking meetings, you are booking meetings.
-          </p>
-        </div>
-      </section>
 
       {/* ── TESTIMONIALS ── */}
       <section style={{ background: "#FFFFFF", padding: "clamp(96px, 11vw, 160px) 0" }}>
@@ -875,16 +830,53 @@ export default function Home() {
       </section>
 
       {/* ── TEAM ── */}
-      <section style={{ background: "#03080F", padding: "clamp(48px, 5vw, 72px) 0" }}>
+      <section style={{ background: "#03080F", padding: "clamp(72px, 8vw, 112px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           <p
             className="font-sans font-semibold uppercase"
-            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B", marginBottom: "clamp(24px, 3vw, 36px)" }}
+            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B", marginBottom: "clamp(32px, 4vw, 48px)" }}
           >
             The people behind it
           </p>
 
+          {/* Copy */}
+          <div style={{ maxWidth: "680px" }}>
+            <p
+              className="font-sans"
+              style={{ fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: "1.85", color: "rgba(255,255,255,0.45)" }}
+            >
+              Hiring us means working with a small team of people who built this system on their own pipeline before running it for anyone else.
+            </p>
+
+            <p
+              className="font-sans"
+              style={{ fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: "1.85", color: "rgba(255,255,255,0.45)", marginTop: "clamp(16px, 2vw, 22px)" }}
+            >
+              We manage the day-to-day ourselves.{" "}
+              <strong style={{ color: "rgba(255,255,255,0.75)", fontWeight: 500 }}>The same five people</strong>{" "}
+              who set up your domains, wrote your sequences, and built your contact list are the ones reading your replies on a Tuesday. There is no account manager in between. No junior who inherited your file. No one who says &ldquo;let me loop in the team.&rdquo;
+            </p>
+
+            <p
+              className="font-sans"
+              style={{ fontSize: "clamp(14px, 1.5vw, 17px)", lineHeight: "1.85", color: "rgba(255,255,255,0.45)", marginTop: "clamp(16px, 2vw, 22px)" }}
+            >
+              The workflow we run for you is the same one we trust with our own name. We know when it breaks because we feel it first.
+            </p>
+
+            <p
+              className="font-serif italic"
+              style={{ fontSize: "clamp(20px, 2.6vw, 30px)", lineHeight: "1.3", color: "rgba(255,255,255,0.88)", marginTop: "clamp(28px, 3.5vw, 44px)" }}
+            >
+              If we are booking meetings, you are booking meetings.
+            </p>
+          </div>
+
+          {/* Divider */}
+          <div style={{ width: "40px", height: "1px", background: "rgba(255,255,255,0.1)", margin: "clamp(36px, 4.5vw, 56px) 0" }} />
+
+          {/* Team photos */}
           <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
             {[
               { src: "/team/emma.jpg",    name: "Emma Hawthorne", title: "Co-Founder \u00b7 Email Infrastructure" },

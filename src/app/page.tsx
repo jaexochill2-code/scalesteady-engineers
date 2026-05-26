@@ -679,7 +679,7 @@ export default function Home() {
                   className="font-sans font-semibold text-center"
                   style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#111111", border: "1px solid #111111", padding: "14px 24px", display: "block" }}
                 >
-                  Get started
+                  Build now
                 </a>
                 <a
                   href="/contact"
@@ -742,7 +742,7 @@ export default function Home() {
                   className="font-sans font-semibold text-center"
                   style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#0D2B4A", background: "#FFFFFF", padding: "14px 24px", display: "block" }}
                 >
-                  Get started
+                  Build now
                 </a>
                 <a
                   href="/contact"
@@ -794,7 +794,7 @@ export default function Home() {
                   className="font-sans font-semibold text-center"
                   style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#111111", border: "1px solid #111111", padding: "14px 24px", display: "block" }}
                 >
-                  Get started
+                  Build now
                 </a>
                 <a
                   href="/contact"

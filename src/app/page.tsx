@@ -257,7 +257,7 @@ export default function Home() {
                 letterSpacing: "-0.02em",
               }}
             >
-              The technology is ready -- the only question is whether you build this asset now, or wait until the market standard forces you to catch up.
+              The technology is ready -- the only question is whether you build this asset now, or <strong style={{ color: "#C4431B", fontWeight: 600 }}>wait until the market standard forces you to catch up.</strong>
             </p>
 
           </div>

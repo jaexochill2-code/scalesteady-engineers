@@ -4,6 +4,8 @@ import "./globals.css";
 import SmoothScroll from "@/components/client/SmoothScroll";
 import Navigation from "@/components/server/Navigation";
 import Footer from "@/components/server/Footer";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // High-contrast editorial serif -- authoritative, high-fashion, Ellevest-register
 const playfair = Playfair_Display({
@@ -75,6 +77,8 @@ export default function RootLayout({
           <Footer />
         </SmoothScroll>
 
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

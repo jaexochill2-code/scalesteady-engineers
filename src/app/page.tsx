@@ -906,7 +906,7 @@ export default function Home() {
               { src: "/team/fred.jpg",    name: "Fred Khong",     title: "Co-Founder \u00b7 Client Care",    scale: 1.45, pos: "center 12%" },
               { src: "/team/amy.jpg",     name: "Amy Chen",       title: "Messaging & Marketing",            scale: 1.28, pos: "center 8%"  },
               { src: "/team/brandon.jpg", name: "Brandon Mercer", title: "IT & Deliverability",              scale: 1,    pos: "center top" },
-              { src: "/team/david.jpg",   name: "David Chang",    title: "AI & Sequence Automation",         scale: 1,    pos: "center top" },
+              { src: "/team/david.jpg",   name: "Daniel Chang",    title: "AI \u0026 Sequence Automation",         scale: 1,    pos: "center top" },
             ].map((m) => (
               <div key={m.name} style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                 <div className="team-photo-wrap" style={{ width: "100%", aspectRatio: "1 / 1", overflow: "hidden", borderRadius: "2px" }}>

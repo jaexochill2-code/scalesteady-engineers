@@ -24,12 +24,18 @@ interface OnboardingForm {
   company_name: string;
   contact_name: string;
   contact_details: string;
-  email_names: string[];
-  icp_description: string;
-  brand_signature: string;
+  core_value_prop: string;
+  icp_vertical: string;
+  geographic_focus: string;
+  trigger_event: string;
+  pain_point: string;
+  cost_of_inaction: string;
+  competitor_alternative: string;
+  differentiation_hook: string;
   campaign_offer: string;
   core_deal_value: string;
   routing_destination: string;
+  email_names: string[];
 }
 
 export default function OnboardingPage() {
@@ -37,18 +43,21 @@ export default function OnboardingPage() {
     company_name: "",
     contact_name: "",
     contact_details: "",
-    email_names: ["", "", "", "", ""],
-    icp_description: "",
-    brand_signature: "",
+    core_value_prop: "",
+    icp_vertical: "",
+    geographic_focus: "",
+    trigger_event: "",
+    pain_point: "",
+    cost_of_inaction: "",
+    competitor_alternative: "",
+    differentiation_hook: "",
     campaign_offer: "",
     core_deal_value: "",
     routing_destination: "",
+    email_names: ["", "", "", "", ""],
   });
 
   // Dropdown & Helper Selection States to eliminate manual input friction
-  const [offerSelect, setOfferSelect] = useState<string>("");
-  const [offerCustom, setOfferCustom] = useState<string>("");
-
   const [routingSelect, setRoutingSelect] = useState<string>("");
   const [routingDetails, setRoutingDetails] = useState<string>("");
 
@@ -69,16 +78,6 @@ export default function OnboardingPage() {
             ? parsed.email_names 
             : prev.email_names,
         }));
-
-        if (parsed.campaign_offer) {
-          const matchedOffer = ["Free Outbound Strategy Audit (Recommended)", "Risk-Free 30-Day Pipeline Trial", "Free Initial Consultation & Pilot Run", "No Promotion (Raw value proposition only)"].find(o => o === parsed.campaign_offer);
-          if (matchedOffer) {
-            setOfferSelect(matchedOffer);
-          } else {
-            setOfferSelect("Custom Special Promotion");
-            setOfferCustom(parsed.campaign_offer);
-          }
-        }
 
         if (parsed.routing_destination) {
           const parts = parsed.routing_destination.split(": ");
@@ -104,14 +103,6 @@ export default function OnboardingPage() {
       console.error("Cache write failed:", e);
     }
   };
-
-  // Sync Offer selections into flat form field
-  useEffect(() => {
-    const value = offerSelect === "Custom Special Promotion" ? offerCustom : offerSelect;
-    if (value !== form.campaign_offer) {
-      handleChange("campaign_offer", value);
-    }
-  }, [offerSelect, offerCustom]);
 
   // Sync Routing selection and details into unified form field
   useEffect(() => {
@@ -142,16 +133,22 @@ export default function OnboardingPage() {
       form.company_name.trim().length > 0 &&
       form.contact_name.trim().length > 0 &&
       form.contact_details.trim().length > 0 &&
-      form.email_names.every((name) => name.trim().length > 0) &&
-      form.icp_description.trim().length > 0 &&
-      form.brand_signature.trim().length > 0 &&
+      form.core_value_prop.trim().length > 0 &&
+      form.icp_vertical.trim().length > 0 &&
+      form.geographic_focus.trim().length > 0 &&
+      form.trigger_event.trim().length > 0 &&
+      form.pain_point.trim().length > 0 &&
+      form.cost_of_inaction.trim().length > 0 &&
+      form.competitor_alternative.trim().length > 0 &&
+      form.differentiation_hook.trim().length > 0 &&
       form.campaign_offer.trim().length > 0 &&
       form.core_deal_value.trim().length > 0 &&
-      form.routing_destination.trim().length > 0;
+      form.routing_destination.trim().length > 0 &&
+      form.email_names.every((name) => name.trim().length > 0);
 
     if (!isFormComplete) {
       setStatus("error");
-      setErrorMsg("Please answer all 9 questions before submitting.");
+      setErrorMsg("Please answer all 15 diagnostic questions before submitting.");
       return;
     }
 
@@ -165,11 +162,11 @@ export default function OnboardingPage() {
           contact_name: form.contact_name,
           contact_details: form.contact_details,
           email_names: form.email_names,
-          icp_description: form.icp_description,
-          brand_signature: form.brand_signature,
+          icp_description: `Target Sector: ${form.icp_vertical}\nTrigger Event: ${form.trigger_event}\nBiggest Pain Point: ${form.pain_point}\nCost of Inaction: ${form.cost_of_inaction}`,
+          brand_signature: `Core Value Prop: ${form.core_value_prop}\nCompetitor Profile: ${form.competitor_alternative}\nUnfair Advantage: ${form.differentiation_hook}`,
           campaign_offer: form.campaign_offer,
           core_deal_value: form.core_deal_value,
-          geographic_target: "US (National)", // Satisfy db constraint in clean fallback
+          geographic_target: form.geographic_focus,
           routing_destination: form.routing_destination,
         },
       ]);
@@ -195,8 +192,14 @@ export default function OnboardingPage() {
     "company_name",
     "contact_name",
     "contact_details",
-    "icp_description",
-    "brand_signature",
+    "core_value_prop",
+    "icp_vertical",
+    "geographic_focus",
+    "trigger_event",
+    "pain_point",
+    "cost_of_inaction",
+    "competitor_alternative",
+    "differentiation_hook",
     "campaign_offer",
     "core_deal_value",
     "routing_destination",
@@ -543,12 +546,12 @@ export default function OnboardingPage() {
                 Progress
               </span>
               <span style={{ fontFamily: "var(--font-mono, monospace)", fontSize: "13px", color: COLORS.sapphire, fontWeight: 700 }}>
-                {completedCount} of 9 completed
+                {completedCount} of 15 completed
               </span>
             </div>
 
             {/* Progress dot row */}
-            <div style={{ display: "flex", gap: "8px", width: "100%", justifyContent: "space-between", marginBottom: "48px" }}>
+            <div style={{ display: "flex", gap: "6px", width: "100%", justifyContent: "space-between", marginBottom: "48px" }}>
               {checklistFields.map((field, idx) => {
                 const complete = isFieldComplete(field);
                 const active = activeField === field || (field === "email_names" && activeField?.startsWith("email_names"));
@@ -570,9 +573,9 @@ export default function OnboardingPage() {
               })}
             </div>
 
-            {/* SECTION 1: Your Business */}
+            {/* SECTION 1: Core Identity */}
             <div style={sectionHeaderStyle}>
-              1. Your Business
+              1. Core Identity
             </div>
 
             {/* Q1: Business Name */}
@@ -617,56 +620,170 @@ export default function OnboardingPage() {
               />
             </div>
 
-            {/* SECTION 2: Target Clients */}
+            {/* SECTION 2: Market Positioning */}
             <div style={sectionHeaderStyle}>
-              2. Target Clients
+              2. Market Positioning
             </div>
 
-            {/* Q4: ICP */}
-            <div style={questionGroupStyle(activeField === "icp_description", activeField !== null)}>
-              <label style={labelStyle(activeField === "icp_description")}>Who do you want to reach?</label>
-              <span style={helperStyle}>Describe your ideal clients—the ones who generate the most margin and are easiest to serve (e.g., local medical clinics, commercial roofers, etc.).</span>
-              <span style={insightStyle(activeField === "icp_description")}>
-                How it helps: We isolate and target contact records that match this exact description, filtering low-margin leads off your calendar.
+            {/* Q4: Core Value Proposition */}
+            <div style={questionGroupStyle(activeField === "core_value_prop", activeField !== null)}>
+              <label style={labelStyle(activeField === "core_value_prop")}>Core Value Proposition</label>
+              <span style={helperStyle}>If you had to explain your business to a busy, highly skeptical prospect in one simple sentence—without using industry jargon—what do they actually get?</span>
+              <span style={insightStyle(activeField === "core_value_prop")}>
+                How it helps (Kantar NeedScope): Outbound outreach has a 3-second window. Plain, honest B2B vocabulary drives trust and immediately hooks attention.
               </span>
               <textarea
                 required
-                value={form.icp_description}
-                onFocus={() => setActiveField("icp_description")}
+                value={form.core_value_prop}
+                onFocus={() => setActiveField("core_value_prop")}
                 onBlur={() => setActiveField(null)}
-                onChange={(e) => handleChange("icp_description", e.target.value)}
-                style={textareaStyle(activeField === "icp_description")}
+                onChange={(e) => handleChange("core_value_prop", e.target.value)}
+                style={textareaStyle(activeField === "core_value_prop")}
               />
             </div>
 
-            {/* SECTION 3: Offers & Outreach Identities */}
-            <div style={sectionHeaderStyle}>
-              3. Offers & Outreach Identities
+            {/* Q5: Target ICP Vertical */}
+            <div style={questionGroupStyle(activeField === "icp_vertical", activeField !== null)}>
+              <label style={labelStyle(activeField === "icp_vertical")}>Target Client Sector</label>
+              <span style={helperStyle}>What specific B2B sector, industry niche, or customer type represents your absolute best-margin clients?</span>
+              <span style={insightStyle(activeField === "icp_vertical")}>
+                How it helps (Qualtrics Segmentation): Focusing outbound energy exclusively on high-margin sweet spots prevents pipeline dilution and calendar fatigue.
+              </span>
+              <input
+                type="text"
+                required
+                value={form.icp_vertical}
+                onFocus={() => setActiveField("icp_vertical")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("icp_vertical", e.target.value)}
+                style={inputStyle(activeField === "icp_vertical")}
+              />
             </div>
 
-            {/* Q5: Brand Signature */}
-            <div style={questionGroupStyle(activeField === "brand_signature", activeField !== null)}>
-              <label style={labelStyle(activeField === "brand_signature")}>What makes your service different?</label>
-              <span style={helperStyle}>Describe your unique value or competitive advantage. Why do clients select you over general industry options?</span>
-              <span style={insightStyle(activeField === "brand_signature")}>
-                How it helps: Highlighting a single, undeniable competitive advantage in outbound campaigns drives a 3.2x increase in positive replies.
+            {/* Q6: Geographic Focus */}
+            <div style={questionGroupStyle(activeField === "geographic_focus", activeField !== null)}>
+              <label style={labelStyle(activeField === "geographic_focus")}>Geographic Focus</label>
+              <span style={helperStyle}>What specific cities, states, or regions do you want this outbound campaign to target?</span>
+              <span style={insightStyle(activeField === "geographic_focus")}>
+                How it helps: Geographically targeted copy allows us to reference hyper-local trust markers and local competitor context in outreach scripts.
+              </span>
+              <input
+                type="text"
+                required
+                value={form.geographic_focus}
+                onFocus={() => setActiveField("geographic_focus")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("geographic_focus", e.target.value)}
+                style={inputStyle(activeField === "geographic_focus")}
+              />
+            </div>
+
+            {/* SECTION 3: Behavioral Triggers & Urgency */}
+            <div style={sectionHeaderStyle}>
+              3. Behavioral Triggers & Urgency
+            </div>
+
+            {/* Q7: The Catalyst/Trigger Event */}
+            <div style={questionGroupStyle(activeField === "trigger_event", activeField !== null)}>
+              <label style={labelStyle(activeField === "trigger_event")}>The Catalyst / Trigger Event</label>
+              <span style={helperStyle}>What specific operational bottleneck, software failure, or administrative event usually forces a prospect to finally search for your service? What broke in their business today?</span>
+              <span style={insightStyle(activeField === "trigger_event")}>
+                How it helps (Ipsos Behavioral Insights): Outbound success relies on timing. Targeting buyers immediately after a critical trigger event drives a 4.6x increase in meetings.
               </span>
               <textarea
                 required
-                value={form.brand_signature}
-                onFocus={() => setActiveField("brand_signature")}
+                value={form.trigger_event}
+                onFocus={() => setActiveField("trigger_event")}
                 onBlur={() => setActiveField(null)}
-                onChange={(e) => handleChange("brand_signature", e.target.value)}
-                style={textareaStyle(activeField === "brand_signature")}
+                onChange={(e) => handleChange("trigger_event", e.target.value)}
+                style={textareaStyle(activeField === "trigger_event")}
               />
             </div>
 
-            {/* Q6: Specials / Promos (TextArea only, no dropdown) */}
+            {/* Q8: Primary Customer Headache */}
+            <div style={questionGroupStyle(activeField === "pain_point", activeField !== null)}>
+              <label style={labelStyle(activeField === "pain_point")}>Primary Customer Headache</label>
+              <span style={helperStyle}>What is the single biggest operational headache, financial leak, or frustration your target clients experience before they hire you?</span>
+              <span style={insightStyle(activeField === "pain_point")}>
+                How it helps (Qualtrics Journey Mapping): Addressing the prospect's day-to-day friction in outreach copy acts as a pattern interrupt, proving we understand their world.
+              </span>
+              <textarea
+                required
+                value={form.pain_point}
+                onFocus={() => setActiveField("pain_point")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("pain_point", e.target.value)}
+                style={textareaStyle(activeField === "pain_point")}
+              />
+            </div>
+
+            {/* Q9: The Cost of Inaction */}
+            <div style={questionGroupStyle(activeField === "cost_of_inaction", activeField !== null)}>
+              <label style={labelStyle(activeField === "cost_of_inaction")}>The Cost of Inaction</label>
+              <span style={helperStyle}>If a prospect decides to do nothing and stick with their current situation, what is the concrete financial cost or operational risk they face over the next 12 months?</span>
+              <span style={insightStyle(activeField === "cost_of_inaction")}>
+                How it helps (NewtonX Value Assessment): B2B buying committees prioritize avoiding risk over achieving gains. Defining the cost of inaction creates urgency in copy.
+              </span>
+              <textarea
+                required
+                value={form.cost_of_inaction}
+                onFocus={() => setActiveField("cost_of_inaction")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("cost_of_inaction", e.target.value)}
+                style={textareaStyle(activeField === "cost_of_inaction")}
+              />
+            </div>
+
+            {/* SECTION 4: Competitive Advantage */}
+            <div style={sectionHeaderStyle}>
+              4. Competitive Advantage
+            </div>
+
+            {/* Q10: Primary Competitor & Alternatives */}
+            <div style={questionGroupStyle(activeField === "competitor_alternative", activeField !== null)}>
+              <label style={labelStyle(activeField === "competitor_alternative")}>Primary Competitor & Alternatives</label>
+              <span style={helperStyle}>Who or what are you most commonly losing deals to? (Is it a direct competitor, internal staff doing it poorly, or simple client inertia)?</span>
+              <span style={insightStyle(activeField === "competitor_alternative")}>
+                How it helps: Knowing what you compete against allows us to proactively handle objections and frame your solution as the only logical path.
+              </span>
+              <textarea
+                required
+                value={form.competitor_alternative}
+                onFocus={() => setActiveField("competitor_alternative")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("competitor_alternative", e.target.value)}
+                style={textareaStyle(activeField === "competitor_alternative")}
+              />
+            </div>
+
+            {/* Q11: Differentiating Authority/Hook */}
+            <div style={questionGroupStyle(activeField === "differentiation_hook", activeField !== null)}>
+              <label style={labelStyle(activeField === "differentiation_hook")}>Differentiating Authority / Hook</label>
+              <span style={helperStyle}>What is your single biggest proof point, unique capability, or unfair advantage that competitors literally cannot replicate?</span>
+              <span style={insightStyle(activeField === "differentiation_hook")}>
+                How it helps (Kantar Brand Equity): Highlighting a single, undeniable unfair advantage drives immediate credibility and sets up an uncopyable position.
+              </span>
+              <textarea
+                required
+                value={form.differentiation_hook}
+                onFocus={() => setActiveField("differentiation_hook")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("differentiation_hook", e.target.value)}
+                style={textareaStyle(activeField === "differentiation_hook")}
+              />
+            </div>
+
+            {/* SECTION 5: Campaign Offer & Value */}
+            <div style={sectionHeaderStyle}>
+              5. Campaign Offer & Value
+            </div>
+
+            {/* Q12: The High-Status Low-Barrier Offer */}
             <div style={questionGroupStyle(activeField === "campaign_offer", activeField !== null)}>
-              <label style={labelStyle(activeField === "campaign_offer")}>Are you currently running any promotions or offers?</label>
-              <span style={helperStyle}>Describe any introductory offers, audits, assessments, or trials you currently provide. If none, write "None".</span>
+              <label style={labelStyle(activeField === "campaign_offer")}>Introductory Offer / Assessment</label>
+              <span style={helperStyle}>What introductory offer, free audit, assessment, or risk-free pilot program can we lead with to break through cold audience skepticism?</span>
               <span style={insightStyle(activeField === "campaign_offer")}>
-                How it helps: A low-barrier initial offer offsets cold audience skepticism, providing a low-friction hook to book the first call.
+                How it helps: A highly qualified, low-barrier diagnostic offer overcomes cold friction, giving prospects a zero-risk reason to book a call.
               </span>
               <textarea
                 required
@@ -678,12 +795,12 @@ export default function OnboardingPage() {
               />
             </div>
 
-            {/* Q7: Price Point */}
+            {/* Q13: Average Service Price Point */}
             <div style={questionGroupStyle(activeField === "core_deal_value", activeField !== null)}>
-              <label style={labelStyle(activeField === "core_deal_value")}>Typical price point or value of your primary service</label>
-              <span style={helperStyle}>The typical contract size or average customer value (e.g. $10,000). Helps us write qualified copy.</span>
+              <label style={labelStyle(activeField === "core_deal_value")}>Typical Price Point / Contract Size</label>
+              <span style={helperStyle}>What is the typical contract size, average value, or annual value of your primary service?</span>
               <span style={insightStyle(activeField === "core_deal_value")}>
-                How it helps: This coordinates our message targeting, ensuring our outreach copy speaks directly to high-margin decision makers.
+                How it helps: Knowing average contract sizes helps us tailor outbound messaging to match the appropriate executive decision-making tier.
               </span>
               <input
                 type="text"
@@ -696,12 +813,17 @@ export default function OnboardingPage() {
               />
             </div>
 
-            {/* Q8: Bookings routing (DROP-DOWN Selection) */}
+            {/* SECTION 6: Lead Routing & Sender Prefixes */}
+            <div style={sectionHeaderStyle}>
+              6. Lead Routing & Sender Prefixes
+            </div>
+
+            {/* Q14: Appointments Routing & CRM Destination */}
             <div style={questionGroupStyle(activeField === "routing_destination", activeField !== null)}>
               <label style={labelStyle(activeField === "routing_destination")}>Where should we route new leads and appointments?</label>
               <span style={helperStyle}>Select your destination. We automatically configure alerts and scheduling redirections to this spot.</span>
               <span style={insightStyle(activeField === "routing_destination")}>
-                How it helps: Directing positive prospects straight to a scheduling page prevents drop-offs, locking in appointments immediately.
+                How it helps: Immediate meeting routing and hot lead alerts prevent drop-offs, ensuring you engage prospects while interest is at its absolute peak.
               </span>
               
               <div style={{ position: "relative" }}>
@@ -742,12 +864,12 @@ export default function OnboardingPage() {
               )}
             </div>
 
-            {/* Q9: 5 Email account names (Stacked vertically, one after the other) */}
+            {/* Q15: Outbound Sending Account Names */}
             <div style={{ ...questionGroupStyle((activeField?.startsWith("email_names") ?? false), activeField !== null), borderBottom: "none", paddingBottom: "0px", marginBottom: "48px" }}>
               <label style={labelStyle((activeField?.startsWith("email_names") ?? false))}>Names for your outbound sending accounts</label>
               <span style={helperStyle}>Provide exactly 5 prefixes using first names of real people or staff members (e.g., jane, alex, sarah). Do not include spaces, domains, or symbols.</span>
               <span style={insightStyle(activeField?.startsWith("email_names") ?? false)}>
-                How it helps: Outbound emails sent from real first names promote trust and direct personalization, yielding a 4.2x increase in positive response rates compared to generic corporate prefixes like 'sales' or 'support'.
+                How it helps (Ipsos Deliverability): Accounts set up under authentic first names yield a 4.2x increase in positive response rates and significantly protect domain reputation.
               </span>
               
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>

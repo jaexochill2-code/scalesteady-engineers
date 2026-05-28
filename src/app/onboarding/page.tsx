@@ -26,8 +26,8 @@ interface OnboardingForm {
   contact_details: string;
   brand_voice: string;
   core_services: string;
-  geographic_focus: string;
-  competitors: string;
+  patient_words: string;
+  main_objection: string;
   edge: string;
   intro_offer: string;
   past_results: string;
@@ -45,8 +45,8 @@ export default function OnboardingPage() {
     contact_details: "",
     brand_voice: "",
     core_services: "",
-    geographic_focus: "",
-    competitors: "",
+    patient_words: "",
+    main_objection: "",
     edge: "",
     intro_offer: "",
     past_results: "",
@@ -135,8 +135,8 @@ export default function OnboardingPage() {
     e.preventDefault();
     const fields = [
       form.company_name, form.contact_name, form.contact_details,
-      form.brand_voice, form.core_services, form.geographic_focus,
-      form.competitors, form.edge, form.intro_offer,
+      form.brand_voice, form.core_services, form.patient_words,
+      form.main_objection, form.edge, form.intro_offer,
       form.past_results, form.best_win, form.goals_90_days,
       form.email_angle, form.routing_destination,
     ];
@@ -158,11 +158,11 @@ export default function OnboardingPage() {
         contact_name: form.contact_name,
         contact_details: form.contact_details,
         email_names: form.email_names,
-        icp_description: `Target: ${form.email_angle}\nGeography: ${form.geographic_focus}`,
-        brand_signature: `Voice: ${form.brand_voice}\nServices: ${form.core_services}\nEdge: ${form.edge}\nCompetitors: ${form.competitors}`,
+        icp_description: `Target: ${form.email_angle}\nObjection: ${form.main_objection}`,
+        brand_signature: `Voice: ${form.brand_voice}\nServices: ${form.core_services}\nEdge: ${form.edge}\nPatient Words: ${form.patient_words}`,
         campaign_offer: form.intro_offer,
         core_deal_value: `Past Results: ${form.past_results}\nBest Win: ${form.best_win}\n90-Day Goals: ${form.goals_90_days}`,
-        geographic_target: form.geographic_focus,
+        geographic_target: "",
         routing_destination: form.routing_destination,
       }]);
       if (error) throw new Error(error.message);
@@ -181,8 +181,8 @@ export default function OnboardingPage() {
 
   const checklistFields: (keyof OnboardingForm)[] = [
     "company_name", "contact_name", "contact_details",
-    "brand_voice", "core_services", "geographic_focus",
-    "competitors", "edge", "intro_offer",
+    "brand_voice", "core_services", "patient_words",
+    "main_objection", "edge", "intro_offer",
     "past_results", "best_win", "goals_90_days",
     "email_angle", "routing_destination", "email_names",
   ];
@@ -561,9 +561,9 @@ export default function OnboardingPage() {
               <textarea {...ta("core_services", "e.g. spinal decompression, sports rehab, corrective care")} style={textareaCss(isActive("core_services"))} />
             </div>
 
-            <div style={{ ...qGroup("geographic_focus"), borderBottom: "none", marginBottom: 0 }}>
-              <label style={labelCss(isActive("geographic_focus"))}>What cities and neighborhoods do you serve?</label>
-              <input {...inp("geographic_focus", "e.g. North Phoenix, Scottsdale, Paradise Valley")} style={inputCss(isActive("geographic_focus"))} />
+            <div style={{ ...qGroup("patient_words"), borderBottom: "none", marginBottom: 0 }}>
+              <label style={labelCss(isActive("patient_words"))}>What do your happiest patients say about you?</label>
+              <textarea {...ta("patient_words", "In their words -- what do they tell friends or write in reviews?")} style={textareaCss(isActive("patient_words"))} />
             </div>
 
           </div>
@@ -603,9 +603,9 @@ export default function OnboardingPage() {
               }}>What makes you the pick?</h2>
             </div>
 
-            <div style={qGroup("competitors")}>
-              <label style={labelCss(isActive("competitors"))}>Who else is doing chiro in your area?</label>
-              <textarea {...ta("competitors", "Name specific practices, chains, or PT clinics nearby")} style={textareaCss(isActive("competitors"))} />
+            <div style={qGroup("main_objection")}>
+              <label style={labelCss(isActive("main_objection"))}>What stops someone from booking with you?</label>
+              <textarea {...ta("main_objection", "Cost concerns, skepticism about chiro, didn't know you existed, etc.")} style={textareaCss(isActive("main_objection"))} />
             </div>
 
             <div style={qGroup("edge")}>

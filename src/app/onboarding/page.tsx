@@ -578,10 +578,6 @@ export default function OnboardingPage() {
             {/* Q1: Business Name */}
             <div style={questionGroupStyle(activeField === "company_name", activeField !== null)}>
               <label style={labelStyle(activeField === "company_name")}>Company name</label>
-              <span style={helperStyle}>The legal or trade name of your company as it should appear in email signatures.</span>
-              <span style={insightStyle(activeField === "company_name")}>
-                How it helps: This defines the authoritative baseline for your custom outbound sender records and signature copies.
-              </span>
               <input
                 type="text"
                 required
@@ -596,10 +592,6 @@ export default function OnboardingPage() {
             {/* Q2: Contact Person */}
             <div style={questionGroupStyle(activeField === "contact_name", activeField !== null)}>
               <label style={labelStyle(activeField === "contact_name")}>Your name</label>
-              <span style={helperStyle}>Your full name (used to set up authentic peer-to-peer outbound email signatures).</span>
-              <span style={insightStyle(activeField === "contact_name")}>
-                How it helps: Business owners buy from real human founders and executives, never corporate support addresses. This sets up your direct signature lines.
-              </span>
               <input
                 type="text"
                 required
@@ -614,10 +606,6 @@ export default function OnboardingPage() {
             {/* Q3: Contact details */}
             <div style={questionGroupStyle(activeField === "contact_details", activeField !== null)}>
               <label style={labelStyle(activeField === "contact_details")}>Best email or phone number</label>
-              <span style={helperStyle}>The best direct contact method for our team to reach you with launch updates.</span>
-              <span style={insightStyle(activeField === "contact_details")}>
-                How it helps: We coordinate technical configurations and send delivery success logs directly to your secure line.
-              </span>
               <input
                 type="text"
                 required

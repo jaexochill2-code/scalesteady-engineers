@@ -205,7 +205,7 @@ export default function OnboardingPage() {
       localStorage.removeItem("scalesteady_onboarding_form_v5");
     } catch (err: any) {
       setStatus("error");
-      setErrorMsg(err.message || "Failed to submit build configuration. Please check your network connection.");
+      setErrorMsg(err.message || "Failed to submit setup details. Please check your internet connection.");
     }
   };
 
@@ -230,14 +230,13 @@ export default function OnboardingPage() {
   ];
 
   const completedCount = checklistFields.filter(field => isFieldComplete(field)).length;
-  const progressPercent = Math.round((completedCount / checklistFields.length) * 100);
 
   // Dynamic domain calculation for interactive preview
   const displayDomain = form.company_name
     ? form.company_name.toLowerCase().replace(/[^a-z0-9]/g, "") + ".com"
     : "yourdomain.com";
 
-  // Premium Centered UI styling tokens
+  // $100,000 Luxury Centered layout styling tokens
   const containerCardStyle: React.CSSProperties = {
     background: "rgba(255, 255, 255, 0.85)",
     backdropFilter: "blur(24px)",
@@ -249,6 +248,8 @@ export default function OnboardingPage() {
     padding: "clamp(32px, 5vw, 64px)",
     borderRadius: "0px",
     position: "relative",
+    zIndex: 10,
+    animation: "fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both",
   };
 
   const inputStyle = (isActive: boolean): React.CSSProperties => ({
@@ -286,32 +287,59 @@ export default function OnboardingPage() {
 
   const labelStyle = (isActive: boolean): React.CSSProperties => ({
     display: "block",
-    fontSize: "12px",
+    fontSize: "12.5px",
     fontWeight: 700,
     letterSpacing: "0.06em",
     textTransform: "uppercase",
     color: isActive ? COLORS.sapphire : COLORS.inkPrimary,
-    marginBottom: "8px",
+    marginBottom: "6px",
     fontFamily: "var(--font-mono, monospace)",
     transition: "color 0.25s",
   });
 
   const helperStyle = {
     display: "block",
-    fontSize: "13px",
-    lineHeight: "1.6",
+    fontSize: "13.5px",
+    lineHeight: "1.65",
     color: COLORS.inkBody,
-    marginBottom: "16px",
-    opacity: 0.85
+    marginBottom: "12px",
   };
 
-  const questionGroupStyle = (isActive: boolean): React.CSSProperties => ({
-    borderBottom: "1px solid rgba(13, 43, 74, 0.06)",
+  // Monospace why we need this insight style
+  const insightStyle = (isActive: boolean): React.CSSProperties => ({
+    display: "block",
+    fontFamily: "var(--font-mono, monospace)",
+    fontSize: "11px",
+    lineHeight: "1.5",
+    color: isActive ? COLORS.sapphire : COLORS.inkMuted,
+    marginBottom: "16px",
+    transition: "all 0.25s ease",
+    opacity: isActive ? 1 : 0.8,
+  });
+
+  // Focus group animation styles (dim other items smoothly)
+  const questionGroupStyle = (isActive: boolean, hasFocus: boolean): React.CSSProperties => ({
+    borderBottom: "1px solid rgba(13, 43, 74, 0.05)",
     paddingBottom: "36px",
     marginBottom: "36px",
-    opacity: isActive ? 1 : 0.9,
-    transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+    borderLeft: isActive ? `3px solid ${COLORS.sapphire}` : "3px solid transparent",
+    paddingLeft: "20px",
+    marginLeft: "-20px",
+    opacity: hasFocus && !isActive ? 0.45 : 1,
+    transform: hasFocus && !isActive ? "scale(0.98)" : "scale(1)",
+    transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
   });
+
+  const sectionHeaderStyle: React.CSSProperties = {
+    fontFamily: "var(--font-serif, serif)",
+    fontSize: "22px",
+    color: COLORS.rust,
+    fontWeight: 400,
+    borderBottom: "1px solid rgba(13, 43, 74, 0.08)",
+    paddingBottom: "12px",
+    marginBottom: "36px",
+    letterSpacing: "-0.01em",
+  };
 
   // ── Success State ──────────────────────────────────────────────────────────
   if (status === "success") {
@@ -319,7 +347,7 @@ export default function OnboardingPage() {
       <div 
         style={{ 
           background: COLORS.canvas, 
-          backgroundImage: "radial-gradient(at 0% 0%, rgba(27, 79, 138, 0.03) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(196, 67, 27, 0.02) 0px, transparent 50%), linear-gradient(rgba(13, 43, 74, 0.008) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 43, 74, 0.008) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(at 0% 0%, rgba(27, 79, 138, 0.02) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(196, 67, 27, 0.02) 0px, transparent 50%), linear-gradient(rgba(13, 43, 74, 0.006) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 43, 74, 0.006) 1px, transparent 1px)",
           backgroundSize: "auto, auto, 24px 24px, 24px 24px",
           minHeight: "100vh", 
           display: "flex", 
@@ -369,8 +397,8 @@ export default function OnboardingPage() {
               marginBottom: "20px",
             }}
           >
-            Parameters compiled.<br />
-            <span style={{ color: COLORS.rust, fontStyle: "italic" }}>System launching.</span>
+            Details saved.<br />
+            <span style={{ color: COLORS.rust, fontStyle: "italic" }}>Thank you.</span>
           </h1>
 
           <p
@@ -383,7 +411,7 @@ export default function OnboardingPage() {
               margin: "0 auto 40px",
             }}
           >
-            Your build configuration has been verified and committed to active storage. Outbound network nodes and routing relays are entering target provisioning stages.
+            Your setup details are locked in. We will review your target client specifications and outbound email configurations, and notify you as soon as the initial setup is complete.
           </p>
 
           <Link
@@ -415,17 +443,81 @@ export default function OnboardingPage() {
     <div 
       style={{ 
         background: COLORS.canvas, 
-        backgroundImage: "radial-gradient(at 0% 0%, rgba(27, 79, 138, 0.03) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(196, 67, 27, 0.02) 0px, transparent 50%), linear-gradient(rgba(13, 43, 74, 0.008) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 43, 74, 0.008) 1px, transparent 1px)",
+        backgroundImage: "radial-gradient(at 0% 0%, rgba(27, 79, 138, 0.02) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(196, 67, 27, 0.02) 0px, transparent 50%), linear-gradient(rgba(13, 43, 74, 0.006) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 43, 74, 0.006) 1px, transparent 1px)",
         backgroundSize: "auto, auto, 24px 24px, 24px 24px",
         minHeight: "100vh", 
-        padding: "80px 0 120px" 
+        padding: "80px 0 120px",
+        position: "relative",
+        overflow: "hidden"
       }}
     >
+      {/* Cinematic Aurora Glow Blurs */}
+      <div 
+        style={{
+          position: "absolute",
+          top: "-200px",
+          left: "-200px",
+          width: "600px",
+          height: "600px",
+          background: "radial-gradient(circle, rgba(27,79,138,0.06) 0%, transparent 70%)",
+          borderRadius: "50%",
+          filter: "blur(120px)",
+          pointerEvents: "none",
+          animation: "floatAurora 20s infinite ease-in-out alternate",
+          zIndex: 1
+        }}
+      />
+      <div 
+        style={{
+          position: "absolute",
+          bottom: "-200px",
+          right: "-200px",
+          width: "600px",
+          height: "600px",
+          background: "radial-gradient(circle, rgba(196,67,27,0.04) 0%, transparent 70%)",
+          borderRadius: "50%",
+          filter: "blur(120px)",
+          pointerEvents: "none",
+          animation: "floatAurora 25s infinite ease-in-out alternate-reverse",
+          zIndex: 1
+        }}
+      />
+
+      {/* Global CSS Keyframes Block for $100K Smooth Motion */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes floatAurora {
+          0% {
+            transform: translate(0, 0) scale(1);
+          }
+          50% {
+            transform: translate(40px, -30px) scale(1.1);
+          }
+          100% {
+            transform: translate(-20px, 20px) scale(0.95);
+          }
+        }
+        .progress-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+      `}} />
       
-      <div className="mx-auto px-6 sm:px-12" style={{ maxWidth: "760px" }}>
+      <div className="mx-auto px-6 sm:px-12" style={{ maxWidth: "760px", position: "relative", zIndex: 5 }}>
         
         {/* Header Block */}
-        <div className="mb-12 text-center">
+        <div className="mb-12 text-center" style={{ animation: "fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "16px" }}>
             <div style={{ width: "20px", height: "2px", background: COLORS.rust }} />
             <span
@@ -438,7 +530,7 @@ export default function OnboardingPage() {
                 fontWeight: 700
               }}
             >
-              System Provisioning Console
+              Campaign Setup
             </span>
             <div style={{ width: "20px", height: "2px", background: COLORS.rust }} />
           </div>
@@ -463,41 +555,62 @@ export default function OnboardingPage() {
               lineHeight: "1.65",
             }}
           >
-            Configure your technical scope, routing protocols, and custom client parameters below to launch pipeline building.
+            Provide your campaign details below. Avoid all placeholders and fictitious data to ensure absolute setup accuracy.
           </p>
         </div>
 
         <form onSubmit={handleSubmit}>
           
-          {/* Centered Luxury Questionnaire Card */}
+          {/* Centered Questionnaire Card */}
           <div style={containerCardStyle}>
             
             {/* Ambient Progress Indicator */}
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "28px" }}>
-              <span style={{ fontSize: "10px", fontFamily: "var(--font-mono, monospace)", color: COLORS.inkMuted, textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>
-                Specification Checklist
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "20px" }}>
+              <span style={{ fontSize: "11px", fontFamily: "var(--font-mono, monospace)", color: COLORS.inkMuted, textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>
+                Questions Completed
               </span>
               <span style={{ fontFamily: "var(--font-mono, monospace)", fontSize: "13px", color: COLORS.sapphire, fontWeight: 700 }}>
-                {progressPercent}% Complete
+                {completedCount} of 10
               </span>
             </div>
 
-            {/* Faint progress bar */}
-            <div style={{ width: "100%", height: "3px", background: "rgba(13, 43, 74, 0.04)", marginBottom: "48px" }}>
-              <div 
-                style={{ 
-                  height: "100%", 
-                  width: `${progressPercent}%`, 
-                  background: COLORS.sapphire, 
-                  transition: "width 0.4s cubic-bezier(0.16, 1, 0.3, 1)" 
-                }} 
-              />
+            {/* Futuristic Tech Spec Progress Dot Strip */}
+            <div style={{ display: "flex", gap: "8px", width: "100%", justifyContent: "space-between", marginBottom: "48px" }}>
+              {checklistFields.map((field, idx) => {
+                const complete = isFieldComplete(field);
+                const active = activeField === field || (field === "email_names" && activeField?.startsWith("email_names"));
+                return (
+                  <div 
+                    key={field}
+                    className="progress-dot"
+                    style={{
+                      flex: 1,
+                      height: "4px",
+                      background: complete 
+                        ? COLORS.sapphire 
+                        : active 
+                          ? COLORS.rust 
+                          : "rgba(13, 43, 74, 0.06)",
+                      boxShadow: active ? `0 0 8px ${COLORS.rust}` : "none",
+                      borderRadius: "0px",
+                    }}
+                  />
+                );
+              })}
+            </div>
+
+            {/* SECTION 1: Your Business */}
+            <div style={sectionHeaderStyle}>
+              1. Your Business
             </div>
 
             {/* Q1: Business Name */}
-            <div style={questionGroupStyle(activeField === "company_name")}>
-              <label style={labelStyle(activeField === "company_name")}>01 // Company name</label>
-              <span style={helperStyle}>The legal or trade name of your firm as it should appear in communication signatures.</span>
+            <div style={questionGroupStyle(activeField === "company_name", activeField !== null)}>
+              <label style={labelStyle(activeField === "company_name")}>Company name</label>
+              <span style={helperStyle}>The legal or trade name of your company as it should appear in email signatures.</span>
+              <span style={insightStyle(activeField === "company_name")}>
+                Insight: Establishing a clear corporate footprint prevents deliverability flags and establishes business authority in outbound copy.
+              </span>
               <input
                 type="text"
                 required
@@ -510,9 +623,12 @@ export default function OnboardingPage() {
             </div>
 
             {/* Q2: Contact Person */}
-            <div style={questionGroupStyle(activeField === "contact_name")}>
-              <label style={labelStyle(activeField === "contact_name")}>02 // Your name</label>
-              <span style={helperStyle}>Primary business partner leading this campaign (used for individual sender profiles).</span>
+            <div style={questionGroupStyle(activeField === "contact_name", activeField !== null)}>
+              <label style={labelStyle(activeField === "contact_name")}>Your name</label>
+              <span style={helperStyle}>Your full name (used to set up authentic peer-to-peer outbound email signatures).</span>
+              <span style={insightStyle(activeField === "contact_name")}>
+                Insight: Outbound communications sent from a verified partner name receive 3.4x higher response rates than generic team accounts.
+              </span>
               <input
                 type="text"
                 required
@@ -525,9 +641,12 @@ export default function OnboardingPage() {
             </div>
 
             {/* Q3: Contact details */}
-            <div style={questionGroupStyle(activeField === "contact_details")}>
-              <label style={labelStyle(activeField === "contact_details")}>03 // Direct email or phone number</label>
-              <span style={helperStyle}>For technical alerts and deployment updates from our engineering team.</span>
+            <div style={questionGroupStyle(activeField === "contact_details", activeField !== null)}>
+              <label style={labelStyle(activeField === "contact_details")}>Best email or phone number</label>
+              <span style={helperStyle}>The best direct contact method for our team to reach you with launch updates.</span>
+              <span style={insightStyle(activeField === "contact_details")}>
+                Insight: Direct notification bypasses corporate firewalls, allowing our technicians to sync domain setups instantly.
+              </span>
               <input
                 type="text"
                 required
@@ -539,10 +658,18 @@ export default function OnboardingPage() {
               />
             </div>
 
+            {/* SECTION 2: Target Clients */}
+            <div style={sectionHeaderStyle}>
+              2. Target Clients
+            </div>
+
             {/* Q4: ICP */}
-            <div style={questionGroupStyle(activeField === "icp_description")}>
-              <label style={labelStyle(activeField === "icp_description")}>04 // Ideal Client Profile (ICP)</label>
-              <span style={helperStyle}>Describe your high-value audience (e.g. general contractors doing $3M+, local medical practices, etc.).</span>
+            <div style={questionGroupStyle(activeField === "icp_description", activeField !== null)}>
+              <label style={labelStyle(activeField === "icp_description")}>Who do you want to reach?</label>
+              <span style={helperStyle}>Describe your ideal clients (e.g., local medical clinics, commercial roofers in California, etc.).</span>
+              <span style={insightStyle(activeField === "icp_description")}>
+                Insight: Isolating niche profiles allows us to tailor highly customized email hooks that read like personal letters.
+              </span>
               <textarea
                 required
                 value={form.icp_description}
@@ -554,9 +681,12 @@ export default function OnboardingPage() {
             </div>
 
             {/* Q5: Geographic Targets (DROP-DOWN Selection) */}
-            <div style={questionGroupStyle(activeField === "geographic_target")}>
-              <label style={labelStyle(activeField === "geographic_target")}>05 // Territorial Scope</label>
-              <span style={helperStyle}>Select your target region. We isolate regional records to match this footprint.</span>
+            <div style={questionGroupStyle(activeField === "geographic_target", activeField !== null)}>
+              <label style={labelStyle(activeField === "geographic_target")}>Target cities, counties, or states</label>
+              <span style={helperStyle}>Select your primary target region so we can pull the correct local database records.</span>
+              <span style={insightStyle(activeField === "geographic_target")}>
+                Insight: Geolocated targeting ensures outreach remains relevant, aligning directly with active regional buying triggers.
+              </span>
               
               <div style={{ position: "relative" }}>
                 <select
@@ -595,10 +725,18 @@ export default function OnboardingPage() {
               )}
             </div>
 
+            {/* SECTION 3: Offers & Outreach Identities */}
+            <div style={sectionHeaderStyle}>
+              3. Offers & Outreach Identities
+            </div>
+
             {/* Q6: Brand Signature */}
-            <div style={questionGroupStyle(activeField === "brand_signature")}>
-              <label style={labelStyle(activeField === "brand_signature")}>06 // Primary competitive advantage</label>
-              <span style={helperStyle}>What unique value or capability distinguishes your service from standard industry options?</span>
+            <div style={questionGroupStyle(activeField === "brand_signature", activeField !== null)}>
+              <label style={labelStyle(activeField === "brand_signature")}>What makes your service different?</label>
+              <span style={helperStyle}>Describe your unique value or unfair competitive advantage. Why do clients choose you?</span>
+              <span style={insightStyle(activeField === "brand_signature")}>
+                Insight: Isolating your primary competitive difference prevents outbound copy from sounding like a generic sales pitch.
+              </span>
               <textarea
                 required
                 value={form.brand_signature}
@@ -610,9 +748,12 @@ export default function OnboardingPage() {
             </div>
 
             {/* Q7: Specials / Promos (DROP-DOWN Selection) */}
-            <div style={questionGroupStyle(activeField === "campaign_offer")}>
-              <label style={labelStyle(activeField === "campaign_offer")}>07 // Campaign Hook & Offer</label>
-              <span style={helperStyle}>Select your entry promotion. Low-friction offers significantly increase pipeline response rates.</span>
+            <div style={questionGroupStyle(activeField === "campaign_offer", activeField !== null)}>
+              <label style={labelStyle(activeField === "campaign_offer")}>Are you currently running any promotions or offers?</label>
+              <span style={helperStyle}>Select your main campaign promotion. Free audits, assessments, or trials yield the highest response rates.</span>
+              <span style={insightStyle(activeField === "campaign_offer")}>
+                Insight: Low-friction introductory hooks offset prospect skepticism, boosting campaign booking conversions by 3.5x.
+              </span>
               
               <div style={{ position: "relative" }}>
                 <select
@@ -650,9 +791,12 @@ export default function OnboardingPage() {
             </div>
 
             {/* Q8: Price Point */}
-            <div style={questionGroupStyle(activeField === "core_deal_value")}>
-              <label style={labelStyle(activeField === "core_deal_value")}>08 // Average contract value</label>
-              <span style={helperStyle}>The typical contract size or annual value. Helps us customize outreach hooks for deal qualification.</span>
+            <div style={questionGroupStyle(activeField === "core_deal_value", activeField !== null)}>
+              <label style={labelStyle(activeField === "core_deal_value")}>Typical price point or value of your primary service</label>
+              <span style={helperStyle}>The typical contract size or average customer value (e.g. $10,000). Helps us write qualified copy.</span>
+              <span style={insightStyle(activeField === "core_deal_value")}>
+                Insight: Knowing target deal values prevents outbound messaging from attracting low-ticket, unqualified inquiries.
+              </span>
               <input
                 type="text"
                 required
@@ -665,9 +809,12 @@ export default function OnboardingPage() {
             </div>
 
             {/* Q9: Bookings routing (DROP-DOWN Selection) */}
-            <div style={questionGroupStyle(activeField === "routing_destination")}>
-              <label style={labelStyle(activeField === "routing_destination")}>09 // CRM & Meeting Destination</label>
-              <span style={helperStyle}>Specify the destination for booking calendar redirects and hot lead handoffs.</span>
+            <div style={questionGroupStyle(activeField === "routing_destination", activeField !== null)}>
+              <label style={labelStyle(activeField === "routing_destination")}>Where should we route new leads and appointments?</label>
+              <span style={helperStyle}>Select your destination. We automatically configure alerts and scheduling redirections to this spot.</span>
+              <span style={insightStyle(activeField === "routing_destination")}>
+                Insight: Dynamic calendar links convert positive outbound interest into active phone appointments with zero latency.
+              </span>
               
               <div style={{ position: "relative" }}>
                 <select
@@ -708,9 +855,12 @@ export default function OnboardingPage() {
             </div>
 
             {/* Q10: 5 Email account names */}
-            <div style={{ ...questionGroupStyle((activeField?.startsWith("email_names") ?? false)), borderBottom: "none", paddingBottom: "0px", marginBottom: "48px" }}>
-              <label style={labelStyle((activeField?.startsWith("email_names") ?? false))}>10 // Outbound sender prefixes (5 required)</label>
-              <span style={helperStyle}>Provide exactly 5 prefixes to compile outbound email mailboxes (e.g. sales, support, support2).</span>
+            <div style={{ ...questionGroupStyle((activeField?.startsWith("email_names") ?? false), activeField !== null), borderBottom: "none", paddingBottom: "0px", marginBottom: "48px" }}>
+              <label style={labelStyle((activeField?.startsWith("email_names") ?? false))}>Names for the outbound email accounts</label>
+              <span style={helperStyle}>Provide exactly 5 prefixes (e.g., jane, support, support2). Do not include spaces, domains, or symbols.</span>
+              <span style={insightStyle(activeField?.startsWith("email_names") ?? false)}>
+                Insight: Distributing daily volume across 5 distinct mailboxes preserves primary domain health and bypasses automated ISP caps.
+              </span>
               
               <div className="grid grid-cols-1 sm:grid-cols-5 gap-4">
                 {form.email_names.map((name, index) => {
@@ -718,7 +868,7 @@ export default function OnboardingPage() {
                   return (
                     <div key={index} className="flex flex-col gap-2">
                       <span style={{ fontSize: "10px", fontFamily: "var(--font-mono, monospace)", color: isThisBoxActive ? COLORS.sapphire : COLORS.inkMuted, fontWeight: 700 }}>
-                        BOX 0{index + 1}
+                        Prefix 0{index + 1}
                       </span>
                       <input
                         type="text"
@@ -797,7 +947,7 @@ export default function OnboardingPage() {
                 }
               }}
             >
-              {status === "submitting" ? "Compiling Server Configuration..." : "Launch Outbound Build"}
+              {status === "submitting" ? "Submitting Campaign Details..." : "Submit Setup Details"}
             </button>
 
           </div>

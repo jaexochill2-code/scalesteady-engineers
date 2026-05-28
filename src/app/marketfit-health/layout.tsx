@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Onboarding | ScaleSteady",
+  title: "MarketFit Onboarding | ScaleSteady",
   description: "Tell us about your practice. 15 questions to build your cold email campaign.",
 };
 
-export default function OnboardingLayout({
+export default function MarketFitLayout({
   children,
 }: {
   children: React.ReactNode;

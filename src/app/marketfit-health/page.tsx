@@ -150,7 +150,7 @@ export default function OnboardingPage() {
             <span style={{ color: "#34C759", fontSize: "22px" }}>&#10003;</span>
           </div>
           <h1 style={{ fontFamily: "var(--font-serif, Georgia, serif)", fontSize: "clamp(28px, 4vw, 40px)", color: C.text1, fontWeight: 400, letterSpacing: "-0.03em", marginBottom: "12px" }}>Locked in.</h1>
-          <p style={{ fontSize: "15px", lineHeight: 1.7, color: C.text2, maxWidth: "340px", margin: "0 auto 36px" }}>We'll review everything and reach out within 24 hours.</p>
+          <p style={{ fontSize: "15px", lineHeight: 1.7, color: C.text2, maxWidth: "340px", margin: "0 auto 36px" }}>Thanks for sharing these valuable marketing insights. We are already analyzing these angles to construct your outbound campaign strategy.</p>
           <Link href="/" className="submit-btn" style={{ display: "inline-block", padding: "14px 44px", textDecoration: "none" }}>Back to homepage</Link>
         </div>
       </div>

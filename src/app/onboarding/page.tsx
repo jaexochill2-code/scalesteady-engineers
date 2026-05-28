@@ -322,7 +322,7 @@ export default function OnboardingPage() {
             )}
 
             <button type="submit" disabled={status === "submitting"} className="submit-btn submit-btn-full">
-              {status === "submitting" ? <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}><span className="spin" /> Submitting...</span> : "Launch Campaign Brief"}
+              {status === "submitting" ? <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}><span className="spin" /> Submitting...</span> : "Submit Marketing Info"}
             </button>
           </div>
         </div>

@@ -128,7 +128,7 @@ export default function OnboardingPage() {
         brand_signature: `Voice: ${form.brand_voice}\nServices: ${form.core_services}\nEdge: ${form.edge}\nPatient Words: ${form.patient_words}`,
         campaign_offer: form.intro_offer,
         core_deal_value: `Past Results: ${form.past_results}\nBest Win: ${form.best_win}\n90-Day Goals: ${form.goals_90_days}`,
-        geographic_target: "", routing_destination: form.routing_destination,
+        geographic_target: "n/a", routing_destination: form.routing_destination,
       }]);
       if (error) throw new Error(error.message);
       setStatus("success"); localStorage.removeItem("scalesteady_onboarding_v8");
@@ -366,7 +366,6 @@ function tp(field: string, form: Record<string, any>, onChange: (f: any, v: stri
 }
 
 const CSS = `
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -550,6 +549,10 @@ const CSS = `
 .gi-sel option {
   background: #fff;
   color: #1d1d1f;
+}
+.gi-sel:invalid,
+.gi-sel option[value=""] {
+  color: #aeaeb2;
 }
 
 /* ── Glass card ── */

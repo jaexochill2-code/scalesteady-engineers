@@ -20,33 +20,6 @@ const COLORS = {
   frost: "#E8F2FA",
 };
 
-// Vector Inline Graphics representing architectural engineering
-const IdentityIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={COLORS.rust} strokeWidth="1.5" strokeLinecap="square">
-    <rect x="3" y="3" width="18" height="18" />
-    <path d="M9 3v18" />
-    <path d="M15 3v18" />
-    <path d="M3 9h18" />
-    <path d="M3 15h18" />
-  </svg>
-);
-
-const TargetIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={COLORS.rust} strokeWidth="1.5" strokeLinecap="square">
-    <circle cx="12" cy="12" r="10" />
-    <circle cx="12" cy="12" r="6" />
-    <circle cx="12" cy="12" r="2" />
-    <path d="M12 2v20" />
-    <path d="M2 12h20" />
-  </svg>
-);
-
-const CampaignIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={COLORS.rust} strokeWidth="1.5" strokeLinecap="square">
-    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-  </svg>
-);
-
 interface OnboardingForm {
   company_name: string;
   contact_name: string;
@@ -203,7 +176,7 @@ export default function OnboardingPage() {
 
     if (!isFormComplete) {
       setStatus("error");
-      setErrorMsg("Please answer all 10 questions before launching your build.");
+      setErrorMsg("Please answer all 10 questions before submitting.");
       return;
     }
 
@@ -236,7 +209,6 @@ export default function OnboardingPage() {
     }
   };
 
-  // Helper to verify field completeness for visual checklist
   const isFieldComplete = (field: keyof OnboardingForm) => {
     if (field === "email_names") {
       return form.email_names.every((name) => name.trim().length > 0);
@@ -244,49 +216,40 @@ export default function OnboardingPage() {
     return form[field].trim().length > 0;
   };
 
-  const checklistItems = [
-    { key: "company_name", num: "01", label: "Company Identity" },
-    { key: "contact_name", num: "02", label: "Client Partner Name" },
-    { key: "contact_details", num: "03", label: "Direct Comms Line" },
-    { key: "icp_description", num: "04", label: "Target Client Spec" },
-    { key: "geographic_target", num: "05", label: "Territorial Scope" },
-    { key: "brand_signature", num: "06", label: "Primary Advantage" },
-    { key: "campaign_offer", num: "07", label: "Campaign Hook Spec" },
-    { key: "core_deal_value", num: "08", label: "Contract Deal Value" },
-    { key: "routing_destination", num: "09", label: "CRM Routing Route" },
-    { key: "email_names", num: "10", label: "Outbound Prefixes (5)" },
+  const checklistFields: (keyof OnboardingForm)[] = [
+    "company_name",
+    "contact_name",
+    "contact_details",
+    "icp_description",
+    "geographic_target",
+    "brand_signature",
+    "campaign_offer",
+    "core_deal_value",
+    "routing_destination",
+    "email_names",
   ];
 
-  const completedCount = checklistItems.filter(item => isFieldComplete(item.key as keyof OnboardingForm)).length;
-  const progressPercent = Math.round((completedCount / checklistItems.length) * 100);
+  const completedCount = checklistFields.filter(field => isFieldComplete(field)).length;
+  const progressPercent = Math.round((completedCount / checklistFields.length) * 100);
 
   // Dynamic domain calculation for interactive preview
   const displayDomain = form.company_name
     ? form.company_name.toLowerCase().replace(/[^a-z0-9]/g, "") + ".com"
     : "yourdomain.com";
 
-  // Circular Progress Metrics
-  const radius = 26;
-  const strokeWidth = 5;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (progressPercent / 100) * circumference;
-
-  // $100,000 Luxury styling tokens & double border system
-  const cardStyle = (isActive: boolean): React.CSSProperties => ({
-    background: "rgba(255, 255, 255, 0.75)",
-    backdropFilter: "blur(16px)",
-    WebkitBackdropFilter: "blur(16px)",
-    border: isActive ? `1px solid ${COLORS.sapphire}` : "1px solid rgba(13, 43, 74, 0.07)",
-    outline: isActive ? "1.5px solid rgba(27, 79, 138, 0.12)" : "1px solid rgba(255, 255, 255, 0.6)",
+  // Premium Centered UI styling tokens
+  const containerCardStyle: React.CSSProperties = {
+    background: "rgba(255, 255, 255, 0.85)",
+    backdropFilter: "blur(24px)",
+    WebkitBackdropFilter: "blur(24px)",
+    border: "1px solid rgba(13, 43, 74, 0.07)",
+    outline: "1px solid rgba(255, 255, 255, 0.8)",
     outlineOffset: "-4px",
-    boxShadow: isActive 
-      ? "0 16px 40px rgba(13, 43, 74, 0.05), inset 0 1px 0 rgba(255,255,255,0.8)" 
-      : "0 8px 30px rgba(13, 43, 74, 0.015), inset 0 1px 0 rgba(255,255,255,0.8)",
-    padding: "clamp(24px, 4vw, 40px)",
+    boxShadow: "0 24px 64px rgba(13, 43, 74, 0.02), inset 0 1px 0 rgba(255,255,255,0.8)",
+    padding: "clamp(32px, 5vw, 64px)",
     borderRadius: "0px",
-    transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
     position: "relative",
-  });
+  };
 
   const inputStyle = (isActive: boolean): React.CSSProperties => ({
     width: "100%",
@@ -323,37 +286,32 @@ export default function OnboardingPage() {
 
   const labelStyle = (isActive: boolean): React.CSSProperties => ({
     display: "block",
-    fontSize: "12.5px",
+    fontSize: "12px",
     fontWeight: 700,
-    letterSpacing: "0.02em",
+    letterSpacing: "0.06em",
     textTransform: "uppercase",
     color: isActive ? COLORS.sapphire : COLORS.inkPrimary,
-    marginBottom: "10px",
+    marginBottom: "8px",
     fontFamily: "var(--font-mono, monospace)",
     transition: "color 0.25s",
   });
 
   const helperStyle = {
     display: "block",
-    fontSize: "12.5px",
+    fontSize: "13px",
     lineHeight: "1.6",
     color: COLORS.inkBody,
     marginBottom: "16px",
     opacity: 0.85
   };
 
-  const sectionHeaderStyle: React.CSSProperties = {
-    fontFamily: "var(--font-serif, serif)",
-    fontSize: "23px",
-    color: COLORS.inkPrimary,
-    fontWeight: 400,
-    borderBottom: "1px solid rgba(13, 43, 74, 0.08)",
-    paddingBottom: "16px",
+  const questionGroupStyle = (isActive: boolean): React.CSSProperties => ({
+    borderBottom: "1px solid rgba(13, 43, 74, 0.06)",
+    paddingBottom: "36px",
     marginBottom: "36px",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  };
+    opacity: isActive ? 1 : 0.9,
+    transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+  });
 
   // ── Success State ──────────────────────────────────────────────────────────
   if (status === "success") {
@@ -361,7 +319,7 @@ export default function OnboardingPage() {
       <div 
         style={{ 
           background: COLORS.canvas, 
-          backgroundImage: "radial-gradient(at 0% 0%, rgba(27, 79, 138, 0.04) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(196, 67, 27, 0.03) 0px, transparent 50%), linear-gradient(rgba(13, 43, 74, 0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 43, 74, 0.012) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(at 0% 0%, rgba(27, 79, 138, 0.03) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(196, 67, 27, 0.02) 0px, transparent 50%), linear-gradient(rgba(13, 43, 74, 0.008) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 43, 74, 0.008) 1px, transparent 1px)",
           backgroundSize: "auto, auto, 24px 24px, 24px 24px",
           minHeight: "100vh", 
           display: "flex", 
@@ -372,15 +330,15 @@ export default function OnboardingPage() {
       >
         <div 
           style={{ 
-            maxWidth: "600px", 
+            maxWidth: "640px", 
             width: "100%",
-            background: "rgba(255, 255, 255, 0.8)",
+            background: "rgba(255, 255, 255, 0.85)",
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
-            border: "1px solid rgba(13, 43, 74, 0.08)",
-            outline: "1px solid rgba(255, 255, 255, 0.7)",
+            border: "1px solid rgba(13, 43, 74, 0.07)",
+            outline: "1px solid rgba(255, 255, 255, 0.8)",
             outlineOffset: "-4px",
-            boxShadow: "0 24px 64px rgba(13, 43, 74, 0.04)",
+            boxShadow: "0 24px 64px rgba(13, 43, 74, 0.02)",
             padding: "56px 48px",
             textAlign: "center"
           }}
@@ -452,24 +410,24 @@ export default function OnboardingPage() {
     );
   }
 
-  // ── Main 1-Pager Dashboard Form ────────────────────────────────────────────
+  // ── Centered Minimalist 1-Pager Dashboard Form ─────────────────────────────
   return (
     <div 
       style={{ 
         background: COLORS.canvas, 
-        backgroundImage: "radial-gradient(at 0% 0%, rgba(27, 79, 138, 0.04) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(196, 67, 27, 0.03) 0px, transparent 50%), linear-gradient(rgba(13, 43, 74, 0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 43, 74, 0.012) 1px, transparent 1px)",
+        backgroundImage: "radial-gradient(at 0% 0%, rgba(27, 79, 138, 0.03) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(196, 67, 27, 0.02) 0px, transparent 50%), linear-gradient(rgba(13, 43, 74, 0.008) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 43, 74, 0.008) 1px, transparent 1px)",
         backgroundSize: "auto, auto, 24px 24px, 24px 24px",
         minHeight: "100vh", 
         padding: "80px 0 120px" 
       }}
     >
       
-      <div className="mx-auto px-6 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
+      <div className="mx-auto px-6 sm:px-12" style={{ maxWidth: "760px" }}>
         
         {/* Header Block */}
-        <div className="mb-16">
-          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
-            <div style={{ width: "24px", height: "2px", background: COLORS.rust }} />
+        <div className="mb-12 text-center">
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "16px" }}>
+            <div style={{ width: "20px", height: "2px", background: COLORS.rust }} />
             <span
               style={{
                 fontFamily: "var(--font-mono, monospace)",
@@ -482,26 +440,27 @@ export default function OnboardingPage() {
             >
               System Provisioning Console
             </span>
+            <div style={{ width: "20px", height: "2px", background: COLORS.rust }} />
           </div>
           <h1
             style={{
               fontFamily: "var(--font-serif, serif)",
-              fontSize: "clamp(38px, 6vw, 68px)",
-              lineHeight: 1.05,
+              fontSize: "clamp(36px, 5vw, 56px)",
+              lineHeight: 1.1,
               letterSpacing: "-0.03em",
               color: COLORS.inkPrimary,
-              maxWidth: "800px",
             }}
           >
             Outbound campaign <span style={{ color: COLORS.rust, fontStyle: "italic" }}>setup.</span>
           </h1>
           <p
             style={{
-              fontSize: "16px",
+              fontSize: "15px",
               color: COLORS.inkBody,
-              marginTop: "20px",
-              maxWidth: "580px",
-              lineHeight: "1.7",
+              marginTop: "16px",
+              maxWidth: "500px",
+              margin: "16px auto 0",
+              lineHeight: "1.65",
             }}
           >
             Configure your technical scope, routing protocols, and custom client parameters below to launch pipeline building.
@@ -510,504 +469,336 @@ export default function OnboardingPage() {
 
         <form onSubmit={handleSubmit}>
           
-          {/* Main Bento Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Centered Luxury Questionnaire Card */}
+          <div style={containerCardStyle}>
             
-            {/* LEFT COLUMN: 8 Columns */}
-            <div className="lg:col-span-8 flex flex-col gap-8">
-              
-              {/* Card 1: Your Identity */}
-              <div style={cardStyle(activeField === "company_name" || activeField === "contact_name" || activeField === "contact_details")}>
-                <div style={sectionHeaderStyle}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                    <IdentityIcon />
-                    <span>01 // Business Identity</span>
-                  </div>
-                  <span style={{ fontFamily: "var(--font-mono, monospace)", fontSize: "10px", color: COLORS.inkMuted, letterSpacing: "0.1em" }}>[SPEC: IDENTITY]</span>
-                </div>
-
-                <div className="flex flex-col gap-8">
-                  {/* Q1: Business Name */}
-                  <div>
-                    <label style={labelStyle(activeField === "company_name")}>1. Company name</label>
-                    <span style={helperStyle}>The legal or trade name of your firm as it should appear in communication signatures.</span>
-                    <input
-                      type="text"
-                      required
-                      value={form.company_name}
-                      onFocus={() => setActiveField("company_name")}
-                      onBlur={() => setActiveField(null)}
-                      onChange={(e) => handleChange("company_name", e.target.value)}
-                      style={inputStyle(activeField === "company_name")}
-                    />
-                  </div>
-
-                  {/* Q2: Contact Person */}
-                  <div>
-                    <label style={labelStyle(activeField === "contact_name")}>2. Your name</label>
-                    <span style={helperStyle}>Primary business partner leading this campaign (used for individual sender profiles).</span>
-                    <input
-                      type="text"
-                      required
-                      value={form.contact_name}
-                      onFocus={() => setActiveField("contact_name")}
-                      onBlur={() => setActiveField(null)}
-                      onChange={(e) => handleChange("contact_name", e.target.value)}
-                      style={inputStyle(activeField === "contact_name")}
-                    />
-                  </div>
-
-                  {/* Q3: Contact details */}
-                  <div>
-                    <label style={labelStyle(activeField === "contact_details")}>3. Direct email or phone number</label>
-                    <span style={helperStyle}>For technical alerts and deployment updates from our engineering team.</span>
-                    <input
-                      type="text"
-                      required
-                      value={form.contact_details}
-                      onFocus={() => setActiveField("contact_details")}
-                      onBlur={() => setActiveField(null)}
-                      onChange={(e) => handleChange("contact_details", e.target.value)}
-                      style={inputStyle(activeField === "contact_details")}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 2: Your Market and Audience */}
-              <div style={cardStyle(activeField === "icp_description" || activeField === "geographic_target")}>
-                <div style={sectionHeaderStyle}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                    <TargetIcon />
-                    <span>02 // Target Market Spec</span>
-                  </div>
-                  <span style={{ fontFamily: "var(--font-mono, monospace)", fontSize: "10px", color: COLORS.inkMuted, letterSpacing: "0.1em" }}>[SPEC: MARKET]</span>
-                </div>
-
-                <div className="flex flex-col gap-8">
-                  {/* Q4: ICP */}
-                  <div>
-                    <label style={labelStyle(activeField === "icp_description")}>4. Ideal Client Profile (ICP)</label>
-                    <span style={helperStyle}>Describe your high-value audience (e.g. general contractors doing $3M+, local medical practices, etc.).</span>
-                    <textarea
-                      required
-                      value={form.icp_description}
-                      onFocus={() => setActiveField("icp_description")}
-                      onBlur={() => setActiveField(null)}
-                      onChange={(e) => handleChange("icp_description", e.target.value)}
-                      style={textareaStyle(activeField === "icp_description")}
-                    />
-                  </div>
-
-                  {/* Q5: Geographic Targets (DROP-DOWN Selection) */}
-                  <div>
-                    <label style={labelStyle(activeField === "geographic_target")}>5. Territorial Scope</label>
-                    <span style={helperStyle}>Select your target region. We isolate regional records to match this footprint.</span>
-                    
-                    <select
-                      required
-                      value={geoSelect}
-                      onFocus={() => setActiveField("geographic_target")}
-                      onBlur={() => setActiveField(null)}
-                      onChange={(e) => setGeoSelect(e.target.value)}
-                      style={selectStyle(activeField === "geographic_target")}
-                    >
-                      <option value="" disabled>-- Select a target region --</option>
-                      <option value="Midwest (IL, IN, OH, MI, WI)">Midwest (IL, IN, OH, MI, WI)</option>
-                      <option value="California & West Coast">California & West Coast</option>
-                      <option value="Texas & South-Central">Texas & South-Central</option>
-                      <option value="Florida & Southeast">Florida & Southeast</option>
-                      <option value="Northeast (NY, NJ, PA)">Northeast (NY, NJ, PA)</option>
-                      <option value="National (United States)">National (United States)</option>
-                      <option value="Custom Region (Please specify)">Other Region (Specify below)</option>
-                    </select>
-
-                    {/* Animating write-in box for Custom Region */}
-                    {geoSelect === "Custom Region (Please specify)" && (
-                      <div className="mt-4 animate-fade-in">
-                        <label style={{ ...labelStyle(activeField === "geographic_target"), fontSize: "11px", color: COLORS.rust }}>Specify Custom Region</label>
-                        <input
-                          type="text"
-                          required
-                          value={geoCustom}
-                          onFocus={() => setActiveField("geographic_target")}
-                          onBlur={() => setActiveField(null)}
-                          onChange={(e) => setGeoCustom(e.target.value)}
-                          style={inputStyle(activeField === "geographic_target")}
-                        />
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 3: The Campaign and Offer */}
-              <div style={cardStyle(activeField === "brand_signature" || activeField === "campaign_offer" || activeField === "core_deal_value" || activeField === "routing_destination" || (activeField?.startsWith("email_names") ?? false))}>
-                <div style={sectionHeaderStyle}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                    <CampaignIcon />
-                    <span>03 // Campaign Parameters</span>
-                  </div>
-                  <span style={{ fontFamily: "var(--font-mono, monospace)", fontSize: "10px", color: COLORS.inkMuted, letterSpacing: "0.1em" }}>[SPEC: CAMPAIGN]</span>
-                </div>
-
-                <div className="flex flex-col gap-8">
-                  {/* Q6: Brand Signature */}
-                  <div>
-                    <label style={labelStyle(activeField === "brand_signature")}>6. Primary competitive advantage</label>
-                    <span style={helperStyle}>What unique value or capability distinguishes your service from standard industry options?</span>
-                    <textarea
-                      required
-                      value={form.brand_signature}
-                      onFocus={() => setActiveField("brand_signature")}
-                      onBlur={() => setActiveField(null)}
-                      onChange={(e) => handleChange("brand_signature", e.target.value)}
-                      style={textareaStyle(activeField === "brand_signature")}
-                    />
-                  </div>
-
-                  {/* Q7: Specials / Promos (DROP-DOWN Selection) */}
-                  <div>
-                    <label style={labelStyle(activeField === "campaign_offer")}>7. Campaign Hook & Offer</label>
-                    <span style={helperStyle}>Select your entry promotion. Low-friction offers significantly increase pipeline response rates.</span>
-                    
-                    <select
-                      required
-                      value={offerSelect}
-                      onFocus={() => setActiveField("campaign_offer")}
-                      onBlur={() => setActiveField(null)}
-                      onChange={(e) => setOfferSelect(e.target.value)}
-                      style={selectStyle(activeField === "campaign_offer")}
-                    >
-                      <option value="" disabled>-- Select a campaign offer type --</option>
-                      <option value="Free Outbound Strategy Audit (Recommended)">Free Outbound Strategy Audit (Recommended)</option>
-                      <option value="Risk-Free 30-Day Pipeline Trial">Risk-Free 30-Day Pipeline Trial</option>
-                      <option value="Free Initial Consultation & Pilot Run">Free Initial Consultation & Pilot Run</option>
-                      <option value="Custom Special Promotion">Custom Special Promotion (Specify below)</option>
-                      <option value="No Promotion (Raw value proposition only)">No Promotion (Raw value proposition only)</option>
-                    </select>
-
-                    {/* Animating write-in box for Custom Offer */}
-                    {offerSelect === "Custom Special Promotion" && (
-                      <div className="mt-4 animate-fade-in">
-                        <label style={{ ...labelStyle(activeField === "campaign_offer"), fontSize: "11px", color: COLORS.rust }}>Describe your custom promotion</label>
-                        <input
-                          type="text"
-                          required
-                          value={offerCustom}
-                          onFocus={() => setActiveField("campaign_offer")}
-                          onBlur={() => setActiveField(null)}
-                          onChange={(e) => setOfferCustom(e.target.value)}
-                          style={inputStyle(activeField === "campaign_offer")}
-                        />
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Q8: Price Point / High Volume focus */}
-                  <div>
-                    <label style={labelStyle(activeField === "core_deal_value")}>8. Average customer contract value</label>
-                    <span style={helperStyle}>The typical contract size or annual value. Helps us customize outreach hooks for deal qualification.</span>
-                    <input
-                      type="text"
-                      required
-                      value={form.core_deal_value}
-                      onFocus={() => setActiveField("core_deal_value")}
-                      onBlur={() => setActiveField(null)}
-                      onChange={(e) => handleChange("core_deal_value", e.target.value)}
-                      style={inputStyle(activeField === "core_deal_value")}
-                    />
-                  </div>
-
-                  {/* Q9: Bookings routing (DROP-DOWN Selection) */}
-                  <div>
-                    <label style={labelStyle(activeField === "routing_destination")}>9. CRM & Meeting Destination</label>
-                    <span style={helperStyle}>Specify the destination for booking calendar redirects and hot lead handoffs.</span>
-                    
-                    <select
-                      required
-                      value={routingSelect}
-                      onFocus={() => setActiveField("routing_destination")}
-                      onBlur={() => setActiveField(null)}
-                      onChange={(e) => setRoutingSelect(e.target.value)}
-                      style={selectStyle(activeField === "routing_destination")}
-                    >
-                      <option value="" disabled>-- Select routing method --</option>
-                      <option value="Direct Calendar Link">Direct Calendar Link (e.g. Calendly, SavvyCal)</option>
-                      <option value="Email Inbox Routing">Email Inbox Routing</option>
-                      <option value="CRM Routing">CRM Routing (HubSpot, Salesforce, Zoho)</option>
-                      <option value="Direct Phone / SMS">Direct Phone / SMS Alerts</option>
-                    </select>
-
-                    {routingSelect && (
-                      <div className="mt-4 animate-fade-in">
-                        <label style={{ ...labelStyle(activeField === "routing_destination"), fontSize: "11px", color: COLORS.sapphire }}>
-                          {routingSelect === "Direct Calendar Link" ? "Enter Calendar Scheduling URL" :
-                           routingSelect === "Email Inbox Routing" ? "Enter Target Routing Email Address" :
-                           routingSelect === "CRM Routing" ? "Enter CRM Portal / Webhook Details" :
-                           "Enter Target Direct Phone Number"}
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={routingDetails}
-                          onFocus={() => setActiveField("routing_destination")}
-                          onBlur={() => setActiveField(null)}
-                          onChange={(e) => setRoutingDetails(e.target.value)}
-                          style={inputStyle(activeField === "routing_destination")}
-                        />
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Q10: 5 Email account names */}
-                  <div>
-                    <label style={labelStyle(activeField?.startsWith("email_names") ?? false)}>10. Outbound sender prefixes (5 required)</label>
-                    <span style={helperStyle}>Provide exactly 5 prefixes to compile outbound email mailboxes (e.g. sales, support, support2).</span>
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-5 gap-4">
-                      {form.email_names.map((name, index) => {
-                        const isThisBoxActive = activeField === `email_names_${index}`;
-                        return (
-                          <div key={index} className="flex flex-col gap-2">
-                            <span style={{ fontSize: "10px", fontFamily: "var(--font-mono, monospace)", color: isThisBoxActive ? COLORS.sapphire : COLORS.inkMuted, fontWeight: 700 }}>
-                              BOX 0{index + 1}
-                            </span>
-                            <input
-                              type="text"
-                              required
-                              value={name}
-                              onFocus={() => setActiveField(`email_names_${index}`)}
-                              onBlur={() => setActiveField(null)}
-                              onChange={(e) => handleNameBoxChange(index, e.target.value)}
-                              style={inputStyle(isThisBoxActive)}
-                            />
-                            {/* Live Outbound Email Preview */}
-                            <span 
-                              style={{ 
-                                fontSize: "9.5px", 
-                                fontFamily: "var(--font-mono, monospace)", 
-                                color: name ? COLORS.sapphire : "rgba(13,43,74,0.3)",
-                                whiteSpace: "nowrap",
-                                overflow: "hidden",
-                                textOverflow: "ellipsis",
-                                display: "block"
-                              }}
-                            >
-                              {name || "prefix"}@{displayDomain}
-                            </span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
+            {/* Ambient Progress Indicator */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "28px" }}>
+              <span style={{ fontSize: "10px", fontFamily: "var(--font-mono, monospace)", color: COLORS.inkMuted, textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>
+                Specification Checklist
+              </span>
+              <span style={{ fontFamily: "var(--font-mono, monospace)", fontSize: "13px", color: COLORS.sapphire, fontWeight: 700 }}>
+                {progressPercent}% Complete
+              </span>
             </div>
 
-            {/* RIGHT COLUMN: 4 Columns (Bento Sidebar with Submit) */}
-            <div className="lg:col-span-4 flex flex-col gap-8 lg:sticky lg:top-[40px]">
+            {/* Faint progress bar */}
+            <div style={{ width: "100%", height: "3px", background: "rgba(13, 43, 74, 0.04)", marginBottom: "48px" }}>
+              <div 
+                style={{ 
+                  height: "100%", 
+                  width: `${progressPercent}%`, 
+                  background: COLORS.sapphire, 
+                  transition: "width 0.4s cubic-bezier(0.16, 1, 0.3, 1)" 
+                }} 
+              />
+            </div>
+
+            {/* Q1: Business Name */}
+            <div style={questionGroupStyle(activeField === "company_name")}>
+              <label style={labelStyle(activeField === "company_name")}>01 // Company name</label>
+              <span style={helperStyle}>The legal or trade name of your firm as it should appear in communication signatures.</span>
+              <input
+                type="text"
+                required
+                value={form.company_name}
+                onFocus={() => setActiveField("company_name")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("company_name", e.target.value)}
+                style={inputStyle(activeField === "company_name")}
+              />
+            </div>
+
+            {/* Q2: Contact Person */}
+            <div style={questionGroupStyle(activeField === "contact_name")}>
+              <label style={labelStyle(activeField === "contact_name")}>02 // Your name</label>
+              <span style={helperStyle}>Primary business partner leading this campaign (used for individual sender profiles).</span>
+              <input
+                type="text"
+                required
+                value={form.contact_name}
+                onFocus={() => setActiveField("contact_name")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("contact_name", e.target.value)}
+                style={inputStyle(activeField === "contact_name")}
+              />
+            </div>
+
+            {/* Q3: Contact details */}
+            <div style={questionGroupStyle(activeField === "contact_details")}>
+              <label style={labelStyle(activeField === "contact_details")}>03 // Direct email or phone number</label>
+              <span style={helperStyle}>For technical alerts and deployment updates from our engineering team.</span>
+              <input
+                type="text"
+                required
+                value={form.contact_details}
+                onFocus={() => setActiveField("contact_details")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("contact_details", e.target.value)}
+                style={inputStyle(activeField === "contact_details")}
+              />
+            </div>
+
+            {/* Q4: ICP */}
+            <div style={questionGroupStyle(activeField === "icp_description")}>
+              <label style={labelStyle(activeField === "icp_description")}>04 // Ideal Client Profile (ICP)</label>
+              <span style={helperStyle}>Describe your high-value audience (e.g. general contractors doing $3M+, local medical practices, etc.).</span>
+              <textarea
+                required
+                value={form.icp_description}
+                onFocus={() => setActiveField("icp_description")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("icp_description", e.target.value)}
+                style={textareaStyle(activeField === "icp_description")}
+              />
+            </div>
+
+            {/* Q5: Geographic Targets (DROP-DOWN Selection) */}
+            <div style={questionGroupStyle(activeField === "geographic_target")}>
+              <label style={labelStyle(activeField === "geographic_target")}>05 // Territorial Scope</label>
+              <span style={helperStyle}>Select your target region. We isolate regional records to match this footprint.</span>
               
-              {/* Card: Submission Progress & Checklist */}
-              <div
-                style={{
-                  background: "rgba(255, 255, 255, 0.75)",
-                  backdropFilter: "blur(16px)",
-                  WebkitBackdropFilter: "blur(16px)",
-                  border: "1px solid rgba(13, 43, 74, 0.07)",
-                  outline: "1px solid rgba(255, 255, 255, 0.6)",
-                  outlineOffset: "-4px",
-                  boxShadow: "0 8px 30px rgba(13, 43, 74, 0.015), inset 0 1px 0 rgba(255,255,255,0.8)",
-                  padding: "36px 32px",
-                  borderRadius: "0px",
-                }}
-              >
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "28px" }}>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                    <h3
-                      style={{
-                        fontFamily: "var(--font-serif, serif)",
-                        fontSize: "19px",
-                        color: COLORS.inkPrimary,
-                        fontWeight: 600,
-                      }}
-                    >
-                      Console Progress
-                    </h3>
-                    <span style={{ fontSize: "11px", fontFamily: "var(--font-mono, monospace)", color: COLORS.inkMuted, textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                      System checklist
-                    </span>
-                  </div>
+              <div style={{ position: "relative" }}>
+                <select
+                  required
+                  value={geoSelect}
+                  onFocus={() => setActiveField("geographic_target")}
+                  onBlur={() => setActiveField(null)}
+                  onChange={(e) => setGeoSelect(e.target.value)}
+                  style={selectStyle(activeField === "geographic_target")}
+                >
+                  <option value="" disabled>-- Select a target region --</option>
+                  <option value="Midwest (IL, IN, OH, MI, WI)">Midwest (IL, IN, OH, MI, WI)</option>
+                  <option value="California & West Coast">California & West Coast</option>
+                  <option value="Texas & South-Central">Texas & South-Central</option>
+                  <option value="Florida & Southeast">Florida & Southeast</option>
+                  <option value="Northeast (NY, NJ, PA)">Northeast (NY, NJ, PA)</option>
+                  <option value="National (United States)">National (United States)</option>
+                  <option value="Custom Region (Please specify)">Other Region (Specify below)</option>
+                </select>
+              </div>
 
-                  {/* Circular Vector Progress Ring */}
-                  <div style={{ position: "relative", width: "64px", height: "64px" }}>
-                    <svg width="64" height="64" viewBox="0 0 64 64" style={{ transform: "rotate(-90deg)" }}>
-                      <circle cx="32" cy="32" r={radius} fill="none" stroke="rgba(13, 43, 74, 0.05)" strokeWidth={strokeWidth} />
-                      <circle cx="32" cy="32" r={radius} fill="none" stroke={COLORS.sapphire} strokeWidth={strokeWidth}
-                        strokeDasharray={circumference} strokeDashoffset={strokeDashoffset} strokeLinecap="square"
-                        style={{ transition: "stroke-dashoffset 0.4s cubic-bezier(0.16, 1, 0.3, 1)" }} />
-                    </svg>
-                    <div style={{
-                      position: "absolute",
-                      inset: 0,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "12.5px",
-                      fontFamily: "var(--font-mono, monospace)",
-                      fontWeight: 700,
-                      color: COLORS.sapphire
-                    }}>
-                      {progressPercent}%
-                    </div>
-                  </div>
+              {/* Dynamic write-in box for Custom Region */}
+              {geoSelect === "Custom Region (Please specify)" && (
+                <div style={{ marginTop: "16px" }}>
+                  <label style={{ ...labelStyle(activeField === "geographic_target"), fontSize: "11px", color: COLORS.rust }}>Specify Custom Region</label>
+                  <input
+                    type="text"
+                    required
+                    value={geoCustom}
+                    onFocus={() => setActiveField("geographic_target")}
+                    onBlur={() => setActiveField(null)}
+                    onChange={(e) => setGeoCustom(e.target.value)}
+                    style={inputStyle(activeField === "geographic_target")}
+                  />
                 </div>
+              )}
+            </div>
 
-                {/* Real-time Checklist */}
-                <div className="flex flex-col gap-3.5 mb-8">
-                  {checklistItems.map((item) => {
-                    const complete = isFieldComplete(item.key as keyof OnboardingForm);
-                    return (
-                      <div 
-                        key={item.key} 
+            {/* Q6: Brand Signature */}
+            <div style={questionGroupStyle(activeField === "brand_signature")}>
+              <label style={labelStyle(activeField === "brand_signature")}>06 // Primary competitive advantage</label>
+              <span style={helperStyle}>What unique value or capability distinguishes your service from standard industry options?</span>
+              <textarea
+                required
+                value={form.brand_signature}
+                onFocus={() => setActiveField("brand_signature")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("brand_signature", e.target.value)}
+                style={textareaStyle(activeField === "brand_signature")}
+              />
+            </div>
+
+            {/* Q7: Specials / Promos (DROP-DOWN Selection) */}
+            <div style={questionGroupStyle(activeField === "campaign_offer")}>
+              <label style={labelStyle(activeField === "campaign_offer")}>07 // Campaign Hook & Offer</label>
+              <span style={helperStyle}>Select your entry promotion. Low-friction offers significantly increase pipeline response rates.</span>
+              
+              <div style={{ position: "relative" }}>
+                <select
+                  required
+                  value={offerSelect}
+                  onFocus={() => setActiveField("campaign_offer")}
+                  onBlur={() => setActiveField(null)}
+                  onChange={(e) => setOfferSelect(e.target.value)}
+                  style={selectStyle(activeField === "campaign_offer")}
+                >
+                  <option value="" disabled>-- Select a campaign offer type --</option>
+                  <option value="Free Outbound Strategy Audit (Recommended)">Free Outbound Strategy Audit (Recommended)</option>
+                  <option value="Risk-Free 30-Day Pipeline Trial">Risk-Free 30-Day Pipeline Trial</option>
+                  <option value="Free Initial Consultation & Pilot Run">Free Initial Consultation & Pilot Run</option>
+                  <option value="Custom Special Promotion">Custom Special Promotion (Specify below)</option>
+                  <option value="No Promotion (Raw value proposition only)">No Promotion (Raw value proposition only)</option>
+                </select>
+              </div>
+
+              {/* Dynamic write-in box for Custom Offer */}
+              {offerSelect === "Custom Special Promotion" && (
+                <div style={{ marginTop: "16px" }}>
+                  <label style={{ ...labelStyle(activeField === "campaign_offer"), fontSize: "11px", color: COLORS.rust }}>Describe your custom promotion</label>
+                  <input
+                    type="text"
+                    required
+                    value={offerCustom}
+                    onFocus={() => setActiveField("campaign_offer")}
+                    onBlur={() => setActiveField(null)}
+                    onChange={(e) => setOfferCustom(e.target.value)}
+                    style={inputStyle(activeField === "campaign_offer")}
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Q8: Price Point */}
+            <div style={questionGroupStyle(activeField === "core_deal_value")}>
+              <label style={labelStyle(activeField === "core_deal_value")}>08 // Average contract value</label>
+              <span style={helperStyle}>The typical contract size or annual value. Helps us customize outreach hooks for deal qualification.</span>
+              <input
+                type="text"
+                required
+                value={form.core_deal_value}
+                onFocus={() => setActiveField("core_deal_value")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("core_deal_value", e.target.value)}
+                style={inputStyle(activeField === "core_deal_value")}
+              />
+            </div>
+
+            {/* Q9: Bookings routing (DROP-DOWN Selection) */}
+            <div style={questionGroupStyle(activeField === "routing_destination")}>
+              <label style={labelStyle(activeField === "routing_destination")}>09 // CRM & Meeting Destination</label>
+              <span style={helperStyle}>Specify the destination for booking calendar redirects and hot lead handoffs.</span>
+              
+              <div style={{ position: "relative" }}>
+                <select
+                  required
+                  value={routingSelect}
+                  onFocus={() => setActiveField("routing_destination")}
+                  onBlur={() => setActiveField(null)}
+                  onChange={(e) => setRoutingSelect(e.target.value)}
+                  style={selectStyle(activeField === "routing_destination")}
+                >
+                  <option value="" disabled>-- Select routing method --</option>
+                  <option value="Direct Calendar Link">Direct Calendar Link (e.g. Calendly, SavvyCal)</option>
+                  <option value="Email Inbox Routing">Email Inbox Routing</option>
+                  <option value="CRM Routing">CRM Routing (HubSpot, Salesforce, Zoho)</option>
+                  <option value="Direct Phone / SMS">Direct Phone / SMS Alerts</option>
+                </select>
+              </div>
+
+              {routingSelect && (
+                <div style={{ marginTop: "16px" }}>
+                  <label style={{ ...labelStyle(activeField === "routing_destination"), fontSize: "11px", color: COLORS.sapphire }}>
+                    {routingSelect === "Direct Calendar Link" ? "Enter Calendar Scheduling URL" :
+                     routingSelect === "Email Inbox Routing" ? "Enter Target Routing Email Address" :
+                     routingSelect === "CRM Routing" ? "Enter CRM Portal / Webhook Details" :
+                     "Enter Target Direct Phone Number"}
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={routingDetails}
+                    onFocus={() => setActiveField("routing_destination")}
+                    onBlur={() => setActiveField(null)}
+                    onChange={(e) => setRoutingDetails(e.target.value)}
+                    style={inputStyle(activeField === "routing_destination")}
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Q10: 5 Email account names */}
+            <div style={{ ...questionGroupStyle((activeField?.startsWith("email_names") ?? false)), borderBottom: "none", paddingBottom: "0px", marginBottom: "48px" }}>
+              <label style={labelStyle((activeField?.startsWith("email_names") ?? false))}>10 // Outbound sender prefixes (5 required)</label>
+              <span style={helperStyle}>Provide exactly 5 prefixes to compile outbound email mailboxes (e.g. sales, support, support2).</span>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-5 gap-4">
+                {form.email_names.map((name, index) => {
+                  const isThisBoxActive = activeField === `email_names_${index}`;
+                  return (
+                    <div key={index} className="flex flex-col gap-2">
+                      <span style={{ fontSize: "10px", fontFamily: "var(--font-mono, monospace)", color: isThisBoxActive ? COLORS.sapphire : COLORS.inkMuted, fontWeight: 700 }}>
+                        BOX 0{index + 1}
+                      </span>
+                      <input
+                        type="text"
+                        required
+                        value={name}
+                        onFocus={() => setActiveField(`email_names_${index}`)}
+                        onBlur={() => setActiveField(null)}
+                        onChange={(e) => handleNameBoxChange(index, e.target.value)}
+                        style={inputStyle(isThisBoxActive)}
+                      />
+                      {/* Live Outbound Email Preview */}
+                      <span 
                         style={{ 
-                          display: "flex", 
-                          alignItems: "center", 
-                          justifyContent: "space-between",
-                          fontSize: "12.5px", 
-                          fontFamily: "var(--font-mono, monospace)",
-                          color: complete ? COLORS.inkPrimary : COLORS.inkMuted,
-                          transition: "color 0.2s",
+                          fontSize: "9.5px", 
+                          fontFamily: "var(--font-mono, monospace)", 
+                          color: name ? COLORS.sapphire : "rgba(13,43,74,0.3)",
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          display: "block"
                         }}
                       >
-                        <span style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-                          <span style={{ color: complete ? COLORS.sapphire : COLORS.inkMuted, fontWeight: 700 }}>
-                            {item.num}
-                          </span>
-                          <span style={{ textDecoration: complete ? "line-through" : "none", opacity: complete ? 0.65 : 1 }}>
-                            {item.label}
-                          </span>
-                        </span>
-                        <span style={{ color: complete ? COLORS.sapphire : COLORS.inkMuted, fontWeight: "bold", fontSize: "14px" }}>
-                          {complete ? "●" : "○"}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-                
-                <p
-                  style={{
-                    fontSize: "12.5px",
-                    lineHeight: "1.65",
-                    color: COLORS.inkBody,
-                    marginBottom: "28px",
-                  }}
-                >
-                  All active parameters must compile at 100% to initialize the outbound pipeline server build.
-                </p>
-
-                {status === "error" && (
-                  <div
-                    style={{
-                      padding: "14px 18px",
-                      background: "rgba(196,67,27,0.06)",
-                      border: "1px solid rgba(196,67,27,0.2)",
-                      fontSize: "12.5px",
-                      color: COLORS.rust,
-                      marginBottom: "20px",
-                      lineHeight: "1.5"
-                    }}
-                  >
-                    {errorMsg}
-                  </div>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={status === "submitting"}
-                  style={{
-                    width: "100%",
-                    fontSize: "12px",
-                    fontWeight: 700,
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    color: "#FFFFFF",
-                    background: status === "submitting" ? COLORS.inkMuted : COLORS.sapphire,
-                    padding: "19px 24px",
-                    border: "none",
-                    cursor: status === "submitting" ? "not-allowed" : "pointer",
-                    fontFamily: "var(--font-sans, sans-serif)",
-                    borderRadius: "0px",
-                    transition: "background 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-                  }}
-                  onMouseOver={(e) => {
-                    if (status !== "submitting") {
-                      e.currentTarget.style.background = COLORS.blueDeep;
-                    }
-                  }}
-                  onMouseOut={(e) => {
-                    if (status !== "submitting") {
-                      e.currentTarget.style.background = COLORS.sapphire;
-                    }
-                  }}
-                >
-                  {status === "submitting" ? "Compiling..." : "Launch Outbound Build"}
-                </button>
+                        {name || "prefix"}@{displayDomain}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
+            </div>
 
-              {/* Card: Engineering Guarantee Info */}
+            {/* Error Notification Alert */}
+            {status === "error" && (
               <div
                 style={{
-                  background: COLORS.blueDeep,
-                  outline: "1px solid rgba(255, 255, 255, 0.08)",
-                  outlineOffset: "-4px",
-                  padding: "36px 32px",
-                  color: "#FFFFFF",
-                  borderRadius: "0px",
-                  boxShadow: "0 12px 36px rgba(13, 43, 74, 0.05)",
+                  padding: "16px 20px",
+                  background: "rgba(196,67,27,0.05)",
+                  border: `1.5px solid rgba(196,67,27,0.15)`,
+                  fontSize: "13px",
+                  color: COLORS.rust,
+                  marginBottom: "32px",
+                  lineHeight: "1.6",
+                  fontFamily: "var(--font-sans, sans-serif)",
                 }}
               >
-                <div style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "20px" }}>
-                  <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: COLORS.rust }} />
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono, monospace)",
-                      fontSize: "10px",
-                      letterSpacing: "0.15em",
-                      color: "rgba(255,255,255,0.45)",
-                      textTransform: "uppercase",
-                      fontWeight: 700
-                    }}
-                  >
-                    Infrastructure Guarantee
-                  </span>
-                </div>
-                <h4
-                  style={{
-                    fontFamily: "var(--font-serif, serif)",
-                    fontSize: "18px",
-                    marginBottom: "14px",
-                    fontWeight: 500,
-                    lineHeight: "1.35",
-                  }}
-                >
-                  You keep 100% of the built assets.
-                </h4>
-                <p
-                  style={{
-                    fontSize: "12.5px",
-                    lineHeight: "1.65",
-                    color: "rgba(255,255,255,0.65)",
-                  }}
-                >
-                  The warm email sending accounts, high-yield prospect lists, delivery infrastructure, and cold outreach domains are legally registered under your entity. They remain your permanent property under any circumstance.
-                </p>
+                {errorMsg}
               </div>
+            )}
 
-            </div>
+            {/* Submit Action */}
+            <button
+              type="submit"
+              disabled={status === "submitting"}
+              style={{
+                width: "100%",
+                fontSize: "12px",
+                fontWeight: 700,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "#FFFFFF",
+                background: status === "submitting" ? COLORS.inkMuted : COLORS.sapphire,
+                padding: "20px 24px",
+                border: "none",
+                cursor: status === "submitting" ? "not-allowed" : "pointer",
+                fontFamily: "var(--font-sans, sans-serif)",
+                borderRadius: "0px",
+                transition: "background 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+              }}
+              onMouseOver={(e) => {
+                if (status !== "submitting") {
+                  e.currentTarget.style.background = COLORS.blueDeep;
+                }
+              }}
+              onMouseOut={(e) => {
+                if (status !== "submitting") {
+                  e.currentTarget.style.background = COLORS.sapphire;
+                }
+              }}
+            >
+              {status === "submitting" ? "Compiling Server Configuration..." : "Launch Outbound Build"}
+            </button>
 
           </div>
 

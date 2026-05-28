@@ -24,16 +24,16 @@ interface OnboardingForm {
   company_name: string;
   contact_name: string;
   contact_details: string;
-  core_value_prop: string;
-  icp_vertical: string;
-  geographic_focus: string;
-  trigger_event: string;
-  pain_point: string;
-  cost_of_inaction: string;
-  competitor_alternative: string;
-  past_marketing_success: string;
-  differentiation_hook: string;
-  campaign_offer: string;
+  brand_personality: string;
+  core_services: string;
+  competitors: string;
+  past_marketing: string;
+  best_performing: string;
+  marketing_goals: string;
+  monthly_budget: string;
+  target_audience: string;
+  intro_offer: string;
+  messaging_angle: string;
   routing_destination: string;
   email_names: string[];
 }
@@ -43,21 +43,21 @@ export default function OnboardingPage() {
     company_name: "",
     contact_name: "",
     contact_details: "",
-    core_value_prop: "",
-    icp_vertical: "",
-    geographic_focus: "",
-    trigger_event: "",
-    pain_point: "",
-    cost_of_inaction: "",
-    competitor_alternative: "",
-    past_marketing_success: "",
-    differentiation_hook: "",
-    campaign_offer: "",
+    brand_personality: "",
+    core_services: "",
+    competitors: "",
+    past_marketing: "",
+    best_performing: "",
+    marketing_goals: "",
+    monthly_budget: "",
+    target_audience: "",
+    intro_offer: "",
+    messaging_angle: "",
     routing_destination: "",
     email_names: ["", "", "", "", ""],
   });
 
-  // Dropdown & Helper Selection States to eliminate manual input friction
+  // Dropdown & Helper Selection States
   const [routingSelect, setRoutingSelect] = useState<string>("");
   const [routingDetails, setRoutingDetails] = useState<string>("");
 
@@ -65,10 +65,10 @@ export default function OnboardingPage() {
   const [errorMsg, setErrorMsg] = useState("");
   const [activeField, setActiveField] = useState<string | null>(null);
 
-  // 1. Local Cache Restoration & Selection Parsing
+  // 1. Local Cache Restoration
   useEffect(() => {
     try {
-      const cached = localStorage.getItem("scalesteady_onboarding_form_v5");
+      const cached = localStorage.getItem("scalesteady_onboarding_form_v6");
       if (cached) {
         const parsed = JSON.parse(cached);
         setForm((prev) => ({
@@ -98,7 +98,7 @@ export default function OnboardingPage() {
     const updated = { ...form, [field]: value };
     setForm(updated);
     try {
-      localStorage.setItem("scalesteady_onboarding_form_v5", JSON.stringify(updated));
+      localStorage.setItem("scalesteady_onboarding_form_v6", JSON.stringify(updated));
     } catch (e) {
       console.error("Cache write failed:", e);
     }
@@ -119,7 +119,7 @@ export default function OnboardingPage() {
     const updated = { ...form, email_names: updatedNames };
     setForm(updated);
     try {
-      localStorage.setItem("scalesteady_onboarding_form_v5", JSON.stringify(updated));
+      localStorage.setItem("scalesteady_onboarding_form_v6", JSON.stringify(updated));
     } catch (e) {
       console.error("Cache write failed:", e);
     }
@@ -128,27 +128,26 @@ export default function OnboardingPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Verify all fields are populated
     const isFormComplete = 
       form.company_name.trim().length > 0 &&
       form.contact_name.trim().length > 0 &&
       form.contact_details.trim().length > 0 &&
-      form.core_value_prop.trim().length > 0 &&
-      form.icp_vertical.trim().length > 0 &&
-      form.geographic_focus.trim().length > 0 &&
-      form.trigger_event.trim().length > 0 &&
-      form.pain_point.trim().length > 0 &&
-      form.cost_of_inaction.trim().length > 0 &&
-      form.competitor_alternative.trim().length > 0 &&
-      form.past_marketing_success.trim().length > 0 &&
-      form.differentiation_hook.trim().length > 0 &&
-      form.campaign_offer.trim().length > 0 &&
+      form.brand_personality.trim().length > 0 &&
+      form.core_services.trim().length > 0 &&
+      form.competitors.trim().length > 0 &&
+      form.past_marketing.trim().length > 0 &&
+      form.best_performing.trim().length > 0 &&
+      form.marketing_goals.trim().length > 0 &&
+      form.monthly_budget.trim().length > 0 &&
+      form.target_audience.trim().length > 0 &&
+      form.intro_offer.trim().length > 0 &&
+      form.messaging_angle.trim().length > 0 &&
       form.routing_destination.trim().length > 0 &&
       form.email_names.every((name) => name.trim().length > 0);
 
     if (!isFormComplete) {
       setStatus("error");
-      setErrorMsg("Please answer all 15 diagnostic questions before submitting.");
+      setErrorMsg("Please complete all 15 fields before submitting.");
       return;
     }
 
@@ -162,11 +161,11 @@ export default function OnboardingPage() {
           contact_name: form.contact_name,
           contact_details: form.contact_details,
           email_names: form.email_names,
-          icp_description: `Ideal Patients: ${form.icp_vertical}\nPain Trigger: ${form.trigger_event}\nRuined Daily Activities: ${form.pain_point}\nRisk of Delay: ${form.cost_of_inaction}`,
-          brand_signature: `Specialty Focus: ${form.core_value_prop}\nCompetitor Options: ${form.competitor_alternative}\nWhy Choose Us: ${form.differentiation_hook}`,
-          campaign_offer: form.campaign_offer,
-          core_deal_value: `Past Marketing Success: ${form.past_marketing_success}`,
-          geographic_target: form.geographic_focus,
+          icp_description: `Target Audience: ${form.target_audience}\nMessaging Angle: ${form.messaging_angle}\nMonthly Budget: ${form.monthly_budget}`,
+          brand_signature: `Brand Voice: ${form.brand_personality}\nCore Services: ${form.core_services}\nCompetitors: ${form.competitors}`,
+          campaign_offer: form.intro_offer,
+          core_deal_value: `Past Marketing: ${form.past_marketing}\nBest Performing: ${form.best_performing}\nGoals: ${form.marketing_goals}`,
+          geographic_target: "",
           routing_destination: form.routing_destination,
         },
       ]);
@@ -174,10 +173,10 @@ export default function OnboardingPage() {
       if (error) throw new Error(error.message);
 
       setStatus("success");
-      localStorage.removeItem("scalesteady_onboarding_form_v5");
+      localStorage.removeItem("scalesteady_onboarding_form_v6");
     } catch (err: any) {
       setStatus("error");
-      setErrorMsg(err.message || "Failed to submit campaign details. Please check your internet connection.");
+      setErrorMsg(err.message || "Submission failed. Please check your connection and try again.");
     }
   };
 
@@ -192,22 +191,21 @@ export default function OnboardingPage() {
     "company_name",
     "contact_name",
     "contact_details",
-    "core_value_prop",
-    "icp_vertical",
-    "geographic_focus",
-    "trigger_event",
-    "pain_point",
-    "cost_of_inaction",
-    "competitor_alternative",
-    "past_marketing_success",
-    "differentiation_hook",
-    "campaign_offer",
+    "brand_personality",
+    "core_services",
+    "competitors",
+    "past_marketing",
+    "best_performing",
+    "marketing_goals",
+    "monthly_budget",
+    "target_audience",
+    "intro_offer",
+    "messaging_angle",
     "routing_destination",
     "email_names",
   ];
 
   const completedCount = checklistFields.filter(field => isFieldComplete(field)).length;
-  const progressPercent = Math.round((completedCount / checklistFields.length) * 100);
 
   // Dynamic domain calculation for interactive preview
   const displayDomain = form.company_name
@@ -283,7 +281,6 @@ export default function OnboardingPage() {
     marginBottom: "12px",
   };
 
-  // Monospace why we need this insight style
   const insightStyle = (isActive: boolean): React.CSSProperties => ({
     display: "block",
     fontFamily: "var(--font-mono, monospace)",
@@ -295,7 +292,7 @@ export default function OnboardingPage() {
     opacity: isActive ? 1 : 0.8,
   });
 
-  // Focus group animation styles (dim other items smoothly)
+  // Focus group animation styles
   const questionGroupStyle = (isActive: boolean, hasFocus: boolean): React.CSSProperties => ({
     borderBottom: "1px solid rgba(13, 43, 74, 0.05)",
     paddingBottom: "36px",
@@ -319,7 +316,7 @@ export default function OnboardingPage() {
     letterSpacing: "-0.01em",
   };
 
-  // ── Success State ──────────────────────────────────────────────────────────
+  // ── Success State ──────────────────────────────────────────────────
   if (status === "success") {
     return (
       <div 
@@ -362,7 +359,7 @@ export default function OnboardingPage() {
               margin: "0 auto 32px",
             }}
           >
-            <span style={{ color: COLORS.sapphire, fontSize: "24px", fontWeight: "bold" }}>✓</span>
+            <span style={{ color: COLORS.sapphire, fontSize: "24px", fontWeight: "bold" }}>&#10003;</span>
           </div>
           
           <h1
@@ -375,8 +372,8 @@ export default function OnboardingPage() {
               marginBottom: "20px",
             }}
           >
-            Details saved.<br />
-            <span style={{ color: COLORS.rust, fontStyle: "italic" }}>Thank you.</span>
+            All set.<br />
+            <span style={{ color: COLORS.rust, fontStyle: "italic" }}>We're on it.</span>
           </h1>
 
           <p
@@ -389,7 +386,7 @@ export default function OnboardingPage() {
               margin: "0 auto 40px",
             }}
           >
-            Your setup details are locked in. We will review your target client specifications and outbound email configurations, and notify you as soon as the initial setup is complete.
+            Your marketing brief is locked in. Our team will review your strategy details and reach out within 24 hours to kick off your campaign.
           </p>
 
           <Link
@@ -506,7 +503,7 @@ export default function OnboardingPage() {
                 fontWeight: 700
               }}
             >
-              Campaign Setup
+              Marketing Brief
             </span>
             <div style={{ width: "20px", height: "2px", background: COLORS.rust }} />
           </div>
@@ -519,19 +516,19 @@ export default function OnboardingPage() {
               color: COLORS.inkPrimary,
             }}
           >
-            Outbound campaign <span style={{ color: COLORS.rust, fontStyle: "italic" }}>setup.</span>
+            Let's build your <span style={{ color: COLORS.rust, fontStyle: "italic" }}>campaign.</span>
           </h1>
           <p
             style={{
               fontSize: "15px",
               color: COLORS.inkBody,
               marginTop: "16px",
-              maxWidth: "500px",
+              maxWidth: "520px",
               margin: "16px auto 0",
               lineHeight: "1.65",
             }}
           >
-            Provide your campaign details below. Avoid all placeholders and fictitious data to ensure absolute setup accuracy.
+            15 quick questions so we can represent your practice the right way, target the right people, and get you results from day one.
           </p>
         </div>
 
@@ -552,7 +549,7 @@ export default function OnboardingPage() {
 
             {/* Progress dot row */}
             <div style={{ display: "flex", gap: "6px", width: "100%", justifyContent: "space-between", marginBottom: "48px" }}>
-              {checklistFields.map((field, idx) => {
+              {checklistFields.map((field) => {
                 const complete = isFieldComplete(field);
                 const active = activeField === field || (field === "email_names" && activeField?.startsWith("email_names"));
                 return (
@@ -573,14 +570,16 @@ export default function OnboardingPage() {
               })}
             </div>
 
-            {/* SECTION 1: Core Identity */}
+            {/* ═══════════════════════════════════════════════════════════ */}
+            {/* SECTION 1: The Basics                                      */}
+            {/* ═══════════════════════════════════════════════════════════ */}
             <div style={sectionHeaderStyle}>
-              1. Core Identity
+              1. The Basics
             </div>
 
-            {/* Q1: Business Name */}
+            {/* Q1: Practice Name */}
             <div style={questionGroupStyle(activeField === "company_name", activeField !== null)}>
-              <label style={labelStyle(activeField === "company_name")}>Clinic or Practice Name</label>
+              <label style={labelStyle(activeField === "company_name")}>Practice Name</label>
               <input
                 type="text"
                 required
@@ -592,9 +591,9 @@ export default function OnboardingPage() {
               />
             </div>
 
-            {/* Q2: Contact Person */}
+            {/* Q2: Your Name */}
             <div style={questionGroupStyle(activeField === "contact_name", activeField !== null)}>
-              <label style={labelStyle(activeField === "contact_name")}>Your Name (Doctor or Owner)</label>
+              <label style={labelStyle(activeField === "contact_name")}>Your Name</label>
               <input
                 type="text"
                 required
@@ -606,9 +605,9 @@ export default function OnboardingPage() {
               />
             </div>
 
-            {/* Q3: Contact details */}
+            {/* Q3: Contact */}
             <div style={questionGroupStyle(activeField === "contact_details", activeField !== null)}>
-              <label style={labelStyle(activeField === "contact_details")}>Best email or phone number</label>
+              <label style={labelStyle(activeField === "contact_details")}>Best Email or Phone</label>
               <input
                 type="text"
                 required
@@ -620,204 +619,212 @@ export default function OnboardingPage() {
               />
             </div>
 
-            {/* SECTION 2: Your Practice Specialty */}
+            {/* ═══════════════════════════════════════════════════════════ */}
+            {/* SECTION 2: Brand & Positioning                             */}
+            {/* ═══════════════════════════════════════════════════════════ */}
             <div style={sectionHeaderStyle}>
-              2. Your Practice Specialty
+              2. Brand & Positioning
             </div>
 
-            {/* Q4: Core Value Proposition */}
-            <div style={questionGroupStyle(activeField === "core_value_prop", activeField !== null)}>
-              <label style={labelStyle(activeField === "core_value_prop")}>Main Chiropractic Specialty</label>
-              <span style={helperStyle}>Describe the primary treatment or method your clinic is known for (e.g. spinal decompression, pediatric adjustments, sports injury rehab). No medical jargon.</span>
-              <span style={insightStyle(activeField === "core_value_prop")}>
-                Why this matters: This helps us write clear, honest email copy that local patients instantly understand.
+            {/* Q4: Brand Personality */}
+            <div style={questionGroupStyle(activeField === "brand_personality", activeField !== null)}>
+              <label style={labelStyle(activeField === "brand_personality")}>How would you describe your practice's personality?</label>
+              <span style={helperStyle}>If your practice were a person, how would they come across? Friendly and casual? Clinical and serious? Family-oriented? High-end and exclusive?</span>
+              <span style={insightStyle(activeField === "brand_personality")}>
+                This shapes every word we write on your behalf -- emails, ads, landing pages. We need to sound like you.
               </span>
               <textarea
                 required
-                value={form.core_value_prop}
-                onFocus={() => setActiveField("core_value_prop")}
+                value={form.brand_personality}
+                onFocus={() => setActiveField("brand_personality")}
                 onBlur={() => setActiveField(null)}
-                onChange={(e) => handleChange("core_value_prop", e.target.value)}
-                style={textareaStyle(activeField === "core_value_prop")}
+                onChange={(e) => handleChange("brand_personality", e.target.value)}
+                style={textareaStyle(activeField === "brand_personality")}
               />
             </div>
 
-            {/* Q5: Target ICP Vertical */}
-            <div style={questionGroupStyle(activeField === "icp_vertical", activeField !== null)}>
-              <label style={labelStyle(activeField === "icp_vertical")}>Ideal Patients</label>
-              <span style={helperStyle}>Who are you trying to get through the door? (e.g. office workers with chronic back pain, local families, seniors, active athletes).</span>
-              <span style={insightStyle(activeField === "icp_vertical")}>
-                Why this matters: Focusing our outreach on your absolute best patients keeps your schedule full of high-value appointments.
+            {/* Q5: Core Services to Promote */}
+            <div style={questionGroupStyle(activeField === "core_services", activeField !== null)}>
+              <label style={labelStyle(activeField === "core_services")}>What services do you most want to fill your schedule with?</label>
+              <span style={helperStyle}>Not everything you offer -- just the 2-3 services that are most profitable or that you want more of. (e.g. spinal decompression, sports rehab, corrective care plans)</span>
+              <span style={insightStyle(activeField === "core_services")}>
+                We'll build campaigns around these specific services instead of generic "chiropractic" messaging.
+              </span>
+              <textarea
+                required
+                value={form.core_services}
+                onFocus={() => setActiveField("core_services")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("core_services", e.target.value)}
+                style={textareaStyle(activeField === "core_services")}
+              />
+            </div>
+
+            {/* Q6: Competitors */}
+            <div style={questionGroupStyle(activeField === "competitors", activeField !== null)}>
+              <label style={labelStyle(activeField === "competitors")}>Who are you competing with locally?</label>
+              <span style={helperStyle}>Name specific practices, chains, or even alternatives like PT clinics and massage studios that your potential patients might go to instead.</span>
+              <span style={insightStyle(activeField === "competitors")}>
+                Knowing who else is marketing in your area lets us position you differently and avoid saying the same things they do.
+              </span>
+              <textarea
+                required
+                value={form.competitors}
+                onFocus={() => setActiveField("competitors")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("competitors", e.target.value)}
+                style={textareaStyle(activeField === "competitors")}
+              />
+            </div>
+
+            {/* ═══════════════════════════════════════════════════════════ */}
+            {/* SECTION 3: Marketing History & Goals                       */}
+            {/* ═══════════════════════════════════════════════════════════ */}
+            <div style={sectionHeaderStyle}>
+              3. Marketing History & Goals
+            </div>
+
+            {/* Q7: Past Marketing */}
+            <div style={questionGroupStyle(activeField === "past_marketing", activeField !== null)}>
+              <label style={labelStyle(activeField === "past_marketing")}>What marketing have you tried before?</label>
+              <span style={helperStyle}>Facebook ads, Google ads, mailers, SEO, referral programs, community events, social media -- anything. If nothing, just say "none."</span>
+              <span style={insightStyle(activeField === "past_marketing")}>
+                We don't want to repeat what didn't work. And if something did work, we want to understand why so we can scale it.
+              </span>
+              <textarea
+                required
+                value={form.past_marketing}
+                onFocus={() => setActiveField("past_marketing")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("past_marketing", e.target.value)}
+                style={textareaStyle(activeField === "past_marketing")}
+              />
+            </div>
+
+            {/* Q8: What Worked Best */}
+            <div style={questionGroupStyle(activeField === "best_performing", activeField !== null)}>
+              <label style={labelStyle(activeField === "best_performing")}>What's the single best thing that ever brought you new patients?</label>
+              <span style={helperStyle}>A specific ad, a referral partner, a Google listing, a community talk, word-of-mouth -- whatever moved the needle most.</span>
+              <span style={insightStyle(activeField === "best_performing")}>
+                Your best-ever result is a goldmine. We'll reverse-engineer what made it work and build on it.
+              </span>
+              <textarea
+                required
+                value={form.best_performing}
+                onFocus={() => setActiveField("best_performing")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("best_performing", e.target.value)}
+                style={textareaStyle(activeField === "best_performing")}
+              />
+            </div>
+
+            {/* Q9: Marketing Goals */}
+            <div style={questionGroupStyle(activeField === "marketing_goals", activeField !== null)}>
+              <label style={labelStyle(activeField === "marketing_goals")}>What does success look like for you in the next 90 days?</label>
+              <span style={helperStyle}>A number of new patients per month? Filling a specific time slot? Launching a new service? Growing revenue by X%? Be specific.</span>
+              <span style={insightStyle(activeField === "marketing_goals")}>
+                A clear target lets us measure whether campaigns are actually working, and adjust fast if they're not.
+              </span>
+              <textarea
+                required
+                value={form.marketing_goals}
+                onFocus={() => setActiveField("marketing_goals")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("marketing_goals", e.target.value)}
+                style={textareaStyle(activeField === "marketing_goals")}
+              />
+            </div>
+
+            {/* Q10: Monthly Budget */}
+            <div style={questionGroupStyle(activeField === "monthly_budget", activeField !== null)}>
+              <label style={labelStyle(activeField === "monthly_budget")}>What's your comfortable monthly marketing budget?</label>
+              <span style={helperStyle}>A rough range is fine. This helps us recommend the right channels and set realistic expectations for volume.</span>
+              <span style={insightStyle(activeField === "monthly_budget")}>
+                We won't upsell you. This just tells us whether to focus on high-volume paid ads or lean, organic strategies.
               </span>
               <input
                 type="text"
                 required
-                value={form.icp_vertical}
-                onFocus={() => setActiveField("icp_vertical")}
+                value={form.monthly_budget}
+                onFocus={() => setActiveField("monthly_budget")}
                 onBlur={() => setActiveField(null)}
-                onChange={(e) => handleChange("icp_vertical", e.target.value)}
-                style={inputStyle(activeField === "icp_vertical")}
+                onChange={(e) => handleChange("monthly_budget", e.target.value)}
+                style={inputStyle(activeField === "monthly_budget")}
+                placeholder="e.g. $1,500 - $3,000/month"
               />
             </div>
 
-            {/* Q6: Geographic Focus */}
-            <div style={questionGroupStyle(activeField === "geographic_focus", activeField !== null)}>
-              <label style={labelStyle(activeField === "geographic_focus")}>Neighborhoods & Cities Targeted</label>
-              <span style={helperStyle}>What local towns or neighborhoods do your patients typically drive from?</span>
-              <span style={insightStyle(activeField === "geographic_focus")}>
-                Why this matters: Targeting patients in your direct driving radius prevents wasted outreach and increases booking rates.
-              </span>
-              <input
-                type="text"
-                required
-                value={form.geographic_focus}
-                onFocus={() => setActiveField("geographic_focus")}
-                onBlur={() => setActiveField(null)}
-                onChange={(e) => handleChange("geographic_focus", e.target.value)}
-                style={inputStyle(activeField === "geographic_focus")}
-              />
-            </div>
-
-            {/* SECTION 3: Patient Motivation */}
+            {/* ═══════════════════════════════════════════════════════════ */}
+            {/* SECTION 4: Campaign Strategy                               */}
+            {/* ═══════════════════════════════════════════════════════════ */}
             <div style={sectionHeaderStyle}>
-              3. Patient Motivation
+              4. Campaign Strategy
             </div>
 
-            {/* Q7: The Catalyst/Trigger Event */}
-            <div style={questionGroupStyle(activeField === "trigger_event", activeField !== null)}>
-              <label style={labelStyle(activeField === "trigger_event")}>Sudden Pain / Trigger Event</label>
-              <span style={helperStyle}>What sudden physical pain or event usually drives a patient to finally call your clinic? (e.g. throwing their back out lifting something, chronic headaches waking them up, an auto accident).</span>
-              <span style={insightStyle(activeField === "trigger_event")}>
-                Why this matters: Writing about real physical pain triggers in our email campaigns drives a massive increase in phone calls.
+            {/* Q11: Target Audience for Marketing */}
+            <div style={questionGroupStyle(activeField === "target_audience", activeField !== null)}>
+              <label style={labelStyle(activeField === "target_audience")}>Who should we be targeting in our ads and outreach?</label>
+              <span style={helperStyle}>Think about the people most likely to book. Age range, lifestyle, job type, situation -- whatever helps us narrow it down. (e.g. "desk workers 30-55 in the suburbs," "active adults who just got injured")</span>
+              <span style={insightStyle(activeField === "target_audience")}>
+                The tighter the targeting, the lower the cost per lead. Broad targeting burns budget fast.
               </span>
               <textarea
                 required
-                value={form.trigger_event}
-                onFocus={() => setActiveField("trigger_event")}
+                value={form.target_audience}
+                onFocus={() => setActiveField("target_audience")}
                 onBlur={() => setActiveField(null)}
-                onChange={(e) => handleChange("trigger_event", e.target.value)}
-                style={textareaStyle(activeField === "trigger_event")}
+                onChange={(e) => handleChange("target_audience", e.target.value)}
+                style={textareaStyle(activeField === "target_audience")}
               />
             </div>
 
-            {/* Q8: Primary Customer Headache */}
-            <div style={questionGroupStyle(activeField === "pain_point", activeField !== null)}>
-              <label style={labelStyle(activeField === "pain_point")}>Daily Activities Ruined</label>
-              <span style={helperStyle}>What daily activities are ruined by their pain before they see you? (e.g. can't sit at their office chair for more than 20 minutes, can't lift their kids, can't sleep through the night).</span>
-              <span style={insightStyle(activeField === "pain_point")}>
-                Why this matters: Referencing specific daily struggles in our copy makes the outreach feel highly personal and empathetic.
+            {/* Q12: Intro Offer */}
+            <div style={questionGroupStyle(activeField === "intro_offer", activeField !== null)}>
+              <label style={labelStyle(activeField === "intro_offer")}>Do you have a new patient offer or special we can promote?</label>
+              <span style={helperStyle}>A discounted first visit, free consultation, bundled exam + X-ray, etc. If you don't have one, we can help create one.</span>
+              <span style={insightStyle(activeField === "intro_offer")}>
+                A clear, low-risk offer is the #1 driver of cold-audience conversions. People need a reason to try someone new.
               </span>
               <textarea
                 required
-                value={form.pain_point}
-                onFocus={() => setActiveField("pain_point")}
+                value={form.intro_offer}
+                onFocus={() => setActiveField("intro_offer")}
                 onBlur={() => setActiveField(null)}
-                onChange={(e) => handleChange("pain_point", e.target.value)}
-                style={textareaStyle(activeField === "pain_point")}
+                onChange={(e) => handleChange("intro_offer", e.target.value)}
+                style={textareaStyle(activeField === "intro_offer")}
               />
             </div>
 
-            {/* Q9: The Cost of Inaction */}
-            <div style={questionGroupStyle(activeField === "cost_of_inaction", activeField !== null)}>
-              <label style={labelStyle(activeField === "cost_of_inaction")}>Risk of Delay</label>
-              <span style={helperStyle}>What happens to their health or lifestyle if they delay getting treated by you? (e.g. pain gets worse, ending up needing spinal surgery, taking risky pain pills).</span>
-              <span style={insightStyle(activeField === "cost_of_inaction")}>
-                Why this matters: Pointing out the real cost of delaying treatment creates urgency, helping patients take action instead of waiting.
+            {/* Q13: Messaging Angle */}
+            <div style={questionGroupStyle(activeField === "messaging_angle", activeField !== null)}>
+              <label style={labelStyle(activeField === "messaging_angle")}>Why should someone pick you over every other option in town?</label>
+              <span style={helperStyle}>In your own words -- what do you do better or differently? What do patients say about you that you're most proud of?</span>
+              <span style={insightStyle(activeField === "messaging_angle")}>
+                This becomes the core message in everything we run. It's the one thing that makes people stop scrolling and pay attention.
               </span>
               <textarea
                 required
-                value={form.cost_of_inaction}
-                onFocus={() => setActiveField("cost_of_inaction")}
+                value={form.messaging_angle}
+                onFocus={() => setActiveField("messaging_angle")}
                 onBlur={() => setActiveField(null)}
-                onChange={(e) => handleChange("cost_of_inaction", e.target.value)}
-                style={textareaStyle(activeField === "cost_of_inaction")}
+                onChange={(e) => handleChange("messaging_angle", e.target.value)}
+                style={textareaStyle(activeField === "messaging_angle")}
               />
             </div>
 
-            {/* SECTION 4: Local Competition & Marketing */}
+            {/* ═══════════════════════════════════════════════════════════ */}
+            {/* SECTION 5: Campaign Setup                                  */}
+            {/* ═══════════════════════════════════════════════════════════ */}
             <div style={sectionHeaderStyle}>
-              4. Local Competition & Marketing
+              5. Campaign Setup
             </div>
 
-            {/* Q10: Primary Competitor & Alternatives */}
-            <div style={questionGroupStyle(activeField === "competitor_alternative", activeField !== null)}>
-              <label style={labelStyle(activeField === "competitor_alternative")}>Other Local Options</label>
-              <span style={helperStyle}>What other options in your area do people use instead of your clinic? (e.g. corporate chiro chains, physical therapists, massage parlors, painkillers).</span>
-              <span style={insightStyle(activeField === "competitor_alternative")}>
-                Why this matters: Knowing what options patients consider helps us proactively address their skepticism in our messaging.
-              </span>
-              <textarea
-                required
-                value={form.competitor_alternative}
-                onFocus={() => setActiveField("competitor_alternative")}
-                onBlur={() => setActiveField(null)}
-                onChange={(e) => handleChange("competitor_alternative", e.target.value)}
-                style={textareaStyle(activeField === "competitor_alternative")}
-              />
-            </div>
-
-            {/* Q11: What Marketing Has Worked in the Past */}
-            <div style={questionGroupStyle(activeField === "past_marketing_success", activeField !== null)}>
-              <label style={labelStyle(activeField === "past_marketing_success")}>What Marketing Has Worked in the Past</label>
-              <span style={helperStyle}>What advertising or marketing has worked best to get patients for your clinic in the past, if any? (e.g. Facebook ads, local referrals, Google SEO, mailing flyers). If none, write "None".</span>
-              <span style={insightStyle(activeField === "past_marketing_success")}>
-                Why this matters: Understanding your historical wins allows us to double down on the specific angles and offers that are already proven in your market.
-              </span>
-              <textarea
-                required
-                value={form.past_marketing_success}
-                onFocus={() => setActiveField("past_marketing_success")}
-                onBlur={() => setActiveField(null)}
-                onChange={(e) => handleChange("past_marketing_success", e.target.value)}
-                style={textareaStyle(activeField === "past_marketing_success")}
-              />
-            </div>
-
-            {/* Q12: Why Patients Choose Your Clinic */}
-            <div style={questionGroupStyle(activeField === "differentiation_hook", activeField !== null)}>
-              <label style={labelStyle(activeField === "differentiation_hook")}>Why Patients Choose Your Clinic</label>
-              <span style={helperStyle}>Why do patients choose your clinic over other chiropractors in town? What do you do best? (e.g. digital X-rays on site, gentle Activator technique, open on Saturdays).</span>
-              <span style={insightStyle(activeField === "differentiation_hook")}>
-                Why this matters: Highlighting your unique clinical advantage drives immediate trust and makes your practice stand out.
-              </span>
-              <textarea
-                required
-                value={form.differentiation_hook}
-                onFocus={() => setActiveField("differentiation_hook")}
-                onBlur={() => setActiveField(null)}
-                onChange={(e) => handleChange("differentiation_hook", e.target.value)}
-                style={textareaStyle(activeField === "differentiation_hook")}
-              />
-            </div>
-
-            {/* SECTION 5: Your Offer & Settings */}
-            <div style={sectionHeaderStyle}>
-              5. Your Offer & Settings
-            </div>
-
-            {/* Q13: Introductory Special */}
-            <div style={questionGroupStyle(activeField === "campaign_offer", activeField !== null)}>
-              <label style={labelStyle(activeField === "campaign_offer")}>New Patient Special</label>
-              <span style={helperStyle}>What introductory special do you run for new patients? (e.g. $49 consultation, exam, and digital X-rays. If none, write "None").</span>
-              <span style={insightStyle(activeField === "campaign_offer")}>
-                Why this matters: A low-barrier first visit breaks cold audience skepticism and gets new patients through your door.
-              </span>
-              <textarea
-                required
-                value={form.campaign_offer}
-                onFocus={() => setActiveField("campaign_offer")}
-                onBlur={() => setActiveField(null)}
-                onChange={(e) => handleChange("campaign_offer", e.target.value)}
-                style={textareaStyle(activeField === "campaign_offer")}
-              />
-            </div>
-
-            {/* Q14: Appointments Routing */}
+            {/* Q14: Booking Routing */}
             <div style={questionGroupStyle(activeField === "routing_destination", activeField !== null)}>
-              <label style={labelStyle(activeField === "routing_destination")}>Where to Route Bookings</label>
-              <span style={helperStyle}>Where should we send new patient bookings and phone inquiries? (e.g. your scheduling link like Jane App/Acuity, front desk email, or direct phone number).</span>
+              <label style={labelStyle(activeField === "routing_destination")}>Where should we send leads who want to book?</label>
+              <span style={helperStyle}>Your scheduling link, front desk email, phone number, or CRM -- wherever new leads should land.</span>
               <span style={insightStyle(activeField === "routing_destination")}>
-                Why this matters: Directing hot patient inquiries straight to a booking page or front desk captures bookings instantly before they lose momentum.
+                Speed matters. The faster a lead gets a response, the higher the booking rate. We'll route everything here.
               </span>
               
               <div style={{ position: "relative" }}>
@@ -830,20 +837,20 @@ export default function OnboardingPage() {
                   style={selectStyle(activeField === "routing_destination")}
                 >
                   <option value="" disabled>-- Select routing method --</option>
-                  <option value="Direct Calendar Link">Direct Calendar Link (e.g. Jane App, SavvyCal)</option>
-                  <option value="Email Inbox Routing">Email Inbox Routing</option>
-                  <option value="CRM Routing">CRM Routing (HubSpot, Salesforce, Zoho)</option>
-                  <option value="Direct Phone / SMS">Direct Phone / SMS Alerts</option>
+                  <option value="Direct Calendar Link">Calendar / Scheduling Link</option>
+                  <option value="Email Inbox Routing">Email Inbox</option>
+                  <option value="CRM Routing">CRM (HubSpot, Jane App, etc.)</option>
+                  <option value="Direct Phone / SMS">Phone / SMS</option>
                 </select>
               </div>
 
               {routingSelect && (
                 <div style={{ marginTop: "16px" }}>
                   <label style={{ ...labelStyle(activeField === "routing_destination"), fontSize: "11px", color: COLORS.sapphire }}>
-                    {routingSelect === "Direct Calendar Link" ? "Enter Calendar Scheduling URL" :
-                     routingSelect === "Email Inbox Routing" ? "Enter Target Routing Email Address" :
-                     routingSelect === "CRM Routing" ? "Enter CRM Portal / Webhook Details" :
-                     "Enter Target Direct Phone Number"}
+                    {routingSelect === "Direct Calendar Link" ? "Paste your scheduling URL" :
+                     routingSelect === "Email Inbox Routing" ? "Enter your intake email address" :
+                     routingSelect === "CRM Routing" ? "Enter your CRM link or webhook" :
+                     "Enter your phone number"}
                   </label>
                   <input
                     type="text"
@@ -861,9 +868,9 @@ export default function OnboardingPage() {
             {/* Q15: Outbound Email Sender Names */}
             <div style={{ ...questionGroupStyle((activeField?.startsWith("email_names") ?? false), activeField !== null), borderBottom: "none", paddingBottom: "0px", marginBottom: "48px" }}>
               <label style={labelStyle((activeField?.startsWith("email_names") ?? false))}>Outbound Email Sender Names</label>
-              <span style={helperStyle}>Provide exactly 5 prefixes using first names of real staff or doctors to use for your outbound accounts (e.g. dr.jane, amy, frontdesk). Do not include spaces, domains, or symbols.</span>
+              <span style={helperStyle}>Give us 5 first names from your team to use as email senders. Real names only -- people reply to people, not brands. (e.g. dr.sarah, mike, jenny)</span>
               <span style={insightStyle(activeField?.startsWith("email_names") ?? false)}>
-                Why this matters: Sending from a real person's name promotes trust and deliverability, yielding far more positive patient replies.
+                Emails from a real person's name get 2-3x more replies than emails from a company name.
               </span>
               
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -873,7 +880,7 @@ export default function OnboardingPage() {
                     <div key={index} style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <span style={{ fontSize: "11px", fontFamily: "var(--font-mono, monospace)", color: isThisBoxActive ? COLORS.sapphire : COLORS.inkMuted, fontWeight: 700 }}>
-                          Prefix 0{index + 1}
+                          Sender {index + 1}
                         </span>
                         {/* Live Outbound Email Preview */}
                         <span 
@@ -883,7 +890,7 @@ export default function OnboardingPage() {
                             color: name ? COLORS.sapphire : "rgba(13,43,74,0.3)",
                           }}
                         >
-                          {name || "prefix"}@{displayDomain}
+                          {name || "name"}@{displayDomain}
                         </span>
                       </div>
                       <input
@@ -949,7 +956,7 @@ export default function OnboardingPage() {
                 }
               }}
             >
-              {status === "submitting" ? "Submitting Campaign Details..." : "Submit Setup Details"}
+              {status === "submitting" ? "Submitting..." : "Submit Marketing Brief"}
             </button>
 
           </div>

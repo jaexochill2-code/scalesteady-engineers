@@ -4,36 +4,30 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 
-const COLORS = {
-  canvas: "#0A0E1A",
-  cardGlass: "rgba(255,255,255,0.04)",
-  cardGlassHover: "rgba(255,255,255,0.06)",
-  inputGlass: "rgba(255,255,255,0.05)",
-  inputGlassActive: "rgba(255,255,255,0.08)",
-  borderSubtle: "rgba(255,255,255,0.06)",
-  borderActive: "rgba(138,180,248,0.3)",
+// Apple-inspired light palette
+const C = {
+  bg: "#f5f5f7",
   white: "#FFFFFF",
-  textPrimary: "rgba(255,255,255,0.92)",
-  textSecondary: "rgba(255,255,255,0.55)",
-  textMuted: "rgba(255,255,255,0.3)",
-  accentBlue: "#8AB4F8",
-  accentPurple: "#BB86FC",
-  accentTeal: "#03DAC6",
-  accentRose: "#F2859D",
-  accentAmber: "#F5BC6C",
-  gradientStart: "#667EEA",
-  gradientEnd: "#764BA2",
-  deepNavy: "#060A14",
-  sectionAlt: "rgba(255,255,255,0.015)",
+  text1: "#1d1d1f",
+  text2: "#6e6e73",
+  text3: "#86868b",
+  text4: "#aeaeb2",
+  border: "rgba(0,0,0,0.06)",
+  borderHover: "rgba(0,0,0,0.12)",
+  borderFocus: "rgba(0,0,0,0.22)",
+  glass: "rgba(255,255,255,0.72)",
+  glassHover: "rgba(255,255,255,0.82)",
+  glassSolid: "rgba(255,255,255,0.92)",
+  accent: "#1d1d1f",
+  accentSoft: "rgba(0,0,0,0.04)",
 };
 
-// Section accent configs for visual variety
-const SECTION_ACCENTS = [
-  { color: COLORS.accentBlue, glow: "rgba(138,180,248,0.08)", gradient: "linear-gradient(135deg, rgba(138,180,248,0.08), transparent 60%)" },
-  { color: COLORS.accentPurple, glow: "rgba(187,134,252,0.08)", gradient: "linear-gradient(135deg, rgba(187,134,252,0.08), transparent 60%)" },
-  { color: COLORS.accentRose, glow: "rgba(242,133,157,0.08)", gradient: "linear-gradient(135deg, rgba(242,133,157,0.08), transparent 60%)" },
-  { color: COLORS.accentTeal, glow: "rgba(3,218,198,0.08)", gradient: "linear-gradient(135deg, rgba(3,218,198,0.08), transparent 60%)" },
-  { color: COLORS.accentAmber, glow: "rgba(245,188,108,0.08)", gradient: "linear-gradient(135deg, rgba(245,188,108,0.08), transparent 60%)" },
+const ACCENTS = [
+  { dot: "#34C759", tint: "rgba(52,199,89,0.04)", border: "rgba(52,199,89,0.12)" },
+  { dot: "#AF52DE", tint: "rgba(175,82,222,0.04)", border: "rgba(175,82,222,0.12)" },
+  { dot: "#FF6B6B", tint: "rgba(255,107,107,0.04)", border: "rgba(255,107,107,0.12)" },
+  { dot: "#007AFF", tint: "rgba(0,122,255,0.04)", border: "rgba(0,122,255,0.12)" },
+  { dot: "#FF9500", tint: "rgba(255,149,0,0.04)", border: "rgba(255,149,0,0.12)" },
 ];
 
 interface OnboardingForm {
@@ -80,19 +74,13 @@ export default function OnboardingPage() {
   const [activeField, setActiveField] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  // Scroll-reveal observer
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("s-visible");
-        });
-      },
+      (entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("vis"); }); },
       { threshold: 0.06, rootMargin: "0px 0px -30px 0px" }
     );
-    const sections = document.querySelectorAll(".fs");
-    sections.forEach((s) => observer.observe(s));
-    return () => sections.forEach((s) => observer.unobserve(s));
+    document.querySelectorAll(".sec").forEach((s) => observer.observe(s));
+    return () => document.querySelectorAll(".sec").forEach((s) => observer.unobserve(s));
   }, []);
 
   useEffect(() => {
@@ -100,289 +88,202 @@ export default function OnboardingPage() {
       const cached = localStorage.getItem("scalesteady_onboarding_v8");
       if (cached) {
         const parsed = JSON.parse(cached);
-        setForm((prev) => ({
-          ...prev,
-          ...parsed,
-          email_names: Array.isArray(parsed.email_names) && parsed.email_names.length === 5
-            ? parsed.email_names : prev.email_names,
+        setForm((prev) => ({ ...prev, ...parsed,
+          email_names: Array.isArray(parsed.email_names) && parsed.email_names.length === 5 ? parsed.email_names : prev.email_names,
         }));
         if (parsed.routing_destination) {
           const parts = parsed.routing_destination.split(": ");
-          if (parts.length > 1) {
-            setRoutingSelect(parts[0]);
-            setRoutingDetails(parts.slice(1).join(": "));
-          } else setRoutingDetails(parsed.routing_destination);
+          if (parts.length > 1) { setRoutingSelect(parts[0]); setRoutingDetails(parts.slice(1).join(": ")); }
+          else setRoutingDetails(parsed.routing_destination);
         }
       }
     } catch (e) { console.error(e); }
   }, []);
 
-  const save = (data: OnboardingForm) => {
-    try { localStorage.setItem("scalesteady_onboarding_v8", JSON.stringify(data)); }
-    catch (e) { console.error(e); }
-  };
-
-  const handleChange = (field: keyof OnboardingForm, value: string) => {
-    const updated = { ...form, [field]: value };
-    setForm(updated);
-    save(updated);
-  };
+  const save = (d: OnboardingForm) => { try { localStorage.setItem("scalesteady_onboarding_v8", JSON.stringify(d)); } catch {} };
+  const handleChange = (field: keyof OnboardingForm, value: string) => { const u = { ...form, [field]: value }; setForm(u); save(u); };
 
   useEffect(() => {
-    const value = routingSelect && routingDetails ? `${routingSelect}: ${routingDetails}` : routingDetails;
-    if (value !== form.routing_destination) handleChange("routing_destination", value);
+    const v = routingSelect && routingDetails ? `${routingSelect}: ${routingDetails}` : routingDetails;
+    if (v !== form.routing_destination) handleChange("routing_destination", v);
   }, [routingSelect, routingDetails]);
 
-  const handleNameBoxChange = (index: number, value: string) => {
+  const handleNameBoxChange = (i: number, value: string) => {
     const clean = value.replace(/@.*$/, "").replace(/\s+/g, "").toLowerCase();
-    const names = [...form.email_names];
-    names[index] = clean;
-    const updated = { ...form, email_names: names };
-    setForm(updated);
-    save(updated);
+    const names = [...form.email_names]; names[i] = clean;
+    const u = { ...form, email_names: names }; setForm(u); save(u);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const fields = [
-      form.company_name, form.contact_name, form.contact_details,
-      form.brand_voice, form.core_services, form.patient_words,
-      form.main_objection, form.edge, form.intro_offer,
-      form.past_results, form.best_win, form.goals_90_days,
-      form.email_angle, form.routing_destination,
-    ];
-    if (!fields.every((f) => f.trim().length > 0) || !form.email_names.every((n) => n.trim().length > 0)) {
-      setStatus("error");
-      setErrorMsg("Fill out every field before submitting.");
-      return;
+    const f = [form.company_name, form.contact_name, form.contact_details, form.brand_voice, form.core_services, form.patient_words, form.main_objection, form.edge, form.intro_offer, form.past_results, form.best_win, form.goals_90_days, form.email_angle, form.routing_destination];
+    if (!f.every((x) => x.trim().length > 0) || !form.email_names.every((n) => n.trim().length > 0)) {
+      setStatus("error"); setErrorMsg("Fill out every field before submitting."); return;
     }
-    setStatus("submitting");
-    setErrorMsg("");
+    setStatus("submitting"); setErrorMsg("");
     try {
       const { error } = await supabase.from("onboarding_submissions").insert([{
-        company_name: form.company_name,
-        contact_name: form.contact_name,
-        contact_details: form.contact_details,
-        email_names: form.email_names,
+        company_name: form.company_name, contact_name: form.contact_name, contact_details: form.contact_details, email_names: form.email_names,
         icp_description: `Target: ${form.email_angle}\nObjection: ${form.main_objection}`,
         brand_signature: `Voice: ${form.brand_voice}\nServices: ${form.core_services}\nEdge: ${form.edge}\nPatient Words: ${form.patient_words}`,
         campaign_offer: form.intro_offer,
         core_deal_value: `Past Results: ${form.past_results}\nBest Win: ${form.best_win}\n90-Day Goals: ${form.goals_90_days}`,
-        geographic_target: "",
-        routing_destination: form.routing_destination,
+        geographic_target: "", routing_destination: form.routing_destination,
       }]);
       if (error) throw new Error(error.message);
-      setStatus("success");
-      localStorage.removeItem("scalesteady_onboarding_v8");
-    } catch (err: any) {
-      setStatus("error");
-      setErrorMsg(err.message || "Submission failed.");
-    }
+      setStatus("success"); localStorage.removeItem("scalesteady_onboarding_v8");
+    } catch (err: any) { setStatus("error"); setErrorMsg(err.message || "Submission failed."); }
   };
 
-  const isComplete = (field: keyof OnboardingForm) => {
-    if (field === "email_names") return form.email_names.every((n) => n.trim().length > 0);
-    return form[field].trim().length > 0;
-  };
-
-  const fields: (keyof OnboardingForm)[] = [
-    "company_name", "contact_name", "contact_details",
-    "brand_voice", "core_services", "patient_words",
-    "main_objection", "edge", "intro_offer",
-    "past_results", "best_win", "goals_90_days",
-    "email_angle", "routing_destination", "email_names",
-  ];
-
-  const done = fields.filter((f) => isComplete(f)).length;
-  const domain = form.company_name
-    ? form.company_name.toLowerCase().replace(/[^a-z0-9]/g, "") + ".com"
-    : "yourdomain.com";
-
+  const ok = (f: keyof OnboardingForm) => f === "email_names" ? form.email_names.every((n) => n.trim().length > 0) : form[f].trim().length > 0;
+  const FL: (keyof OnboardingForm)[] = ["company_name","contact_name","contact_details","brand_voice","core_services","patient_words","main_objection","edge","intro_offer","past_results","best_win","goals_90_days","email_angle","routing_destination","email_names"];
+  const done = FL.filter(ok).length;
+  const domain = form.company_name ? form.company_name.toLowerCase().replace(/[^a-z0-9]/g, "") + ".com" : "yourdomain.com";
   const act = (f: string) => activeField === f;
 
-  // ── Success ──
   if (status === "success") {
     return (
-      <div style={{ background: COLORS.canvas, minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 24px" }}>
-        <style dangerouslySetInnerHTML={{ __html: GLOBAL_CSS }} />
-        <div className="glass-card" style={{ maxWidth: "540px", width: "100%", padding: "64px 48px", textAlign: "center", animation: "fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) both" }}>
-          <div style={{
-            width: "64px", height: "64px", borderRadius: "50%",
-            background: "rgba(138,180,248,0.1)", border: "1px solid rgba(138,180,248,0.2)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            margin: "0 auto 28px", boxShadow: "0 0 40px rgba(138,180,248,0.1)",
-          }}>
-            <span style={{ color: COLORS.accentBlue, fontSize: "24px" }}>&#10003;</span>
+      <div style={{ background: C.bg, minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 24px" }}>
+        <style dangerouslySetInnerHTML={{ __html: CSS }} />
+        <div className="gcard" style={{ maxWidth: "520px", width: "100%", padding: "64px 48px", textAlign: "center" }}>
+          <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "rgba(52,199,89,0.08)", border: "1px solid rgba(52,199,89,0.15)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 28px" }}>
+            <span style={{ color: "#34C759", fontSize: "22px" }}>&#10003;</span>
           </div>
-          <h1 style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(28px, 4vw, 40px)", color: COLORS.textPrimary, fontWeight: 300, letterSpacing: "-0.03em", marginBottom: "12px" }}>
-            Locked in.
-          </h1>
-          <p style={{ fontSize: "14px", lineHeight: 1.7, color: COLORS.textSecondary, maxWidth: "340px", margin: "0 auto 36px" }}>
-            We'll review everything and reach out within 24 hours.
-          </p>
-          <Link href="/" className="cta-btn" style={{ display: "inline-block", padding: "16px 48px", textDecoration: "none", fontSize: "11px", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: COLORS.white }}>
-            Back to homepage
-          </Link>
+          <h1 style={{ fontFamily: "var(--font-serif, Georgia, serif)", fontSize: "clamp(28px, 4vw, 40px)", color: C.text1, fontWeight: 400, letterSpacing: "-0.03em", marginBottom: "12px" }}>Locked in.</h1>
+          <p style={{ fontSize: "15px", lineHeight: 1.7, color: C.text2, maxWidth: "340px", margin: "0 auto 36px" }}>We'll review everything and reach out within 24 hours.</p>
+          <Link href="/" className="submit-btn" style={{ display: "inline-block", padding: "14px 44px", textDecoration: "none" }}>Back to homepage</Link>
         </div>
       </div>
     );
   }
 
   return (
-    <div style={{ background: COLORS.canvas, minHeight: "100vh", position: "relative", overflow: "hidden" }}>
-      <style dangerouslySetInnerHTML={{ __html: GLOBAL_CSS }} />
+    <div style={{ background: C.bg, minHeight: "100vh", position: "relative" }}>
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
-      {/* ── Ambient background orbs ── */}
-      <div className="orb orb-1" />
-      <div className="orb orb-2" />
-      <div className="orb orb-3" />
+      {/* Ambient light blurs */}
+      <div style={{ position: "fixed", top: "-20%", right: "-10%", width: "50vw", height: "50vw", background: "radial-gradient(circle, rgba(175,82,222,0.04) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
+      <div style={{ position: "fixed", bottom: "-15%", left: "-10%", width: "45vw", height: "45vw", background: "radial-gradient(circle, rgba(0,122,255,0.03) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
 
       {/* ═══ HERO ═══ */}
-      <div style={{ position: "relative", padding: "120px 24px 64px", textAlign: "center", zIndex: 2 }}>
+      <div style={{ position: "relative", zIndex: 2, padding: "120px 24px 56px", textAlign: "center" }}>
         <div style={{ animation: "fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both" }}>
-          <div className="badge">
-            <span className="badge-dot" />
+          <div className="pill">
+            <span className="pill-dot" />
             Cold Email Onboarding
           </div>
-
-          <h1 style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: "clamp(36px, 5.5vw, 58px)",
-            fontWeight: 200,
-            lineHeight: 1.1,
-            letterSpacing: "-0.04em",
-            color: COLORS.textPrimary,
-            marginBottom: "16px",
-          }}>
-            Tell us about{" "}
-            <span className="gradient-text">your practice</span>
+          <h1 style={{ fontFamily: "var(--font-serif, Georgia, serif)", fontSize: "clamp(36px, 5.5vw, 56px)", fontWeight: 400, lineHeight: 1.08, letterSpacing: "-0.035em", color: C.text1, marginBottom: "16px" }}>
+            Tell us about <em style={{ fontStyle: "italic" }}>your practice.</em>
           </h1>
-          <p style={{ fontSize: "15px", color: COLORS.textSecondary, maxWidth: "380px", margin: "0 auto", lineHeight: 1.6, fontWeight: 300 }}>
-            15 questions. About 10 minutes.<br />
-            We handle everything from here.
+          <p style={{ fontSize: "16px", color: C.text3, maxWidth: "380px", margin: "0 auto", lineHeight: 1.55, fontFamily: "var(--font-sans, sans-serif)" }}>
+            15 questions. About 10 minutes.<br />We handle everything from here.
           </p>
         </div>
       </div>
 
       {/* ═══ STICKY PROGRESS ═══ */}
-      <div className="progress-bar-wrap">
-        <div style={{ maxWidth: "720px", margin: "0 auto", display: "flex", alignItems: "center", gap: "16px" }}>
+      <div className="prog-wrap">
+        <div style={{ maxWidth: "680px", margin: "0 auto", display: "flex", alignItems: "center", gap: "14px" }}>
           <div style={{ display: "flex", gap: "3px", flex: 1 }}>
-            {fields.map((f) => {
-              const c = isComplete(f);
-              const a = activeField === f || (f === "email_names" && activeField?.startsWith("email_names"));
-              return <div key={f} className="prog-seg" style={{
-                background: c ? COLORS.accentBlue : a ? COLORS.accentRose : "rgba(255,255,255,0.06)",
-                boxShadow: c ? `0 0 8px ${COLORS.accentBlue}40` : a ? `0 0 8px ${COLORS.accentRose}40` : "none",
-              }} />;
-            })}
+            {FL.map((f) => (
+              <div key={f} className="prog-pip" data-done={ok(f)} data-active={activeField === f || (f === "email_names" && activeField?.startsWith("email_names"))} />
+            ))}
           </div>
-          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", color: COLORS.accentBlue, fontWeight: 500, minWidth: "36px", textAlign: "right" }}>
-            {done}/15
-          </span>
+          <span style={{ fontFamily: "var(--font-mono, monospace)", fontSize: "11px", color: C.text3, fontWeight: 600 }}>{done}/15</span>
         </div>
       </div>
 
       <form ref={formRef} onSubmit={handleSubmit} style={{ position: "relative", zIndex: 2 }}>
 
-        {/* ═══ SECTION 1 -- THE BASICS ═══ */}
-        <Section index={0} label="The Basics" title="Let's start simple.">
-          <Q field="company_name" label="Practice name" active={act("company_name")} accent={0}>
-            <input className="glass-input" {...inp("company_name", form, handleChange, setActiveField)} data-active={act("company_name")} />
-          </Q>
-          <Q field="contact_name" label="Your name" active={act("contact_name")} accent={0}>
-            <input className="glass-input" {...inp("contact_name", form, handleChange, setActiveField)} data-active={act("contact_name")} />
-          </Q>
-          <Q field="contact_details" label="Best email or phone" active={act("contact_details")} accent={0} last>
-            <input className="glass-input" {...inp("contact_details", form, handleChange, setActiveField)} data-active={act("contact_details")} />
-          </Q>
-        </Section>
+        {/* SECTION 1 */}
+        <Sec i={0} label="The Basics" title="Let's start simple.">
+          <Field field="company_name" label="Practice name" active={act("company_name")} ai={0}>
+            <input className="gi" {...ip("company_name", form, handleChange, setActiveField)} data-active={act("company_name")} />
+          </Field>
+          <Field field="contact_name" label="Your name" active={act("contact_name")} ai={0}>
+            <input className="gi" {...ip("contact_name", form, handleChange, setActiveField)} data-active={act("contact_name")} />
+          </Field>
+          <Field field="contact_details" label="Best email or phone" active={act("contact_details")} ai={0} last>
+            <input className="gi" {...ip("contact_details", form, handleChange, setActiveField)} data-active={act("contact_details")} />
+          </Field>
+        </Sec>
 
-        {/* ═══ SECTION 2 -- YOUR BRAND ═══ */}
-        <Section index={1} label="Your Brand" title="How should we represent you?">
-          <Q field="brand_voice" label="Describe your practice's vibe in a few words" active={act("brand_voice")} accent={1}>
-            <input className="glass-input" {...inp("brand_voice", form, handleChange, setActiveField, "e.g. friendly, no-nonsense, family-oriented")} data-active={act("brand_voice")} />
-          </Q>
-          <Q field="core_services" label="Top 2-3 services you want booked solid" active={act("core_services")} accent={1}>
-            <textarea className="glass-input glass-textarea" {...ta("core_services", form, handleChange, setActiveField, "e.g. spinal decompression, sports rehab, corrective care")} data-active={act("core_services")} />
-          </Q>
-          <Q field="patient_words" label="What do your happiest patients say about you?" active={act("patient_words")} accent={1} last>
-            <textarea className="glass-input glass-textarea" {...ta("patient_words", form, handleChange, setActiveField, "In their words -- what do they tell friends or write in reviews?")} data-active={act("patient_words")} />
-          </Q>
-        </Section>
+        {/* SECTION 2 */}
+        <Sec i={1} label="Your Brand" title="How should we represent you?">
+          <Field field="brand_voice" label="Describe your practice's vibe in a few words" active={act("brand_voice")} ai={1}>
+            <input className="gi" {...ip("brand_voice", form, handleChange, setActiveField, "e.g. friendly, no-nonsense, family-oriented")} data-active={act("brand_voice")} />
+          </Field>
+          <Field field="core_services" label="Top 2-3 services you want booked solid" active={act("core_services")} ai={1}>
+            <textarea className="gi gi-ta" {...tp("core_services", form, handleChange, setActiveField, "e.g. spinal decompression, sports rehab, corrective care")} data-active={act("core_services")} />
+          </Field>
+          <Field field="patient_words" label="What do your happiest patients say about you?" active={act("patient_words")} ai={1} last>
+            <textarea className="gi gi-ta" {...tp("patient_words", form, handleChange, setActiveField, "In their words -- what do they tell friends or write in reviews?")} data-active={act("patient_words")} />
+          </Field>
+        </Sec>
 
-        {/* ═══ SECTION 3 -- YOUR EDGE ═══ */}
-        <Section index={2} label="Your Edge" title="What makes you the pick?">
-          <Q field="main_objection" label="What stops someone from booking with you?" active={act("main_objection")} accent={2}>
-            <textarea className="glass-input glass-textarea" {...ta("main_objection", form, handleChange, setActiveField, "Cost concerns, skepticism, didn't know you existed, etc.")} data-active={act("main_objection")} />
-          </Q>
-          <Q field="edge" label="Why do people pick you over everyone else?" active={act("edge")} accent={2}>
-            <textarea className="glass-input glass-textarea" {...ta("edge", form, handleChange, setActiveField, "What do you do that nobody else around you does?")} data-active={act("edge")} />
-          </Q>
-          <Q field="intro_offer" label="Got a new patient offer we can lead with?" active={act("intro_offer")} accent={2} last>
-            <input className="glass-input" {...inp("intro_offer", form, handleChange, setActiveField, "e.g. $49 first visit with exam + X-rays")} data-active={act("intro_offer")} />
-          </Q>
-        </Section>
+        {/* SECTION 3 */}
+        <Sec i={2} label="Your Edge" title="What makes you the pick?">
+          <Field field="main_objection" label="What stops someone from booking with you?" active={act("main_objection")} ai={2}>
+            <textarea className="gi gi-ta" {...tp("main_objection", form, handleChange, setActiveField, "Cost concerns, skepticism, didn't know you existed, etc.")} data-active={act("main_objection")} />
+          </Field>
+          <Field field="edge" label="Why do people pick you over everyone else?" active={act("edge")} ai={2}>
+            <textarea className="gi gi-ta" {...tp("edge", form, handleChange, setActiveField, "What do you do that nobody else around you does?")} data-active={act("edge")} />
+          </Field>
+          <Field field="intro_offer" label="Got a new patient offer we can lead with?" active={act("intro_offer")} ai={2} last>
+            <input className="gi" {...ip("intro_offer", form, handleChange, setActiveField, "e.g. $49 first visit with exam + X-rays")} data-active={act("intro_offer")} />
+          </Field>
+        </Sec>
 
-        {/* ═══ SECTION 4 -- RESULTS & GOALS ═══ */}
-        <Section index={3} label="Results & Goals" title="What's worked, what's next.">
-          <Q field="past_results" label="What marketing have you tried before?" active={act("past_results")} accent={3}>
-            <textarea className="glass-input glass-textarea" {...ta("past_results", form, handleChange, setActiveField, "Facebook ads, Google, mailers, referrals -- or none")} data-active={act("past_results")} />
-          </Q>
-          <Q field="best_win" label="Best thing that ever brought you new patients?" active={act("best_win")} accent={3}>
-            <textarea className="glass-input glass-textarea" {...ta("best_win", form, handleChange, setActiveField, "A specific ad, referral partner, Google listing, word-of-mouth")} data-active={act("best_win")} />
-          </Q>
-          <Q field="goals_90_days" label="What does a win look like in 90 days?" active={act("goals_90_days")} accent={3}>
-            <textarea className="glass-input glass-textarea" {...ta("goals_90_days", form, handleChange, setActiveField, "e.g. 20 new patients/month, fill Tuesday afternoons")} data-active={act("goals_90_days")} />
-          </Q>
-          <Q field="email_angle" label="Who should our cold emails target?" active={act("email_angle")} accent={3} last>
-            <textarea className="glass-input glass-textarea" {...ta("email_angle", form, handleChange, setActiveField, "e.g. desk workers 30-55, recent injury, athletes, families")} data-active={act("email_angle")} />
-          </Q>
-        </Section>
+        {/* SECTION 4 */}
+        <Sec i={3} label="Results & Goals" title="What's worked, what's next.">
+          <Field field="past_results" label="What marketing have you tried before?" active={act("past_results")} ai={3}>
+            <textarea className="gi gi-ta" {...tp("past_results", form, handleChange, setActiveField, "Facebook ads, Google, mailers, referrals -- or none")} data-active={act("past_results")} />
+          </Field>
+          <Field field="best_win" label="Best thing that ever brought you new patients?" active={act("best_win")} ai={3}>
+            <textarea className="gi gi-ta" {...tp("best_win", form, handleChange, setActiveField, "A specific ad, referral partner, Google listing, word-of-mouth")} data-active={act("best_win")} />
+          </Field>
+          <Field field="goals_90_days" label="What does a win look like in 90 days?" active={act("goals_90_days")} ai={3}>
+            <textarea className="gi gi-ta" {...tp("goals_90_days", form, handleChange, setActiveField, "e.g. 20 new patients/month, fill Tuesday afternoons")} data-active={act("goals_90_days")} />
+          </Field>
+          <Field field="email_angle" label="Who should our cold emails target?" active={act("email_angle")} ai={3} last>
+            <textarea className="gi gi-ta" {...tp("email_angle", form, handleChange, setActiveField, "e.g. desk workers 30-55, recent injury, athletes, families")} data-active={act("email_angle")} />
+          </Field>
+        </Sec>
 
-        {/* ═══ SECTION 5 -- CAMPAIGN SETUP ═══ */}
-        <div className="fs" style={{ padding: "64px 24px 100px", position: "relative" }}>
-          <div className="section-glow" style={{ background: SECTION_ACCENTS[4].gradient }} />
+        {/* SECTION 5 */}
+        <div className="sec" style={{ padding: "56px 24px 100px" }}>
+          <div className="sec-tint" style={{ background: ACCENTS[4].tint }} />
           <div style={{ maxWidth: "640px", margin: "0 auto", position: "relative", zIndex: 2 }}>
-
-            <div style={{ marginBottom: "44px" }}>
-              <span className="section-label" style={{ color: COLORS.accentAmber }}>{SECTION_ACCENTS[4].color && "Campaign Setup"}</span>
-              <h2 className="section-title">Last step. Where do the leads go?</h2>
-              <span className="section-num" style={{ color: `${COLORS.accentAmber}08` }}>05</span>
+            <div style={{ marginBottom: "44px", position: "relative" }}>
+              <span className="sec-tag" style={{ color: ACCENTS[4].dot }}>Campaign Setup</span>
+              <h2 className="sec-heading">Last step. Where do the leads go?</h2>
+              <span className="sec-ghost">05</span>
             </div>
 
-            {/* Routing */}
-            <div className="q-group" data-active={act("routing_destination")}>
-              <label className="q-label" data-active={act("routing_destination")} style={{ "--accent": COLORS.accentAmber } as React.CSSProperties}>
-                Where should booked leads go?
-              </label>
-              <select
-                className="glass-input glass-select"
-                required
-                value={routingSelect}
-                onFocus={() => setActiveField("routing_destination")}
-                onBlur={() => setActiveField(null)}
-                onChange={(e) => setRoutingSelect(e.target.value)}
-                data-active={act("routing_destination")}
-              >
-                <option value="" disabled>Select routing method</option>
-                <option value="Direct Calendar Link">Calendar / Scheduling Link</option>
-                <option value="Email Inbox Routing">Email Inbox</option>
-                <option value="CRM Routing">CRM (Jane App, HubSpot, etc.)</option>
-                <option value="Direct Phone / SMS">Phone / SMS</option>
-              </select>
-
+            <div className="fg" data-active={act("routing_destination")}>
+              <label className="fl" data-active={act("routing_destination")}>Where should booked leads go?</label>
+              <div style={{ position: "relative" }}>
+                <select className="gi gi-sel" required value={routingSelect}
+                  onFocus={() => setActiveField("routing_destination")}
+                  onBlur={() => setActiveField(null)}
+                  onChange={(e) => setRoutingSelect(e.target.value)}
+                  data-active={act("routing_destination")}
+                >
+                  <option value="" disabled>Select routing method</option>
+                  <option value="Direct Calendar Link">Calendar / Scheduling Link</option>
+                  <option value="Email Inbox Routing">Email Inbox</option>
+                  <option value="CRM Routing">CRM (Jane App, HubSpot, etc.)</option>
+                  <option value="Direct Phone / SMS">Phone / SMS</option>
+                </select>
+              </div>
               {routingSelect && (
                 <div style={{ marginTop: "14px" }}>
-                  <label className="q-label q-label-sm" data-active={true} style={{ "--accent": COLORS.accentAmber } as React.CSSProperties}>
+                  <label className="fl fl-sm" data-active={true}>
                     {routingSelect === "Direct Calendar Link" ? "Paste your scheduling URL" :
                      routingSelect === "Email Inbox Routing" ? "Your intake email" :
                      routingSelect === "CRM Routing" ? "CRM link or webhook" : "Phone number"}
                   </label>
-                  <input
-                    className="glass-input"
-                    type="text" required
-                    value={routingDetails}
+                  <input className="gi" type="text" required value={routingDetails}
                     onFocus={() => setActiveField("routing_destination")}
                     onBlur={() => setActiveField(null)}
                     onChange={(e) => setRoutingDetails(e.target.value)}
@@ -392,31 +293,19 @@ export default function OnboardingPage() {
               )}
             </div>
 
-            {/* Sender Names */}
-            <div className="q-group" data-active={activeField?.startsWith("email_names")} style={{ borderBottom: "none", marginBottom: "48px" }}>
-              <label className="q-label" data-active={activeField?.startsWith("email_names")} style={{ "--accent": COLORS.accentAmber } as React.CSSProperties}>
-                5 sender names from your team
-              </label>
-              <p style={{ fontSize: "12px", color: COLORS.textMuted, marginBottom: "20px", fontWeight: 300 }}>
-                Real first names only. People reply to people.
-              </p>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+            <div className="fg" data-active={activeField?.startsWith("email_names")} style={{ borderBottom: "none", marginBottom: "48px" }}>
+              <label className="fl" data-active={activeField?.startsWith("email_names")}>5 sender names from your team</label>
+              <p style={{ fontSize: "13px", color: C.text4, marginBottom: "20px" }}>Real first names only. People reply to people.</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                 {form.email_names.map((name, i) => {
                   const ba = activeField === `email_names_${i}`;
                   return (
                     <div key={i}>
                       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px" }}>
-                        <span style={{ fontSize: "10px", fontFamily: "'JetBrains Mono', monospace", color: ba ? COLORS.accentAmber : COLORS.textMuted, fontWeight: 500 }}>
-                          Sender {i + 1}
-                        </span>
-                        <span style={{ fontSize: "10px", fontFamily: "'JetBrains Mono', monospace", color: name ? COLORS.accentBlue : COLORS.textMuted }}>
-                          {name || "name"}@{domain}
-                        </span>
+                        <span style={{ fontSize: "11px", fontFamily: "var(--font-mono, monospace)", color: ba ? C.text1 : C.text4, fontWeight: 600 }}>Sender {i + 1}</span>
+                        <span style={{ fontSize: "11px", fontFamily: "var(--font-mono, monospace)", color: name ? C.text2 : C.text4 }}>{name || "name"}@{domain}</span>
                       </div>
-                      <input
-                        className="glass-input"
-                        type="text" required value={name}
+                      <input className="gi" type="text" required value={name}
                         onFocus={() => setActiveField(`email_names_${i}`)}
                         onBlur={() => setActiveField(null)}
                         onChange={(e) => handleNameBoxChange(i, e.target.value)}
@@ -428,22 +317,13 @@ export default function OnboardingPage() {
               </div>
             </div>
 
-            {/* Error */}
             {status === "error" && (
-              <div className="error-alert">{errorMsg}</div>
+              <div style={{ padding: "14px 18px", background: "rgba(255,59,48,0.06)", border: "1px solid rgba(255,59,48,0.12)", borderRadius: "12px", fontSize: "13px", color: "#FF3B30", marginBottom: "24px", lineHeight: 1.5 }}>{errorMsg}</div>
             )}
 
-            {/* Submit */}
-            <button type="submit" disabled={status === "submitting"} className="cta-btn cta-btn-full">
-              {status === "submitting" ? (
-                <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}>
-                  <span className="spinner" /> Submitting...
-                </span>
-              ) : (
-                "Launch Campaign Brief"
-              )}
+            <button type="submit" disabled={status === "submitting"} className="submit-btn submit-btn-full">
+              {status === "submitting" ? <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}><span className="spin" /> Submitting...</span> : "Launch Campaign Brief"}
             </button>
-
           </div>
         </div>
 
@@ -452,21 +332,16 @@ export default function OnboardingPage() {
   );
 }
 
-// ── Section Component ──
-function Section({ index, label, title, children }: {
-  index: number; label: string; title: string; children: React.ReactNode;
-}) {
-  const accent = SECTION_ACCENTS[index];
+function Sec({ i, label, title, children }: { i: number; label: string; title: string; children: React.ReactNode }) {
+  const a = ACCENTS[i];
   return (
-    <div className="fs" style={{ padding: "64px 24px", position: "relative" }}>
-      <div className="section-glow" style={{ background: accent.gradient }} />
+    <div className="sec" style={{ padding: "56px 24px" }}>
+      <div className="sec-tint" style={{ background: a.tint }} />
       <div style={{ maxWidth: "640px", margin: "0 auto", position: "relative", zIndex: 2 }}>
-        <div style={{ marginBottom: "44px" }}>
-          <span className="section-label" style={{ color: accent.color }}>{label}</span>
-          <h2 className="section-title">{title}</h2>
-          <span className="section-num" style={{ color: `${accent.color}08` }}>
-            {String(index + 1).padStart(2, "0")}
-          </span>
+        <div style={{ marginBottom: "44px", position: "relative" }}>
+          <span className="sec-tag" style={{ color: a.dot }}>{label}</span>
+          <h2 className="sec-heading">{title}</h2>
+          <span className="sec-ghost">{String(i + 1).padStart(2, "0")}</span>
         </div>
         {children}
       </div>
@@ -474,372 +349,259 @@ function Section({ index, label, title, children }: {
   );
 }
 
-// ── Question wrapper ──
-function Q({ field, label, active, accent, last, children }: {
-  field: string; label: string; active: boolean; accent: number; last?: boolean; children: React.ReactNode;
-}) {
-  const accentColor = SECTION_ACCENTS[accent].color;
+function Field({ field, label, active, ai, last, children }: { field: string; label: string; active: boolean; ai: number; last?: boolean; children: React.ReactNode }) {
   return (
-    <div className="q-group" data-active={active} style={last ? { borderBottom: "none", marginBottom: 0 } : undefined}>
-      <label className="q-label" data-active={active} style={{ "--accent": accentColor } as React.CSSProperties}>
-        {label}
-      </label>
+    <div className="fg" data-active={active} style={last ? { borderBottom: "none", marginBottom: 0 } : undefined}>
+      <label className="fl" data-active={active}>{label}</label>
       {children}
     </div>
   );
 }
 
-// ── Input prop helpers ──
-function inp(
-  field: string,
-  form: Record<string, any>,
-  onChange: (f: any, v: string) => void,
-  setActive: (f: string | null) => void,
-  placeholder?: string,
-) {
-  return {
-    type: "text" as const,
-    required: true,
-    value: form[field] as string,
-    placeholder,
-    onFocus: () => setActive(field),
-    onBlur: () => setActive(null),
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => onChange(field as any, e.target.value),
-  };
+function ip(field: string, form: Record<string, any>, onChange: (f: any, v: string) => void, setActive: (f: string | null) => void, placeholder?: string) {
+  return { type: "text" as const, required: true, value: form[field] as string, placeholder, onFocus: () => setActive(field), onBlur: () => setActive(null), onChange: (e: React.ChangeEvent<HTMLInputElement>) => onChange(field, e.target.value) };
+}
+function tp(field: string, form: Record<string, any>, onChange: (f: any, v: string) => void, setActive: (f: string | null) => void, placeholder?: string) {
+  return { required: true, value: form[field] as string, placeholder, onFocus: () => setActive(field), onBlur: () => setActive(null), onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(field, e.target.value) };
 }
 
-function ta(
-  field: string,
-  form: Record<string, any>,
-  onChange: (f: any, v: string) => void,
-  setActive: (f: string | null) => void,
-  placeholder?: string,
-) {
-  return {
-    required: true,
-    value: form[field] as string,
-    placeholder,
-    onFocus: () => setActive(field),
-    onBlur: () => setActive(null),
-    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(field as any, e.target.value),
-  };
-}
-
-// ── Global CSS ──
-const GLOBAL_CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
-
+const CSS = `
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
 
-/* ── Animations ── */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes float1 {
-  0%, 100% { transform: translate(0,0) scale(1); }
-  33% { transform: translate(60px,-40px) scale(1.1); }
-  66% { transform: translate(-30px,30px) scale(0.95); }
-}
-@keyframes float2 {
-  0%, 100% { transform: translate(0,0) scale(1); }
-  50% { transform: translate(-50px,-60px) scale(1.15); }
-}
-@keyframes pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
-}
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-@keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(138,180,248,0.1); }
-  50% { box-shadow: 0 0 40px rgba(138,180,248,0.2); }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes dotPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
 }
 
-/* ── Ambient Orbs ── */
-.orb {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(100px);
-  pointer-events: none;
-  z-index: 0;
-}
-.orb-1 {
-  width: 500px; height: 500px;
-  top: -150px; left: -100px;
-  background: radial-gradient(circle, rgba(102,126,234,0.12), transparent 70%);
-  animation: float1 25s infinite ease-in-out;
-}
-.orb-2 {
-  width: 450px; height: 450px;
-  bottom: 20%; right: -120px;
-  background: radial-gradient(circle, rgba(187,134,252,0.08), transparent 70%);
-  animation: float2 30s infinite ease-in-out;
-}
-.orb-3 {
-  width: 350px; height: 350px;
-  top: 40%; left: 30%;
-  background: radial-gradient(circle, rgba(3,218,198,0.06), transparent 70%);
-  animation: float1 35s infinite ease-in-out reverse;
-}
-
-/* ── Badge ── */
-.badge {
+/* ── Pill badge ── */
+.pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 20px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 100px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  font-weight: 500;
-  margin-bottom: 24px;
+  padding: 7px 18px 7px 14px;
+  background: rgba(255,255,255,0.6);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 100px;
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6e6e73;
+  font-weight: 600;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
 }
-.badge-dot {
+.pill-dot {
   width: 6px; height: 6px;
   border-radius: 50%;
-  background: #03DAC6;
-  animation: pulse 2s infinite ease-in-out;
-  box-shadow: 0 0 8px rgba(3,218,198,0.4);
+  background: #34C759;
+  animation: dotPulse 2.5s infinite ease-in-out;
 }
 
-/* ── Gradient Text ── */
-.gradient-text {
-  background: linear-gradient(135deg, #8AB4F8, #BB86FC, #F2859D);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 6s linear infinite;
-}
-
-/* ── Progress Bar ── */
-.progress-bar-wrap {
+/* ── Sticky progress ── */
+.prog-wrap {
   position: sticky;
-  top: 0;
-  z-index: 50;
+  top: 0; z-index: 50;
   padding: 14px 24px;
-  background: rgba(10,14,26,0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  background: rgba(245,245,247,0.82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
 }
-.prog-seg {
-  height: 3px;
-  flex: 1;
-  border-radius: 2px;
+.prog-pip {
+  height: 3px; flex: 1;
+  border-radius: 1.5px;
+  background: rgba(0,0,0,0.06);
   transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.prog-pip[data-done="true"] {
+  background: #1d1d1f;
+}
+.prog-pip[data-active="true"] {
+  background: #007AFF;
+  box-shadow: 0 0 8px rgba(0,122,255,0.25);
 }
 
 /* ── Section ── */
-.fs {
+.sec {
+  position: relative;
   opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
-  border-top: 1px solid rgba(255,255,255,0.03);
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
 }
-.fs.s-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.section-glow {
+.sec.vis { opacity: 1; transform: translateY(0); }
+.sec:nth-child(odd) > .sec-tint { display: none; }
+.sec-tint {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   pointer-events: none;
   z-index: 0;
 }
-.section-label {
+.sec-tag {
   display: block;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono, monospace);
   font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
-.section-title {
-  font-family: 'Inter', sans-serif;
+.sec-heading {
+  font-family: var(--font-serif, Georgia, serif);
   font-size: 24px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.88);
+  font-weight: 400;
+  color: #1d1d1f;
   letter-spacing: -0.02em;
+  line-height: 1.2;
 }
-.section-num {
+.sec-ghost {
   position: absolute;
-  right: 0;
-  top: 0;
-  font-family: 'Inter', sans-serif;
+  right: 0; top: -8px;
+  font-family: var(--font-serif, Georgia, serif);
   font-size: 80px;
-  font-weight: 200;
+  font-weight: 300;
+  color: rgba(0,0,0,0.025);
   line-height: 1;
   pointer-events: none;
   user-select: none;
 }
 
-/* ── Question Group ── */
-.q-group {
-  padding-bottom: 32px;
-  margin-bottom: 32px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+/* ── Field group ── */
+.fg {
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
   padding-left: 20px;
   border-left: 2px solid transparent;
-  transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+  transition: border-color 0.3s, opacity 0.4s;
 }
-.q-group[data-active="true"] {
-  border-left-color: var(--accent, rgba(138,180,248,0.5));
+.fg[data-active="true"] {
+  border-left-color: #007AFF;
 }
 
 /* ── Label ── */
-.q-label {
+.fl {
   display: block;
-  font-size: 13px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 12px;
-  transition: color 0.3s;
-  letter-spacing: 0.01em;
-}
-.q-label[data-active="true"] {
-  color: var(--accent, rgba(138,180,248,1));
-}
-.q-label-sm {
-  font-size: 11px;
-}
-
-/* ── Glass Input ── */
-.glass-input {
-  width: 100%;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  padding: 16px 20px;
+  font-family: var(--font-sans, -apple-system, sans-serif);
   font-size: 14px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+  color: #1d1d1f;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+  transition: color 0.25s;
+}
+.fl[data-active="true"] { color: #1d1d1f; }
+.fl-sm { font-size: 12px; color: #6e6e73; }
+
+/* ── Glass input ── */
+.gi {
+  width: 100%;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: saturate(120%) blur(16px);
+  -webkit-backdrop-filter: saturate(120%) blur(16px);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 15px;
+  font-family: var(--font-sans, -apple-system, sans-serif);
+  font-weight: 400;
+  color: #1d1d1f;
   outline: none;
-  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.25s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.8);
 }
-.glass-input::placeholder {
-  color: rgba(255,255,255,0.15);
-  font-weight: 300;
-  font-style: italic;
+.gi::placeholder {
+  color: #aeaeb2;
+  font-weight: 400;
 }
-.glass-input:hover {
-  background: rgba(255,255,255,0.05);
-  border-color: rgba(255,255,255,0.1);
+.gi:hover {
+  border-color: rgba(0,0,0,0.15);
+  background: rgba(255,255,255,0.82);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.9);
 }
-.glass-input:focus, .glass-input[data-active="true"] {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(138,180,248,0.35);
-  box-shadow: 0 0 0 4px rgba(138,180,248,0.06), 0 4px 24px rgba(0,0,0,0.2);
+.gi:focus, .gi[data-active="true"] {
+  border-color: rgba(0,122,255,0.4);
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 0 0 4px rgba(0,122,255,0.08), 0 2px 12px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,1);
 }
-.glass-textarea {
+.gi-ta {
   resize: vertical;
-  min-height: 100px;
-  line-height: 1.65;
+  min-height: 96px;
+  line-height: 1.6;
 }
 
-/* ── Glass Select ── */
-.glass-select {
+/* ── Select ── */
+.gi-sel {
   appearance: none;
   cursor: pointer;
-  padding-right: 48px;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%238AB4F8' stroke-width='1.5'><polyline points='6 9 12 15 18 9'/></svg>");
+  padding-right: 44px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2386868b' stroke-width='2' stroke-linecap='round'><polyline points='6 9 12 15 18 9'/></svg>");
   background-repeat: no-repeat;
-  background-position: right 18px center;
-  background-size: 16px;
+  background-position: right 16px center;
+  background-size: 14px;
 }
-.glass-select option {
-  background: #1a1e2e;
-  color: rgba(255,255,255,0.9);
-  padding: 12px;
-}
-
-/* ── Glass Card ── */
-.glass-card {
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 24px;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+.gi-sel option {
+  background: #fff;
+  color: #1d1d1f;
 }
 
-/* ── CTA Button ── */
-.cta-btn {
-  position: relative;
-  background: linear-gradient(135deg, #667EEA, #764BA2);
+/* ── Glass card ── */
+.gcard {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 20px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.03);
+}
+
+/* ── Submit ── */
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #1d1d1f;
   border: none;
   border-radius: 14px;
-  cursor: pointer;
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  padding: 16px 36px;
+  font-family: var(--font-sans, -apple-system, sans-serif);
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: #FFFFFF;
-  overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
-  box-shadow: 0 8px 32px rgba(102,126,234,0.25), inset 0 1px 0 rgba(255,255,255,0.15);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
-.cta-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 48px rgba(102,126,234,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+.submit-btn:hover {
+  background: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.18);
 }
-.cta-btn:active {
-  transform: translateY(0);
-}
-.cta-btn-full {
-  width: 100%;
-  padding: 20px 24px;
-}
-.cta-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
+.submit-btn:active { transform: translateY(0); }
+.submit-btn-full { width: 100%; }
+.submit-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
 /* ── Spinner ── */
-.spinner {
+.spin {
   display: inline-block;
-  width: 16px; height: 16px;
-  border: 2px solid rgba(255,255,255,0.2);
+  width: 14px; height: 14px;
+  border: 2px solid rgba(255,255,255,0.25);
   border-top-color: #fff;
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
 }
 
-/* ── Error ── */
-.error-alert {
-  padding: 14px 18px;
-  background: rgba(242,133,157,0.08);
-  border: 1px solid rgba(242,133,157,0.2);
-  border-radius: 12px;
-  font-size: 13px;
-  color: #F2859D;
-  margin-bottom: 24px;
-  line-height: 1.5;
-}
-
 /* ── Responsive ── */
 @media (max-width: 640px) {
-  .section-num { display: none; }
-  .glass-input { padding: 14px 16px; font-size: 13px; }
+  .sec-ghost { display: none; }
+  .gi { padding: 12px 14px; font-size: 14px; }
 }
 `;

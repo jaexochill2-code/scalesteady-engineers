@@ -5,20 +5,36 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 
 const COLORS = {
-  canvas: "#FAF8F6",
+  canvas: "#0A0E1A",
+  cardGlass: "rgba(255,255,255,0.04)",
+  cardGlassHover: "rgba(255,255,255,0.06)",
+  inputGlass: "rgba(255,255,255,0.05)",
+  inputGlassActive: "rgba(255,255,255,0.08)",
+  borderSubtle: "rgba(255,255,255,0.06)",
+  borderActive: "rgba(138,180,248,0.3)",
   white: "#FFFFFF",
-  inkPrimary: "#111111",
-  inkBody: "#3D3D3D",
-  inkMuted: "#9E9E9E",
-  sapphire: "#1B4F8A",
-  rust: "#C4431B",
-  blueVoid: "#050D1C",
-  blueDeep: "#0D2B4A",
-  glacier: "#BFD9F0",
-  frost: "#E8F2FA",
-  warmCream: "#FFF9F2",
-  coolSlate: "#F3F6FA",
+  textPrimary: "rgba(255,255,255,0.92)",
+  textSecondary: "rgba(255,255,255,0.55)",
+  textMuted: "rgba(255,255,255,0.3)",
+  accentBlue: "#8AB4F8",
+  accentPurple: "#BB86FC",
+  accentTeal: "#03DAC6",
+  accentRose: "#F2859D",
+  accentAmber: "#F5BC6C",
+  gradientStart: "#667EEA",
+  gradientEnd: "#764BA2",
+  deepNavy: "#060A14",
+  sectionAlt: "rgba(255,255,255,0.015)",
 };
+
+// Section accent configs for visual variety
+const SECTION_ACCENTS = [
+  { color: COLORS.accentBlue, glow: "rgba(138,180,248,0.08)", gradient: "linear-gradient(135deg, rgba(138,180,248,0.08), transparent 60%)" },
+  { color: COLORS.accentPurple, glow: "rgba(187,134,252,0.08)", gradient: "linear-gradient(135deg, rgba(187,134,252,0.08), transparent 60%)" },
+  { color: COLORS.accentRose, glow: "rgba(242,133,157,0.08)", gradient: "linear-gradient(135deg, rgba(242,133,157,0.08), transparent 60%)" },
+  { color: COLORS.accentTeal, glow: "rgba(3,218,198,0.08)", gradient: "linear-gradient(135deg, rgba(3,218,198,0.08), transparent 60%)" },
+  { color: COLORS.accentAmber, glow: "rgba(245,188,108,0.08)", gradient: "linear-gradient(135deg, rgba(245,188,108,0.08), transparent 60%)" },
+];
 
 interface OnboardingForm {
   company_name: string;
@@ -64,71 +80,66 @@ export default function OnboardingPage() {
   const [activeField, setActiveField] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  // Intersection Observer for scroll-reveal animations
+  // Scroll-reveal observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("section-visible");
-          }
+          if (entry.isIntersecting) entry.target.classList.add("s-visible");
         });
       },
-      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.06, rootMargin: "0px 0px -30px 0px" }
     );
-
-    const sections = document.querySelectorAll(".form-section");
+    const sections = document.querySelectorAll(".fs");
     sections.forEach((s) => observer.observe(s));
     return () => sections.forEach((s) => observer.unobserve(s));
   }, []);
 
   useEffect(() => {
     try {
-      const cached = localStorage.getItem("scalesteady_onboarding_v7");
+      const cached = localStorage.getItem("scalesteady_onboarding_v8");
       if (cached) {
         const parsed = JSON.parse(cached);
         setForm((prev) => ({
           ...prev,
           ...parsed,
           email_names: Array.isArray(parsed.email_names) && parsed.email_names.length === 5
-            ? parsed.email_names
-            : prev.email_names,
+            ? parsed.email_names : prev.email_names,
         }));
         if (parsed.routing_destination) {
           const parts = parsed.routing_destination.split(": ");
           if (parts.length > 1) {
             setRoutingSelect(parts[0]);
             setRoutingDetails(parts.slice(1).join(": "));
-          } else {
-            setRoutingDetails(parsed.routing_destination);
-          }
+          } else setRoutingDetails(parsed.routing_destination);
         }
       }
-    } catch (e) { console.error("Cache restore failed:", e); }
+    } catch (e) { console.error(e); }
   }, []);
+
+  const save = (data: OnboardingForm) => {
+    try { localStorage.setItem("scalesteady_onboarding_v8", JSON.stringify(data)); }
+    catch (e) { console.error(e); }
+  };
 
   const handleChange = (field: keyof OnboardingForm, value: string) => {
     const updated = { ...form, [field]: value };
     setForm(updated);
-    try { localStorage.setItem("scalesteady_onboarding_v7", JSON.stringify(updated)); }
-    catch (e) { console.error("Cache write failed:", e); }
+    save(updated);
   };
 
   useEffect(() => {
     const value = routingSelect && routingDetails ? `${routingSelect}: ${routingDetails}` : routingDetails;
-    if (value !== form.routing_destination) {
-      handleChange("routing_destination", value);
-    }
+    if (value !== form.routing_destination) handleChange("routing_destination", value);
   }, [routingSelect, routingDetails]);
 
   const handleNameBoxChange = (index: number, value: string) => {
-    const cleanPrefix = value.replace(/@.*$/, "").replace(/\s+/g, "").toLowerCase();
-    const updatedNames = [...form.email_names];
-    updatedNames[index] = cleanPrefix;
-    const updated = { ...form, email_names: updatedNames };
+    const clean = value.replace(/@.*$/, "").replace(/\s+/g, "").toLowerCase();
+    const names = [...form.email_names];
+    names[index] = clean;
+    const updated = { ...form, email_names: names };
     setForm(updated);
-    try { localStorage.setItem("scalesteady_onboarding_v7", JSON.stringify(updated)); }
-    catch (e) { console.error("Cache write failed:", e); }
+    save(updated);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -140,18 +151,13 @@ export default function OnboardingPage() {
       form.past_results, form.best_win, form.goals_90_days,
       form.email_angle, form.routing_destination,
     ];
-    const allFilled = fields.every((f) => f.trim().length > 0) &&
-      form.email_names.every((n) => n.trim().length > 0);
-
-    if (!allFilled) {
+    if (!fields.every((f) => f.trim().length > 0) || !form.email_names.every((n) => n.trim().length > 0)) {
       setStatus("error");
-      setErrorMsg("Fill out everything before submitting.");
+      setErrorMsg("Fill out every field before submitting.");
       return;
     }
-
     setStatus("submitting");
     setErrorMsg("");
-
     try {
       const { error } = await supabase.from("onboarding_submissions").insert([{
         company_name: form.company_name,
@@ -167,19 +173,19 @@ export default function OnboardingPage() {
       }]);
       if (error) throw new Error(error.message);
       setStatus("success");
-      localStorage.removeItem("scalesteady_onboarding_v7");
+      localStorage.removeItem("scalesteady_onboarding_v8");
     } catch (err: any) {
       setStatus("error");
-      setErrorMsg(err.message || "Submission failed. Try again.");
+      setErrorMsg(err.message || "Submission failed.");
     }
   };
 
-  const isFieldComplete = (field: keyof OnboardingForm) => {
+  const isComplete = (field: keyof OnboardingForm) => {
     if (field === "email_names") return form.email_names.every((n) => n.trim().length > 0);
     return form[field].trim().length > 0;
   };
 
-  const checklistFields: (keyof OnboardingForm)[] = [
+  const fields: (keyof OnboardingForm)[] = [
     "company_name", "contact_name", "contact_details",
     "brand_voice", "core_services", "patient_words",
     "main_objection", "edge", "intro_offer",
@@ -187,134 +193,34 @@ export default function OnboardingPage() {
     "email_angle", "routing_destination", "email_names",
   ];
 
-  const completedCount = checklistFields.filter((f) => isFieldComplete(f)).length;
-  const displayDomain = form.company_name
+  const done = fields.filter((f) => isComplete(f)).length;
+  const domain = form.company_name
     ? form.company_name.toLowerCase().replace(/[^a-z0-9]/g, "") + ".com"
     : "yourdomain.com";
 
-  // ── Shared input builders ──
-  const inp = (field: keyof OnboardingForm, placeholder?: string) => ({
-    type: "text" as const,
-    required: true,
-    value: form[field] as string,
-    placeholder,
-    onFocus: () => setActiveField(field),
-    onBlur: () => setActiveField(null),
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => handleChange(field, e.target.value),
-  });
-
-  const ta = (field: keyof OnboardingForm, placeholder?: string) => ({
-    required: true,
-    value: form[field] as string,
-    placeholder,
-    onFocus: () => setActiveField(field),
-    onBlur: () => setActiveField(null),
-    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => handleChange(field, e.target.value),
-  });
-
-  const isActive = (field: string) => activeField === field;
-
-  // ── Styles ──
-  const inputCss = (active: boolean, variant: "light" | "dark" = "light"): React.CSSProperties => ({
-    width: "100%",
-    background: variant === "dark" ? "rgba(255,255,255,0.06)" : "#FFFFFF",
-    border: active
-      ? `1.5px solid ${variant === "dark" ? "rgba(191,217,240,0.5)" : COLORS.sapphire}`
-      : `1.5px solid ${variant === "dark" ? "rgba(255,255,255,0.08)" : "rgba(13,43,74,0.08)"}`,
-    borderRadius: "0px",
-    padding: "16px 20px",
-    fontSize: "14.5px",
-    fontFamily: "var(--font-sans, sans-serif)",
-    color: variant === "dark" ? "#FFFFFF" : COLORS.inkPrimary,
-    outline: "none",
-    boxSizing: "border-box",
-    transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-    boxShadow: active ? `0 0 0 5px ${variant === "dark" ? "rgba(191,217,240,0.08)" : "rgba(27,79,138,0.07)"}` : "none",
-  });
-
-  const textareaCss = (active: boolean, variant: "light" | "dark" = "light"): React.CSSProperties => ({
-    ...inputCss(active, variant),
-    resize: "vertical",
-    minHeight: "100px",
-    lineHeight: "1.65",
-  });
-
-  const labelCss = (active: boolean, variant: "light" | "dark" = "light"): React.CSSProperties => ({
-    display: "block",
-    fontSize: "13px",
-    fontWeight: 600,
-    color: active
-      ? (variant === "dark" ? COLORS.glacier : COLORS.sapphire)
-      : (variant === "dark" ? "rgba(255,255,255,0.85)" : COLORS.inkPrimary),
-    marginBottom: "10px",
-    fontFamily: "var(--font-sans, sans-serif)",
-    transition: "color 0.25s",
-    letterSpacing: "0.01em",
-  });
-
-  const qGroup = (field: string, variant: "light" | "dark" = "light"): React.CSSProperties => ({
-    paddingBottom: "32px",
-    marginBottom: "32px",
-    borderBottom: `1px solid ${variant === "dark" ? "rgba(255,255,255,0.06)" : "rgba(13,43,74,0.05)"}`,
-    borderLeft: isActive(field) ? `3px solid ${variant === "dark" ? COLORS.glacier : COLORS.sapphire}` : "3px solid transparent",
-    paddingLeft: "20px",
-    marginLeft: "-20px",
-    opacity: activeField && !isActive(field) ? 0.5 : 1,
-    transform: activeField && !isActive(field) ? "scale(0.985)" : "scale(1)",
-    transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-  });
+  const act = (f: string) => activeField === f;
 
   // ── Success ──
   if (status === "success") {
     return (
-      <div style={{
-        background: COLORS.canvas,
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "40px 24px"
-      }}>
-        <div style={{
-          maxWidth: "580px",
-          width: "100%",
-          background: COLORS.white,
-          border: "1px solid rgba(13,43,74,0.07)",
-          padding: "64px 48px",
-          textAlign: "center",
-          animation: "fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) both",
-        }}>
+      <div style={{ background: COLORS.canvas, minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 24px" }}>
+        <style dangerouslySetInnerHTML={{ __html: GLOBAL_CSS }} />
+        <div className="glass-card" style={{ maxWidth: "540px", width: "100%", padding: "64px 48px", textAlign: "center", animation: "fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) both" }}>
           <div style={{
-            width: "56px", height: "56px", borderRadius: "50%",
-            background: "rgba(27,79,138,0.06)", border: "1px solid rgba(27,79,138,0.15)",
+            width: "64px", height: "64px", borderRadius: "50%",
+            background: "rgba(138,180,248,0.1)", border: "1px solid rgba(138,180,248,0.2)",
             display: "flex", alignItems: "center", justifyContent: "center",
-            margin: "0 auto 28px",
+            margin: "0 auto 28px", boxShadow: "0 0 40px rgba(138,180,248,0.1)",
           }}>
-            <span style={{ color: COLORS.sapphire, fontSize: "22px", fontWeight: "bold" }}>&#10003;</span>
+            <span style={{ color: COLORS.accentBlue, fontSize: "24px" }}>&#10003;</span>
           </div>
-          <h1 style={{
-            fontFamily: "var(--font-serif, serif)",
-            fontSize: "clamp(28px, 4vw, 42px)",
-            color: COLORS.inkPrimary, lineHeight: 1.15,
-            letterSpacing: "-0.02em", marginBottom: "16px",
-          }}>
+          <h1 style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(28px, 4vw, 40px)", color: COLORS.textPrimary, fontWeight: 300, letterSpacing: "-0.03em", marginBottom: "12px" }}>
             Locked in.
           </h1>
-          <p style={{
-            fontSize: "14.5px", lineHeight: "1.7", color: COLORS.inkBody,
-            maxWidth: "380px", margin: "0 auto 36px",
-          }}>
-            We'll review everything and reach out within 24 hours to get your campaign rolling.
+          <p style={{ fontSize: "14px", lineHeight: 1.7, color: COLORS.textSecondary, maxWidth: "340px", margin: "0 auto 36px" }}>
+            We'll review everything and reach out within 24 hours.
           </p>
-          <Link href="/" style={{
-            display: "inline-block", fontSize: "11px", fontWeight: 700,
-            letterSpacing: "0.15em", textTransform: "uppercase",
-            color: "#FFF", background: COLORS.sapphire, padding: "16px 44px",
-            textDecoration: "none", transition: "background 0.25s",
-          }}
-            onMouseOver={(e) => (e.currentTarget.style.background = COLORS.blueDeep)}
-            onMouseOut={(e) => (e.currentTarget.style.background = COLORS.sapphire)}
-          >
+          <Link href="/" className="cta-btn" style={{ display: "inline-block", padding: "16px 48px", textDecoration: "none", fontSize: "11px", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: COLORS.white }}>
             Back to homepage
           </Link>
         </div>
@@ -322,414 +228,144 @@ export default function OnboardingPage() {
     );
   }
 
-  // ── Main Form ──
   return (
     <div style={{ background: COLORS.canvas, minHeight: "100vh", position: "relative", overflow: "hidden" }}>
+      <style dangerouslySetInnerHTML={{ __html: GLOBAL_CSS }} />
 
-      {/* Global Animations */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(24px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes floatSlow {
-          0% { transform: translate(0,0) rotate(0deg); }
-          50% { transform: translate(30px,-20px) rotate(2deg); }
-          100% { transform: translate(-15px,15px) rotate(-1deg); }
-        }
-        @keyframes pulseGlow {
-          0%, 100% { opacity: 0.4; }
-          50% { opacity: 0.8; }
-        }
-        @keyframes slideInLeft {
-          from { opacity: 0; transform: translateX(-40px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes shimmer {
-          0% { background-position: -200% center; }
-          100% { background-position: 200% center; }
-        }
-        .form-section {
-          opacity: 0;
-          transform: translateY(32px);
-          transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
-        }
-        .form-section.section-visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        .form-section:nth-child(2) { transition-delay: 0.08s; }
-        .form-section:nth-child(3) { transition-delay: 0.12s; }
-        .form-section:nth-child(4) { transition-delay: 0.16s; }
-        .form-section:nth-child(5) { transition-delay: 0.2s; }
-        .progress-segment {
-          height: 3px; flex: 1;
-          transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
-        }
-        textarea::placeholder, input::placeholder {
-          color: rgba(0,0,0,0.25);
-          font-style: italic;
-        }
-        .dark-section textarea::placeholder, .dark-section input::placeholder {
-          color: rgba(255,255,255,0.2);
-        }
-        .section-number {
-          font-family: var(--font-serif, serif);
-          font-size: 72px;
-          font-weight: 300;
-          line-height: 1;
-          letter-spacing: -0.04em;
-          opacity: 0.06;
-          position: absolute;
-          right: 24px;
-          top: 24px;
-          pointer-events: none;
-          user-select: none;
-        }
-      `}} />
+      {/* ── Ambient background orbs ── */}
+      <div className="orb orb-1" />
+      <div className="orb orb-2" />
+      <div className="orb orb-3" />
 
       {/* ═══ HERO ═══ */}
-      <div style={{
-        position: "relative",
-        padding: "100px 0 60px",
-        textAlign: "center",
-        overflow: "hidden",
-      }}>
-        {/* Decorative hero image */}
-        <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: "url(/hero-abstract.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.08,
-          pointerEvents: "none",
-        }} />
-
-        {/* Floating orbs */}
-        <div style={{
-          position: "absolute", top: "-120px", left: "-80px",
-          width: "400px", height: "400px",
-          background: "radial-gradient(circle, rgba(27,79,138,0.07) 0%, transparent 70%)",
-          borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none",
-          animation: "floatSlow 18s infinite ease-in-out alternate",
-        }} />
-        <div style={{
-          position: "absolute", bottom: "-80px", right: "-60px",
-          width: "350px", height: "350px",
-          background: "radial-gradient(circle, rgba(196,67,27,0.05) 0%, transparent 70%)",
-          borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none",
-          animation: "floatSlow 22s infinite ease-in-out alternate-reverse",
-        }} />
-
-        <div style={{ position: "relative", zIndex: 2, animation: "fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) both" }}>
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: "10px",
-            marginBottom: "20px",
-          }}>
-            <div style={{ width: "24px", height: "1.5px", background: COLORS.rust }} />
-            <span style={{
-              fontFamily: "var(--font-mono, monospace)",
-              fontSize: "10.5px", letterSpacing: "0.2em",
-              textTransform: "uppercase", color: COLORS.rust, fontWeight: 700,
-            }}>
-              Cold Email Onboarding
-            </span>
-            <div style={{ width: "24px", height: "1.5px", background: COLORS.rust }} />
+      <div style={{ position: "relative", padding: "120px 24px 64px", textAlign: "center", zIndex: 2 }}>
+        <div style={{ animation: "fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both" }}>
+          <div className="badge">
+            <span className="badge-dot" />
+            Cold Email Onboarding
           </div>
 
           <h1 style={{
-            fontFamily: "var(--font-serif, serif)",
-            fontSize: "clamp(34px, 5vw, 52px)",
-            lineHeight: 1.1, letterSpacing: "-0.03em",
-            color: COLORS.inkPrimary, marginBottom: "14px",
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "clamp(36px, 5.5vw, 58px)",
+            fontWeight: 200,
+            lineHeight: 1.1,
+            letterSpacing: "-0.04em",
+            color: COLORS.textPrimary,
+            marginBottom: "16px",
           }}>
-            Tell us about <span style={{ color: COLORS.rust, fontStyle: "italic" }}>your practice.</span>
+            Tell us about{" "}
+            <span className="gradient-text">your practice</span>
           </h1>
-          <p style={{
-            fontSize: "15px", color: COLORS.inkBody,
-            maxWidth: "440px", margin: "0 auto",
-            lineHeight: "1.6",
-          }}>
-            15 questions. Takes about 10 minutes.<br />
-            We'll handle everything from here.
+          <p style={{ fontSize: "15px", color: COLORS.textSecondary, maxWidth: "380px", margin: "0 auto", lineHeight: 1.6, fontWeight: 300 }}>
+            15 questions. About 10 minutes.<br />
+            We handle everything from here.
           </p>
         </div>
       </div>
 
-      {/* ═══ PROGRESS BAR (sticky) ═══ */}
-      <div style={{
-        position: "sticky", top: 0, zIndex: 50,
-        background: "rgba(250,248,246,0.92)", backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        borderBottom: "1px solid rgba(13,43,74,0.04)",
-        padding: "16px 24px",
-      }}>
-        <div style={{ maxWidth: "760px", margin: "0 auto" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
-            <span style={{ fontSize: "10.5px", fontFamily: "var(--font-mono, monospace)", color: COLORS.inkMuted, textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>
-              Progress
-            </span>
-            <span style={{ fontFamily: "var(--font-mono, monospace)", fontSize: "11px", color: COLORS.sapphire, fontWeight: 700 }}>
-              {completedCount}/15
-            </span>
-          </div>
-          <div style={{ display: "flex", gap: "4px" }}>
-            {checklistFields.map((field) => {
-              const complete = isFieldComplete(field);
-              const active = activeField === field || (field === "email_names" && activeField?.startsWith("email_names"));
-              return (
-                <div key={field} className="progress-segment" style={{
-                  background: complete ? COLORS.sapphire : active ? COLORS.rust : "rgba(13,43,74,0.06)",
-                  boxShadow: active ? `0 0 6px ${COLORS.rust}` : "none",
-                }} />
-              );
+      {/* ═══ STICKY PROGRESS ═══ */}
+      <div className="progress-bar-wrap">
+        <div style={{ maxWidth: "720px", margin: "0 auto", display: "flex", alignItems: "center", gap: "16px" }}>
+          <div style={{ display: "flex", gap: "3px", flex: 1 }}>
+            {fields.map((f) => {
+              const c = isComplete(f);
+              const a = activeField === f || (f === "email_names" && activeField?.startsWith("email_names"));
+              return <div key={f} className="prog-seg" style={{
+                background: c ? COLORS.accentBlue : a ? COLORS.accentRose : "rgba(255,255,255,0.06)",
+                boxShadow: c ? `0 0 8px ${COLORS.accentBlue}40` : a ? `0 0 8px ${COLORS.accentRose}40` : "none",
+              }} />;
             })}
           </div>
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", color: COLORS.accentBlue, fontWeight: 500, minWidth: "36px", textAlign: "right" }}>
+            {done}/15
+          </span>
         </div>
       </div>
 
-      <form ref={formRef} onSubmit={handleSubmit}>
+      <form ref={formRef} onSubmit={handleSubmit} style={{ position: "relative", zIndex: 2 }}>
 
-        {/* ═══════════════════════════════════════════════════════════════ */}
-        {/* SECTION 1 -- THE BASICS  (Clean white, minimal)               */}
-        {/* ═══════════════════════════════════════════════════════════════ */}
-        <div className="form-section" style={{
-          background: COLORS.white,
-          padding: "56px 24px",
-          position: "relative",
-        }}>
-          <span className="section-number" style={{ color: COLORS.sapphire }}>01</span>
-          <div style={{ maxWidth: "640px", margin: "0 auto" }}>
+        {/* ═══ SECTION 1 -- THE BASICS ═══ */}
+        <Section index={0} label="The Basics" title="Let's start simple.">
+          <Q field="company_name" label="Practice name" active={act("company_name")} accent={0}>
+            <input className="glass-input" {...inp("company_name", form, handleChange, setActiveField)} data-active={act("company_name")} />
+          </Q>
+          <Q field="contact_name" label="Your name" active={act("contact_name")} accent={0}>
+            <input className="glass-input" {...inp("contact_name", form, handleChange, setActiveField)} data-active={act("contact_name")} />
+          </Q>
+          <Q field="contact_details" label="Best email or phone" active={act("contact_details")} accent={0} last>
+            <input className="glass-input" {...inp("contact_details", form, handleChange, setActiveField)} data-active={act("contact_details")} />
+          </Q>
+        </Section>
 
-            <div style={qGroup("company_name")}>
-              <label style={labelCss(isActive("company_name"))}>Practice name</label>
-              <input {...inp("company_name")} style={inputCss(isActive("company_name"))} />
-            </div>
+        {/* ═══ SECTION 2 -- YOUR BRAND ═══ */}
+        <Section index={1} label="Your Brand" title="How should we represent you?">
+          <Q field="brand_voice" label="Describe your practice's vibe in a few words" active={act("brand_voice")} accent={1}>
+            <input className="glass-input" {...inp("brand_voice", form, handleChange, setActiveField, "e.g. friendly, no-nonsense, family-oriented")} data-active={act("brand_voice")} />
+          </Q>
+          <Q field="core_services" label="Top 2-3 services you want booked solid" active={act("core_services")} accent={1}>
+            <textarea className="glass-input glass-textarea" {...ta("core_services", form, handleChange, setActiveField, "e.g. spinal decompression, sports rehab, corrective care")} data-active={act("core_services")} />
+          </Q>
+          <Q field="patient_words" label="What do your happiest patients say about you?" active={act("patient_words")} accent={1} last>
+            <textarea className="glass-input glass-textarea" {...ta("patient_words", form, handleChange, setActiveField, "In their words -- what do they tell friends or write in reviews?")} data-active={act("patient_words")} />
+          </Q>
+        </Section>
 
-            <div style={qGroup("contact_name")}>
-              <label style={labelCss(isActive("contact_name"))}>Your name</label>
-              <input {...inp("contact_name")} style={inputCss(isActive("contact_name"))} />
-            </div>
+        {/* ═══ SECTION 3 -- YOUR EDGE ═══ */}
+        <Section index={2} label="Your Edge" title="What makes you the pick?">
+          <Q field="main_objection" label="What stops someone from booking with you?" active={act("main_objection")} accent={2}>
+            <textarea className="glass-input glass-textarea" {...ta("main_objection", form, handleChange, setActiveField, "Cost concerns, skepticism, didn't know you existed, etc.")} data-active={act("main_objection")} />
+          </Q>
+          <Q field="edge" label="Why do people pick you over everyone else?" active={act("edge")} accent={2}>
+            <textarea className="glass-input glass-textarea" {...ta("edge", form, handleChange, setActiveField, "What do you do that nobody else around you does?")} data-active={act("edge")} />
+          </Q>
+          <Q field="intro_offer" label="Got a new patient offer we can lead with?" active={act("intro_offer")} accent={2} last>
+            <input className="glass-input" {...inp("intro_offer", form, handleChange, setActiveField, "e.g. $49 first visit with exam + X-rays")} data-active={act("intro_offer")} />
+          </Q>
+        </Section>
 
-            <div style={{ ...qGroup("contact_details"), borderBottom: "none", marginBottom: 0 }}>
-              <label style={labelCss(isActive("contact_details"))}>Best email or phone</label>
-              <input {...inp("contact_details")} style={inputCss(isActive("contact_details"))} />
-            </div>
+        {/* ═══ SECTION 4 -- RESULTS & GOALS ═══ */}
+        <Section index={3} label="Results & Goals" title="What's worked, what's next.">
+          <Q field="past_results" label="What marketing have you tried before?" active={act("past_results")} accent={3}>
+            <textarea className="glass-input glass-textarea" {...ta("past_results", form, handleChange, setActiveField, "Facebook ads, Google, mailers, referrals -- or none")} data-active={act("past_results")} />
+          </Q>
+          <Q field="best_win" label="Best thing that ever brought you new patients?" active={act("best_win")} accent={3}>
+            <textarea className="glass-input glass-textarea" {...ta("best_win", form, handleChange, setActiveField, "A specific ad, referral partner, Google listing, word-of-mouth")} data-active={act("best_win")} />
+          </Q>
+          <Q field="goals_90_days" label="What does a win look like in 90 days?" active={act("goals_90_days")} accent={3}>
+            <textarea className="glass-input glass-textarea" {...ta("goals_90_days", form, handleChange, setActiveField, "e.g. 20 new patients/month, fill Tuesday afternoons")} data-active={act("goals_90_days")} />
+          </Q>
+          <Q field="email_angle" label="Who should our cold emails target?" active={act("email_angle")} accent={3} last>
+            <textarea className="glass-input glass-textarea" {...ta("email_angle", form, handleChange, setActiveField, "e.g. desk workers 30-55, recent injury, athletes, families")} data-active={act("email_angle")} />
+          </Q>
+        </Section>
 
-          </div>
-        </div>
-
-        {/* Decorative divider */}
-        <div style={{
-          height: "4px",
-          background: `linear-gradient(90deg, transparent, ${COLORS.sapphire}22, ${COLORS.rust}22, transparent)`,
-        }} />
-
-        {/* ═══════════════════════════════════════════════════════════════ */}
-        {/* SECTION 2 -- YOUR BRAND  (Blue tint, sapphire accent)         */}
-        {/* ═══════════════════════════════════════════════════════════════ */}
-        <div className="form-section" style={{
-          background: COLORS.coolSlate,
-          padding: "56px 24px",
-          position: "relative",
-          borderTop: `3px solid ${COLORS.sapphire}15`,
-        }}>
-          <span className="section-number" style={{ color: COLORS.sapphire }}>02</span>
-          <div style={{ maxWidth: "640px", margin: "0 auto" }}>
-
-            <div style={{ marginBottom: "40px" }}>
-              <span style={{
-                fontFamily: "var(--font-mono, monospace)", fontSize: "10px",
-                letterSpacing: "0.18em", textTransform: "uppercase",
-                color: COLORS.sapphire, fontWeight: 700,
-              }}>Your Brand</span>
-              <h2 style={{
-                fontFamily: "var(--font-serif, serif)", fontSize: "26px",
-                color: COLORS.inkPrimary, fontWeight: 400, marginTop: "6px",
-                letterSpacing: "-0.01em",
-              }}>How do you want to come across?</h2>
-            </div>
-
-            <div style={qGroup("brand_voice")}>
-              <label style={labelCss(isActive("brand_voice"))}>Describe your practice's vibe in a few words</label>
-              <input {...inp("brand_voice", "e.g. friendly, no-nonsense, family-oriented")} style={inputCss(isActive("brand_voice"))} />
-            </div>
-
-            <div style={qGroup("core_services")}>
-              <label style={labelCss(isActive("core_services"))}>Top 2-3 services you want booked solid</label>
-              <textarea {...ta("core_services", "e.g. spinal decompression, sports rehab, corrective care")} style={textareaCss(isActive("core_services"))} />
-            </div>
-
-            <div style={{ ...qGroup("patient_words"), borderBottom: "none", marginBottom: 0 }}>
-              <label style={labelCss(isActive("patient_words"))}>What do your happiest patients say about you?</label>
-              <textarea {...ta("patient_words", "In their words -- what do they tell friends or write in reviews?")} style={textareaCss(isActive("patient_words"))} />
-            </div>
-
-          </div>
-        </div>
-
-        {/* Decorative image divider */}
-        <div style={{
-          height: "120px",
-          backgroundImage: "url(/divider-warm.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.15,
-        }} />
-
-        {/* ═══════════════════════════════════════════════════════════════ */}
-        {/* SECTION 3 -- THE COMPETITION  (Warm cream, rust accent)       */}
-        {/* ═══════════════════════════════════════════════════════════════ */}
-        <div className="form-section" style={{
-          background: COLORS.warmCream,
-          padding: "56px 24px",
-          position: "relative",
-          borderTop: `3px solid ${COLORS.rust}20`,
-        }}>
-          <span className="section-number" style={{ color: COLORS.rust }}>03</span>
-          <div style={{ maxWidth: "640px", margin: "0 auto" }}>
-
-            <div style={{ marginBottom: "40px" }}>
-              <span style={{
-                fontFamily: "var(--font-mono, monospace)", fontSize: "10px",
-                letterSpacing: "0.18em", textTransform: "uppercase",
-                color: COLORS.rust, fontWeight: 700,
-              }}>Competition & Edge</span>
-              <h2 style={{
-                fontFamily: "var(--font-serif, serif)", fontSize: "26px",
-                color: COLORS.inkPrimary, fontWeight: 400, marginTop: "6px",
-                letterSpacing: "-0.01em",
-              }}>What makes you the pick?</h2>
-            </div>
-
-            <div style={qGroup("main_objection")}>
-              <label style={labelCss(isActive("main_objection"))}>What stops someone from booking with you?</label>
-              <textarea {...ta("main_objection", "Cost concerns, skepticism about chiro, didn't know you existed, etc.")} style={textareaCss(isActive("main_objection"))} />
-            </div>
-
-            <div style={qGroup("edge")}>
-              <label style={labelCss(isActive("edge"))}>Why do people pick you over them?</label>
-              <textarea {...ta("edge", "What do you do that nobody else around you does?")} style={textareaCss(isActive("edge"))} />
-            </div>
-
-            <div style={{ ...qGroup("intro_offer"), borderBottom: "none", marginBottom: 0 }}>
-              <label style={labelCss(isActive("intro_offer"))}>Got a new patient offer we can lead with?</label>
-              <input {...inp("intro_offer", "e.g. $49 first visit with exam + X-rays, free consult")} style={inputCss(isActive("intro_offer"))} />
-            </div>
-
-          </div>
-        </div>
-
-        {/* Animated gradient divider */}
-        <div style={{
-          height: "6px",
-          background: `linear-gradient(90deg, ${COLORS.rust}30, ${COLORS.sapphire}30, ${COLORS.rust}30)`,
-          backgroundSize: "200% auto",
-          animation: "shimmer 4s linear infinite",
-        }} />
-
-        {/* ═══════════════════════════════════════════════════════════════ */}
-        {/* SECTION 4 -- PAST RESULTS & GOALS  (White, strong accent)     */}
-        {/* ═══════════════════════════════════════════════════════════════ */}
-        <div className="form-section" style={{
-          background: COLORS.white,
-          padding: "56px 24px",
-          position: "relative",
-        }}>
-          <span className="section-number" style={{ color: COLORS.sapphire }}>04</span>
-          <div style={{ maxWidth: "640px", margin: "0 auto" }}>
-
-            <div style={{ marginBottom: "40px" }}>
-              <span style={{
-                fontFamily: "var(--font-mono, monospace)", fontSize: "10px",
-                letterSpacing: "0.18em", textTransform: "uppercase",
-                color: COLORS.sapphire, fontWeight: 700,
-              }}>Results & Goals</span>
-              <h2 style={{
-                fontFamily: "var(--font-serif, serif)", fontSize: "26px",
-                color: COLORS.inkPrimary, fontWeight: 400, marginTop: "6px",
-              }}>What's worked, what hasn't, what's next.</h2>
-            </div>
-
-            <div style={qGroup("past_results")}>
-              <label style={labelCss(isActive("past_results"))}>What marketing have you tried before?</label>
-              <textarea {...ta("past_results", "Facebook ads, Google, mailers, referrals, events -- or none")} style={textareaCss(isActive("past_results"))} />
-            </div>
-
-            <div style={qGroup("best_win")}>
-              <label style={labelCss(isActive("best_win"))}>Best thing that ever brought you new patients?</label>
-              <textarea {...ta("best_win", "A specific ad, referral partner, Google listing, word-of-mouth")} style={textareaCss(isActive("best_win"))} />
-            </div>
-
-            <div style={qGroup("goals_90_days")}>
-              <label style={labelCss(isActive("goals_90_days"))}>What does a win look like in 90 days?</label>
-              <textarea {...ta("goals_90_days", "e.g. 20 new patients/month, fill Tuesday afternoons, grow revenue 30%")} style={textareaCss(isActive("goals_90_days"))} />
-            </div>
-
-            <div style={{ ...qGroup("email_angle"), borderBottom: "none", marginBottom: 0 }}>
-              <label style={labelCss(isActive("email_angle"))}>Who should our cold emails target?</label>
-              <textarea {...ta("email_angle", "e.g. desk workers 30-55, recent injury, athletes, families with kids")} style={textareaCss(isActive("email_angle"))} />
-            </div>
-
-          </div>
-        </div>
-
-        {/* ═══════════════════════════════════════════════════════════════ */}
-        {/* SECTION 5 -- CAMPAIGN SETUP  (Dark inverted, premium)         */}
-        {/* ═══════════════════════════════════════════════════════════════ */}
-        <div className="form-section dark-section" style={{
-          background: COLORS.blueVoid,
-          padding: "64px 24px 80px",
-          position: "relative",
-          overflow: "hidden",
-        }}>
-          {/* Subtle ambient glow */}
-          <div style={{
-            position: "absolute", top: "-100px", right: "-100px",
-            width: "400px", height: "400px",
-            background: "radial-gradient(circle, rgba(27,79,138,0.15) 0%, transparent 70%)",
-            borderRadius: "50%", filter: "blur(60px)", pointerEvents: "none",
-            animation: "pulseGlow 6s infinite ease-in-out",
-          }} />
-
-          <span className="section-number" style={{ color: "rgba(255,255,255,0.04)", fontSize: "80px" }}>05</span>
+        {/* ═══ SECTION 5 -- CAMPAIGN SETUP ═══ */}
+        <div className="fs" style={{ padding: "64px 24px 100px", position: "relative" }}>
+          <div className="section-glow" style={{ background: SECTION_ACCENTS[4].gradient }} />
           <div style={{ maxWidth: "640px", margin: "0 auto", position: "relative", zIndex: 2 }}>
 
-            <div style={{ marginBottom: "40px" }}>
-              <span style={{
-                fontFamily: "var(--font-mono, monospace)", fontSize: "10px",
-                letterSpacing: "0.18em", textTransform: "uppercase",
-                color: COLORS.glacier, fontWeight: 700,
-              }}>Campaign Setup</span>
-              <h2 style={{
-                fontFamily: "var(--font-serif, serif)", fontSize: "26px",
-                color: "#FFFFFF", fontWeight: 400, marginTop: "6px",
-              }}>Last step. Where do we send the leads?</h2>
+            <div style={{ marginBottom: "44px" }}>
+              <span className="section-label" style={{ color: COLORS.accentAmber }}>{SECTION_ACCENTS[4].color && "Campaign Setup"}</span>
+              <h2 className="section-title">Last step. Where do the leads go?</h2>
+              <span className="section-num" style={{ color: `${COLORS.accentAmber}08` }}>05</span>
             </div>
 
             {/* Routing */}
-            <div style={qGroup("routing_destination", "dark")}>
-              <label style={labelCss(isActive("routing_destination"), "dark")}>Where should booked leads go?</label>
-
+            <div className="q-group" data-active={act("routing_destination")}>
+              <label className="q-label" data-active={act("routing_destination")} style={{ "--accent": COLORS.accentAmber } as React.CSSProperties}>
+                Where should booked leads go?
+              </label>
               <select
+                className="glass-input glass-select"
                 required
                 value={routingSelect}
                 onFocus={() => setActiveField("routing_destination")}
                 onBlur={() => setActiveField(null)}
                 onChange={(e) => setRoutingSelect(e.target.value)}
-                style={{
-                  ...inputCss(isActive("routing_destination"), "dark"),
-                  appearance: "none",
-                  backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23BFD9F0' stroke-width='1.5'><polyline points='6 9 12 15 18 9'/></svg>")`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "right 20px center",
-                  backgroundSize: "16px",
-                  cursor: "pointer",
-                  paddingRight: "48px",
-                }}
+                data-active={act("routing_destination")}
               >
-                <option value="" disabled>-- Select --</option>
+                <option value="" disabled>Select routing method</option>
                 <option value="Direct Calendar Link">Calendar / Scheduling Link</option>
                 <option value="Email Inbox Routing">Email Inbox</option>
                 <option value="CRM Routing">CRM (Jane App, HubSpot, etc.)</option>
@@ -738,62 +374,53 @@ export default function OnboardingPage() {
 
               {routingSelect && (
                 <div style={{ marginTop: "14px" }}>
-                  <label style={{ ...labelCss(true, "dark"), fontSize: "11px" }}>
+                  <label className="q-label q-label-sm" data-active={true} style={{ "--accent": COLORS.accentAmber } as React.CSSProperties}>
                     {routingSelect === "Direct Calendar Link" ? "Paste your scheduling URL" :
                      routingSelect === "Email Inbox Routing" ? "Your intake email" :
-                     routingSelect === "CRM Routing" ? "CRM link or webhook" :
-                     "Phone number"}
+                     routingSelect === "CRM Routing" ? "CRM link or webhook" : "Phone number"}
                   </label>
                   <input
+                    className="glass-input"
                     type="text" required
                     value={routingDetails}
                     onFocus={() => setActiveField("routing_destination")}
                     onBlur={() => setActiveField(null)}
                     onChange={(e) => setRoutingDetails(e.target.value)}
-                    style={inputCss(isActive("routing_destination"), "dark")}
+                    data-active={act("routing_destination")}
                   />
                 </div>
               )}
             </div>
 
             {/* Sender Names */}
-            <div style={{ ...qGroup("email_names_0", "dark"), borderBottom: "none", marginBottom: "48px" }}>
-              <label style={labelCss(activeField?.startsWith("email_names") ?? false, "dark")}>
+            <div className="q-group" data-active={activeField?.startsWith("email_names")} style={{ borderBottom: "none", marginBottom: "48px" }}>
+              <label className="q-label" data-active={activeField?.startsWith("email_names")} style={{ "--accent": COLORS.accentAmber } as React.CSSProperties}>
                 5 sender names from your team
               </label>
-              <p style={{
-                fontSize: "12.5px", color: "rgba(255,255,255,0.4)",
-                marginBottom: "20px", lineHeight: "1.5",
-              }}>
+              <p style={{ fontSize: "12px", color: COLORS.textMuted, marginBottom: "20px", fontWeight: 300 }}>
                 Real first names only. People reply to people.
               </p>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-                {form.email_names.map((name, index) => {
-                  const boxActive = activeField === `email_names_${index}`;
+              <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+                {form.email_names.map((name, i) => {
+                  const ba = activeField === `email_names_${i}`;
                   return (
-                    <div key={index}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
-                        <span style={{
-                          fontSize: "10px", fontFamily: "var(--font-mono, monospace)",
-                          color: boxActive ? COLORS.glacier : "rgba(255,255,255,0.3)", fontWeight: 700,
-                        }}>
-                          Sender {index + 1}
+                    <div key={i}>
+                      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px" }}>
+                        <span style={{ fontSize: "10px", fontFamily: "'JetBrains Mono', monospace", color: ba ? COLORS.accentAmber : COLORS.textMuted, fontWeight: 500 }}>
+                          Sender {i + 1}
                         </span>
-                        <span style={{
-                          fontSize: "10px", fontFamily: "var(--font-mono, monospace)",
-                          color: name ? COLORS.glacier : "rgba(255,255,255,0.15)",
-                        }}>
-                          {name || "name"}@{displayDomain}
+                        <span style={{ fontSize: "10px", fontFamily: "'JetBrains Mono', monospace", color: name ? COLORS.accentBlue : COLORS.textMuted }}>
+                          {name || "name"}@{domain}
                         </span>
                       </div>
                       <input
-                        type="text" required
-                        value={name}
-                        onFocus={() => setActiveField(`email_names_${index}`)}
+                        className="glass-input"
+                        type="text" required value={name}
+                        onFocus={() => setActiveField(`email_names_${i}`)}
                         onBlur={() => setActiveField(null)}
-                        onChange={(e) => handleNameBoxChange(index, e.target.value)}
-                        style={inputCss(boxActive, "dark")}
+                        onChange={(e) => handleNameBoxChange(i, e.target.value)}
+                        data-active={ba}
                       />
                     </div>
                   );
@@ -803,43 +430,18 @@ export default function OnboardingPage() {
 
             {/* Error */}
             {status === "error" && (
-              <div style={{
-                padding: "14px 18px",
-                background: "rgba(196,67,27,0.1)",
-                border: "1.5px solid rgba(196,67,27,0.25)",
-                fontSize: "13px", color: "#FF9B80",
-                marginBottom: "28px", lineHeight: "1.5",
-              }}>
-                {errorMsg}
-              </div>
+              <div className="error-alert">{errorMsg}</div>
             )}
 
             {/* Submit */}
-            <button
-              type="submit"
-              disabled={status === "submitting"}
-              style={{
-                width: "100%", fontSize: "12px", fontWeight: 700,
-                letterSpacing: "0.18em", textTransform: "uppercase",
-                color: COLORS.blueVoid,
-                background: status === "submitting" ? "rgba(191,217,240,0.3)" : COLORS.glacier,
-                padding: "20px 24px", border: "none",
-                cursor: status === "submitting" ? "not-allowed" : "pointer",
-                fontFamily: "var(--font-sans, sans-serif)",
-                transition: "all 0.25s cubic-bezier(0.16,1,0.3,1)",
-              }}
-              onMouseOver={(e) => {
-                if (status !== "submitting") {
-                  e.currentTarget.style.background = "#FFFFFF";
-                }
-              }}
-              onMouseOut={(e) => {
-                if (status !== "submitting") {
-                  e.currentTarget.style.background = COLORS.glacier;
-                }
-              }}
-            >
-              {status === "submitting" ? "Submitting..." : "Submit Brief"}
+            <button type="submit" disabled={status === "submitting"} className="cta-btn cta-btn-full">
+              {status === "submitting" ? (
+                <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}>
+                  <span className="spinner" /> Submitting...
+                </span>
+              ) : (
+                "Launch Campaign Brief"
+              )}
             </button>
 
           </div>
@@ -849,3 +451,395 @@ export default function OnboardingPage() {
     </div>
   );
 }
+
+// ── Section Component ──
+function Section({ index, label, title, children }: {
+  index: number; label: string; title: string; children: React.ReactNode;
+}) {
+  const accent = SECTION_ACCENTS[index];
+  return (
+    <div className="fs" style={{ padding: "64px 24px", position: "relative" }}>
+      <div className="section-glow" style={{ background: accent.gradient }} />
+      <div style={{ maxWidth: "640px", margin: "0 auto", position: "relative", zIndex: 2 }}>
+        <div style={{ marginBottom: "44px" }}>
+          <span className="section-label" style={{ color: accent.color }}>{label}</span>
+          <h2 className="section-title">{title}</h2>
+          <span className="section-num" style={{ color: `${accent.color}08` }}>
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// ── Question wrapper ──
+function Q({ field, label, active, accent, last, children }: {
+  field: string; label: string; active: boolean; accent: number; last?: boolean; children: React.ReactNode;
+}) {
+  const accentColor = SECTION_ACCENTS[accent].color;
+  return (
+    <div className="q-group" data-active={active} style={last ? { borderBottom: "none", marginBottom: 0 } : undefined}>
+      <label className="q-label" data-active={active} style={{ "--accent": accentColor } as React.CSSProperties}>
+        {label}
+      </label>
+      {children}
+    </div>
+  );
+}
+
+// ── Input prop helpers ──
+function inp(
+  field: string,
+  form: Record<string, any>,
+  onChange: (f: any, v: string) => void,
+  setActive: (f: string | null) => void,
+  placeholder?: string,
+) {
+  return {
+    type: "text" as const,
+    required: true,
+    value: form[field] as string,
+    placeholder,
+    onFocus: () => setActive(field),
+    onBlur: () => setActive(null),
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => onChange(field as any, e.target.value),
+  };
+}
+
+function ta(
+  field: string,
+  form: Record<string, any>,
+  onChange: (f: any, v: string) => void,
+  setActive: (f: string | null) => void,
+  placeholder?: string,
+) {
+  return {
+    required: true,
+    value: form[field] as string,
+    placeholder,
+    onFocus: () => setActive(field),
+    onBlur: () => setActive(null),
+    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(field as any, e.target.value),
+  };
+}
+
+// ── Global CSS ──
+const GLOBAL_CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float1 {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(60px,-40px) scale(1.1); }
+  66% { transform: translate(-30px,30px) scale(0.95); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(-50px,-60px) scale(1.15); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(138,180,248,0.1); }
+  50% { box-shadow: 0 0 40px rgba(138,180,248,0.2); }
+}
+
+/* ── Ambient Orbs ── */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+.orb-1 {
+  width: 500px; height: 500px;
+  top: -150px; left: -100px;
+  background: radial-gradient(circle, rgba(102,126,234,0.12), transparent 70%);
+  animation: float1 25s infinite ease-in-out;
+}
+.orb-2 {
+  width: 450px; height: 450px;
+  bottom: 20%; right: -120px;
+  background: radial-gradient(circle, rgba(187,134,252,0.08), transparent 70%);
+  animation: float2 30s infinite ease-in-out;
+}
+.orb-3 {
+  width: 350px; height: 350px;
+  top: 40%; left: 30%;
+  background: radial-gradient(circle, rgba(3,218,198,0.06), transparent 70%);
+  animation: float1 35s infinite ease-in-out reverse;
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  font-weight: 500;
+  margin-bottom: 24px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #03DAC6;
+  animation: pulse 2s infinite ease-in-out;
+  box-shadow: 0 0 8px rgba(3,218,198,0.4);
+}
+
+/* ── Gradient Text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #8AB4F8, #BB86FC, #F2859D);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 6s linear infinite;
+}
+
+/* ── Progress Bar ── */
+.progress-bar-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 14px 24px;
+  background: rgba(10,14,26,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.prog-seg {
+  height: 3px;
+  flex: 1;
+  border-radius: 2px;
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+
+/* ── Section ── */
+.fs {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+.fs.s-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.section-glow {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.section-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.88);
+  letter-spacing: -0.02em;
+}
+.section-num {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 80px;
+  font-weight: 200;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Question Group ── */
+.q-group {
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding-left: 20px;
+  border-left: 2px solid transparent;
+  transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.q-group[data-active="true"] {
+  border-left-color: var(--accent, rgba(138,180,248,0.5));
+}
+
+/* ── Label ── */
+.q-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 12px;
+  transition: color 0.3s;
+  letter-spacing: 0.01em;
+}
+.q-label[data-active="true"] {
+  color: var(--accent, rgba(138,180,248,1));
+}
+.q-label-sm {
+  font-size: 11px;
+}
+
+/* ── Glass Input ── */
+.glass-input {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: rgba(255,255,255,0.9);
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.glass-input::placeholder {
+  color: rgba(255,255,255,0.15);
+  font-weight: 300;
+  font-style: italic;
+}
+.glass-input:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.1);
+}
+.glass-input:focus, .glass-input[data-active="true"] {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(138,180,248,0.35);
+  box-shadow: 0 0 0 4px rgba(138,180,248,0.06), 0 4px 24px rgba(0,0,0,0.2);
+}
+.glass-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.65;
+}
+
+/* ── Glass Select ── */
+.glass-select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 48px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%238AB4F8' stroke-width='1.5'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 16px;
+}
+.glass-select option {
+  background: #1a1e2e;
+  color: rgba(255,255,255,0.9);
+  padding: 12px;
+}
+
+/* ── Glass Card ── */
+.glass-card {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* ── CTA Button ── */
+.cta-btn {
+  position: relative;
+  background: linear-gradient(135deg, #667EEA, #764BA2);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 0 8px 32px rgba(102,126,234,0.25), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 48px rgba(102,126,234,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.cta-btn:active {
+  transform: translateY(0);
+}
+.cta-btn-full {
+  width: 100%;
+  padding: 20px 24px;
+}
+.cta-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Spinner ── */
+.spinner {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* ── Error ── */
+.error-alert {
+  padding: 14px 18px;
+  background: rgba(242,133,157,0.08);
+  border: 1px solid rgba(242,133,157,0.2);
+  border-radius: 12px;
+  font-size: 13px;
+  color: #F2859D;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .section-num { display: none; }
+  .glass-input { padding: 14px 16px; font-size: 13px; }
+}
+`;

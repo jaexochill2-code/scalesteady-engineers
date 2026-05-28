@@ -31,9 +31,9 @@ interface OnboardingForm {
   pain_point: string;
   cost_of_inaction: string;
   competitor_alternative: string;
+  past_marketing_success: string;
   differentiation_hook: string;
   campaign_offer: string;
-  core_deal_value: string;
   routing_destination: string;
   email_names: string[];
 }
@@ -50,9 +50,9 @@ export default function OnboardingPage() {
     pain_point: "",
     cost_of_inaction: "",
     competitor_alternative: "",
+    past_marketing_success: "",
     differentiation_hook: "",
     campaign_offer: "",
-    core_deal_value: "",
     routing_destination: "",
     email_names: ["", "", "", "", ""],
   });
@@ -140,9 +140,9 @@ export default function OnboardingPage() {
       form.pain_point.trim().length > 0 &&
       form.cost_of_inaction.trim().length > 0 &&
       form.competitor_alternative.trim().length > 0 &&
+      form.past_marketing_success.trim().length > 0 &&
       form.differentiation_hook.trim().length > 0 &&
       form.campaign_offer.trim().length > 0 &&
-      form.core_deal_value.trim().length > 0 &&
       form.routing_destination.trim().length > 0 &&
       form.email_names.every((name) => name.trim().length > 0);
 
@@ -162,10 +162,10 @@ export default function OnboardingPage() {
           contact_name: form.contact_name,
           contact_details: form.contact_details,
           email_names: form.email_names,
-          icp_description: `Target Sector: ${form.icp_vertical}\nTrigger Event: ${form.trigger_event}\nBiggest Pain Point: ${form.pain_point}\nCost of Inaction: ${form.cost_of_inaction}`,
-          brand_signature: `Core Value Prop: ${form.core_value_prop}\nCompetitor Profile: ${form.competitor_alternative}\nUnfair Advantage: ${form.differentiation_hook}`,
+          icp_description: `Ideal Patients: ${form.icp_vertical}\nPain Trigger: ${form.trigger_event}\nRuined Daily Activities: ${form.pain_point}\nRisk of Delay: ${form.cost_of_inaction}`,
+          brand_signature: `Specialty Focus: ${form.core_value_prop}\nCompetitor Options: ${form.competitor_alternative}\nWhy Choose Us: ${form.differentiation_hook}`,
           campaign_offer: form.campaign_offer,
-          core_deal_value: form.core_deal_value,
+          core_deal_value: `Past Marketing Success: ${form.past_marketing_success}`,
           geographic_target: form.geographic_focus,
           routing_destination: form.routing_destination,
         },
@@ -199,9 +199,9 @@ export default function OnboardingPage() {
     "pain_point",
     "cost_of_inaction",
     "competitor_alternative",
+    "past_marketing_success",
     "differentiation_hook",
     "campaign_offer",
-    "core_deal_value",
     "routing_destination",
     "email_names",
   ];
@@ -580,7 +580,7 @@ export default function OnboardingPage() {
 
             {/* Q1: Business Name */}
             <div style={questionGroupStyle(activeField === "company_name", activeField !== null)}>
-              <label style={labelStyle(activeField === "company_name")}>Company name</label>
+              <label style={labelStyle(activeField === "company_name")}>Clinic or Practice Name</label>
               <input
                 type="text"
                 required
@@ -594,7 +594,7 @@ export default function OnboardingPage() {
 
             {/* Q2: Contact Person */}
             <div style={questionGroupStyle(activeField === "contact_name", activeField !== null)}>
-              <label style={labelStyle(activeField === "contact_name")}>Your name</label>
+              <label style={labelStyle(activeField === "contact_name")}>Your Name (Doctor or Owner)</label>
               <input
                 type="text"
                 required
@@ -620,17 +620,17 @@ export default function OnboardingPage() {
               />
             </div>
 
-            {/* SECTION 2: Market Positioning */}
+            {/* SECTION 2: Your Practice Specialty */}
             <div style={sectionHeaderStyle}>
-              2. Market Positioning
+              2. Your Practice Specialty
             </div>
 
             {/* Q4: Core Value Proposition */}
             <div style={questionGroupStyle(activeField === "core_value_prop", activeField !== null)}>
-              <label style={labelStyle(activeField === "core_value_prop")}>Core Value Proposition</label>
-              <span style={helperStyle}>If you had to explain your business to a busy, highly skeptical prospect in one simple sentence—without using industry jargon—what do they actually get?</span>
+              <label style={labelStyle(activeField === "core_value_prop")}>Main Chiropractic Specialty</label>
+              <span style={helperStyle}>Describe the primary treatment or method your clinic is known for (e.g. spinal decompression, pediatric adjustments, sports injury rehab). No medical jargon.</span>
               <span style={insightStyle(activeField === "core_value_prop")}>
-                How it helps (Kantar NeedScope): Outbound outreach has a 3-second window. Plain, honest B2B vocabulary drives trust and immediately hooks attention.
+                Why this matters: This helps us write clear, honest email copy that local patients instantly understand.
               </span>
               <textarea
                 required
@@ -644,10 +644,10 @@ export default function OnboardingPage() {
 
             {/* Q5: Target ICP Vertical */}
             <div style={questionGroupStyle(activeField === "icp_vertical", activeField !== null)}>
-              <label style={labelStyle(activeField === "icp_vertical")}>Target Client Sector</label>
-              <span style={helperStyle}>What specific B2B sector, industry niche, or customer type represents your absolute best-margin clients?</span>
+              <label style={labelStyle(activeField === "icp_vertical")}>Ideal Patients</label>
+              <span style={helperStyle}>Who are you trying to get through the door? (e.g. office workers with chronic back pain, local families, seniors, active athletes).</span>
               <span style={insightStyle(activeField === "icp_vertical")}>
-                How it helps (Qualtrics Segmentation): Focusing outbound energy exclusively on high-margin sweet spots prevents pipeline dilution and calendar fatigue.
+                Why this matters: Focusing our outreach on your absolute best patients keeps your schedule full of high-value appointments.
               </span>
               <input
                 type="text"
@@ -662,10 +662,10 @@ export default function OnboardingPage() {
 
             {/* Q6: Geographic Focus */}
             <div style={questionGroupStyle(activeField === "geographic_focus", activeField !== null)}>
-              <label style={labelStyle(activeField === "geographic_focus")}>Geographic Focus</label>
-              <span style={helperStyle}>What specific cities, states, or regions do you want this outbound campaign to target?</span>
+              <label style={labelStyle(activeField === "geographic_focus")}>Neighborhoods & Cities Targeted</label>
+              <span style={helperStyle}>What local towns or neighborhoods do your patients typically drive from?</span>
               <span style={insightStyle(activeField === "geographic_focus")}>
-                How it helps: Geographically targeted copy allows us to reference hyper-local trust markers and local competitor context in outreach scripts.
+                Why this matters: Targeting patients in your direct driving radius prevents wasted outreach and increases booking rates.
               </span>
               <input
                 type="text"
@@ -678,17 +678,17 @@ export default function OnboardingPage() {
               />
             </div>
 
-            {/* SECTION 3: Behavioral Triggers & Urgency */}
+            {/* SECTION 3: Patient Motivation */}
             <div style={sectionHeaderStyle}>
-              3. Behavioral Triggers & Urgency
+              3. Patient Motivation
             </div>
 
             {/* Q7: The Catalyst/Trigger Event */}
             <div style={questionGroupStyle(activeField === "trigger_event", activeField !== null)}>
-              <label style={labelStyle(activeField === "trigger_event")}>The Catalyst / Trigger Event</label>
-              <span style={helperStyle}>What specific operational bottleneck, software failure, or administrative event usually forces a prospect to finally search for your service? What broke in their business today?</span>
+              <label style={labelStyle(activeField === "trigger_event")}>Sudden Pain / Trigger Event</label>
+              <span style={helperStyle}>What sudden physical pain or event usually drives a patient to finally call your clinic? (e.g. throwing their back out lifting something, chronic headaches waking them up, an auto accident).</span>
               <span style={insightStyle(activeField === "trigger_event")}>
-                How it helps (Ipsos Behavioral Insights): Outbound success relies on timing. Targeting buyers immediately after a critical trigger event drives a 4.6x increase in meetings.
+                Why this matters: Writing about real physical pain triggers in our email campaigns drives a massive increase in phone calls.
               </span>
               <textarea
                 required
@@ -702,10 +702,10 @@ export default function OnboardingPage() {
 
             {/* Q8: Primary Customer Headache */}
             <div style={questionGroupStyle(activeField === "pain_point", activeField !== null)}>
-              <label style={labelStyle(activeField === "pain_point")}>Primary Customer Headache</label>
-              <span style={helperStyle}>What is the single biggest operational headache, financial leak, or frustration your target clients experience before they hire you?</span>
+              <label style={labelStyle(activeField === "pain_point")}>Daily Activities Ruined</label>
+              <span style={helperStyle}>What daily activities are ruined by their pain before they see you? (e.g. can't sit at their office chair for more than 20 minutes, can't lift their kids, can't sleep through the night).</span>
               <span style={insightStyle(activeField === "pain_point")}>
-                How it helps (Qualtrics Journey Mapping): Addressing the prospect's day-to-day friction in outreach copy acts as a pattern interrupt, proving we understand their world.
+                Why this matters: Referencing specific daily struggles in our copy makes the outreach feel highly personal and empathetic.
               </span>
               <textarea
                 required
@@ -719,10 +719,10 @@ export default function OnboardingPage() {
 
             {/* Q9: The Cost of Inaction */}
             <div style={questionGroupStyle(activeField === "cost_of_inaction", activeField !== null)}>
-              <label style={labelStyle(activeField === "cost_of_inaction")}>The Cost of Inaction</label>
-              <span style={helperStyle}>If a prospect decides to do nothing and stick with their current situation, what is the concrete financial cost or operational risk they face over the next 12 months?</span>
+              <label style={labelStyle(activeField === "cost_of_inaction")}>Risk of Delay</label>
+              <span style={helperStyle}>What happens to their health or lifestyle if they delay getting treated by you? (e.g. pain gets worse, ending up needing spinal surgery, taking risky pain pills).</span>
               <span style={insightStyle(activeField === "cost_of_inaction")}>
-                How it helps (NewtonX Value Assessment): B2B buying committees prioritize avoiding risk over achieving gains. Defining the cost of inaction creates urgency in copy.
+                Why this matters: Pointing out the real cost of delaying treatment creates urgency, helping patients take action instead of waiting.
               </span>
               <textarea
                 required
@@ -734,17 +734,17 @@ export default function OnboardingPage() {
               />
             </div>
 
-            {/* SECTION 4: Competitive Advantage */}
+            {/* SECTION 4: Local Competition & Marketing */}
             <div style={sectionHeaderStyle}>
-              4. Competitive Advantage
+              4. Local Competition & Marketing
             </div>
 
             {/* Q10: Primary Competitor & Alternatives */}
             <div style={questionGroupStyle(activeField === "competitor_alternative", activeField !== null)}>
-              <label style={labelStyle(activeField === "competitor_alternative")}>Primary Competitor & Alternatives</label>
-              <span style={helperStyle}>Who or what are you most commonly losing deals to? (Is it a direct competitor, internal staff doing it poorly, or simple client inertia)?</span>
+              <label style={labelStyle(activeField === "competitor_alternative")}>Other Local Options</label>
+              <span style={helperStyle}>What other options in your area do people use instead of your clinic? (e.g. corporate chiro chains, physical therapists, massage parlors, painkillers).</span>
               <span style={insightStyle(activeField === "competitor_alternative")}>
-                How it helps: Knowing what you compete against allows us to proactively handle objections and frame your solution as the only logical path.
+                Why this matters: Knowing what options patients consider helps us proactively address their skepticism in our messaging.
               </span>
               <textarea
                 required
@@ -756,12 +756,29 @@ export default function OnboardingPage() {
               />
             </div>
 
-            {/* Q11: Differentiating Authority/Hook */}
+            {/* Q11: What Marketing Has Worked in the Past */}
+            <div style={questionGroupStyle(activeField === "past_marketing_success", activeField !== null)}>
+              <label style={labelStyle(activeField === "past_marketing_success")}>What Marketing Has Worked in the Past</label>
+              <span style={helperStyle}>What advertising or marketing has worked best to get patients for your clinic in the past, if any? (e.g. Facebook ads, local referrals, Google SEO, mailing flyers). If none, write "None".</span>
+              <span style={insightStyle(activeField === "past_marketing_success")}>
+                Why this matters: Understanding your historical wins allows us to double down on the specific angles and offers that are already proven in your market.
+              </span>
+              <textarea
+                required
+                value={form.past_marketing_success}
+                onFocus={() => setActiveField("past_marketing_success")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => handleChange("past_marketing_success", e.target.value)}
+                style={textareaStyle(activeField === "past_marketing_success")}
+              />
+            </div>
+
+            {/* Q12: Why Patients Choose Your Clinic */}
             <div style={questionGroupStyle(activeField === "differentiation_hook", activeField !== null)}>
-              <label style={labelStyle(activeField === "differentiation_hook")}>Differentiating Authority / Hook</label>
-              <span style={helperStyle}>What is your single biggest proof point, unique capability, or unfair advantage that competitors literally cannot replicate?</span>
+              <label style={labelStyle(activeField === "differentiation_hook")}>Why Patients Choose Your Clinic</label>
+              <span style={helperStyle}>Why do patients choose your clinic over other chiropractors in town? What do you do best? (e.g. digital X-rays on site, gentle Activator technique, open on Saturdays).</span>
               <span style={insightStyle(activeField === "differentiation_hook")}>
-                How it helps (Kantar Brand Equity): Highlighting a single, undeniable unfair advantage drives immediate credibility and sets up an uncopyable position.
+                Why this matters: Highlighting your unique clinical advantage drives immediate trust and makes your practice stand out.
               </span>
               <textarea
                 required
@@ -773,17 +790,17 @@ export default function OnboardingPage() {
               />
             </div>
 
-            {/* SECTION 5: Campaign Offer & Value */}
+            {/* SECTION 5: Your Offer & Settings */}
             <div style={sectionHeaderStyle}>
-              5. Campaign Offer & Value
+              5. Your Offer & Settings
             </div>
 
-            {/* Q12: The High-Status Low-Barrier Offer */}
+            {/* Q13: Introductory Special */}
             <div style={questionGroupStyle(activeField === "campaign_offer", activeField !== null)}>
-              <label style={labelStyle(activeField === "campaign_offer")}>Introductory Offer / Assessment</label>
-              <span style={helperStyle}>What introductory offer, free audit, assessment, or risk-free pilot program can we lead with to break through cold audience skepticism?</span>
+              <label style={labelStyle(activeField === "campaign_offer")}>New Patient Special</label>
+              <span style={helperStyle}>What introductory special do you run for new patients? (e.g. $49 consultation, exam, and digital X-rays. If none, write "None").</span>
               <span style={insightStyle(activeField === "campaign_offer")}>
-                How it helps: A highly qualified, low-barrier diagnostic offer overcomes cold friction, giving prospects a zero-risk reason to book a call.
+                Why this matters: A low-barrier first visit breaks cold audience skepticism and gets new patients through your door.
               </span>
               <textarea
                 required
@@ -795,35 +812,12 @@ export default function OnboardingPage() {
               />
             </div>
 
-            {/* Q13: Average Service Price Point */}
-            <div style={questionGroupStyle(activeField === "core_deal_value", activeField !== null)}>
-              <label style={labelStyle(activeField === "core_deal_value")}>Typical Price Point / Contract Size</label>
-              <span style={helperStyle}>What is the typical contract size, average value, or annual value of your primary service?</span>
-              <span style={insightStyle(activeField === "core_deal_value")}>
-                How it helps: Knowing average contract sizes helps us tailor outbound messaging to match the appropriate executive decision-making tier.
-              </span>
-              <input
-                type="text"
-                required
-                value={form.core_deal_value}
-                onFocus={() => setActiveField("core_deal_value")}
-                onBlur={() => setActiveField(null)}
-                onChange={(e) => handleChange("core_deal_value", e.target.value)}
-                style={inputStyle(activeField === "core_deal_value")}
-              />
-            </div>
-
-            {/* SECTION 6: Lead Routing & Sender Prefixes */}
-            <div style={sectionHeaderStyle}>
-              6. Lead Routing & Sender Prefixes
-            </div>
-
-            {/* Q14: Appointments Routing & CRM Destination */}
+            {/* Q14: Appointments Routing */}
             <div style={questionGroupStyle(activeField === "routing_destination", activeField !== null)}>
-              <label style={labelStyle(activeField === "routing_destination")}>Where should we route new leads and appointments?</label>
-              <span style={helperStyle}>Select your destination. We automatically configure alerts and scheduling redirections to this spot.</span>
+              <label style={labelStyle(activeField === "routing_destination")}>Where to Route Bookings</label>
+              <span style={helperStyle}>Where should we send new patient bookings and phone inquiries? (e.g. your scheduling link like Jane App/Acuity, front desk email, or direct phone number).</span>
               <span style={insightStyle(activeField === "routing_destination")}>
-                How it helps: Immediate meeting routing and hot lead alerts prevent drop-offs, ensuring you engage prospects while interest is at its absolute peak.
+                Why this matters: Directing hot patient inquiries straight to a booking page or front desk captures bookings instantly before they lose momentum.
               </span>
               
               <div style={{ position: "relative" }}>
@@ -836,7 +830,7 @@ export default function OnboardingPage() {
                   style={selectStyle(activeField === "routing_destination")}
                 >
                   <option value="" disabled>-- Select routing method --</option>
-                  <option value="Direct Calendar Link">Direct Calendar Link (e.g. Calendly, SavvyCal)</option>
+                  <option value="Direct Calendar Link">Direct Calendar Link (e.g. Jane App, SavvyCal)</option>
                   <option value="Email Inbox Routing">Email Inbox Routing</option>
                   <option value="CRM Routing">CRM Routing (HubSpot, Salesforce, Zoho)</option>
                   <option value="Direct Phone / SMS">Direct Phone / SMS Alerts</option>
@@ -864,12 +858,12 @@ export default function OnboardingPage() {
               )}
             </div>
 
-            {/* Q15: Outbound Sending Account Names */}
+            {/* Q15: Outbound Email Sender Names */}
             <div style={{ ...questionGroupStyle((activeField?.startsWith("email_names") ?? false), activeField !== null), borderBottom: "none", paddingBottom: "0px", marginBottom: "48px" }}>
-              <label style={labelStyle((activeField?.startsWith("email_names") ?? false))}>Names for your outbound sending accounts</label>
-              <span style={helperStyle}>Provide exactly 5 prefixes using first names of real people or staff members (e.g., jane, alex, sarah). Do not include spaces, domains, or symbols.</span>
+              <label style={labelStyle((activeField?.startsWith("email_names") ?? false))}>Outbound Email Sender Names</label>
+              <span style={helperStyle}>Provide exactly 5 prefixes using first names of real staff or doctors to use for your outbound accounts (e.g. dr.jane, amy, frontdesk). Do not include spaces, domains, or symbols.</span>
               <span style={insightStyle(activeField?.startsWith("email_names") ?? false)}>
-                How it helps (Ipsos Deliverability): Accounts set up under authentic first names yield a 4.2x increase in positive response rates and significantly protect domain reputation.
+                Why this matters: Sending from a real person's name promotes trust and deliverability, yielding far more positive patient replies.
               </span>
               
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>

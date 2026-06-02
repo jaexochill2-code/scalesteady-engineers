@@ -550,15 +550,7 @@ export default function Home() {
                     unoptimized
                     className="object-cover filter grayscale"
                   />
-                  {/* Subtle caption overlay */}
-                  <div className="absolute bottom-4 left-4 right-4 z-20 flex flex-col">
-                    <span className="font-sans text-[10px] uppercase font-bold text-white/50 tracking-[0.14em]">
-                      {slide.details}
-                    </span>
-                    <span className="font-sans text-[12px] font-semibold text-white mt-1">
-                      {slide.alt}
-                    </span>
-                  </div>
+
                 </div>
               ))}
               

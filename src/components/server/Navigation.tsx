@@ -15,15 +15,27 @@ const NAV_LINKS = [
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const isOfferPage = pathname === "/offer";
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isTransparent = pathname === "/" && !scrolled;
 
   return (
     <header
-      className="fixed top-0 left-0 z-50 w-full"
+      className="fixed top-0 left-0 z-50 w-full transition-all duration-300"
       style={{
-        background: isOfferPage ? "transparent" : "#FFFFFF",
-        borderBottom: isOfferPage ? "none" : "1px solid #E8E8E8",
+        background: isTransparent ? "transparent" : "rgba(255, 255, 255, 0.96)",
+        backdropFilter: isTransparent ? "none" : "blur(12px)",
+        WebkitBackdropFilter: isTransparent ? "none" : "blur(12px)",
+        borderBottom: isTransparent ? "none" : "1px solid #E8E8E8",
       }}
     >
       <div
@@ -37,16 +49,16 @@ export default function Navigation() {
             <Image
               src={logoAbstract}
               alt="ScaleSteady"
-              className={`object-contain ${isOfferPage ? '' : 'mix-blend-multiply'}`}
+              className={`object-contain ${isTransparent ? "" : "mix-blend-multiply"}`}
               fill
               priority
-              style={isOfferPage ? { filter: 'brightness(10)' } : undefined}
+              style={isTransparent ? { filter: "brightness(10)" } : undefined}
             />
           </div>
           <div className="flex flex-col" style={{ gap: "4px" }}>
             <span
               className="leading-none block"
-              style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 800, letterSpacing: "0.05em", textTransform: "uppercase", color: isOfferPage ? "#FAF8F6" : "#111111" }}
+              style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 800, letterSpacing: "0.05em", textTransform: "uppercase", color: isTransparent ? "#FAF8F6" : "#111111" }}
             >
               ScaleSteady
             </span>
@@ -59,59 +71,58 @@ export default function Navigation() {
           </div>
         </Link>
 
-        {/* Nav links -- anchor scroll (hidden on /offer) */}
-        {!isOfferPage && (
-          <nav className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map(({ href, label }) => (
-              <a
-                key={href}
-                href={href}
-                className="font-sans transition-colors duration-150"
-                style={{ fontSize: "14px", fontWeight: 400, color: "#111111", letterSpacing: "-0.01em" }}
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
-        )}
-
-        {/* CTA (hidden on /offer) */}
-        {!isOfferPage && (
-          <div className="hidden md:flex items-center flex-shrink-0">
-            <Link
-              href="/contact"
-              className="font-sans font-semibold transition-colors duration-200"
+        {/* Nav links -- anchor scroll */}
+        <nav className="hidden md:flex items-center gap-8">
+          {NAV_LINKS.map(({ href, label }) => (
+            <a
+              key={href}
+              href={href}
+              className="font-sans transition-colors duration-150 hover:text-[#C4431B]"
               style={{
-                fontSize: "12px",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                color: "#FFFFFF",
-                background: "#1B4F8A",
-                padding: "11px 24px",
-                borderRadius: "0px",
+                fontSize: "14px",
+                fontWeight: 400,
+                color: isTransparent ? "rgba(255,255,255,0.85)" : "#111111",
+                letterSpacing: "-0.01em",
               }}
             >
-              Book a call
-            </Link>
-          </div>
-        )}
+              {label}
+            </a>
+          ))}
+        </nav>
 
-        {/* Mobile hamburger (hidden on /offer) */}
-        {!isOfferPage && (
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            type="button"
-            className="flex md:hidden items-center justify-center p-2 focus:outline-none"
-            style={{ color: "#111111" }}
-            aria-label="Toggle menu"
+        {/* CTA */}
+        <div className="hidden md:flex items-center flex-shrink-0">
+          <Link
+            href="/contact"
+            className="font-sans font-semibold transition-colors duration-200"
+            style={{
+              fontSize: "12px",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "#FFFFFF",
+              background: "#1B4F8A",
+              padding: "11px 24px",
+              borderRadius: "0px",
+            }}
           >
-            <div className="relative w-5 h-[14px] flex flex-col justify-between">
-              <span className={`block w-full bg-current transform transition-all duration-300 origin-center ${isOpen ? "rotate-45 translate-y-[6.5px]" : ""}`} style={{ height: "1.5px" }} />
-              <span className={`block w-full bg-current transition-all duration-200 ${isOpen ? "opacity-0" : ""}`} style={{ height: "1.5px" }} />
-              <span className={`block w-full bg-current transform transition-all duration-300 origin-center ${isOpen ? "-rotate-45 -translate-y-[6.5px]" : ""}`} style={{ height: "1.5px" }} />
-            </div>
-          </button>
-        )}
+            Book a call
+          </Link>
+        </div>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          type="button"
+          className="flex md:hidden items-center justify-center p-2 focus:outline-none"
+          style={{ color: isTransparent ? "#FAF8F6" : "#111111" }}
+          aria-label="Toggle menu"
+        >
+          <div className="relative w-5 h-[14px] flex flex-col justify-between">
+            <span className={`block w-full bg-current transform transition-all duration-300 origin-center ${isOpen ? "rotate-45 translate-y-[6.5px]" : ""}`} style={{ height: "1.5px" }} />
+            <span className={`block w-full bg-current transition-all duration-200 ${isOpen ? "opacity-0" : ""}`} style={{ height: "1.5px" }} />
+            <span className={`block w-full bg-current transform transition-all duration-300 origin-center ${isOpen ? "-rotate-45 -translate-y-[6.5px]" : ""}`} style={{ height: "1.5px" }} />
+          </div>
+        </button>
 
       </div>
 

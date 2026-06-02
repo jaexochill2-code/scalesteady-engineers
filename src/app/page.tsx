@@ -31,7 +31,7 @@ export default function Home() {
       {/* ── HERO -- Full-bleed cinematic ── */}
       <section
         className="hero-section relative w-full -mt-[80px]"
-        style={{ height: "clamp(600px, 88svh, 96svh)", minHeight: "600px", overflow: "visible", isolation: "isolate" }}
+        style={{ height: "clamp(600px, 88svh, 96svh)", minHeight: "600px", overflow: "visible", isolation: "isolate", zIndex: 10 }}
       >
         {/* Background: photo + dark overlay -- clipped to section bounds */}
         <div className="absolute inset-0" style={{ overflow: "hidden", borderRadius: 0 }}>
@@ -49,9 +49,11 @@ export default function Home() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(135deg, rgba(3,8,15,0.93) 0%, rgba(13,43,74,0.88) 55%, rgba(3,8,15,0.80) 100%)",
+                "linear-gradient(to right, rgba(3,8,15,0.96) 0%, rgba(3,8,15,0.90) 50%, rgba(3,8,15,0.98) 100%)",
             }}
           />
+          {/* Ambient Glow */}
+          <div className="hero-bg-glow" />
         </div>
 
         {/* 2-column hero grid: text left | phone right */}
@@ -143,7 +145,9 @@ export default function Home() {
 
             {/* RIGHT: Phone column -- in-flow, vertically centered by grid */}
             <div className="hero-phone-col" aria-hidden="true">
-              <AnimatedPhone />
+              <div className="phone-scale-wrapper">
+                <AnimatedPhone />
+              </div>
             </div>
           </div>
         </div>
@@ -481,244 +485,132 @@ export default function Home() {
 
 
 
-      {/* ── THE OFFER ── */}
-      <section id="pricing" style={{ background: "#FAF8F6", padding: "clamp(64px, 11vw, 160px) 0" }}>
-        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
+      {/* ── THE OFFER -- HOW WE ALIGN OUR INTERESTS ── */}
+      <section id="pricing" style={{ background: "#050D1C", padding: "clamp(80px, 11vw, 140px) 0" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "780px" }}>
 
-          {/* Eyebrow */}
           <p
             className="font-sans font-semibold uppercase mb-6"
             style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B" }}
           >
-            The Offer
+            How We Align Our Interests
           </p>
 
-          {/* Pattern interrupt headline */}
           <h2
-            className="font-serif font-bold mb-3"
-            style={{ fontSize: "clamp(32px, 4.5vw, 56px)", lineHeight: "1.08", color: "#111111", maxWidth: "720px" }}
+            className="font-serif font-bold text-white text-3xl md:text-5xl"
+            style={{ lineHeight: "1.15", maxWidth: "700px", marginBottom: "clamp(20px, 3vw, 32px)" }}
           >
-            I don&apos;t want your money unless I&apos;ve already{" "}
-            <span style={{ color: "#C4431B" }}>made you money.</span>
+            We build your cold email system at cost -- and we don&apos;t bill for our labor until you collect{" "}
+            <span style={{ color: "#C4431B" }}>$5,000.</span>
           </h2>
 
-          {/* Negative risk subheadline */}
           <p
-            className="font-sans mb-16"
-            style={{ fontSize: "clamp(14px, 1.4vw, 17px)", lineHeight: 1.7, color: "#6B6B6B", maxWidth: "560px" }}
+            className="font-sans"
+            style={{ fontSize: "clamp(15px, 1.5vw, 17px)", lineHeight: 1.8, color: "rgba(255,255,255,0.7)", maxWidth: "640px", marginBottom: "clamp(48px, 6vw, 72px)" }}
           >
-            If we don&apos;t generate $5,000 in new client revenue for your business,
-            you walk away with the infrastructure and owe us nothing for our labor.
+            Most B2B agencies charge high upfront retainers because they need to cover overhead regardless of your results. We are a lean, 5-person team and we only take on clients where we are certain our campaigns will perform. We cover our own payroll upfront because we know that once you collect your first $5,000 from our pipeline, you will want us to keep running it.
           </p>
 
-          {/* Three-Act Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-3" style={{ alignItems: "stretch" }}>
+          <div className="flex flex-col gap-6">
 
-            {/* ACT 01 -- The Asset Acquisition */}
-            <div
-              className="flex flex-col p-8 xl:p-10 relative"
-              style={{
-                background: "#0A1E36",
-                backgroundImage: "url(/offer/blueprint-tile.png)",
-                backgroundSize: "200px 200px",
-                backgroundBlendMode: "overlay",
-              }}
-            >
-              <span
-                className="font-display absolute top-6 right-8"
-                style={{ fontSize: "72px", fontWeight: 800, color: "rgba(255,255,255,0.04)", lineHeight: 1 }}
-              >
-                01
-              </span>
-              <p
-                className="font-sans font-semibold uppercase mb-6"
-                style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#C4431B" }}
-              >
-                The Asset Acquisition
-              </p>
-              <div className="mb-1">
-                <span className="font-serif font-bold" style={{ fontSize: "clamp(42px, 5vw, 60px)", lineHeight: 1, color: "#FFFFFF" }}>$500</span>
-              </div>
-              <p className="font-sans mb-8" style={{ fontSize: "12px", color: "rgba(255,255,255,0.30)" }}>
-                one-time setup -- 100% goes to your infrastructure
-              </p>
-              <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.08)", marginBottom: "28px" }} />
-              <ul className="flex flex-col gap-4 mb-auto font-sans" style={{ fontSize: "13.5px", color: "rgba(255,255,255,0.65)" }}>
-                {[
-                  "Dedicated sending domains, registered to your business",
-                  "Warmed, authenticated email inboxes",
-                  "Custom-scraped lead list targeting your market",
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-3">
-                    <span style={{ color: "#C4431B", flexShrink: 0, marginTop: "2px", fontSize: "12px" }}>&#10003;</span>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <p
-                className="font-sans mt-8"
-                style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.85)", lineHeight: 1.6 }}
-              >
-                This does not go to us.<br />
-                It goes entirely to your infrastructure.
+            {/* Step 1 -- With Invoice Tooltip */}
+            <div className="flex items-start gap-4">
+              <span className="font-display font-bold text-[#C4431B] text-sm flex-shrink-0 mt-1 w-6">01</span>
+              <p className="font-sans text-gray-300 text-[15.5px] leading-relaxed">
+                <strong className="text-white">You cover the raw infrastructure costs -- $500.</strong>{" "}
+                This goes entirely to third-party registrars and data providers for your dedicated domains, warmed inboxes, and a verified lead list. We do not pocket a single dollar of this. You own it from day one.
+                <span className="tooltip-container ml-1.5 text-[#C4431B] font-semibold underline decoration-dotted">
+                  [View Invoice Breakdown]
+                  <span className="tooltip-text">
+                    <span className="block font-semibold mb-2 border-b border-gray-700 pb-1">Raw Cost Breakdown:</span>
+                    <span className="flex justify-between text-[11px] mb-1">
+                      <span>30x Secondary Domains:</span>
+                      <span className="font-mono text-white">$360</span>
+                    </span>
+                    <span className="flex justify-between text-[11px] mb-1">
+                      <span>30x Workspace Accounts:</span>
+                      <span className="font-mono text-white">$180</span>
+                    </span>
+                    <span className="flex justify-between text-[11px] mb-1">
+                      <span>Warmup Pools / GlockApps:</span>
+                      <span className="font-mono text-white">$60</span>
+                    </span>
+                    <span className="flex justify-between text-[11px] font-semibold border-t border-gray-700 pt-1 mt-1 text-[#C4431B]">
+                      <span>Raw Infrastructure Cost:</span>
+                      <span className="font-mono text-white">$600</span>
+                    </span>
+                    <span className="block text-[9px] text-gray-400 mt-2">ScaleSteady absorbs the remaining $100 + all setups.</span>
+                  </span>
+                </span>
               </p>
             </div>
 
-            {/* ACT 02 -- The Performance Phase (featured center) */}
-            <div
-              className="flex flex-col p-8 xl:p-10 relative"
-              style={{ background: "#0D2B4A", marginTop: "-20px", marginBottom: "-20px", zIndex: 10, boxShadow: "0 24px 64px rgba(13,43,74,0.25)" }}
-            >
-              <div className="mb-6 flex items-center justify-between">
-                <span
-                  className="font-display absolute top-6 right-8 lg:top-[26px]"
-                  style={{ fontSize: "72px", fontWeight: 800, color: "rgba(255,255,255,0.04)", lineHeight: 1 }}
-                >
-                  02
-                </span>
-                <p
-                  className="font-sans font-semibold uppercase"
-                  style={{ fontSize: "10px", letterSpacing: "0.16em", color: "rgba(255,255,255,0.45)" }}
-                >
-                  The Performance Phase
+            <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.08)" }} />
+
+            {/* Step 2 */}
+            <div className="flex items-start gap-4">
+              <span className="font-display font-bold text-[#C4431B] text-sm flex-shrink-0 mt-1 w-6">02</span>
+              <p className="font-sans text-gray-300 text-[15.5px] leading-relaxed">
+                <strong className="text-white">We build and manage your campaigns for $0 in agency fees.</strong>{" "}
+                Our team handles all copywriting, technical deliverability, and daily optimization. We absorb our labor costs completely until our outbound system generates $5,000 in cleared revenue for your business.
+              </p>
+            </div>
+
+            <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.08)" }} />
+
+            {/* Step 3 */}
+            <div className="flex items-start gap-4">
+              <span className="font-display font-bold text-[#C4431B] text-sm flex-shrink-0 mt-1 w-6">03</span>
+              <div className="font-sans text-gray-300 text-[15.5px] leading-relaxed">
+                <p style={{ marginBottom: "12px" }}>
+                  <strong className="text-white">Once your bank account reflects $5,000 in new revenue, you choose how to proceed.</strong>
                 </p>
-                <span
-                  className="font-sans font-bold uppercase"
-                  style={{ fontSize: "9px", letterSpacing: "0.12em", color: "#FFFFFF", background: "#C4431B", padding: "4px 10px" }}
-                >
-                  We work free
-                </span>
-              </div>
-              <div className="mb-1">
-                <span className="font-serif font-bold" style={{ fontSize: "clamp(42px, 5vw, 60px)", lineHeight: 1, color: "#FFFFFF" }}>$0</span>
-              </div>
-              <p className="font-sans mb-8" style={{ fontSize: "12px", color: "rgba(255,255,255,0.30)" }}>
-                our fee, until you hit $5,000 in new client revenue
-              </p>
-              <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.1)", marginBottom: "28px" }} />
-              <ul className="flex flex-col gap-4 mb-auto font-sans" style={{ fontSize: "13.5px", color: "rgba(255,255,255,0.75)" }}>
-                {[
-                  "We write the outreach scripts and sequences",
-                  "We manage every campaign end to end",
-                  "We optimize deliverability and monitor inbox health",
-                  "We iterate copy until the replies come in",
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-3">
-                    <span style={{ color: "#C4431B", flexShrink: 0, marginTop: "2px", fontSize: "12px" }}>&#10003;</span>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <p
-                className="font-sans mt-8"
-                style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.85)", lineHeight: 1.6 }}
-              >
-                We do not invoice you until<br />
-                your bank account moves first.
-              </p>
-            </div>
-
-            {/* ACT 03 -- The Fork */}
-            <div
-              className="flex flex-col p-8 xl:p-10 relative"
-              style={{ border: "1px solid #E8E8E8", background: "#FFFFFF", borderTop: "4px solid #C4431B" }}
-            >
-              <span
-                className="font-display absolute top-6 right-8"
-                style={{ fontSize: "72px", fontWeight: 800, color: "rgba(0,0,0,0.04)", lineHeight: 1 }}
-              >
-                03
-              </span>
-              <p
-                className="font-sans font-semibold uppercase mb-6"
-                style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#C4431B" }}
-              >
-                The Fork in the Road
-              </p>
-              <div className="mb-1">
-                <span className="font-serif font-bold" style={{ fontSize: "clamp(36px, 4vw, 52px)", lineHeight: 1, color: "#111111" }}>$5,000</span>
-              </div>
-              <p className="font-sans mb-8" style={{ fontSize: "12px", color: "#9E9E9E" }}>
-                in new client revenue, then you choose
-              </p>
-              <div style={{ width: "100%", height: "1px", background: "#E8E8E8", marginBottom: "28px" }} />
-
-              {/* Scale path */}
-              <div className="flex flex-col gap-5 mb-auto">
-                <div className="flex items-start gap-3">
-                  <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#1B4F8A", marginTop: "5px", flexShrink: 0 }} />
-                  <div className="font-sans" style={{ fontSize: "13.5px" }}>
-                    <p style={{ fontWeight: 600, color: "#111111", marginBottom: "2px" }}>Scale -- $699/mo</p>
-                    <p style={{ color: "#6B6B6B" }}>Keep the pipeline running. Same team, every week.</p>
-                  </div>
-                </div>
-                {/* Walk path */}
-                <div className="flex items-start gap-3">
-                  <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#C4431B", marginTop: "5px", flexShrink: 0 }} />
-                  <div className="font-sans" style={{ fontSize: "13.5px" }}>
-                    <p style={{ fontWeight: 600, color: "#111111", marginBottom: "2px" }}>Walk -- $0 owed</p>
-                    <p style={{ color: "#6B6B6B" }}>Take everything. Run your own campaigns. Owe us nothing.</p>
-                  </div>
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 mt-3">
+                  <span className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C4431B]" />
+                    <span><strong className="text-white">Scale</strong> -- $699/mo, we keep managing and optimizing your pipeline</span>
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                    <span><strong className="text-white">Walk</strong> -- keep all infrastructure and 100% of the profits</span>
+                  </span>
                 </div>
               </div>
-
-              <p
-                className="font-sans mt-8"
-                style={{ fontSize: "13px", fontWeight: 600, color: "#111111", lineHeight: 1.6 }}
-              >
-                Both options are wins.<br />
-                There is no bad door.
-              </p>
             </div>
 
           </div>
 
-          {/* The Guarantee + CTA -- centered below cards */}
-          <div style={{ marginTop: "clamp(48px, 6vw, 80px)", textAlign: "center" }}>
+          {/* Guarantee Card Box */}
+          <div className="guarantee-box mt-16 p-8 md:p-12" style={{ border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.02)" }}>
             <p
-              className="font-serif italic"
-              style={{
-                fontSize: "clamp(24px, 3.5vw, 44px)",
-                lineHeight: 1.15,
-                color: "#C4431B",
-                letterSpacing: "-0.02em",
-              }}
+              className="font-serif italic text-white text-2xl md:text-3xl text-center"
+              style={{ lineHeight: 1.25 }}
             >
-              You literally cannot lose.
+              Our business only makes sense if we perform for yours.
             </p>
-            <p
-              className="font-sans mx-auto"
-              style={{
-                fontSize: "13px",
-                lineHeight: 1.7,
-                color: "#9E9E9E",
-                maxWidth: "480px",
-                marginTop: "16px",
-                marginBottom: "clamp(28px, 3vw, 44px)",
-              }}
-            >
-              If we fail to hit $5,000 in new client revenue, you walk with the infrastructure
-              and owe us nothing for our labor. You only ever paid the hard cost of your email setup.
+            <p className="font-sans mx-auto mt-4 text-center text-gray-400 text-sm max-w-lg leading-relaxed">
+              If we do not generate the $5,000 in new revenue, you keep the entire domain infrastructure and database. We write off our labor as a cost of doing business. You owe us nothing.
             </p>
-
-            <Link
-              href="/contact"
-              className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold transition-all duration-300"
-              style={{
-                fontSize: "12px",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "#FFFFFF",
-                background: "#C4431B",
-                padding: "18px 48px",
-                borderRadius: "0px",
-              }}
-            >
-              Book a consultation
-            </Link>
-            <p className="font-sans mt-4" style={{ fontSize: "12px", color: "#ABABAB" }}>
-              15 minutes. No commitment. No pitch deck.
-            </p>
+            <div className="flex flex-col items-center mt-8">
+              <Link
+                href="/contact"
+                className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold transition-all duration-300 hover:bg-[#2660A8]"
+                style={{
+                  fontSize: "12px",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "#FFFFFF",
+                  background: "#1B4F8A",
+                  padding: "18px 48px",
+                  borderRadius: "0px",
+                }}
+              >
+                Book a consultation
+              </Link>
+              <p className="font-sans mt-4 text-[#ABABAB]" style={{ fontSize: "12px" }}>
+                15 minutes. No commitment. No pitch deck.
+              </p>
+            </div>
           </div>
 
         </div>

@@ -55,9 +55,9 @@ export default function AnimatedPhone() {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8 5a2 2 0 0 0 4 0l8-5"/></svg>
                 </div>
                 <div className="notif-body">
-                  <div className="notif-app">Outreach</div>
-                  <div className="notif-title">New Inquiry: Mike's Roofing</div>
-                  <div className="notif-msg">"Interested in your services. What does this look like?"</div>
+                  <div className="notif-app">Outbound</div>
+                  <div className="notif-title">New Inquiry: Tarrant Mechanical</div>
+                  <div className="notif-msg">"Interested in your outbound setup. Let's talk Tuesday."</div>
                 </div>
                 <div className="notif-time">now</div>
               </div>
@@ -70,9 +70,9 @@ export default function AnimatedPhone() {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
                 </div>
                 <div className="notif-body">
-                  <div className="notif-app">Outreach</div>
-                  <div className="notif-title">Mike replied</div>
-                  <div className="notif-msg">"Sounds great, what time works this week?"</div>
+                  <div className="notif-app">Outbound</div>
+                  <div className="notif-title">Mike / Apex Leasing</div>
+                  <div className="notif-msg">"Sounds perfect, let's lock in 2:00 PM."</div>
                 </div>
                 <div className="notif-time">1m ago</div>
               </div>
@@ -94,7 +94,7 @@ export default function AnimatedPhone() {
                 <span className="cal-conf-label">Discovery Call Booked</span>
               </div>
               <div className="cal-conf-event">
-                <div className="cal-conf-name">Mike / Roofing Lead</div>
+                <div className="cal-conf-name">Mike / Apex Leasing</div>
                 <div className="cal-conf-time">Tue • 2:00 PM • 30 min</div>
                 <div className="cal-conf-status">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#34C759" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>

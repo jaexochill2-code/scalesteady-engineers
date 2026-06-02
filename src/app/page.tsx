@@ -292,30 +292,16 @@ export default function Home() {
             </p>
           </div>
 
-
           {/* Mobile Tab Selector */}
           <div className="flex lg:hidden justify-center mb-8">
-            <div 
-              style={{ 
-                display: "inline-flex", 
-                background: "rgba(255,255,255,0.04)", 
-                border: "1px solid rgba(255,255,255,0.12)", 
-                padding: "3px", 
-                borderRadius: "0px" 
-              }}
-            >
+            <div className="slider-recess">
               <button
                 type="button"
                 onClick={() => setComparisonTab("referral")}
-                className="font-sans font-bold uppercase transition-all duration-200"
+                className={`slider-btn ${comparisonTab === "referral" ? "active" : ""}`}
                 style={{
-                  fontSize: "10px",
-                  letterSpacing: "0.14em",
-                  padding: "10px 18px",
                   background: comparisonTab === "referral" ? "#FFFFFF" : "transparent",
-                  color: comparisonTab === "referral" ? "#000000" : "rgba(255,255,255,0.45)",
-                  border: "none",
-                  cursor: "pointer",
+                  boxShadow: comparisonTab === "referral" ? "0 3px 8px rgba(0,0,0,0.2), inset 1px 1px 2px rgba(255,255,255,1), inset -1px -1px 2px rgba(0,0,0,0.1)" : "none",
                 }}
               >
                 Referral-dependent
@@ -323,15 +309,10 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => setComparisonTab("system")}
-                className="font-sans font-bold uppercase transition-all duration-200"
+                className={`slider-btn ${comparisonTab === "system" ? "active" : ""}`}
                 style={{
-                  fontSize: "10px",
-                  letterSpacing: "0.14em",
-                  padding: "10px 18px",
                   background: comparisonTab === "system" ? "#FFFFFF" : "transparent",
-                  color: comparisonTab === "system" ? "#000000" : "rgba(255,255,255,0.45)",
-                  border: "none",
-                  cursor: "pointer",
+                  boxShadow: comparisonTab === "system" ? "0 3px 8px rgba(0,0,0,0.2), inset 1px 1px 2px rgba(255,255,255,1), inset -1px -1px 2px rgba(0,0,0,0.1)" : "none",
                 }}
               >
                 System-powered
@@ -340,12 +321,12 @@ export default function Home() {
           </div>
 
           {/* Two columns: current self -> future self */}
-          <div className="grid grid-cols-1 lg:grid-cols-2">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
 
             {/* Left: Referral-dependent */}
             <div 
-              className={`p-8 xl:p-12 flex flex-col ${comparisonTab === "referral" ? "flex" : "hidden lg:flex"}`}
-              style={{ background: "rgba(0,0,0,0.25)", border: "1px solid rgba(255,255,255,0.08)" }}
+              className={`bento-card-dark p-8 xl:p-12 flex flex-col ${comparisonTab === "referral" ? "flex" : "hidden lg:flex"}`}
+              style={{ minHeight: "380px" }}
             >
               <div className="mb-8 flex items-center gap-3">
                 <div style={{ width: "8px", height: "8px", background: "rgba(255,255,255,0.2)", borderRadius: "50%" }} />
@@ -387,8 +368,8 @@ export default function Home() {
 
             {/* Right: System-powered — WHITE card, max contrast */}
             <div 
-              className={`p-8 xl:p-12 flex flex-col ${comparisonTab === "system" ? "flex" : "hidden lg:flex"}`}
-              style={{ background: "#FFFFFF", borderTop: "4px solid #0A0A0A" }}
+              className={`bento-card-light p-8 xl:p-12 flex flex-col ${comparisonTab === "system" ? "flex" : "hidden lg:flex"}`}
+              style={{ minHeight: "380px", borderTop: "4px solid #0A0A0A" }}
             >
               <div className="mb-8 flex items-center gap-3">
                 <div style={{ width: "8px", height: "8px", background: "#0A0A0A", borderRadius: "50%" }} />
@@ -547,21 +528,23 @@ export default function Home() {
               the lists, the sequences. They belong to you.
             </p>
 
-            {/* Ownership grid -- 2 col, tight, no bloat */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-6" style={{ maxWidth: "740px" }}>
+            {/* Ownership bento grid -- 2 col, bento cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6" style={{ maxWidth: "800px" }}>
               {[
                 { label: "Sending domains", detail: "Warmed, authenticated, DMARC-compliant -- registered in your name." },
                 { label: "Email inboxes", detail: "Trusted accounts with established sender reputation. Ready for any campaign you run." },
                 { label: "Verified lead list", detail: "Every contact in your TAM, cleaned and validated. Your market, mapped." },
                 { label: "Outreach sequences", detail: "Battle-tested copy and cadences. Use them again, modify them, hand them to your team." },
               ].map((item) => (
-                <div key={item.label} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
-                  <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "rgba(255,255,255,0.50)", marginTop: "8px", flexShrink: 0 }} />
+                <div 
+                  key={item.label} 
+                  className="bento-card-dark p-6 flex flex-col justify-between"
+                >
                   <div>
-                    <p className="font-sans" style={{ fontSize: "14px", fontWeight: 600, color: "rgba(255,255,255,0.90)", marginBottom: "4px" }}>
+                    <p className="font-sans" style={{ fontSize: "15px", fontWeight: 600, color: "#FFFFFF", marginBottom: "8px" }}>
                       {item.label}
                     </p>
-                    <p className="font-sans" style={{ fontSize: "13px", lineHeight: "1.6", color: "rgba(255,255,255,0.62)" }}>
+                    <p className="font-sans" style={{ fontSize: "13px", lineHeight: "1.6", color: "rgba(255,255,255,0.65)" }}>
                       {item.detail}
                     </p>
                   </div>
@@ -806,12 +789,8 @@ export default function Home() {
 
               {/* Path A: Scale */}
               <div
-                className="offer-scroll-reveal p-8 xl:p-10 flex flex-col"
+                className="offer-scroll-reveal bento-card-dark p-8 xl:p-10 flex flex-col"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
-                  backdropFilter: "blur(12px)",
-                  WebkitBackdropFilter: "blur(12px)",
-                  border: "1px solid rgba(255,255,255,0.1)",
                   minHeight: "380px",
                 }}
               >
@@ -853,12 +832,8 @@ export default function Home() {
 
               {/* Path B: Walk */}
               <div
-                className="offer-scroll-reveal p-8 xl:p-10 flex flex-col"
+                className="offer-scroll-reveal bento-card-dark p-8 xl:p-10 flex flex-col"
                 style={{
-                  background: "rgba(255,255,255,0.01)",
-                  backdropFilter: "blur(12px)",
-                  WebkitBackdropFilter: "blur(12px)",
-                  border: "1px solid rgba(255,255,255,0.12)",
                   minHeight: "380px",
                 }}
               >
@@ -968,12 +943,11 @@ export default function Home() {
             What clients say
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3" style={{ alignItems: "stretch" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8" style={{ alignItems: "stretch" }}>
 
             {/* T1: Deliverables Honesty -- HVAC */}
             <div
-              className="flex flex-col pb-16 lg:pb-0"
-              style={{ paddingRight: "clamp(24px, 4vw, 56px)", borderBottom: "1px solid #E8E8E8" }}
+              className="bento-card-light flex flex-col p-8 sm:p-10"
             >
               <p
                 className="font-sans font-semibold uppercase mb-5"
@@ -1006,13 +980,7 @@ export default function Home() {
 
             {/* T2: Closed Deal -- Roofing */}
             <div
-              className="flex flex-col py-16 lg:py-0"
-              style={{
-                paddingLeft: "clamp(24px, 4vw, 56px)",
-                paddingRight: "clamp(24px, 4vw, 56px)",
-                borderLeft: "1px solid #E8E8E8",
-                borderRight: "1px solid #E8E8E8",
-              }}
+              className="bento-card-light flex flex-col p-8 sm:p-10 lg:translate-y-6"
             >
               <p
                 className="font-sans font-semibold uppercase mb-5"
@@ -1045,8 +1013,7 @@ export default function Home() {
 
             {/* T3: Speed + Communication -- Chiropractic */}
             <div
-              className="flex flex-col pt-16 lg:pt-0"
-              style={{ paddingLeft: "clamp(24px, 4vw, 56px)", borderTop: "1px solid #E8E8E8" }}
+              className="bento-card-light flex flex-col p-8 sm:p-10"
             >
               <p
                 className="font-sans font-semibold uppercase mb-5"

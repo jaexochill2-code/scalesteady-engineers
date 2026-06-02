@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 
 export default function AnimatedPhone() {
   const [beat, setBeat] = useState(0);
+  const [activeLoop, setActiveLoop] = useState<"chiro" | "roofer">("chiro");
 
   useEffect(() => {
     let isActive = true;
 
-    const runSequence = () => {
+    const runSequence = (currentLoop: "chiro" | "roofer") => {
       if (!isActive) return;
       setBeat(0);
+      setActiveLoop(currentLoop);
       
       setTimeout(() => { if (isActive) setBeat(1); }, 1500);
       setTimeout(() => { if (isActive) setBeat(2); }, 3800);
@@ -16,13 +18,16 @@ export default function AnimatedPhone() {
       setTimeout(() => { if (isActive) setBeat(4); }, 11000);
       
       setTimeout(() => {
-        if (isActive) runSequence();
+        if (isActive) {
+          const nextLoop = currentLoop === "chiro" ? "roofer" : "chiro";
+          runSequence(nextLoop);
+        }
       }, 11700);
     };
 
     // Wait a brief moment before starting to let the hero reveal
     setTimeout(() => {
-      if (isActive) runSequence();
+      if (isActive) runSequence("chiro");
     }, 800);
 
     return () => {
@@ -39,7 +44,7 @@ export default function AnimatedPhone() {
 
           {/* Screen */}
           <div className="phone-screen-inner" id="phone-screen">
-            {/* BEAT 0: Dark lock screen */}
+            {/* BEAT 0: Lock screen */}
             <div className="beat-0" style={{ opacity: beat < 4 ? 1 : 0, transition: "opacity 0.6s ease" }}>
               <div className="lockscreen-time">9:41</div>
               <div className="lockscreen-date">Tuesday, April 8</div>
@@ -47,6 +52,7 @@ export default function AnimatedPhone() {
 
             {/* Notifications */}
             <div className="notif-stack">
+              {/* Notif 1: Outbound Email Sent */}
               <div 
                 className={`ios-notif ${beat >= 1 && beat < 4 ? 'is-visible' : ''}`}
                 style={{ opacity: beat >= 4 ? 0 : '', transition: beat >= 4 ? "opacity 0.6s ease" : "" }}
@@ -55,13 +61,20 @@ export default function AnimatedPhone() {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8 5a2 2 0 0 0 4 0l8-5"/></svg>
                 </div>
                 <div className="notif-body">
-                  <div className="notif-app">Outbound</div>
-                  <div className="notif-title">Local HVAC Inquiry</div>
-                  <div className="notif-msg">"Interested in your outbound setup. Let's talk Tuesday."</div>
+                  <div className="notif-app">Outbound Email</div>
+                  <div className="notif-title">
+                    {activeLoop === "chiro" ? "To: Jane D. (Prospect)" : "To: Mark D. (Homeowner)"}
+                  </div>
+                  <div className="notif-msg">
+                    {activeLoop === "chiro" 
+                      ? "Hi Jane, we have a $49 new patient special at our clinic this week. Any interest?" 
+                      : "Hi Mark, we are running free wind damage roof checks in your area this Tuesday. Any interest?"}
+                  </div>
                 </div>
                 <div className="notif-time">now</div>
               </div>
 
+              {/* Notif 2: Lead Reply Received */}
               <div 
                 className={`ios-notif ${beat >= 2 && beat < 4 ? 'is-visible' : ''}`}
                 style={{ opacity: beat >= 4 ? 0 : '', transition: beat >= 4 ? "opacity 0.6s ease" : "" }}
@@ -70,9 +83,15 @@ export default function AnimatedPhone() {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
                 </div>
                 <div className="notif-body">
-                  <div className="notif-app">Outbound</div>
-                  <div className="notif-title">Chris (Roofing)</div>
-                  <div className="notif-msg">"Sounds perfect, let's lock in 2:00 PM."</div>
+                  <div className="notif-app">Client Reply</div>
+                  <div className="notif-title">
+                    {activeLoop === "chiro" ? "From: Jane D." : "From: Mark D."}
+                  </div>
+                  <div className="notif-msg">
+                    {activeLoop === "chiro" 
+                      ? '"Yes, my back has been killing me. Do you have Thursday morning open?"' 
+                      : '"Sure, can you check for missing shingles? Tuesday afternoon works."'}
+                  </div>
                 </div>
                 <div className="notif-time">1m ago</div>
               </div>
@@ -91,11 +110,15 @@ export default function AnimatedPhone() {
               </div>
               <div className="cal-conf-dot-row">
                 <span className="cal-conf-dot"></span>
-                <span className="cal-conf-label">Discovery Call Booked</span>
+                <span className="cal-conf-label">Appointment Booked</span>
               </div>
               <div className="cal-conf-event">
-                <div className="cal-conf-name">Chris (Roofing)</div>
-                <div className="cal-conf-time">Tue • 2:00 PM • 30 min</div>
+                <div className="cal-conf-name">
+                  {activeLoop === "chiro" ? "Jane D. (New Patient)" : "Mark D. (Roof Inspection)"}
+                </div>
+                <div className="cal-conf-time">
+                  {activeLoop === "chiro" ? "Thu • 10:00 AM • 45 min" : "Tue • 2:00 PM • 30 min"}
+                </div>
                 <div className="cal-conf-status">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#34C759" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
                   Confirmed

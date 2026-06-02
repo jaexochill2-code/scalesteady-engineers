@@ -146,7 +146,12 @@ export default function Home() {
                   }}
                 >
                   We build your entire outbound system at cost.{" "}
-                  <strong style={{ color: "#FFFFFF", fontWeight: 600 }}>$500 flat.</strong>{" "}
+                  <span 
+                    className="inline-block px-2.5 py-0.5 font-mono font-semibold text-white bg-white/10 border border-white/20"
+                    style={{ borderRadius: "2px", letterSpacing: "0.02em", verticalAlign: "middle" }}
+                  >
+                    $500 flat
+                  </span>{" "}
                   Zero agency fees until you collect{" "}
                   <strong style={{ color: "#FFFFFF", fontWeight: 600 }}>$5,000 in new revenue.</strong>
                 </p>
@@ -624,7 +629,14 @@ export default function Home() {
             <div className="flex items-start gap-4">
               <span style={{ fontFamily: "var(--font-sans)", fontWeight: 700, color: "#111111", fontSize: "13px", flexShrink: 0, marginTop: "2px", minWidth: "24px" }}>01</span>
               <p className="font-sans" style={{ fontSize: "15.5px", lineHeight: "1.75", color: "#444444" }}>
-                <strong style={{ color: "#111111" }}>You cover the raw infrastructure costs -- $500.</strong>{" "}
+                <strong style={{ color: "#111111" }}>You cover the raw infrastructure costs — </strong>
+                <span 
+                  className="inline-block px-2 py-0.5 font-mono font-bold text-black bg-black/5 border border-black/10"
+                  style={{ borderRadius: "2px", fontSize: "14.5px", verticalAlign: "middle" }}
+                >
+                  $500
+                </span>
+                .{" "}
                 This goes entirely to third-party registrars and data providers for your dedicated domains, warmed inboxes, and a verified lead list. We do not pocket a single dollar of this. You own it from day one.{" "}
                 <span className="tooltip-container" style={{ color: "#111111", fontWeight: 600, textDecoration: "underline", textDecorationStyle: "dotted" }}>
                   [View Invoice Breakdown]
@@ -725,47 +737,70 @@ export default function Home() {
             you choose what happens next. There is no bad option.
           </p>
 
-          {/* Fork Diagram -- Responsive CSS Connector */}
+          {/* Fork Diagram -- Responsive CSS Connector with Animated Energy Flow */}
           <div className="offer-fork-container offer-scroll-reveal w-full mb-12">
             
             {/* Desktop Connector (visible on lg screens and up) */}
             <div className="hidden lg:grid grid-cols-2 gap-10 relative w-full h-[120px]">
               {/* Central vertical stem */}
               <div className="absolute inset-0 flex justify-center pointer-events-none">
-                <div className="w-[2px] h-[60px]" style={{ background: "rgba(255,255,255,0.15)" }} />
+                <div className="w-[2px] h-[60px] relative overflow-hidden" style={{ background: "rgba(255,255,255,0.15)" }}>
+                  {/* Energy Spark running down */}
+                  <div className="fork-spark-vertical" style={{ animation: "sparkStem 4s infinite linear" }} />
+                </div>
               </div>
               
               {/* Split Dot in the absolute center at 60px down */}
               <div className="absolute inset-x-0 top-[60px] flex justify-center pointer-events-none">
                 <div 
                   className="w-3 h-3 rounded-full border-2 border-[#050505] -translate-y-1/2"
-                  style={{ background: "#FFFFFF", boxShadow: "0 0 10px rgba(255,255,255,0.4)" }}
+                  style={{ 
+                    background: "#FFFFFF", 
+                    animation: "pulseDot 4s infinite ease-in-out"
+                  }}
                 />
               </div>
 
               {/* Column 1 (Left): connects center to right edge, then drops from center */}
               <div className="relative h-full">
                 {/* Horizontal line from center to right edge (extends 20px into the 40px gap to meet center dot) */}
-                <div className="absolute top-[60px] h-[2px] -translate-y-1/2" style={{ left: "50%", right: "-20px", background: "rgba(255,255,255,0.15)" }} />
+                <div className="absolute top-[60px] h-[2px] -translate-y-1/2 overflow-hidden" style={{ left: "50%", right: "-20px", background: "rgba(255,255,255,0.15)" }}>
+                  {/* Energy Spark running left */}
+                  <div className="fork-spark-horizontal-left" style={{ animation: "sparkLeft 4s infinite linear" }} />
+                </div>
                 {/* Vertical line dropping from center to bottom */}
-                <div className="absolute left-1/2 top-[60px] w-[2px] h-[60px]" style={{ background: "rgba(255,255,255,0.15)" }} />
+                <div className="absolute left-1/2 top-[60px] w-[2px] h-[60px] overflow-hidden" style={{ background: "rgba(255,255,255,0.15)" }}>
+                  {/* Energy Spark running down */}
+                  <div className="fork-spark-vertical" style={{ animation: "sparkDrop 4s infinite linear" }} />
+                </div>
               </div>
 
               {/* Column 2 (Right): connects left edge to center, then drops from center */}
               <div className="relative h-full">
                 {/* Horizontal line from left edge to center (extends 20px into the 40px gap to meet center dot) */}
-                <div className="absolute top-[60px] h-[2px] -translate-y-1/2" style={{ left: "-20px", right: "50%", background: "rgba(255,255,255,0.15)" }} />
+                <div className="absolute top-[60px] h-[2px] -translate-y-1/2 overflow-hidden" style={{ left: "-20px", right: "50%", background: "rgba(255,255,255,0.15)" }}>
+                  {/* Energy Spark running right */}
+                  <div className="fork-spark-horizontal-right" style={{ animation: "sparkRight 4s infinite linear" }} />
+                </div>
                 {/* Vertical line dropping from center to bottom */}
-                <div className="absolute left-1/2 top-[60px] w-[2px] h-[60px]" style={{ background: "rgba(255,255,255,0.15)" }} />
+                <div className="absolute left-1/2 top-[60px] w-[2px] h-[60px] overflow-hidden" style={{ background: "rgba(255,255,255,0.15)" }}>
+                  {/* Energy Spark running down */}
+                  <div className="fork-spark-vertical" style={{ animation: "sparkDrop 4s infinite linear" }} />
+                </div>
               </div>
             </div>
 
             {/* Mobile Connector (visible on mobile/tablet) */}
-            <div className="lg:hidden flex flex-col items-center w-full h-[80px] justify-center">
-              <div className="w-[2px] h-[60px]" style={{ background: "rgba(255,255,255,0.15)" }} />
+            <div className="lg:hidden flex flex-col items-center w-full h-[80px] justify-center relative">
+              <div className="w-[2px] h-[60px] relative overflow-hidden" style={{ background: "rgba(255,255,255,0.15)" }}>
+                <div className="fork-spark-vertical" style={{ animation: "sparkStemMobile 3s infinite linear" }} />
+              </div>
               <div 
                 className="w-2.5 h-2.5 rounded-full border-2 border-[#050505] -mt-1"
-                style={{ background: "#FFFFFF", boxShadow: "0 0 8px rgba(255,255,255,0.3)" }}
+                style={{ 
+                  background: "#FFFFFF", 
+                  animation: "pulseDotMobile 3s infinite ease-in-out" 
+                }}
               />
             </div>
 
@@ -778,7 +813,9 @@ export default function Home() {
               <div
                 className="offer-scroll-reveal p-8 xl:p-10 flex flex-col"
                 style={{
-                  background: "rgba(255,255,255,0.04)",
+                  background: "rgba(255,255,255,0.03)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
                   border: "1px solid rgba(255,255,255,0.1)",
                   minHeight: "380px",
                 }}
@@ -823,7 +860,9 @@ export default function Home() {
               <div
                 className="offer-scroll-reveal p-8 xl:p-10 flex flex-col"
                 style={{
-                  background: "transparent",
+                  background: "rgba(255,255,255,0.01)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
                   border: "1px solid rgba(255,255,255,0.12)",
                   minHeight: "380px",
                 }}

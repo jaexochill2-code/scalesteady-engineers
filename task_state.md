@@ -12,10 +12,12 @@
   - **Slide 3 (`public/icp_roofer.png`):** Copied Batch 2 Couch contractor image (White guy on couch looking at phone) to replace the Hispanic guy.
   - **Slide 4 (`public/icp_manager.png`):** Restored/kept Batch 2 property manager image (older White female kitchen manager looking at phone).
 - **Text Caption Removal:** Removed the absolute text caption overlay container (`div`) from the JSX component in `src/app/page.tsx`, ensuring the imagery serves as clean, raw visual cues without synthetic "AI-generated" styling.
+- **Mobile Sticky CTA Grayscale Fix:** Changed the background color of the `mobile-cta-bar` container from blue-toned navy (`rgba(5,13,28,0.96)`) to grayscale dark charcoal (`rgba(10,10,10,0.96)`) to ensure the page maintains a strict monochrome palette.
 - **E2E Compilation & Production Deployment:** Verified locally with `npm run build` and successfully deployed to Vercel production at `https://scalesteady.pro`.
 
 ## 2. Files Modified / Created
 - `public/icp_practitioner.png`, `public/icp_contractor.png`, `public/icp_roofer.png`, `public/icp_manager.png` (Overwritten with mapped assets to maintain clean presentation without Hispanic profiles)
+- `src/app/page.tsx` (Modified)
 - `src/app/offer/` (Deleted)
 
 ## 3. Exact Next Action

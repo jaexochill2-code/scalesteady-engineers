@@ -261,3 +261,103 @@ a { color: inherit; text-decoration: none; }
 @media (min-width: 1024px) {
   .mobile-cta-bar { display: none !important; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   OFFER PAGE -- ANIMATION SYSTEM
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── HERO ENTRANCE (CSS keyframe, plays once on load) ──────── */
+@keyframes offerReveal {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.offer-reveal {
+  opacity: 0;
+  animation: offerReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ── SCROLL-DRIVEN SECTION REVEALS ─────────────────────────── */
+@keyframes offerScrollFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Default: JS fallback via IntersectionObserver-like pattern */
+.offer-scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.offer-scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Native scroll-driven animation (2026 browsers) */
+@supports (animation-timeline: view()) {
+  .offer-scroll-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    animation: offerScrollFadeUp linear both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 25%;
+    transition: none;
+  }
+}
+
+/* ── FORK STEM DRAWING ANIMATION ───────────────────────────── */
+@keyframes drawStem {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+.offer-fork-stem {
+  transform-origin: top center;
+}
+
+@supports (animation-timeline: view()) {
+  .offer-fork-stem {
+    transform: scaleY(0);
+    animation: drawStem linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+  }
+}
+
+/* ── SCROLL INDICATOR PULSE ────────────────────────────────── */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.15; transform: translateY(0); }
+  50%      { opacity: 0.35; transform: translateY(4px); }
+}
+
+.offer-scroll-indicator svg {
+  animation: scrollPulse 2.5s ease-in-out infinite;
+}
+
+/* ── OFFER PAGE: NAV SUPPRESSION ───────────────────────────── */
+/* Applied via isOfferPage conditional in Navigation.tsx */
+
+/* ── OFFER PAGE: REDUCED MOTION ────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .offer-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .offer-scroll-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .offer-fork-stem {
+    animation: none !important;
+    transform: scaleY(1) !important;
+  }
+  .offer-scroll-indicator svg {
+    animation: none !important;
+  }
+}

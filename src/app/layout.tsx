@@ -23,9 +23,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ScaleSteady | Pipeline Engineers",
+  title: "ScaleSteady | Outbound Engineers",
   description: "We build and manage the outbound infrastructure that fills your calendar with qualified meetings. No ad spend. No guesswork. Fully owned by you.",
-  keywords: "Outbound Infrastructure, Sales Automation, Revenue Pipelines, B2B Acquisition, Pipeline Engineers",
+  keywords: "Outbound Infrastructure, Sales Automation, Revenue Pipelines, B2B Acquisition, Outbound Engineers",
 };
 
 export default function RootLayout({

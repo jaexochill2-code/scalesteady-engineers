@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import CountUp from "@/components/client/CountUp";
@@ -26,6 +26,26 @@ const CLIENTS = ["Tarrant Mechanical", "Aesthetics Clinic Group", "Apex Leasing"
 
 export default function Home() {
   const [comparisonTab, setComparisonTab] = useState<"referral" | "system">("referral");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+
+    const elements = document.querySelectorAll(".offer-scroll-reveal");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
 
   return (
     <div className="w-full min-h-screen overflow-x-hidden pb-16 lg:pb-0" style={{ background: "#F4F4F4" }}>
@@ -705,22 +725,54 @@ export default function Home() {
             you choose what happens next. There is no bad option.
           </p>
 
-          {/* Fork Diagram -- CSS */}
-          <div className="offer-fork-container offer-scroll-reveal">
-            {/* Stem */}
-            <div className="flex justify-center mb-8">
-              <div className="offer-fork-stem" style={{ width: "2px", height: "64px", background: "rgba(250,248,246,0.12)" }} />
-            </div>
+          {/* Fork Diagram -- Responsive CSS Connector */}
+          <div className="offer-fork-container offer-scroll-reveal w-full mb-12">
+            
+            {/* Desktop Connector (visible on lg screens and up) */}
+            <div className="hidden lg:grid grid-cols-2 gap-10 relative w-full h-[120px]">
+              {/* Central vertical stem */}
+              <div className="absolute inset-0 flex justify-center pointer-events-none">
+                <div className="w-[2px] h-[60px]" style={{ background: "rgba(255,255,255,0.15)" }} />
+              </div>
+              
+              {/* Split Dot in the absolute center at 60px down */}
+              <div className="absolute inset-x-0 top-[60px] flex justify-center pointer-events-none">
+                <div 
+                  className="w-3 h-3 rounded-full border-2 border-[#050505] -translate-y-1/2"
+                  style={{ background: "#FFFFFF", boxShadow: "0 0 10px rgba(255,255,255,0.4)" }}
+                />
+              </div>
 
-            {/* Split indicator */}
-            <div className="flex justify-center mb-8">
-              <div style={{ width: "48px", height: "2px", background: "rgba(250,248,246,0.08)", position: "relative" }}>
-                <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", width: "10px", height: "10px", borderRadius: "50%", background: "#0A0A0A" }} />
+              {/* Column 1 (Left): connects center to right edge, then drops from center */}
+              <div className="relative h-full">
+                {/* Horizontal line from center to right edge (extends 20px into the 40px gap to meet center dot) */}
+                <div className="absolute top-[60px] h-[2px] -translate-y-1/2" style={{ left: "50%", right: "-20px", background: "rgba(255,255,255,0.15)" }} />
+                {/* Vertical line dropping from center to bottom */}
+                <div className="absolute left-1/2 top-[60px] w-[2px] h-[60px]" style={{ background: "rgba(255,255,255,0.15)" }} />
+              </div>
+
+              {/* Column 2 (Right): connects left edge to center, then drops from center */}
+              <div className="relative h-full">
+                {/* Horizontal line from left edge to center (extends 20px into the 40px gap to meet center dot) */}
+                <div className="absolute top-[60px] h-[2px] -translate-y-1/2" style={{ left: "-20px", right: "50%", background: "rgba(255,255,255,0.15)" }} />
+                {/* Vertical line dropping from center to bottom */}
+                <div className="absolute left-1/2 top-[60px] w-[2px] h-[60px]" style={{ background: "rgba(255,255,255,0.15)" }} />
               </div>
             </div>
 
-            {/* Two Paths */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
+            {/* Mobile Connector (visible on mobile/tablet) */}
+            <div className="lg:hidden flex flex-col items-center w-full h-[80px] justify-center">
+              <div className="w-[2px] h-[60px]" style={{ background: "rgba(255,255,255,0.15)" }} />
+              <div 
+                className="w-2.5 h-2.5 rounded-full border-2 border-[#050505] -mt-1"
+                style={{ background: "#FFFFFF", boxShadow: "0 0 8px rgba(255,255,255,0.3)" }}
+              />
+            </div>
+
+          </div>
+
+          {/* Two Paths */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
 
               {/* Path A: Scale */}
               <div
@@ -868,8 +920,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-        </div>
       </section>
 
 

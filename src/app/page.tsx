@@ -146,12 +146,7 @@ export default function Home() {
                   }}
                 >
                   We build your entire outbound system at cost.{" "}
-                  <span 
-                    className="inline-block px-2.5 py-0.5 font-mono font-semibold text-white bg-white/10 border border-white/20"
-                    style={{ borderRadius: "2px", letterSpacing: "0.02em", verticalAlign: "middle" }}
-                  >
-                    $500 flat
-                  </span>{" "}
+                  <strong style={{ color: "#FFFFFF", fontWeight: 600 }}>$500 flat.</strong>{" "}
                   Zero agency fees until you collect{" "}
                   <strong style={{ color: "#FFFFFF", fontWeight: 600 }}>$5,000 in new revenue.</strong>
                 </p>

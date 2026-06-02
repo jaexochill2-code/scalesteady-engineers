@@ -71,7 +71,7 @@ export default function RootLayout({
 
         <SmoothScroll>
           <Navigation />
-          <main className="flex-grow" style={{ paddingTop: "80px" }}>
+          <main className="flex-grow pt-[80px]">
             {children}
           </main>
           <Footer />

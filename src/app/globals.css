@@ -200,8 +200,8 @@ a { color: inherit; text-decoration: none; }
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     animation: phoneFloat 6s ease-in-out infinite;
     /* Soft bottom fade to blend with any layout overlays */
-    mask-image: linear-gradient(to bottom, black 95%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 95%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
 }
 .phone-stage:hover {
     transform: rotateY(0deg) rotateX(0deg) translateY(-4px) !important;
@@ -752,3 +752,373 @@ a { color: inherit; text-decoration: none; }
     mix-blend-mode: screen;
     z-index: 1;
 }
+
+/* ── SAAS OUTBOUND MONITOR PANEL ──────────────── */
+.saas-monitor-panel {
+    background: rgba(10, 18, 30, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 
+        0 24px 64px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+    padding: 16px;
+    width: 440px;
+    height: 320px;
+    position: relative;
+    overflow: visible;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.saas-monitor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.saas-controls {
+    display: flex;
+    gap: 6px;
+}
+
+.saas-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.saas-dot-red { background: #FF5F56; }
+.saas-dot-yellow { background: #FFBD2E; }
+.saas-dot-green { background: #27C93F; }
+
+.saas-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+}
+
+.saas-header-spacer {
+    width: 36px; /* Balance the dot controls */
+}
+
+.saas-monitor-body {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    gap: 12px;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.saas-monitor-logs-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 0;
+}
+
+.saas-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.saas-stat-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.saas-stat-label {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+}
+
+.saas-stat-val {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    line-height: 1.1;
+}
+
+.saas-terminal-box {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    padding: 10px 12px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 0;
+}
+
+.saas-terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.saas-terminal-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #34C759;
+    box-shadow: 0 0 6px rgba(52, 199, 89, 0.8);
+}
+
+.saas-terminal-title {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.saas-terminal-logs {
+    flex-grow: 1;
+    overflow-y: hidden;
+    font-size: 10.5px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.55);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.saas-log {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.saas-time {
+    color: rgba(255, 255, 255, 0.2);
+    margin-right: 4px;
+}
+
+.saas-monitor-phone-col {
+    position: relative;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Pull the phone stage out of normal flow so it overlaps in 3D */
+.saas-monitor-phone-col .phone-stage {
+    position: absolute;
+    top: -10px;
+    right: -12px; /* Pull it closer so it doesn't bleed beyond the viewport edge */
+    transform: scale(0.82) rotateY(-6deg) rotateX(3deg) translate3d(4px, 0, 30px);
+    z-index: 10;
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%) !important;
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%) !important;
+}
+
+@media (max-width: 1200px) {
+    .saas-monitor-panel {
+        width: 400px;
+        height: 300px;
+    }
+    .saas-monitor-phone-col .phone-stage {
+        right: -8px;
+        transform: scale(0.75) rotateY(-6deg) rotateX(3deg) translate3d(4px, 0, 30px);
+    }
+}
+
+/* ── OFFER CARDS SYSTEM ───────────────────────── */
+.offer-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+    width: 100%;
+}
+@media (max-width: 1023px) {
+    .offer-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+.offer-card-act {
+    position: relative;
+    padding: clamp(24px, 3.5vw, 38px);
+    display: flex;
+    flex-direction: column;
+    min-height: 440px;
+    box-sizing: border-box;
+}
+
+.offer-card-act-01 {
+    background: #0A1E36;
+    background-image: url(/offer/blueprint-tile.png);
+    background-size: 200px 200px;
+    background-blend-mode: overlay;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.offer-card-act-02 {
+    background: #0D2B4A;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        0 24px 56px -12px rgba(13, 43, 74, 0.35),
+        0 8px 24px -8px rgba(13, 43, 74, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+@media (min-width: 1024px) {
+    .offer-card-act-02 {
+        margin-top: -16px;
+        margin-bottom: -16px;
+        z-index: 10;
+        min-height: 472px; /* Pull it slightly taller */
+    }
+}
+
+.offer-card-act-03 {
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-top: 4px solid #C4431B;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+}
+
+.offer-card-num {
+    font-family: var(--font-display);
+    font-size: 80px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    pointer-events: none;
+}
+.offer-card-num-light { color: rgba(255, 255, 255, 0.035); }
+.offer-card-num-dark { color: rgba(0, 0, 0, 0.035); }
+
+.offer-card-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+.offer-card-eyebrow-accent { color: #C4431B; }
+.offer-card-eyebrow-muted { color: rgba(255, 255, 255, 0.35); }
+
+.offer-card-price {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+.offer-card-price-large { font-size: 64px; }
+.offer-card-price-medium { font-size: 48px; }
+
+.offer-card-subprice {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    margin-bottom: 24px;
+}
+.offer-card-subprice-light { color: rgba(255, 255, 255, 0.3); }
+.offer-card-subprice-dark { color: #9E9E9E; }
+
+.offer-card-divider {
+    width: 100%;
+    height: 1px;
+    margin-bottom: 24px;
+}
+.offer-card-divider-light { background: rgba(255, 255, 255, 0.08); }
+.offer-card-divider-dark { background: #E8E8E8; }
+
+.offer-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: auto;
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+}
+.offer-card-list-light { color: rgba(255, 255, 255, 0.65); }
+.offer-card-list-dark { color: #3D3D3D; }
+
+.offer-card-footer-text {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.6;
+    margin-top: 32px;
+}
+.offer-card-footer-text-light { color: rgba(255, 255, 255, 0.85); }
+.offer-card-footer-text-dark { color: #111111; }
+
+/* ── BINARY CHOICE MINI-PATHS ────────────────── */
+.offer-mini-paths {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: auto;
+}
+
+.offer-mini-path {
+    background: #FAF8F6;
+    border: 1px solid #E8E8E8;
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: all 0.22s ease-in-out;
+    cursor: default;
+}
+
+.offer-mini-path:hover {
+    border-color: rgba(196, 67, 27, 0.35);
+    background: #FFFBF9;
+    box-shadow: 0 4px 12px rgba(196, 67, 27, 0.04);
+}
+
+.offer-mini-path-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+.offer-mini-path-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #111111;
+    margin-bottom: 2px;
+    font-family: var(--font-sans);
+}
+
+.offer-mini-path-desc {
+    font-size: 12px;
+    color: #6B6B6B;
+    line-height: 1.5;
+    font-family: var(--font-sans);
+}
+
+

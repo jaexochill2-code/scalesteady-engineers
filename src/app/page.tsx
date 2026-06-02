@@ -146,7 +146,7 @@ export default function Home() {
                   }}
                 >
                   We build your entire outbound system at cost.{" "}
-                  <strong style={{ color: "#FFFFFF", fontWeight: 600 }}>$500 flat.</strong>{" "}
+                  $500 flat.{" "}
                   Zero agency fees until you collect{" "}
                   <strong style={{ color: "#FFFFFF", fontWeight: 600 }}>$5,000 in new revenue.</strong>
                 </p>

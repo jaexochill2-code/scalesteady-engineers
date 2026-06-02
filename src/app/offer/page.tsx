@@ -26,6 +26,14 @@ const CLIENTS = ["Tarrant Mechanical", "Aesthetics Clinic Group", "Apex Leasing"
 
 export default function Home() {
   const [comparisonTab, setComparisonTab] = useState<"referral" | "system">("referral");
+  const [domainStates, setDomainStates] = useState<Array<{ name: string; status: "active" | "warming" | "secured" }>>([]);
+  const [intentFeeds, setIntentFeeds] = useState([
+    { type: "PERMIT", company: "Metro HVAC", detail: "Commercial remodel approved", location: "Detroit, MI", time: "2m ago" },
+    { type: "HIRING", company: "Southwest Electric", detail: "Hiring Lead Technician", location: "Phoenix, AZ", time: "5m ago" },
+    { type: "DOMAIN", company: "Elite Builders LLC", detail: "Registered new business domain", location: "Dallas, TX", time: "12m ago" },
+    { type: "LSA", company: "Oakridge Roofing", detail: "LSA certification completed", location: "Seattle, WA", time: "18m ago" },
+    { type: "PERMIT", company: "Apex Chiropractic", detail: "New clinic location permit", location: "Irvine, CA", time: "24m ago" },
+  ]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,8 +50,27 @@ export default function Home() {
     const elements = document.querySelectorAll(".offer-scroll-reveal");
     elements.forEach((el) => observer.observe(el));
 
+    const domains = Array.from({ length: 18 }).map((_, i) => ({
+      name: `ss-engineers-${(i + 1).toString().padStart(2, "0")}.${i % 2 === 0 ? "pro" : "net"}`,
+      status: i % 6 === 0 ? ("warming" as const) : i % 5 === 0 ? ("secured" as const) : ("active" as const),
+    }));
+    setDomainStates(domains);
+
+    const interval = setInterval(() => {
+      setIntentFeeds((prev) => {
+        const next = [...prev];
+        const popped = next.shift();
+        if (popped) {
+          popped.time = "Just now";
+          next.push(popped);
+        }
+        return next;
+      });
+    }, 3500);
+
     return () => {
       elements.forEach((el) => observer.unobserve(el));
+      clearInterval(interval);
     };
   }, []);
 
@@ -159,15 +186,12 @@ export default function Home() {
               >
                 <Link
                   href="/contact"
-                  className="hero-cta-btn hidden lg:inline-flex items-center justify-center font-sans font-semibold transition-all duration-300"
+                  className="hero-cta-btn hidden lg:inline-flex items-center justify-center font-sans font-semibold btn-clay-light"
                   style={{
                     fontSize: "11px",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
-                    color: "#000000",
-                    background: "#FFFFFF",
                     padding: "16px 40px",
-                    borderRadius: "0px",
                     flexShrink: 0,
                   }}
                 >
@@ -258,6 +282,199 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── SERVICES BENTO GRID ── */}
+      <section style={{ background: "#FFFFFF", padding: "clamp(80px, 10vw, 140px) 0" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-20" style={{ maxWidth: "1400px" }}>
+          <style>{`
+            @keyframes flowParticle {
+              0% { left: 0%; opacity: 0; }
+              10% { opacity: 1; }
+              90% { opacity: 1; }
+              100% { left: 100%; opacity: 0; }
+            }
+          `}</style>
+
+          <div className="mb-16 offer-scroll-reveal">
+            <p
+              className="font-sans font-semibold uppercase mb-4"
+              style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#666666" }}
+            >
+              What we build
+            </p>
+            <h2
+              className="font-sans font-bold"
+              style={{ fontSize: "clamp(32px, 4.5vw, 56px)", lineHeight: "1.1", color: "#111111", letterSpacing: "-0.02em" }}
+            >
+              Outbound systems, built for conversion
+            </h2>
+            <p
+              className="font-sans mt-4"
+              style={{ fontSize: "15px", lineHeight: "1.75", color: "#666666", maxWidth: "520px" }}
+            >
+              Three core infrastructure assets installed directly into your business stack. You own every domain, list, and automation.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch offer-scroll-reveal">
+            {/* Cell 1: Outbound Infrastructure (2/3 Width, 2x Height on desktop) */}
+            <div className="lg:col-span-2 bento-card-dark p-6 sm:p-8 flex flex-col justify-between min-h-[440px]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-full items-stretch">
+                <div className="flex flex-col justify-between h-full">
+                  <div>
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="font-mono text-[10px] text-white/40 tracking-wider uppercase">Layer 01</span>
+                      <div className="h-px bg-white/10 flex-grow" />
+                    </div>
+                    <h3 className="font-sans text-xl font-bold text-white mb-3">Outbound Infrastructure</h3>
+                    <p className="font-sans text-sm text-white/60 leading-relaxed">
+                      50+ dedicated sending domains. Programmatic SPF, DKIM, DMARC. Warmed, monitored, and rotated so your deliverability is a predictable outcome, not a daily gamble.
+                    </p>
+                  </div>
+                  
+                  <div className="mt-6 flex flex-wrap gap-4 font-mono text-[11px] text-white/50">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      <span>Active (18)</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+                      <span>Warming (4)</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-blue-400" />
+                      <span>Secured (2)</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Visual board */}
+                <div className="bg-black/40 border border-white/5 rounded-xl p-4 font-mono text-[10px] flex flex-col justify-between h-full min-h-[220px]">
+                  <div className="flex justify-between items-center mb-3 pb-2 border-b border-white/10">
+                    <span className="text-white/60 uppercase text-[9px] tracking-widest">Deliverability Control</span>
+                    <span className="text-emerald-500 animate-pulse">● Live</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-2 flex-grow overflow-y-auto max-h-[160px] pr-1 scrollbar-thin">
+                    {domainStates.map((d, i) => (
+                      <div key={i} className="flex items-center justify-between bg-white/[0.02] border border-white/[0.03] p-1.5 rounded">
+                        <span className="text-white/70 truncate mr-2">{d.name}</span>
+                        <span className={`w-1.5 h-1.5 rounded-full ${
+                          d.status === "active" ? "bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.7)]" :
+                          d.status === "warming" ? "bg-amber-500 shadow-[0_0_6px_rgba(245,158,11,0.7)]" :
+                          "bg-blue-400 shadow-[0_0_6px_rgba(96,165,250,0.7)]"
+                        }`} />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-3 pt-2 border-t border-white/10 flex justify-between text-[9px] text-white/40">
+                    <span>IP Rotation: 120s</span>
+                    <span>Placement: 98.4%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right side container to stack cells on desktop */}
+            <div className="flex flex-col gap-6 lg:col-span-1">
+              {/* Cell 2: Pipeline Automation */}
+              <div className="bento-card-dark p-6 flex flex-col justify-between min-h-[208px]">
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="font-mono text-[10px] text-white/40 tracking-wider uppercase">Layer 02</span>
+                    <div className="h-px bg-white/10 flex-grow" />
+                  </div>
+                  <h3 className="font-sans text-base font-bold text-white mb-1.5">Pipeline Automation</h3>
+                  <p className="font-sans text-xs text-white/60 leading-relaxed mb-4">
+                    Positive replies route straight into your CRM and trigger booking sequences automatically.
+                  </p>
+                </div>
+
+                {/* Router visual flow */}
+                <div className="relative bg-black/40 border border-white/5 rounded-xl p-3 flex items-center justify-between min-h-[70px] overflow-hidden">
+                  <div className="absolute inset-x-8 top-1/2 -translate-y-1/2 h-[2px] bg-white/10" />
+                  <div className="absolute left-[24px] right-[24px] top-1/2 -translate-y-1/2 h-[2px]">
+                    <div 
+                      className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_#fff] absolute -translate-y-1/2"
+                      style={{ animation: "flowParticle 2.5s infinite linear" }} 
+                    />
+                  </div>
+
+                  <div className="relative z-10 flex flex-col items-center gap-1">
+                    <div className="w-8 h-8 rounded bg-[#111] border border-white/10 flex items-center justify-center shadow-lg">
+                      <svg className="w-3.5 h-3.5 text-white/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div className="relative z-10 flex flex-col items-center gap-1">
+                    <div className="w-8 h-8 rounded bg-[#111] border border-white/10 flex items-center justify-center shadow-lg">
+                      <svg className="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                        <polyline points="2 17 12 22 22 17" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div className="relative z-10 flex flex-col items-center gap-1">
+                    <div className="w-8 h-8 rounded bg-[#111] border border-white/10 flex items-center justify-center shadow-lg">
+                      <svg className="w-3.5 h-3.5 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Cell 3: Intent-Based Targeting */}
+              <div className="bento-card-dark p-6 flex flex-col justify-between min-h-[208px]">
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="font-mono text-[10px] text-white/40 tracking-wider uppercase">Layer 03</span>
+                    <div className="h-px bg-white/10 flex-grow" />
+                  </div>
+                  <h3 className="font-sans text-base font-bold text-white mb-1.5">Intent-Based Targeting</h3>
+                  <p className="font-sans text-xs text-white/60 leading-relaxed mb-4">
+                    Real-time permit monitoring and buying intent signals. Your list is always live.
+                  </p>
+                </div>
+
+                {/* Live scrolling feed container */}
+                <div className="bg-black/40 border border-white/5 rounded-xl p-2.5 font-mono text-[8px] flex flex-col gap-1.5 min-h-[86px] overflow-hidden relative">
+                  <div className="flex justify-between items-center text-white/40 border-b border-white/10 pb-1 mb-1">
+                    <span>INTENT FEED</span>
+                    <span className="text-amber-500 animate-pulse">● POLLING</span>
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    {intentFeeds.slice(0, 2).map((item, idx) => (
+                      <div key={idx} className="flex items-start justify-between gap-2 border-b border-white/[0.02] pb-1 last:border-0 last:pb-0">
+                        <div className="flex items-start gap-1.5 truncate">
+                          <span className={`px-1 py-0.2 rounded text-[7px] font-bold ${
+                            item.type === "PERMIT" ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" :
+                            item.type === "HIRING" ? "bg-blue-500/10 text-blue-400 border border-blue-500/20" :
+                            item.type === "DOMAIN" ? "bg-purple-500/10 text-purple-400 border border-purple-500/20" :
+                            "bg-amber-500/10 text-amber-400 border border-amber-500/20"
+                          }`}>
+                            {item.type}
+                          </span>
+                          <div className="flex flex-col truncate">
+                            <span className="text-white/80 font-bold truncate">{item.company}</span>
+                            <span className="text-white/50 truncate">{item.detail}</span>
+                          </div>
+                        </div>
+                        <span className="text-white/30 whitespace-nowrap text-right flex-shrink-0">{item.time}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── IDENTITY SHIFT ── */}
       <section style={{ background: "#111111", padding: "clamp(72px, 9vw, 120px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
@@ -295,44 +512,29 @@ export default function Home() {
 
           {/* Mobile Tab Selector */}
           <div className="flex lg:hidden justify-center mb-8">
-            <div 
-              style={{ 
-                display: "inline-flex", 
-                background: "rgba(255,255,255,0.04)", 
-                border: "1px solid rgba(255,255,255,0.12)", 
-                padding: "3px", 
-                borderRadius: "0px" 
-              }}
-            >
+            <div className="slider-recess">
+              <div 
+                className="slider-toggle-bg"
+                style={{
+                  width: "140px",
+                  transform: comparisonTab === "referral" 
+                    ? "translateX(0px)" 
+                    : "translateX(140px)",
+                }}
+              />
               <button
                 type="button"
                 onClick={() => setComparisonTab("referral")}
-                className="font-sans font-bold uppercase transition-all duration-200"
-                style={{
-                  fontSize: "10px",
-                  letterSpacing: "0.14em",
-                  padding: "10px 18px",
-                  background: comparisonTab === "referral" ? "#FFFFFF" : "transparent",
-                  color: comparisonTab === "referral" ? "#000000" : "rgba(255,255,255,0.45)",
-                  border: "none",
-                  cursor: "pointer",
-                }}
+                className={`slider-btn ${comparisonTab === "referral" ? "active" : ""}`}
+                style={{ width: "140px" }}
               >
                 Referral-dependent
               </button>
               <button
                 type="button"
                 onClick={() => setComparisonTab("system")}
-                className="font-sans font-bold uppercase transition-all duration-200"
-                style={{
-                  fontSize: "10px",
-                  letterSpacing: "0.14em",
-                  padding: "10px 18px",
-                  background: comparisonTab === "system" ? "#FFFFFF" : "transparent",
-                  color: comparisonTab === "system" ? "#000000" : "rgba(255,255,255,0.45)",
-                  border: "none",
-                  cursor: "pointer",
-                }}
+                className={`slider-btn ${comparisonTab === "system" ? "active" : ""}`}
+                style={{ width: "140px" }}
               >
                 System-powered
               </button>
@@ -936,13 +1138,11 @@ export default function Home() {
               <div className="flex flex-col items-center mt-12">
                 <Link
                   href="/contact"
-                  className="font-sans font-semibold"
+                  className="font-sans font-semibold btn-clay-light"
                   style={{
                     fontSize: "12px",
                     letterSpacing: "0.1rem",
                     textTransform: "uppercase",
-                    color: "#000000",
-                    background: "#FFFFFF",
                     padding: "18px 48px",
                   }}
                 >
@@ -958,120 +1158,100 @@ export default function Home() {
 
 
       {/* ── TESTIMONIALS ── */}
-      <section id="results" style={{ background: "#F4F4F4", padding: "clamp(48px, 9vw, 112px) 0" }}>
+      <section id="results" style={{ background: "#F4F4F4", padding: "clamp(48px, 9vw, 112px) 0 clamp(80px, 12vw, 160px)" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           <p
-            className="font-sans font-semibold uppercase mb-20"
+            className="font-sans font-semibold uppercase mb-12 sm:mb-16"
             style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#0A0A0A" }}
           >
             What clients say
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3" style={{ alignItems: "stretch" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
 
             {/* T1: Deliverables Honesty -- HVAC */}
-            <div
-              className="flex flex-col pb-16 lg:pb-0"
-              style={{ paddingRight: "clamp(24px, 4vw, 56px)", borderBottom: "1px solid #E8E8E8" }}
-            >
-              <p
-                className="font-sans font-semibold uppercase mb-5"
-                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#0A0A0A" }}
-              >
-                Deliverables
-              </p>
-              <p
-                className="font-sans font-bold"
-                style={{ fontSize: "clamp(44px, 5.5vw, 68px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
-              >
-                15,000
-              </p>
-              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#5A5A5A" }}>
-                emails sent per month, exactly as quoted
-              </p>
-              <div style={{ width: "32px", height: "2px", background: "#0A0A0A", marginBottom: "28px" }} />
-              <p
-                className="font-sans italic mb-auto"
-                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3A3A3A" }}
-              >
-                &ldquo;Honestly I almost didn&apos;t sign up. I&apos;ve been burned by marketing guys before. But these guys showed me the price, told me exactly how many emails go out, and gave me a timeline. Fifteen thousand a month. Every Monday I get a report and the numbers match. No surprises, no upsells. Just organized people who do what they said they&apos;d do.&rdquo;
-              </p>
-              <div style={{ borderTop: "1px solid #E8E8E8", marginTop: "32px", paddingTop: "20px" }}>
-                <p className="font-sans" style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
+            <div className="bento-card-light p-6 sm:p-8 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-6 pb-2 border-b border-gray-100">
+                  <span className="font-sans font-semibold uppercase text-[10px] tracking-widest text-[#666666]">Deliverables</span>
+                  <span className="font-sans text-[10px] text-emerald-500 font-medium">● Verified</span>
+                </div>
+                <p
+                  className="font-sans font-bold mb-4"
+                  style={{ fontSize: "clamp(32px, 4vw, 48px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
+                >
+                  15,000
+                </p>
+                <p className="font-sans text-xs text-[#5A5A5A] mb-6">
+                  emails sent per month, exactly as quoted
+                </p>
+                <p
+                  className="font-sans italic text-sm sm:text-base leading-relaxed text-[#3A3A3A]"
+                >
+                  &ldquo;Honestly I almost didn&apos;t sign up. I&apos;ve been burned by marketing guys before. But these guys showed me the price, told me exactly how many emails go out, and gave me a timeline. Fifteen thousand a month. Every Monday I get a report and the numbers match. No surprises, no upsells. Just organized people who do what they said they&apos;d do.&rdquo;
+                </p>
+              </div>
+              <div className="border-t border-gray-100 mt-8 pt-4">
+                <p className="font-sans" style={{ fontSize: "10px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
                   Mike T., HVAC contractor, southeast Michigan
                 </p>
               </div>
             </div>
 
-            {/* T2: Closed Deal -- Roofing */}
-            <div
-              className="flex flex-col py-16 lg:py-0"
-              style={{
-                paddingLeft: "clamp(24px, 4vw, 56px)",
-                paddingRight: "clamp(24px, 4vw, 56px)",
-                borderLeft: "1px solid #E8E8E8",
-                borderRight: "1px solid #E8E8E8",
-              }}
-            >
-              <p
-                className="font-sans font-semibold uppercase mb-5"
-                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#0A0A0A" }}
-              >
-                Closed deal
-              </p>
-              <p
-                className="font-sans font-bold"
-                style={{ fontSize: "clamp(44px, 5.5vw, 68px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
-              >
-                $12,000
-              </p>
-              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#5A5A5A" }}>
-                first job closed, month two
-              </p>
-              <div style={{ width: "32px", height: "2px", background: "#0A0A0A", marginBottom: "28px" }} />
-              <p
-                className="font-sans italic mb-auto"
-                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3A3A3A" }}
-              >
-                &ldquo;I figured it was another agency that&apos;d take my money and disappear. Second month a reply came in, turned into a twelve thousand dollar re-roof. One job. Paid for the whole year and then some. I don&apos;t even think about it anymore, it just runs in the background and leads show up.&rdquo;
-              </p>
-              <div style={{ borderTop: "1px solid #E8E8E8", marginTop: "32px", paddingTop: "20px" }}>
-                <p className="font-sans" style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
+            {/* T2: Closed Deal -- Roofing (staggered slightly down on desktop) */}
+            <div className="bento-card-light p-6 sm:p-8 flex flex-col justify-between lg:translate-y-6">
+              <div>
+                <div className="flex items-center justify-between mb-6 pb-2 border-b border-gray-100">
+                  <span className="font-sans font-semibold uppercase text-[10px] tracking-widest text-[#666666]">Closed Deal</span>
+                  <span className="font-sans text-[10px] text-emerald-500 font-medium">● Verified</span>
+                </div>
+                <p
+                  className="font-sans font-bold mb-4"
+                  style={{ fontSize: "clamp(32px, 4vw, 48px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
+                >
+                  $12,000
+                </p>
+                <p className="font-sans text-xs text-[#5A5A5A] mb-6">
+                  first job closed, month two
+                </p>
+                <p
+                  className="font-sans italic text-sm sm:text-base leading-relaxed text-[#3A3A3A]"
+                >
+                  &ldquo;I figured it was another agency that&apos;d take my money and disappear. Second month a reply came in, turned into a twelve thousand dollar re-roof. One job. Paid for the whole year and then some. I don&apos;t even think about it anymore, it just runs in the background and leads show up.&rdquo;
+                </p>
+              </div>
+              <div className="border-t border-gray-100 mt-8 pt-4">
+                <p className="font-sans" style={{ fontSize: "10px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
                   Tony R., roofing contractor, western Pennsylvania
                 </p>
               </div>
             </div>
 
             {/* T3: Speed + Communication -- Chiropractic */}
-            <div
-              className="flex flex-col pt-16 lg:pt-0"
-              style={{ paddingLeft: "clamp(24px, 4vw, 56px)", borderTop: "1px solid #E8E8E8" }}
-            >
-              <p
-                className="font-sans font-semibold uppercase mb-5"
-                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#0A0A0A" }}
-              >
-                Communication
-              </p>
-              <p
-                className="font-sans font-bold"
-                style={{ fontSize: "clamp(44px, 5.5vw, 68px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
-              >
-                48 hrs
-              </p>
-              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#5A5A5A" }}>
-                20 email accounts and domains live. Signed up Monday.
-              </p>
-              <div style={{ width: "32px", height: "2px", background: "#0A0A0A", marginBottom: "28px" }} />
-              <p
-                className="font-sans italic mb-auto"
-                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3A3A3A" }}
-              >
-                &ldquo;I run a small practice, I don&apos;t have time to chase vendors. Signed up on Monday, by Wednesday they had everything built. Two weeks later emails were going out. Every Monday I get a quick update -- who replied, what they said, what&apos;s next. Short, clear, no fluff. I have never had to follow up with them once.&rdquo;
-              </p>
-              <div style={{ borderTop: "1px solid #E8E8E8", marginTop: "32px", paddingTop: "20px" }}>
-                <p className="font-sans" style={{ fontSize: "11px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
+            <div className="bento-card-light p-6 sm:p-8 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-6 pb-2 border-b border-gray-100">
+                  <span className="font-sans font-semibold uppercase text-[10px] tracking-widest text-[#666666]">Communication</span>
+                  <span className="font-sans text-[10px] text-emerald-500 font-medium">● Verified</span>
+                </div>
+                <p
+                  className="font-sans font-bold mb-4"
+                  style={{ fontSize: "clamp(32px, 4vw, 48px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
+                >
+                  48 hrs
+                </p>
+                <p className="font-sans text-xs text-[#5A5A5A] mb-6">
+                  20 email accounts and domains live. Signed up Monday.
+                </p>
+                <p
+                  className="font-sans italic text-sm sm:text-base leading-relaxed text-[#3A3A3A]"
+                >
+                  &ldquo;I run a small practice, I don&apos;t have time to chase vendors. Signed up on Monday, by Wednesday they had everything built. Two weeks later emails were going out. Every Monday I get a quick update -- who replied, what they said, what&apos;s next. Short, clear, no fluff. I have never had to follow up with them once.&rdquo;
+                </p>
+              </div>
+              <div className="border-t border-gray-100 mt-8 pt-4">
+                <p className="font-sans" style={{ fontSize: "10px", letterSpacing: "0.08em", color: "#ABABAB", textTransform: "uppercase" }}>
                   Dr. Sarah L., chiropractic practice, northwest Ohio
                 </p>
               </div>
@@ -1210,15 +1390,12 @@ export default function Home() {
         </p>
         <Link
           href="/contact"
-          className="font-sans font-semibold inline-flex items-center justify-center"
+          className="font-sans font-semibold inline-flex items-center justify-center btn-clay-dark"
           style={{
             fontSize: "11px",
             letterSpacing: "0.08em",
             textTransform: "uppercase",
-            color: "#FFFFFF",
-            background: "#0A0A0A",
             padding: "13px 20px",
-            borderRadius: "0px",
             flex: "1",
           }}
         >

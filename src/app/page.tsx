@@ -71,10 +71,10 @@ export default function Home() {
             <div className="hero-text-col">
               {/* Overline */}
               <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "clamp(14px, 2vw, 24px)" }}>
-                <div style={{ width: "24px", height: "2px", background: "rgba(255,255,255,0.4)", flexShrink: 0 }} />
+                <div style={{ width: "24px", height: "2px", background: "rgba(255,255,255,0.6)", flexShrink: 0 }} />
                 <span
                   className="font-sans"
-                  style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}
+                  style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}
                 >
                   Outbound Infrastructure
                 </span>
@@ -110,7 +110,7 @@ export default function Home() {
                     fontWeight: 600,
                     letterSpacing: "0.16em",
                     textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.40)",
+                    color: "rgba(255,255,255,0.60)",
                     marginBottom: "10px",
                   }}
                 >
@@ -134,7 +134,7 @@ export default function Home() {
 
               {/* CTA zone */}
               <div
-                className="hero-cta-wrap flex flex-col sm:flex-row items-start sm:items-center gap-4"
+                className="hero-cta-wrap flex flex-col items-start gap-2.5"
                 style={{ marginTop: "clamp(22px, 3vw, 36px)" }}
               >
                 <Link
@@ -155,7 +155,7 @@ export default function Home() {
                 </Link>
                 <p
                   className="font-sans hero-risk-text"
-                  style={{ fontSize: "11px", color: "rgba(250,248,246,0.45)", letterSpacing: "0.01em" }}
+                  style={{ fontSize: "11px", color: "rgba(255,255,255,0.70)", letterSpacing: "0.01em", marginTop: "4px" }}
                 >
                   15 minutes. No commitment.
                 </p>
@@ -667,37 +667,7 @@ export default function Home() {
 
           </div>
 
-          {/* Guarantee Box */}
-          <div style={{ marginTop: "clamp(48px, 6vw, 72px)", padding: "clamp(32px, 4vw, 48px)", border: "1px solid #1A1A1A", background: "#0A0A0A" }}>
-            <p
-              className="font-sans italic text-white"
-              style={{ fontSize: "clamp(18px, 2.2vw, 26px)", lineHeight: 1.3, textAlign: "center" }}
-            >
-              Our business only makes sense if we perform for yours.
-            </p>
-            <p className="font-sans mx-auto mt-4 text-center" style={{ fontSize: "14px", lineHeight: 1.7, color: "rgba(255,255,255,0.45)", maxWidth: "480px" }}>
-              If we do not generate the $5,000 in new revenue, you keep the entire domain infrastructure and database. We write off our labor as a cost of doing business. You owe us nothing.
-            </p>
-            <div className="flex flex-col items-center mt-8">
-              <Link
-                href="/contact"
-                className="font-sans font-semibold"
-                style={{
-                  fontSize: "12px",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "#000000",
-                  background: "#FFFFFF",
-                  padding: "18px 48px",
-                }}
-              >
-                Book a consultation
-              </Link>
-              <p className="font-sans mt-4" style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
-                15 minutes. No commitment. No pitch deck.
-              </p>
-            </div>
-          </div>
+          {/* Guarantee Box removed to avoid duplicate visual clutter */}
 
         </div>
       </section>
@@ -844,113 +814,58 @@ export default function Home() {
 
             </div>
 
-            {/* The Logical Bind */}
-            <div className="offer-scroll-reveal" style={{ marginTop: "clamp(48px, 6vw, 80px)", textAlign: "center" }}>
+            {/* Consolidated Climax & Downside Protection Guarantee */}
+            <div className="offer-scroll-reveal" style={{ marginTop: "clamp(64px, 8vw, 100px)", textAlign: "center" }}>
               <p
-                className="font-sans"
+                className="font-sans font-bold uppercase mb-4"
+                style={{ fontSize: "11px", letterSpacing: "0.14em", color: "rgba(255,255,255,0.4)" }}
+              >
+                Downside Protection
+              </p>
+              <h2
+                className="font-sans font-semibold text-white"
                 style={{
-                  fontSize: "clamp(28px, 4vw, 52px)",
-                  lineHeight: 1.1,
+                  fontSize: "clamp(28px, 4vw, 48px)",
+                  lineHeight: 1.15,
                   color: "#FFFFFF",
-                  letterSpacing: "-0.03em",
-                  fontWeight: 300,
+                  letterSpacing: "-0.02em",
+                  marginBottom: "20px",
                 }}
               >
-                You literally cannot lose.
-              </p>
+                If we don&apos;t hit $5,000, you pay us zero for our labor.
+              </h2>
               <p
                 className="font-sans mx-auto"
                 style={{
-                  fontSize: "14px",
-                  lineHeight: 1.7,
-                  color: "rgba(255,255,255,0.65)",
-                  maxWidth: "480px",
+                  fontSize: "clamp(14px, 1.6vw, 16px)",
+                  lineHeight: 1.75,
+                  color: "rgba(250,248,246,0.65)",
+                  maxWidth: "580px",
                   marginTop: "20px",
                 }}
               >
-                If we fail to hit $5,000, you walk automatically. You never agreed to a retainer.
-                You only ever paid the hard cost of your email setup.
+                Our business only makes sense if we perform for yours. If we do not generate $5,000 in new client revenue for your business, you keep the entire system — domains, warmed inboxes, verified lead database — and owe us nothing. We write off our labor completely. You literally cannot lose.
               </p>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── THE GUARANTEE (PURE TYPOGRAPHY) ── */}
-      <section style={{ background: "#FFFFFF", padding: "clamp(80px, 10vw, 140px) 0" }}>
-        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "960px", textAlign: "center" }}>
-
-          <p
-            className="font-sans font-semibold uppercase mb-10 offer-scroll-reveal"
-            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#0A0A0A" }}
-          >
-            The Guarantee
-          </p>
-
-          <h2
-            className="font-sans font-bold offer-scroll-reveal"
-            style={{
-              fontSize: "clamp(32px, 5vw, 64px)",
-              lineHeight: 1.1,
-              color: "#111111",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            If we don&apos;t hit $5,000,<br />
-            you pay us zero for our labor.
-          </h2>
-
-          <p
-            className="font-sans mx-auto offer-scroll-reveal"
-            style={{
-              fontSize: "clamp(14px, 1.5vw, 17px)",
-              lineHeight: 1.75,
-              color: "#6B6B6B",
-              maxWidth: "560px",
-              marginTop: "clamp(24px, 3vw, 40px)",
-            }}
-          >
-            Take the domains. Take the inboxes. Take the verified lead list.
-            Run your own campaigns. We built you a premium cold email setup
-            and charged you only the hard cost of the software.
-          </p>
-
-          <div
-            className="offer-scroll-reveal mx-auto"
-            style={{
-              marginTop: "clamp(32px, 4vw, 56px)",
-              borderTop: "1px solid #E8E8E8",
-              paddingTop: "clamp(24px, 3vw, 40px)",
-              maxWidth: "480px",
-            }}
-          >
-            <p className="font-sans" style={{ fontSize: "13px", color: "#ABABAB", lineHeight: 1.7 }}>
-              The setup fee covers the raw cost of the infrastructure -- domains, inboxes, data scraping.
-              Our copywriting, campaign management, and optimization are free until you see results.
-              If you never see results, you never pay for our service. Period.
-            </p>
-            
-            <div className="flex flex-col items-center mt-8">
-              <Link
-                href="/contact"
-                className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold transition-all duration-200"
-                style={{
-                  fontSize: "12px",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "#FFFFFF",
-                  background: "#0A0A0A",
-                  padding: "18px 48px",
-                  borderRadius: "0px",
-                  border: "1px solid rgba(0,0,0,0.15)",
-                }}
-              >
-                Book a 15-min call
-              </Link>
-              <p className="font-sans mt-4 text-[#ABABAB]" style={{ fontSize: "12px" }}>
-                15 minutes. No commitment. No pitch deck.
-              </p>
+              
+              <div className="flex flex-col items-center mt-12">
+                <Link
+                  href="/contact"
+                  className="font-sans font-semibold"
+                  style={{
+                    fontSize: "12px",
+                    letterSpacing: "0.1rem",
+                    textTransform: "uppercase",
+                    color: "#000000",
+                    background: "#FFFFFF",
+                    padding: "18px 48px",
+                  }}
+                >
+                  Book a 15-min call
+                </Link>
+                <p className="font-sans mt-4" style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
+                  15 minutes. No commitment. No pitch deck.
+                </p>
+              </div>
             </div>
           </div>
 

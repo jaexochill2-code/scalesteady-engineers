@@ -31,10 +31,10 @@ export default function Home() {
       {/* ── HERO -- Full-bleed cinematic ── */}
       <section
         className="hero-section relative w-full -mt-[80px]"
-        style={{ height: "clamp(580px, 85svh, 95svh)", minHeight: "580px", overflow: "hidden" }}
+        style={{ height: "clamp(600px, 88svh, 96svh)", minHeight: "600px", overflow: "visible", isolation: "isolate" }}
       >
-        {/* Background: photo + dark overlay */}
-        <div className="absolute inset-0">
+        {/* Background: photo + dark overlay -- clipped to section bounds */}
+        <div className="absolute inset-0" style={{ overflow: "hidden", borderRadius: 0 }}>
           <Image
             src="/hero-team.jpeg"
             alt="ScaleSteady outbound infrastructure team"

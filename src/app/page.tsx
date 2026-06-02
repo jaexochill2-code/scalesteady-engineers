@@ -26,7 +26,7 @@ const CLIENTS = ["Tarrant Mechanical", "Aesthetics Clinic Group", "Apex Leasing"
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen overflow-x-hidden pb-16 lg:pb-0" style={{ background: "#FAF8F6" }}>
+    <div className="w-full min-h-screen overflow-x-hidden pb-16 lg:pb-0" style={{ background: "#F4F4F4" }}>
 
       {/* ── HERO -- Full-bleed cinematic ── */}
       <section
@@ -69,10 +69,10 @@ export default function Home() {
             <div className="hero-text-col">
               {/* Overline */}
               <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "clamp(14px, 2vw, 24px)" }}>
-                <div style={{ width: "24px", height: "2px", background: "#C4431B", flexShrink: 0 }} />
+                <div style={{ width: "24px", height: "2px", background: "rgba(255,255,255,0.4)", flexShrink: 0 }} />
                 <span
                   className="font-sans"
-                  style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "#C4431B" }}
+                  style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}
                 >
                   Outbound Infrastructure
                 </span>
@@ -85,7 +85,7 @@ export default function Home() {
                   fontSize: "clamp(44px, 6vw, 88px)",
                   lineHeight: "1.04",
                   letterSpacing: "-0.03em",
-                  color: "#FAF8F6",
+                  color: "#F4F4F4",
                 }}
               >
                 <span className="hero-word block" style={{ animationDelay: "0s" }}>
@@ -93,7 +93,7 @@ export default function Home() {
                 </span>
                 <span
                   className="hero-word block italic"
-                  style={{ animationDelay: "0.12s", color: "#C4431B" }}
+                  style={{ animationDelay: "0.12s", color: "#FFFFFF" }}
                 >
                   the email worked.
                 </span>
@@ -125,8 +125,8 @@ export default function Home() {
                     fontSize: "11px",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
-                    color: "#FFFFFF",
-                    background: "#C4431B",
+                    color: "#000000",
+                    background: "#FFFFFF",
                     padding: "16px 40px",
                     borderRadius: "0px",
                     flexShrink: 0,
@@ -143,60 +143,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* RIGHT: Phone column -- holds the SaaS Outbound Monitor Panel */}
+            {/* RIGHT: Phone column */}
             <div className="hero-phone-col" aria-hidden="true">
               <div className="phone-scale-wrapper">
-                <div className="saas-monitor-panel">
-                  {/* Window Title Bar */}
-                  <div className="saas-monitor-header">
-                    <div className="saas-controls">
-                      <span className="saas-dot saas-dot-red" />
-                      <span className="saas-dot saas-dot-yellow" />
-                      <span className="saas-dot saas-dot-green" />
-                    </div>
-                    <span className="saas-title">OUTBOUND_MONITOR_v2.4</span>
-                    <div className="saas-header-spacer" />
-                  </div>
-                  
-                  {/* Panel Content Grid */}
-                  <div className="saas-monitor-body">
-                    {/* Left: System Stats & Outbound Logs */}
-                    <div className="saas-monitor-logs-col">
-                      <div className="saas-stats-grid">
-                        <div className="saas-stat-card">
-                          <span className="saas-stat-label">DOMAINS</span>
-                          <span className="saas-stat-val text-emerald-400">50/50</span>
-                        </div>
-                        <div className="saas-stat-card">
-                          <span className="saas-stat-label">DELIVERY</span>
-                          <span className="saas-stat-val text-emerald-400">97.6%</span>
-                        </div>
-                      </div>
-                      
-                      <div className="saas-terminal-box">
-                        <div className="saas-terminal-header">
-                          <span className="saas-terminal-indicator animate-pulse" />
-                          <span className="saas-terminal-title">LIVE FEED</span>
-                        </div>
-                        <div className="saas-terminal-logs font-mono">
-                          <div className="saas-log"><span className="saas-time">[09:41:00]</span> INIT_POOL... OK</div>
-                          <div className="saas-log"><span className="saas-time">[09:41:02]</span> WARM_ROUNDS... 50/50</div>
-                          <div className="saas-log"><span className="saas-time">[09:41:05]</span> TAM_SCRAPE... Apex Leasing</div>
-                          <div className="saas-log"><span className="saas-time">[09:41:10]</span> INBOX_ROTATOR... ACTIVE</div>
-                          <div className="saas-log"><span className="saas-time">[09:41:12]</span> DISPATCH_QUEUE... READY</div>
-                          <div className="saas-log text-emerald-400 font-semibold"><span className="saas-time">[09:41:15]</span> SEND_SUCCESS... Mike/Apex</div>
-                          <div className="saas-log text-amber-500 font-semibold"><span className="saas-time">[09:41:25]</span> REPLY_DETECTED... INBOUND</div>
-                          <div className="saas-log text-emerald-400 font-bold"><span className="saas-time">[09:41:28]</span> CAL_BOOKED... 2:00PM</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Right: Overlapping 3D Phone mockup */}
-                    <div className="saas-monitor-phone-col">
-                      <AnimatedPhone />
-                    </div>
-                  </div>
-                </div>
+                <AnimatedPhone />
               </div>
             </div>
           </div>
@@ -206,23 +156,23 @@ export default function Home() {
 
 
       {/* ── THE OUTBOUND TRUTHS ── */}
-      <section id="approach" style={{ background: "#EDE7DF", padding: "clamp(64px, 12vw, 160px) 0" }}>
+      <section id="approach" style={{ background: "#EBEBEB", padding: "clamp(64px, 12vw, 160px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "800px" }}>
           
           {/* Left-anchored accent border + tactile hover focus group */}
-          <div className="focus-group flex flex-col gap-8 border-l-[3px] pl-8 sm:pl-10" style={{ borderColor: "#C4431B" }}>
+          <div className="focus-group flex flex-col gap-8 border-l-[3px] pl-8 sm:pl-10" style={{ borderColor: "#0A0A0A" }}>
             
             <p
               className="font-sans"
               style={{
                 fontSize: "clamp(28px, 3.8vw, 46px)",
                 lineHeight: "1.25",
-                color: "#0D2B4A",
+                color: "#111111",
                 fontWeight: 400,
                 letterSpacing: "-0.02em",
               }}
             >
-              Outbound is the single most predictable way to acquire clients -- because you control the <strong style={{ color: "#C4431B", fontWeight: 600 }}>volume, the targeting, and the math</strong>.
+              Outbound is the single most predictable way to acquire clients -- because you control the <strong style={{ color: "#0A0A0A", fontWeight: 600 }}>volume, the targeting, and the math</strong>.
             </p>
 
             <p
@@ -235,7 +185,7 @@ export default function Home() {
                 letterSpacing: "-0.01em",
               }}
             >
-              Networking is slow. Cold calling is unsexy. <strong style={{ color: "#1B4F8A", fontWeight: 600 }}>Automation scales</strong>.
+              Networking is slow. Cold calling is unsexy. <strong style={{ color: "#0A0A0A", fontWeight: 600 }}>Automation scales</strong>.
             </p>
 
             <p
@@ -248,7 +198,7 @@ export default function Home() {
                 letterSpacing: "-0.01em",
               }}
             >
-              The math is clear: a 1% response on 50,000 targeted emails delivers 500 active conversations. That is your <strong style={{ color: "#1B4F8A", fontWeight: 600 }}>physical floor</strong>.
+              The math is clear: a 1% response on 50,000 targeted emails delivers 500 active conversations. That is your <strong style={{ color: "#0A0A0A", fontWeight: 600 }}>physical floor</strong>.
             </p>
 
             <p
@@ -256,13 +206,13 @@ export default function Home() {
               style={{
                 fontSize: "clamp(18px, 2.2vw, 26px)",
                 lineHeight: "1.4",
-                color: "#0D2B4A",
+                color: "#111111",
                 fontWeight: 600,
                 letterSpacing: "-0.02em",
                 marginTop: "40px",
               }}
             >
-              The technology is ready -- the only question is whether you build this asset now, or <strong style={{ color: "#C4431B", fontWeight: 600 }}>wait until the market standard forces you to catch up.</strong>
+              The technology is ready -- the only question is whether you build this asset now, or <strong style={{ color: "#0A0A0A", fontWeight: 600 }}>wait until the market standard forces you to catch up.</strong>
             </p>
 
           </div>
@@ -270,7 +220,7 @@ export default function Home() {
       </section>
 
       {/* ── IDENTITY SHIFT ── */}
-      <section style={{ background: "#0D2B4A", padding: "clamp(72px, 9vw, 120px) 0" }}>
+      <section style={{ background: "#111111", padding: "clamp(72px, 9vw, 120px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           {/* ── Identity statement ── */}
@@ -286,7 +236,7 @@ export default function Home() {
               }}
             >
               There&apos;s a gap between the outreach you know you should be doing and what you&apos;re actually doing. Every month that gap costs you clients{" "}
-              <span style={{ color: "#C4431B" }}>you&apos;ll never know you lost.</span>
+              <span style={{ color: "#0A0A0A" }}>you&apos;ll never know you lost.</span>
             </p>
             <p
               className="font-serif font-normal"
@@ -350,13 +300,13 @@ export default function Home() {
             {/* Right: System-powered — WHITE card, max contrast */}
             <div className="p-8 xl:p-12 flex flex-col" style={{ background: "#FFFFFF", borderTop: "4px solid #1B4F8A" }}>
               <div className="mb-8 flex items-center gap-3">
-                <div style={{ width: "8px", height: "8px", background: "#1B4F8A", borderRadius: "50%" }} />
-                <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#1B4F8A" }}>System-powered</span>
+                <div style={{ width: "8px", height: "8px", background: "#0A0A0A", borderRadius: "50%" }} />
+                <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#0A0A0A" }}>System-powered</span>
               </div>
 
               <ul className="flex flex-col gap-7 font-sans mb-8" style={{ fontSize: "14.5px" }}>
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span style={{ color: "#444444" }}>
@@ -364,7 +314,7 @@ export default function Home() {
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span style={{ color: "#444444" }}>
@@ -372,7 +322,7 @@ export default function Home() {
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span style={{ color: "#444444" }}>
@@ -385,7 +335,7 @@ export default function Home() {
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span style={{ color: "#444444" }}>
@@ -409,7 +359,7 @@ export default function Home() {
 
 
       {/* ── DEFINITIVE RESULTS -- The Irony Section ── */}
-      <section style={{ background: "#050D1C", padding: "clamp(72px, 8vw, 112px) 0" }}>
+      <section style={{ background: "#050505", padding: "clamp(72px, 8vw, 112px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           {/* Irony opener */}
@@ -419,7 +369,7 @@ export default function Home() {
               fontSize: "clamp(26px, 3.5vw, 44px)",
               lineHeight: "1.15",
               letterSpacing: "-0.02em",
-              color: "#C4431B",
+              color: "#0A0A0A",
               fontWeight: 400,
               maxWidth: "640px",
             }}
@@ -453,7 +403,7 @@ export default function Home() {
               marginTop: "clamp(16px, 2vw, 28px)",
             }}
           >
-            30,000<span style={{ color: "#C4431B" }}>+</span>
+            30,000<span style={{ color: "#0A0A0A" }}>+</span>
           </p>
 
           {/* Market awareness -- local, visceral */}
@@ -499,7 +449,7 @@ export default function Home() {
                 { label: "Outreach sequences", detail: "Battle-tested copy and cadences. Use them again, modify them, hand them to your team." },
               ].map((item) => (
                 <div key={item.label} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
-                  <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#C4431B", marginTop: "8px", flexShrink: 0 }} />
+                  <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#0A0A0A", marginTop: "8px", flexShrink: 0 }} />
                   <div>
                     <p className="font-sans" style={{ fontSize: "14px", fontWeight: 600, color: "rgba(255,255,255,0.80)", marginBottom: "4px" }}>
                       {item.label}
@@ -536,64 +486,42 @@ export default function Home() {
 
 
       {/* ── THE OFFER -- HOW WE ALIGN OUR INTERESTS ── */}
-      <section id="pricing" style={{ background: "#FAF8F6", padding: "clamp(72px, 10vw, 140px) 0" }}>
-        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
+      <section id="pricing" style={{ background: "#F4F4F4", padding: "clamp(80px, 11vw, 140px) 0" }}>
+        <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "780px" }}>
 
-          {/* Section label */}
           <p
-            className="font-sans font-semibold uppercase mb-5 offer-scroll-reveal"
-            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B" }}
+            className="font-sans font-semibold uppercase mb-6"
+            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#111111" }}
           >
             How We Align Our Interests
           </p>
+
           <h2
-            className="font-serif font-bold mb-3 offer-scroll-reveal"
-            style={{ fontSize: "clamp(28px, 4vw, 56px)", lineHeight: "1.08", color: "#111111", maxWidth: "720px" }}
+            className="font-sans font-bold"
+            style={{ fontSize: "clamp(28px, 4vw, 48px)", lineHeight: "1.12", color: "#111111", maxWidth: "700px", marginBottom: "clamp(20px, 3vw, 32px)", letterSpacing: "-0.02em" }}
           >
-            We don&apos;t want your money unless we&apos;ve already{" "}
-            <span style={{ color: "#C4431B" }}>made you money.</span>
+            We build your cold email system at cost -- and we don&apos;t bill for our labor until you collect{" "}
+            <span style={{ color: "#111111", borderBottom: "2px solid #111111" }}>$5,000.</span>
           </h2>
+
           <p
-            className="font-sans mb-16 offer-scroll-reveal"
-            style={{ fontSize: "clamp(14px, 1.4vw, 17px)", lineHeight: 1.7, color: "#6B6B6B", maxWidth: "560px" }}
+            className="font-sans"
+            style={{ fontSize: "clamp(15px, 1.5vw, 17px)", lineHeight: 1.8, color: "#555555", maxWidth: "640px", marginBottom: "clamp(48px, 6vw, 72px)" }}
           >
-            If we don&apos;t generate $5,000 in new client revenue for your business,
-            you walk away with the infrastructure and owe us nothing for our labor.
+            Most B2B agencies charge high upfront retainers because they need to cover overhead regardless of your results. We are a lean, 5-person team and we only take on clients where we are certain our campaigns will perform. We cover our own payroll upfront because we know that once you collect your first $5,000 from our pipeline, you will want us to keep running it.
           </p>
 
-          {/* Three-Act Grid */}
-          <div className="offer-cards-grid">
+          <div className="flex flex-col gap-6">
 
-            {/* ACT 01 -- The Asset Acquisition */}
-            <div className="offer-scroll-reveal offer-card-act offer-card-act-01">
-              <span className="offer-card-num offer-card-num-light">01</span>
-              <p className="offer-card-eyebrow offer-card-eyebrow-accent">
-                The Asset Acquisition
-              </p>
-              <p className="offer-card-price offer-card-price-large text-white">
-                $500
-              </p>
-              <p className="offer-card-subprice offer-card-subprice-light">
-                one-time setup -- 100% goes to infrastructure
-              </p>
-              <div className="offer-card-divider offer-card-divider-light" />
-              <ul className="offer-card-list offer-card-list-light">
-                {[
-                  "Dedicated sending domains, registered to your business",
-                  "Warmed, authenticated email inboxes",
-                  "Custom-scraped lead list targeting your market",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span style={{ color: "#C4431B", flexShrink: 0, marginTop: "2px", fontSize: "12px" }}>&#10003;</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <div className="mt-4 mb-6">
-                <span className="tooltip-container text-[#C4431B] font-semibold underline decoration-dotted text-[13px]">
+            {/* Step 01 */}
+            <div className="flex items-start gap-4">
+              <span style={{ fontFamily: "var(--font-sans)", fontWeight: 700, color: "#111111", fontSize: "13px", flexShrink: 0, marginTop: "2px", minWidth: "24px" }}>01</span>
+              <p className="font-sans" style={{ fontSize: "15.5px", lineHeight: "1.75", color: "#444444" }}>
+                <strong style={{ color: "#111111" }}>You cover the raw infrastructure costs -- $500.</strong>{" "}
+                This goes entirely to third-party registrars and data providers for your dedicated domains, warmed inboxes, and a verified lead list. We do not pocket a single dollar of this. You own it from day one.{" "}
+                <span className="tooltip-container" style={{ color: "#111111", fontWeight: 600, textDecoration: "underline", textDecorationStyle: "dotted" }}>
                   [View Invoice Breakdown]
-                  <span className="tooltip-text" style={{ bottom: "135%", left: "5%", marginLeft: "0px", width: "260px" }}>
+                  <span className="tooltip-text">
                     <span className="block font-semibold mb-2 border-b border-gray-700 pb-1">Raw Cost Breakdown:</span>
                     <span className="flex justify-between text-[11px] mb-1">
                       <span>30x Secondary Domains:</span>
@@ -607,106 +535,95 @@ export default function Home() {
                       <span>Warmup Pools / GlockApps:</span>
                       <span className="font-mono text-white">$60</span>
                     </span>
-                    <span className="flex justify-between text-[11px] font-semibold border-t border-gray-700 pt-1 mt-1 text-[#C4431B]">
+                    <span className="flex justify-between text-[11px] font-semibold border-t border-gray-700 pt-1 mt-1">
                       <span>Raw Infrastructure Cost:</span>
                       <span className="font-mono text-white">$600</span>
                     </span>
                     <span className="block text-[9px] text-gray-400 mt-2">ScaleSteady absorbs the remaining $100 + all setups.</span>
                   </span>
                 </span>
-              </div>
-
-              <p className="offer-card-footer-text offer-card-footer-text-light">
-                This does not go to us.<br />
-                It goes entirely to your infrastructure.
               </p>
             </div>
 
-            {/* ACT 02 -- The Performance Phase */}
-            <div className="offer-scroll-reveal offer-card-act offer-card-act-02">
-              <span className="offer-card-num offer-card-num-light">02</span>
-              <div className="mb-6 flex items-center justify-between">
-                <p className="offer-card-eyebrow offer-card-eyebrow-muted m-0">
-                  The Performance Phase
+            <div style={{ width: "100%", height: "1px", background: "#E0E0E0" }} />
+
+            {/* Step 02 */}
+            <div className="flex items-start gap-4">
+              <span style={{ fontFamily: "var(--font-sans)", fontWeight: 700, color: "#111111", fontSize: "13px", flexShrink: 0, marginTop: "2px", minWidth: "24px" }}>02</span>
+              <p className="font-sans" style={{ fontSize: "15.5px", lineHeight: "1.75", color: "#444444" }}>
+                <strong style={{ color: "#111111" }}>We build and manage your campaigns for $0 in agency fees.</strong>{" "}
+                Our team handles all copywriting, technical deliverability, and daily optimization. We absorb our labor costs completely until our outbound system generates $5,000 in cleared revenue for your business.
+              </p>
+            </div>
+
+            <div style={{ width: "100%", height: "1px", background: "#E0E0E0" }} />
+
+            {/* Step 03 */}
+            <div className="flex items-start gap-4">
+              <span style={{ fontFamily: "var(--font-sans)", fontWeight: 700, color: "#111111", fontSize: "13px", flexShrink: 0, marginTop: "2px", minWidth: "24px" }}>03</span>
+              <div className="font-sans" style={{ fontSize: "15.5px", lineHeight: "1.75", color: "#444444" }}>
+                <p style={{ marginBottom: "12px" }}>
+                  <strong style={{ color: "#111111" }}>Once your bank account reflects $5,000 in new revenue, you choose how to proceed.</strong>
                 </p>
-                <span
-                  className="font-sans font-bold uppercase text-[9px] tracking-widest text-white bg-[#C4431B] px-3 py-1 rounded-sm flex items-center justify-center"
-                >
-                  We work free
-                </span>
-              </div>
-              <p className="offer-card-price offer-card-price-large text-white">
-                $0
-              </p>
-              <p className="offer-card-subprice offer-card-subprice-light">
-                our fee, until you hit $5,000 in new client revenue
-              </p>
-              <div className="offer-card-divider offer-card-divider-light" />
-              <ul className="offer-card-list offer-card-list-light">
-                {[
-                  "We write the outreach scripts and sequences",
-                  "We manage every campaign end to end",
-                  "We optimize, monitor inbox health, and iterate copy",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span style={{ color: "#C4431B", flexShrink: 0, marginTop: "2px", fontSize: "12px" }}>&#10003;</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="offer-card-footer-text offer-card-footer-text-light">
-                We do not invoice you until<br />
-                your bank account moves first.
-              </p>
-            </div>
-
-            {/* ACT 03 -- The Fork */}
-            <div className="offer-scroll-reveal offer-card-act offer-card-act-03">
-              <span className="offer-card-num offer-card-num-dark">03</span>
-              <p className="offer-card-eyebrow offer-card-eyebrow-accent">
-                The Fork in the Road
-              </p>
-              <p className="offer-card-price offer-card-price-medium text-[#111111]">
-                $5,000
-              </p>
-              <p className="offer-card-subprice offer-card-subprice-dark">
-                in new client revenue, then you choose
-              </p>
-              <div className="offer-card-divider offer-card-divider-dark" />
-              <div className="offer-mini-paths">
-                <div className="offer-mini-path">
-                  <span className="offer-mini-path-dot bg-[#1B4F8A]" />
-                  <div>
-                    <h4 className="offer-mini-path-title">Scale</h4>
-                    <p className="offer-mini-path-desc">$699/mo retainer. Keep scaling the pipeline.</p>
-                  </div>
-                </div>
-                <div className="offer-mini-path">
-                  <span className="offer-mini-path-dot bg-[#C4431B]" />
-                  <div>
-                    <h4 className="offer-mini-path-title">Walk</h4>
-                    <p className="offer-mini-path-desc">Take everything we built and run your own campaigns. Owe us nothing.</p>
-                  </div>
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-8">
+                  <span className="flex items-center gap-2">
+                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#111111", flexShrink: 0, display: "inline-block" }} />
+                    <span><strong style={{ color: "#111111" }}>Scale</strong> -- $699/mo, we keep managing and optimizing your pipeline</span>
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#111111", flexShrink: 0, display: "inline-block" }} />
+                    <span><strong style={{ color: "#111111" }}>Walk</strong> -- keep all infrastructure and 100% of the profits</span>
+                  </span>
                 </div>
               </div>
-              <p className="offer-card-footer-text offer-card-footer-text-dark">
-                Both options are wins.<br />
-                There is no bad door.
-              </p>
             </div>
 
           </div>
+
+          {/* Guarantee Box */}
+          <div style={{ marginTop: "clamp(48px, 6vw, 72px)", padding: "clamp(32px, 4vw, 48px)", border: "1px solid #1A1A1A", background: "#0A0A0A" }}>
+            <p
+              className="font-sans italic text-white"
+              style={{ fontSize: "clamp(18px, 2.2vw, 26px)", lineHeight: 1.3, textAlign: "center" }}
+            >
+              Our business only makes sense if we perform for yours.
+            </p>
+            <p className="font-sans mx-auto mt-4 text-center" style={{ fontSize: "14px", lineHeight: 1.7, color: "rgba(255,255,255,0.45)", maxWidth: "480px" }}>
+              If we do not generate the $5,000 in new revenue, you keep the entire domain infrastructure and database. We write off our labor as a cost of doing business. You owe us nothing.
+            </p>
+            <div className="flex flex-col items-center mt-8">
+              <Link
+                href="/contact"
+                className="font-sans font-semibold"
+                style={{
+                  fontSize: "12px",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "#000000",
+                  background: "#FFFFFF",
+                  padding: "18px 48px",
+                }}
+              >
+                Book a consultation
+              </Link>
+              <p className="font-sans mt-4" style={{ fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
+                15 minutes. No commitment. No pitch deck.
+              </p>
+            </div>
+          </div>
+
         </div>
       </section>
 
+
       {/* ── THE FORK (VISUAL EXPANSION) ── */}
-      <section style={{ background: "#050D1C", padding: "clamp(80px, 10vw, 140px) 0" }}>
+      <section style={{ background: "#050505", padding: "clamp(80px, 10vw, 140px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1080px" }}>
 
           {/* Headline */}
           <p
             className="font-sans font-semibold uppercase mb-5 offer-scroll-reveal"
-            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B" }}
+            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#0A0A0A" }}
           >
             The Fork
           </p>
@@ -715,7 +632,7 @@ export default function Home() {
             style={{
               fontSize: "clamp(32px, 4.5vw, 56px)",
               lineHeight: "1.15",
-              color: "#FAF8F6",
+              color: "#F4F4F4",
               letterSpacing: "-0.02em",
               maxWidth: "600px",
               marginBottom: "16px",
@@ -741,7 +658,7 @@ export default function Home() {
             {/* Split indicator */}
             <div className="flex justify-center mb-8">
               <div style={{ width: "48px", height: "2px", background: "rgba(250,248,246,0.08)", position: "relative" }}>
-                <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", width: "10px", height: "10px", borderRadius: "50%", background: "#C4431B" }} />
+                <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", width: "10px", height: "10px", borderRadius: "50%", background: "#0A0A0A" }} />
               </div>
             </div>
 
@@ -758,8 +675,8 @@ export default function Home() {
                 }}
               >
                 <div className="flex items-center gap-3 mb-8">
-                  <div style={{ width: "8px", height: "8px", background: "#1B4F8A", borderRadius: "50%" }} />
-                  <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#1B4F8A" }}>
+                  <div style={{ width: "8px", height: "8px", background: "#0A0A0A", borderRadius: "50%" }} />
+                  <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#0A0A0A" }}>
                     Scale
                   </span>
                 </div>
@@ -778,7 +695,7 @@ export default function Home() {
                     { bold: "Dedicated team.", rest: " Same people, same workflow, every week." },
                   ].map((item) => (
                     <li key={item.bold} className="flex items-start gap-3">
-                      <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
+                      <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="3">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                       <span style={{ color: "rgba(255,255,255,0.65)" }}>
@@ -823,7 +740,7 @@ export default function Home() {
                     { bold: "Keep the lead list.", rest: " Your market, verified and mapped." },
                   ].map((item) => (
                     <li key={item.bold} className="flex items-start gap-3">
-                      <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#C4431B" strokeWidth="3">
+                      <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="3">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                       <span style={{ color: "rgba(255,255,255,0.65)" }}>
@@ -847,7 +764,7 @@ export default function Home() {
                 style={{
                   fontSize: "clamp(28px, 4vw, 52px)",
                   lineHeight: 1.15,
-                  color: "#C4431B",
+                  color: "#0A0A0A",
                   letterSpacing: "-0.02em",
                 }}
               >
@@ -878,7 +795,7 @@ export default function Home() {
 
           <p
             className="font-sans font-semibold uppercase mb-10 offer-scroll-reveal"
-            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B" }}
+            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#0A0A0A" }}
           >
             The Guarantee
           </p>
@@ -888,7 +805,7 @@ export default function Home() {
             style={{
               fontSize: "clamp(32px, 5vw, 64px)",
               lineHeight: 1.1,
-              color: "#0D2B4A",
+              color: "#111111",
               letterSpacing: "-0.02em",
             }}
           >
@@ -935,7 +852,7 @@ export default function Home() {
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   color: "#FFFFFF",
-                  background: "#1B4F8A",
+                  background: "#0A0A0A",
                   padding: "18px 48px",
                   borderRadius: "0px",
                 }}
@@ -953,12 +870,12 @@ export default function Home() {
 
 
       {/* ── TESTIMONIALS ── */}
-      <section id="results" style={{ background: "#FFFFFF", padding: "clamp(48px, 9vw, 112px) 0" }}>
+      <section id="results" style={{ background: "#F4F4F4", padding: "clamp(48px, 9vw, 112px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           <p
             className="font-sans font-semibold uppercase mb-20"
-            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B" }}
+            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#0A0A0A" }}
           >
             What clients say
           </p>
@@ -972,7 +889,7 @@ export default function Home() {
             >
               <p
                 className="font-sans font-semibold uppercase mb-5"
-                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#C4431B" }}
+                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#0A0A0A" }}
               >
                 Deliverables
               </p>
@@ -985,7 +902,7 @@ export default function Home() {
               <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
                 emails sent per month, exactly as quoted
               </p>
-              <div style={{ width: "32px", height: "2px", background: "#C4431B", marginBottom: "28px" }} />
+              <div style={{ width: "32px", height: "2px", background: "#0A0A0A", marginBottom: "28px" }} />
               <p
                 className="font-serif italic mb-auto"
                 style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
@@ -1011,7 +928,7 @@ export default function Home() {
             >
               <p
                 className="font-sans font-semibold uppercase mb-5"
-                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#C4431B" }}
+                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#0A0A0A" }}
               >
                 Closed deal
               </p>
@@ -1024,7 +941,7 @@ export default function Home() {
               <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
                 first job closed, month two
               </p>
-              <div style={{ width: "32px", height: "2px", background: "#C4431B", marginBottom: "28px" }} />
+              <div style={{ width: "32px", height: "2px", background: "#0A0A0A", marginBottom: "28px" }} />
               <p
                 className="font-serif italic mb-auto"
                 style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
@@ -1045,7 +962,7 @@ export default function Home() {
             >
               <p
                 className="font-sans font-semibold uppercase mb-5"
-                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#C4431B" }}
+                style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#0A0A0A" }}
               >
                 Communication
               </p>
@@ -1058,7 +975,7 @@ export default function Home() {
               <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
                 20 email accounts and domains live. Signed up Monday.
               </p>
-              <div style={{ width: "32px", height: "2px", background: "#C4431B", marginBottom: "28px" }} />
+              <div style={{ width: "32px", height: "2px", background: "#0A0A0A", marginBottom: "28px" }} />
               <p
                 className="font-serif italic mb-auto"
                 style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
@@ -1079,12 +996,12 @@ export default function Home() {
 
 
       {/* ── TEAM ── */}
-      <section id="team" style={{ background: "#03080F", padding: "clamp(72px, 8vw, 96px) 0 clamp(56px, 6vw, 80px)" }}>
+      <section id="team" style={{ background: "#050505", padding: "clamp(72px, 8vw, 96px) 0 clamp(56px, 6vw, 80px)" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           <p
             className="font-sans font-semibold uppercase"
-            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#C4431B", marginBottom: "clamp(32px, 4vw, 48px)" }}
+            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "rgba(255,255,255,0.4)", marginBottom: "clamp(32px, 4vw, 48px)" }}
           >
             We are ScaleSteady
           </p>
@@ -1211,7 +1128,7 @@ export default function Home() {
             letterSpacing: "0.08em",
             textTransform: "uppercase",
             color: "#FFFFFF",
-            background: "#1B4F8A",
+            background: "#0A0A0A",
             padding: "13px 20px",
             borderRadius: "0px",
             flex: "1",

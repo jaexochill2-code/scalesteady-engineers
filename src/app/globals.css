@@ -1,61 +1,41 @@
 @import "tailwindcss";
 
 @theme {
-  /* -- TYPOGRAPHY TOKENS -- */
-  --font-serif:   var(--font-playfair-display), serif;
-  --font-sans:    var(--font-inter), sans-serif;
-  --font-mono:    var(--font-jetbrains-mono), monospace;
-  --font-brand:   var(--font-plus-jakarta-sans), sans-serif;
-  --font-display: var(--font-display, var(--font-plus-jakarta-sans)), sans-serif;
+  /* Single typeface -- DM Sans throughout */
+  --font-serif:   var(--font-sans);
+  --font-sans:    var(--font-sans), sans-serif;
+  --font-mono:    var(--font-mono), monospace;
+  --font-brand:   var(--font-sans);
+  --font-display: var(--font-sans);
 }
 
 /*
- * SCALESTEADY COLOR SYSTEM — v3 SAPPHIRE
- * Formula: 60% white (space) / 30% black scale (content) / 10% sapphire (brand)
- * Orange (#C4431B): logo graphic + wordmark accent only — never in content
- *
- * SAPPHIRE PALETTE (Publicis/Ipsos validated premium blue — HSL 218-222°)
- *   01 Void      #050D1C  — deepest bg (manifesto, final CTA)
- *   02 Midnight  #0A1E36  — secondary dark bg
- *   03 Deep Navy #0D2B4A  — section backgrounds (metrics)
- *   04 Prussian  #1A3F6E  — dark context accent
- *   05 Sapphire  #1B4F8A  — PRIMARY ACTION (CTAs, links, active states)
- *   06 Royal     #2660A8  — hover states
- *   07 Cobalt    #4A87CC  — secondary accent
- *   08 Powder    #7EC4E0  — light accent on dark
- *   09 Glacier   #BFD9F0  — subtle tinted backgrounds
- *   10 Frost     #E8F2FA  — ultra-light surface tints
- *
- * Contrast ratios (WCAG):
- *   --ink-primary on white:  16.1:1  AAA
- *   --blue (Sapphire) on white: 7.78:1  AAA
- *   white on --blue:         7.78:1  AAA
- *   white on --blue-deep:   14.4:1  AAA
- *   white on --blue-void:   18.4:1  AAA
+ * SCALESTEADY COLOR SYSTEM — GRAYSCALE MONOCHROME
+ * Deep blacks, contrasting grays, off-white — no hue anywhere.
+ * High-status minimalist. Every element earns its place.
  */
 :root {
-  /* Spaces */
   --white:          #FFFFFF;
-  --canvas:         #FAF8F6;  /* off-white page bg */
+  --canvas:         #F4F4F4;  /* page bg -- cool neutral */
 
-  /* Black scale — content hierarchy */
-  --ink-primary:    #111111;
-  --ink-body:       #3D3D3D;
-  --ink-secondary:  #6B6B6B;
-  --ink-muted:      #9E9E9E;
-  --ink-border:     #E0E0E0;
+  /* Ink scale -- content hierarchy */
+  --ink-primary:    #0A0A0A;
+  --ink-body:       #3A3A3A;
+  --ink-secondary:  #666666;
+  --ink-muted:      #999999;
+  --ink-border:     #DEDEDE;
 
-  /* Sapphire scale — brand action + section identity */
-  --blue-void:      #050D1C;  /* deepest — manifesto, final CTA */
-  --blue-midnight:  #0A1E36;  /* secondary dark */
-  --blue-deep:      #0D2B4A;  /* section backgrounds */
-  --blue-prussian:  #1A3F6E;  /* dark context accent */
-  --blue:           #1B4F8A;  /* PRIMARY ACTION — CTAs, links, active */
-  --blue-royal:     #2660A8;  /* hover states */
-  --blue-cobalt:    #4A87CC;  /* secondary accent */
-  --blue-powder:    #7EC4E0;  /* light accent on dark */
-  --blue-glacier:   #BFD9F0;  /* subtle tinted surfaces */
-  --blue-frost:     #E8F2FA;  /* ultra-light tints */
+  /* Dark section backgrounds -- pure black family, no blue */
+  --blue-void:      #050505;  /* deepest -- manifesto, final CTA */
+  --blue-midnight:  #0A0A0A;  /* secondary dark */
+  --blue-deep:      #111111;  /* section backgrounds */
+  --blue-prussian:  #1A1A1A;  /* dark context accent */
+  --blue:           #1A1A1A;  /* was primary action -- now dark */
+  --blue-royal:     #2A2A2A;  /* hover on dark */
+  --blue-cobalt:    #444444;  /* secondary */
+  --blue-powder:    #888888;  /* muted on dark */
+  --blue-glacier:   #CCCCCC;  /* subtle on dark */
+  --blue-frost:     #F0F0F0;  /* ultra-light surfaces */
 }
 
 html, body {
@@ -76,17 +56,17 @@ main:has(.hero-section) {
 }
 
 ::selection {
-  background-color: var(--blue);
+  background-color: var(--ink-primary);
   color: var(--white);
 }
 
-h1, h2, h3, h4, h5, h6 { font-family: var(--font-serif); margin: 0; }
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-sans); margin: 0; }
 a { color: inherit; text-decoration: none; }
 
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: var(--canvas); }
-::-webkit-scrollbar-thumb { background: var(--ink-border); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+::-webkit-scrollbar-thumb { background: #CCCCCC; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #999999; }
 
 /* Mobile hero: split-stack layout sizes itself from content */
 @media (max-width: 1023px) {
@@ -151,7 +131,7 @@ a { color: inherit; text-decoration: none; }
     position: absolute;
     width: 450px;
     height: 450px;
-    background: radial-gradient(circle, rgba(217, 119, 6, 0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
     z-index: -1;
     pointer-events: none;
     top: 50%;
@@ -486,8 +466,8 @@ a { color: inherit; text-decoration: none; }
         0 0 0 1px rgba(0,0,0,0.8),
         0 28px 56px rgba(0,0,0,0.85),
         0 56px 112px rgba(0,0,0,0.6),
-        0 0 56px rgba(217, 119, 6, 0.22),
-        0 0 112px rgba(217, 119, 6, 0.10);
+        0 0 56px rgba(255, 255, 255, 0.05),
+        0 0 112px rgba(255, 255, 255, 0.02);
 }
 
 .phone-shell::before {
@@ -527,8 +507,8 @@ a { color: inherit; text-decoration: none; }
     inset: 0;
     border-radius: 36px;
     background:
-        radial-gradient(ellipse at 50% 20%, rgba(217,119,6,0.07) 0%, transparent 55%),
-        radial-gradient(ellipse at 50% 85%, rgba(52,199,89,0.04) 0%, transparent 40%);
+        radial-gradient(ellipse at 50% 20%, rgba(255,255,255,0.04) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 85%, rgba(255,255,255,0.02) 0%, transparent 40%);
     pointer-events: none;
     z-index: 0;
 }
@@ -747,7 +727,7 @@ a { color: inherit; text-decoration: none; }
     transform: translateY(-50%);
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(217, 119, 6, 0.14) 0%, rgba(217, 119, 6, 0.04) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 50%, transparent 70%);
     pointer-events: none;
     mix-blend-mode: screen;
     z-index: 1;
@@ -921,27 +901,11 @@ a { color: inherit; text-decoration: none; }
     justify-content: center;
 }
 
-/* Pull the phone stage out of normal flow so it overlaps in 3D */
-.saas-monitor-phone-col .phone-stage {
-    position: absolute;
-    top: -10px;
-    right: -12px; /* Pull it closer so it doesn't bleed beyond the viewport edge */
-    transform: scale(0.82) rotateY(-6deg) rotateX(3deg) translate3d(4px, 0, 30px);
-    z-index: 10;
-    mask-image: linear-gradient(to bottom, black 85%, transparent 100%) !important;
-    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%) !important;
-}
 
-@media (max-width: 1200px) {
-    .saas-monitor-panel {
-        width: 400px;
-        height: 300px;
-    }
-    .saas-monitor-phone-col .phone-stage {
-        right: -8px;
-        transform: scale(0.75) rotateY(-6deg) rotateX(3deg) translate3d(4px, 0, 30px);
-    }
-}
+
+
+
+
 
 /* ── OFFER CARDS SYSTEM ───────────────────────── */
 .offer-cards-grid {

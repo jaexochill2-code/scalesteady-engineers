@@ -1,18 +1,17 @@
 # Session Recovery State - 2026-06-02
 
 ## 1. Phase Completed
-- **Premium Brand Alignment**: Restored v3 Sapphire color tokens and mapped all CTAs to use the primary action color (#1B4F8A) instead of Rust Red (#C4431B), keeping Rust Red strictly as an accent label.
-- **SaaS Mockup Visual**: Replaced developer-log terminal console visual with a premium OutboundDashboard SaaS component representing real-time pipeline deliverables and incoming client replies.
-- **Localhost Validation**: Successfully compiled local assets with zero TypeScript or Turbopack errors.
+- **Card 03 Choice Refactoring:** Replaced the text list items inside Card 03 (The Fork in the Road) with stacked, containerized binary path elements (`.offer-mini-path`) styled with terracotta hover transitions and radial dot color indicators.
+- **Normalizing Card Spacing & Alignment:** Added `margin-bottom: auto` to `.offer-mini-paths` to push the footer text to the bottom of the card, aligning Card 03's layout with Cards 01 and 02.
+- **Hero & Badge Refinements:** Re-enabled and smoothed the `.phone-stage` bottom mask gradient (`85%` to `100%`) and refined Card 02's "WE WORK FREE" badge tracking and vertical/horizontal centering.
+- **Vercel Staged Deployment:** Successfully ran `npm run build` locally with zero errors, verified layout via Playwright screenshots and Gemini 3.1 Flash Lite vision audit, and deployed live to `https://scalesteady.pro` using Vercel CLI.
 
-## 2. Files Modified
-- [globals.css](file:///C:/Users/Tax%20Filing/.gemini/antigravity/scratch/scalesteady-engineers/src/app/globals.css)
-- [Navigation.tsx](file:///C:/Users/Tax%20Filing/.gemini/antigravity/scratch/scalesteady-engineers/src/components/server/Navigation.tsx)
-- [page.tsx](file:///C:/Users/Tax%20Filing/.gemini/antigravity/scratch/scalesteady-engineers/src/app/page.tsx)
+## 2. Files Modified / Created
+- `src/app/globals.css` (Modified)
+- `src/app/page.tsx` (Modified)
 
 ## 3. Exact Next Action
-- Present the brand-aligned dark-mode mockup page to the user for visual check.
-- Execute Vercel production deployment upon user confirmation.
+- Verify the live URL `https://scalesteady.pro` on a mobile device and web browser to inspect the interactive paths and hover transitions.
 
 ## 4. Open Blockers
 - None.

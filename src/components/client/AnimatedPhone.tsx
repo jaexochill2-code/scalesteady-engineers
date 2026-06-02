@@ -56,7 +56,7 @@ export default function AnimatedPhone() {
                 </div>
                 <div className="notif-body">
                   <div className="notif-app">Outbound</div>
-                  <div className="notif-title">New Inquiry: Tarrant Mechanical</div>
+                  <div className="notif-title">New Inquiry: Local HVAC Co.</div>
                   <div className="notif-msg">"Interested in your outbound setup. Let's talk Tuesday."</div>
                 </div>
                 <div className="notif-time">now</div>
@@ -71,7 +71,7 @@ export default function AnimatedPhone() {
                 </div>
                 <div className="notif-body">
                   <div className="notif-app">Outbound</div>
-                  <div className="notif-title">Mike / Apex Leasing</div>
+                  <div className="notif-title">Chris / Roofing Co.</div>
                   <div className="notif-msg">"Sounds perfect, let's lock in 2:00 PM."</div>
                 </div>
                 <div className="notif-time">1m ago</div>
@@ -94,7 +94,7 @@ export default function AnimatedPhone() {
                 <span className="cal-conf-label">Discovery Call Booked</span>
               </div>
               <div className="cal-conf-event">
-                <div className="cal-conf-name">Mike / Apex Leasing</div>
+                <div className="cal-conf-name">Chris / Roofing Co.</div>
                 <div className="cal-conf-time">Tue • 2:00 PM • 30 min</div>
                 <div className="cal-conf-status">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#34C759" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>

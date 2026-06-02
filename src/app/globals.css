@@ -36,92 +36,26 @@
 :root {
   /* Spaces */
   --white:          #FFFFFF;
-  --canvas:         #050D1C;  /* Premium Sapphire Void page bg */
+  --canvas:         #FAF8F6;  /* off-white page bg */
 
-  /* Dark mode text hierarchy */
-  --ink-primary:    #F3F4F6;  /* Light text */
-  --ink-body:       #D1D5DB;  /* Body copy */
-  --ink-secondary:  #9CA3AF;  /* Secondary copy */
-  --ink-muted:      #7EC4E0;  /* Muted powder blue */
-  --ink-border:     #1A3F6E;  /* Prussian blue border */
+  /* Black scale — content hierarchy */
+  --ink-primary:    #111111;
+  --ink-body:       #3D3D3D;
+  --ink-secondary:  #6B6B6B;
+  --ink-muted:      #9E9E9E;
+  --ink-border:     #E0E0E0;
 
-  /* Theme color palette -- Premium Sapphire Palette */
-  --bg-primary:     #050D1C;  /* Void */
-  --bg-secondary:   #0A1E36;  /* Midnight */
-  --bg-accent:      #0D2B4A;  /* Deep Navy */
-  --accent-orange:  #C4431B;  /* Logo Rust Red (Wordmark/Accents only) */
-  --blue:           #1B4F8A;  /* PRIMARY ACTION: Sapphire Blue CTA */
-  --blue-royal:     #2660A8;  /* Hover state */
-  --blue-cobalt:    #4A87CC;
-}
-
-/* ── CUSTOM UI STYLES ── */
-.calculator-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--ink-border);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-.calculator-slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 6px;
-  border-radius: 3px;
-  background: var(--ink-border);
-  outline: none;
-}
-
-.calculator-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--blue);
-  cursor: pointer;
-  transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.calculator-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.25);
-}
-
-.guarantee-box {
-  border: 1px solid rgba(27, 79, 138, 0.3);
-  background: linear-gradient(135deg, #0A1E36 0%, #050D1C 100%);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(27, 79, 138, 0.08);
-  border-radius: 0px;
-}
-
-/* Tooltip container */
-.tooltip-container {
-  position: relative;
-  display: inline-block;
-  cursor: help;
-}
-
-/* Tooltip text */
-.tooltip-text {
-  visibility: hidden;
-  width: 240px;
-  background-color: #0A1E36;
-  color: #F3F4F6;
-  text-align: left;
-  border: 1px solid var(--ink-border);
-  padding: 12px;
-  position: absolute;
-  z-index: 100;
-  bottom: 125%; /* Position above */
-  left: 50%;
-  margin-left: -120px;
-  opacity: 0;
-  transition: opacity 0.2s;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-}
-
-.tooltip-container:hover .tooltip-text {
-  visibility: visible;
-  opacity: 1;
+  /* Sapphire scale — brand action + section identity */
+  --blue-void:      #050D1C;  /* deepest — manifesto, final CTA */
+  --blue-midnight:  #0A1E36;  /* secondary dark */
+  --blue-deep:      #0D2B4A;  /* section backgrounds */
+  --blue-prussian:  #1A3F6E;  /* dark context accent */
+  --blue:           #1B4F8A;  /* PRIMARY ACTION — CTAs, links, active */
+  --blue-royal:     #2660A8;  /* hover states */
+  --blue-cobalt:    #4A87CC;  /* secondary accent */
+  --blue-powder:    #7EC4E0;  /* light accent on dark */
+  --blue-glacier:   #BFD9F0;  /* subtle tinted surfaces */
+  --blue-frost:     #E8F2FA;  /* ultra-light tints */
 }
 
 html, body {
@@ -429,23 +363,31 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ==========================================================
-   ANIMATED PHONE UI
+   ANIMATED PHONE -- Hero visual element
+   Absolutely positioned on the right half of the hero.
+   Zero interference with existing hero layout.
    ========================================================== */
-.hero-visual-col {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 1200px;
+
+.phone-hero-wrap {
+    display: none;
+    position: absolute;
+    right: clamp(40px, 6vw, 120px);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    filter: drop-shadow(0 0 80px rgba(217, 119, 6, 0.10));
+}
+@media (min-width: 1024px) {
+    .phone-hero-wrap { display: block; }
 }
 
 .phone-stage {
-    transform: rotateY(-5deg) rotateX(2deg);
+    transform: rotateY(-6deg) rotateX(2deg);
     transform-style: preserve-3d;
     will-change: transform;
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 .phone-stage:hover {
     transform: rotateY(0deg) rotateX(0deg);
@@ -456,12 +398,15 @@ a { color: inherit; text-decoration: none; }
     width: 290px;
     height: 590px;
     border-radius: 44px;
-    background: linear-gradient(160deg, #2a2a2a 0%, #1a1a1a 40%, #111 100%);
+    background: linear-gradient(160deg, #2c2c2c 0%, #1c1c1c 40%, #111 100%);
     box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.12),
-        inset 0 0 0 9px #0a0a0a,
-        0 40px 80px rgba(0,0,0,0.7),
-        0 0 80px rgba(217, 119, 6, 0.12);
+        inset 0 0 0 1px rgba(255,255,255,0.14),
+        inset 0 0 0 9px #050505,
+        0 0 0 1px rgba(0,0,0,0.8),
+        0 30px 60px rgba(0,0,0,0.8),
+        0 60px 120px rgba(0,0,0,0.55),
+        0 0 60px rgba(217, 119, 6, 0.18),
+        0 0 120px rgba(217, 119, 6, 0.08);
 }
 
 .phone-shell::before {
@@ -469,12 +414,7 @@ a { color: inherit; text-decoration: none; }
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     border-radius: 44px;
-    background: linear-gradient(
-        125deg,
-        rgba(255,255,255,0.06) 0%,
-        transparent 40%,
-        rgba(255,255,255,0.02) 100%
-    );
+    background: linear-gradient(125deg, rgba(255,255,255,0.06) 0%, transparent 40%, rgba(255,255,255,0.02) 100%);
     pointer-events: none;
 }
 
@@ -495,8 +435,9 @@ a { color: inherit; text-decoration: none; }
     position: absolute;
     inset: 8px;
     border-radius: 36px;
-    background: #000;
+    background: #000000;
     overflow: hidden;
+    box-shadow: inset 0 0 0 0.5px rgba(255,255,255,0.04);
 }
 
 .phone-screen-inner::after {
@@ -504,7 +445,9 @@ a { color: inherit; text-decoration: none; }
     position: absolute;
     inset: 0;
     border-radius: 36px;
-    background: radial-gradient(ellipse at 50% 30%, rgba(217,119,6,0.04) 0%, transparent 60%);
+    background:
+        radial-gradient(ellipse at 50% 20%, rgba(217,119,6,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 85%, rgba(52,199,89,0.04) 0%, transparent 40%);
     pointer-events: none;
     z-index: 0;
 }
@@ -519,8 +462,8 @@ a { color: inherit; text-decoration: none; }
     padding-top: 70px;
     background: radial-gradient(ellipse at 50% 0%, #1a1010 0%, #000 70%);
     z-index: 1;
+    transition: opacity 0.8s ease;
 }
-
 .lockscreen-time {
     font-size: 64px;
     font-weight: 200;
@@ -529,7 +472,6 @@ a { color: inherit; text-decoration: none; }
     font-family: -apple-system, 'SF Pro Display', sans-serif;
     line-height: 1;
 }
-
 .lockscreen-date {
     font-size: 16px;
     color: rgba(255,255,255,0.5);
@@ -548,7 +490,6 @@ a { color: inherit; text-decoration: none; }
     flex-direction: column;
     gap: 8px;
 }
-
 .ios-notif {
     display: flex;
     align-items: flex-start;
@@ -563,14 +504,12 @@ a { color: inherit; text-decoration: none; }
     opacity: 0;
     transform: translateY(-10px) scale(0.97);
 }
-
 .ios-notif.is-visible {
     opacity: 1;
     transform: translateY(0) scale(1);
     transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .notif-app-icon {
     width: 36px;
     height: 36px;
@@ -580,12 +519,9 @@ a { color: inherit; text-decoration: none; }
     justify-content: center;
     flex-shrink: 0;
 }
-
 .notif-icon-mail { background: linear-gradient(135deg, #e2720c, #f59e0b); }
 .notif-icon-reply { background: linear-gradient(135deg, #22c55e, #16a34a); }
-
-.notif-body { flex: 1; min-width: 0; text-align: left; }
-
+.notif-body { flex: 1; min-width: 0; }
 .notif-app {
     font-size: 11px;
     font-weight: 600;
@@ -595,7 +531,6 @@ a { color: inherit; text-decoration: none; }
     margin-bottom: 2px;
     font-family: -apple-system, 'SF Pro Display', sans-serif;
 }
-
 .notif-title {
     font-size: 13px;
     font-weight: 600;
@@ -606,7 +541,6 @@ a { color: inherit; text-decoration: none; }
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 .notif-msg {
     font-size: 12px;
     color: rgba(255,255,255,0.5);
@@ -618,7 +552,6 @@ a { color: inherit; text-decoration: none; }
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-
 .notif-time {
     font-size: 11px;
     color: rgba(255,255,255,0.3);
@@ -636,107 +569,60 @@ a { color: inherit; text-decoration: none; }
     border-radius: 20px;
     padding: 16px;
     border: 1px solid rgba(52, 199, 89, 0.25);
-    box-shadow:
-        0 0 0 1px rgba(52, 199, 89, 0.1),
-        0 8px 32px rgba(0,0,0,0.5);
+    box-shadow: 0 0 0 1px rgba(52, 199, 89, 0.1), 0 8px 32px rgba(0,0,0,0.5);
     z-index: 10;
     opacity: 0;
     transform: translateY(20px) scale(0.96);
-    text-align: left;
 }
-
 .cal-confirmation.is-visible {
     opacity: 1;
     transform: translateY(0) scale(1);
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.cal-conf-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-
+.cal-conf-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
 .cal-conf-icon {
-    width: 30px;
-    height: 30px;
+    width: 30px; height: 30px;
     background: linear-gradient(135deg, #e2720c, #f59e0b);
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
 }
-
 .cal-conf-header span {
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 13px; font-weight: 600;
     color: rgba(255,255,255,0.5);
     font-family: -apple-system, 'SF Pro Display', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    text-transform: uppercase; letter-spacing: 0.5px;
 }
-
-.cal-conf-dot-row {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    margin-bottom: 10px;
-}
-
+.cal-conf-dot-row { display: flex; align-items: center; gap: 7px; margin-bottom: 10px; }
 .cal-conf-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
+    width: 8px; height: 8px; border-radius: 50%;
     background: #34C759;
     box-shadow: 0 0 8px rgba(52, 199, 89, 0.7);
     flex-shrink: 0;
 }
-
 .cal-conf-label {
-    font-size: 12px;
-    color: #34C759;
+    font-size: 12px; color: #34C759;
     font-family: -apple-system, 'SF Pro Display', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.2px;
+    font-weight: 600; letter-spacing: 0.2px;
 }
-
 .cal-conf-event {
     background: rgba(255,255,255,0.04);
-    border-radius: 10px;
-    padding: 10px 12px;
-    border-left: 3px solid var(--accent-orange);
+    border-radius: 10px; padding: 10px 12px;
+    border-left: 3px solid #C4431B;
 }
-
 .cal-conf-name {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 14px; font-weight: 600;
     color: rgba(255,255,255,0.95);
     font-family: -apple-system, 'SF Pro Display', sans-serif;
     margin-bottom: 3px;
 }
-
 .cal-conf-time {
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
+    font-size: 12px; color: rgba(255,255,255,0.5);
     font-family: -apple-system, 'SF Pro Display', sans-serif;
     margin-bottom: 6px;
 }
-
 .cal-conf-status {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #34C759;
+    display: flex; align-items: center; gap: 5px;
+    font-size: 12px; font-weight: 600; color: #34C759;
     font-family: -apple-system, 'SF Pro Display', sans-serif;
-}
-
-@media (max-width: 640px) {
-    .phone-stage {
-        transform: scale(0.85);
-        transform-origin: top center;
-    }
 }

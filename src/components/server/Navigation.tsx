@@ -22,10 +22,8 @@ export default function Navigation() {
     <header
       className="fixed top-0 left-0 z-50 w-full"
       style={{
-        background: isOfferPage ? "transparent" : "rgba(13, 15, 18, 0.8)",
-        backdropFilter: isOfferPage ? "none" : "blur(12px)",
-        WebkitBackdropFilter: isOfferPage ? "none" : "blur(12px)",
-        borderBottom: isOfferPage ? "none" : "1px solid var(--ink-border)",
+        background: isOfferPage ? "transparent" : "#FFFFFF",
+        borderBottom: isOfferPage ? "none" : "1px solid #E8E8E8",
       }}
     >
       <div
@@ -39,16 +37,16 @@ export default function Navigation() {
             <Image
               src={logoAbstract}
               alt="ScaleSteady"
-              className="object-contain"
+              className={`object-contain ${isOfferPage ? '' : 'mix-blend-multiply'}`}
               fill
               priority
-              style={isOfferPage ? { filter: 'brightness(10)' } : { filter: 'brightness(0) invert(1)' }}
+              style={isOfferPage ? { filter: 'brightness(10)' } : undefined}
             />
           </div>
           <div className="flex flex-col" style={{ gap: "4px" }}>
             <span
               className="leading-none block"
-              style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 800, letterSpacing: "0.05em", textTransform: "uppercase", color: "#FAF8F6" }}
+              style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 800, letterSpacing: "0.05em", textTransform: "uppercase", color: isOfferPage ? "#FAF8F6" : "#111111" }}
             >
               ScaleSteady
             </span>
@@ -68,8 +66,8 @@ export default function Navigation() {
               <a
                 key={href}
                 href={href}
-                className="font-sans transition-colors duration-150 hover:text-[#C4431B]"
-                style={{ fontSize: "14px", fontWeight: 400, color: "rgba(255, 255, 255, 0.8)", letterSpacing: "-0.01em" }}
+                className="font-sans transition-colors duration-150"
+                style={{ fontSize: "14px", fontWeight: 400, color: "#111111", letterSpacing: "-0.01em" }}
               >
                 {label}
               </a>
@@ -82,7 +80,7 @@ export default function Navigation() {
           <div className="hidden md:flex items-center flex-shrink-0">
             <Link
               href="/contact"
-              className="font-sans font-semibold transition-colors duration-200 hover:bg-[#2660A8]"
+              className="font-sans font-semibold transition-colors duration-200"
               style={{
                 fontSize: "12px",
                 letterSpacing: "0.08em",
@@ -104,7 +102,7 @@ export default function Navigation() {
             onClick={() => setIsOpen(!isOpen)}
             type="button"
             className="flex md:hidden items-center justify-center p-2 focus:outline-none"
-            style={{ color: "#F3F4F6" }}
+            style={{ color: "#111111" }}
             aria-label="Toggle menu"
           >
             <div className="relative w-5 h-[14px] flex flex-col justify-between">
@@ -120,7 +118,7 @@ export default function Navigation() {
       {/* Mobile menu */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ${isOpen ? "max-h-screen" : "max-h-0"}`}
-        style={{ background: "#0A1E36", borderTop: "1px solid var(--ink-border)" }}
+        style={{ background: "#FFFFFF", borderTop: "1px solid #E8E8E8" }}
       >
         <div className="px-6 pt-4 pb-8 flex flex-col gap-1">
           {NAV_LINKS.map(({ href, label }) => (
@@ -128,8 +126,8 @@ export default function Navigation() {
               key={href}
               href={href}
               onClick={() => setIsOpen(false)}
-              className="font-sans py-3 transition-colors hover:text-[#C4431B]"
-              style={{ fontSize: "15px", fontWeight: 500, color: "#F3F4F6", borderBottom: "1px solid #1F2937" }}
+              className="font-sans py-3 transition-colors"
+              style={{ fontSize: "15px", fontWeight: 500, color: "#111111", borderBottom: "1px solid #F0F0F0" }}
             >
               {label}
             </a>
@@ -137,7 +135,7 @@ export default function Navigation() {
           <div className="pt-5">
             <Link
               href="/contact"
-              className="flex items-center justify-center font-brand font-semibold hover:bg-[#2660A8]"
+              className="flex items-center justify-center font-brand font-semibold"
               style={{ fontSize: "12px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#FFFFFF", background: "#1B4F8A", padding: "14px 0", borderRadius: "0px" }}
             >
               Book a call

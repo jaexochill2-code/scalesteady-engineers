@@ -98,9 +98,9 @@ export default function OfferPage() {
                 animationDelay: "0.2s",
               }}
             >
-              <span className="block">We don&apos;t want your money</span>
+              <span className="block">I don&apos;t want your money</span>
               <span className="block italic" style={{ color: "#C4431B" }}>
-                unless we&apos;ve already made you money.
+                unless I&apos;ve already made you money.
               </span>
             </h1>
 

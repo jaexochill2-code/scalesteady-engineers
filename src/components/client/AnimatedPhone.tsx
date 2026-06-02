@@ -31,9 +31,7 @@ export default function AnimatedPhone() {
   }, []);
 
   return (
-    <div className="hero-visual-col w-full flex justify-center items-center" aria-hidden="true" style={{ perspective: "1200px" }}>
-      <div className="absolute -inset-10 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.12)_0%,transparent_50%)] blur-2xl z-0" />
-      <div className="phone-stage relative z-10">
+    <div className="phone-stage" style={{ perspective: "1200px" }}>
         {/* iPhone Shell */}
         <div className="phone-shell">
           {/* Dynamic Island */}
@@ -107,7 +105,6 @@ export default function AnimatedPhone() {
 
           </div>
         </div>
-      </div>
     </div>
   );
 }

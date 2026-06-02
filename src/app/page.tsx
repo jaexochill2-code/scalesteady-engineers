@@ -25,6 +25,8 @@ const SERVICES = [
 const CLIENTS = ["Tarrant Mechanical", "Aesthetics Clinic Group", "Apex Leasing", "Floor Contracting"];
 
 export default function Home() {
+  const [comparisonTab, setComparisonTab] = useState<"referral" | "system">("referral");
+
   return (
     <div className="w-full min-h-screen overflow-x-hidden pb-16 lg:pb-0" style={{ background: "#F4F4F4" }}>
 
@@ -80,7 +82,7 @@ export default function Home() {
 
               {/* Headline -- commanding, fits 2 lines in the 1.2fr col */}
               <h1
-                className="font-serif font-normal"
+                className="font-sans font-normal"
                 style={{
                   fontSize: "clamp(44px, 6vw, 88px)",
                   lineHeight: "1.04",
@@ -99,19 +101,36 @@ export default function Home() {
                 </span>
               </h1>
 
-              {/* Subheadline */}
-              <p
-                className="font-sans hero-body-copy"
-                style={{
-                  fontSize: "clamp(13px, 1.2vw, 17px)",
-                  lineHeight: "1.65",
-                  color: "rgba(250,248,246,0.50)",
-                  maxWidth: "380px",
-                  marginTop: "clamp(14px, 2vw, 22px)",
-                }}
-              >
-                We build the same system for your business.
-              </p>
+              {/* Service declaration -- $5k offer above the fold, high contrast */}
+              <div className="hero-body-copy" style={{ marginTop: "clamp(14px, 2vw, 24px)", maxWidth: "440px" }}>
+                <p
+                  className="font-sans"
+                  style={{
+                    fontSize: "10px",
+                    fontWeight: 600,
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    color: "rgba(255,255,255,0.40)",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Cold email infrastructure for local service businesses
+                </p>
+                <p
+                  className="font-sans"
+                  style={{
+                    fontSize: "clamp(14px, 1.4vw, 18px)",
+                    lineHeight: "1.7",
+                    color: "rgba(255,255,255,0.78)",
+                    fontWeight: 400,
+                  }}
+                >
+                  We build your entire outbound system at cost.{" "}
+                  <strong style={{ color: "#FFFFFF", fontWeight: 600 }}>$500 flat.</strong>{" "}
+                  Zero agency fees until you collect{" "}
+                  <strong style={{ color: "#FFFFFF", fontWeight: 600 }}>$5,000 in new revenue.</strong>
+                </p>
+              </div>
 
               {/* CTA zone */}
               <div
@@ -120,7 +139,7 @@ export default function Home() {
               >
                 <Link
                   href="/contact"
-                  className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold transition-all duration-300"
+                  className="hero-cta-btn hidden lg:inline-flex items-center justify-center font-sans font-semibold transition-all duration-300"
                   style={{
                     fontSize: "11px",
                     letterSpacing: "0.1em",
@@ -132,11 +151,11 @@ export default function Home() {
                     flexShrink: 0,
                   }}
                 >
-                  Book a discovery call
+                   Book a 15-min call
                 </Link>
                 <p
                   className="font-sans hero-risk-text"
-                  style={{ fontSize: "11px", color: "rgba(250,248,246,0.40)", letterSpacing: "0.01em" }}
+                  style={{ fontSize: "11px", color: "rgba(250,248,246,0.45)", letterSpacing: "0.01em" }}
                 >
                   15 minutes. No commitment.
                 </p>
@@ -156,7 +175,7 @@ export default function Home() {
 
 
       {/* ── THE OUTBOUND TRUTHS ── */}
-      <section id="approach" style={{ background: "#EBEBEB", padding: "clamp(64px, 12vw, 160px) 0" }}>
+      <section id="approach" style={{ background: "#EBEBEB", padding: "clamp(120px, 16vw, 200px) 0 clamp(64px, 12vw, 160px)" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "800px" }}>
           
           {/* Left-anchored accent border + tactile hover focus group */}
@@ -226,20 +245,20 @@ export default function Home() {
           {/* ── Identity statement ── */}
           <div className="mb-16">
             <p
-              className="font-serif font-normal"
+              className="font-sans font-normal"
               style={{
                 fontSize: "clamp(24px, 3vw, 40px)",
                 lineHeight: "1.35",
-                color: "rgba(255,255,255,0.9)",
+                color: "rgba(255,255,255,0.92)",
                 letterSpacing: "-0.02em",
                 maxWidth: "820px",
               }}
             >
               There&apos;s a gap between the outreach you know you should be doing and what you&apos;re actually doing. Every month that gap costs you clients{" "}
-              <span style={{ color: "#0A0A0A" }}>you&apos;ll never know you lost.</span>
+              <span style={{ color: "rgba(255,255,255,0.55)", fontStyle: "italic" }}>you&apos;ll never know you lost.</span>
             </p>
             <p
-              className="font-serif font-normal"
+              className="font-sans font-normal"
               style={{
                 fontSize: "clamp(24px, 3vw, 40px)",
                 lineHeight: "1.35",
@@ -254,11 +273,60 @@ export default function Home() {
           </div>
 
 
+          {/* Mobile Tab Selector */}
+          <div className="flex lg:hidden justify-center mb-8">
+            <div 
+              style={{ 
+                display: "inline-flex", 
+                background: "rgba(255,255,255,0.04)", 
+                border: "1px solid rgba(255,255,255,0.12)", 
+                padding: "3px", 
+                borderRadius: "0px" 
+              }}
+            >
+              <button
+                type="button"
+                onClick={() => setComparisonTab("referral")}
+                className="font-sans font-bold uppercase transition-all duration-200"
+                style={{
+                  fontSize: "10px",
+                  letterSpacing: "0.14em",
+                  padding: "10px 18px",
+                  background: comparisonTab === "referral" ? "#FFFFFF" : "transparent",
+                  color: comparisonTab === "referral" ? "#000000" : "rgba(255,255,255,0.45)",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                Referral-dependent
+              </button>
+              <button
+                type="button"
+                onClick={() => setComparisonTab("system")}
+                className="font-sans font-bold uppercase transition-all duration-200"
+                style={{
+                  fontSize: "10px",
+                  letterSpacing: "0.14em",
+                  padding: "10px 18px",
+                  background: comparisonTab === "system" ? "#FFFFFF" : "transparent",
+                  color: comparisonTab === "system" ? "#000000" : "rgba(255,255,255,0.45)",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                System-powered
+              </button>
+            </div>
+          </div>
+
           {/* Two columns: current self -> future self */}
           <div className="grid grid-cols-1 lg:grid-cols-2">
 
             {/* Left: Referral-dependent */}
-            <div className="p-8 xl:p-12 flex flex-col" style={{ background: "rgba(0,0,0,0.25)", border: "1px solid rgba(255,255,255,0.08)" }}>
+            <div 
+              className={`p-8 xl:p-12 flex flex-col ${comparisonTab === "referral" ? "flex" : "hidden lg:flex"}`}
+              style={{ background: "rgba(0,0,0,0.25)", border: "1px solid rgba(255,255,255,0.08)" }}
+            >
               <div className="mb-8 flex items-center gap-3">
                 <div style={{ width: "8px", height: "8px", background: "rgba(255,255,255,0.2)", borderRadius: "50%" }} />
                 <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.16em", color: "rgba(255,255,255,0.3)" }}>Referral-dependent</span>
@@ -266,29 +334,29 @@ export default function Home() {
 
               <ul className="flex flex-col gap-7 font-sans" style={{ fontSize: "14.5px" }}>
                 <li className="flex items-start gap-3">
-                  <span style={{ color: "rgba(255,255,255,0.25)", marginTop: "3px", flexShrink: 0 }}>—</span>
-                  <span style={{ color: "rgba(255,255,255,0.5)" }}>
-                    Revenue swings every month. <strong style={{ color: "rgba(255,255,255,0.7)" }}>You can&apos;t forecast, you can only react.</strong> Feast, then famine, repeat.
+                  <span style={{ color: "rgba(255,255,255,0.40)", marginTop: "3px", flexShrink: 0 }}>—</span>
+                  <span style={{ color: "rgba(255,255,255,0.68)" }}>
+                    Revenue swings every month. <strong style={{ color: "rgba(255,255,255,0.88)" }}>You can&apos;t forecast, you can only react.</strong> Feast, then famine, repeat.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span style={{ color: "rgba(255,255,255,0.25)", marginTop: "3px", flexShrink: 0 }}>—</span>
-                  <span style={{ color: "rgba(255,255,255,0.5)" }}>
-                    Growth depends on an algorithm, an ad platform, or an agency contract. <strong style={{ color: "rgba(255,255,255,0.7)" }}>Any one of those changes, and your pipeline dries up overnight.</strong>
+                  <span style={{ color: "rgba(255,255,255,0.40)", marginTop: "3px", flexShrink: 0 }}>—</span>
+                  <span style={{ color: "rgba(255,255,255,0.68)" }}>
+                    Growth depends on an algorithm, an ad platform, or an agency contract. <strong style={{ color: "rgba(255,255,255,0.88)" }}>Any one of those changes, and your pipeline dries up overnight.</strong>
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span style={{ color: "rgba(255,255,255,0.25)", marginTop: "3px", flexShrink: 0 }}>—</span>
-                  <span style={{ color: "rgba(255,255,255,0.5)" }}>
-                    You are the engine. Slow down, and <strong style={{ color: "rgba(255,255,255,0.7)" }}>everything slows down.</strong> Scaling means working more, not smarter.
+                  <span style={{ color: "rgba(255,255,255,0.40)", marginTop: "3px", flexShrink: 0 }}>—</span>
+                  <span style={{ color: "rgba(255,255,255,0.68)" }}>
+                    You are the engine. Slow down, and <strong style={{ color: "rgba(255,255,255,0.88)" }}>everything slows down.</strong> Scaling means working more, not smarter.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span style={{ color: "rgba(255,255,255,0.25)", marginTop: "3px", flexShrink: 0 }}>—</span>
-                  <span style={{ color: "rgba(255,255,255,0.5)" }}>
-                    Paying <strong style={{ color: "rgba(255,255,255,0.7)" }}>$45–$70 per ad click
-                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[rgba(255,255,255,0.2)] hover:text-white">[?]
-                      <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#1B4F8A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
+                  <span style={{ color: "rgba(255,255,255,0.40)", marginTop: "3px", flexShrink: 0 }}>—</span>
+                  <span style={{ color: "rgba(255,255,255,0.68)" }}>
+                    Paying <strong style={{ color: "rgba(255,255,255,0.88)" }}>$45–$70 per ad click
+                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[rgba(255,255,255,0.35)] hover:text-white">[?]
+                      <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0A0A0A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg border border-[rgba(255,255,255,0.1)]">
                         <strong>Source:</strong> ClickPatrol™ 2026 B2B Index: avg B2B search CPC $30-$70. LanderLab 2026: 70-90% bounce on B2B landing pages.
                       </span>
                     </span></strong> to rent attention. 8 in 10 leave. You own nothing.
@@ -298,7 +366,10 @@ export default function Home() {
             </div>
 
             {/* Right: System-powered — WHITE card, max contrast */}
-            <div className="p-8 xl:p-12 flex flex-col" style={{ background: "#FFFFFF", borderTop: "4px solid #1B4F8A" }}>
+            <div 
+              className={`p-8 xl:p-12 flex flex-col ${comparisonTab === "system" ? "flex" : "hidden lg:flex"}`}
+              style={{ background: "#FFFFFF", borderTop: "4px solid #0A0A0A" }}
+            >
               <div className="mb-8 flex items-center gap-3">
                 <div style={{ width: "8px", height: "8px", background: "#0A0A0A", borderRadius: "50%" }} />
                 <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#0A0A0A" }}>System-powered</span>
@@ -327,8 +398,8 @@ export default function Home() {
                   </svg>
                   <span style={{ color: "#444444" }}>
                     <strong style={{ color: "#111111" }}>$0.04 per qualified contact
-                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#CCCCCC] hover:text-[#1B4F8A]">[?]
-                      <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0D2B4A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg">
+                    <span className="relative inline-block ml-1 group/tip cursor-help font-mono text-[10px] text-[#AAAAAA] hover:text-[#666666]">[?]
+                      <span className="absolute bottom-full left-0 mb-2 w-64 bg-[#0A0A0A] text-white text-[11px] p-3 leading-normal font-sans font-normal normal-case rounded-none opacity-0 pointer-events-none group-hover/tip:opacity-100 transition-opacity duration-200 z-30 shadow-lg border border-[rgba(255,255,255,0.1)]">
                         <strong>Source:</strong> Smartlead & Winnr 2026: amortised mailbox cost $120/mo for 10k sends. Validated B2B contact scrape at $0.025/record.
                       </span>
                     </span></strong> — straight to the decision-maker. No auction. No middleman.
@@ -364,13 +435,26 @@ export default function Home() {
 
           {/* Irony opener */}
           <p
-            className="font-serif"
+            className="font-sans"
+            style={{
+              fontSize: "clamp(11px, 1vw, 13px)",
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.55)",
+              fontWeight: 600,
+              marginBottom: "16px",
+            }}
+          >
+            The worst case
+          </p>
+          <p
+            className="font-sans"
             style={{
               fontSize: "clamp(26px, 3.5vw, 44px)",
               lineHeight: "1.15",
-              letterSpacing: "-0.02em",
-              color: "#0A0A0A",
-              fontWeight: 400,
+              letterSpacing: "-0.025em",
+              color: "#FFFFFF",
+              fontWeight: 300,
               maxWidth: "640px",
             }}
           >
@@ -383,27 +467,30 @@ export default function Home() {
             style={{
               fontSize: "13px",
               lineHeight: "1.65",
-              color: "rgba(255,255,255,0.30)",
+              color: "rgba(255,255,255,0.62)",
               marginTop: "clamp(20px, 2.5vw, 32px)",
               maxWidth: "520px",
             }}
           >
             97.6% of our emails reach the primary inbox -- not promotions, not spam.{" "}
-            <span style={{ fontFamily: "monospace", fontSize: "10px", color: "rgba(255,255,255,0.14)" }}>GlockApps 2026</span>
+            <span style={{ fontFamily: "monospace", fontSize: "10px", color: "rgba(255,255,255,0.35)" }}>GlockApps 2026</span>
           </p>
 
           {/* The number */}
           <p
-            className="font-serif font-bold"
+            className="font-sans font-bold"
             style={{
               fontSize: "clamp(56px, 10vw, 140px)",
               lineHeight: 0.85,
-              color: "#FFFFFF",
               letterSpacing: "-0.03em",
               marginTop: "clamp(16px, 2vw, 28px)",
+              background: "linear-gradient(135deg, #FFFFFF 0%, #C8C8C8 50%, #E8E8E8 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
             }}
           >
-            30,000<span style={{ color: "#0A0A0A" }}>+</span>
+            30,000<span style={{ WebkitTextFillColor: "rgba(255,255,255,0.40)" }}>+</span>
           </p>
 
           {/* Market awareness -- local, visceral */}
@@ -412,13 +499,13 @@ export default function Home() {
             style={{
               fontSize: "clamp(15px, 1.6vw, 18px)",
               lineHeight: "1.65",
-              color: "rgba(255,255,255,0.50)",
+              color: "rgba(255,255,255,0.72)",
               maxWidth: "520px",
               marginTop: "16px",
             }}
           >
             people in your city, your county, your service area hear your name for the first time.{" "}
-            <strong style={{ color: "rgba(255,255,255,0.80)", fontWeight: 500 }}>
+            <strong style={{ color: "rgba(255,255,255,0.92)", fontWeight: 500 }}>
               No door knock. No business card. No cold call.
             </strong>
           </p>
@@ -431,7 +518,7 @@ export default function Home() {
               style={{
                 fontSize: "clamp(15px, 1.5vw, 17px)",
                 lineHeight: "1.75",
-                color: "rgba(255,255,255,0.42)",
+                color: "rgba(255,255,255,0.68)",
                 maxWidth: "640px",
                 marginBottom: "clamp(28px, 3vw, 40px)",
               }}
@@ -449,12 +536,12 @@ export default function Home() {
                 { label: "Outreach sequences", detail: "Battle-tested copy and cadences. Use them again, modify them, hand them to your team." },
               ].map((item) => (
                 <div key={item.label} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
-                  <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#0A0A0A", marginTop: "8px", flexShrink: 0 }} />
+                  <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "rgba(255,255,255,0.50)", marginTop: "8px", flexShrink: 0 }} />
                   <div>
-                    <p className="font-sans" style={{ fontSize: "14px", fontWeight: 600, color: "rgba(255,255,255,0.80)", marginBottom: "4px" }}>
+                    <p className="font-sans" style={{ fontSize: "14px", fontWeight: 600, color: "rgba(255,255,255,0.90)", marginBottom: "4px" }}>
                       {item.label}
                     </p>
-                    <p className="font-sans" style={{ fontSize: "13px", lineHeight: "1.6", color: "rgba(255,255,255,0.30)" }}>
+                    <p className="font-sans" style={{ fontSize: "13px", lineHeight: "1.6", color: "rgba(255,255,255,0.62)" }}>
                       {item.detail}
                     </p>
                   </div>
@@ -468,12 +555,12 @@ export default function Home() {
               style={{
                 fontSize: "clamp(14px, 1.4vw, 16px)",
                 lineHeight: "1.7",
-                color: "rgba(255,255,255,0.25)",
+                color: "rgba(255,255,255,0.58)",
                 maxWidth: "560px",
                 marginTop: "clamp(36px, 4vw, 52px)",
               }}
             >
-              Cancel anytime and keep everything we built. That is the <strong style={{ color: "rgba(255,255,255,0.55)" }}>floor</strong> -- not a projection.
+              Cancel anytime and keep everything we built. That is the <strong style={{ color: "rgba(255,255,255,0.88)" }}>floor</strong> -- not a projection.
             </p>
 
           </div>
@@ -623,12 +710,12 @@ export default function Home() {
           {/* Headline */}
           <p
             className="font-sans font-semibold uppercase mb-5 offer-scroll-reveal"
-            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "#0A0A0A" }}
+            style={{ fontSize: "11px", letterSpacing: "0.14em", color: "rgba(255,255,255,0.35)" }}
           >
             The Fork
           </p>
           <h2
-            className="font-serif font-normal italic offer-scroll-reveal"
+            className="font-sans font-normal italic offer-scroll-reveal"
             style={{
               fontSize: "clamp(32px, 4.5vw, 56px)",
               lineHeight: "1.15",
@@ -642,7 +729,7 @@ export default function Home() {
           </h2>
           <p
             className="font-sans offer-scroll-reveal"
-            style={{ fontSize: "15px", lineHeight: 1.7, color: "rgba(250,248,246,0.35)", maxWidth: "520px", marginBottom: "clamp(48px, 6vw, 80px)" }}
+            style={{ fontSize: "15px", lineHeight: 1.7, color: "rgba(250,248,246,0.62)", maxWidth: "520px", marginBottom: "clamp(48px, 6vw, 80px)" }}
           >
             Once we generate $5,000 in new client revenue for your business,
             you choose what happens next. There is no bad option.
@@ -669,23 +756,23 @@ export default function Home() {
               <div
                 className="offer-scroll-reveal p-8 xl:p-10 flex flex-col"
                 style={{
-                  background: "rgba(13,43,74,0.6)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.1)",
                   minHeight: "380px",
                 }}
               >
                 <div className="flex items-center gap-3 mb-8">
-                  <div style={{ width: "8px", height: "8px", background: "#0A0A0A", borderRadius: "50%" }} />
-                  <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#0A0A0A" }}>
+                  <div style={{ width: "8px", height: "8px", background: "rgba(255,255,255,0.9)", borderRadius: "50%" }} />
+                  <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.16em", color: "rgba(255,255,255,0.5)" }}>
                     Scale
                   </span>
                 </div>
 
-                <p className="font-serif font-bold mb-2" style={{ fontSize: "clamp(36px, 4vw, 52px)", lineHeight: 1, color: "#FFFFFF" }}>
-                  $699<span style={{ fontSize: "16px", color: "rgba(255,255,255,0.35)" }}>/mo</span>
+                <p className="font-sans font-bold mb-2" style={{ fontSize: "clamp(36px, 4vw, 52px)", lineHeight: 1, color: "#FFFFFF", letterSpacing: "-0.02em" }}>
+                  $699<span style={{ fontSize: "16px", color: "rgba(255,255,255,0.30)", fontWeight: 400 }}>/mo</span>
                 </p>
-                <p className="font-sans mb-8" style={{ fontSize: "12px", color: "rgba(255,255,255,0.30)" }}>
-                  12-month retainer
+                <p className="font-sans mb-8" style={{ fontSize: "12px", color: "rgba(255,255,255,0.25)" }}>
+                  ongoing management
                 </p>
 
                 <ul className="flex flex-col gap-5 font-sans mb-auto" style={{ fontSize: "13.5px" }}>
@@ -695,17 +782,17 @@ export default function Home() {
                     { bold: "Dedicated team.", rest: " Same people, same workflow, every week." },
                   ].map((item) => (
                     <li key={item.bold} className="flex items-start gap-3">
-                      <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="3">
+                      <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="2">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      <span style={{ color: "rgba(255,255,255,0.65)" }}>
-                        <strong style={{ color: "rgba(255,255,255,0.90)" }}>{item.bold}</strong>{item.rest}
+                      <span style={{ color: "rgba(255,255,255,0.55)" }}>
+                        <strong style={{ color: "rgba(255,255,255,0.85)" }}>{item.bold}</strong>{item.rest}
                       </span>
                     </li>
                   ))}
                 </ul>
 
-                <p className="font-sans mt-8" style={{ fontSize: "12px", color: "rgba(255,255,255,0.20)", lineHeight: 1.6, fontStyle: "italic" }}>
+                <p className="font-sans mt-8" style={{ fontSize: "12px", color: "rgba(255,255,255,0.48)", lineHeight: 1.6, fontStyle: "italic" }}>
                   This is what happens when you stop relying on referrals and own a system that runs while you work.
                 </p>
               </div>
@@ -726,10 +813,10 @@ export default function Home() {
                   </span>
                 </div>
 
-                <p className="font-serif font-bold mb-2" style={{ fontSize: "clamp(36px, 4vw, 52px)", lineHeight: 1, color: "#FFFFFF" }}>
+                <p className="font-sans font-bold mb-2" style={{ fontSize: "clamp(36px, 4vw, 52px)", lineHeight: 1, color: "#FFFFFF" }}>
                   $0
                 </p>
-                <p className="font-sans mb-8" style={{ fontSize: "12px", color: "rgba(255,255,255,0.30)" }}>
+                <p className="font-sans mb-8" style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)" }}>
                   owed to us for our labor
                 </p>
 
@@ -740,17 +827,17 @@ export default function Home() {
                     { bold: "Keep the lead list.", rest: " Your market, verified and mapped." },
                   ].map((item) => (
                     <li key={item.bold} className="flex items-start gap-3">
-                      <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="3">
+                      <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="2">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      <span style={{ color: "rgba(255,255,255,0.65)" }}>
-                        <strong style={{ color: "rgba(255,255,255,0.90)" }}>{item.bold}</strong>{item.rest}
+                      <span style={{ color: "rgba(255,255,255,0.55)" }}>
+                        <strong style={{ color: "rgba(255,255,255,0.85)" }}>{item.bold}</strong>{item.rest}
                       </span>
                     </li>
                   ))}
                 </ul>
 
-                <p className="font-sans mt-8" style={{ fontSize: "12px", color: "rgba(255,255,255,0.20)", lineHeight: 1.6, fontStyle: "italic" }}>
+                <p className="font-sans mt-8" style={{ fontSize: "12px", color: "rgba(255,255,255,0.48)", lineHeight: 1.6, fontStyle: "italic" }}>
                   You have never hired an agency and walked out with a premium setup worth more than you paid. Until now.
                 </p>
               </div>
@@ -760,12 +847,13 @@ export default function Home() {
             {/* The Logical Bind */}
             <div className="offer-scroll-reveal" style={{ marginTop: "clamp(48px, 6vw, 80px)", textAlign: "center" }}>
               <p
-                className="font-serif italic"
+                className="font-sans"
                 style={{
                   fontSize: "clamp(28px, 4vw, 52px)",
-                  lineHeight: 1.15,
-                  color: "#0A0A0A",
-                  letterSpacing: "-0.02em",
+                  lineHeight: 1.1,
+                  color: "#FFFFFF",
+                  letterSpacing: "-0.03em",
+                  fontWeight: 300,
                 }}
               >
                 You literally cannot lose.
@@ -773,9 +861,9 @@ export default function Home() {
               <p
                 className="font-sans mx-auto"
                 style={{
-                  fontSize: "13px",
+                  fontSize: "14px",
                   lineHeight: 1.7,
-                  color: "rgba(250,248,246,0.22)",
+                  color: "rgba(255,255,255,0.65)",
                   maxWidth: "480px",
                   marginTop: "20px",
                 }}
@@ -801,7 +889,7 @@ export default function Home() {
           </p>
 
           <h2
-            className="font-serif font-bold offer-scroll-reveal"
+            className="font-sans font-bold offer-scroll-reveal"
             style={{
               fontSize: "clamp(32px, 5vw, 64px)",
               lineHeight: 1.1,
@@ -846,7 +934,7 @@ export default function Home() {
             <div className="flex flex-col items-center mt-8">
               <Link
                 href="/contact"
-                className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold transition-all duration-300 hover:bg-[#2660A8]"
+                className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold transition-all duration-200"
                 style={{
                   fontSize: "12px",
                   letterSpacing: "0.1em",
@@ -855,9 +943,10 @@ export default function Home() {
                   background: "#0A0A0A",
                   padding: "18px 48px",
                   borderRadius: "0px",
+                  border: "1px solid rgba(0,0,0,0.15)",
                 }}
               >
-                Book a consultation
+                Book a 15-min call
               </Link>
               <p className="font-sans mt-4 text-[#ABABAB]" style={{ fontSize: "12px" }}>
                 15 minutes. No commitment. No pitch deck.
@@ -894,18 +983,18 @@ export default function Home() {
                 Deliverables
               </p>
               <p
-                className="font-serif font-bold"
+                className="font-sans font-bold"
                 style={{ fontSize: "clamp(44px, 5.5vw, 68px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
               >
                 15,000
               </p>
-              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
+              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#5A5A5A" }}>
                 emails sent per month, exactly as quoted
               </p>
               <div style={{ width: "32px", height: "2px", background: "#0A0A0A", marginBottom: "28px" }} />
               <p
-                className="font-serif italic mb-auto"
-                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
+                className="font-sans italic mb-auto"
+                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3A3A3A" }}
               >
                 &ldquo;Honestly I almost didn&apos;t sign up. I&apos;ve been burned by marketing guys before. But these guys showed me the price, told me exactly how many emails go out, and gave me a timeline. Fifteen thousand a month. Every Monday I get a report and the numbers match. No surprises, no upsells. Just organized people who do what they said they&apos;d do.&rdquo;
               </p>
@@ -933,18 +1022,18 @@ export default function Home() {
                 Closed deal
               </p>
               <p
-                className="font-serif font-bold"
+                className="font-sans font-bold"
                 style={{ fontSize: "clamp(44px, 5.5vw, 68px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
               >
                 $12,000
               </p>
-              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
+              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#5A5A5A" }}>
                 first job closed, month two
               </p>
               <div style={{ width: "32px", height: "2px", background: "#0A0A0A", marginBottom: "28px" }} />
               <p
-                className="font-serif italic mb-auto"
-                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
+                className="font-sans italic mb-auto"
+                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3A3A3A" }}
               >
                 &ldquo;I figured it was another agency that&apos;d take my money and disappear. Second month a reply came in, turned into a twelve thousand dollar re-roof. One job. Paid for the whole year and then some. I don&apos;t even think about it anymore, it just runs in the background and leads show up.&rdquo;
               </p>
@@ -967,18 +1056,18 @@ export default function Home() {
                 Communication
               </p>
               <p
-                className="font-serif font-bold"
+                className="font-sans font-bold"
                 style={{ fontSize: "clamp(44px, 5.5vw, 68px)", lineHeight: 1, letterSpacing: "-0.02em", color: "#111111" }}
               >
                 48 hrs
               </p>
-              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#6B6B6B" }}>
+              <p className="font-sans mt-3 mb-8" style={{ fontSize: "13px", color: "#5A5A5A" }}>
                 20 email accounts and domains live. Signed up Monday.
               </p>
               <div style={{ width: "32px", height: "2px", background: "#0A0A0A", marginBottom: "28px" }} />
               <p
-                className="font-serif italic mb-auto"
-                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3D3D3D" }}
+                className="font-sans italic mb-auto"
+                style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.75", color: "#3A3A3A" }}
               >
                 &ldquo;I run a small practice, I don&apos;t have time to chase vendors. Signed up on Monday, by Wednesday they had everything built. Two weeks later emails were going out. Every Monday I get a quick update -- who replied, what they said, what&apos;s next. Short, clear, no fluff. I have never had to follow up with them once.&rdquo;
               </p>
@@ -1010,46 +1099,46 @@ export default function Home() {
           <div style={{ maxWidth: "680px" }}>
             <p
               className="font-sans"
-              style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.8", color: "rgba(255,255,255,0.72)", fontWeight: 500 }}
+              style={{ fontSize: "clamp(15px, 1.6vw, 18px)", lineHeight: "1.8", color: "rgba(255,255,255,0.82)", fontWeight: 500 }}
             >
               Hiring us means working with a small team of 5 passionate, hands-on people -- which means your campaign will be run inside a strict, battle-tested workflow. The same one we use on our own outreach. The same one that has been booking meetings for every client we have worked with.
             </p>
 
             <p
               className="font-sans"
-              style={{ fontSize: "clamp(13px, 1.4vw, 16px)", lineHeight: "1.85", color: "rgba(255,255,255,0.38)", marginTop: "clamp(16px, 2vw, 22px)" }}
+              style={{ fontSize: "clamp(13px, 1.4vw, 16px)", lineHeight: "1.85", color: "rgba(255,255,255,0.62)", marginTop: "clamp(16px, 2vw, 22px)" }}
             >
               The same people who read your replies every Tuesday. Research your market. Compose your emails. Warm your domains. Rewrite your subject line when it underperforms. All five of us. Every time.
             </p>
 
             <p
               className="font-sans"
-              style={{ fontSize: "clamp(13px, 1.4vw, 16px)", lineHeight: "1.85", color: "rgba(255,255,255,0.38)", marginTop: "clamp(14px, 1.8vw, 20px)" }}
+              style={{ fontSize: "clamp(13px, 1.4vw, 16px)", lineHeight: "1.85", color: "rgba(255,255,255,0.62)", marginTop: "clamp(14px, 1.8vw, 20px)" }}
             >
               No account manager. No junior who inherited your file. No one who says &ldquo;let me loop in the team.&rdquo;
             </p>
 
-            {/* Pull quote -- the payoff, Option C: border + split-weight */}
+            {/* Pull quote -- the payoff */}
             <div
               style={{
-                borderLeft: "3px solid #C4431B",
+                borderLeft: "3px solid rgba(255,255,255,0.20)",
                 paddingLeft: "clamp(20px, 2.5vw, 28px)",
                 marginTop: "clamp(40px, 5vw, 64px)",
               }}
             >
               <p
-                className="font-serif italic"
+                className="font-sans italic"
                 style={{
                   fontSize: "clamp(22px, 3vw, 42px)",
                   lineHeight: "1.25",
-                  color: "rgba(255,255,255,0.38)",
+                  color: "rgba(255,255,255,0.62)",
                   letterSpacing: "-0.01em",
                 }}
               >
                 If we are booking meetings,
               </p>
               <p
-                className="font-serif italic"
+                className="font-sans italic"
                 style={{
                   fontSize: "clamp(22px, 3vw, 42px)",
                   lineHeight: "1.25",

@@ -112,18 +112,27 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero-phone-col {
-    /* Phone column: right half, centered */
+    /* Phone column: right half */
     display: none;
-    align-items: center;
+    align-items: flex-end;          /* bottom-anchor so phone bleeds below hero boundary */
     justify-content: center;
     height: 100%;
+    overflow: visible;
     position: relative;
-    z-index: 2;
+    z-index: 30;                    /* above next section */
     padding-right: clamp(16px, 5vw, 64px);
+    padding-bottom: 0;
+    margin-bottom: -80px;           /* bleed: phone bottom overlaps into next section */
     box-sizing: border-box;
 }
 @media (min-width: 1024px) {
     .hero-phone-col { display: flex; }
+}
+@media (max-height: 760px) {
+    .hero-phone-col { margin-bottom: -40px; }
+}
+@media (max-height: 660px) {
+    .hero-phone-col { margin-bottom: 0; }
 }
 
 .hero-phone-col::before {
@@ -698,7 +707,8 @@ a { color: inherit; text-decoration: none; }
 .tooltip-text {
     visibility: hidden;
     width: 240px;
-    background-color: #0A1E36;
+    background-color: #0A0A0A;
+    border: 1px solid rgba(255,255,255,0.10);
     color: #F3F4F6;
     text-align: left;
     border: 1px solid var(--ink-border);

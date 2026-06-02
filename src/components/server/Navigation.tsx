@@ -16,11 +16,18 @@ const NAV_LINKS = [
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const pathname = usePathname();
 
   React.useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        setScrollProgress((window.scrollY / totalHeight) * 100);
+      } else {
+        setScrollProgress(0);
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -153,6 +160,21 @@ export default function Navigation() {
             </Link>
           </div>
         </div>
+      </div>
+
+      {/* Scroll Progress Bar (Mobile only) */}
+      <div 
+        className="md:hidden w-full h-[2px] bg-transparent absolute bottom-0 left-0"
+        style={{ overflow: "hidden" }}
+      >
+        <div 
+          style={{ 
+            height: "100%", 
+            width: `${scrollProgress}%`, 
+            background: isTransparent ? "#FFFFFF" : "#C4431B",
+            transition: "width 0.08s ease-out" 
+          }} 
+        />
       </div>
 
     </header>

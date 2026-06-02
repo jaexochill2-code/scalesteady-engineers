@@ -54,113 +54,98 @@ export default function Home() {
           />
         </div>
 
-        {/* Content -- vertically centered, full-width */}
+        {/* 2-column hero grid: text left | phone right */}
         <div
-          className="relative h-full flex flex-col justify-center"
-          style={{ paddingTop: "100px" }}
+          className="relative h-full flex items-center"
+          style={{ paddingTop: "80px" }}
         >
           <div
-            className="mx-auto w-full px-8 sm:px-12 lg:px-24"
-            style={{ maxWidth: "1280px" }}
+            className="mx-auto w-full px-8 sm:px-12 lg:px-20 hero-grid"
+            style={{ maxWidth: "1400px" }}
           >
-            {/* Overline -- market positioning signal */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "12px",
-                marginBottom: "clamp(20px, 3vw, 36px)",
-              }}
-            >
-              <div style={{ width: "28px", height: "2px", background: "#C4431B", flexShrink: 0 }} />
-              <span
-                className="font-sans"
+            {/* LEFT: Text column */}
+            <div className="hero-text-col">
+              {/* Overline */}
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "clamp(14px, 2vw, 24px)" }}>
+                <div style={{ width: "24px", height: "2px", background: "#C4431B", flexShrink: 0 }} />
+                <span
+                  className="font-sans"
+                  style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "#C4431B" }}
+                >
+                  Outbound Infrastructure
+                </span>
+              </div>
+
+              {/* Headline -- tightened to share stage with the phone */}
+              <h1
+                className="font-serif font-normal"
                 style={{
-                  fontSize: "11px",
-                  fontWeight: 600,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "#C4431B",
+                  fontSize: "clamp(38px, 5.5vw, 78px)",
+                  lineHeight: "1.05",
+                  letterSpacing: "-0.03em",
+                  color: "#FAF8F6",
                 }}
               >
-                Outbound Infrastructure
-              </span>
+                <span className="hero-word block" style={{ animationDelay: "0s" }}>
+                  If you&apos;re here,
+                </span>
+                <span
+                  className="hero-word block italic"
+                  style={{ animationDelay: "0.12s", color: "#C4431B" }}
+                >
+                  the email worked.
+                </span>
+              </h1>
+
+              {/* Subheadline */}
+              <p
+                className="font-sans hero-body-copy"
+                style={{
+                  fontSize: "clamp(13px, 1.2vw, 17px)",
+                  lineHeight: "1.65",
+                  color: "rgba(250,248,246,0.50)",
+                  maxWidth: "380px",
+                  marginTop: "clamp(14px, 2vw, 22px)",
+                }}
+              >
+                We build the same system for your business.
+              </p>
+
+              {/* CTA zone */}
+              <div
+                className="hero-cta-wrap flex flex-col sm:flex-row items-start sm:items-center gap-4"
+                style={{ marginTop: "clamp(22px, 3vw, 36px)" }}
+              >
+                <Link
+                  href="/contact"
+                  className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold transition-all duration-300"
+                  style={{
+                    fontSize: "11px",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "#FFFFFF",
+                    background: "#C4431B",
+                    padding: "16px 40px",
+                    borderRadius: "0px",
+                    flexShrink: 0,
+                  }}
+                >
+                  Book a discovery call
+                </Link>
+                <p
+                  className="font-sans hero-risk-text"
+                  style={{ fontSize: "11px", color: "rgba(250,248,246,0.40)", letterSpacing: "0.01em" }}
+                >
+                  15 minutes. No commitment.
+                </p>
+              </div>
             </div>
 
-            {/* Headline -- commanding scale */}
-            <h1
-              className="font-serif font-normal"
-              style={{
-                fontSize: "clamp(52px, 8.5vw, 120px)",
-                lineHeight: "1.02",
-                letterSpacing: "-0.03em",
-                color: "#FAF8F6",
-                maxWidth: "900px",
-              }}
-            >
-              <span className="hero-word block" style={{ animationDelay: "0s" }}>
-                If you&apos;re here,
-              </span>
-              <span
-                className="hero-word block italic"
-                style={{ animationDelay: "0.12s", color: "#C4431B" }}
-              >
-                the email worked.
-              </span>
-            </h1>
-
-            {/* Subheadline */}
-            <p
-              className="font-sans hero-body-copy"
-              style={{
-                fontSize: "clamp(15px, 1.6vw, 20px)",
-                lineHeight: "1.65",
-                color: "rgba(250,248,246,0.50)",
-                maxWidth: "440px",
-                marginTop: "clamp(16px, 2.5vw, 28px)",
-              }}
-            >
-              We build the same system for your business.
-            </p>
-
-            {/* CTA zone */}
-            <div
-              className="hero-cta-wrap flex flex-col sm:flex-row items-start sm:items-center gap-4"
-              style={{ marginTop: "clamp(28px, 4vw, 48px)" }}
-            >
-              <Link
-                href="/contact"
-                className="hero-cta-btn inline-flex items-center justify-center font-sans font-semibold transition-all duration-300"
-                style={{
-                  fontSize: "12px",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "#FFFFFF",
-                  background: "#C4431B",
-                  padding: "18px 48px",
-                  borderRadius: "0px",
-                  flexShrink: 0,
-                }}
-              >
-                Book a discovery call
-              </Link>
-              <p
-                className="font-sans hero-risk-text"
-                style={{
-                  fontSize: "12px",
-                  color: "rgba(250,248,246,0.30)",
-                  letterSpacing: "0.01em",
-                }}
-              >
-                15 minutes. No commitment.
-              </p>
+            {/* RIGHT: Phone column -- in-flow, vertically centered by grid */}
+            <div className="hero-phone-col" aria-hidden="true">
+              <AnimatedPhone />
             </div>
           </div>
-        </div>
-
-        {/* Animated phone -- absolute overlay, desktop only, right-aligned */}
-        <div className="phone-hero-wrap" aria-hidden="true">
-          <AnimatedPhone />
         </div>
 
       </section>

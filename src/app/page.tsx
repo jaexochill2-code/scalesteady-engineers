@@ -76,12 +76,12 @@ export default function Home() {
                 </span>
               </div>
 
-              {/* Headline -- tightened to share stage with the phone */}
+              {/* Headline -- commanding, fits 2 lines in the 1.2fr col */}
               <h1
                 className="font-serif font-normal"
                 style={{
-                  fontSize: "clamp(38px, 5.5vw, 78px)",
-                  lineHeight: "1.05",
+                  fontSize: "clamp(44px, 6vw, 88px)",
+                  lineHeight: "1.04",
                   letterSpacing: "-0.03em",
                   color: "#FAF8F6",
                 }}

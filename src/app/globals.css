@@ -113,7 +113,7 @@ a { color: inherit; text-decoration: none; }
    ─────────────────────────────────────────────── */
 .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.2fr 0.8fr;
     align-items: center;
     gap: 0;
     height: 100%;
@@ -426,47 +426,46 @@ a { color: inherit; text-decoration: none; }
 
 .phone-shell {
     position: relative;
-    /* Compact size: fully visible at any hero height, never clipped */
-    width: 200px;
-    height: 408px;
-    border-radius: 32px;
+    width: 260px;
+    height: 530px;
+    border-radius: 42px;
     background: linear-gradient(160deg, #2c2c2c 0%, #1c1c1c 40%, #111 100%);
     box-shadow:
         inset 0 0 0 1px rgba(255,255,255,0.14),
-        inset 0 0 0 7px #050505,
+        inset 0 0 0 9px #050505,
         0 0 0 1px rgba(0,0,0,0.8),
-        0 20px 44px rgba(0,0,0,0.85),
-        0 44px 88px rgba(0,0,0,0.6),
-        0 0 44px rgba(217, 119, 6, 0.22),
-        0 0 88px rgba(217, 119, 6, 0.10);
+        0 28px 56px rgba(0,0,0,0.85),
+        0 56px 112px rgba(0,0,0,0.6),
+        0 0 56px rgba(217, 119, 6, 0.22),
+        0 0 112px rgba(217, 119, 6, 0.10);
 }
 
 .phone-shell::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 32px;
+    border-radius: 42px;
     background: linear-gradient(125deg, rgba(255,255,255,0.06) 0%, transparent 40%, rgba(255,255,255,0.02) 100%);
     pointer-events: none;
 }
 
 .island {
     position: absolute;
-    top: 11px;
+    top: 14px;
     left: 50%;
     transform: translateX(-50%);
-    width: 78px;
-    height: 22px;
+    width: 96px;
+    height: 28px;
     background: #000;
-    border-radius: 16px;
+    border-radius: 20px;
     z-index: 20;
     box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
 }
 
 .phone-screen-inner {
     position: absolute;
-    inset: 7px;
-    border-radius: 26px;
+    inset: 9px;
+    border-radius: 34px;
     background: #000000;
     overflow: hidden;
     box-shadow: inset 0 0 0 0.5px rgba(255,255,255,0.04);
@@ -491,13 +490,13 @@ a { color: inherit; text-decoration: none; }
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 52px;
+    padding-top: 64px;
     background: radial-gradient(ellipse at 50% 0%, #1a1010 0%, #000 70%);
     z-index: 1;
     transition: opacity 0.8s ease;
 }
 .lockscreen-time {
-    font-size: 48px;
+    font-size: 56px;
     font-weight: 200;
     letter-spacing: -2px;
     color: rgba(255,255,255,0.92);
@@ -505,7 +504,7 @@ a { color: inherit; text-decoration: none; }
     line-height: 1;
 }
 .lockscreen-date {
-    font-size: 13px;
+    font-size: 14px;
     color: rgba(255,255,255,0.5);
     font-family: -apple-system, 'SF Pro Display', sans-serif;
     margin-top: 6px;
@@ -514,23 +513,23 @@ a { color: inherit; text-decoration: none; }
 
 .notif-stack {
     position: absolute;
-    top: 38px;
-    left: 8px;
-    right: 8px;
+    top: 46px;
+    left: 10px;
+    right: 10px;
     z-index: 10;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 7px;
 }
 .ios-notif {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    gap: 10px;
     background: rgba(30, 30, 30, 0.88);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
-    border-radius: 13px;
-    padding: 10px;
+    border-radius: 15px;
+    padding: 11px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     border: 1px solid rgba(255,255,255,0.07);
     opacity: 0;
@@ -543,9 +542,9 @@ a { color: inherit; text-decoration: none; }
                 transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .notif-app-icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
     display: flex;
     align-items: center;
     justify-content: center;

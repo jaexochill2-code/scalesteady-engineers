@@ -8,7 +8,7 @@ import logoAbstract from "../../../public/brand/logos/scalesteady_clean_monogram
 
 const NAV_LINKS = [
   { href: "#approach", label: "How We Work" },
-  { href: "#pricing",  label: "Pricing"     },
+  { href: "#pricing",  label: "The Offer"   },
   { href: "#results",  label: "Results"     },
   { href: "#team",     label: "Our Team"    },
 ];

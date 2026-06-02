@@ -24,8 +24,23 @@ const SERVICES = [
 
 const CLIENTS = ["Tarrant Mechanical", "Aesthetics Clinic Group", "Apex Leasing", "Floor Contracting"];
 
+const ICP_SLIDES = [
+  { src: "/icp_practitioner.png", alt: "Medical Clinic Director", details: "reaching local healthcare offices" },
+  { src: "/icp_contractor.png", alt: "HVAC Business Owner", details: "reaching mechanical trades" },
+  { src: "/icp_roofer.png", alt: "Roofing Contractor", details: "reaching construction operators" },
+  { src: "/icp_manager.png", alt: "Commercial Property Manager", details: "reaching commercial building buyers" },
+];
+
 export default function Home() {
   const [comparisonTab, setComparisonTab] = useState<"referral" | "system">("referral");
+  const [icpSlide, setIcpSlide] = useState(0);
+
+  useEffect(() => {
+    const slideTimer = setInterval(() => {
+      setIcpSlide((prev) => (prev + 1) % ICP_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(slideTimer);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -434,82 +449,129 @@ export default function Home() {
       <section style={{ background: "#050505", padding: "clamp(72px, 8vw, 112px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
-          {/* Irony opener */}
-          <p
-            className="font-sans"
-            style={{
-              fontSize: "clamp(11px, 1vw, 13px)",
-              letterSpacing: "0.16em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.55)",
-              fontWeight: 600,
-              marginBottom: "16px",
-            }}
-          >
-            The worst case
-          </p>
-          <p
-            className="font-sans"
-            style={{
-              fontSize: "clamp(26px, 3.5vw, 44px)",
-              lineHeight: "1.15",
-              letterSpacing: "-0.025em",
-              color: "#FFFFFF",
-              fontWeight: 300,
-              maxWidth: "640px",
-            }}
-          >
-            The worst thing that can happen in 60&nbsp;days:
-          </p>
+          {/* Grid wrapper for Content and Slideshow */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            {/* Left Column (Content) */}
+            <div className="lg:col-span-7 flex flex-col">
+              {/* Irony opener */}
+              <p
+                className="font-sans"
+                style={{
+                  fontSize: "clamp(11px, 1vw, 13px)",
+                  letterSpacing: "0.16em",
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.55)",
+                  fontWeight: 600,
+                  marginBottom: "16px",
+                }}
+              >
+                The worst case
+              </p>
+              <p
+                className="font-sans"
+                style={{
+                  fontSize: "clamp(26px, 3.5vw, 44px)",
+                  lineHeight: "1.15",
+                  letterSpacing: "-0.025em",
+                  color: "#FFFFFF",
+                  fontWeight: 300,
+                  maxWidth: "640px",
+                }}
+              >
+                The worst thing that can happen in 60&nbsp;days:
+              </p>
 
-          {/* Deliverability connector -- this is WHY 30,000 is real */}
-          <p
-            className="font-sans"
-            style={{
-              fontSize: "13px",
-              lineHeight: "1.65",
-              color: "rgba(255,255,255,0.62)",
-              marginTop: "clamp(20px, 2.5vw, 32px)",
-              maxWidth: "520px",
-            }}
-          >
-            97.6% of our emails reach the primary inbox -- not promotions, not spam.{" "}
-            <span style={{ fontFamily: "monospace", fontSize: "10px", color: "rgba(255,255,255,0.35)" }}>GlockApps 2026</span>
-          </p>
+              {/* Deliverability connector -- this is WHY 30,000 is real */}
+              <p
+                className="font-sans"
+                style={{
+                  fontSize: "13px",
+                  lineHeight: "1.65",
+                  color: "rgba(255,255,255,0.62)",
+                  marginTop: "clamp(20px, 2.5vw, 32px)",
+                  maxWidth: "520px",
+                }}
+              >
+                97.6% of our emails reach the primary inbox -- not promotions, not spam.{" "}
+                <span style={{ fontFamily: "monospace", fontSize: "10px", color: "rgba(255,255,255,0.35)" }}>GlockApps 2026</span>
+              </p>
 
-          {/* The number */}
-          <p
-            className="font-sans font-bold"
-            style={{
-              fontSize: "clamp(56px, 10vw, 140px)",
-              lineHeight: 0.85,
-              letterSpacing: "-0.03em",
-              marginTop: "clamp(16px, 2vw, 28px)",
-              background: "linear-gradient(135deg, #FFFFFF 0%, #C8C8C8 50%, #E8E8E8 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            30,000<span style={{ WebkitTextFillColor: "rgba(255,255,255,0.40)" }}>+</span>
-          </p>
+              {/* The number */}
+              <p
+                className="font-sans font-bold"
+                style={{
+                  fontSize: "clamp(56px, 10vw, 140px)",
+                  lineHeight: 0.85,
+                  letterSpacing: "-0.03em",
+                  marginTop: "clamp(16px, 2vw, 28px)",
+                  background: "linear-gradient(135deg, #FFFFFF 0%, #C8C8C8 50%, #E8E8E8 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                30,000<span style={{ WebkitTextFillColor: "rgba(255,255,255,0.40)" }}>+</span>
+              </p>
 
-          {/* Market awareness -- local, visceral */}
-          <p
-            className="font-sans"
-            style={{
-              fontSize: "clamp(15px, 1.6vw, 18px)",
-              lineHeight: "1.65",
-              color: "rgba(255,255,255,0.72)",
-              maxWidth: "520px",
-              marginTop: "16px",
-            }}
-          >
-            people in your city, your county, your service area hear your name for the first time.{" "}
-            <strong style={{ color: "rgba(255,255,255,0.92)", fontWeight: 500 }}>
-              No door knock. No business card. No cold call.
-            </strong>
-          </p>
+              {/* Market awareness -- local, visceral */}
+              <p
+                className="font-sans"
+                style={{
+                  fontSize: "clamp(15px, 1.6vw, 18px)",
+                  lineHeight: "1.65",
+                  color: "rgba(255,255,255,0.72)",
+                  maxWidth: "520px",
+                  marginTop: "16px",
+                }}
+              >
+                people in your city, your county, your service area hear your name for the first time.{" "}
+                <strong style={{ color: "rgba(255,255,255,0.92)", fontWeight: 500 }}>
+                  No door knock. No business card. No cold call.
+                </strong>
+              </p>
+            </div>
+
+            {/* Right Column (Slideshow Carousel) */}
+            <div className="lg:col-span-5 relative w-full h-[380px] lg:h-[400px] rounded-2xl overflow-hidden hidden lg:block bento-card-dark" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+              {ICP_SLIDES.map((slide, idx) => (
+                <div
+                  key={idx}
+                  className="absolute inset-0 transition-opacity duration-[1500ms] ease-in-out"
+                  style={{
+                    opacity: icpSlide === idx ? 1 : 0,
+                    pointerEvents: icpSlide === idx ? "auto" : "none",
+                  }}
+                >
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    unoptimized
+                    className="object-cover filter grayscale"
+                  />
+                  {/* Subtle caption overlay */}
+                  <div className="absolute bottom-4 left-4 right-4 z-20 flex flex-col">
+                    <span className="font-sans text-[10px] uppercase font-bold text-white/50 tracking-[0.14em]">
+                      {slide.details}
+                    </span>
+                    <span className="font-sans text-[12px] font-semibold text-white mt-1">
+                      {slide.alt}
+                    </span>
+                  </div>
+                </div>
+              ))}
+              
+              {/* Molded dark vignette edge mask overlay */}
+              <div 
+                className="absolute inset-0 z-10 pointer-events-none" 
+                style={{
+                  background: "radial-gradient(circle at center, transparent 35%, #050505 100%)",
+                }}
+              />
+            </div>
+            
+          </div>
 
           {/* ── The ownership payoff -- the irony closer ── */}
           <div style={{ marginTop: "clamp(48px, 5vw, 72px)", borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "clamp(36px, 4vw, 56px)" }}>

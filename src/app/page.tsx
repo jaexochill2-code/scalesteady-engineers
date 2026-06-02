@@ -1213,7 +1213,7 @@ export default function Home() {
       <div
         className="mobile-cta-bar lg:hidden fixed bottom-0 left-0 right-0 z-50"
         style={{
-          background: "rgba(5,13,28,0.96)",
+          background: "rgba(10,10,10,0.96)",
           backdropFilter: "blur(10px)",
           WebkitBackdropFilter: "blur(10px)",
           borderTop: "1px solid rgba(255,255,255,0.07)",

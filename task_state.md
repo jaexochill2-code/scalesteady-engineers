@@ -6,13 +6,16 @@
 - **Tactile Fork cards:** Swapped out the basic inline styling for Scale and Walk cards with `bento-card-dark` glassmorphic cards.
 - **Staggered Testimonials bento:** Reorganized the three testimonial cards into a staggered grid of `bento-card-light` elements with Card 2 offset.
 - **Offer Sandbox Deletion:** Deleted the `/offer` sandbox directory and files.
-- **Realistic, Unlabeled, & Diverse ICP Slideshow Overhaul:** Overhauled the multi-industry Ideal Customer Profile (ICP) slideshow next to the 30,000+ metric block. Generated and integrated 4 new realistic, desaturated, high-contrast, film-grain portraits representing Black, White, and Hispanic business owners in realistic everyday settings (office desk, living room couch, blueprints desk, kitchen counter) using various devices (laptop, tablet, phone) with happy, delighted, intrigued, and concerned facial expressions.
+- **Image Mapping Overwrites (Carousel Assets):** Updated the carousel asset configurations without changing JSX code files:
+  - **Slide 1 (`public/icp_practitioner.png`):** Restored Batch 1 practitioner image (Asian clinic director looking at a tablet).
+  - **Slide 2 (`public/icp_contractor.png`):** Restored Batch 1 contractor image (HVAC guy on truck).
+  - **Slide 3 (`public/icp_roofer.png`):** Copied Batch 2 Couch contractor image (White guy on couch looking at phone) to replace the Hispanic guy.
+  - **Slide 4 (`public/icp_manager.png`):** Restored/kept Batch 2 property manager image (older White female kitchen manager looking at phone).
 - **Text Caption Removal:** Removed the absolute text caption overlay container (`div`) from the JSX component in `src/app/page.tsx`, ensuring the imagery serves as clean, raw visual cues without synthetic "AI-generated" styling.
 - **E2E Compilation & Production Deployment:** Verified locally with `npm run build` and successfully deployed to Vercel production at `https://scalesteady.pro`.
 
 ## 2. Files Modified / Created
-- [page.tsx](file:///c:/Users/Tax%20Filing/.gemini/antigravity/scratch/scalesteady-engineers/src/app/page.tsx) (Modified)
-- `public/icp_practitioner.png`, `public/icp_contractor.png`, `public/icp_roofer.png`, `public/icp_manager.png` (Overwritten with new diverse, realistic everyday scenes)
+- `public/icp_practitioner.png`, `public/icp_contractor.png`, `public/icp_roofer.png`, `public/icp_manager.png` (Overwritten with mapped assets to maintain clean presentation without Hispanic profiles)
 - `src/app/offer/` (Deleted)
 
 ## 3. Exact Next Action

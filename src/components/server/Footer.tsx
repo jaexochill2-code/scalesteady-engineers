@@ -6,7 +6,7 @@ export default function Footer() {
       {/* ── DARK ZONE: Brand / Nav / Office ── */}
       <footer
         style={{
-          background: "#0A0A0A",
+          background: "#111111",
           borderTop: "1px solid rgba(255,255,255,0.07)",
           padding: "64px 0 56px",
         }}

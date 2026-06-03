@@ -1,7 +1,7 @@
 # Session Recovery State - 2026-06-03
 
 ## 1. Phase Completed
-- **Tagline Optimization:** Replaced the hero H1 tagline on the `/build` page with the user's explicit tagline: `"Started in 24 hours, built in 14 days, managed for 60 days, and yours afterwards"`.
+- **Tagline Optimization:** Replaced the hero H1 tagline on the `/build` page with the new NLP-hardened tagline: `"Built in 2 days. Hardened in 14 days. Managed for 60 days. Yours to keep"`.
 - **Value Comparison Simplification:**
   - Removed technical and copywriting labor rows from the Retail comparison table.
   - Set the Estimated Retail software/data total to `$875.00`.

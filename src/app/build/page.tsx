@@ -159,7 +159,8 @@ export default function BuildPage() {
           </Link>
           <a
             href={PHONE_HREF}
-            className="font-sans font-semibold text-xs tracking-wider uppercase text-white bg-[#0A0A0A] hover:bg-[#2A2A2A] transition-colors duration-200 px-5 py-2.5"
+            className="font-sans font-semibold text-xs tracking-wider uppercase bg-[#0A0A0A] hover:bg-[#2A2A2A] transition-colors duration-200 px-5 py-2.5"
+            style={{ color: "#FFFFFF" }}
           >
             Call {PHONE}
           </a>

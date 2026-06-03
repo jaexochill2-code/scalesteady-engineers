@@ -177,7 +177,7 @@ export default function BuildPage() {
               Pass-through cost | $0 agency fees | Full asset ownership
             </span>
             <h1 className="font-sans text-3xl md:text-5xl font-extrabold tracking-tight text-[#0A0A0A] leading-tight mb-6">
-              Started in 24 hours, built in 14 days, managed for 60 days, and yours afterwards
+              Built in 2 days. Hardened in 14 days. Managed for 60 days. Yours to keep
             </h1>
             <p className="font-sans text-base md:text-lg text-[#262626] max-w-[720px] mx-auto leading-relaxed mb-8">
               $500 infrastructure cost. $0 in agency fees until you close revenue.

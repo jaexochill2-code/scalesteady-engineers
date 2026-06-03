@@ -36,14 +36,15 @@ export default function Navigation() {
   const isBuildPage = pathname === "/build";
 
   // Background, border, and blur styles dynamically set based on page context and scroll status
-  let background = "rgba(244, 244, 244, 0.96)";
+  let background = "rgba(250, 249, 246, 0.85)"; // Warm cream matching var(--canvas)
   let backdropFilter = "blur(12px)";
-  let borderBottom = "1px solid #DEDEDE";
+  let borderBottom = "1px solid rgba(216, 214, 206, 0.6)"; // Warm border matching var(--ink-border)
 
   if (isBuildPage) {
-    background = scrolled ? "rgba(244, 244, 244, 0.96)" : "transparent";
-    backdropFilter = scrolled ? "blur(12px)" : "none";
-    borderBottom = scrolled ? "1px solid #DEDEDE" : "none";
+    // Keep it permanently structured to prevent floating emptiness on light theme build page
+    background = "rgba(250, 249, 246, 0.85)";
+    backdropFilter = "blur(12px)";
+    borderBottom = "1px solid rgba(216, 214, 206, 0.6)";
   } else if (pathname === "/" && !scrolled) {
     background = "transparent";
     backdropFilter = "none";

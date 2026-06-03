@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { href: "/#pricing",  label: "The Offer"   },
   { href: "/#results",  label: "Results"     },
   { href: "/#team",     label: "Our Team"    },
+  { href: "/build",     label: "Build"       },
 ];
 
 export default function Navigation() {
@@ -108,9 +109,28 @@ export default function Navigation() {
           </div>
         </Link>
 
-        {isBuildPage ? (
-          /* Phone number only for build page */
-          <div className="flex items-center flex-shrink-0">
+        {/* Nav links */}
+        <nav className="hidden md:flex items-center gap-8">
+          {NAV_LINKS.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className="font-sans transition-colors duration-150"
+              style={{
+                fontSize: "14px",
+                fontWeight: 400,
+                color: useLightText ? "rgba(255,255,255,0.75)" : "#444444",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* CTA / Phone Number */}
+        <div className="hidden md:flex items-center flex-shrink-0">
+          {isBuildPage ? (
             <a
               href="tel:+12244877847"
               className="font-sans text-sm md:text-base font-semibold tracking-wider transition-colors duration-200 hover:opacity-75"
@@ -120,106 +140,98 @@ export default function Navigation() {
             >
               224.487.7847
             </a>
-          </div>
-        ) : (
-          <>
-            {/* Nav links */}
-            <nav className="hidden md:flex items-center gap-8">
-              {NAV_LINKS.map(({ href, label }) => (
-                <a
-                  key={href}
-                  href={href}
-                  className="font-sans transition-colors duration-150"
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: 400,
-                    color: useLightText ? "rgba(255,255,255,0.75)" : "#444444",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {label}
-                </a>
-              ))}
-            </nav>
+          ) : (
+            <Link
+              href="/contact"
+              className="font-sans font-semibold transition-colors duration-200"
+              style={{
+                fontSize: "12px",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: useLightText ? "#000000" : "#FFFFFF",
+                background: useLightText ? "#FFFFFF" : "#0A0A0A",
+                padding: "11px 24px",
+                borderRadius: "0px",
+              }}
+            >
+              Book a call
+            </Link>
+          )}
+        </div>
 
-            {/* CTA */}
-            <div className="hidden md:flex items-center flex-shrink-0">
-              <Link
-                href="/contact"
-                className="font-sans font-semibold transition-colors duration-200"
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          type="button"
+          className="flex md:hidden items-center justify-center p-2 focus:outline-none"
+          style={{ color: useLightText ? "#FAFAFA" : "#0A0A0A" }}
+          aria-label="Toggle menu"
+        >
+          <div className="relative w-5 h-[14px] flex flex-col justify-between">
+            <span
+              className={`block w-full bg-current transform transition-all duration-300 origin-center ${
+                isOpen ? "rotate-45 translate-y-[6.5px]" : ""
+              }`}
+              style={{ height: "1.5px" }}
+            />
+            <span
+              className={`block w-full bg-current transition-all duration-200 ${
+                isOpen ? "opacity-0" : ""
+              }`}
+              style={{ height: "1.5px" }}
+            />
+            <span
+              className={`block w-full bg-current transform transition-all duration-300 origin-center ${
+                isOpen ? "-rotate-45 -translate-y-[6.5px]" : ""
+              }`}
+              style={{ height: "1.5px" }}
+            />
+          </div>
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ${
+          isOpen ? "max-h-screen" : "max-h-0"
+        }`}
+        style={{ background: "#F4F4F4", borderTop: "1px solid #DEDEDE" }}
+      >
+        <div className="px-6 pt-4 pb-8 flex flex-col gap-1">
+          {NAV_LINKS.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={() => setIsOpen(false)}
+              className="font-sans py-3 transition-colors block"
+              style={{
+                fontSize: "15px",
+                fontWeight: 500,
+                color: "#0A0A0A",
+                borderBottom: "1px solid #E8E8E8",
+              }}
+            >
+              {label}
+            </Link>
+          ))}
+          <div className="pt-5">
+            {isBuildPage ? (
+              <a
+                href="tel:+12244877847"
+                className="flex items-center justify-center font-sans font-semibold"
                 style={{
                   fontSize: "12px",
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
-                  color: useLightText ? "#000000" : "#FFFFFF",
-                  background: useLightText ? "#FFFFFF" : "#0A0A0A",
-                  padding: "11px 24px",
+                  color: "#FFFFFF",
+                  background: "#0A0A0A",
+                  padding: "14px 0",
                   borderRadius: "0px",
                 }}
               >
-                Book a call
-              </Link>
-            </div>
-
-            {/* Mobile hamburger */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              type="button"
-              className="flex md:hidden items-center justify-center p-2 focus:outline-none"
-              style={{ color: useLightText ? "#FAFAFA" : "#0A0A0A" }}
-              aria-label="Toggle menu"
-            >
-              <div className="relative w-5 h-[14px] flex flex-col justify-between">
-                <span
-                  className={`block w-full bg-current transform transition-all duration-300 origin-center ${
-                    isOpen ? "rotate-45 translate-y-[6.5px]" : ""
-                  }`}
-                  style={{ height: "1.5px" }}
-                />
-                <span
-                  className={`block w-full bg-current transition-all duration-200 ${
-                    isOpen ? "opacity-0" : ""
-                  }`}
-                  style={{ height: "1.5px" }}
-                />
-                <span
-                  className={`block w-full bg-current transform transition-all duration-300 origin-center ${
-                    isOpen ? "-rotate-45 -translate-y-[6.5px]" : ""
-                  }`}
-                  style={{ height: "1.5px" }}
-                />
-              </div>
-            </button>
-          </>
-        )}
-      </div>
-
-      {/* Mobile menu - only for non-build pages */}
-      {!isBuildPage && (
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ${
-            isOpen ? "max-h-screen" : "max-h-0"
-          }`}
-          style={{ background: "#F4F4F4", borderTop: "1px solid #DEDEDE" }}
-        >
-          <div className="px-6 pt-4 pb-8 flex flex-col gap-1">
-            {NAV_LINKS.map(({ href, label }) => (
-              <a
-                key={href}
-                href={href}
-                onClick={() => setIsOpen(false)}
-                className="font-sans py-3 transition-colors"
-                style={{
-                  fontSize: "15px",
-                  fontWeight: 500,
-                  color: "#0A0A0A",
-                  borderBottom: "1px solid #E8E8E8",
-                }}
-              >
-                {label}
+                Call 224.487.7847
               </a>
-            ))}
-            <div className="pt-5">
+            ) : (
               <Link
                 href="/contact"
                 className="flex items-center justify-center font-sans font-semibold"
@@ -235,10 +247,10 @@ export default function Navigation() {
               >
                 Book a call
               </Link>
-            </div>
+            )}
           </div>
         </div>
-      )}
+      </div>
 
       {/* Scroll Progress Bar (Mobile only) - only for non-build pages */}
       {!isBuildPage && (

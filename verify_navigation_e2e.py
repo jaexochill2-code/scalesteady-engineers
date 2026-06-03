@@ -4,8 +4,7 @@ import sys
 from playwright.async_api import async_playwright
 
 async def run_e2e():
-    port = 3000
-    base_url = f"http://localhost:{port}"
+    base_url = "https://scalesteady.pro"
     print(f"Starting E2E verification against {base_url}...")
     sys.stdout.flush()
 

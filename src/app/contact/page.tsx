@@ -83,7 +83,7 @@ export default function ContactPage() {
     fontWeight: 600,
     letterSpacing: "0.16em",
     textTransform: "uppercase",
-    color: "#C4431B",
+    color: "#111111",
     fontFamily: "var(--font-sans, sans-serif)",
     marginBottom: "10px",
     display: "block",
@@ -119,22 +119,22 @@ export default function ContactPage() {
               width: "56px",
               height: "56px",
               borderRadius: "50%",
-              background: "rgba(196,67,27,0.12)",
-              border: "1px solid rgba(196,67,27,0.4)",
+              background: "rgba(255,255,255,0.08)",
+              border: "1px solid rgba(255,255,255,0.25)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               margin: "0 auto 36px",
             }}
           >
-            <span style={{ color: "#C4431B", fontSize: "22px" }}>&#10003;</span>
+            <span style={{ color: "#FAF8F6", fontSize: "22px" }}>&#10003;</span>
           </div>
           <p
             style={{
               fontSize: "11px",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
-              color: "#C4431B",
+              color: "#FAF8F6",
               fontFamily: "var(--font-sans, sans-serif)",
               marginBottom: "20px",
             }}
@@ -153,7 +153,7 @@ export default function ContactPage() {
             }}
           >
             We will be<br />
-            <span style={{ color: "#C4431B", fontStyle: "italic" }}>in touch.</span>
+            <span style={{ fontStyle: "italic" }}>in touch.</span>
           </h1>
           <p
             style={{
@@ -177,8 +177,8 @@ export default function ContactPage() {
               fontWeight: 600,
               letterSpacing: "0.12em",
               textTransform: "uppercase",
-              color: "#FFFFFF",
-              background: "#C4431B",
+              color: "#03080F",
+              background: "#FFFFFF",
               padding: "16px 40px",
               fontFamily: "var(--font-sans, sans-serif)",
               textDecoration: "none",
@@ -230,14 +230,14 @@ export default function ContactPage() {
             marginBottom: "clamp(24px, 4vw, 40px)",
           }}
         >
-          <div style={{ width: "28px", height: "2px", background: "#C4431B", flexShrink: 0 }} />
+          <div style={{ width: "28px", height: "2px", background: "#FAF8F6", flexShrink: 0 }} />
           <span
             style={{
               fontSize: "11px",
               fontWeight: 600,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
-              color: "#C4431B",
+              color: "#FAF8F6",
               fontFamily: "var(--font-sans, sans-serif)",
             }}
           >
@@ -258,7 +258,7 @@ export default function ContactPage() {
           }}
         >
           15 minutes.<br />
-          <span style={{ color: "#C4431B", fontStyle: "italic" }}>No pitch.</span>
+          <span style={{ fontStyle: "italic" }}>No pitch.</span>
         </h1>
 
         {/* Body */}
@@ -372,9 +372,9 @@ export default function ContactPage() {
                       fontFamily: "var(--font-sans, sans-serif)",
                       letterSpacing: "0.01em",
                       border: form.line_of_business === lob
-                        ? "1px solid #C4431B"
+                        ? "1px solid #111111"
                         : "1px solid #DDD8D0",
-                      background: form.line_of_business === lob ? "#C4431B" : "#FFFFFF",
+                      background: form.line_of_business === lob ? "#111111" : "#FFFFFF",
                       color: form.line_of_business === lob ? "#FFFFFF" : "#4A4A4A",
                       cursor: "pointer",
                       transition: "all 0.15s",
@@ -464,10 +464,10 @@ export default function ContactPage() {
               <div
                 style={{
                   padding: "14px 20px",
-                  background: "rgba(196,67,27,0.07)",
-                  border: "1px solid rgba(196,67,27,0.25)",
+                  background: "rgba(0,0,0,0.05)",
+                  border: "1px solid rgba(0,0,0,0.15)",
                   fontSize: "13px",
-                  color: "#C4431B",
+                  color: "#111111",
                   fontFamily: "var(--font-sans, sans-serif)",
                 }}
               >
@@ -495,7 +495,7 @@ export default function ContactPage() {
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   color: "#FFFFFF",
-                  background: status === "submitting" ? "#999" : "#C4431B",
+                  background: status === "submitting" ? "#999" : "#111111",
                   padding: "18px 48px",
                   border: "none",
                   cursor: status === "submitting" || !form.line_of_business ? "not-allowed" : "pointer",

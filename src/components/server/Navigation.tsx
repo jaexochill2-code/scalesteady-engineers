@@ -7,10 +7,10 @@ import { usePathname } from "next/navigation";
 import logoAbstract from "../../../public/brand/logos/scalesteady_clean_monogram.png";
 
 const NAV_LINKS = [
-  { href: "#approach", label: "How We Work" },
-  { href: "#pricing",  label: "The Offer"   },
-  { href: "#results",  label: "Results"     },
-  { href: "#team",     label: "Our Team"    },
+  { href: "/#approach", label: "How We Work" },
+  { href: "/#pricing",  label: "The Offer"   },
+  { href: "/#results",  label: "Results"     },
+  { href: "/#team",     label: "Our Team"    },
 ];
 
 export default function Navigation() {
@@ -33,9 +33,8 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isTransparent = pathname === "/" && !scrolled;
+  const isTransparent = (pathname === "/" || pathname === "/build") && !scrolled;
 
-  if (pathname === "/build") return null;
 
   return (
     <header
@@ -173,7 +172,7 @@ export default function Navigation() {
           style={{ 
             height: "100%", 
             width: `${scrollProgress}%`, 
-            background: isTransparent ? "#FFFFFF" : "#C4431B",
+            background: isTransparent ? "#FFFFFF" : "#0A0A0A",
             transition: "width 0.08s ease-out" 
           }} 
         />

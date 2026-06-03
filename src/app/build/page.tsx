@@ -130,18 +130,21 @@ export default function BuildPage() {
   }, [payPalLoaded]);
 
   return (
-    <div className="relative min-h-screen bg-[#050505] text-neutral-200 font-sans antialiased selection:bg-white/10 selection:text-white overflow-hidden">
+    <div 
+      className="relative min-h-screen font-sans antialiased selection:bg-neutral-900 selection:text-white overflow-hidden"
+      style={{ backgroundColor: "var(--canvas)", color: "var(--ink-primary)" }}
+    >
       
       {/* ── AURORA UI GLOWS ── */}
-      <div className="absolute top-[-5%] left-[-5%] w-[600px] h-[600px] rounded-full bg-[#1B4F8A]/5 blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-[-5%] left-[-5%] w-[600px] h-[600px] rounded-full bg-[#1B4F8A]/3 blur-[120px] pointer-events-none z-0" />
       <div className="absolute top-[35%] right-[-5%] w-[600px] h-[600px] rounded-full bg-white/5 blur-[130px] pointer-events-none z-0" />
-      <div className="absolute bottom-[15%] left-[-10%] w-[800px] h-[800px] rounded-full bg-[#1B4F8A]/5 blur-[150px] pointer-events-none z-0" />
+      <div className="absolute bottom-[15%] left-[-10%] w-[800px] h-[800px] rounded-full bg-[#1B4F8A]/3 blur-[150px] pointer-events-none z-0" />
       
       {/* Subtle Grid Overlay */}
       <div 
         className="absolute inset-0 pointer-events-none z-0" 
         style={{
-          backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px)",
           backgroundSize: "24px 24px"
         }}
       />
@@ -162,31 +165,31 @@ export default function BuildPage() {
 
 
         {/* 02 HERO */}
-        <section className="bg-[#050505] pt-28 pb-24 border-b border-[#1A1A1A] relative overflow-hidden">
+        <section className="bg-[var(--canvas)] pt-28 pb-24 border-b border-[var(--ink-border)] relative overflow-hidden">
 
           {/* Background bloom */}
-          <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] rounded-full bg-white/5 blur-[140px] pointer-events-none" />
+          <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] rounded-full bg-[#1B4F8A]/5 blur-[140px] pointer-events-none" />
           <div className="absolute bottom-0 left-[-5%] w-[500px] h-[400px] rounded-full bg-[#1B4F8A]/4 blur-[110px] pointer-events-none" />
-          <div className="absolute bottom-0 right-[-5%] w-[400px] h-[300px] rounded-full bg-white/5 blur-[90px] pointer-events-none" />
+          <div className="absolute bottom-0 right-[-5%] w-[400px] h-[300px] rounded-full bg-[#1B4F8A]/3 blur-[90px] pointer-events-none" />
 
           <div className="max-w-[900px] mx-auto px-6 text-center relative z-10">
 
             {/* Eyebrow */}
-            <span className="inline-flex items-center gap-2.5 px-5 py-2 text-[10px] font-bold tracking-widest uppercase bg-white/5 text-neutral-300 border border-white/10 rounded-full mb-14">
+            <span className="inline-flex items-center gap-2.5 px-5 py-2 text-[10px] font-bold tracking-widest uppercase bg-[#1B4F8A]/5 text-[#1B4F8A] border border-[#1B4F8A]/10 rounded-full mb-14">
               <span className="w-1.5 h-1.5 rounded-full bg-[#1B4F8A] animate-pulse flex-shrink-0" />
               HEALTH &amp; CONSTRUCTION &nbsp;&middot;&nbsp; PASS-THROUGH COST &nbsp;&middot;&nbsp; FULL ASSET OWNERSHIP
             </span>
 
             {/* 4-line typographic stack */}
             <h1 className="font-sans font-extrabold tracking-tight leading-[1.08] mb-12">
-              <span className="block text-4xl md:text-[62px] text-white">Built in 48 hrs.</span>
-              <span className="block text-4xl md:text-[62px] text-[#444444] font-light">Hardened in 14 days.</span>
-              <span className="block text-4xl md:text-[62px] text-white">Managed for 2 months.</span>
+              <span className="block text-4xl md:text-[62px] text-[#0C0C0E]">Built in 48 hrs.</span>
+              <span className="block text-4xl md:text-[62px] text-neutral-500 font-light">Hardened in 14 days.</span>
+              <span className="block text-4xl md:text-[62px] text-[#0C0C0E]">Managed for 2 months.</span>
               <span className="block text-4xl md:text-[62px] text-[#1B4F8A]">Yours to keep.</span>
             </h1>
 
             {/* Money line */}
-            <p className="font-mono text-sm md:text-base text-[#555555] tracking-wider mb-14">
+            <p className="font-mono text-sm md:text-base text-neutral-600 tracking-wider mb-14">
               $500 infrastructure cost &nbsp;&middot;&nbsp; $0 agency fees until you close revenue
             </p>
 
@@ -196,7 +199,7 @@ export default function BuildPage() {
                 onClick={scrollToAcceptance}
                 className="px-10 py-4 bg-[#1B4F8A] hover:bg-[#2660A8] text-white font-sans font-bold text-sm uppercase tracking-widest transition-all duration-200 hover:shadow-[0_0_40px_rgba(27,79,138,0.3)] active:scale-[0.98]"
               >
-                GET STARTED - $500
+                GET STARTED &mdash; $500
               </button>
               <span className="font-mono text-[11px] text-[#444444] tracking-wider">
                 Maximum exposure: $500. Everything else is ours to earn.
@@ -207,75 +210,75 @@ export default function BuildPage() {
         </section>
 
         {/* 03 VALUE COMPARISON - Retail cost vs ScaleSteady */}
-        <section className="bg-[#080809] border-b border-white/5 py-20 relative z-10">
+        <section className="bg-[#FFFFFF] border-b border-[var(--ink-border)] py-28 relative z-10">
           <div className="max-w-[1200px] mx-auto px-6">
             <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500 block mb-3 text-center">02 -- Cost Breakdown</span>
-            <h2 className="font-sans text-3xl md:text-4xl font-extrabold text-center tracking-tight text-white mb-4">
+            <h2 className="font-sans text-3xl md:text-4xl font-extrabold text-center tracking-tight text-[#0A0A0A] mb-4">
               Here is what you are <span className="text-[#1B4F8A] underline font-extrabold">not</span> paying
             </h2>
-          <p className="font-sans text-sm text-center text-neutral-400 mb-12 max-w-[600px] mx-auto font-medium">
+          <p className="font-sans text-sm text-center text-[#444444] mb-12 max-w-[600px] mx-auto font-medium">
             If you signed up for these tools yourself and hired someone to run them, this is the bill.
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
             
             {/* Retail Cost Bento Column */}
-            <div className="bento-card-dark lg:col-span-2 p-8 flex flex-col justify-between group">
+            <div className="bento-card-light lg:col-span-2 p-8 flex flex-col justify-between group">
               <div>
-                <h3 className="font-sans text-lg font-bold text-white mb-6 uppercase tracking-tight">Retail software and data costs</h3>
+                <h3 className="font-sans text-lg font-bold text-[#0A0A0A] mb-6 uppercase tracking-tight">Retail software and data costs</h3>
                 <div className="space-y-3 text-xs font-medium">
                   
-                  <div className="flex justify-between border-b border-white/5 pb-3 pt-1 transition-all duration-300 hover:translate-x-1.5 hover:text-white group/row1">
-                    <span className="text-neutral-400 group-hover/row1:text-white flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover/row1:bg-white transition-colors duration-300" />
+                  <div className="flex justify-between border-b border-[#DEDEDE] pb-3 pt-1 transition-all duration-300 hover:translate-x-1.5 hover:text-[#0A0A0A] group/row1">
+                    <span className="text-[#3A3A3A] group-hover/row1:text-[#0A0A0A] flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-black/10 group-hover/row1:bg-black transition-colors duration-300" />
                       25 professional business inboxes (@ $7.20/user/mo) <sup>[1]</sup>
                     </span>
-                    <span className="font-mono text-sm text-white font-bold transition-all duration-300 group-hover/row1:scale-105">$180.00</span>
+                    <span className="font-mono text-sm text-[#0A0A0A] font-bold transition-all duration-300 group-hover/row1:scale-105">$180.00</span>
                   </div>
 
-                  <div className="flex justify-between border-b border-white/5 pb-3 pt-1 transition-all duration-300 hover:translate-x-1.5 hover:text-white group/row2">
-                    <span className="text-neutral-400 group-hover/row2:text-white flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover/row2:bg-white transition-colors duration-300" />
+                  <div className="flex justify-between border-b border-[#DEDEDE] pb-3 pt-1 transition-all duration-300 hover:translate-x-1.5 hover:text-[#0A0A0A] group/row2">
+                    <span className="text-[#3A3A3A] group-hover/row2:text-[#0A0A0A] flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-black/10 group-hover/row2:bg-black transition-colors duration-300" />
                       5 domains (Namecheap .com registration) <sup>[2]</sup>
                     </span>
-                    <span className="font-mono text-sm text-white font-bold transition-all duration-300 group-hover/row2:scale-105">$40.00</span>
+                    <span className="font-mono text-sm text-[#0A0A0A] font-bold transition-all duration-300 group-hover/row2:scale-105">$40.00</span>
                   </div>
 
-                  <div className="flex justify-between border-b border-white/5 pb-3 pt-1 transition-all duration-300 hover:translate-x-1.5 hover:text-white group/row3">
-                    <span className="text-neutral-400 group-hover/row3:text-white flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover/row3:bg-white transition-colors duration-300" />
+                  <div className="flex justify-between border-b border-[#DEDEDE] pb-3 pt-1 transition-all duration-300 hover:translate-x-1.5 hover:text-[#0A0A0A] group/row3">
+                    <span className="text-[#3A3A3A] group-hover/row3:text-[#0A0A0A] flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-black/10 group-hover/row3:bg-black transition-colors duration-300" />
                       10,000 lead list exports (Apollo.io Professional plan) <sup>[3]</sup>
                     </span>
-                    <span className="font-mono text-sm text-white font-bold transition-all duration-300 group-hover/row3:scale-105">$500.00</span>
+                    <span className="font-mono text-sm text-[#0A0A0A] font-bold transition-all duration-300 group-hover/row3:scale-105">$500.00</span>
                   </div>
 
-                  <div className="flex justify-between border-b border-white/5 pb-3 pt-1 transition-all duration-300 hover:translate-x-1.5 hover:text-white group/row4">
-                    <span className="text-neutral-400 group-hover/row4:text-white flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover/row4:bg-white transition-colors duration-300" />
+                  <div className="flex justify-between border-b border-[#DEDEDE] pb-3 pt-1 transition-all duration-300 hover:translate-x-1.5 hover:text-[#0A0A0A] group/row4">
+                    <span className="text-[#3A3A3A] group-hover/row4:text-[#0A0A0A] flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-black/10 group-hover/row4:bg-black transition-colors duration-300" />
                       Email sending & warm-up software (Instantly or Smartlead plan) <sup>[4]</sup>
                     </span>
-                    <span className="font-mono text-sm text-white font-bold transition-all duration-300 group-hover/row4:scale-105">$120.00</span>
+                    <span className="font-mono text-sm text-[#0A0A0A] font-bold transition-all duration-300 group-hover/row4:scale-105">$120.00</span>
                   </div>
 
-                  <div className="flex justify-between pb-1 pt-1 transition-all duration-300 hover:translate-x-1.5 hover:text-white group/row5">
-                    <span className="text-neutral-400 group-hover/row5:text-white flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover/row5:bg-white transition-colors duration-300" />
+                  <div className="flex justify-between pb-1 pt-1 transition-all duration-300 hover:translate-x-1.5 hover:text-[#0A0A0A] group/row5">
+                    <span className="text-[#3A3A3A] group-hover/row5:text-[#0A0A0A] flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-black/10 group-hover/row5:bg-black transition-colors duration-300" />
                       Email list verification (MillionVerifier lookup credits) <sup>[5]</sup>
                     </span>
-                    <span className="font-mono text-sm text-white font-bold transition-all duration-300 group-hover/row5:scale-105">$35.00</span>
+                    <span className="font-mono text-sm text-[#0A0A0A] font-bold transition-all duration-300 group-hover/row5:scale-105">$35.00</span>
                   </div>
 
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/5">
+              <div className="mt-8 pt-6 border-t border-[#DEDEDE]">
                 <div className="flex justify-between items-end mb-2">
-                  <span className="font-sans text-xs uppercase tracking-wider text-neutral-400 font-bold">Estimated Retail Total</span>
-                  <span className="font-mono text-[10px] text-neutral-500">(software only, no labor)</span>
+                  <span className="font-sans text-xs uppercase tracking-wider text-[#444444] font-bold">Estimated Retail Total</span>
+                  <span className="font-mono text-[10px] text-[#888888]">(software only, no labor)</span>
                 </div>
                 <div className="text-right">
-                  <span className="font-mono text-5xl md:text-6xl font-extrabold text-neutral-500 line-through opacity-50">$875</span>
-                  <span className="font-mono text-lg font-bold text-neutral-300 block mt-1">...and you still have to build it yourself</span>
+                  <span className="font-mono text-5xl md:text-6xl font-extrabold text-neutral-400 line-through opacity-60">$875</span>
+                  <span className="font-mono text-lg font-bold text-[#0A0A0A] block mt-1">...and you still have to build it yourself</span>
                 </div>
               </div>
             </div>
@@ -338,14 +341,14 @@ export default function BuildPage() {
                 </ul>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/5 relative z-10">
+              <div className="mt-8 pt-6 border-t border-[#222222] relative z-10">
                 <div className="mb-4 p-4 bg-white/5 border border-white/10 rounded-xl">
                   <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-wider font-bold block mb-1">What you actually pay</span>
                   <span className="font-mono text-4xl font-extrabold text-white">$500</span>
-                  <span className="font-sans text-xs text-neutral-500 block mt-1">One-time flat cost -- 100% goes to your vendor accounts. We retain zero.</span>
+                  <span className="font-sans text-xs text-neutral-500 block mt-1">One-time flat cost &mdash; 100% goes to your vendor accounts. We retain zero.</span>
                 </div>
-                <div className="p-3 bg-[#1B4F8A]/10 border border-[#1B4F8A]/20 rounded-lg text-center font-mono">
-                  <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">You save at minimum</span>
+                <div className="p-3 bg-white/5 border border-white/10 rounded-lg text-center font-mono">
+                  <span className="text-[10px] text-[#888888] uppercase tracking-wider block">You save at minimum</span>
                   <span className="text-2xl font-extrabold text-[#1B4F8A] block mt-1">$375 + 60 days of free labor</span>
                 </div>
               </div>
@@ -357,21 +360,21 @@ export default function BuildPage() {
           <div className="mt-8 space-y-0">
 
             {/* Beat 1: The Agency Math */}
-            <div className="bento-card-dark rounded-b-none p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6 shadow-md border-b-0 hover:translate-y-0">
+            <div className="bento-card-light rounded-b-none p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6 shadow-md border-b-0 hover:translate-y-0">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-neutral-500" />
-                  <h4 className="font-sans text-xs font-extrabold uppercase tracking-widest text-white">
+                  <span className="w-2 h-2 rounded-full bg-neutral-400" />
+                  <h4 className="font-sans text-xs font-extrabold uppercase tracking-widest text-[#0A0A0A]">
                     The Agency Alternative
                   </h4>
                 </div>
-                <p className="font-sans text-xs text-neutral-400 leading-relaxed max-w-[760px] font-medium">
+                <p className="font-sans text-xs text-[#444444] leading-relaxed max-w-[760px] font-medium">
                   Typical marketing agencies charge an upfront fee between <strong>$1,500 and $5,000</strong> to set this up <sup>[7]</sup>, plus a monthly retainer between <strong>$3,000 and $7,000</strong> <sup>[6]</sup>. They usually lock you into a 6-month contract -- and still pass the $875 software bill to your credit card.
                 </p>
               </div>
-              <div className="flex-shrink-0 bg-white/5 shadow-sm border border-white/10 px-6 py-4 rounded-2xl text-center font-mono transition-transform duration-300 hover:scale-[1.03]">
-                <span className="block text-[9px] text-neutral-400 uppercase font-bold tracking-wider mb-1">ScaleSteady Agency Fee</span>
-                <span className="text-base font-extrabold text-white">$0.00 / Mo</span>
+              <div className="flex-shrink-0 bg-white/95 shadow-sm border border-[#DEDEDE] px-6 py-4 rounded-2xl text-center font-mono transition-transform duration-300 hover:scale-[1.03]">
+                <span className="block text-[9px] text-[#666666] uppercase font-bold tracking-wider mb-1">ScaleSteady Agency Fee</span>
+                <span className="text-base font-extrabold text-neutral-900">$0.00 / Mo</span>
               </div>
             </div>
 
@@ -395,7 +398,7 @@ export default function BuildPage() {
                   So we go first. That is not a marketing angle -- it is how we decided to run this business. The clients who have found success with us came the same way you did. We proved it before we pitched it.
                 </p>
 
-                <div className="border-t border-white/10" />
+                <div className="border-t border-white/8" />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
@@ -421,7 +424,7 @@ export default function BuildPage() {
           </div>
 
           {/* Citations Footer */}
-          <div className="mt-6 text-[10px] text-neutral-500 leading-relaxed space-y-1">
+          <div className="mt-6 text-[10px] text-[#666666] leading-relaxed space-y-1">
             <p><sup>[1]</sup> Professional business email hosting baseline pricing plans</p>
             <p><sup>[2]</sup> Namecheap domain registration baseline registry listings: namecheap.com</p>
             <p><sup>[3]</sup> Apollo.io Professional credit limits and base export pricing: apollo.io/pricing</p>
@@ -434,99 +437,99 @@ export default function BuildPage() {
         </section>
 
         {/* 04 WHAT'S INCLUDED - Asymmetric Bento Grid */}
-        <section className="py-20 bg-[#050505] border-b border-white/5 relative z-10">
+        <section className="py-20 bg-white border-b border-neutral-200 relative z-10">
           <div className="max-w-[1200px] mx-auto px-6">
-            <h2 className="font-sans text-2xl md:text-3xl font-extrabold text-center tracking-tight text-white mb-12">
+            <h2 className="font-sans text-2xl md:text-3xl font-extrabold text-center tracking-tight text-[#0A0A0A] mb-12">
               Deliverables built directly for your business
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               
               {/* Bento Card 1: 20,000 Outreach Sends */}
-              <div className="bento-card-dark lg:col-span-2 p-8 flex flex-col justify-between">
+              <div className="bento-card-light lg:col-span-2 p-8 flex flex-col justify-between">
                 <div className="flex flex-col gap-3">
                   <div className="flex justify-between items-center">
-                    <span className="font-mono text-xs text-neutral-500 font-semibold uppercase tracking-wider">TOS §1.3 (a)</span>
-                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold bg-white/10 text-neutral-300 rounded">CAPACITY</span>
+                    <span className="font-mono text-xs text-[#444444] font-semibold uppercase tracking-wider">TOS §1.3 (a)</span>
+                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold bg-[#E8E8E8] text-[#262626] rounded">CAPACITY</span>
                   </div>
-                  <h3 className="font-sans text-xl font-bold text-white">20,000 Highly Targeted Sends</h3>
-                  <p className="font-sans text-sm text-neutral-300 leading-relaxed">
+                  <h3 className="font-sans text-xl font-bold text-[#0A0A0A]">20,000 Highly Targeted Sends</h3>
+                  <p className="font-sans text-sm text-[#262626] leading-relaxed">
                     Deployment of dedicated sending domains and warmed email inboxes, configured to send a minimum of 20,000 highly targeted emails across your campaign cycle.
                   </p>
                 </div>
-                <div className="mt-6 border-t border-white/5 pt-4 flex gap-4 text-xs font-mono text-neutral-400">
-                  <div><span className="text-emerald-500 font-bold">●</span> SPF: Configured</div>
-                  <div><span className="text-emerald-500 font-bold">●</span> DKIM: Verified</div>
-                  <div><span className="text-emerald-500 font-bold">●</span> DMARC: Enforced</div>
+                <div className="mt-6 border-t border-[#DEDEDE] pt-4 flex gap-4 text-xs font-mono text-[#444444]">
+                  <div><span className="text-emerald-600 font-bold">●</span> SPF: Configured</div>
+                  <div><span className="text-emerald-600 font-bold">●</span> DKIM: Verified</div>
+                  <div><span className="text-emerald-600 font-bold">●</span> DMARC: Enforced</div>
                 </div>
               </div>
 
               {/* Bento Card 2: 10,000 Verified Leads */}
-              <div className="bento-card-dark p-8 flex flex-col justify-between">
+              <div className="bento-card-light p-8 flex flex-col justify-between">
                 <div className="flex flex-col gap-3">
                   <div className="flex justify-between items-center">
-                    <span className="font-mono text-xs text-neutral-500 font-semibold uppercase tracking-wider">TOS §1.3 (b)</span>
-                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold bg-white/10 text-neutral-300 rounded">DATA</span>
+                    <span className="font-mono text-xs text-[#444444] font-semibold uppercase tracking-wider">TOS §1.3 (b)</span>
+                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold bg-[#E8E8E8] text-[#262626] rounded">DATA</span>
                   </div>
-                  <h3 className="font-sans text-xl font-bold text-white">10,000 Verified ICP Leads</h3>
-                  <p className="font-sans text-sm text-neutral-300 leading-relaxed">
+                  <h3 className="font-sans text-xl font-bold text-[#0A0A0A]">10,000 Verified ICP Leads</h3>
+                  <p className="font-sans text-sm text-[#262626] leading-relaxed">
                     Sourcing and delivery of a minimum of 10,000 verified and cleaned business email addresses drawn from your target ideal prospect profile.
                   </p>
                 </div>
-                <div className="mt-6 border-t border-white/5 pt-4 flex justify-between text-xs font-mono text-neutral-400">
+                <div className="mt-6 border-t border-[#DEDEDE] pt-4 flex justify-between text-xs font-mono text-[#444444]">
                   <span>Cleaned & Validated</span>
-                  <span className="text-emerald-500 font-bold">99.8% Accuracy</span>
+                  <span className="text-emerald-600 font-bold">99.8% Accuracy</span>
                 </div>
               </div>
 
               {/* Bento Card 3: 2 Custom Angles */}
-              <div className="bento-card-dark p-8 flex flex-col justify-between">
+              <div className="bento-card-light p-8 flex flex-col justify-between">
                 <div className="flex flex-col gap-3">
                   <div className="flex justify-between items-center">
-                    <span className="font-mono text-xs text-neutral-500 font-semibold uppercase tracking-wider">TOS §1.3 (c)</span>
-                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold bg-white/10 text-neutral-300 rounded">COPY</span>
+                    <span className="font-mono text-xs text-[#444444] font-semibold uppercase tracking-wider">TOS §1.3 (c)</span>
+                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold bg-[#E8E8E8] text-[#262626] rounded">COPY</span>
                   </div>
-                  <h3 className="font-sans text-xl font-bold text-white">2 Distinct Market Angles</h3>
-                  <p className="font-sans text-sm text-neutral-300 leading-relaxed">
+                  <h3 className="font-sans text-xl font-bold text-[#0A0A0A]">2 Distinct Market Angles</h3>
+                  <p className="font-sans text-sm text-[#262626] leading-relaxed">
                     Development of two distinct marketing angles, each custom-tailored to a segment of your ideal client profile to maximize outreach relevance.
                   </p>
                 </div>
-                <div className="mt-6 border-t border-white/5 pt-4 flex gap-2">
-                  <span className="px-2 py-0.5 text-[10px] font-mono bg-white/5 border border-white/10 text-neutral-300">Angle A: Direct</span>
-                  <span className="px-2 py-0.5 text-[10px] font-mono bg-white/5 border border-white/10 text-neutral-300">Angle B: Story</span>
+                <div className="mt-6 border-t border-[#DEDEDE] pt-4 flex gap-2">
+                  <span className="px-2 py-0.5 text-[10px] font-mono bg-white border border-[#DEDEDE] text-[#262626]">Angle A: Direct</span>
+                  <span className="px-2 py-0.5 text-[10px] font-mono bg-white border border-[#DEDEDE] text-[#262626]">Angle B: Story</span>
                 </div>
               </div>
 
               {/* Bento Card 4: 3 Follow-up Steps */}
-              <div className="bento-card-dark p-8 flex flex-col justify-between">
+              <div className="bento-card-light p-8 flex flex-col justify-between">
                 <div className="flex flex-col gap-3">
                   <div className="flex justify-between items-center">
-                    <span className="font-mono text-xs text-neutral-500 font-semibold uppercase tracking-wider">TOS §1.3 (d)</span>
-                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold bg-white/10 text-neutral-300 rounded">FLOW</span>
+                    <span className="font-mono text-xs text-[#444444] font-semibold uppercase tracking-wider">TOS §1.3 (d)</span>
+                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold bg-[#E8E8E8] text-[#262626] rounded">FLOW</span>
                   </div>
-                  <h3 className="font-sans text-xl font-bold text-white">3 Sequence Follow-ups</h3>
-                  <p className="font-sans text-sm text-neutral-300 leading-relaxed">
+                  <h3 className="font-sans text-xl font-bold text-[#0A0A0A]">3 Sequence Follow-ups</h3>
+                  <p className="font-sans text-sm text-[#262626] leading-relaxed">
                     Creation of three follow-up email sequences written specifically to engage and pull responses from prospects who did not reply to the initial message.
                   </p>
                 </div>
-                <div className="mt-6 border-t border-white/5 pt-4 flex gap-2 font-mono text-xs text-neutral-400">
-                  <span>Step 1</span> &rarr; <span>Step 2</span> &rarr; <span>Step 3</span>
+                <div className="mt-6 border-t border-[#DEDEDE] pt-4 flex gap-2 font-mono text-xs text-[#444444]">
+                  <span>Step 1</span> → <span>Step 2</span> → <span>Step 3</span>
                 </div>
               </div>
 
               {/* Bento Card 5: Managed Campaign Operations */}
-              <div className="bento-card-dark lg:col-span-2 p-8 flex flex-col justify-between">
+              <div className="bento-card-light lg:col-span-2 p-8 flex flex-col justify-between">
                 <div className="flex flex-col gap-3">
                   <div className="flex justify-between items-center">
-                    <span className="font-mono text-xs text-neutral-500 font-semibold uppercase tracking-wider">TOS §1.3 (e, f)</span>
-                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold bg-white/10 text-neutral-300 rounded">OPS</span>
+                    <span className="font-mono text-xs text-[#444444] font-semibold uppercase tracking-wider">TOS §1.3 (e, f)</span>
+                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold bg-[#E8E8E8] text-[#262626] rounded">OPS</span>
                   </div>
-                  <h3 className="font-sans text-xl font-bold text-white">Managed Campaign Operations</h3>
-                  <p className="font-sans text-sm text-neutral-300 leading-relaxed">
+                  <h3 className="font-sans text-xl font-bold text-[#0A0A0A]">Managed Campaign Operations</h3>
+                  <p className="font-sans text-sm text-[#262626] leading-relaxed">
                     Full campaign execution including active inbox monitoring, bounce rate reduction, qualified response purification, booking coordination, and monthly alignment reviews.
                   </p>
                 </div>
-                <div className="mt-6 border-t border-white/5 pt-4 grid grid-cols-2 md:grid-cols-3 gap-2 text-xs font-mono text-neutral-300">
+                <div className="mt-6 border-t border-[#DEDEDE] pt-4 grid grid-cols-2 md:grid-cols-3 gap-2 text-xs font-mono text-[#262626]">
                   <div>✓ Inbox Monitoring</div>
                   <div>✓ Meeting Coordination</div>
                   <div>✓ Monthly Review</div>
@@ -681,59 +684,59 @@ export default function BuildPage() {
         </section>
 
         {/* 06 ASSET OWNERSHIP */}
-        <section className="py-20 bg-[#050505] border-b border-white/5 relative z-10">
+        <section className="py-20 bg-[#FAF8F6] border-b border-neutral-200 relative z-10">
           <div className="max-w-[1100px] mx-auto px-6">
 
             <div className="text-center mb-12">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500 block mb-3">06 -- Ownership</span>
-              <h2 className="font-sans text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-4">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#888888] block mb-3">06 -- Ownership</span>
+              <h2 className="font-sans text-2xl md:text-3xl font-extrabold tracking-tight text-[#0A0A0A] mb-4">
                 Everything we build is your property
               </h2>
-              <p className="font-sans text-sm text-neutral-400 font-medium max-w-[540px] mx-auto">
+              <p className="font-sans text-sm text-[#444444] font-medium max-w-[540px] mx-auto">
                 Sourced from Section 3.1 of the signed Terms of Service. This is not a promise -- it is a legal obligation.
               </p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
 
-              <div className="bento-card-dark border-l-4 border-l-[#1B4F8A] p-6 hover:translate-y-[-2px]">
-                <div className="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-white/5">
-                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <div className="bento-card-light border-l-4 border-l-[#1B4F8A] p-6 hover:translate-y-[-2px]">
+                <div className="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-[#0A0A0A]/5">
+                  <svg className="w-5 h-5 text-[#0A0A0A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9" />
                   </svg>
                 </div>
-                <span className="font-sans text-sm font-bold text-white block mb-1">5 Domains</span>
-                <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-wider font-bold">Yours from Day 1</span>
+                <span className="font-sans text-sm font-bold text-[#0A0A0A] block mb-1">5 Domains</span>
+                <span className="font-mono text-[10px] text-[#666666] uppercase tracking-wider font-bold">Yours from Day 1</span>
               </div>
 
-              <div className="bento-card-dark border-l-4 border-l-[#1B4F8A] p-6 hover:translate-y-[-2px]">
-                <div className="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-white/5">
-                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <div className="bento-card-light border-l-4 border-l-[#1B4F8A] p-6 hover:translate-y-[-2px]">
+                <div className="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-[#0A0A0A]/5">
+                  <svg className="w-5 h-5 text-[#0A0A0A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <span className="font-sans text-sm font-bold text-white block mb-1">25 Inboxes</span>
-                <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-wider font-bold">Yours from Day 1</span>
+                <span className="font-sans text-sm font-bold text-[#0A0A0A] block mb-1">25 Inboxes</span>
+                <span className="font-mono text-[10px] text-[#666666] uppercase tracking-wider font-bold">Yours from Day 1</span>
               </div>
 
-              <div className="bento-card-dark border-l-4 border-l-[#1B4F8A] p-6 hover:translate-y-[-2px]">
-                <div className="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-white/5">
-                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <div className="bento-card-light border-l-4 border-l-[#1B4F8A] p-6 hover:translate-y-[-2px]">
+                <div className="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-[#0A0A0A]/5">
+                  <svg className="w-5 h-5 text-[#0A0A0A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" />
                   </svg>
                 </div>
-                <span className="font-sans text-sm font-bold text-white block mb-1">10,000 Leads</span>
-                <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-wider font-bold">Yours from Day 1</span>
+                <span className="font-sans text-sm font-bold text-[#0A0A0A] block mb-1">10,000 Leads</span>
+                <span className="font-mono text-[10px] text-[#666666] uppercase tracking-wider font-bold">Yours from Day 1</span>
               </div>
 
-              <div className="bento-card-dark border-l-4 border-l-[#1B4F8A] p-6 hover:translate-y-[-2px]">
-                <div className="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-white/5">
-                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <div className="bento-card-light border-l-4 border-l-[#1B4F8A] p-6 hover:translate-y-[-2px]">
+                <div className="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-[#0A0A0A]/5">
+                  <svg className="w-5 h-5 text-[#0A0A0A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
-                <span className="font-sans text-sm font-bold text-white block mb-1">Email Sequences</span>
-                <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-wider font-bold">Yours from Day 1</span>
+                <span className="font-sans text-sm font-bold text-[#0A0A0A] block mb-1">Email Sequences</span>
+                <span className="font-mono text-[10px] text-[#666666] uppercase tracking-wider font-bold">Yours from Day 1</span>
               </div>
 
             </div>
@@ -775,10 +778,9 @@ export default function BuildPage() {
                   </p>
                   <ul className="space-y-2 text-xs text-[#444444]">
                     <li className="flex items-center gap-2"><span className="text-emerald-600 font-bold">&#10003;</span> All domains transferred to you</li>
-                    <li className="flex items-center gap-2"><span className="text-[#1B4F8A] font-bold">&#10003;</span> All domains transferred to you</li>
-                    <li className="flex items-center gap-2"><span className="text-[#1B4F8A] font-bold">&#10003;</span> All inboxes transferred to you</li>
-                    <li className="flex items-center gap-2"><span className="text-[#1B4F8A] font-bold">&#10003;</span> Full lead list export delivered</li>
-                    <li className="flex items-center gap-2"><span className="text-[#1B4F8A] font-bold">&#10003;</span> All copy sequences handed over</li>
+                    <li className="flex items-center gap-2"><span className="text-emerald-600 font-bold">&#10003;</span> All inboxes transferred to you</li>
+                    <li className="flex items-center gap-2"><span className="text-emerald-600 font-bold">&#10003;</span> Full lead list export delivered</li>
+                    <li className="flex items-center gap-2"><span className="text-emerald-600 font-bold">&#10003;</span> All copy sequences handed over</li>
                   </ul>
                 </div>
                 <p className="font-mono text-sm font-bold text-[#0A0A0A] mt-8">$0 additional fees</p>
@@ -796,7 +798,7 @@ export default function BuildPage() {
                   </div>
                   <h3 className="font-sans text-2xl font-extrabold mb-4 text-white">Keep Scaling</h3>
                   <p className="font-sans text-sm text-[#AAAAAA] leading-relaxed mb-6">
-                    Retain ScaleSteady to actively manage, optimize, and scale your outbound campaign. Includes database refreshes, continuous copywriting, and inbox deliverability management.
+                    Retain ScaleSteady to actively manage, optimize, and scale your outbound campaign. Includes database refreshes, continuous copy sequencing, and inbox deliverability management.
                   </p>
                   <ul className="space-y-2 text-xs text-[#AAAAAA]">
                     <li className="flex items-center gap-2"><span className="text-[#1B4F8A] font-bold">&#10003;</span> Continuous lead list refreshes</li>
@@ -813,70 +815,70 @@ export default function BuildPage() {
         </section>
 
         {/* 08 PLAIN-ENGLISH TOS SUMMARY */}
-        <section className="py-20 bg-[#0D0D0E] border-b border-white/5 relative z-10">
+        <section className="py-20 bg-[#F5F5F7] border-b border-[#DEDEDE] relative z-10">
           <div className="max-w-[800px] mx-auto px-6">
-            <h2 className="font-sans text-2xl md:text-3xl font-extrabold text-center tracking-tight text-white mb-4">
+            <h2 className="font-sans text-2xl md:text-3xl font-extrabold text-center tracking-tight text-[#0A0A0A] mb-4">
               Terms of Service Plain-English Summary
             </h2>
-            <p className="font-sans text-xs text-center text-neutral-400 mb-12 font-medium">
+            <p className="font-sans text-xs text-center text-[#444444] mb-12 font-medium">
               Every commitment we make is documented in standard, readable contract clauses.
             </p>
 
             <div className="space-y-4 mb-10">
 
-              <div className="bento-card-dark bg-[#0A0A0A]/40 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-400 font-semibold block mb-1">Section 1 | What We Deliver</span>
-                <p className="font-sans text-sm text-neutral-300 leading-relaxed">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 1 | What We Deliver</span>
+                <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   ScaleSteady deploys dedicated sending domains and warmed inboxes (minimum 20,000 sends), sources and cleans a minimum of 10,000 verified B2B leads, develops two distinct marketing angles with three follow-up sequences, and manages active inbox monitoring, response coordination, and campaign reviews throughout the 60-day engagement. (§1.3)
                 </p>
               </div>
 
-              <div className="bento-card-dark bg-[#0A0A0A]/40 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-400 font-semibold block mb-1">Section 2 | Pass-Through Cost Model</span>
-                <p className="font-sans text-sm text-neutral-300 leading-relaxed">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 2 | Pass-Through Cost Model</span>
+                <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   The $500 Infrastructure Fee is remitted in full to third-party vendors -- domain registrars, email data providers, and warm-up platforms. ScaleSteady retains zero markup. All agency, labor, copywriting, and management fees are deferred until the Revenue Milestone is achieved. (§2.1 -- §2.3)
                 </p>
               </div>
 
-              <div className="bento-card-dark bg-[#0A0A0A]/40 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-400 font-semibold block mb-1">Section 3 | Asset Ownership</span>
-                <p className="font-sans text-sm text-neutral-300 leading-relaxed">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 3 | Asset Ownership</span>
+                <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   All domain names, email inboxes, lead lists, and outbound sequences are the sole property of the Client from the moment of purchase or creation. Upon termination for any reason, all assets are transferred to the Client within 10 business days. ScaleSteady retains no title, equity, or licensing rights. (§3.1, §3.4)
                 </p>
               </div>
 
-              <div className="bento-card-dark bg-[#0A0A0A]/40 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-400 font-semibold block mb-1">Section 6 -- 7 | Revenue Milestone and Downside Protection</span>
-                <p className="font-sans text-sm text-neutral-300 leading-relaxed">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 6 -- 7 | Revenue Milestone and Downside Protection</span>
+                <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   The Revenue Milestone is $5,000 in new, cleared revenue attributable to the campaign. If the Milestone is not achieved within 60 days, ScaleSteady waives all claims to labor compensation, the Client retains all assets, and no further fees of any kind are owed. Client maximum financial exposure is $500, regardless of outcome. (§6.1, §7.3)
                 </p>
               </div>
 
-              <div className="bento-card-dark bg-[#0A0A0A]/40 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-400 font-semibold block mb-1">Section 9 | Post-Milestone Election</span>
-                <p className="font-sans text-sm text-neutral-300 leading-relaxed">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 9 | Post-Milestone Election</span>
+                <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   Upon verified Milestone achievement, the Client elects Option A (ongoing retainer at $699/month, 12-month commitment with 30-day cancellation notice) or Option B (conclude engagement, retain 100% of all assets, owe nothing further). Failure to elect within 14 days defaults to Option B. (§9.1 -- §9.3)
                 </p>
               </div>
 
-              <div className="bento-card-dark bg-[#0A0A0A]/40 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-400 font-semibold block mb-1">Section 10 | Refund Policy</span>
-                <p className="font-sans text-sm text-neutral-300 leading-relaxed">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 10 | Refund Policy</span>
+                <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   Full refund is available only if requested before ScaleSteady executes any vendor purchases. Once domain registration, inbox provisioning, lead list acquisition, or warm-up enrollment has been executed, the Infrastructure Fee is non-refundable in whole or in part. ScaleSteady earns no margin on these purchases and has no funds to return. No labor fee is collected during the campaign phase and therefore none is subject to refund. (§10.2 -- §10.4)
                 </p>
               </div>
 
-              <div className="bento-card-dark bg-[#0A0A0A]/40 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-400 font-semibold block mb-1">Section 13 | Limitation of Liability</span>
-                <p className="font-sans text-sm text-neutral-300 leading-relaxed">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 13 | Limitation of Liability</span>
+                <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   ScaleSteady's total aggregate liability is capped at $500 -- the Infrastructure Fee paid. ScaleSteady is not liable for indirect, consequential, or punitive damages including lost profits or lost revenue. ScaleSteady is not liable for service interruptions or policy changes by third-party platforms, registrars, or data vendors. (§13.1 -- §13.3)
                 </p>
               </div>
 
-              <div className="bento-card-dark bg-[#0A0A0A]/40 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-400 font-semibold block mb-1">Section 14 | Dispute Resolution</span>
-                <p className="font-sans text-sm text-neutral-300 leading-relaxed">
-                  Disputes are resolved first through 15-day good faith negotiation, then non-binding mediation (costs shared equally), then litigation in a court of competent jurisdiction. Both parties waive the right to a jury trial by signing this Agreement. (§14.1 -- §14.3)
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 14 | Dispute Resolution</span>
+                <p className="font-sans text-sm text-[#262626] leading-relaxed">
+                  Disputes are resolved first through 15-day good faith negotiation, then non-binding mediation (costs shared equally), then litigation in a court of competent jurisdiction. Both parties waive the right to a jury trial by signing this Agreement. (&sect;14.1 &mdash; &sect;14.3)
                 </p>
               </div>
 
@@ -886,23 +888,23 @@ export default function BuildPage() {
               <button
                 type="button"
                 onClick={() => setShowTOS(!showTOS)}
-                className="font-sans text-xs font-bold uppercase tracking-wider text-white hover:text-neutral-300 border-b-2 border-white/40 pb-0.5 transition-colors"
+                className="font-sans text-xs font-bold uppercase tracking-wider text-[#0A0A0A] hover:text-[#444444] border-b-2 border-[#0A0A0A] pb-0.5 transition-colors"
               >
                 {showTOS ? "Hide Full Terms of Service" : "View Full Terms of Service"}
               </button>
             </div>
 
             {showTOS && (
-              <div className="mt-8 border border-white/10 bg-[#080809] p-6 max-h-[600px] overflow-y-scroll text-xs text-neutral-300 font-mono leading-relaxed space-y-4 rounded-xl shadow-inner">
+              <div className="mt-8 border border-[#DEDEDE] bg-white p-6 max-h-[600px] overflow-y-scroll text-xs text-[#262626] font-mono leading-relaxed space-y-4 rounded-xl shadow-inner">
                 
                 <h3 className="font-sans font-bold text-sm text-[#0A0A0A] uppercase tracking-tight">ScaleSteady LLC -- Terms of Service and Client Service Agreement</h3>
                 <p><strong>Entity:</strong> ScaleSteady LLC</p>
                 <p><strong>Effective Date:</strong> Date of Client Execution</p>
                 <hr className="border-[#DEDEDE] my-3" />
-                <p className="italic text-neutral-400">This document is written to be understood, not to intimidate. If any section is unclear, reach out before signing.</p>
-                <hr className="border-white/10 my-3" />
+                <p className="italic text-[#444444]">This document is written to be understood, not to intimidate. If any section is unclear, reach out before signing.</p>
+                <hr className="border-[#DEDEDE] my-3" />
 
-                <h4 className="font-sans font-bold text-white uppercase mt-4">PART I -- Standard Service Terms</h4>
+                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">PART I -- Standard Service Terms</h4>
 
                 <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 1 -- Scope of Services</h4>
                 <p>1.1 DEFINED DELIVERABLES. ScaleSteady agrees to provide services explicitly described in the Client's accepted proposal or onboarding agreement (the "Scope of Work" or "SOW"). Services not itemized in the SOW are outside scope and will not be performed without a written addendum executed by both parties.</p>
@@ -994,8 +996,8 @@ export default function BuildPage() {
                 <p>15.5 INDEPENDENT CONTRACTORS. The parties are independent contractors. Nothing in this Agreement creates a partnership, joint venture, employment, or agency relationship.</p>
                 <p>15.6 NOTICES. All formal notices shall be delivered in writing via email to the designated contact of each party, with confirmation of receipt. Notices are effective upon confirmed delivery.</p>
 
-                <hr className="border-white/10 my-4" />
-                <p className="font-bold text-white">EXECUTION. By signing below, each party confirms they have read, understood, and agree to the terms of this Agreement in full, including the Jury Trial Waiver set forth in Section 14.</p>
+                <hr className="border-[#DEDEDE] my-4" />
+                <p className="font-bold">EXECUTION. By signing below, each party confirms they have read, understood, and agree to the terms of this Agreement in full, including the Jury Trial Waiver set forth in Section 14.</p>
               </div>
             )}
 
@@ -1003,7 +1005,7 @@ export default function BuildPage() {
         </section>
 
         {/* 09 ACCEPTANCE ZONE - Glassmorphic Bento Checkout Panel */}
-        <section ref={acceptanceRef} id="acceptance" className="py-20 bg-[#050505] border-b border-white/5 relative z-10">
+        <section ref={acceptanceRef} id="acceptance" className="py-20 bg-[#F9F9FB] border-b border-neutral-200 relative z-10">
           <div className="max-w-[720px] mx-auto px-6">
             
             <div className="bento-card-dark text-white bg-[#0D0D0E]/80 backdrop-blur-2xl border-white/10 p-8 md:p-12 shadow-[0_24px_64px_rgba(0,0,0,0.8)] relative z-10">
@@ -1119,12 +1121,12 @@ export default function BuildPage() {
                 )}
               </div>
 
-              <div className="mt-8 text-center border-t border-white/10 pt-6 flex flex-col items-center gap-3">
-                <span className="font-sans text-[11px] text-neutral-400 font-semibold tracking-wide">
+              <div className="mt-8 text-center border-t border-[#DEDEDE] pt-6 flex flex-col items-center gap-3">
+                <span className="font-sans text-[11px] text-[#262626] font-semibold tracking-wide">
                   🔒 Secure checkout via PayPal - $500.00 USD - One-time payment
                 </span>
                 
-                <div className="flex items-center gap-2 text-neutral-500 font-mono text-[9px] uppercase tracking-wider mt-2">
+                <div className="flex items-center gap-2 text-[#888888] font-mono text-[9px] uppercase tracking-wider mt-2">
                   <span>SSL Encrypted</span> | <span>256-Bit Protection</span>
                 </div>
               </div>
@@ -1204,10 +1206,10 @@ export default function BuildPage() {
 
         {/* Sticky Mobile CTA */}
         {showStickyCTA && (
-          <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#050505]/95 backdrop-blur-md border-t border-white/10 p-4 flex items-center justify-between gap-4">
+          <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#050505]/95 backdrop-blur-md border-t border-[#1A1A1A] p-4 flex items-center justify-between gap-4">
             <div className="flex-1">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-500 block">Infrastructure Setup</span>
-              <span className="font-sans text-sm font-extrabold text-white">$500 -- one time</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider text-[#666666] block">Infrastructure Setup</span>
+              <span className="font-sans text-sm font-extrabold text-white">$500 &mdash; one time</span>
             </div>
             <button
               onClick={scrollToAcceptance}

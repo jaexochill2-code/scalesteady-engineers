@@ -210,7 +210,7 @@ export default function Home() {
 
 
       {/* ── THE OUTBOUND TRUTHS ── */}
-      <section id="approach" style={{ background: "#EBEBEB", padding: "clamp(120px, 16vw, 200px) 0 clamp(64px, 12vw, 160px)" }}>
+      <section id="approach" style={{ background: "#FFFFFF", padding: "clamp(120px, 16vw, 200px) 0 clamp(64px, 12vw, 160px)" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "800px" }}>
           
           {/* Left-anchored accent border + tactile hover focus group */}
@@ -274,7 +274,7 @@ export default function Home() {
       </section>
 
       {/* ── IDENTITY SHIFT ── */}
-      <section style={{ background: "#111111", padding: "clamp(72px, 9vw, 120px) 0" }}>
+      <section style={{ background: "var(--blue-deep)", padding: "clamp(96px, 12vw, 160px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           {/* ── Identity statement ── */}
@@ -446,7 +446,7 @@ export default function Home() {
 
 
       {/* ── DEFINITIVE RESULTS -- The Irony Section ── */}
-      <section style={{ background: "#050505", padding: "clamp(72px, 8vw, 112px) 0" }}>
+      <section style={{ background: "var(--blue-void)", padding: "clamp(100px, 11vw, 150px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1280px" }}>
 
           {/* Grid wrapper for Content and Slideshow */}
@@ -558,7 +558,7 @@ export default function Home() {
               <div 
                 className="absolute inset-0 z-10 pointer-events-none" 
                 style={{
-                  background: "radial-gradient(circle at center, transparent 35%, #050505 100%)",
+                  background: "radial-gradient(circle at center, transparent 35%, var(--blue-void) 100%)",
                 }}
               />
             </div>
@@ -630,7 +630,7 @@ export default function Home() {
 
 
       {/* ── THE OFFER -- HOW WE ALIGN OUR INTERESTS ── */}
-      <section id="pricing" style={{ background: "#F4F4F4", padding: "clamp(80px, 11vw, 140px) 0" }}>
+      <section id="pricing" style={{ background: "var(--canvas)", padding: "clamp(110px, 14vw, 180px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "780px" }}>
 
           <p
@@ -696,7 +696,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div style={{ width: "100%", height: "1px", background: "#E0E0E0" }} />
+            <div style={{ width: "100%", height: "1px", background: "var(--ink-border)" }} />
 
             {/* Step 02 */}
             <div className="flex items-start gap-4">
@@ -707,7 +707,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div style={{ width: "100%", height: "1px", background: "#E0E0E0" }} />
+            <div style={{ width: "100%", height: "1px", background: "var(--ink-border)" }} />
 
             {/* Step 03 */}
             <div className="flex items-start gap-4">
@@ -738,7 +738,7 @@ export default function Home() {
 
 
       {/* ── THE FORK (VISUAL EXPANSION) ── */}
-      <section style={{ background: "#050505", padding: "clamp(80px, 10vw, 140px) 0" }}>
+      <section style={{ background: "var(--blue-void)", padding: "clamp(110px, 14vw, 180px) 0" }}>
         <div className="mx-auto px-8 sm:px-12 lg:px-24" style={{ maxWidth: "1080px" }}>
 
           {/* Headline */}

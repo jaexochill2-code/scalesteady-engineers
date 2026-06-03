@@ -1031,7 +1031,7 @@ export default function BuildPage() {
                     type="checkbox"
                     checked={accepted}
                     onChange={(e) => setAccepted(e.target.checked)}
-                    className="mt-1.5 flex-shrink-0 cursor-pointer accent-[#1B4F8A] w-4 h-4 rounded border-neutral-300 bg-white"
+                    className="mt-1 flex-shrink-0 cursor-pointer accent-[#1B4F8A] w-4 h-4 rounded border-neutral-300 bg-white"
                   />
                   <span className="font-sans text-xs text-neutral-700 leading-relaxed font-medium">
                     I have read and agree to the{" "}
@@ -1085,7 +1085,7 @@ export default function BuildPage() {
                 </div>
 
                 {!accepted && (
-                  <p className="text-center font-sans text-[11px] text-neutral-500 mt-4 font-medium">
+                  <p className="text-center font-sans text-[11px] text-neutral-700 mt-4 font-medium">
                     Please check the terms acceptance box above to activate checkout
                   </p>
                 )}

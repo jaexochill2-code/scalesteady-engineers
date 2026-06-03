@@ -8,6 +8,27 @@ const PHONE = "224.487.7847";
 const PHONE_HREF = "tel:+12244877847";
 const PAYPAL_HOSTED_BUTTON_ID: string = "9DREMSSX56AHQ";
 
+function GridBackground() {
+  return (
+    <>
+      {/* Subtle Grid Overlay */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-0" 
+        style={{
+          backgroundImage: "radial-gradient(rgba(27, 79, 138, 0.05) 1px, transparent 1px)",
+          backgroundSize: "24px 24px"
+        }}
+      />
+
+      {/* Architectural Column Grid Lines */}
+      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] flex justify-between pointer-events-none z-0">
+        <div className="w-[1px] h-full bg-[#D8D6CE]/20" />
+        <div className="w-[1px] h-full bg-[#D8D6CE]/20" />
+      </div>
+    </>
+  );
+}
+
 export default function BuildPage() {
   const [accepted, setAccepted] = useState(false);
   const [payPalLoaded, setPayPalLoaded] = useState(false);
@@ -181,21 +202,7 @@ export default function BuildPage() {
         style={{ background: "radial-gradient(circle, rgba(0, 82, 255, 0.08) 0%, rgba(27, 79, 138, 0.03) 60%, transparent 100%)", filter: "blur(150px)" }}
       />
       
-      {/* Subtle Grid Overlay */}
-      <div 
-        className="absolute inset-0 pointer-events-none z-20" 
-        style={{
-          backgroundImage: "radial-gradient(rgba(27, 79, 138, 0.05) 1px, transparent 1px)",
-          backgroundSize: "24px 24px"
-        }}
-      />
 
-      {/* Architectural Column Grid Lines */}
-      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] flex justify-between pointer-events-none z-20">
-        <div className="w-[1px] h-full bg-[#D8D6CE]/20" />
-        <div className="w-[1px] h-full bg-[#D8D6CE]/15 hidden md:block" />
-        <div className="w-[1px] h-full bg-[#D8D6CE]/20" />
-      </div>
 
       {PAYPAL_HOSTED_BUTTON_ID &&
         PAYPAL_HOSTED_BUTTON_ID !== "[INSERT]" &&
@@ -209,57 +216,59 @@ export default function BuildPage() {
 
 
       {/* Main content wrapper */}
-      <main className="relative z-10">
+      <main className="relative">
 
 
         {/* 02 HERO */}
         <section className="bg-[var(--canvas)] pt-28 pb-24 border-b border-[var(--ink-border)] relative overflow-hidden">
+          <GridBackground />
 
           {/* Background bloom */}
           <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] rounded-full bg-[#1B4F8A]/5 blur-[140px] pointer-events-none" />
           <div className="absolute bottom-0 left-[-5%] w-[500px] h-[400px] rounded-full bg-[#1B4F8A]/4 blur-[110px] pointer-events-none" />
           <div className="absolute bottom-0 right-[-5%] w-[400px] h-[300px] rounded-full bg-[#1B4F8A]/3 blur-[90px] pointer-events-none" />
 
-          <div className="max-w-[900px] mx-auto px-6 text-center relative z-10">
-
-            {/* Eyebrow */}
-            <span className="inline-flex items-center gap-2.5 px-5 py-2 text-[10px] font-bold tracking-widest uppercase bg-[#1B4F8A]/5 text-[#1B4F8A] border border-[#1B4F8A]/10 rounded-full mb-14">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#1B4F8A] animate-pulse flex-shrink-0" />
-              HEALTH &amp; CONSTRUCTION &nbsp;&middot;&nbsp; PASS-THROUGH COST &nbsp;&middot;&nbsp; FULL ASSET OWNERSHIP
-            </span>
-
-            {/* 4-line typographic stack */}
-            <h1 className="font-sans font-extrabold tracking-tight leading-[1.08] mb-12">
-              <span className="block text-4xl md:text-[62px] text-[#0C0C0E]">Built in 48 hrs.</span>
-              <span className="block text-4xl md:text-[62px] text-neutral-500 font-light">Hardened in 14 days.</span>
-              <span className="block text-4xl md:text-[62px] text-[#0C0C0E]">Managed for 2 months.</span>
-              <span className="block text-4xl md:text-[62px] text-[#1B4F8A]">Yours to keep.</span>
-            </h1>
-
-            {/* Money line */}
-            <p className="font-mono text-sm md:text-base text-neutral-600 tracking-wider mb-14">
-              $500 infrastructure cost &nbsp;&middot;&nbsp; $0 agency fees until you close revenue
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-              <button
-                onClick={scrollToAcceptance}
-                className="px-10 py-4 bg-[#1B4F8A] hover:bg-[#2660A8] text-white font-sans font-bold text-sm uppercase tracking-widest transition-all duration-200 hover:shadow-[0_0_40px_rgba(27,79,138,0.3)] active:scale-[0.98]"
-              >
-                GET STARTED &mdash; $500
-              </button>
-              <span className="font-mono text-[11px] text-[#444444] tracking-wider">
-                Maximum exposure: $500. Everything else is ours to earn.
+          <div className="max-w-[900px] mx-auto px-6 relative z-30">
+            <div className="bento-card-hero-pulse-large p-10 md:p-16 text-center">
+              {/* Eyebrow */}
+              <span className="inline-flex items-center gap-2.5 px-5 py-2 text-[10px] font-bold tracking-widest uppercase bg-[#1B4F8A]/5 text-[#1B4F8A] border border-[#1B4F8A]/10 rounded-full mb-10">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#1B4F8A] animate-pulse flex-shrink-0" />
+                HEALTH &amp; CONSTRUCTION &nbsp;&middot;&nbsp; PASS-THROUGH COST &nbsp;&middot;&nbsp; FULL ASSET OWNERSHIP
               </span>
-            </div>
 
+              {/* 4-line typographic stack */}
+              <h1 className="font-sans font-extrabold tracking-tight leading-[1.08] mb-10">
+                <span className="block text-4xl md:text-[62px] text-[#0C0C0E]">Built in 48 hrs.</span>
+                <span className="block text-4xl md:text-[62px] text-neutral-500 font-light">Hardened in 14 days.</span>
+                <span className="block text-4xl md:text-[62px] text-[#0C0C0E]">Managed for 2 months.</span>
+                <span className="block text-4xl md:text-[62px] text-[#1B4F8A]">Yours to keep.</span>
+              </h1>
+
+              {/* Money line */}
+              <p className="font-mono text-sm md:text-base text-neutral-600 tracking-wider mb-10">
+                $500 infrastructure cost &nbsp;&middot;&nbsp; $0 agency fees until you close revenue
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-col items-center justify-center gap-4">
+                <button
+                  onClick={scrollToAcceptance}
+                  className="px-10 py-4 bg-[#1B4F8A] hover:bg-[#2660A8] text-white font-sans font-bold text-sm uppercase tracking-widest transition-all duration-200 hover:shadow-[0_0_40px_rgba(27,79,138,0.3)] active:scale-[0.98]"
+                >
+                  GET STARTED -- $500
+                </button>
+                <span className="font-mono text-[11px] text-neutral-500 tracking-wider text-center">
+                  Maximum exposure: $500. Everything else is ours to earn.
+                </span>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* 03 VALUE COMPARISON - Retail cost vs ScaleSteady */}
-        <section className="bg-[#FFFFFF] border-b border-[var(--ink-border)] py-28 relative z-10">
-          <div className="max-w-[1200px] mx-auto px-6">
+        <section className="bg-[#FFFFFF] border-b border-[var(--ink-border)] py-28 relative">
+          <GridBackground />
+          <div className="max-w-[1200px] mx-auto px-6 relative z-10">
             <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500 block mb-3 text-center">02 -- Cost Breakdown</span>
             <h2 className="font-sans text-3xl md:text-4xl font-extrabold text-center tracking-tight text-[#0A0A0A] mb-4">
               Here is what you are <span className="text-[#1B4F8A] underline font-extrabold">not</span> paying
@@ -482,8 +491,9 @@ export default function BuildPage() {
         </section>
 
         {/* 04 WHAT'S INCLUDED - Asymmetric Bento Grid */}
-        <section className="py-20 bg-white border-b border-neutral-200 relative z-10">
-          <div className="max-w-[1200px] mx-auto px-6">
+        <section className="py-20 bg-white border-b border-neutral-200 relative">
+          <GridBackground />
+          <div className="max-w-[1200px] mx-auto px-6 relative z-10">
             <h2 className="font-sans text-2xl md:text-3xl font-extrabold text-center tracking-tight text-[#0A0A0A] mb-12">
               Deliverables built directly for your business
             </h2>
@@ -586,8 +596,9 @@ export default function BuildPage() {
         </section>
 
         {/* 05 TIMELINE - Warmup, Parallel Deliverables, Kickoff, Check-ins */}
-        <section className="bg-[#0D0D0E] text-white py-24 border-b border-neutral-900 relative overflow-hidden z-10">
-          <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+        <section className="bg-[#0D0D0E] text-white py-24 border-b border-neutral-900 relative overflow-hidden">
+          <GridBackground />
+          <div className="max-w-[1200px] mx-auto px-6 relative z-30">
             
             <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-neutral-500 block mb-2 text-center">
               Campaign Roadmap
@@ -729,8 +740,9 @@ export default function BuildPage() {
         </section>
 
         {/* 06 ASSET OWNERSHIP */}
-        <section className="py-20 bg-[#FAF8F6] border-b border-neutral-200 relative z-10">
-          <div className="max-w-[1100px] mx-auto px-6">
+        <section className="py-20 bg-[#FAF8F6] border-b border-neutral-200 relative">
+          <GridBackground />
+          <div className="max-w-[1100px] mx-auto px-6 relative z-10">
 
             <div className="text-center mb-12">
               <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#888888] block mb-3">06 -- Ownership</span>
@@ -793,8 +805,9 @@ export default function BuildPage() {
         </section>
 
         {/* 07 SCALE OR WALK */}
-        <section className="py-24 border-b border-neutral-200 bg-white relative z-10">
-          <div className="max-w-[1000px] mx-auto px-6">
+        <section className="py-24 border-b border-neutral-200 bg-white relative">
+          <GridBackground />
+          <div className="max-w-[1000px] mx-auto px-6 relative z-10">
 
             {/* Milestone trigger callout */}
             <div className="text-center mb-16">
@@ -860,8 +873,9 @@ export default function BuildPage() {
         </section>
 
         {/* 08 TERMS OF SERVICE AND CLIENT SERVICE AGREEMENT */}
-        <section ref={termsRef} className="py-20 bg-[var(--canvas)] border-b border-[var(--ink-border)] relative z-10">
-          <div className="max-w-[800px] mx-auto px-6">
+        <section ref={termsRef} className="py-20 bg-[var(--canvas)] border-b border-[var(--ink-border)] relative">
+          <GridBackground />
+          <div className="max-w-[800px] mx-auto px-6 relative z-10">
             <h2 className="font-sans text-2xl md:text-3xl font-extrabold text-center tracking-tight text-[#0A0A0A] mb-4">
               Terms of Service and Client Service Agreement
             </h2>
@@ -978,10 +992,11 @@ export default function BuildPage() {
         </section>
 
         {/* 09 ACCEPTANCE ZONE - Glassmorphic Bento Checkout Panel */}
-        <section ref={acceptanceRef} id="acceptance" className="py-20 bg-[#F9F9FB] border-b border-neutral-200 relative z-10">
-          <div className="max-w-[720px] mx-auto px-6">
+        <section ref={acceptanceRef} id="acceptance" className="py-20 bg-[#F9F9FB] border-b border-neutral-200 relative">
+          <GridBackground />
+          <div className="max-w-[720px] mx-auto px-6 relative z-10">
             
-            <div className="bento-card-hero-pulse p-8 md:p-12 relative z-10">
+            <div className="bento-card-hero-pulse p-8 md:p-12 relative z-30">
               
               <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#1B4F8A] block mb-2 text-center">
                 Review and Accept Partnership Terms

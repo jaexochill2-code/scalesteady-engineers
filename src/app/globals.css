@@ -1,202 +1,202 @@
-@import "tailwindcss";
+  @import "tailwindcss";
 
-@theme {
-  /* Single typeface -- DM Sans throughout */
-  --font-serif:   var(--font-sans);
-  --font-sans:    var(--font-sans), sans-serif;
-  --font-mono:    var(--font-mono), monospace;
-  --font-brand:   var(--font-sans);
-  --font-display: var(--font-sans);
-}
-
-/*
- * SCALESTEADY COLOR SYSTEM — GRAYSCALE MONOCHROME
- * Deep blacks, contrasting grays, off-white — no hue anywhere.
- * High-status minimalist. Every element earns its place.
- */
-:root {
-  --white:          #FFFFFF;
-  --canvas:         #FAF9F6;  /* page bg -- warm cream */
-
-  /* Ink scale -- content hierarchy */
-  --ink-primary:    #0C0C0E;  /* premium warm black */
-  --ink-body:       #2F3033;  /* charcoal body */
-  --ink-secondary:  #585A60;
-  --ink-muted:      #8E919C;
-  --ink-border:     #D8D6CE;  /* stronger contrast warm divider, not gray */
-
-  /* Brand Blue Palette — Multiple Shades of Blue */
-  --blue-primary:   #1B4F8A;  /* brand sapphire */
-  --blue-hover:     #2660A8;  /* medium sapphire */
-  --blue-dark:      #0F2540;  /* deep navy */
-  --blue-navy:      #091A30;  /* deepest prussian navy */
-  --blue-bright:    #0052FF;  /* electric cobalt */
-  --blue-sky:       #38BDF8;  /* sky highlight */
-  --blue-light:     #EBF3FC;  /* soft highlight card bg */
-  --blue-light-hover: #D6E8FC;
-  --blue-tint:      #F4F8FF;  /* ambient blue tint */
-
-  /* Dark section backgrounds -- rich graphite charcoal family, no gloomy pure black */
-  --blue-void:      #0C0D0E;  /* deepest graphite -- final CTA */
-  --blue-midnight:  #121315;  /* secondary dark graphite */
-  --blue-deep:      #1A1B1E;  /* section bg graphite */
-  --blue-prussian:  #26272C;  /* dark context accent */
-  --blue:           #26272C;
-  --blue-royal:     #35373F;  /* hover on dark */
-  --blue-cobalt:    #555761;
-  --blue-powder:    #8E919C;  /* muted on dark */
-  --blue-glacier:   #D3D5DC;  /* subtle on dark */
-  --blue-frost:     #F6F5F2;  /* ultra-light warm surfaces */
-}
-
-html, body {
-  background-color: var(--canvas);
-  color: var(--ink-primary);
-  font-family: var(--font-sans);
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-main:has(.hero-section) {
-  padding-top: 0 !important;
-}
-
-::selection {
-  background-color: var(--ink-primary);
-  color: var(--white);
-}
-
-h1, h2, h3, h4, h5, h6 { font-family: var(--font-sans); margin: 0; }
-a { color: inherit; text-decoration: none; }
-
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: var(--canvas); }
-::-webkit-scrollbar-thumb { background: #CCCCCC; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #999999; }
-
-/* Mobile hero: split-stack layout sizes itself from content */
-@media (max-width: 1023px) {
-  .hero-section {
-    height: auto !important;
-    min-height: 100svh !important;
+  @theme {
+    /* Single typeface -- DM Sans throughout */
+    --font-serif:   var(--font-sans);
+    --font-sans:    var(--font-sans), sans-serif;
+    --font-mono:    var(--font-mono), monospace;
+    --font-brand:   var(--font-sans);
+    --font-display: var(--font-sans);
   }
-}
 
-/* ── HERO ─────────────────────────────────────── */
-.hero-section { contain: layout; }
-.hero-image-pane img { will-change: transform; }
+  /*
+  * SCALESTEADY COLOR SYSTEM — GRAYSCALE MONOCHROME
+  * Deep blacks, contrasting grays, off-white — no hue anywhere.
+  * High-status minimalist. Every element earns its place.
+  */
+  :root {
+    --white:          #FFFFFF;
+    --canvas:         #FAF9F6;  /* page bg -- warm cream */
 
-/* ── HERO ENTRANCE SEQUENCE ──────────────────── */
-/*
- * Validated sequence (CXL/NNG B2B research):
- *   0.10s — photo:    scale 1.03→1.00 + opacity (focus-pull)
- *   0.00s — headline: word-by-word reveal (staggered 0–0.45s)
- *   0.55s — body:     fade-up 14px
- *   0.75s — cta:      fade-up 8px
- *   0.90s — anchor:   pure fade
- * fill-mode: both — elements invisible before delay, persist after
- */
+    /* Ink scale -- content hierarchy */
+    --ink-primary:    #0C0C0E;  /* premium warm black */
+    --ink-body:       #2F3033;  /* charcoal body */
+    --ink-secondary:  #585A60;
+    --ink-muted:      #8E919C;
+    --ink-border:     #D8D6CE;  /* stronger contrast warm divider, not gray */
 
-/* ── HERO 2-COLUMN GRID ────────────────────────
-   Left: text+CTA  |  Right: phone
-   Both elements are equal peers -- no absolute positioning.
-   ─────────────────────────────────────────────── */
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-    gap: 32px;
-    height: auto;
-    padding: 24px 0 48px;
-}
+    /* Brand Blue Palette — Multiple Shades of Blue */
+    --blue-primary:   #1B4F8A;  /* brand sapphire */
+    --blue-hover:     #2660A8;  /* medium sapphire */
+    --blue-dark:      #0F2540;  /* deep navy */
+    --blue-navy:      #091A30;  /* deepest prussian navy */
+    --blue-bright:    #0052FF;  /* electric cobalt */
+    --blue-sky:       #38BDF8;  /* sky highlight */
+    --blue-light:     #EBF3FC;  /* soft highlight card bg */
+    --blue-light-hover: #D6E8FC;
+    --blue-tint:      #F4F8FF;  /* ambient blue tint */
 
-@media (min-width: 1024px) {
-    .hero-grid {
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 0;
-        height: 100%;
-        padding: 0;
+    /* Dark section backgrounds -- rich graphite charcoal family, no gloomy pure black */
+    --blue-void:      #0C0D0E;  /* deepest graphite -- final CTA */
+    --blue-midnight:  #121315;  /* secondary dark graphite */
+    --blue-deep:      #1A1B1E;  /* section bg graphite */
+    --blue-prussian:  #26272C;  /* dark context accent */
+    --blue:           #26272C;
+    --blue-royal:     #35373F;  /* hover on dark */
+    --blue-cobalt:    #555761;
+    --blue-powder:    #8E919C;  /* muted on dark */
+    --blue-glacier:   #D3D5DC;  /* subtle on dark */
+    --blue-frost:     #F6F5F2;  /* ultra-light warm surfaces */
+  }
+
+  html, body {
+    background-color: var(--canvas);
+    color: var(--ink-primary);
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  main:has(.hero-section) {
+    padding-top: 0 !important;
+  }
+
+  ::selection {
+    background-color: var(--ink-primary);
+    color: var(--white);
+  }
+
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-sans); margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--canvas); }
+  ::-webkit-scrollbar-thumb { background: #CCCCCC; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #999999; }
+
+  /* Mobile hero: split-stack layout sizes itself from content */
+  @media (max-width: 1023px) {
+    .hero-section {
+      height: auto !important;
+      min-height: 100svh !important;
     }
-}
+  }
 
-.hero-text-col {
-    /* Text column: left half */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-right: 0;
-}
+  /* ── HERO ─────────────────────────────────────── */
+  .hero-section { contain: layout; }
+  .hero-image-pane img { will-change: transform; }
 
-@media (min-width: 1024px) {
-    .hero-text-col {
-        padding-right: clamp(24px, 4vw, 64px);
-    }
-}
+  /* ── HERO ENTRANCE SEQUENCE ──────────────────── */
+  /*
+  * Validated sequence (CXL/NNG B2B research):
+  *   0.10s — photo:    scale 1.03→1.00 + opacity (focus-pull)
+  *   0.00s — headline: word-by-word reveal (staggered 0–0.45s)
+  *   0.55s — body:     fade-up 14px
+  *   0.75s — cta:      fade-up 8px
+  *   0.90s — anchor:   pure fade
+  * fill-mode: both — elements invisible before delay, persist after
+  */
 
-.hero-phone-col {
-    /* Phone column: right half */
-    display: flex;
-    align-items: center;            /* vertically centered to float cleanly above the fold */
-    justify-content: center;
-    height: auto;
-    overflow: visible;
-    position: relative;
-    z-index: 30;                    /* above next section */
-    padding-bottom: 24px;
-    box-sizing: border-box;
-}
+  /* ── HERO 2-COLUMN GRID ────────────────────────
+    Left: text+CTA  |  Right: phone
+    Both elements are equal peers -- no absolute positioning.
+    ─────────────────────────────────────────────── */
+  .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      gap: 32px;
+      height: auto;
+      padding: 24px 0 48px;
+  }
 
-@media (min-width: 1024px) {
-    .hero-phone-col {
-        height: 100%;
-        padding-bottom: 0;
-        padding-right: clamp(16px, 5vw, 64px);
-    }
-}
+  @media (min-width: 1024px) {
+      .hero-grid {
+          grid-template-columns: 1.2fr 0.8fr;
+          gap: 0;
+          height: 100%;
+          padding: 0;
+      }
+  }
 
-.hero-phone-col::before {
-    content: '';
-    position: absolute;
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, rgba(27, 79, 138, 0.18) 0%, transparent 70%);
-    z-index: -1;
-    pointer-events: none;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+  .hero-text-col {
+      /* Text column: left half */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 0;
+  }
 
-/* ── PHONE SCALE WRAPPER ───────────────────────
-   Handles viewport-height scaling to prevent cut-off.
-   ─────────────────────────────────────────────── */
-.phone-scale-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    perspective: 1200px;
-    transition: transform 0.3s ease;
-}
+  @media (min-width: 1024px) {
+      .hero-text-col {
+          padding-right: clamp(24px, 4vw, 64px);
+      }
+  }
 
-@media (max-height: 860px) {
-    .phone-scale-wrapper { transform: scale(0.9); }
-}
-@media (max-height: 760px) {
-    .phone-scale-wrapper { transform: scale(0.8); }
-}
-@media (max-height: 660px) {
-    .phone-scale-wrapper { transform: scale(0.7); }
-}
+  .hero-phone-col {
+      /* Phone column: right half */
+      display: flex;
+      align-items: center;            /* vertically centered to float cleanly above the fold */
+      justify-content: center;
+      height: auto;
+      overflow: visible;
+      position: relative;
+      z-index: 30;                    /* above next section */
+      padding-bottom: 24px;
+      box-sizing: border-box;
+  }
 
-/* ── PHONE STAGE with float animation ──────────
+  @media (min-width: 1024px) {
+      .hero-phone-col {
+          height: 100%;
+          padding-bottom: 0;
+          padding-right: clamp(16px, 5vw, 64px);
+      }
+  }
+
+  .hero-phone-col::before {
+      content: '';
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(27, 79, 138, 0.18) 0%, transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+
+  /* ── PHONE SCALE WRAPPER ───────────────────────
+    Handles viewport-height scaling to prevent cut-off.
+    ─────────────────────────────────────────────── */
+  .phone-scale-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      perspective: 1200px;
+      transition: transform 0.3s ease;
+  }
+
+  @media (max-height: 860px) {
+      .phone-scale-wrapper { transform: scale(0.9); }
+  }
+  @media (max-height: 760px) {
+      .phone-scale-wrapper { transform: scale(0.8); }
+  }
+  @media (max-height: 660px) {
+      .phone-scale-wrapper { transform: scale(0.7); }
+  }
+
+  /* ── PHONE STAGE with float animation ──────────
    ─────────────────────────────────────────────── */
 @keyframes phoneFloat {
     0%, 100% {
@@ -1298,7 +1298,9 @@ a { color: inherit; text-decoration: none; }
 
 /* Dark Bento Card with Tactile Grayscale Claymorphism and Glassmorphism */
 .bento-card-dark {
-  background: rgba(18, 19, 21, 0.65);
+  position: relative;
+  z-index: 30;
+  background: #161719;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.12); /* stronger border definition */
@@ -1319,6 +1321,8 @@ a { color: inherit; text-decoration: none; }
 
 /* Light Bento Card with Tactile Claymorphism */
 .bento-card-light {
+  position: relative;
+  z-index: 30;
   background: #ffffff;
   border: 1.5px solid var(--ink-border); /* more defined, not gray */
   border-radius: 24px;
@@ -1421,6 +1425,7 @@ a { color: inherit; text-decoration: none; }
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
   position: relative;
   overflow: hidden;
+  z-index: 30;
 }
 
 .bento-card-hero-pulse::before {
@@ -1465,6 +1470,67 @@ a { color: inherit; text-decoration: none; }
     transform: none !important;
   }
 }
+
+/* ── LARGE PREMIUM HERO CARD ── */
+.bento-card-hero-pulse-large {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FCFAF7 100%) !important;
+  border: 1px solid rgba(27, 79, 138, 0.24) !important;
+  border-radius: 32px;
+  box-shadow: 
+    0 32px 80px rgba(27, 79, 138, 0.12),
+    0 0 60px 10px rgba(255, 255, 255, 0.95),
+    0 8px 24px rgba(0, 0, 0, 0.01),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.95);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 30 !important;
+}
+
+.bento-card-hero-pulse-large::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 82, 255, 0.05) 0%, rgba(27, 79, 138, 0.01) 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+  animation: heroCardPulse 10s ease-in-out infinite alternate;
+  will-change: opacity, transform;
+}
+
+.bento-card-hero-pulse-large::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.4) 45%, rgba(255, 255, 255, 0.75) 50%, rgba(255, 255, 255, 0.4) 55%, transparent 65%);
+  pointer-events: none;
+  z-index: 2;
+  animation: heroCardShine 8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  will-change: transform;
+}
+
+.bento-card-hero-pulse-large:hover {
+  transform: translateY(-4px);
+  border-color: rgba(27, 79, 138, 0.35) !important;
+  box-shadow: 
+    0 40px 96px rgba(27, 79, 138, 0.16),
+    0 0 80px 15px rgba(255, 255, 255, 1.0),
+    0 10px 28px rgba(0, 82, 255, 0.03),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bento-card-hero-pulse-large::before,
+  .bento-card-hero-pulse-large::after {
+    animation: none !important;
+    opacity: 0.5 !important;
+    transform: none !important;
+  }
+}
+
 
 
 

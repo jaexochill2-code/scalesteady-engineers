@@ -183,7 +183,7 @@ export default function BuildPage() {
       
       {/* Subtle Grid Overlay */}
       <div 
-        className="absolute inset-0 pointer-events-none z-0" 
+        className="absolute inset-0 pointer-events-none z-20" 
         style={{
           backgroundImage: "radial-gradient(rgba(27, 79, 138, 0.05) 1px, transparent 1px)",
           backgroundSize: "24px 24px"
@@ -191,7 +191,7 @@ export default function BuildPage() {
       />
 
       {/* Architectural Column Grid Lines */}
-      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] flex justify-between pointer-events-none z-0">
+      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] flex justify-between pointer-events-none z-20">
         <div className="w-[1px] h-full bg-[#D8D6CE]/20" />
         <div className="w-[1px] h-full bg-[#D8D6CE]/15 hidden md:block" />
         <div className="w-[1px] h-full bg-[#D8D6CE]/20" />

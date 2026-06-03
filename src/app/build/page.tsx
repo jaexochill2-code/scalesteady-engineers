@@ -8,7 +8,7 @@ import logoAbstract from "../../../public/brand/logos/scalesteady_clean_monogram
 
 const PHONE = "224.487.7847";
 const PHONE_HREF = "tel:+12244877847";
-const PAYPAL_HOSTED_BUTTON_ID = "[INSERT]";
+const PAYPAL_HOSTED_BUTTON_ID: string = "9DREMSSX56AHQ";
 
 export default function BuildPage() {
   const [accepted, setAccepted] = useState(false);

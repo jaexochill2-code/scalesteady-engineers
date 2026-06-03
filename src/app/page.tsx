@@ -851,22 +851,22 @@ export default function Home() {
 
               {/* Path A: Scale */}
               <div
-                className="offer-scroll-reveal bento-card-dark p-8 xl:p-10 flex flex-col"
+                className="offer-scroll-reveal bento-card-hero-pulse p-8 xl:p-10 flex flex-col"
                 style={{
                   minHeight: "380px",
                 }}
               >
                 <div className="flex items-center gap-3 mb-8">
-                  <div style={{ width: "8px", height: "8px", background: "rgba(255,255,255,0.9)", borderRadius: "50%" }} />
-                  <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.16em", color: "rgba(255,255,255,0.5)" }}>
+                  <div style={{ width: "8px", height: "8px", background: "#1B4F8A", borderRadius: "50%" }} />
+                  <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#1B4F8A" }}>
                     Scale
                   </span>
                 </div>
 
-                <p className="font-sans font-bold mb-2" style={{ fontSize: "clamp(36px, 4vw, 52px)", lineHeight: 1, color: "#FFFFFF", letterSpacing: "-0.02em" }}>
-                  $699<span style={{ fontSize: "16px", color: "rgba(255,255,255,0.30)", fontWeight: 400 }}>/mo</span>
+                <p className="font-sans font-bold mb-2" style={{ fontSize: "clamp(36px, 4vw, 52px)", lineHeight: 1, color: "#0C0C0E", letterSpacing: "-0.02em" }}>
+                  $699<span style={{ fontSize: "16px", color: "#666666", fontWeight: 400 }}>/mo</span>
                 </p>
-                <p className="font-sans mb-8" style={{ fontSize: "12px", color: "rgba(255,255,255,0.25)" }}>
+                <p className="font-sans mb-8" style={{ fontSize: "12px", color: "#444444" }}>
                   ongoing management
                 </p>
 
@@ -877,17 +877,17 @@ export default function Home() {
                     { bold: "Dedicated team.", rest: " Same people, same workflow, every week." },
                   ].map((item) => (
                     <li key={item.bold} className="flex items-start gap-3">
-                      <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="2">
+                      <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      <span style={{ color: "rgba(255,255,255,0.55)" }}>
-                        <strong style={{ color: "rgba(255,255,255,0.85)" }}>{item.bold}</strong>{item.rest}
+                      <span style={{ color: "#2F3033" }}>
+                        <strong style={{ color: "#0C0C0E" }}>{item.bold}</strong>{item.rest}
                       </span>
                     </li>
                   ))}
                 </ul>
 
-                <p className="font-sans mt-8" style={{ fontSize: "12px", color: "rgba(255,255,255,0.48)", lineHeight: 1.6, fontStyle: "italic" }}>
+                <p className="font-sans mt-8" style={{ fontSize: "12px", color: "#555555", lineHeight: 1.6, fontStyle: "italic" }}>
                   This is what happens when you stop relying on referrals and own a system that runs while you work.
                 </p>
               </div>

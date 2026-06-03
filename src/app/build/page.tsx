@@ -832,7 +832,7 @@ export default function BuildPage() {
               </div>
 
               {/* Scale Card */}
-              <div className="bento-card-light bg-white p-8 flex flex-col justify-between border-2 border-[#1B4F8A] shadow-[0_20px_50px_rgba(27,79,138,0.08)] relative overflow-hidden group">
+              <div className="bento-card-hero-pulse p-8 flex flex-col justify-between group">
                 <div className="absolute top-0 right-0 w-[200px] h-[200px] rounded-full bg-[#1B4F8A]/5 blur-[60px] pointer-events-none" />
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-5">
@@ -981,7 +981,7 @@ export default function BuildPage() {
         <section ref={acceptanceRef} id="acceptance" className="py-20 bg-[#F9F9FB] border-b border-neutral-200 relative z-10">
           <div className="max-w-[720px] mx-auto px-6">
             
-            <div className="bento-card-light bg-white p-8 md:p-12 border-2 border-[#1B4F8A] shadow-[0_24px_64px_rgba(27,79,138,0.08)] relative z-10">
+            <div className="bento-card-hero-pulse p-8 md:p-12 relative z-10">
               
               <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#1B4F8A] block mb-2 text-center">
                 Review and Accept Partnership Terms
@@ -1085,7 +1085,7 @@ export default function BuildPage() {
                 </div>
 
                 {!accepted && (
-                  <p className="text-center font-mono text-[11px] text-neutral-500 mt-4 font-semibold">
+                  <p className="text-center font-sans text-[11px] text-neutral-500 mt-4 font-medium">
                     Please check the terms acceptance box above to activate checkout
                   </p>
                 )}
@@ -1096,7 +1096,7 @@ export default function BuildPage() {
                   🔒 Secure checkout via PayPal - $500.00 USD - One-time payment
                 </span>
                 
-                <div className="flex items-center gap-2 text-neutral-400 font-mono text-[9px] uppercase tracking-wider mt-2">
+                <div className="flex items-center gap-2 text-neutral-400 font-sans font-semibold text-[9px] uppercase tracking-wider mt-2">
                   <span>SSL Encrypted</span> | <span>256-Bit Protection</span>
                 </div>
               </div>

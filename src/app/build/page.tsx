@@ -91,6 +91,22 @@ export default function BuildPage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Poll for PayPal SDK load as a fallback in case Next.js onLoad doesn't trigger
+  useEffect(() => {
+    if ((window as any).paypal) {
+      setPayPalLoaded(true);
+    } else {
+      const interval = setInterval(() => {
+        if ((window as any).paypal) {
+          setPayPalLoaded(true);
+          clearInterval(interval);
+        }
+      }, 500);
+      return () => clearInterval(interval);
+    }
+  }, []);
+
+  // Render the PayPal button once loaded
   useEffect(() => {
     if (
       payPalLoaded &&
@@ -111,7 +127,7 @@ export default function BuildPage() {
         console.error("PayPal button render error:", err);
       }
     }
-  }, [accepted, payPalLoaded]);
+  }, [payPalLoaded]);
 
   return (
     <div className="relative min-h-screen bg-[#F4F4F4] text-[#0A0A0A] font-sans antialiased selection:bg-[#0A0A0A] selection:text-white overflow-hidden">
@@ -156,9 +172,9 @@ export default function BuildPage() {
           <div className="max-w-[900px] mx-auto px-6 text-center relative z-10">
 
             {/* Eyebrow */}
-            <span className="inline-flex items-center gap-2.5 px-5 py-2 text-[10px] font-bold tracking-widest uppercase bg-white/5 text-[#888888] border border-white/10 rounded-full mb-14">
-              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse flex-shrink-0" />
-              Health &amp; Construction &nbsp;&middot;&nbsp; Pass-through cost &nbsp;&middot;&nbsp; Full asset ownership
+            <span className="inline-flex items-center gap-2.5 px-5 py-2 text-[10px] font-bold tracking-widest uppercase bg-white/5 text-neutral-300 border border-white/10 rounded-full mb-14">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C4431B] animate-pulse flex-shrink-0" />
+              HEALTH &amp; CONSTRUCTION &nbsp;&middot;&nbsp; PASS-THROUGH COST &nbsp;&middot;&nbsp; FULL ASSET OWNERSHIP
             </span>
 
             {/* 4-line typographic stack */}
@@ -166,7 +182,7 @@ export default function BuildPage() {
               <span className="block text-4xl md:text-[62px] text-white">Built in 48 hrs.</span>
               <span className="block text-4xl md:text-[62px] text-[#444444] font-light">Hardened in 14 days.</span>
               <span className="block text-4xl md:text-[62px] text-white">Managed for 2 months.</span>
-              <span className="block text-4xl md:text-[62px] text-white">Yours to keep.</span>
+              <span className="block text-4xl md:text-[62px] text-[#C4431B]">Yours to keep.</span>
             </h1>
 
             {/* Money line */}
@@ -178,9 +194,9 @@ export default function BuildPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
               <button
                 onClick={scrollToAcceptance}
-                className="px-10 py-4 bg-white hover:bg-neutral-200 text-black font-sans font-bold text-sm uppercase tracking-widest transition-all duration-200 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] active:scale-[0.98]"
+                className="px-10 py-4 bg-[#C4431B] hover:bg-[#A33615] text-white font-sans font-bold text-sm uppercase tracking-widest transition-all duration-200 hover:shadow-[0_0_40px_rgba(196,67,27,0.3)] active:scale-[0.98]"
               >
-                Get Started &mdash; $500
+                GET STARTED &mdash; $500
               </button>
               <span className="font-mono text-[11px] text-[#444444] tracking-wider">
                 Maximum exposure: $500. Everything else is ours to earn.
@@ -191,11 +207,12 @@ export default function BuildPage() {
         </section>
 
         {/* 03 VALUE COMPARISON - Retail cost vs ScaleSteady */}
-        <section className="py-20 max-w-[1200px] mx-auto px-6">
-          <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#888888] block mb-3 text-center">02 -- Cost Breakdown</span>
-          <h2 className="font-sans text-3xl md:text-4xl font-extrabold text-center tracking-tight text-[#0A0A0A] mb-4">
-            Here is what you are <span className="underline font-extrabold">not</span> paying
-          </h2>
+        <section className="bg-[#F9F9FB] border-b border-neutral-200 py-20 relative z-10">
+          <div className="max-w-[1200px] mx-auto px-6">
+            <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500 block mb-3 text-center">02 -- Cost Breakdown</span>
+            <h2 className="font-sans text-3xl md:text-4xl font-extrabold text-center tracking-tight text-[#0A0A0A] mb-4">
+              Here is what you are <span className="text-[#C4431B] underline font-extrabold">not</span> paying
+            </h2>
           <p className="font-sans text-sm text-center text-[#444444] mb-12 max-w-[600px] mx-auto font-medium">
             If you signed up for these tools yourself and hired someone to run them, this is the bill.
           </p>
@@ -269,7 +286,7 @@ export default function BuildPage() {
               <div className="absolute top-[-10%] right-[-10%] w-[200px] h-[200px] rounded-full bg-white/5 blur-[45px] pointer-events-none group-hover:bg-white/10 transition-all duration-500" />
               
               <div className="relative z-10">
-                <span className="inline-block px-3 py-1 text-[9px] font-bold tracking-widest uppercase bg-neutral-800 text-white rounded mb-4">
+                <span className="inline-block px-3 py-1 text-[9px] font-bold tracking-widest uppercase bg-[#C4431B] text-white rounded mb-4">
                   The ScaleSteady Deal
                 </span>
                 <h3 className="font-sans text-lg font-bold mb-4 text-white uppercase tracking-tight">Our Flat Setup Fee</h3>
@@ -329,7 +346,7 @@ export default function BuildPage() {
                 </div>
                 <div className="p-3 bg-white/5 border border-white/10 rounded-lg text-center">
                   <span className="font-mono text-[10px] text-[#888888] uppercase tracking-wider">You save at minimum</span>
-                  <span className="font-mono text-2xl font-extrabold text-white block">$375 + 60 days of free labor</span>
+                  <span className="font-mono text-2xl font-extrabold text-[#C4431B] block">$375 + 60 days of free labor</span>
                 </div>
               </div>
             </div>
@@ -413,10 +430,11 @@ export default function BuildPage() {
             <p><sup>[6]</sup> B2B outbound agency monthly retainer pricing benchmarks: newlead.io/pricing-reports</p>
             <p><sup>[7]</sup> Outsource SDR and agency technical authentication setup & onboarding fees: prospeo.io/agency-costs</p>
           </div>
+          </div>
         </section>
 
         {/* 04 WHAT'S INCLUDED - Asymmetric Bento Grid */}
-        <section className="py-16 border-t border-b border-[#DEDEDE] bg-[#FAF8F6]">
+        <section className="py-20 bg-white border-b border-neutral-200 relative z-10">
           <div className="max-w-[1200px] mx-auto px-6">
             <h2 className="font-sans text-2xl md:text-3xl font-extrabold text-center tracking-tight text-[#0A0A0A] mb-12">
               Deliverables built directly for your business
@@ -520,7 +538,7 @@ export default function BuildPage() {
         </section>
 
         {/* 04.5 VERIFIED CAMPAIGN PERFORMANCE */}
-        <section className="bg-[#050505] py-24 border-t border-b border-[#1A1A1A] relative overflow-hidden">
+        <section className="bg-[#050505] py-24 border-b border-[#1A1A1A] relative overflow-hidden z-10">
           <div className="absolute inset-0 bg-gradient-to-b from-black to-neutral-950 pointer-events-none" />
           <div className="max-w-[1100px] mx-auto px-6 relative z-10">
             <div className="text-center mb-16">
@@ -592,7 +610,7 @@ export default function BuildPage() {
         </section>
 
         {/* 05 TIMELINE - Warmup, Parallel Deliverables, Kickoff, Check-ins */}
-        <section className="bg-[#050505] text-white py-24 border-b border-[#1A1A1A] relative overflow-hidden">
+        <section className="bg-[#0D0D0E] text-white py-24 border-b border-neutral-900 relative overflow-hidden z-10">
           <div className="max-w-[1200px] mx-auto px-6 relative z-10">
             
             <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-neutral-500 block mb-2 text-center">
@@ -609,7 +627,7 @@ export default function BuildPage() {
             <div className="relative w-full max-w-[960px] mx-auto h-[3px] bg-[#1F1F1F] mb-16 rounded-full hidden md:block">
               {/* Glowing active line */}
               <div 
-                className="absolute top-0 left-0 h-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.7)] transition-all duration-500"
+                className="absolute top-0 left-0 h-full bg-[#C4431B] shadow-[0_0_12px_rgba(196,67,27,0.7)] transition-all duration-500"
                 style={{ width: `${(activeStep / 3) * 100}%` }}
               />
               
@@ -622,8 +640,8 @@ export default function BuildPage() {
                     onClick={() => setActiveStep(idx)}
                     className={`pointer-events-auto -translate-y-[0.5px] w-7 h-7 rounded-full border-2 font-mono text-[10px] font-bold flex items-center justify-center transition-all duration-300 ${
                       idx <= activeStep 
-                        ? "bg-white border-white text-black shadow-[0_0_12px_rgba(255,255,255,0.5)] scale-110" 
-                        : "bg-[#0A0A0A] border-[#2E2E2E] text-[#888888] hover:border-white hover:text-white"
+                        ? "bg-[#C4431B] border-[#C4431B] text-white shadow-[0_0_12px_rgba(196,67,27,0.5)] scale-110" 
+                        : "bg-[#0A0A0A] border-[#2E2E2E] text-[#888888] hover:border-[#C4431B] hover:text-white"
                     }`}
                   >
                     {idx + 1}
@@ -644,13 +662,13 @@ export default function BuildPage() {
                     onClick={() => setActiveStep(idx)}
                     className={`w-full text-left p-5 border rounded-2xl transition-all duration-300 flex items-start gap-4 group/btn ${
                       idx === activeStep 
-                        ? "bg-[#111111] border-white/60 text-white shadow-xl translate-x-1" 
+                        ? "bg-[#111111] border-[#C4431B]/60 text-white shadow-xl translate-x-1" 
                         : "bg-transparent border-[#1F1F1F] text-[#888888] hover:border-[#2E2E2E] hover:text-white"
                     }`}
                   >
                     <span className={`font-mono text-xs px-2 py-0.5 rounded border transition-colors duration-300 ${
                       idx === activeStep 
-                        ? "bg-white/10 border-white/40 text-white" 
+                        ? "bg-[#C4431B]/15 border-[#C4431B]/40 text-[#C4431B]" 
                         : "bg-white/5 border-white/10 text-[#888888] group-hover/btn:text-white"
                     }`}>
                       0{idx + 1}
@@ -660,7 +678,7 @@ export default function BuildPage() {
                         {step.label}
                       </span>
                       <h4 className={`font-sans text-sm font-bold transition-colors duration-300 ${
-                        idx === activeStep ? "text-white" : "text-[#CCCCCC] group-hover/btn:text-white"
+                        idx === activeStep ? "text-[#C4431B]" : "text-[#CCCCCC] group-hover/btn:text-white"
                       }`}>
                         {step.title}
                       </h4>
@@ -670,15 +688,15 @@ export default function BuildPage() {
               </div>
 
               {/* Right Column: Premium Glow Detail Panel */}
-              <div className="lg:col-span-3 bg-[#0D0D0D] border border-white/10 rounded-3xl p-8 relative overflow-hidden min-h-[380px] flex flex-col justify-between shadow-2xl transition-all duration-500 hover:border-white/15">
+              <div className="lg:col-span-3 bg-[#0D0D0D] border border-white/10 rounded-3xl p-8 relative overflow-hidden min-h-[380px] flex flex-col justify-between shadow-2xl transition-all duration-500 hover:border-[#C4431B]/35">
                 
                 {/* Accent glow light */}
-                <div className="absolute -top-12 -right-12 w-[240px] h-[240px] rounded-full bg-white/5 blur-[45px] pointer-events-none" />
+                <div className="absolute -top-12 -right-12 w-[240px] h-[240px] rounded-full bg-[#C4431B]/5 blur-[45px] pointer-events-none" />
                 
                 <div className="space-y-6 relative z-10">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/5 pb-4">
                     <div>
-                      <span className="inline-block px-2.5 py-0.5 text-[9px] font-mono font-bold tracking-widest uppercase bg-white/15 text-white border border-white/30 rounded">
+                      <span className="inline-block px-2.5 py-0.5 text-[9px] font-mono font-bold tracking-widest uppercase bg-[#C4431B]/15 text-[#C4431B] border border-[#C4431B]/30 rounded">
                         Active Phase: {timelineSteps[activeStep].label}
                       </span>
                       <h3 className="font-sans text-lg font-bold text-white mt-1">
@@ -735,7 +753,7 @@ export default function BuildPage() {
         </section>
 
         {/* 06 ASSET OWNERSHIP */}
-        <section className="py-20 bg-[#F9F7F5] border-b border-[#DEDEDE]">
+        <section className="py-20 bg-[#FAF8F6] border-b border-neutral-200 relative z-10">
           <div className="max-w-[1100px] mx-auto px-6">
 
             <div className="text-center mb-12">
@@ -799,7 +817,7 @@ export default function BuildPage() {
         </section>
 
         {/* 07 SCALE OR WALK */}
-        <section className="py-24 border-t border-b border-[#DEDEDE] bg-[#FAF8F6]">
+        <section className="py-24 border-b border-neutral-200 bg-white relative z-10">
           <div className="max-w-[1000px] mx-auto px-6">
 
             {/* Milestone trigger callout */}
@@ -838,11 +856,11 @@ export default function BuildPage() {
               </div>
 
               {/* Scale Card */}
-              <div className="bg-[#0D0D0D] text-white border border-[#222222] p-8 flex flex-col justify-between rounded-2xl shadow-2xl relative overflow-hidden group hover:border-white/30 transition-all duration-500">
+              <div className="bg-[#0D0D0D] text-white border border-[#222222] p-8 flex flex-col justify-between rounded-2xl shadow-2xl relative overflow-hidden group hover:border-[#C4431B]/40 transition-all duration-500">
                 <div className="absolute top-0 right-0 w-[200px] h-[200px] rounded-full bg-white/5 blur-[60px] pointer-events-none" />
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-5">
-                    <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-white text-black">
+                    <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-[#C4431B] text-white">
                       Option A
                     </span>
                     <span className="font-mono text-[9px] text-[#888888] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded">Most common choice</span>
@@ -852,10 +870,10 @@ export default function BuildPage() {
                     Retain ScaleSteady to actively manage, optimize, and scale your outbound campaign. Includes database refreshes, continuous copy sequencing, and inbox deliverability management.
                   </p>
                   <ul className="space-y-2 text-xs text-[#AAAAAA]">
-                    <li className="flex items-center gap-2"><span className="text-white font-bold">&#10003;</span> Continuous lead list refreshes</li>
-                    <li className="flex items-center gap-2"><span className="text-white font-bold">&#10003;</span> A/B copy optimization</li>
-                    <li className="flex items-center gap-2"><span className="text-white font-bold">&#10003;</span> Monthly campaign review calls</li>
-                    <li className="flex items-center gap-2"><span className="text-white font-bold">&#10003;</span> Inbox deliverability management</li>
+                    <li className="flex items-center gap-2"><span className="text-[#C4431B] font-bold">&#10003;</span> Continuous lead list refreshes</li>
+                    <li className="flex items-center gap-2"><span className="text-[#C4431B] font-bold">&#10003;</span> A/B copy optimization</li>
+                    <li className="flex items-center gap-2"><span className="text-[#C4431B] font-bold">&#10003;</span> Monthly campaign review calls</li>
+                    <li className="flex items-center gap-2"><span className="text-[#C4431B] font-bold">&#10003;</span> Inbox deliverability management</li>
                   </ul>
                 </div>
                 <p className="font-mono text-sm font-bold text-white mt-8 relative z-10">$699 / month</p>
@@ -866,7 +884,7 @@ export default function BuildPage() {
         </section>
 
         {/* 08 PLAIN-ENGLISH TOS SUMMARY */}
-        <section className="py-20">
+        <section className="py-20 bg-[#F5F5F7] border-b border-[#DEDEDE] relative z-10">
           <div className="max-w-[800px] mx-auto px-6">
             <h2 className="font-sans text-2xl md:text-3xl font-extrabold text-center tracking-tight text-[#0A0A0A] mb-4">
               Terms of Service Plain-English Summary
@@ -1056,7 +1074,7 @@ export default function BuildPage() {
         </section>
 
         {/* 09 ACCEPTANCE ZONE - Glassmorphic Bento Checkout Panel */}
-        <section ref={acceptanceRef} id="acceptance" className="py-16">
+        <section ref={acceptanceRef} id="acceptance" className="py-20 bg-[#F9F9FB] border-b border-neutral-200 relative z-10">
           <div className="max-w-[720px] mx-auto px-6">
             
             <div className="bg-white/85 backdrop-blur-xl border border-white/60 p-8 md:p-12 rounded-3xl shadow-lg relative z-10">
@@ -1190,7 +1208,7 @@ export default function BuildPage() {
       </main>
 
       {/* 12 COMPREHENSIVE TRUST FOOTER */}
-      <footer className="bg-[#111111] text-white border-t border-[#262626] py-16 relative z-25">
+      <footer className="bg-[#050505] text-white border-t border-[#1A1A1A] py-16 relative z-20">
         <div className="max-w-[1200px] mx-auto px-8 sm:px-12 lg:px-24">
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-16 mb-12">
@@ -1264,7 +1282,7 @@ export default function BuildPage() {
             </div>
             <button
               onClick={scrollToAcceptance}
-              className="px-6 py-3 bg-white hover:bg-neutral-200 text-black font-sans font-bold text-xs uppercase tracking-widest transition-colors duration-200 flex-shrink-0"
+              className="px-6 py-3 bg-[#C4431B] hover:bg-[#A33615] text-white font-sans font-bold text-xs uppercase tracking-widest transition-colors duration-200 flex-shrink-0"
             >
               Get Started
             </button>

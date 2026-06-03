@@ -131,7 +131,7 @@ export default function BuildPage() {
 
   return (
     <div 
-      className="relative min-h-screen font-sans antialiased selection:bg-neutral-900 selection:text-white overflow-hidden"
+      className="relative min-h-screen font-sans antialiased selection:bg-neutral-900 selection:text-white overflow-x-hidden"
       style={{ backgroundColor: "var(--canvas)", color: "var(--ink-primary)" }}
     >
       
@@ -1006,45 +1006,45 @@ export default function BuildPage() {
         <section ref={acceptanceRef} id="acceptance" className="py-20 bg-[#F9F9FB] border-b border-neutral-200 relative z-10">
           <div className="max-w-[720px] mx-auto px-6">
             
-            <div className="bento-card-dark text-white bg-[#0D0D0E]/80 backdrop-blur-2xl border-white/10 p-8 md:p-12 shadow-[0_24px_64px_rgba(0,0,0,0.8)] relative z-10">
+            <div className="bento-card-light bg-white p-8 md:p-12 border-2 border-[#1B4F8A] shadow-[0_24px_64px_rgba(27,79,138,0.08)] relative z-10">
               
-              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-neutral-400 block mb-2 text-center">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#1B4F8A] block mb-2 text-center">
                 Review and Accept Partnership Terms
               </span>
-              <h2 className="font-sans text-2xl font-extrabold text-center text-white mb-8">
+              <h2 className="font-sans text-2xl font-extrabold text-center text-[#0A0A0A] mb-8">
                 Outbound Partnership Split
               </h2>
 
               {/* Defined split terms banner */}
-              <div className="mb-6 p-5 bg-[#151515] border border-white/10 text-center rounded-xl shadow-inner">
-                <span className="font-sans text-xs font-bold text-white block">
-                  Campaign Scope: <span className="text-[#1B4F8A]">$500 Setup Investment</span> + $0 Labor Fee
+              <div className="mb-6 p-5 bg-[#1B4F8A]/5 border border-[#1B4F8A]/10 text-center rounded-xl shadow-inner">
+                <span className="font-sans text-xs font-bold text-[#0A0A0A] block">
+                  Campaign Scope: <span className="text-[#1B4F8A] font-extrabold">$500 Setup Investment</span> + $0 Labor Fee
                 </span>
-                <span className="font-sans text-[11px] text-neutral-400 mt-1.5 block">
+                <span className="font-sans text-[11px] text-neutral-600 mt-1.5 block">
                   ScaleSteady labor fees are 100% deferred until your campaign closes $5,000 in new revenue.
                 </span>
               </div>
 
               {/* Partnership Split Grid with thin dividers */}
-              <div className="grid grid-cols-2 gap-6 border-b border-white/10 pb-8 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 border-b border-neutral-200 pb-8 mb-6">
                 <div>
-                  <h4 className="font-sans text-xs font-bold text-white uppercase tracking-wider mb-3">ScaleSteady Delivers</h4>
-                  <ul className="space-y-2 text-xs text-neutral-300 list-none p-0 m-0 font-medium">
-                    <li className="flex items-center gap-2 text-emerald-500"><span>✓</span> <span className="text-neutral-300">Outbound infrastructure build</span></li>
-                    <li className="flex items-center gap-2 text-emerald-500"><span>✓</span> <span className="text-neutral-300">10,000+ verified target leads</span></li>
-                    <li className="flex items-center gap-2 text-emerald-500"><span>✓</span> <span className="text-neutral-300">20,000+ campaign sends</span></li>
-                    <li className="flex items-center gap-2 text-emerald-500"><span>✓</span> <span className="text-neutral-300">Active inbox monitoring</span></li>
-                    <li className="flex items-center gap-2 text-emerald-500"><span>✓</span> <span className="text-neutral-300">Meeting coordination</span></li>
+                  <h4 className="font-sans text-xs font-bold text-[#0A0A0A] uppercase tracking-wider mb-3">ScaleSteady Delivers</h4>
+                  <ul className="space-y-2 text-xs text-neutral-700 list-none p-0 m-0 font-medium">
+                    <li className="flex items-center gap-2 text-emerald-600"><span>✓</span> <span className="text-neutral-700">Outbound infrastructure build</span></li>
+                    <li className="flex items-center gap-2 text-emerald-600"><span>✓</span> <span className="text-neutral-700">10,000+ verified target leads</span></li>
+                    <li className="flex items-center gap-2 text-emerald-600"><span>✓</span> <span className="text-neutral-700">20,000+ campaign sends</span></li>
+                    <li className="flex items-center gap-2 text-emerald-600"><span>✓</span> <span className="text-neutral-700">Active inbox monitoring</span></li>
+                    <li className="flex items-center gap-2 text-emerald-600"><span>✓</span> <span className="text-neutral-700">Meeting coordination</span></li>
                   </ul>
                 </div>
-                <div className="border-l border-white/10 pl-6">
-                  <h4 className="font-sans text-xs font-bold text-white uppercase tracking-wider mb-3">You Commit To</h4>
-                  <ul className="space-y-2 text-xs text-neutral-300 list-none p-0 m-0 font-medium">
-                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-300">Approve message copy</span></li>
-                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-300">Respond to warm leads (48h)</span></li>
-                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-300">Monthly campaign reviews</span></li>
-                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-300">Report milestone revenue</span></li>
-                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-300">Close outbound leads</span></li>
+                <div className="border-l border-neutral-200 pl-6">
+                  <h4 className="font-sans text-xs font-bold text-[#0A0A0A] uppercase tracking-wider mb-3">You Commit To</h4>
+                  <ul className="space-y-2 text-xs text-neutral-700 list-none p-0 m-0 font-medium">
+                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-700">Approve message copy</span></li>
+                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-700">Respond to warm leads (48h)</span></li>
+                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-700">Monthly campaign reviews</span></li>
+                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-700">Report milestone revenue</span></li>
+                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-700">Close outbound leads</span></li>
                   </ul>
                 </div>
               </div>
@@ -1056,9 +1056,9 @@ export default function BuildPage() {
                     type="checkbox"
                     checked={accepted}
                     onChange={(e) => setAccepted(e.target.checked)}
-                    className="mt-1.5 flex-shrink-0 cursor-pointer accent-[#1B4F8A] w-4 h-4 rounded border-white/20 bg-black/40"
+                    className="mt-1.5 flex-shrink-0 cursor-pointer accent-[#1B4F8A] w-4 h-4 rounded border-neutral-300 bg-white"
                   />
-                  <span className="font-sans text-xs text-neutral-300 leading-relaxed font-medium">
+                  <span className="font-sans text-xs text-neutral-700 leading-relaxed font-medium">
                     I have read and agree to the{" "}
                     <button
                       type="button"
@@ -1066,7 +1066,7 @@ export default function BuildPage() {
                         e.preventDefault();
                         setShowTOS(true);
                       }}
-                      className="underline text-[#1B4F8A] font-extrabold hover:text-white transition-colors duration-200"
+                      className="underline text-[#1B4F8A] font-extrabold hover:text-[#2660A8] transition-colors duration-200"
                     >
                       Terms of Service
                     </button>
@@ -1080,7 +1080,7 @@ export default function BuildPage() {
                 <div
                   style={{
                     pointerEvents: accepted ? "auto" : "none",
-                    opacity: accepted ? 1 : 0.45,
+                    opacity: accepted ? 1 : 0.8,
                     transition: "opacity 0.3s ease",
                     userSelect: accepted ? "auto" : "none",
                   }}
@@ -1113,18 +1113,18 @@ export default function BuildPage() {
                 </div>
 
                 {!accepted && (
-                  <p className="text-center font-mono text-[11px] text-[#444444] mt-4 font-semibold">
+                  <p className="text-center font-mono text-[11px] text-neutral-500 mt-4 font-semibold">
                     Please check the terms acceptance box above to activate checkout
                   </p>
                 )}
               </div>
 
-              <div className="mt-8 text-center border-t border-[#DEDEDE] pt-6 flex flex-col items-center gap-3">
-                <span className="font-sans text-[11px] text-[#262626] font-semibold tracking-wide">
+              <div className="mt-8 text-center border-t border-neutral-200 pt-6 flex flex-col items-center gap-3">
+                <span className="font-sans text-[11px] text-neutral-800 font-semibold tracking-wide">
                   🔒 Secure checkout via PayPal - $500.00 USD - One-time payment
                 </span>
                 
-                <div className="flex items-center gap-2 text-[#888888] font-mono text-[9px] uppercase tracking-wider mt-2">
+                <div className="flex items-center gap-2 text-neutral-400 font-mono text-[9px] uppercase tracking-wider mt-2">
                   <span>SSL Encrypted</span> | <span>256-Bit Protection</span>
                 </div>
               </div>

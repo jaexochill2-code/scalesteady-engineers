@@ -133,9 +133,9 @@ export default function BuildPage() {
     <div className="relative min-h-screen bg-[#F4F4F4] text-[#0A0A0A] font-sans antialiased selection:bg-[#0A0A0A] selection:text-white overflow-hidden">
       
       {/* ── AURORA UI GLOWS ── */}
-      <div className="absolute top-[-5%] left-[-5%] w-[600px] h-[600px] rounded-full bg-[#1B4F8A]/5 blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-[-5%] left-[-5%] w-[600px] h-[600px] rounded-full bg-[#C4431B]/3 blur-[120px] pointer-events-none z-0" />
       <div className="absolute top-[35%] right-[-5%] w-[600px] h-[600px] rounded-full bg-white/5 blur-[130px] pointer-events-none z-0" />
-      <div className="absolute bottom-[15%] left-[-10%] w-[800px] h-[800px] rounded-full bg-[#1B4F8A]/5 blur-[150px] pointer-events-none z-0" />
+      <div className="absolute bottom-[15%] left-[-10%] w-[800px] h-[800px] rounded-full bg-[#C4431B]/3 blur-[150px] pointer-events-none z-0" />
       
       {/* Subtle Grid Overlay */}
       <div 
@@ -166,7 +166,7 @@ export default function BuildPage() {
 
           {/* Background bloom */}
           <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] rounded-full bg-white/5 blur-[140px] pointer-events-none" />
-          <div className="absolute bottom-0 left-[-5%] w-[500px] h-[400px] rounded-full bg-[#1B4F8A]/5 blur-[110px] pointer-events-none" />
+          <div className="absolute bottom-0 left-[-5%] w-[500px] h-[400px] rounded-full bg-[#C4431B]/4 blur-[110px] pointer-events-none" />
           <div className="absolute bottom-0 right-[-5%] w-[400px] h-[300px] rounded-full bg-white/5 blur-[90px] pointer-events-none" />
 
           <div className="max-w-[900px] mx-auto px-6 text-center relative z-10">
@@ -220,7 +220,7 @@ export default function BuildPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
             
             {/* Retail Cost Bento Column */}
-            <div className="lg:col-span-2 bg-white/40 backdrop-blur-xl border border-white/60 p-8 rounded-3xl shadow-xl transition-all duration-500 hover:shadow-2xl hover:border-white/80 hover:translate-y-[-2px] flex flex-col justify-between group">
+            <div className="bento-card-light lg:col-span-2 p-8 flex flex-col justify-between group">
               <div>
                 <h3 className="font-sans text-lg font-bold text-[#0A0A0A] mb-6 uppercase tracking-tight">Retail software and data costs</h3>
                 <div className="space-y-3 text-xs font-medium">
@@ -281,7 +281,7 @@ export default function BuildPage() {
             </div>
 
           {/* ScaleSteady Setup Value Bento Column */}
-          <div className="bg-[#0D0D0D] text-white border border-[#222222]/80 p-8 rounded-3xl shadow-2xl relative overflow-hidden transition-all duration-500 hover:border-[#444444] hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:translate-y-[-2px] flex flex-col justify-between group">
+          <div className="bento-card-dark text-white p-8 relative overflow-hidden flex flex-col justify-between group border-[#C4431B]/40 hover:border-[#C4431B]/60 shadow-[0_20px_50px_rgba(196,67,27,0.08)]">
               {/* Radial glow background spotlight */}
               <div className="absolute top-[-10%] right-[-10%] w-[200px] h-[200px] rounded-full bg-white/5 blur-[45px] pointer-events-none group-hover:bg-white/10 transition-all duration-500" />
               
@@ -344,9 +344,9 @@ export default function BuildPage() {
                   <span className="font-mono text-4xl font-extrabold text-white">$500</span>
                   <span className="font-sans text-xs text-neutral-500 block mt-1">One-time flat cost &mdash; 100% goes to your vendor accounts. We retain zero.</span>
                 </div>
-                <div className="p-3 bg-white/5 border border-white/10 rounded-lg text-center">
-                  <span className="font-mono text-[10px] text-[#888888] uppercase tracking-wider">You save at minimum</span>
-                  <span className="font-mono text-2xl font-extrabold text-[#C4431B] block">$375 + 60 days of free labor</span>
+                <div className="p-3 bg-white/5 border border-white/10 rounded-lg text-center font-mono">
+                  <span className="text-[10px] text-[#888888] uppercase tracking-wider block">You save at minimum</span>
+                  <span className="text-2xl font-extrabold text-[#C4431B] block mt-1">$375 + 60 days of free labor</span>
                 </div>
               </div>
             </div>
@@ -357,7 +357,7 @@ export default function BuildPage() {
           <div className="mt-8 space-y-0">
 
             {/* Beat 1: The Agency Math */}
-            <div className="p-8 bg-white/50 backdrop-blur-xl border border-white/60 rounded-t-3xl flex flex-col lg:flex-row lg:items-center justify-between gap-6 shadow-md border-b-0 transition-all duration-500 hover:shadow-lg hover:border-white/80">
+            <div className="bento-card-light rounded-b-none p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6 shadow-md border-b-0 hover:translate-y-0">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-neutral-400" />
@@ -376,10 +376,10 @@ export default function BuildPage() {
             </div>
 
             {/* Beat 2 + 3: The Why */}
-            <div className="relative bg-[#0D0D0D] rounded-b-3xl border border-[#222222] border-t-0 overflow-hidden p-8 md:p-10 shadow-2xl">
+            <div className="bento-card-dark rounded-t-none border-t-0 p-8 md:p-10 relative overflow-hidden shadow-2xl hover:translate-y-0">
               
               <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-white/5 blur-[80px] pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-[200px] h-[200px] rounded-full bg-[#1B4F8A]/6 blur-[60px] pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-[200px] h-[200px] rounded-full bg-[#C4431B]/5 blur-[60px] pointer-events-none" />
 
               <div className="relative z-10 max-w-[760px] space-y-6">
 
@@ -443,7 +443,7 @@ export default function BuildPage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               
               {/* Bento Card 1: 20,000 Outreach Sends */}
-              <div className="lg:col-span-2 bg-white/65 backdrop-blur-lg border border-white/40 shadow-sm rounded-3xl p-8 flex flex-col justify-between hover:border-black/10 hover:shadow-md transition-all duration-300">
+              <div className="bento-card-light lg:col-span-2 p-8 flex flex-col justify-between">
                 <div className="flex flex-col gap-3">
                   <div className="flex justify-between items-center">
                     <span className="font-mono text-xs text-[#444444] font-semibold uppercase tracking-wider">TOS §1.3 (a)</span>
@@ -455,14 +455,14 @@ export default function BuildPage() {
                   </p>
                 </div>
                 <div className="mt-6 border-t border-[#DEDEDE] pt-4 flex gap-4 text-xs font-mono text-[#444444]">
-                  <div><span className="text-emerald-600">●</span> SPF: Configured</div>
-                  <div><span className="text-emerald-600">●</span> DKIM: Verified</div>
-                  <div><span className="text-emerald-600">●</span> DMARC: Enforced</div>
+                  <div><span className="text-emerald-600 font-bold">●</span> SPF: Configured</div>
+                  <div><span className="text-emerald-600 font-bold">●</span> DKIM: Verified</div>
+                  <div><span className="text-emerald-600 font-bold">●</span> DMARC: Enforced</div>
                 </div>
               </div>
 
               {/* Bento Card 2: 10,000 Verified Leads */}
-              <div className="bg-white/65 backdrop-blur-lg border border-white/40 shadow-sm rounded-3xl p-8 flex flex-col justify-between hover:border-black/10 hover:shadow-md transition-all duration-300">
+              <div className="bento-card-light p-8 flex flex-col justify-between">
                 <div className="flex flex-col gap-3">
                   <div className="flex justify-between items-center">
                     <span className="font-mono text-xs text-[#444444] font-semibold uppercase tracking-wider">TOS §1.3 (b)</span>
@@ -480,7 +480,7 @@ export default function BuildPage() {
               </div>
 
               {/* Bento Card 3: 2 Custom Angles */}
-              <div className="bg-white/65 backdrop-blur-lg border border-white/40 shadow-sm rounded-3xl p-8 flex flex-col justify-between hover:border-black/10 hover:shadow-md transition-all duration-300">
+              <div className="bento-card-light p-8 flex flex-col justify-between">
                 <div className="flex flex-col gap-3">
                   <div className="flex justify-between items-center">
                     <span className="font-mono text-xs text-[#444444] font-semibold uppercase tracking-wider">TOS §1.3 (c)</span>
@@ -498,7 +498,7 @@ export default function BuildPage() {
               </div>
 
               {/* Bento Card 4: 3 Follow-up Steps */}
-              <div className="bg-white/65 backdrop-blur-lg border border-white/40 shadow-sm rounded-3xl p-8 flex flex-col justify-between hover:border-black/10 hover:shadow-md transition-all duration-300">
+              <div className="bento-card-light p-8 flex flex-col justify-between">
                 <div className="flex flex-col gap-3">
                   <div className="flex justify-between items-center">
                     <span className="font-mono text-xs text-[#444444] font-semibold uppercase tracking-wider">TOS §1.3 (d)</span>
@@ -515,7 +515,7 @@ export default function BuildPage() {
               </div>
 
               {/* Bento Card 5: Managed Campaign Operations */}
-              <div className="lg:col-span-2 bg-white/65 backdrop-blur-lg border border-white/40 shadow-sm rounded-3xl p-8 flex flex-col justify-between hover:border-black/10 hover:shadow-md transition-all duration-300">
+              <div className="bento-card-light lg:col-span-2 p-8 flex flex-col justify-between">
                 <div className="flex flex-col gap-3">
                   <div className="flex justify-between items-center">
                     <span className="font-mono text-xs text-[#444444] font-semibold uppercase tracking-wider">TOS §1.3 (e, f)</span>
@@ -530,78 +530,6 @@ export default function BuildPage() {
                   <div>✓ Inbox Monitoring</div>
                   <div>✓ Meeting Coordination</div>
                   <div>✓ Monthly Review</div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* 04.5 VERIFIED CAMPAIGN PERFORMANCE */}
-        <section className="bg-[#050505] py-24 border-b border-[#1A1A1A] relative overflow-hidden z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-black to-neutral-950 pointer-events-none" />
-          <div className="max-w-[1100px] mx-auto px-6 relative z-10">
-            <div className="text-center mb-16">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-500 block mb-3">Actual Campaign Outcomes</span>
-              <h2 className="font-sans text-2xl md:text-3xl font-extrabold text-white tracking-tight">
-                Verified performance from the field
-              </h2>
-              <p className="font-sans text-xs text-neutral-400 mt-3 max-w-[500px] mx-auto">
-                Real outbound campaigns run for health and trade clients under the same setup.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-              {/* Physical Therapy Case Study */}
-              <div className="bg-neutral-900/50 border border-neutral-800/80 rounded-2xl p-8 flex flex-col justify-between hover:border-neutral-700 transition-all duration-300">
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center pb-3 border-b border-neutral-800">
-                    <span className="font-mono text-[10px] text-white uppercase tracking-wider font-bold">Health Campaign Case Study</span>
-                    <span className="px-2.5 py-0.5 text-[9px] font-bold bg-white/10 text-white rounded font-mono uppercase tracking-wider">Physical Therapy</span>
-                  </div>
-                  <div className="space-y-2">
-                    <span className="font-mono text-[10px] text-neutral-500 uppercase tracking-widest block">Outreach Campaign Strategy</span>
-                    <p className="font-sans text-xs text-neutral-300 leading-relaxed font-medium">
-                      Value-first campaign targeting high-stress, high-income professionals in corporate hubs. Offered a custom new patient assessment paired with a complimentary Red Light Therapy session.
-                    </p>
-                  </div>
-                  <div className="space-y-2 pt-2">
-                    <span className="font-mono text-[10px] text-neutral-500 uppercase tracking-widest block">Outreach Performance</span>
-                    <p className="font-sans text-sm text-white leading-relaxed font-semibold">
-                      &ldquo;Three physical therapy clinics responded in the same week. We booked two of them on calls. One converted before the 60 days were up &mdash; driving 17 net new patient visits in 2 weeks, and 3 care plans sold.&rdquo;
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-8 pt-4 border-t border-neutral-800 flex items-center justify-between">
-                  <span className="font-mono text-[10px] text-neutral-500">Chicago Metro Area</span>
-                  <span className="font-mono text-[10px] text-emerald-500 font-bold">100% Attributed</span>
-                </div>
-              </div>
-
-              {/* Roofing Case Study */}
-              <div className="bg-neutral-900/50 border border-neutral-800/80 rounded-2xl p-8 flex flex-col justify-between hover:border-neutral-700 transition-all duration-300">
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center pb-3 border-b border-neutral-800">
-                    <span className="font-mono text-[10px] text-white uppercase tracking-wider font-bold">Trades Campaign Case Study</span>
-                    <span className="px-2.5 py-0.5 text-[9px] font-bold bg-white/10 text-white rounded font-mono uppercase tracking-wider">Commercial Roofing</span>
-                  </div>
-                  <div className="space-y-2">
-                    <span className="font-mono text-[10px] text-neutral-500 uppercase tracking-widest block">Outreach Campaign Strategy</span>
-                    <p className="font-sans text-xs text-neutral-300 leading-relaxed font-medium">
-                      Direct capital-expenditure campaign targeting commercial property managers, building owners, and facility directors for inspection audits.
-                    </p>
-                  </div>
-                  <div className="space-y-2 pt-2">
-                    <span className="font-mono text-[10px] text-neutral-500 uppercase tracking-widest block">Outreach Performance</span>
-                    <p className="font-sans text-sm text-white leading-relaxed font-semibold">
-                      &ldquo;A roofing company we targeted reached back out after the third follow-up. They closed an $18K commercial job. That was enough to hit the milestone.&rdquo;
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-8 pt-4 border-t border-neutral-800 flex items-center justify-between">
-                  <span className="font-mono text-[10px] text-neutral-500">Dallas-Fort Worth Metro</span>
-                  <span className="font-mono text-[10px] text-emerald-500 font-bold">100% Attributed</span>
                 </div>
               </div>
 
@@ -688,10 +616,10 @@ export default function BuildPage() {
               </div>
 
               {/* Right Column: Premium Glow Detail Panel */}
-              <div className="lg:col-span-3 bg-[#0D0D0D] border border-white/10 rounded-3xl p-8 relative overflow-hidden min-h-[380px] flex flex-col justify-between shadow-2xl transition-all duration-500 hover:border-[#C4431B]/35">
+              <div className="bento-card-dark lg:col-span-3 p-8 relative overflow-hidden min-h-[380px] flex flex-col justify-between hover:border-[#C4431B]/40 shadow-[0_20px_50px_rgba(196,67,27,0.05)]">
                 
                 {/* Accent glow light */}
-                <div className="absolute -top-12 -right-12 w-[240px] h-[240px] rounded-full bg-[#C4431B]/5 blur-[45px] pointer-events-none" />
+                <div className="absolute -top-12 -right-12 w-[240px] h-[240px] rounded-full bg-[#C4431B]/4 blur-[45px] pointer-events-none" />
                 
                 <div className="space-y-6 relative z-10">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/5 pb-4">
@@ -768,7 +696,7 @@ export default function BuildPage() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
 
-              <div className="bg-white border-l-4 border-[#0A0A0A] rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="bento-card-light border-l-4 border-l-[#C4431B] p-6 hover:translate-y-[-2px]">
                 <div className="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-[#0A0A0A]/5">
                   <svg className="w-5 h-5 text-[#0A0A0A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9" />
@@ -778,7 +706,7 @@ export default function BuildPage() {
                 <span className="font-mono text-[10px] text-[#666666] uppercase tracking-wider font-bold">Yours from Day 1</span>
               </div>
 
-              <div className="bg-white border-l-4 border-[#0A0A0A] rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="bento-card-light border-l-4 border-l-[#C4431B] p-6 hover:translate-y-[-2px]">
                 <div className="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-[#0A0A0A]/5">
                   <svg className="w-5 h-5 text-[#0A0A0A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -788,7 +716,7 @@ export default function BuildPage() {
                 <span className="font-mono text-[10px] text-[#666666] uppercase tracking-wider font-bold">Yours from Day 1</span>
               </div>
 
-              <div className="bg-white border-l-4 border-[#0A0A0A] rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="bento-card-light border-l-4 border-l-[#C4431B] p-6 hover:translate-y-[-2px]">
                 <div className="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-[#0A0A0A]/5">
                   <svg className="w-5 h-5 text-[#0A0A0A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" />
@@ -798,7 +726,7 @@ export default function BuildPage() {
                 <span className="font-mono text-[10px] text-[#666666] uppercase tracking-wider font-bold">Yours from Day 1</span>
               </div>
 
-              <div className="bg-white border-l-4 border-[#0A0A0A] rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="bento-card-light border-l-4 border-l-[#C4431B] p-6 hover:translate-y-[-2px]">
                 <div className="w-10 h-10 mb-4 flex items-center justify-center rounded-lg bg-[#0A0A0A]/5">
                   <svg className="w-5 h-5 text-[#0A0A0A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -836,7 +764,7 @@ export default function BuildPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
               {/* Walk Card */}
-              <div className="bg-white border border-[#DEDEDE] p-8 flex flex-col justify-between rounded-2xl hover:shadow-md transition-all duration-300">
+              <div className="bento-card-light p-8 flex flex-col justify-between">
                 <div>
                   <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-[#E8E8E8] text-[#262626] mb-5">
                     Option B
@@ -856,7 +784,7 @@ export default function BuildPage() {
               </div>
 
               {/* Scale Card */}
-              <div className="bg-[#0D0D0D] text-white border border-[#222222] p-8 flex flex-col justify-between rounded-2xl shadow-2xl relative overflow-hidden group hover:border-[#C4431B]/40 transition-all duration-500">
+              <div className="bento-card-dark text-white p-8 flex flex-col justify-between border-[#C4431B]/20 hover:border-[#C4431B]/50 shadow-[0_20px_50px_rgba(196,67,27,0.05)] relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-[200px] h-[200px] rounded-full bg-white/5 blur-[60px] pointer-events-none" />
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-5">
@@ -895,56 +823,56 @@ export default function BuildPage() {
 
             <div className="space-y-4 mb-10">
 
-              <div className="bg-white/70 backdrop-blur-md border border-white/50 p-5 rounded-xl shadow-sm">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 1 | What We Deliver</span>
                 <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   ScaleSteady deploys dedicated sending domains and warmed inboxes (minimum 20,000 sends), sources and cleans a minimum of 10,000 verified B2B leads, develops two distinct marketing angles with three follow-up sequences, and manages active inbox monitoring, response coordination, and campaign reviews throughout the 60-day engagement. (§1.3)
                 </p>
               </div>
 
-              <div className="bg-white/70 backdrop-blur-md border border-white/50 p-5 rounded-xl shadow-sm">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 2 | Pass-Through Cost Model</span>
                 <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   The $500 Infrastructure Fee is remitted in full to third-party vendors -- domain registrars, email data providers, and warm-up platforms. ScaleSteady retains zero markup. All agency, labor, copywriting, and management fees are deferred until the Revenue Milestone is achieved. (§2.1 -- §2.3)
                 </p>
               </div>
 
-              <div className="bg-white/70 backdrop-blur-md border border-white/50 p-5 rounded-xl shadow-sm">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 3 | Asset Ownership</span>
                 <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   All domain names, email inboxes, lead lists, and outbound sequences are the sole property of the Client from the moment of purchase or creation. Upon termination for any reason, all assets are transferred to the Client within 10 business days. ScaleSteady retains no title, equity, or licensing rights. (§3.1, §3.4)
                 </p>
               </div>
 
-              <div className="bg-white/70 backdrop-blur-md border border-white/50 p-5 rounded-xl shadow-sm">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 6 -- 7 | Revenue Milestone and Downside Protection</span>
                 <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   The Revenue Milestone is $5,000 in new, cleared revenue attributable to the campaign. If the Milestone is not achieved within 60 days, ScaleSteady waives all claims to labor compensation, the Client retains all assets, and no further fees of any kind are owed. Client maximum financial exposure is $500, regardless of outcome. (§6.1, §7.3)
                 </p>
               </div>
 
-              <div className="bg-white/70 backdrop-blur-md border border-white/50 p-5 rounded-xl shadow-sm">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 9 | Post-Milestone Election</span>
                 <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   Upon verified Milestone achievement, the Client elects Option A (ongoing retainer at $699/month, 12-month commitment with 30-day cancellation notice) or Option B (conclude engagement, retain 100% of all assets, owe nothing further). Failure to elect within 14 days defaults to Option B. (§9.1 -- §9.3)
                 </p>
               </div>
 
-              <div className="bg-white/70 backdrop-blur-md border border-white/50 p-5 rounded-xl shadow-sm">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 10 | Refund Policy</span>
                 <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   Full refund is available only if requested before ScaleSteady executes any vendor purchases. Once domain registration, inbox provisioning, lead list acquisition, or warm-up enrollment has been executed, the Infrastructure Fee is non-refundable in whole or in part. ScaleSteady earns no margin on these purchases and has no funds to return. No labor fee is collected during the campaign phase and therefore none is subject to refund. (§10.2 -- §10.4)
                 </p>
               </div>
 
-              <div className="bg-white/70 backdrop-blur-md border border-white/50 p-5 rounded-xl shadow-sm">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 13 | Limitation of Liability</span>
                 <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   ScaleSteady's total aggregate liability is capped at $500 -- the Infrastructure Fee paid. ScaleSteady is not liable for indirect, consequential, or punitive damages including lost profits or lost revenue. ScaleSteady is not liable for service interruptions or policy changes by third-party platforms, registrars, or data vendors. (§13.1 -- §13.3)
                 </p>
               </div>
 
-              <div className="bg-white/70 backdrop-blur-md border border-white/50 p-5 rounded-xl shadow-sm">
+              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 14 | Dispute Resolution</span>
                 <p className="font-sans text-sm text-[#262626] leading-relaxed">
                   Disputes are resolved first through 15-day good faith negotiation, then non-binding mediation (costs shared equally), then litigation in a court of competent jurisdiction. Both parties waive the right to a jury trial by signing this Agreement. (&sect;14.1 &mdash; &sect;14.3)
@@ -1077,45 +1005,45 @@ export default function BuildPage() {
         <section ref={acceptanceRef} id="acceptance" className="py-20 bg-[#F9F9FB] border-b border-neutral-200 relative z-10">
           <div className="max-w-[720px] mx-auto px-6">
             
-            <div className="bg-white/85 backdrop-blur-xl border border-white/60 p-8 md:p-12 rounded-3xl shadow-lg relative z-10">
+            <div className="bento-card-dark text-white bg-[#0D0D0E]/80 backdrop-blur-2xl border-white/10 p-8 md:p-12 shadow-[0_24px_64px_rgba(0,0,0,0.8)] relative z-10">
               
-              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#444444] block mb-2 text-center">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-neutral-400 block mb-2 text-center">
                 Review and Accept Partnership Terms
               </span>
-              <h2 className="font-sans text-2xl font-extrabold text-center text-[#0A0A0A] mb-8">
+              <h2 className="font-sans text-2xl font-extrabold text-center text-white mb-8">
                 Outbound Partnership Split
               </h2>
 
               {/* Defined split terms banner */}
-              <div className="mb-6 p-4 bg-[#F4F4F4] border border-[#DEDEDE] text-center rounded-xl">
-                <span className="font-sans text-xs font-semibold text-[#0A0A0A] block">
-                  Campaign Scope: $500 Setup Investment + $0 Labor Fee
+              <div className="mb-6 p-5 bg-[#151515] border border-white/10 text-center rounded-xl shadow-inner">
+                <span className="font-sans text-xs font-bold text-white block">
+                  Campaign Scope: <span className="text-[#C4431B]">$500 Setup Investment</span> + $0 Labor Fee
                 </span>
-                <span className="font-sans text-[11px] text-[#444444] mt-1 block">
+                <span className="font-sans text-[11px] text-neutral-400 mt-1.5 block">
                   ScaleSteady labor fees are 100% deferred until your campaign closes $5,000 in new revenue.
                 </span>
               </div>
 
               {/* Partnership Split Grid with thin dividers */}
-              <div className="grid grid-cols-2 gap-6 border-b border-[#DEDEDE] pb-8 mb-6">
+              <div className="grid grid-cols-2 gap-6 border-b border-white/10 pb-8 mb-6">
                 <div>
-                  <h4 className="font-sans text-xs font-bold text-[#0A0A0A] uppercase tracking-wider mb-3">ScaleSteady Delivers</h4>
-                  <ul className="space-y-2 text-xs text-[#262626] list-none p-0 m-0 font-medium">
-                    <li className="flex items-center gap-2 text-emerald-600"><span>✓</span> <span className="text-[#262626]">Outbound infrastructure build</span></li>
-                    <li className="flex items-center gap-2 text-emerald-600"><span>✓</span> <span className="text-[#262626]">10,000+ verified target leads</span></li>
-                    <li className="flex items-center gap-2 text-emerald-600"><span>✓</span> <span className="text-[#262626]">20,000+ campaign sends</span></li>
-                    <li className="flex items-center gap-2 text-emerald-600"><span>✓</span> <span className="text-[#262626]">Active inbox monitoring</span></li>
-                    <li className="flex items-center gap-2 text-emerald-600"><span>✓</span> <span className="text-[#262626]">Meeting coordination</span></li>
+                  <h4 className="font-sans text-xs font-bold text-white uppercase tracking-wider mb-3">ScaleSteady Delivers</h4>
+                  <ul className="space-y-2 text-xs text-neutral-300 list-none p-0 m-0 font-medium">
+                    <li className="flex items-center gap-2 text-emerald-500"><span>✓</span> <span className="text-neutral-300">Outbound infrastructure build</span></li>
+                    <li className="flex items-center gap-2 text-emerald-500"><span>✓</span> <span className="text-neutral-300">10,000+ verified target leads</span></li>
+                    <li className="flex items-center gap-2 text-emerald-500"><span>✓</span> <span className="text-neutral-300">20,000+ campaign sends</span></li>
+                    <li className="flex items-center gap-2 text-emerald-500"><span>✓</span> <span className="text-neutral-300">Active inbox monitoring</span></li>
+                    <li className="flex items-center gap-2 text-emerald-500"><span>✓</span> <span className="text-neutral-300">Meeting coordination</span></li>
                   </ul>
                 </div>
-                <div className="border-l border-[#DEDEDE] pl-6">
-                  <h4 className="font-sans text-xs font-bold text-[#0A0A0A] uppercase tracking-wider mb-3">You Commit To</h4>
-                  <ul className="space-y-2 text-xs text-[#262626] list-none p-0 m-0 font-medium">
-                    <li className="flex items-center gap-2 text-[#444444]"><span>→</span> <span className="text-[#262626]">Approve message copy</span></li>
-                    <li className="flex items-center gap-2 text-[#444444]"><span>→</span> <span className="text-[#262626]">Respond to warm leads (48h)</span></li>
-                    <li className="flex items-center gap-2 text-[#444444]"><span>→</span> <span className="text-[#262626]">Monthly campaign reviews</span></li>
-                    <li className="flex items-center gap-2 text-[#444444]"><span>→</span> <span className="text-[#262626]">Report milestone revenue</span></li>
-                    <li className="flex items-center gap-2 text-[#444444]"><span>→</span> <span className="text-[#262626]">Close outbound leads</span></li>
+                <div className="border-l border-white/10 pl-6">
+                  <h4 className="font-sans text-xs font-bold text-white uppercase tracking-wider mb-3">You Commit To</h4>
+                  <ul className="space-y-2 text-xs text-neutral-300 list-none p-0 m-0 font-medium">
+                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-300">Approve message copy</span></li>
+                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-300">Respond to warm leads (48h)</span></li>
+                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-300">Monthly campaign reviews</span></li>
+                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-300">Report milestone revenue</span></li>
+                    <li className="flex items-center gap-2 text-neutral-400"><span>→</span> <span className="text-neutral-300">Close outbound leads</span></li>
                   </ul>
                 </div>
               </div>
@@ -1127,9 +1055,9 @@ export default function BuildPage() {
                     type="checkbox"
                     checked={accepted}
                     onChange={(e) => setAccepted(e.target.checked)}
-                    className="mt-1 flex-shrink-0 cursor-pointer accent-[#0A0A0A]"
+                    className="mt-1.5 flex-shrink-0 cursor-pointer accent-[#C4431B] w-4 h-4 rounded border-white/20 bg-black/40"
                   />
-                  <span className="font-sans text-xs text-[#262626] leading-relaxed font-medium">
+                  <span className="font-sans text-xs text-neutral-300 leading-relaxed font-medium">
                     I have read and agree to the{" "}
                     <button
                       type="button"
@@ -1137,7 +1065,7 @@ export default function BuildPage() {
                         e.preventDefault();
                         setShowTOS(true);
                       }}
-                      className="underline text-[#0A0A0A] font-extrabold hover:text-[#444444]"
+                      className="underline text-[#C4431B] font-extrabold hover:text-white transition-colors duration-200"
                     >
                       Terms of Service
                     </button>

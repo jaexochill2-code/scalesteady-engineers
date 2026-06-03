@@ -382,18 +382,18 @@ export default function Home() {
             </div>
 
             {/* Right: System-powered — WHITE card, max contrast */}
-            <div 
+             <div 
               className={`bento-card-light p-8 xl:p-12 flex flex-col ${comparisonTab === "system" ? "flex" : "hidden lg:flex"}`}
-              style={{ minHeight: "380px", borderTop: "4px solid #0A0A0A" }}
+              style={{ minHeight: "380px", borderTop: "4px solid #1B4F8A" }}
             >
               <div className="mb-8 flex items-center gap-3">
-                <div style={{ width: "8px", height: "8px", background: "#0A0A0A", borderRadius: "50%" }} />
-                <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#0A0A0A" }}>System-powered</span>
+                <div style={{ width: "8px", height: "8px", background: "#1B4F8A", borderRadius: "50%" }} />
+                <span className="font-sans font-bold uppercase" style={{ fontSize: "10px", letterSpacing: "0.16em", color: "#1B4F8A" }}>System-powered</span>
               </div>
 
               <ul className="flex flex-col gap-7 font-sans mb-8" style={{ fontSize: "14.5px" }}>
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="3">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span style={{ color: "#444444" }}>
@@ -401,7 +401,7 @@ export default function Home() {
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="3">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span style={{ color: "#444444" }}>
@@ -409,7 +409,7 @@ export default function Home() {
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="3">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span style={{ color: "#444444" }}>
@@ -422,7 +422,7 @@ export default function Home() {
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="3">
+                  <svg className="w-4 h-4 flex-shrink-0" style={{ marginTop: "3px" }} viewBox="0 0 24 24" fill="none" stroke="#1B4F8A" strokeWidth="3">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span style={{ color: "#444444" }}>

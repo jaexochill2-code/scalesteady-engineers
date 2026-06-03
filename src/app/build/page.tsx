@@ -282,57 +282,55 @@ export default function BuildPage() {
                 </div>
               </div>
             </div>
-
-          {/* ScaleSteady Setup Value Bento Column */}
-          <div className="bento-card-dark text-white p-8 relative overflow-hidden flex flex-col justify-between group border-[#1B4F8A]/40 hover:border-[#1B4F8A]/60 shadow-[0_20px_50px_rgba(27,79,138,0.08)]">
+          <div className="bento-card-light bg-white p-8 relative overflow-hidden flex flex-col justify-between group border-2 border-[#1B4F8A] shadow-[0_20px_50px_rgba(27,79,138,0.12)]">
               {/* Radial glow background spotlight */}
-              <div className="absolute top-[-10%] right-[-10%] w-[200px] h-[200px] rounded-full bg-white/5 blur-[45px] pointer-events-none group-hover:bg-white/10 transition-all duration-500" />
+              <div className="absolute top-[-10%] right-[-10%] w-[200px] h-[200px] rounded-full bg-[#1B4F8A]/5 blur-[45px] pointer-events-none group-hover:bg-[#1B4F8A]/10 transition-all duration-500" />
               
               <div className="relative z-10">
                 <span className="inline-block px-3 py-1 text-[9px] font-bold tracking-widest uppercase bg-[#1B4F8A] text-white rounded mb-4">
                   The ScaleSteady Deal
                 </span>
-                <h3 className="font-sans text-lg font-bold mb-4 text-white uppercase tracking-tight">Our Flat Setup Fee</h3>
-                <p className="font-sans text-xs text-[#CCCCCC] leading-relaxed mb-6 font-medium">
+                <h3 className="font-sans text-lg font-bold mb-4 text-[#0C0C0E] uppercase tracking-tight">Our Flat Setup Fee</h3>
+                <p className="font-sans text-xs text-[#2F3033] leading-relaxed mb-6 font-medium">
                   If you do it yourself, you pay $875 for the raw software alone -- and you still have to build it, write the copy, and monitor the accounts without any experience. We buy these subscriptions in bulk. Your $500 setup fee goes entirely toward buying the accounts, and we configure everything, write the emails, and run the campaign for free.
                 </p>
                 
-                <ul className="space-y-4 text-xs text-[#CCCCCC]">
-                  <li className="flex items-center gap-3 transition-colors duration-300 hover:text-white group/item1">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/5 border border-white/10 group-hover/item1:border-white group-hover/item1:bg-white/10 transition-all duration-300">
-                      <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                <ul className="space-y-4 text-xs text-[#2F3033]">
+                  <li className="flex items-center gap-3 transition-colors duration-300 hover:text-[#0C0C0E] group/item1">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#1B4F8A]/5 border border-[#1B4F8A]/20 group-hover/item1:border-[#1B4F8A] group-hover/item1:bg-[#1B4F8A]/10 transition-all duration-300">
+                      <svg className="w-3 h-3 text-[#1B4F8A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
                     <span className="font-medium">All 25 sending emails setup and warmed up</span>
                   </li>
-                  <li className="flex items-center gap-3 transition-colors duration-300 hover:text-white group/item2">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/5 border border-white/10 group-hover/item2:border-white group-hover/item2:bg-white/10 transition-all duration-300">
-                      <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                  <li className="flex items-center gap-3 transition-colors duration-300 hover:text-[#0C0C0E] group/item2">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#1B4F8A]/5 border border-[#1B4F8A]/20 group-hover/item2:border-[#1B4F8A] group-hover/item2:bg-[#1B4F8A]/10 transition-all duration-300">
+                      <svg className="w-3 h-3 text-[#1B4F8A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
                     <span className="font-medium">All 5 domains registered and verified</span>
                   </li>
-                  <li className="flex items-center gap-3 transition-colors duration-300 hover:text-white group/item3">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/5 border border-white/10 group-hover/item3:border-white group-hover/item3:bg-white/10 transition-all duration-300">
-                      <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                  <li className="flex items-center gap-3 transition-colors duration-300 hover:text-[#0C0C0E] group/item3">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#1B4F8A]/5 border border-[#1B4F8A]/20 group-hover/item3:border-[#1B4F8A] group-hover/item3:bg-[#1B4F8A]/10 transition-all duration-300">
+                      <svg className="w-3 h-3 text-[#1B4F8A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
                     <span className="font-medium">10,000 cleaned and verified leads</span>
                   </li>
-                  <li className="flex items-center gap-3 transition-colors duration-300 hover:text-white group/item4">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/5 border border-white/10 group-hover/item4:border-white group-hover/item4:bg-white/10 transition-all duration-300">
-                      <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                  <li className="flex items-center gap-3 transition-colors duration-300 hover:text-[#0C0C0E] group/item4">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#1B4F8A]/5 border border-[#1B4F8A]/20 group-hover/item4:border-[#1B4F8A] group-hover/item4:bg-[#1B4F8A]/10 transition-all duration-300">
+                      <svg className="w-3 h-3 text-[#1B4F8A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
                     <span className="font-medium">Technical DNS delivery filters configured</span>
                   </li>
-                  <li className="flex items-center gap-3 transition-colors duration-300 hover:text-white group/item5">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/5 border border-white/10 group-hover/item5:border-white group-hover/item5:bg-white/10 transition-all duration-300">
-                      <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                  <li className="flex items-center gap-3 transition-colors duration-300 hover:text-[#0C0C0E] group/item5">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#1B4F8A]/5 border border-[#1B4F8A]/20 group-hover/item5:border-[#1B4F8A] group-hover/item5:bg-[#1B4F8A]/10 transition-all duration-300">
+                      <svg className="w-3 h-3 text-[#1B4F8A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
@@ -341,14 +339,14 @@ export default function BuildPage() {
                 </ul>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-[#222222] relative z-10">
-                <div className="mb-4 p-4 bg-white/5 border border-white/10 rounded-xl">
-                  <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-wider font-bold block mb-1">What you actually pay</span>
-                  <span className="font-mono text-4xl font-extrabold text-white">$500</span>
+              <div className="mt-8 pt-6 border-t border-[var(--ink-border)] relative z-10">
+                <div className="mb-4 p-4 bg-[#1B4F8A]/5 border border-[#1B4F8A]/20 rounded-xl">
+                  <span className="font-mono text-[10px] text-[#1B4F8A] uppercase tracking-wider font-bold block mb-1">What you actually pay</span>
+                  <span className="font-mono text-4xl font-extrabold text-[#0C0C0E]">$500</span>
                   <span className="font-sans text-xs text-neutral-500 block mt-1">One-time flat cost &mdash; 100% goes to your vendor accounts. We retain zero.</span>
                 </div>
-                <div className="p-3 bg-white/5 border border-white/10 rounded-lg text-center font-mono">
-                  <span className="text-[10px] text-[#888888] uppercase tracking-wider block">You save at minimum</span>
+                <div className="p-3 bg-[#1B4F8A]/5 border border-[#1B4F8A]/20 rounded-lg text-center font-mono">
+                  <span className="text-[10px] text-neutral-500 uppercase tracking-wider block">You save at minimum</span>
                   <span className="text-2xl font-extrabold text-[#1B4F8A] block mt-1">$375 + 60 days of free labor</span>
                 </div>
               </div>
@@ -379,39 +377,39 @@ export default function BuildPage() {
             </div>
 
             {/* Beat 2 + 3: The Why */}
-            <div className="bento-card-dark rounded-t-none border-t-0 p-8 md:p-10 relative overflow-hidden shadow-2xl hover:translate-y-0">
+            <div className="bento-card-light rounded-t-none border-t-0 bg-[#FAF9F6] p-8 md:p-10 relative overflow-hidden shadow-sm hover:translate-y-0">
               
-              <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-white/5 blur-[80px] pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-[200px] h-[200px] rounded-full bg-[#1B4F8A]/5 blur-[60px] pointer-events-none" />
+              <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-[#1B4F8A]/3 blur-[80px] pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-[200px] h-[200px] rounded-full bg-[#1B4F8A]/3 blur-[60px] pointer-events-none" />
 
               <div className="relative z-10 max-w-[760px] space-y-6">
 
-                <span className="inline-block px-3 py-1 text-[9px] font-bold tracking-widest uppercase bg-white/5 text-[#888888] border border-white/10 rounded">
+                <span className="inline-block px-3 py-1 text-[9px] font-bold tracking-widest uppercase bg-[#1B4F8A]/5 text-[#1B4F8A] border border-[#1B4F8A]/10 rounded">
                   Why we structure it this way
                 </span>
 
-                <p className="font-sans text-lg md:text-2xl font-bold text-white leading-snug">
+                <p className="font-sans text-lg md:text-2xl font-bold text-[#0C0C0E] leading-snug">
                   We learned that the only way to grow in this space is by giving value first.
                 </p>
 
-                <p className="font-sans text-sm text-[#AAAAAA] leading-relaxed">
+                <p className="font-sans text-sm text-[#2F3033] leading-relaxed">
                   So we go first. That is not a marketing angle -- it is how we decided to run this business. The clients who have found success with us came the same way you did. We proved it before we pitched it.
                 </p>
 
-                <div className="border-t border-white/8" />
+                <div className="border-t border-[#D8D6CE]" />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                   <div className="space-y-2">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400 font-bold">Who we take on</span>
-                    <p className="font-sans text-sm text-[#CCCCCC] leading-relaxed">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#585A60] font-bold">Who we take on</span>
+                    <p className="font-sans text-sm text-[#2F3033] leading-relaxed">
                       Health and construction only. Not as a rule -- as a promise. These are the two industries we can stand fully behind. We are not going to take your money somewhere we have not already been.
                     </p>
                   </div>
 
                   <div className="space-y-2">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#888888] font-bold">All we want</span>
-                    <p className="font-sans text-sm text-[#CCCCCC] leading-relaxed">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#585A60] font-bold">All we want</span>
+                    <p className="font-sans text-sm text-[#2F3033] leading-relaxed">
                       A seat at the table. One shot to show you what this does. If it works, we build something long-term. If it does not, you walk. No hard feelings.
                     </p>
                   </div>
@@ -787,27 +785,27 @@ export default function BuildPage() {
               </div>
 
               {/* Scale Card */}
-              <div className="bento-card-dark text-white p-8 flex flex-col justify-between border-[#1B4F8A]/20 hover:border-[#1B4F8A]/50 shadow-[0_20px_50px_rgba(27,79,138,0.05)] relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-[200px] h-[200px] rounded-full bg-white/5 blur-[60px] pointer-events-none" />
+              <div className="bento-card-light bg-white p-8 flex flex-col justify-between border-2 border-[#1B4F8A] shadow-[0_20px_50px_rgba(27,79,138,0.08)] relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-[200px] h-[200px] rounded-full bg-[#1B4F8A]/5 blur-[60px] pointer-events-none" />
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-5">
                     <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-[#1B4F8A] text-white">
                       Option A
                     </span>
-                    <span className="font-mono text-[9px] text-[#888888] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded">Most common choice</span>
+                    <span className="font-mono text-[9px] text-[#1B4F8A] uppercase tracking-wider border border-[#1B4F8A]/20 bg-[#1B4F8A]/5 px-2 py-0.5 rounded">Most common choice</span>
                   </div>
-                  <h3 className="font-sans text-2xl font-extrabold mb-4 text-white">Keep Scaling</h3>
-                  <p className="font-sans text-sm text-[#AAAAAA] leading-relaxed mb-6">
+                  <h3 className="font-sans text-2xl font-extrabold mb-4 text-[#0C0C0E]">Keep Scaling</h3>
+                  <p className="font-sans text-sm text-[#2F3033] leading-relaxed mb-6">
                     Retain ScaleSteady to actively manage, optimize, and scale your outbound campaign. Includes database refreshes, continuous copy sequencing, and inbox deliverability management.
                   </p>
-                  <ul className="space-y-2 text-xs text-[#AAAAAA]">
+                  <ul className="space-y-2 text-xs text-[#2F3033]">
                     <li className="flex items-center gap-2"><span className="text-[#1B4F8A] font-bold">&#10003;</span> Continuous lead list refreshes</li>
                     <li className="flex items-center gap-2"><span className="text-[#1B4F8A] font-bold">&#10003;</span> A/B copy optimization</li>
                     <li className="flex items-center gap-2"><span className="text-[#1B4F8A] font-bold">&#10003;</span> Monthly campaign review calls</li>
                     <li className="flex items-center gap-2"><span className="text-[#1B4F8A] font-bold">&#10003;</span> Inbox deliverability management</li>
                   </ul>
                 </div>
-                <p className="font-mono text-sm font-bold text-white mt-8 relative z-10">$699 / month</p>
+                <p className="font-mono text-sm font-bold text-[#0C0C0E] mt-8 relative z-10">$699 / month</p>
               </div>
 
             </div>
@@ -815,7 +813,7 @@ export default function BuildPage() {
         </section>
 
         {/* 08 PLAIN-ENGLISH TOS SUMMARY */}
-        <section className="py-20 bg-[#F5F5F7] border-b border-[#DEDEDE] relative z-10">
+        <section className="py-20 bg-[var(--canvas)] border-b border-[var(--ink-border)] relative z-10">
           <div className="max-w-[800px] mx-auto px-6">
             <h2 className="font-sans text-2xl md:text-3xl font-extrabold text-center tracking-tight text-[#0A0A0A] mb-4">
               Terms of Service Plain-English Summary

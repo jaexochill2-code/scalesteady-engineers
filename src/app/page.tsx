@@ -86,11 +86,13 @@ export default function Home() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to right, rgba(3,8,15,0.96) 0%, rgba(3,8,15,0.90) 50%, rgba(3,8,15,0.98) 100%)",
+                "linear-gradient(to right, rgba(10,22,48,0.97) 0%, rgba(13,27,56,0.92) 50%, rgba(8,17,36,0.98) 100%)",
             }}
           />
           {/* Ambient Glow */}
           <div className="hero-bg-glow" />
+          {/* Left top ambient blue reflection */}
+          <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-[#1B4F8A]/8 to-transparent blur-[120px] pointer-events-none z-10" />
         </div>
 
         {/* 2-column hero grid: text left | phone right */}
@@ -106,10 +108,10 @@ export default function Home() {
             <div className="hero-text-col">
               {/* Overline */}
               <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "clamp(14px, 2vw, 24px)" }}>
-                <div style={{ width: "24px", height: "2px", background: "rgba(255,255,255,0.6)", flexShrink: 0 }} />
+                <div style={{ width: "24px", height: "2px", background: "linear-gradient(90deg, #0052FF 0%, #1B4F8A 100%)", flexShrink: 0 }} />
                 <span
                   className="font-sans"
-                  style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}
+                  style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#38BDF8" }}
                 >
                   Outbound Infrastructure
                 </span>
@@ -129,8 +131,14 @@ export default function Home() {
                   If you&apos;re here,
                 </span>
                 <span
-                  className="hero-word block italic"
-                  style={{ animationDelay: "0.12s", color: "#FFFFFF" }}
+                  className="hero-word block italic font-extrabold"
+                  style={{
+                    animationDelay: "0.12s",
+                    background: "linear-gradient(135deg, #38BDF8 0%, #0052FF 50%, #1B4F8A 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    display: "inline-block"
+                  }}
                 >
                   the email worked.
                 </span>
@@ -174,13 +182,13 @@ export default function Home() {
               >
                 <Link
                   href="/contact"
-                  className="hero-cta-btn hidden lg:inline-flex items-center justify-center font-sans font-semibold transition-all duration-300"
+                  className="hero-cta-btn hidden lg:inline-flex items-center justify-center font-sans font-bold transition-all duration-300 shadow-[0_4px_24px_rgba(0,82,255,0.2)] hover:shadow-[0_4px_32px_rgba(0,82,255,0.4)]"
                   style={{
                     fontSize: "11px",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
-                    color: "#000000",
-                    background: "#FFFFFF",
+                    color: "#FFFFFF",
+                    background: "linear-gradient(135deg, #0052FF 0%, #1B4F8A 100%)",
                     padding: "16px 40px",
                     borderRadius: "0px",
                     flexShrink: 0,

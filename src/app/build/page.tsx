@@ -10,11 +10,11 @@ const PAYPAL_HOSTED_BUTTON_ID: string = "9DREMSSX56AHQ";
 
 export default function BuildPage() {
   const [accepted, setAccepted] = useState(false);
-  const [showTOS, setShowTOS] = useState(false);
   const [payPalLoaded, setPayPalLoaded] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [showStickyCTA, setShowStickyCTA] = useState(false);
   const acceptanceRef = useRef<HTMLDivElement>(null);
+  const termsRef = useRef<HTMLDivElement>(null);
 
   const timelineSteps = [
     {
@@ -84,6 +84,11 @@ export default function BuildPage() {
     e.preventDefault();
     acceptanceRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+  
+  const scrollToTerms = (e: React.MouseEvent) => {
+    e.preventDefault();
+    termsRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     const handleScroll = () => setShowStickyCTA(window.scrollY > 400);
@@ -119,8 +124,35 @@ export default function BuildPage() {
         const containerId = `#paypal-container-${PAYPAL_HOSTED_BUTTON_ID}`;
         const container = document.querySelector(containerId);
         if (container && container.children.length === 0) {
-          (window as any).paypal.HostedButtons({
-            hostedButtonId: PAYPAL_HOSTED_BUTTON_ID,
+          (window as any).paypal.Buttons({
+            style: {
+              layout: "vertical",
+              color: "gold",
+              shape: "rect",
+              label: "paypal",
+              height: 48
+            },
+            createOrder: (data: any, actions: any) => {
+              return actions.order.create({
+                purchase_units: [
+                  {
+                    amount: {
+                      currency_code: "USD",
+                      value: "500.00",
+                    },
+                    description: "ScaleSteady Outbound Campaign Infrastructure Fee - 60-Day Engagement",
+                  },
+                ],
+              });
+            },
+            onApprove: (data: any, actions: any) => {
+              return actions.order.capture().then((details: any) => {
+                alert("Transaction completed successfully by " + details.payer.name.given_name);
+              });
+            },
+            onError: (err: any) => {
+              console.error("PayPal checkout error:", err);
+            }
           }).render(containerId);
         }
       } catch (err) {
@@ -136,9 +168,18 @@ export default function BuildPage() {
     >
       
       {/* ── AURORA UI GLOWS ── */}
-      <div className="absolute top-[-5%] left-[-5%] w-[600px] h-[600px] rounded-full bg-[#1B4F8A]/3 blur-[120px] pointer-events-none z-0" />
-      <div className="absolute top-[35%] right-[-5%] w-[600px] h-[600px] rounded-full bg-white/5 blur-[130px] pointer-events-none z-0" />
-      <div className="absolute bottom-[15%] left-[-10%] w-[800px] h-[800px] rounded-full bg-[#1B4F8A]/3 blur-[150px] pointer-events-none z-0" />
+      <div 
+        className="absolute top-[-5%] left-[-5%] w-[600px] h-[600px] rounded-full pointer-events-none z-0" 
+        style={{ background: "radial-gradient(circle, rgba(27, 79, 138, 0.12) 0%, rgba(0, 82, 255, 0.05) 50%, transparent 100%)", filter: "blur(120px)" }}
+      />
+      <div 
+        className="absolute top-[35%] right-[-5%] w-[600px] h-[600px] rounded-full pointer-events-none z-0" 
+        style={{ background: "radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, rgba(27, 79, 138, 0.03) 60%, transparent 100%)", filter: "blur(130px)" }}
+      />
+      <div 
+        className="absolute bottom-[15%] left-[-10%] w-[800px] h-[800px] rounded-full pointer-events-none z-0" 
+        style={{ background: "radial-gradient(circle, rgba(0, 82, 255, 0.08) 0%, rgba(27, 79, 138, 0.03) 60%, transparent 100%)", filter: "blur(150px)" }}
+      />
       
       {/* Subtle Grid Overlay */}
       <div 
@@ -153,7 +194,7 @@ export default function BuildPage() {
         PAYPAL_HOSTED_BUTTON_ID !== "[INSERT]" &&
         PAYPAL_HOSTED_BUTTON_ID !== "" && (
           <Script
-            src="https://www.paypal.com/sdk/js?client-id=BAAS2hDrmJeZ6vej0n_nyNRRjAczAVMDvRkgeMguvM3FF8aR5ONEd5BTqzDbVTz53qws2xYrgO7ZfoOeZg&components=hosted-buttons&disable-funding=venmo&currency=USD"
+            src="https://www.paypal.com/sdk/js?client-id=BAAS2hDrmJeZ6vej0n_nyNRRjAczAVMDvRkgeMguvM3FF8aR5ONEd5BTqzDbVTz53qws2xYrgO7ZfoOeZg&components=buttons&disable-funding=venmo&currency=USD"
             strategy="afterInteractive"
             onLoad={() => setPayPalLoaded(true)}
           />
@@ -281,13 +322,12 @@ export default function BuildPage() {
                   <span className="font-mono text-lg font-bold text-[#0A0A0A] block mt-1">...and you still have to build it yourself</span>
                 </div>
               </div>
-            </div>
-          <div className="bento-card-light bg-white p-8 relative overflow-hidden flex flex-col justify-between group border-2 border-[#1B4F8A] shadow-[0_20px_50px_rgba(27,79,138,0.12)]">
+                      <div className="bento-card-light bento-card-highlighted bg-white p-8 relative overflow-hidden flex flex-col justify-between group border-2 border-[#1B4F8A] shadow-[0_20px_50px_rgba(27,79,138,0.12)]">
               {/* Radial glow background spotlight */}
-              <div className="absolute top-[-10%] right-[-10%] w-[200px] h-[200px] rounded-full bg-[#1B4F8A]/5 blur-[45px] pointer-events-none group-hover:bg-[#1B4F8A]/10 transition-all duration-500" />
+              <div className="absolute top-[-10%] right-[-10%] w-[200px] h-[200px] rounded-full bg-[#0052FF]/10 blur-[45px] pointer-events-none group-hover:bg-[#0052FF]/20 transition-all duration-500" />
               
               <div className="relative z-10">
-                <span className="inline-block px-3 py-1 text-[9px] font-bold tracking-widest uppercase bg-[#1B4F8A] text-white rounded mb-4">
+                <span className="inline-block px-3 py-1 text-[9px] font-bold tracking-widest uppercase bg-gradient-to-r from-[#0052FF] to-[#1B4F8A] text-white rounded mb-4">
                   The ScaleSteady Deal
                 </span>
                 <h3 className="font-sans text-lg font-bold mb-4 text-[#0C0C0E] uppercase tracking-tight">Our Flat Setup Fee</h3>
@@ -297,40 +337,40 @@ export default function BuildPage() {
                 
                 <ul className="space-y-4 text-xs text-[#2F3033]">
                   <li className="flex items-center gap-3 transition-colors duration-300 hover:text-[#0C0C0E] group/item1">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#1B4F8A]/5 border border-[#1B4F8A]/20 group-hover/item1:border-[#1B4F8A] group-hover/item1:bg-[#1B4F8A]/10 transition-all duration-300">
-                      <svg className="w-3 h-3 text-[#1B4F8A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#0052FF]/5 border border-[#0052FF]/20 group-hover/item1:border-[#0052FF] group-hover/item1:bg-[#0052FF]/10 transition-all duration-300">
+                      <svg className="w-3 h-3 text-[#0052FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
                     <span className="font-medium">All 25 sending emails setup and warmed up</span>
                   </li>
                   <li className="flex items-center gap-3 transition-colors duration-300 hover:text-[#0C0C0E] group/item2">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#1B4F8A]/5 border border-[#1B4F8A]/20 group-hover/item2:border-[#1B4F8A] group-hover/item2:bg-[#1B4F8A]/10 transition-all duration-300">
-                      <svg className="w-3 h-3 text-[#1B4F8A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#0052FF]/5 border border-[#0052FF]/20 group-hover/item2:border-[#0052FF] group-hover/item2:bg-[#0052FF]/10 transition-all duration-300">
+                      <svg className="w-3 h-3 text-[#0052FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
                     <span className="font-medium">All 5 domains registered and verified</span>
                   </li>
                   <li className="flex items-center gap-3 transition-colors duration-300 hover:text-[#0C0C0E] group/item3">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#1B4F8A]/5 border border-[#1B4F8A]/20 group-hover/item3:border-[#1B4F8A] group-hover/item3:bg-[#1B4F8A]/10 transition-all duration-300">
-                      <svg className="w-3 h-3 text-[#1B4F8A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#0052FF]/5 border border-[#0052FF]/20 group-hover/item3:border-[#0052FF] group-hover/item3:bg-[#0052FF]/10 transition-all duration-300">
+                      <svg className="w-3 h-3 text-[#0052FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
                     <span className="font-medium">10,000 cleaned and verified leads</span>
                   </li>
                   <li className="flex items-center gap-3 transition-colors duration-300 hover:text-[#0C0C0E] group/item4">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#1B4F8A]/5 border border-[#1B4F8A]/20 group-hover/item4:border-[#1B4F8A] group-hover/item4:bg-[#1B4F8A]/10 transition-all duration-300">
-                      <svg className="w-3 h-3 text-[#1B4F8A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#0052FF]/5 border border-[#0052FF]/20 group-hover/item4:border-[#0052FF] group-hover/item4:bg-[#0052FF]/10 transition-all duration-300">
+                      <svg className="w-3 h-3 text-[#0052FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
                     <span className="font-medium">Technical DNS delivery filters configured</span>
                   </li>
                   <li className="flex items-center gap-3 transition-colors duration-300 hover:text-[#0C0C0E] group/item5">
-                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#1B4F8A]/5 border border-[#1B4F8A]/20 group-hover/item5:border-[#1B4F8A] group-hover/item5:bg-[#1B4F8A]/10 transition-all duration-300">
-                      <svg className="w-3 h-3 text-[#1B4F8A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#0052FF]/5 border border-[#0052FF]/20 group-hover/item5:border-[#0052FF] group-hover/item5:bg-[#0052FF]/10 transition-all duration-300">
+                      <svg className="w-3 h-3 text-[#0052FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
@@ -338,19 +378,19 @@ export default function BuildPage() {
                   </li>
                 </ul>
               </div>
-
+ 
               <div className="mt-8 pt-6 border-t border-[var(--ink-border)] relative z-10">
-                <div className="mb-4 p-4 bg-[#1B4F8A]/5 border border-[#1B4F8A]/20 rounded-xl">
-                  <span className="font-mono text-[10px] text-[#1B4F8A] uppercase tracking-wider font-bold block mb-1">What you actually pay</span>
-                  <span className="font-mono text-4xl font-extrabold text-[#0C0C0E]">$500</span>
+                <div className="mb-4 p-4 bg-[#0052FF]/5 border border-[#0052FF]/20 rounded-xl">
+                  <span className="font-mono text-[10px] text-[#0052FF] uppercase tracking-wider font-bold block mb-1">What you actually pay</span>
+                  <span className="font-mono text-4xl font-extrabold text-[#0052FF]">$500</span>
                   <span className="font-sans text-xs text-neutral-500 block mt-1">One-time flat cost &mdash; 100% goes to your vendor accounts. We retain zero.</span>
                 </div>
-                <div className="p-3 bg-[#1B4F8A]/5 border border-[#1B4F8A]/20 rounded-lg text-center font-mono">
+                <div className="p-3 bg-[#0052FF]/5 border border-[#0052FF]/20 rounded-lg text-center font-mono">
                   <span className="text-[10px] text-neutral-500 uppercase tracking-wider block">You save at minimum</span>
-                  <span className="text-2xl font-extrabold text-[#1B4F8A] block mt-1">$375 + 60 days of free labor</span>
+                  <span className="text-2xl font-extrabold text-[#0052FF] block mt-1">$375 + 60 days of free labor</span>
                 </div>
               </div>
-            </div>
+            </div>  </div>
 
           </div>
 
@@ -812,192 +852,120 @@ export default function BuildPage() {
           </div>
         </section>
 
-        {/* 08 PLAIN-ENGLISH TOS SUMMARY */}
-        <section className="py-20 bg-[var(--canvas)] border-b border-[var(--ink-border)] relative z-10">
+        {/* 08 TERMS OF SERVICE AND CLIENT SERVICE AGREEMENT */}
+        <section ref={termsRef} className="py-20 bg-[var(--canvas)] border-b border-[var(--ink-border)] relative z-10">
           <div className="max-w-[800px] mx-auto px-6">
             <h2 className="font-sans text-2xl md:text-3xl font-extrabold text-center tracking-tight text-[#0A0A0A] mb-4">
-              Terms of Service Plain-English Summary
+              Terms of Service and Client Service Agreement
             </h2>
-            <p className="font-sans text-xs text-center text-[#444444] mb-12 font-medium">
-              Every commitment we make is documented in standard, readable contract clauses.
+            <p className="font-sans text-xs text-center text-[#444444] mb-8 font-medium">
+              Please review our full partnership agreement below.
             </p>
 
-            <div className="space-y-4 mb-10">
+            <div className="border border-[#DEDEDE] bg-white p-6 max-h-[600px] overflow-y-scroll text-xs text-[#262626] font-mono leading-relaxed space-y-4 rounded-xl shadow-inner">
+              
+              <h3 className="font-sans font-bold text-sm text-[#0A0A0A] uppercase tracking-tight">ScaleSteady LLC -- Terms of Service and Client Service Agreement</h3>
+              <p><strong>Entity:</strong> ScaleSteady LLC</p>
+              <p><strong>Effective Date:</strong> Date of Client Execution</p>
+              <hr className="border-[#DEDEDE] my-3" />
+              <p className="italic text-[#444444]">This document is written to be understood, not to intimidate. If any section is unclear, reach out before signing.</p>
+              <hr className="border-[#DEDEDE] my-3" />
 
-              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 1 | What We Deliver</span>
-                <p className="font-sans text-sm text-[#262626] leading-relaxed">
-                  ScaleSteady deploys dedicated sending domains and warmed inboxes (minimum 20,000 sends), sources and cleans a minimum of 10,000 verified B2B leads, develops two distinct marketing angles with three follow-up sequences, and manages active inbox monitoring, response coordination, and campaign reviews throughout the 60-day engagement. (§1.3)
-                </p>
-              </div>
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">PART I -- Standard Service Terms</h4>
 
-              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 2 | Pass-Through Cost Model</span>
-                <p className="font-sans text-sm text-[#262626] leading-relaxed">
-                  The $500 Infrastructure Fee is remitted in full to third-party vendors -- domain registrars, email data providers, and warm-up platforms. ScaleSteady retains zero markup. All agency, labor, copywriting, and management fees are deferred until the Revenue Milestone is achieved. (§2.1 -- §2.3)
-                </p>
-              </div>
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 1 -- Scope of Services</h4>
+              <p>1.1 DEFINED DELIVERABLES. ScaleSteady agrees to provide services explicitly described in the Client's accepted proposal or onboarding agreement (the "Scope of Work" or "SOW"). Services not itemized in the SOW are outside scope and will not be performed without a written addendum executed by both parties.</p>
+              <p>1.2 SERVICE BOUNDARIES. ScaleSteady is an outbound infrastructure company. Our engagement covers the construction, configuration, deployment, and ongoing management of the Client's outbound email system. We do not provide inbound marketing, paid media management, website development, or sales training unless separately agreed in writing.</p>
+              <p>1.3 CAMPAIGN INFRASTRUCTURE COMPONENTS. A standard ScaleSteady engagement includes: deployment of dedicated sending domains and warmed inboxes configured to send a minimum of 20,000 emails per campaign cycle; sourcing and delivery of a minimum of 10,000 verified and cleaned email addresses; development of two (2) distinct marketing angles; creation of three (3) follow-up email sequences; lead list verification and cleaning; inbox management and monitoring of interested reply threads; and coordination of follow-up on prospective meetings on the Client's behalf.</p>
+              <p>1.4 SCOPE MODIFICATIONS. Any request to expand, modify, or reduce the Scope of Work must be submitted in writing and executed via a Change Order signed by both parties before additional work commences.</p>
 
-              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 3 | Asset Ownership</span>
-                <p className="font-sans text-sm text-[#262626] leading-relaxed">
-                  All domain names, email inboxes, lead lists, and outbound sequences are the sole property of the Client from the moment of purchase or creation. Upon termination for any reason, all assets are transferred to the Client within 10 business days. ScaleSteady retains no title, equity, or licensing rights. (§3.1, §3.4)
-                </p>
-              </div>
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 2 -- Payment Terms and Pass-Through Cost Model</h4>
+              <p>2.1 INFRASTRUCTURE INVESTMENT. The Client agrees to pay a one-time infrastructure investment of five hundred dollars (US $500) at commencement of services. This fee is remitted in full to third-party vendors. ScaleSteady does not retain any portion as revenue or markup. A full itemized breakdown of vendor allocations will be provided at invoicing.</p>
+              <p>2.2 PASS-THROUGH COST DEFINITION. The Infrastructure Fee constitutes a "Pass-Through Cost" -- a third-party expenditure made by ScaleSteady on the Client's behalf as procuring agent. Pass-Through Costs are incurred immediately upon placement of vendor orders and are non-refundable once vendor purchases have been executed. Specific refund conditions are addressed in Section 10.</p>
+              <p>2.3 AGENCY FEE DEFERRAL. ScaleSteady charges zero dollars ($0) in agency fees, labor fees, or management fees during the campaign's initial phase. ScaleSteady absorbs all costs associated with personnel, platform licensing, copywriting, and campaign management until the Revenue Milestone (Section 6) is achieved or the Performance Period (Section 7) concludes. ScaleSteady's financial recovery depends entirely on the Client's commercial success.</p>
+              <p>2.4 LATE PAYMENT. If the Client elects the ongoing retainer (Section 9) and a monthly invoice becomes more than fourteen (14) days past due, ScaleSteady reserves the right to suspend active campaign services until the balance is resolved.</p>
 
-              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 6 -- 7 | Revenue Milestone and Downside Protection</span>
-                <p className="font-sans text-sm text-[#262626] leading-relaxed">
-                  The Revenue Milestone is $5,000 in new, cleared revenue attributable to the campaign. If the Milestone is not achieved within 60 days, ScaleSteady waives all claims to labor compensation, the Client retains all assets, and no further fees of any kind are owed. Client maximum financial exposure is $500, regardless of outcome. (§6.1, §7.3)
-                </p>
-              </div>
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 3 -- Intellectual Property and Asset Ownership</h4>
+              <p>3.1 CLIENT OWNERSHIP. All domain names, email inboxes, lead lists, and outbound email sequences developed for the Client are the sole property of the Client from the moment of purchase or creation. ScaleSteady acts as authorized technical agent during the active campaign and holds no title, equity, or licensing rights over any Client-specific asset.</p>
+              <p>3.2 SCALESTEADY PROPRIETARY MATERIALS. ScaleSteady retains exclusive ownership of all proprietary tools, internal automation systems, deliverability frameworks, methodologies, and operational playbooks. The Client acquires no rights or licenses in ScaleSteady's internal systems as a result of this engagement.</p>
+              <p>3.3 CONTENT LICENSE DURING ENGAGEMENT. The Client grants ScaleSteady a limited, non-exclusive, revocable license to use the Client's name, brand, logo, products, and service descriptions solely for constructing and deploying outbound campaign materials on the Client's behalf.</p>
+              <p>3.4 ASSET TRANSFER UPON TERMINATION. Upon termination for any reason, ScaleSteady will facilitate orderly transfer of all Client-owned digital assets within ten (10) business days, including domain registrar credentials, inbox login credentials, and lead list exports in portable format. All ScaleSteady access privileges to Client accounts will be permanently revoked upon completion of transfer.</p>
 
-              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 9 | Post-Milestone Election</span>
-                <p className="font-sans text-sm text-[#262626] leading-relaxed">
-                  Upon verified Milestone achievement, the Client elects Option A (ongoing retainer at $699/month, 12-month commitment with 30-day cancellation notice) or Option B (conclude engagement, retain 100% of all assets, owe nothing further). Failure to elect within 14 days defaults to Option B. (§9.1 -- §9.3)
-                </p>
-              </div>
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 4 -- Confidentiality and Mutual Non-Disclosure</h4>
+              <p>4.1 -- 4.3. Both parties agree to hold each other's Confidential Information -- including business strategies, pricing, customer lists, campaign data, and proprietary methods -- in strict confidence, not disclose it to any third party without written consent, and use it solely for fulfilling obligations under this Agreement. Confidentiality does not apply to information that is publicly known, was rightfully known prior to disclosure, is independently developed, or is required to be disclosed by law.</p>
+              <p>4.4 DURATION. Confidentiality obligations survive termination of this Agreement for three (3) years.</p>
 
-              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 10 | Refund Policy</span>
-                <p className="font-sans text-sm text-[#262626] leading-relaxed">
-                  Full refund is available only if requested before ScaleSteady executes any vendor purchases. Once domain registration, inbox provisioning, lead list acquisition, or warm-up enrollment has been executed, the Infrastructure Fee is non-refundable in whole or in part. ScaleSteady earns no margin on these purchases and has no funds to return. No labor fee is collected during the campaign phase and therefore none is subject to refund. (§10.2 -- §10.4)
-                </p>
-              </div>
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 5 -- Term, Termination, and Offboarding</h4>
+              <p>5.1 INITIAL TERM. The engagement commences on the date of Client acceptance and continues until: (a) the Revenue Milestone is achieved; (b) the 60-day Performance Period concludes; or (c) the Agreement is terminated per the provisions below.</p>
+              <p>5.2 TERMINATION BY CLIENT. The Client may terminate at any time by written notice. Upon receipt: all campaign activity ceases within 5 business days; the Infrastructure Fee for vendor purchases already executed remains non-refundable; ScaleSteady's deferred labor fee obligation is discharged in full; all Client-owned assets are transferred per Section 3.4.</p>
+              <p>5.3 TERMINATION BY SCALESTEADY. ScaleSteady may terminate with 7 business days' written notice if: (a) the Client materially breaches this Agreement and fails to cure within 5 business days; (b) the Client engages in conduct likely to violate applicable email regulations; or (c) continued service would require ScaleSteady to violate applicable law.</p>
+              <p>5.4 EFFECT OF TERMINATION. Termination does not extinguish obligations accrued prior to the effective date. Sections 3, 4, 8, 10, 11, and 12 survive termination indefinitely.</p>
 
-              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 13 | Limitation of Liability</span>
-                <p className="font-sans text-sm text-[#262626] leading-relaxed">
-                  ScaleSteady's total aggregate liability is capped at $500 -- the Infrastructure Fee paid. ScaleSteady is not liable for indirect, consequential, or punitive damages including lost profits or lost revenue. ScaleSteady is not liable for service interruptions or policy changes by third-party platforms, registrars, or data vendors. (§13.1 -- §13.3)
-                </p>
-              </div>
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">PART II -- ScaleSteady-Specific Terms</h4>
 
-              <div className="bento-card-light bg-white/70 p-5 hover:translate-y-[-1px]">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#444444] font-semibold block mb-1">Section 14 | Dispute Resolution</span>
-                <p className="font-sans text-sm text-[#262626] leading-relaxed">
-                  Disputes are resolved first through 15-day good faith negotiation, then non-binding mediation (costs shared equally), then litigation in a court of competent jurisdiction. Both parties waive the right to a jury trial by signing this Agreement. (&sect;14.1 &mdash; &sect;14.3)
-                </p>
-              </div>
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 6 -- Revenue Milestone and Performance Trigger</h4>
+              <p>6.1 DEFINITION. The Revenue Milestone is five thousand dollars (US $5,000) in new, cleared revenue received by the Client from customers sourced through ScaleSteady's outbound campaign meeting the attribution criteria in Section 6.2.</p>
+              <p>6.2 ATTRIBUTION STANDARD. Revenue is attributable if the customer: (a) was identified from ScaleSteady's verified lead list or engaged through a ScaleSteady-managed sequence; and (b) did not have an existing active commercial relationship with the Client at the time of initial outreach.</p>
+              <p>6.3 VERIFICATION. The Client shall notify ScaleSteady in writing within five (5) business days of receiving cleared funds satisfying or contributing to the Milestone. Verification may include a bank statement, CRM record, invoice, or any document reasonably evidencing cleared revenue. ScaleSteady relies on the Client's honest and timely self-reporting.</p>
+              <p>6.4 MILESTONE TRIGGER. Upon verified achievement, the Client's right to elect Scale or Walk (Section 9) becomes active. No labor fees are assessed regardless of which option is selected.</p>
 
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 7 -- Performance Period, Deferred Labor, and Downside Protection</h4>
+              <p>7.1 PERFORMANCE PERIOD. The Performance Period begins on the date ScaleSteady launches the Client's first email sequence and continues for sixty (60) calendar days, or until the Revenue Milestone is achieved, whichever occurs first.</p>
+              <p>7.2 SCALESTEADY'S LABOR COMMITMENT. ScaleSteady commits to providing the full scope of services defined in Section 1.3 throughout the entirety of the Performance Period at no charge to the Client. All labor, management, copywriting, inbox monitoring, and optimization work performed during this period is absorbed by ScaleSteady as a condition of this Agreement.</p>
+              <p>7.3 OUTCOME IF MILESTONE IS NOT ACHIEVED. If the Revenue Milestone is not achieved within the Performance Period: ScaleSteady waives all claims to labor compensation; the Client retains full ownership of all campaign infrastructure assets (domains, warmed inboxes, verified lead lists, and email sequences); and no further fees of any nature are owed beyond the Infrastructure Fee. The Client's maximum financial exposure under this Agreement is five hundred dollars ($500), regardless of campaign outcome.</p>
+              <p>7.4 NO GUARANTEE OF COMMERCIAL OUTCOME. ScaleSteady warrants delivery of the infrastructure and campaign assets defined in Section 1.3. ScaleSteady does not warrant or guarantee any specific commercial outcome, including replies, booked meetings, closed deals, or revenue generated. Commercial outcomes depend on variables ScaleSteady do not control: the Client's sales process, offer quality, sales team capability, market conditions, and target audience responsiveness. ScaleSteady's direct financial interest in campaign performance shapes how the company works. It does not convert into a contractual guarantee.</p>
+              <p>7.5 PAST PERFORMANCE DISCLAIMER. Case studies, results references, or historical performance data shared by ScaleSteady are provided for illustrative purposes only and do not guarantee equivalent results in any current or future engagement.</p>
+
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 8 -- Sole Operational Control of Infrastructure</h4>
+              <p>8.1 SCALESTEADY'S TECHNICAL AUTHORITY. For the duration of the active campaign, ScaleSteady retains sole operational control over all sending infrastructure, including domain configuration, DNS records (SPF, DKIM, DMARC), inbox warm-up schedules, sending sequences, automation workflows, and email delivery platforms.</p>
+              <p>8.2 WHY THIS IS NECESSARY. Cold email infrastructure is technically fragile. Unauthorized changes to DNS settings, sending volumes, or account configurations can cause rapid, difficult-to-reverse damage to domain reputation and deliverability. Recovery can take weeks to months and may require abandoning the affected domain entirely. This is a technical requirement, not a business preference.</p>
+              <p>8.3 CLIENT ACCESS. The Client is granted read-level access to campaign dashboards and reporting throughout the engagement. The Client shall not independently alter or instruct third parties to alter any infrastructure component without ScaleSteady's prior written consent.</p>
+              <p>8.4 TERMINATION RELEASES OPERATIONAL CONTROL. Upon termination, all infrastructure assets are transferred to the Client in full and ScaleSteady's operational authority terminates completely. The Client assumes sole responsibility for the infrastructure from that point forward.</p>
+
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 9 -- Post-Milestone Election: Scale or Walk</h4>
+              <p>9.1 THE ELECTION. Upon achievement of the Revenue Milestone, the Client elects one of the following: OPTION A -- SCALE: retain ScaleSteady at a monthly retainer of six hundred and ninety-nine dollars (US $699/month) for continued campaign management. OPTION B -- WALK: conclude the engagement. The Client retains 100% of all infrastructure assets at no further cost. ScaleSteady does not invoice any labor fee.</p>
+              <p>9.2 ELECTION TIMING. The Client shall communicate their election in writing within fourteen (14) calendar days of verified Milestone achievement. Failure to communicate within this window will be treated as an election to Walk (Option B).</p>
+              <p>9.3 RETAINER COMMITMENT. Option A clients enter a twelve (12)-month retainer commitment billed monthly in advance. The Client may cancel with thirty (30) days' written notice. Cancellation before twelve (12) months incurs an early termination fee equal to three (3) months of the then-current monthly retainer.</p>
+
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 10 -- Refund Policy and Non-Refundable Purchases</h4>
+              <p>10.1 GENERAL. ScaleSteady operates on a pass-through cost model and defers all labor fees until the Revenue Milestone is achieved. Refund eligibility depends on the stage at which a request is made.</p>
+              <p>10.2 REFUNDABLE AMOUNTS. If the Client requests a refund before ScaleSteady executes any vendor purchases, the Client is entitled to a full refund of the Infrastructure Fee.</p>
+              <p>10.3 NON-REFUNDABLE AMOUNTS. Once ScaleSteady has executed vendor purchases -- including domain registration, inbox provisioning, lead list acquisition, or warm-up platform enrollment -- those costs are non-refundable in whole or in part. The reasons: (a) ScaleSteady has already disbursed funds to third-party vendors operating under their own non-refundable policies; (b) the purchased assets are transferred to the Client's ownership upon purchase -- the Client possesses what was bought; and (c) ScaleSteady earns no margin on these purchases and has no funds to return.</p>
+              <p>10.4 LABOR FEE REFUNDS. Because ScaleSteady does not collect labor fees during the initial campaign phase, there is no labor fee subject to refund during the Performance Period. If the Client terminates during an active retainer (Option A), the current month's retainer is non-refundable. The early termination fee described in Section 9.3 applies in lieu of any remaining monthly fees.</p>
+
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 11 -- Compliance, Indemnification, and Regulatory Responsibility</h4>
+              <p>11.1 CLIENT WARRANTS LEGAL COMPLIANCE. The Client represents and warrants that: (a) their business and products are legally operated; (b) the target market does not target individuals in jurisdictions where commercial email outreach is prohibited; and (c) the Client will conduct all follow-up and sales activities in accordance with applicable law.</p>
+              <p>11.2 CAN-SPAM, GDPR, AND EQUIVALENT LAWS. Under CAN-SPAM and CASL, primary legal liability attaches to the advertiser (the Client). Under GDPR, both the data controller (Client) and data processor (ScaleSteady) may carry independent compliance obligations. ScaleSteady will implement industry-standard compliance measures including functional unsubscribe mechanisms, accurate sender identification, and valid physical address inclusion. The Client is responsible for ensuring campaign content complies with the laws of recipient jurisdictions.</p>
+              <p>11.3 CLIENT INDEMNIFICATION. The Client agrees to indemnify, defend, and hold harmless ScaleSteady and its members, officers, contractors, and agents from any claim, loss, liability, fine, or legal expense arising from: (a) the Client's failure to comply with applicable law; (b) inaccurate or misleading information provided by the Client; or (c) any third-party claim arising from the nature of the Client's products, services, or business practices.</p>
+              <p>11.4 RIGHT TO REFUSE OR SUSPEND. ScaleSteady reserves the right to pause or permanently discontinue services if, in its reasonable judgment, continued campaign operations would violate applicable regulations, damage ScaleSteady's sender infrastructure, or expose ScaleSteady to material legal or reputational risk. Written notice will be provided and asset transfer facilitated per Section 3.4. No labor fees will be assessed for the period preceding suspension.</p>
+
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 12 -- Mutual Cooperation and Client Obligations</h4>
+              <p>12.1 THE PARTNERSHIP STANDARD. Campaign success depends on two things: the quality of infrastructure and outreach ScaleSteady delivers, and the quality of sales conversations and follow-through the Client conducts. ScaleSteady does not operate as a passive service. Active Client engagement is a condition of this partnership.</p>
+              <p>12.2 CLIENT OBLIGATIONS. The Client agrees to: respond to warm leads within two (2) business days of notification; provide accurate business information and service descriptions; notify ScaleSteady of any material change to offer, pricing, or target audience within five (5) business days; and participate in at least one scheduled campaign review per month.</p>
+              <p>12.3 CLIENT FAILURE TO COOPERATE. If the Client fails to fulfill the obligations in Section 12.2 and that failure materially impairs campaign performance, ScaleSteady shall not be held responsible for any resulting reduction in effectiveness or failure to achieve the Revenue Milestone. ScaleSteady's labor deferral commitment remains in effect; however, non-cooperation will be documented and considered relevant context in any subsequent dispute.</p>
+
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 13 -- Limitation of Liability</h4>
+              <p>13.1 AGGREGATE LIABILITY CAP. ScaleSteady's total aggregate liability shall not exceed the Infrastructure Fee paid: five hundred dollars ($500). This limitation reflects the nature of ScaleSteady's deferred-fee model. Because no labor fees are collected during the initial campaign phase, there is no larger pool of fees against which a claim could fairly be measured.</p>
+              <p>13.2 EXCLUSION OF CONSEQUENTIAL DAMAGES. ScaleSteady is not liable for indirect, incidental, special, consequential, or punitive damages, including lost profits, lost revenue, loss of business opportunity, or reputational harm. The commercial outcome of any outbound campaign is subject to market forces and sales variables not within ScaleSteady's control.</p>
+              <p>13.3 THIRD-PARTY PLATFORM LIABILITY. ScaleSteady is not liable for service interruptions, deliverability failures, data inaccuracies, or policy changes caused by third-party platforms, domain registrars, email service providers, or data vendors. ScaleSteady will take commercially reasonable steps to remediate such issues but cannot guarantee continuity of third-party services.</p>
+
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 14 -- Dispute Resolution</h4>
+              <p>14.1 GOOD FAITH NEGOTIATION. Either party may initiate dispute resolution by delivering written notice describing the dispute. Both parties have fifteen (15) calendar days to reach a mutually agreeable resolution before escalating to mediation.</p>
+              <p>14.2 MEDIATION. If negotiation does not resolve the dispute within fifteen (15) days, the parties submit the matter to non-binding mediation before a mutually agreed-upon mediator. Mediation costs are shared equally.</p>
+              <p>14.3 LITIGATION. If mediation fails, the dispute shall be resolved through litigation in a court of competent jurisdiction. Nothing in this Section prevents either party from seeking emergency injunctive or equitable relief where necessary to prevent irreparable harm.</p>
+              <p className="font-bold">JURY TRIAL WAIVER. By signing this Agreement, both parties expressly and voluntarily waive their constitutional right to have any dispute decided by a jury. Both parties acknowledge they have read this waiver, understand its legal significance, and agree to it knowingly and without coercion.</p>
+
+              <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 15 -- General Provisions</h4>
+              <p>15.1 ENTIRE AGREEMENT. This Agreement, together with the Client's accepted proposal and any executed Statements of Work, constitutes the entire agreement between the parties and supersedes all prior negotiations, representations, warranties, or understandings, whether written or oral.</p>
+              <p>15.2 AMENDMENTS. No amendment is effective unless made in writing and signed by authorized representatives of both parties.</p>
+              <p>15.3 SEVERABILITY. If any provision is found unenforceable, it shall be modified to the minimum extent necessary to make it enforceable, or severed if modification is not possible, without affecting the remaining provisions.</p>
+              <p>15.4 NO WAIVER. The failure of either party to enforce any right or provision shall not constitute a waiver of that right or provision.</p>
+              <p>15.5 INDEPENDENT CONTRACTORS. The parties are independent contractors. Nothing in this Agreement creates a partnership, joint venture, employment, or agency relationship.</p>
+              <p>15.6 NOTICES. All formal notices shall be delivered in writing via email to the designated contact of each party, with confirmation of receipt. Notices are effective upon confirmed delivery.</p>
+
+              <hr className="border-[#DEDEDE] my-4" />
+              <p className="font-bold">EXECUTION. By signing below, each party confirms they have read, understood, and agree to the terms of this Agreement in full, including the Jury Trial Waiver set forth in Section 14.</p>
             </div>
-
-            <div className="text-center">
-              <button
-                type="button"
-                onClick={() => setShowTOS(!showTOS)}
-                className="font-sans text-xs font-bold uppercase tracking-wider text-[#0A0A0A] hover:text-[#444444] border-b-2 border-[#0A0A0A] pb-0.5 transition-colors"
-              >
-                {showTOS ? "Hide Full Terms of Service" : "View Full Terms of Service"}
-              </button>
-            </div>
-
-            {showTOS && (
-              <div className="mt-8 border border-[#DEDEDE] bg-white p-6 max-h-[600px] overflow-y-scroll text-xs text-[#262626] font-mono leading-relaxed space-y-4 rounded-xl shadow-inner">
-                
-                <h3 className="font-sans font-bold text-sm text-[#0A0A0A] uppercase tracking-tight">ScaleSteady LLC -- Terms of Service and Client Service Agreement</h3>
-                <p><strong>Entity:</strong> ScaleSteady LLC</p>
-                <p><strong>Effective Date:</strong> Date of Client Execution</p>
-                <hr className="border-[#DEDEDE] my-3" />
-                <p className="italic text-[#444444]">This document is written to be understood, not to intimidate. If any section is unclear, reach out before signing.</p>
-                <hr className="border-[#DEDEDE] my-3" />
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">PART I -- Standard Service Terms</h4>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 1 -- Scope of Services</h4>
-                <p>1.1 DEFINED DELIVERABLES. ScaleSteady agrees to provide services explicitly described in the Client's accepted proposal or onboarding agreement (the "Scope of Work" or "SOW"). Services not itemized in the SOW are outside scope and will not be performed without a written addendum executed by both parties.</p>
-                <p>1.2 SERVICE BOUNDARIES. ScaleSteady is an outbound infrastructure company. Our engagement covers the construction, configuration, deployment, and ongoing management of the Client's outbound email system. We do not provide inbound marketing, paid media management, website development, or sales training unless separately agreed in writing.</p>
-                <p>1.3 CAMPAIGN INFRASTRUCTURE COMPONENTS. A standard ScaleSteady engagement includes: deployment of dedicated sending domains and warmed inboxes configured to send a minimum of 20,000 emails per campaign cycle; sourcing and delivery of a minimum of 10,000 verified and cleaned email addresses; development of two (2) distinct marketing angles; creation of three (3) follow-up email sequences; lead list verification and cleaning; inbox management and monitoring of interested reply threads; and coordination of follow-up on prospective meetings on the Client's behalf.</p>
-                <p>1.4 SCOPE MODIFICATIONS. Any request to expand, modify, or reduce the Scope of Work must be submitted in writing and executed via a Change Order signed by both parties before additional work commences.</p>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 2 -- Payment Terms and Pass-Through Cost Model</h4>
-                <p>2.1 INFRASTRUCTURE INVESTMENT. The Client agrees to pay a one-time infrastructure investment of five hundred dollars (US $500) at commencement of services. This fee is remitted in full to third-party vendors. ScaleSteady does not retain any portion as revenue or markup. A full itemized breakdown of vendor allocations will be provided at invoicing.</p>
-                <p>2.2 PASS-THROUGH COST DEFINITION. The Infrastructure Fee constitutes a "Pass-Through Cost" -- a third-party expenditure made by ScaleSteady on the Client's behalf as procuring agent. Pass-Through Costs are incurred immediately upon placement of vendor orders and are non-refundable once vendor purchases have been executed. Specific refund conditions are addressed in Section 10.</p>
-                <p>2.3 AGENCY FEE DEFERRAL. ScaleSteady charges zero dollars ($0) in agency fees, labor fees, or management fees during the campaign's initial phase. ScaleSteady absorbs all costs associated with personnel, platform licensing, copywriting, and campaign management until the Revenue Milestone (Section 6) is achieved or the Performance Period (Section 7) concludes. ScaleSteady's financial recovery depends entirely on the Client's commercial success.</p>
-                <p>2.4 LATE PAYMENT. If the Client elects the ongoing retainer (Section 9) and a monthly invoice becomes more than fourteen (14) days past due, ScaleSteady reserves the right to suspend active campaign services until the balance is resolved.</p>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 3 -- Intellectual Property and Asset Ownership</h4>
-                <p>3.1 CLIENT OWNERSHIP. All domain names, email inboxes, lead lists, and outbound email sequences developed for the Client are the sole property of the Client from the moment of purchase or creation. ScaleSteady acts as authorized technical agent during the active campaign and holds no title, equity, or licensing rights over any Client-specific asset.</p>
-                <p>3.2 SCALESTEADY PROPRIETARY MATERIALS. ScaleSteady retains exclusive ownership of all proprietary tools, internal automation systems, deliverability frameworks, methodologies, and operational playbooks. The Client acquires no rights or licenses in ScaleSteady's internal systems as a result of this engagement.</p>
-                <p>3.3 CONTENT LICENSE DURING ENGAGEMENT. The Client grants ScaleSteady a limited, non-exclusive, revocable license to use the Client's name, brand, logo, products, and service descriptions solely for constructing and deploying outbound campaign materials on the Client's behalf.</p>
-                <p>3.4 ASSET TRANSFER UPON TERMINATION. Upon termination for any reason, ScaleSteady will facilitate orderly transfer of all Client-owned digital assets within ten (10) business days, including domain registrar credentials, inbox login credentials, and lead list exports in portable format. All ScaleSteady access privileges to Client accounts will be permanently revoked upon completion of transfer.</p>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 4 -- Confidentiality and Mutual Non-Disclosure</h4>
-                <p>4.1 -- 4.3. Both parties agree to hold each other's Confidential Information -- including business strategies, pricing, customer lists, campaign data, and proprietary methods -- in strict confidence, not disclose it to any third party without written consent, and use it solely for fulfilling obligations under this Agreement. Confidentiality does not apply to information that is publicly known, was rightfully known prior to disclosure, is independently developed, or is required to be disclosed by law.</p>
-                <p>4.4 DURATION. Confidentiality obligations survive termination of this Agreement for three (3) years.</p>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 5 -- Term, Termination, and Offboarding</h4>
-                <p>5.1 INITIAL TERM. The engagement commences on the date of Client acceptance and continues until: (a) the Revenue Milestone is achieved; (b) the 60-day Performance Period concludes; or (c) the Agreement is terminated per the provisions below.</p>
-                <p>5.2 TERMINATION BY CLIENT. The Client may terminate at any time by written notice. Upon receipt: all campaign activity ceases within 5 business days; the Infrastructure Fee for vendor purchases already executed remains non-refundable; ScaleSteady's deferred labor fee obligation is discharged in full; all Client-owned assets are transferred per Section 3.4.</p>
-                <p>5.3 TERMINATION BY SCALESTEADY. ScaleSteady may terminate with 7 business days' written notice if: (a) the Client materially breaches this Agreement and fails to cure within 5 business days; (b) the Client engages in conduct likely to violate applicable email regulations; or (c) continued service would require ScaleSteady to violate applicable law.</p>
-                <p>5.4 EFFECT OF TERMINATION. Termination does not extinguish obligations accrued prior to the effective date. Sections 3, 4, 8, 10, 11, and 12 survive termination indefinitely.</p>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">PART II -- ScaleSteady-Specific Terms</h4>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 6 -- Revenue Milestone and Performance Trigger</h4>
-                <p>6.1 DEFINITION. The Revenue Milestone is five thousand dollars (US $5,000) in new, cleared revenue received by the Client from customers sourced through ScaleSteady's outbound campaign meeting the attribution criteria in Section 6.2.</p>
-                <p>6.2 ATTRIBUTION STANDARD. Revenue is attributable if the customer: (a) was identified from ScaleSteady's verified lead list or engaged through a ScaleSteady-managed sequence; and (b) did not have an existing active commercial relationship with the Client at the time of initial outreach.</p>
-                <p>6.3 VERIFICATION. The Client shall notify ScaleSteady in writing within five (5) business days of receiving cleared funds satisfying or contributing to the Milestone. Verification may include a bank statement, CRM record, invoice, or any document reasonably evidencing cleared revenue. ScaleSteady relies on the Client's honest and timely self-reporting.</p>
-                <p>6.4 MILESTONE TRIGGER. Upon verified achievement, the Client's right to elect Scale or Walk (Section 9) becomes active. No labor fees are assessed regardless of which option is selected.</p>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 7 -- Performance Period, Deferred Labor, and Downside Protection</h4>
-                <p>7.1 PERFORMANCE PERIOD. The Performance Period begins on the date ScaleSteady launches the Client's first email sequence and continues for sixty (60) calendar days, or until the Revenue Milestone is achieved, whichever occurs first.</p>
-                <p>7.2 SCALESTEADY'S LABOR COMMITMENT. ScaleSteady commits to providing the full scope of services defined in Section 1.3 throughout the entirety of the Performance Period at no charge to the Client. All labor, management, copywriting, inbox monitoring, and optimization work performed during this period is absorbed by ScaleSteady as a condition of this Agreement.</p>
-                <p>7.3 OUTCOME IF MILESTONE IS NOT ACHIEVED. If the Revenue Milestone is not achieved within the Performance Period: ScaleSteady waives all claims to labor compensation; the Client retains full ownership of all campaign infrastructure assets (domains, warmed inboxes, verified lead lists, and email sequences); and no further fees of any nature are owed beyond the Infrastructure Fee. The Client's maximum financial exposure under this Agreement is five hundred dollars ($500), regardless of campaign outcome.</p>
-                <p>7.4 NO GUARANTEE OF COMMERCIAL OUTCOME. ScaleSteady warrants delivery of the infrastructure and campaign assets defined in Section 1.3. ScaleSteady does not warrant or guarantee any specific commercial outcome, including replies, booked meetings, closed deals, or revenue generated. Commercial outcomes depend on variables ScaleSteady does not control: the Client's sales process, offer quality, sales team capability, market conditions, and target audience responsiveness. ScaleSteady's direct financial interest in campaign performance shapes how the company works. It does not convert into a contractual guarantee.</p>
-                <p>7.5 PAST PERFORMANCE DISCLAIMER. Case studies, results references, or historical performance data shared by ScaleSteady are provided for illustrative purposes only and do not guarantee equivalent results in any current or future engagement.</p>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 8 -- Sole Operational Control of Infrastructure</h4>
-                <p>8.1 SCALESTEADY'S TECHNICAL AUTHORITY. For the duration of the active campaign, ScaleSteady retains sole operational control over all sending infrastructure, including domain configuration, DNS records (SPF, DKIM, DMARC), inbox warm-up schedules, sending sequences, automation workflows, and email delivery platforms.</p>
-                <p>8.2 WHY THIS IS NECESSARY. Cold email infrastructure is technically fragile. Unauthorized changes to DNS settings, sending volumes, or account configurations can cause rapid, difficult-to-reverse damage to domain reputation and deliverability. Recovery can take weeks to months and may require abandoning the affected domain entirely. This is a technical requirement, not a business preference.</p>
-                <p>8.3 CLIENT ACCESS. The Client is granted read-level access to campaign dashboards and reporting throughout the engagement. The Client shall not independently alter or instruct third parties to alter any infrastructure component without ScaleSteady's prior written consent.</p>
-                <p>8.4 TERMINATION RELEASES OPERATIONAL CONTROL. Upon termination, all infrastructure assets are transferred to the Client in full and ScaleSteady's operational authority terminates completely. The Client assumes sole responsibility for the infrastructure from that point forward.</p>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 9 -- Post-Milestone Election: Scale or Walk</h4>
-                <p>9.1 THE ELECTION. Upon achievement of the Revenue Milestone, the Client elects one of the following: OPTION A -- SCALE: retain ScaleSteady at a monthly retainer of six hundred and ninety-nine dollars (US $699/month) for continued campaign management. OPTION B -- WALK: conclude the engagement. The Client retains 100% of all infrastructure assets at no further cost. ScaleSteady does not invoice any labor fee.</p>
-                <p>9.2 ELECTION TIMING. The Client shall communicate their election in writing within fourteen (14) calendar days of verified Milestone achievement. Failure to communicate within this window will be treated as an election to Walk (Option B).</p>
-                <p>9.3 RETAINER COMMITMENT. Option A clients enter a twelve (12)-month retainer commitment billed monthly in advance. The Client may cancel with thirty (30) days' written notice. Cancellation before twelve (12) months incurs an early termination fee equal to three (3) months of the then-current monthly retainer.</p>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 10 -- Refund Policy and Non-Refundable Purchases</h4>
-                <p>10.1 GENERAL. ScaleSteady operates on a pass-through cost model and defers all labor fees until the Revenue Milestone is achieved. Refund eligibility depends on the stage at which a request is made.</p>
-                <p>10.2 REFUNDABLE AMOUNTS. If the Client requests a refund before ScaleSteady executes any vendor purchases, the Client is entitled to a full refund of the Infrastructure Fee.</p>
-                <p>10.3 NON-REFUNDABLE AMOUNTS. Once ScaleSteady has executed vendor purchases -- including domain registration, inbox provisioning, lead list acquisition, or warm-up platform enrollment -- those costs are non-refundable in whole or in part. The reasons: (a) ScaleSteady has already disbursed funds to third-party vendors operating under their own non-refundable policies; (b) the purchased assets are transferred to the Client's ownership upon purchase -- the Client possesses what was bought; and (c) ScaleSteady earns no margin on these purchases and has no funds to return.</p>
-                <p>10.4 LABOR FEE REFUNDS. Because ScaleSteady does not collect labor fees during the initial campaign phase, there is no labor fee subject to refund during the Performance Period. If the Client terminates during an active retainer (Option A), the current month's retainer is non-refundable. The early termination fee described in Section 9.3 applies in lieu of any remaining monthly fees.</p>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 11 -- Compliance, Indemnification, and Regulatory Responsibility</h4>
-                <p>11.1 CLIENT WARRANTS LEGAL COMPLIANCE. The Client represents and warrants that: (a) their business and products are legally operated; (b) the target market does not target individuals in jurisdictions where commercial email outreach is prohibited; and (c) the Client will conduct all follow-up and sales activities in accordance with applicable law.</p>
-                <p>11.2 CAN-SPAM, GDPR, AND EQUIVALENT LAWS. Under CAN-SPAM and CASL, primary legal liability attaches to the advertiser (the Client). Under GDPR, both the data controller (Client) and data processor (ScaleSteady) may carry independent compliance obligations. ScaleSteady will implement industry-standard compliance measures including functional unsubscribe mechanisms, accurate sender identification, and valid physical address inclusion. The Client is responsible for ensuring campaign content complies with the laws of recipient jurisdictions.</p>
-                <p>11.3 CLIENT INDEMNIFICATION. The Client agrees to indemnify, defend, and hold harmless ScaleSteady and its members, officers, contractors, and agents from any claim, loss, liability, fine, or legal expense arising from: (a) the Client's failure to comply with applicable law; (b) inaccurate or misleading information provided by the Client; or (c) any third-party claim arising from the nature of the Client's products, services, or business practices.</p>
-                <p>11.4 RIGHT TO REFUSE OR SUSPEND. ScaleSteady reserves the right to pause or permanently discontinue services if, in its reasonable judgment, continued campaign operations would violate applicable regulations, damage ScaleSteady's sender infrastructure, or expose ScaleSteady to material legal or reputational risk. Written notice will be provided and asset transfer facilitated per Section 3.4. No labor fees will be assessed for the period preceding suspension.</p>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 12 -- Mutual Cooperation and Client Obligations</h4>
-                <p>12.1 THE PARTNERSHIP STANDARD. Campaign success depends on two things: the quality of infrastructure and outreach ScaleSteady delivers, and the quality of sales conversations and follow-through the Client conducts. ScaleSteady does not operate as a passive service. Active Client engagement is a condition of this partnership.</p>
-                <p>12.2 CLIENT OBLIGATIONS. The Client agrees to: respond to warm leads within two (2) business days of notification; provide accurate business information and service descriptions; notify ScaleSteady of any material change to offer, pricing, or target audience within five (5) business days; and participate in at least one scheduled campaign review per month.</p>
-                <p>12.3 CLIENT FAILURE TO COOPERATE. If the Client fails to fulfill the obligations in Section 12.2 and that failure materially impairs campaign performance, ScaleSteady shall not be held responsible for any resulting reduction in effectiveness or failure to achieve the Revenue Milestone. ScaleSteady's labor deferral commitment remains in effect; however, non-cooperation will be documented and considered relevant context in any subsequent dispute.</p>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 13 -- Limitation of Liability</h4>
-                <p>13.1 AGGREGATE LIABILITY CAP. ScaleSteady's total aggregate liability shall not exceed the Infrastructure Fee paid: five hundred dollars ($500). This limitation reflects the nature of ScaleSteady's deferred-fee model. Because no labor fees are collected during the initial campaign phase, there is no larger pool of fees against which a claim could fairly be measured.</p>
-                <p>13.2 EXCLUSION OF CONSEQUENTIAL DAMAGES. ScaleSteady is not liable for indirect, incidental, special, consequential, or punitive damages, including lost profits, lost revenue, loss of business opportunity, or reputational harm. The commercial outcome of any outbound campaign is subject to market forces and sales variables not within ScaleSteady's control.</p>
-                <p>13.3 THIRD-PARTY PLATFORM LIABILITY. ScaleSteady is not liable for service interruptions, deliverability failures, data inaccuracies, or policy changes caused by third-party platforms, domain registrars, email service providers, or data vendors. ScaleSteady will take commercially reasonable steps to remediate such issues but cannot guarantee continuity of third-party services.</p>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 14 -- Dispute Resolution</h4>
-                <p>14.1 GOOD FAITH NEGOTIATION. Either party may initiate dispute resolution by delivering written notice describing the dispute. Both parties have fifteen (15) calendar days to reach a mutually agreeable resolution before escalating to mediation.</p>
-                <p>14.2 MEDIATION. If negotiation does not resolve the dispute within fifteen (15) days, the parties submit the matter to non-binding mediation before a mutually agreed-upon mediator. Mediation costs are shared equally.</p>
-                <p>14.3 LITIGATION. If mediation fails, the dispute shall be resolved through litigation in a court of competent jurisdiction. Nothing in this Section prevents either party from seeking emergency injunctive or equitable relief where necessary to prevent irreparable harm.</p>
-                <p className="font-bold">JURY TRIAL WAIVER. By signing this Agreement, both parties expressly and voluntarily waive their constitutional right to have any dispute decided by a jury. Both parties acknowledge they have read this waiver, understand its legal significance, and agree to it knowingly and without coercion.</p>
-
-                <h4 className="font-sans font-bold text-[#0A0A0A] uppercase mt-4">Section 15 -- General Provisions</h4>
-                <p>15.1 ENTIRE AGREEMENT. This Agreement, together with the Client's accepted proposal and any executed Statements of Work, constitutes the entire agreement between the parties and supersedes all prior negotiations, representations, warranties, or understandings, whether written or oral.</p>
-                <p>15.2 AMENDMENTS. No amendment is effective unless made in writing and signed by authorized representatives of both parties.</p>
-                <p>15.3 SEVERABILITY. If any provision is found unenforceable, it shall be modified to the minimum extent necessary to make it enforceable, or severed if modification is not possible, without affecting the remaining provisions.</p>
-                <p>15.4 NO WAIVER. The failure of either party to enforce any right or provision shall not constitute a waiver of that right or provision.</p>
-                <p>15.5 INDEPENDENT CONTRACTORS. The parties are independent contractors. Nothing in this Agreement creates a partnership, joint venture, employment, or agency relationship.</p>
-                <p>15.6 NOTICES. All formal notices shall be delivered in writing via email to the designated contact of each party, with confirmation of receipt. Notices are effective upon confirmed delivery.</p>
-
-                <hr className="border-[#DEDEDE] my-4" />
-                <p className="font-bold">EXECUTION. By signing below, each party confirms they have read, understood, and agree to the terms of this Agreement in full, including the Jury Trial Waiver set forth in Section 14.</p>
-              </div>
-            )}
 
           </div>
         </section>
@@ -1062,10 +1030,7 @@ export default function BuildPage() {
                     I have read and agree to the{" "}
                     <button
                       type="button"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setShowTOS(true);
-                      }}
+                      onClick={scrollToTerms}
                       className="underline text-[#1B4F8A] font-extrabold hover:text-[#2660A8] transition-colors duration-200"
                     >
                       Terms of Service

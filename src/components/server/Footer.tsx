@@ -1,6 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname === "/build") return null;
   return (
     <>
       {/* ── DARK ZONE: Brand / Nav / Office ── */}

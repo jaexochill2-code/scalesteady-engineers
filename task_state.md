@@ -1,26 +1,25 @@
-# Session Recovery State - 2026-06-02
+# Session Recovery State - 2026-06-03
 
 ## 1. Phase Completed
-- **Identity Shift Comparison Bento:** Applied bento card styles (`bento-card-dark` and `bento-card-light`) to comparative columns and added the molded switch selector (`slider-recess`) for mobile devices.
-- **Ownership Grid Bento:** Restructured the four ownership assets into a 2x2 Bento grid using `bento-card-dark`.
-- **Tactile Fork cards:** Swapped out the basic inline styling for Scale and Walk cards with `bento-card-dark` glassmorphic cards.
-- **Staggered Testimonials bento:** Reorganized the three testimonial cards into a staggered grid of `bento-card-light` elements with Card 2 offset.
-- **Offer Sandbox Deletion:** Deleted the `/offer` sandbox directory and files.
-- **Image Mapping Overwrites (Carousel Assets):** Updated the carousel asset configurations without changing JSX code files:
-  - **Slide 1 (`public/icp_practitioner.png`):** Restored Batch 1 practitioner image (Asian clinic director looking at a tablet).
-  - **Slide 2 (`public/icp_contractor.png`):** Restored Batch 1 contractor image (HVAC guy on truck).
-  - **Slide 3 (`public/icp_roofer.png`):** Copied Batch 2 Couch contractor image (White guy on couch looking at phone) to replace the Hispanic guy.
-  - **Slide 4 (`public/icp_manager.png`):** Restored/kept Batch 2 property manager image (older White female kitchen manager looking at phone).
-- **Text Caption Removal:** Removed the absolute text caption overlay container (`div`) from the JSX component in `src/app/page.tsx`, ensuring the imagery serves as clean, raw visual cues without synthetic "AI-generated" styling.
-- **Mobile Sticky CTA Grayscale Fix:** Changed the background color of the `mobile-cta-bar` container from blue-toned navy (`rgba(5,13,28,0.96)`) to grayscale dark charcoal (`rgba(10,10,10,0.96)`) to ensure the page maintains a strict monochrome palette.
-- **Footer Background Grayscale Fix:** Changed the footer background color in `src/components/server/Footer.tsx` from dark navy blue (`#050D1C`) to grayscale dark charcoal (`#0A0A0A`), eliminating all non-grayscale hues to align with the core ScaleSteady brand system.
-- **E2E Compilation & Production Deployment:** Verified locally with `npm run build` and successfully deployed to Vercel production at `https://scalesteady.pro`.
+- **Tagline Optimization:** Replaced the hero H1 tagline on the `/build` page with the user's explicit tagline: `"Started in 24 hours, built in 14 days, managed for 60 days, and yours afterwards"`.
+- **Value Comparison Simplification:**
+  - Removed technical and copywriting labor rows from the Retail comparison table.
+  - Set the Estimated Retail software/data total to `$875.00`.
+  - Added a typical B2B marketing agency monthly retainer ($3,000 – $7,000/mo) and setup fee ($1,500 – $5,000) comparison box with citations.
+  - Rewrote all section copy (including titles, list items, and descriptions) in professional, high EQ, jargon-free B2B English.
+- **Interactive Roadmap Bento:**
+  - Built an interactive Vertical Steps Console where users hover/click through 4 roadmap stages (Acquisition, Warmup, Kickoff, Check-ins).
+  - Implemented an animated horizontal progress tracker linking the steps.
+  - Created a glowing details panel displaying custom metrics blocks and checklists dynamically based on the active step state.
+- **Brand Guideline Sync:**
+  - Purged all occurrences of "Google" and "Google Workspace" from the `/build` page and main landing page (`src/app/page.tsx`), replacing them with professional "business inboxes" and "third party's" to protect brand positioning and maintain strict B2B vocabulary.
+- **E2E Compilation Check:** Ran `npm run build` locally to confirm compilation is clean (0 TS/Turbopack errors).
+- **Visual Audit Validation:** Executed automated screenshots of the top and bottom of the build page via Playwright (`capture_build_page.py`) and ran visual verification via Gemini 3.5 Flash (`run_build_audit.py`).
 
 ## 2. Files Modified / Created
-- `public/icp_practitioner.png`, `public/icp_contractor.png`, `public/icp_roofer.png`, `public/icp_manager.png` (Overwritten with mapped assets to maintain clean presentation without Hispanic profiles)
+- `src/app/build/page.tsx` (Modified)
 - `src/app/page.tsx` (Modified)
-- `src/components/server/Footer.tsx` (Modified)
-- `src/app/offer/` (Deleted)
+- `C:\Users\Tax Filing\.gemini\antigravity-ide\brain\a55e687a-91fe-4fc0-8665-e6cdd080f7fd\walkthrough.md` (Modified)
 
 ## 3. Exact Next Action
 - None. The task is fully completed.

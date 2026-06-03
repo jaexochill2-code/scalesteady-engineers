@@ -426,7 +426,7 @@ export default function Home() {
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   <span style={{ color: "#444444" }}>
-                    <strong style={{ color: "#111111" }}>The infrastructure lives in your business.</strong> Not in our account. Not in Google&apos;s. When we&apos;re done, you own it.
+                    <strong style={{ color: "#111111" }}>The infrastructure lives in your business.</strong> Not in our account. Not in a third party&apos;s. When we&apos;re done, you own it.
                   </span>
                 </li>
               </ul>
@@ -679,7 +679,7 @@ export default function Home() {
                       <span className="font-mono text-white">$360</span>
                     </span>
                     <span className="flex justify-between text-[11px] mb-1">
-                      <span>30x Workspace Accounts:</span>
+                      <span>30x Professional Business Inboxes:</span>
                       <span className="font-mono text-white">$180</span>
                     </span>
                     <span className="flex justify-between text-[11px] mb-1">

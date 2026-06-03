@@ -591,9 +591,10 @@ export default function BuildPage() {
           </div>
         </section>
 
-        {/* 05 TIMELINE */}
+        {/* 05 TIMELINE - Warmup, Parallel Deliverables, Kickoff, Check-ins */}
         <section className="bg-[#050505] text-white py-24 border-b border-[#1A1A1A] relative overflow-hidden">
           <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+            
             <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-neutral-500 block mb-2 text-center">
               Campaign Roadmap
             </span>
@@ -601,83 +602,133 @@ export default function BuildPage() {
               Onboarding &amp; Implementation Timeline
             </h2>
             <p className="font-sans text-xs text-center text-neutral-400 mb-16 max-w-[620px] mx-auto leading-relaxed">
-              We follow a structured 6-stage engineering sequence to deploy, harden, and optimize your campaign over the 60-day performance phase.
+              We continuously optimize your campaign daily to ensure we achieve the most favorable possible outcomes at the conclusion of the 60-day engagement.
             </p>
 
-            {/* Visual Timeline Progress Bar */}
-            <div className="relative w-full max-w-[1000px] mx-auto hidden md:block mb-20">
-              {/* Progress Line */}
-              <div className="absolute top-1/2 left-0 w-full h-[2px] bg-neutral-800 -translate-y-1/2 z-0" />
-              {/* Active filled line (up to kickoff/launch stage) */}
-              <div className="absolute top-1/2 left-0 w-[60%] h-[2px] bg-white -translate-y-1/2 z-0 shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
+            {/* Premium Progress Bar Indicator (Horizontal Tracker) */}
+            <div className="relative w-full max-w-[960px] mx-auto h-[3px] bg-[#1F1F1F] mb-16 rounded-full hidden md:block">
+              {/* Glowing active line */}
+              <div 
+                className="absolute top-0 left-0 h-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.7)] transition-all duration-500"
+                style={{ width: `${(activeStep / 3) * 100}%` }}
+              />
               
-              {/* Timeline Nodes */}
-              <div className="relative z-10 flex justify-between">
-                {[
-                  { day: "Day 0", label: "Onboarding" },
-                  { day: "Day 2", label: "Technical Setup" },
-                  { day: "Day 16", label: "Hardening" },
-                  { day: "Day 17", label: "Launch" },
-                  { day: "Day 31", label: "Check-in" },
-                  { day: "Day 60", label: "Review" }
-                ].map((node, idx) => (
-                  <div key={idx} className="flex flex-col items-center">
-                    <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center font-mono text-[10px] font-bold ${
-                      idx <= 3 
-                        ? "bg-white border-white text-black shadow-[0_0_12px_rgba(255,255,255,0.3)]" 
-                        : "bg-[#050505] border-neutral-800 text-neutral-500"
-                    }`}>
-                      0{idx + 1}
-                    </div>
-                    <span className={`font-mono text-[10px] font-bold mt-3 ${idx <= 3 ? "text-white" : "text-neutral-500"}`}>{node.day}</span>
-                    <span className={`font-sans text-[11px] mt-1 ${idx <= 3 ? "text-neutral-300" : "text-neutral-600"}`}>{node.label}</span>
-                  </div>
+              {/* Dot Indicators */}
+              <div className="absolute inset-0 flex justify-between items-center pointer-events-none">
+                {timelineSteps.map((step, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setActiveStep(idx)}
+                    className={`pointer-events-auto -translate-y-[0.5px] w-7 h-7 rounded-full border-2 font-mono text-[10px] font-bold flex items-center justify-center transition-all duration-300 ${
+                      idx <= activeStep 
+                        ? "bg-white border-white text-black shadow-[0_0_12px_rgba(255,255,255,0.5)] scale-110" 
+                        : "bg-[#0A0A0A] border-[#2E2E2E] text-[#888888] hover:border-white hover:text-white"
+                    }`}
+                  >
+                    {idx + 1}
+                  </button>
                 ))}
               </div>
             </div>
 
-            {/* Grid of Steps (Desktop & Mobile) */}
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
-              {[
-                {
-                  day: "Day 0",
-                  title: "Onboarding Call",
-                  desc: "20-30 minute kickoff call to define target audience, offer structure, and campaign coordinates."
-                },
-                {
-                  day: "Day 2",
-                  title: "Technical Setup",
-                  desc: "Register 5 campaign domains and configure SPF, DKIM, and DMARC verification records."
-                },
-                {
-                  day: "Day 16",
-                  title: "System Hardening",
-                  desc: "14-day warm-up cycle concludes. Sourcing and verification of 10,000 ICP lead contacts."
-                },
-                {
-                  day: "Day 17",
-                  title: "Campaign Launch",
-                  desc: "First sequences released under strict box limits (30 sends/day) to protect reputation."
-                },
-                {
-                  day: "Day 31",
-                  title: "Performance Check-in",
-                  desc: "Campaign data audit, delivery metrics check, and copywriting A/B sequence optimizations."
-                },
-                {
-                  day: "Day 60",
-                  title: "Milestone Review",
-                  desc: "Attributed revenue milestone evaluation. Client elects to Scale or Walk."
-                }
-              ].map((step, idx) => (
-                <div key={idx} className="bg-neutral-900/30 border border-neutral-800/80 hover:border-neutral-700/80 p-5 rounded-2xl transition-all duration-300 flex flex-col justify-between">
-                  <div>
-                    <span className="font-mono text-[10px] text-neutral-500 font-bold uppercase tracking-wider block mb-2">{step.day}</span>
-                    <h4 className="font-sans text-sm font-bold text-white mb-2">{step.title}</h4>
-                    <p className="font-sans text-xs text-neutral-400 leading-relaxed">{step.desc}</p>
+            {/* Asymmetric 2-Column Bento Timeline Console */}
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+              
+              {/* Left Column: Interactive vertical triggers (4 steps) */}
+              <div className="lg:col-span-2 space-y-4">
+                {timelineSteps.map((step, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setActiveStep(idx)}
+                    className={`w-full text-left p-5 border rounded-2xl transition-all duration-300 flex items-start gap-4 group/btn ${
+                      idx === activeStep 
+                        ? "bg-[#111111] border-white/60 text-white shadow-xl translate-x-1" 
+                        : "bg-transparent border-[#1F1F1F] text-[#888888] hover:border-[#2E2E2E] hover:text-white"
+                    }`}
+                  >
+                    <span className={`font-mono text-xs px-2 py-0.5 rounded border transition-colors duration-300 ${
+                      idx === activeStep 
+                        ? "bg-white/10 border-white/40 text-white" 
+                        : "bg-white/5 border-white/10 text-[#888888] group-hover/btn:text-white"
+                    }`}>
+                      0{idx + 1}
+                    </span>
+                    <div className="space-y-1">
+                      <span className="block font-mono text-[10px] font-bold uppercase tracking-wider text-neutral-500">
+                        {step.label}
+                      </span>
+                      <h4 className={`font-sans text-sm font-bold transition-colors duration-300 ${
+                        idx === activeStep ? "text-white" : "text-[#CCCCCC] group-hover/btn:text-white"
+                      }`}>
+                        {step.title}
+                      </h4>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Right Column: Premium Glow Detail Panel */}
+              <div className="lg:col-span-3 bg-[#0D0D0D] border border-white/10 rounded-3xl p-8 relative overflow-hidden min-h-[380px] flex flex-col justify-between shadow-2xl transition-all duration-500 hover:border-white/15">
+                
+                {/* Accent glow light */}
+                <div className="absolute -top-12 -right-12 w-[240px] h-[240px] rounded-full bg-white/5 blur-[45px] pointer-events-none" />
+                
+                <div className="space-y-6 relative z-10">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/5 pb-4">
+                    <div>
+                      <span className="inline-block px-2.5 py-0.5 text-[9px] font-mono font-bold tracking-widest uppercase bg-white/15 text-white border border-white/30 rounded">
+                        Active Phase: {timelineSteps[activeStep].label}
+                      </span>
+                      <h3 className="font-sans text-lg font-bold text-white mt-1">
+                        {timelineSteps[activeStep].title}
+                      </h3>
+                    </div>
                   </div>
+
+                  <p className="font-sans text-xs text-[#CCCCCC] leading-relaxed">
+                    {timelineSteps[activeStep].desc}
+                  </p>
+
+                  {/* Dynamic Metrics layout */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+                    {timelineSteps[activeStep].metrics.map((metric, idx) => (
+                      <div key={idx} className="bg-white/5 border border-white/10 rounded-xl p-3 flex flex-col gap-0.5">
+                        <span className="font-mono text-[9px] text-neutral-500 uppercase tracking-wider">
+                          {metric.name}
+                        </span>
+                        <span className="font-sans text-xs font-bold text-white">
+                          {metric.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Checklist of deliverables */}
+                  <div className="space-y-3 pt-2">
+                    <h5 className="font-mono text-[9px] text-neutral-500 uppercase font-bold tracking-widest">
+                      Key Deliverables &amp; Actions:
+                    </h5>
+                    <ul className="space-y-2 text-xs text-[#CCCCCC] list-none p-0 m-0">
+                      {timelineSteps[activeStep].bullets.map((bullet, idx) => (
+                        <li key={idx} className="flex items-start gap-2.5">
+                          <span className="text-white font-bold">&bull;</span>
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
                 </div>
-              ))}
+
+                <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-neutral-500 relative z-10">
+                  <span>Progress Stage: 0{activeStep + 1} / 04</span>
+                  <span>ScaleSteady LLC</span>
+                </div>
+
+              </div>
+
             </div>
 
           </div>

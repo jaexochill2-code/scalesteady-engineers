@@ -145,35 +145,8 @@ export default function BuildPage() {
         const containerId = `#paypal-container-${PAYPAL_HOSTED_BUTTON_ID}`;
         const container = document.querySelector(containerId);
         if (container && container.children.length === 0) {
-          (window as any).paypal.Buttons({
-            style: {
-              layout: "vertical",
-              color: "gold",
-              shape: "rect",
-              label: "paypal",
-              height: 48
-            },
-            createOrder: (data: any, actions: any) => {
-              return actions.order.create({
-                purchase_units: [
-                  {
-                    amount: {
-                      currency_code: "USD",
-                      value: "500.00",
-                    },
-                    description: "ScaleSteady Outbound Campaign Infrastructure Fee - 60-Day Engagement",
-                  },
-                ],
-              });
-            },
-            onApprove: (data: any, actions: any) => {
-              return actions.order.capture().then((details: any) => {
-                alert("Transaction completed successfully by " + details.payer.name.given_name);
-              });
-            },
-            onError: (err: any) => {
-              console.error("PayPal checkout error:", err);
-            }
+          (window as any).paypal.HostedButtons({
+            hostedButtonId: PAYPAL_HOSTED_BUTTON_ID
           }).render(containerId);
         }
       } catch (err) {
@@ -208,7 +181,7 @@ export default function BuildPage() {
         PAYPAL_HOSTED_BUTTON_ID !== "[INSERT]" &&
         PAYPAL_HOSTED_BUTTON_ID !== "" && (
           <Script
-            src="https://www.paypal.com/sdk/js?client-id=BAAS2hDrmJeZ6vej0n_nyNRRjAczAVMDvRkgeMguvM3FF8aR5ONEd5BTqzDbVTz53qws2xYrgO7ZfoOeZg&components=buttons&disable-funding=venmo&currency=USD"
+            src="https://www.paypal.com/sdk/js?client-id=BAAS2hDrmJeZ6vej0n_nyNRRjAczAVMDvRkgeMguvM3FF8aR5ONEd5BTqzDbVTz53qws2xYrgO7ZfoOeZg&components=hosted-buttons&disable-funding=venmo&currency=USD"
             strategy="afterInteractive"
             onLoad={() => setPayPalLoaded(true)}
           />

@@ -6,25 +6,25 @@ import { supabase } from "@/lib/supabase";
 
 // ScaleSteady Premium Dark Theme Palette (matched to home page)
 const C = {
-  bg: "linear-gradient(135deg, #071224 0%, #0C0D0E 60%, #161719 100%)", // Navy/Sapphire to Charcoal/Deep Graphite
-  cardBg: "linear-gradient(180deg, rgba(9, 18, 35, 0.85) 0%, rgba(12, 13, 14, 0.98) 100%)", // premium dark card container
-  border: "rgba(255, 255, 255, 0.08)",   // high contrast border
-  borderHover: "rgba(255, 255, 255, 0.22)",
-  borderFocus: "#38BDF8",    // sky blue focus accent
-  textPrimary: "#FFFFFF",    // crisp white text
-  textSecondary: "#E2E8F0",  // light silver-gray secondary text for supreme contrast
-  textMuted: "#A3B3C8",      // highly readable description text
-  accentBlue: "#38BDF8",     // sky blue highlights
-  accentCobalt: "#0052FF",   // primary cobalt
-  accentNavy: "#1B4F8A",     // sapphire navy
+  bg: "linear-gradient(135deg, #0A0B0C 0%, #0E1012 50%, #121417 100%)", // Matte Obsidian Black/Charcoal Base
+  cardBg: "linear-gradient(180deg, rgba(17, 18, 20, 0.95) 0%, rgba(14, 15, 16, 0.99) 100%)", // premium granite/charcoal card container
+  border: "rgba(255, 255, 255, 0.08)",   // thin subtle border
+  borderHover: "rgba(255, 255, 255, 0.18)",
+  borderFocus: "#C8B395",    // warm sand / titanium focus accent
+  textPrimary: "#FFFFFF",    // crisp white
+  textSecondary: "#E5E5EA",  // Apple-grade secondary white/silver
+  textMuted: "#9CA3AF",      // neutral gray description text
+  accentSand: "#C8B395",     // warm sand gold highlights
+  accentSandMuted: "rgba(200, 179, 149, 0.15)",
+  accentObsidian: "#181A1F",  // deep dark graphite
 };
 
 const ACCENTS = [
-  { dot: "#38BDF8", tint: "rgba(56,189,248,0.03)", border: "rgba(56,189,248,0.15)" },
-  { dot: "#0052FF", tint: "rgba(0,82,255,0.03)", border: "rgba(0,82,255,0.15)" },
-  { dot: "#1B4F8A", tint: "rgba(27,79,138,0.03)", border: "rgba(27,79,138,0.15)" },
-  { dot: "#38BDF8", tint: "rgba(56,189,248,0.03)", border: "rgba(56,189,248,0.15)" },
-  { dot: "#0052FF", tint: "rgba(0,82,255,0.03)", border: "rgba(0,82,255,0.15)" },
+  { dot: "#C8B395", tint: "rgba(200,179,149,0.01)", border: "rgba(200,179,149,0.08)" },
+  { dot: "#C8B395", tint: "rgba(200,179,149,0.01)", border: "rgba(200,179,149,0.08)" },
+  { dot: "#C8B395", tint: "rgba(200,179,149,0.01)", border: "rgba(200,179,149,0.08)" },
+  { dot: "#C8B395", tint: "rgba(200,179,149,0.01)", border: "rgba(200,179,149,0.08)" },
+  { dot: "#C8B395", tint: "rgba(200,179,149,0.01)", border: "rgba(200,179,149,0.08)" },
 ];
 
 const ICP_OPTIONS = [
@@ -320,8 +320,8 @@ export default function OnboardingPage() {
       <div style={{ background: C.bg, minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 24px" }}>
         <style dangerouslySetInnerHTML={{ __html: CSS }} />
         <div className="gcard" style={{ maxWidth: "520px", width: "100%", padding: "64px 48px", textAlign: "center" }}>
-          <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "rgba(56,189,248,0.08)", border: `1px solid ${C.accentBlue}`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 28px" }}>
-            <span style={{ color: C.accentBlue, fontSize: "22px" }}>&#10003;</span>
+          <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "rgba(200,179,149,0.08)", border: `1px solid ${C.accentSand}`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 28px" }}>
+            <span style={{ color: C.accentSand, fontSize: "22px" }}>&#10003;</span>
           </div>
           <h1 style={{ fontSize: "clamp(28px, 4vw, 40px)", color: C.textPrimary, fontWeight: 400, letterSpacing: "-0.03em", marginBottom: "12px" }}>Locked in.</h1>
           <p style={{ fontSize: "14px", lineHeight: 1.7, color: C.textSecondary, maxWidth: "340px", margin: "0 auto 36px" }}>
@@ -340,8 +340,8 @@ export default function OnboardingPage() {
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
       {/* Ambient blurs matched to scalesteady.pro */}
-      <div style={{ position: "fixed", top: "-10%", right: "-5%", width: "50vw", height: "50vw", background: "radial-gradient(circle, rgba(27,79,138,0.15) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
-      <div style={{ position: "fixed", bottom: "-10%", left: "-5%", width: "45vw", height: "45vw", background: "radial-gradient(circle, rgba(0,82,255,0.10) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
+      <div style={{ position: "fixed", top: "-10%", right: "-5%", width: "50vw", height: "50vw", background: "radial-gradient(circle, rgba(200,179,149,0.05) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
+      <div style={{ position: "fixed", bottom: "-10%", left: "-5%", width: "45vw", height: "45vw", background: "radial-gradient(circle, rgba(200,179,149,0.03) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
 
       {/* ═══ HERO ═══ */}
       <div style={{ position: "relative", zIndex: 2, padding: "90px 24px 30px", textAlign: "center" }}>
@@ -353,10 +353,10 @@ export default function OnboardingPage() {
           
           {/* Typewriter Headings */}
           <h1 style={{ fontSize: "clamp(32px, 5.5vw, 64px)", fontWeight: 400, lineHeight: 1.1, letterSpacing: "-0.035em", color: C.textPrimary, marginBottom: "16px", minHeight: "2.3em" }}>
-            <span style={{ display: "block", fontSize: "0.55em", color: C.accentBlue, textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 700, marginBottom: "8px" }}>
+            <span style={{ display: "block", fontSize: "0.55em", color: C.accentSand, textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 700, marginBottom: "8px" }}>
               Commercial Outbound Setup
             </span>
-            <span style={{ borderRight: "3px solid #38BDF8", paddingRight: "4px", display: "inline-block" }}>
+            <span style={{ borderRight: "3px solid #C8B395", paddingRight: "4px", display: "inline-block" }}>
               {typedHeadline || "\u00A0"}
             </span>
           </h1>
@@ -606,18 +606,18 @@ function Sec({ i, label, title, isActive, children }: { i: number; label: string
       <div className="sec-grid">
         {/* Left column (Rail) */}
         <div className="sec-rail">
-          <div className="sec-circle" data-active={isActive} style={{ borderColor: isActive ? C.accentBlue : "rgba(255, 255, 255, 0.08)" }}>
+          <div className="sec-circle" data-active={isActive} style={{ borderColor: isActive ? C.accentSand : "rgba(255, 255, 255, 0.08)" }}>
             {String(i + 1).padStart(2, "0")}
           </div>
           {i < 4 && (
-            <div className="sec-line" data-active={isActive} style={{ background: isActive ? `linear-gradient(to bottom, ${C.accentBlue}99, rgba(255,255,255,0.01))` : `linear-gradient(to bottom, rgba(56, 189, 248, 0.15), rgba(255,255,255,0.01))` }} />
+            <div className="sec-line" data-active={isActive} style={{ background: isActive ? `linear-gradient(to bottom, ${C.accentSand}99, rgba(255,255,255,0.01))` : `linear-gradient(to bottom, rgba(200, 179, 149, 0.08), rgba(255,255,255,0.01))` }} />
           )}
         </div>
         
         {/* Right column (Card) */}
         <div className="sec-card" data-active={isActive}>
           <div style={{ marginBottom: "40px", position: "relative" }}>
-            <span className="sec-tag" style={{ color: isActive ? C.accentBlue : "#7A8B9E" }}>{label}</span>
+            <span className="sec-tag" style={{ color: isActive ? C.accentSand : "#7A8B9E" }}>{label}</span>
             <h2 className="sec-heading" style={{ color: C.textPrimary }}>{title}</h2>
           </div>
           {children}
@@ -693,7 +693,7 @@ const CSS = `
 .pill-dot {
   width: 6px; height: 6px;
   border-radius: 50% !important;
-  background: #38BDF8;
+  background: #C8B395;
   animation: dotPulse 2.5s infinite ease-in-out;
 }
 
@@ -710,15 +710,15 @@ const CSS = `
 .prog-pip {
   height: 3px; flex: 1;
   border-radius: 0px !important;
-  background: #102240; /* Inactive track to sapphire */
+  background: #242528; /* Inactive track to graphite */
   transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
 }
 .prog-pip[data-done="true"] {
   background: #FFFFFF;
 }
 .prog-pip[data-active="true"] {
-  background: #38BDF8;
-  box-shadow: 0 0 10px rgba(56,189,248,0.6);
+  background: #C8B395;
+  box-shadow: 0 0 10px rgba(200,179,149,0.6);
 }
 
 /* ── Section & Grid ── */
@@ -781,9 +781,9 @@ const CSS = `
   letter-spacing: 0.05em;
 }
 .sec-circle[data-active="true"] {
-  color: #38BDF8;
-  background: rgba(56, 189, 248, 0.05);
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+  color: #C8B395;
+  background: rgba(200, 179, 149, 0.05);
+  box-shadow: 0 0 16px rgba(200, 179, 149, 0.2);
 }
 .sec-line {
   position: absolute;
@@ -806,8 +806,8 @@ const CSS = `
   transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
 }
 .sec-card[data-active="true"] {
-  border-color: rgba(56, 189, 248, 0.3) !important;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.9), 0 0 32px rgba(56, 189, 248, 0.05);
+  border-color: rgba(200, 179, 149, 0.25) !important;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.9), 0 0 32px rgba(200, 179, 149, 0.03);
 }
 .sec-tag {
   display: block;
@@ -836,7 +836,7 @@ const CSS = `
   transition: border-color 0.3s, opacity 0.4s;
 }
 .fg[data-active="true"] {
-  border-left-color: #38BDF8;
+  border-left-color: #C8B395;
 }
 
 /* ── Label ── */
@@ -873,9 +873,9 @@ const CSS = `
   background: rgba(7, 18, 36, 0.6);
 }
 .gi:focus, .gi[data-active="true"] {
-  border-color: #38BDF8 !important;
+  border-color: #C8B395 !important;
   background: rgba(7, 18, 36, 0.8);
-  box-shadow: 0 0 0 4px rgba(56,189,248,0.15), 0 0 16px rgba(56,189,248,0.2) !important;
+  box-shadow: 0 0 0 4px rgba(200, 179, 149, 0.15), 0 0 16px rgba(200, 179, 149, 0.15) !important;
 }
 .gi-ta {
   resize: none !important; /* Eliminate raw browser resize handle */
@@ -919,10 +919,10 @@ const CSS = `
   background: rgba(7, 18, 36, 0.6);
 }
 .icp-card-btn[data-selected="true"] {
-  border-color: #38BDF8 !important;
-  background: rgba(56, 189, 248, 0.05);
+  border-color: #C8B395 !important;
+  background: rgba(200, 179, 149, 0.05);
   color: #FFFFFF;
-  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1), 0 0 16px rgba(56, 189, 248, 0.15);
+  box-shadow: 0 0 0 4px rgba(200, 179, 149, 0.05), 0 0 16px rgba(200, 179, 149, 0.1);
 }
 .icp-chk {
   width: 18px;
@@ -934,19 +934,19 @@ const CSS = `
   justify-content: center;
   flex-shrink: 0;
   background: rgba(0, 0, 0, 0.2);
-  color: #38BDF8;
+  color: #C8B395;
   font-size: 11px;
   font-weight: bold;
   transition: all 0.25s ease;
 }
 .icp-chk[data-selected="true"] {
-  border-color: #38BDF8;
-  background: rgba(56, 189, 248, 0.1);
+  border-color: #C8B395;
+  background: rgba(200, 179, 149, 0.1);
 }
 
 /* ── Glass card ── */
 .gcard {
-  background: linear-gradient(180deg, rgba(9, 18, 35, 0.85) 0%, rgba(12, 13, 14, 0.98) 100%);
+  background: linear-gradient(180deg, rgba(17, 18, 20, 0.95) 0%, rgba(14, 15, 16, 0.99) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-image: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 100%) 1;
   border-radius: 0px !important;
@@ -958,21 +958,21 @@ const CSS = `
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #0052FF 0%, #1B4F8A 100%);
+  background: linear-gradient(135deg, #C8B395 0%, #A58E6F 100%);
   border: none;
   border-radius: 0px !important;
   padding: 16px 36px;
   font-size: 13.5px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: #FFFFFF;
+  color: #0A0B0C;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
-  box-shadow: 0 4px 16px rgba(0,82,255,0.35);
+  box-shadow: 0 4px 16px rgba(200, 179, 149, 0.2);
 }
 .submit-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 28px rgba(0,82,255,0.55);
+  box-shadow: 0 8px 28px rgba(200, 179, 149, 0.35);
 }
 .submit-btn:active { transform: translateY(0); }
 .submit-btn-full { width: 100%; }

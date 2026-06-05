@@ -256,6 +256,17 @@ export default function OnboardingPage() {
   const domain = form.company_name ? form.company_name.toLowerCase().replace(/[^a-z0-9]/g, "") + "roofing.com" : "yourdomain.com";
   const act = (f: string) => activeField === f;
 
+  const getActiveSecIndex = () => {
+    if (!activeField) return -1;
+    if (["company_name", "contact_name", "contact_details"].includes(activeField)) return 0;
+    if (["primary_icp", "geographic_target", "ideal_job_size"].includes(activeField)) return 1;
+    if (["intro_offer", "copy_constraints", "best_win"].includes(activeField)) return 2;
+    if (["main_objection", "edge", "goals_90_days", "past_results"].includes(activeField)) return 3;
+    if (activeField === "routing_destination" || activeField.startsWith("email_names")) return 4;
+    return -1;
+  };
+  const activeSec = getActiveSecIndex();
+
   if (status === "success") {
     return (
       <div style={{ background: C.bg, minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 24px" }}>
@@ -285,7 +296,7 @@ export default function OnboardingPage() {
       <div style={{ position: "fixed", bottom: "-10%", left: "-5%", width: "45vw", height: "45vw", background: "radial-gradient(circle, rgba(0,82,255,0.10) 0%, transparent 70%)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none", zIndex: 0 }} />
 
       {/* ═══ HERO ═══ */}
-      <div style={{ position: "relative", zIndex: 2, padding: "110px 24px 40px", textAlign: "center" }}>
+      <div style={{ position: "relative", zIndex: 2, padding: "90px 24px 30px", textAlign: "center" }}>
         <div style={{ animation: "fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both" }}>
           <div className="pill">
             <span className="pill-dot" />
@@ -293,7 +304,7 @@ export default function OnboardingPage() {
           </div>
           
           {/* Typewriter Headings */}
-          <h1 style={{ fontSize: "clamp(32px, 5.5vw, 64px)", fontWeight: 400, lineHeight: 1.1, letterSpacing: "-0.035em", color: C.textPrimary, marginBottom: "20px", minHeight: "2.3em" }}>
+          <h1 style={{ fontSize: "clamp(32px, 5.5vw, 64px)", fontWeight: 400, lineHeight: 1.1, letterSpacing: "-0.035em", color: C.textPrimary, marginBottom: "16px", minHeight: "2.3em" }}>
             <span style={{ display: "block", fontSize: "0.55em", color: C.accentBlue, textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 700, marginBottom: "8px" }}>
               Commercial Outbound Setup
             </span>
@@ -323,7 +334,7 @@ export default function OnboardingPage() {
       <form ref={formRef} onSubmit={handleSubmit} style={{ position: "relative", zIndex: 2 }}>
 
         {/* SECTION 1 */}
-        <Sec i={0} label="The Basics" title="Contact Details">
+        <Sec i={0} label="The Basics" title="Contact Details" isActive={activeSec === 0}>
           <Field field="company_name" label="1. Roofing Company Name" active={act("company_name")}>
             <input className="gi" {...ip("company_name", form, handleChange, setActiveField, "e.g. Apex Roofing & Contracting")} data-active={act("company_name")} />
           </Field>
@@ -336,8 +347,8 @@ export default function OnboardingPage() {
         </Sec>
 
         {/* SECTION 2 */}
-        <Sec i={1} label="Targeting" title="B2B Commercial Focus & Density">
-          <Field field="primary_icp" label="4. Which B2B commercial target segments or referral partners should we focus outreach on?" active={act("primary_icp")}>
+        <Sec i={1} label="Targeting" title="B2B Commercial Focus & Density" isActive={activeSec === 1}>
+          <Field field="primary_icp" label="4. Select your prime B2B target profiles and strategic referral partners." active={act("primary_icp")}>
             <div style={{ position: "relative" }}>
               <select className="gi gi-sel" required value={form.primary_icp}
                 onFocus={() => setActiveField("primary_icp")}
@@ -353,7 +364,7 @@ export default function OnboardingPage() {
               </select>
             </div>
           </Field>
-          <Field field="geographic_target" label="5. Target Geography (We filter prospects based on industrial park density and commercial zoning)" active={act("geographic_target")}>
+          <Field field="geographic_target" label="5. Geographic parameters (Filtered via industrial park density and commercial zoning)" active={act("geographic_target")}>
             <input className="gi" {...ip("geographic_target", form, handleChange, setActiveField, "e.g. Cook County industrial corridors, or 50 miles radius from Chicago")} data-active={act("geographic_target")} />
           </Field>
           <Field field="ideal_job_size" label="6. Which commercial roofing systems are you equipped to handle? (e.g. TPO, EPDM, Silicone Coatings, Metal)" active={act("ideal_job_size")} last>
@@ -362,8 +373,8 @@ export default function OnboardingPage() {
         </Sec>
 
         {/* SECTION 3 */}
-        <Sec i={2} label="The Strategy" title="Foot-In-The-Door Offers & Risk Bypassing">
-          <Field field="intro_offer" label="7. What is your high-conversion 'foot-in-the-door' offer for building owners?" active={act("intro_offer")}>
+        <Sec i={2} label="The Strategy" title="Foot-In-The-Door Offers & Risk Bypassing" isActive={activeSec === 2}>
+          <Field field="intro_offer" label="7. High-conversion low-friction offer (e.g. Drone Thermal Inspections, Capital Expenditure Budgeting Plan)" active={act("intro_offer")}>
             <input className="gi" {...ip("intro_offer", form, handleChange, setActiveField, "e.g. Free Drone Thermal Assessment, or Capital Expenditure Budget Plan Estimate")} data-active={act("intro_offer")} />
             <p style={{ fontSize: "12.5px", color: C.textMuted, marginTop: "8px", lineHeight: 1.5 }}>Boilerplate sales pitches fail commercial gatekeepers. We recommend diagnostic or capital budgeting offers.</p>
           </Field>
@@ -376,8 +387,8 @@ export default function OnboardingPage() {
         </Sec>
 
         {/* SECTION 4 */}
-        <Sec i={3} label="Objection Gates" title="Disarming gatekeepers & local credibility">
-          <Field field="main_objection" label="10. When property managers use the 'we already have a preferred roofer' defense, what secondary leverage do you offer?" active={act("main_objection")}>
+        <Sec i={3} label="Objection Gates" title="Disarming gatekeepers & local credibility" isActive={activeSec === 3}>
+          <Field field="main_objection" label="10. When gatekeepers or property managers use the 'we already have a preferred roofer' defense, what secondary leverage do you offer?" active={act("main_objection")}>
             <textarea className="gi gi-ta" {...tp("main_objection", form, handleChange, setActiveField, "e.g. We provide 2-hour emergency leak response when their vendor is busy, or act as secondary competitive bids to keep primary vendors honest")} data-active={act("main_objection")} />
           </Field>
           <Field field="edge" label="11. Whose name and title should sign the outbound emails?" active={act("edge")}>
@@ -387,112 +398,112 @@ export default function OnboardingPage() {
           <Field field="goals_90_days" label="12. Do you want to target properties based on their capital budgeting planning cycles? (Commercial plans typically lock in Q3/Q4)" active={act("goals_90_days")}>
             <textarea className="gi gi-ta" {...tp("goals_90_days", form, handleChange, setActiveField, "Specify if you want to align outreach timing with fiscal years, lease cycles, or immediate storm response...")} data-active={act("goals_90_days")} />
           </Field>
-          <Field field="past_results" label="13. How do you handle property managers' skepticism regarding local storm chasers, roofing scams, or lack of local presence?" active={act("past_results")} last>
+          <Field field="past_results" label="13. How do you handle property managers' skepticism regarding local storm chasers, roofing contractor scams, or lack of local presence?" active={act("past_results")} last>
             <textarea className="gi gi-ta" {...tp("past_results", form, handleChange, setActiveField, "e.g. We cite local references, show physical brick-and-mortar office location, or prove active local permits...")} data-active={act("past_results")} />
           </Field>
         </Sec>
 
         {/* SECTION 5 */}
-        <div className="sec" style={{ padding: "56px 24px 100px" }}>
-          <div className="sec-tint" style={{ background: ACCENTS[4].tint }} />
-          <div style={{ maxWidth: "640px", margin: "0 auto", position: "relative", zIndex: 2 }}>
-            <div className="sec-card" style={{ padding: "48px 40px" }}>
-              <div style={{ marginBottom: "44px", position: "relative" }}>
-                <span className="sec-tag" style={{ color: ACCENTS[4].dot }}>Campaign Setup</span>
-                <h2 className="sec-heading">14. CRM Integration & Mailbox Sender Setup</h2>
-                <span className="sec-ghost">05</span>
+        <Sec i={4} label="Campaign Setup" title="CRM Integration & Mailbox Sender Setup" isActive={activeSec === 4}>
+          <div className="fg" data-active={act("routing_destination")}>
+            <label className="fl" data-active={act("routing_destination")}>14. Which CRM or routing method should booked estimates route to?</label>
+            <div style={{ position: "relative" }}>
+              <select className="gi gi-sel" required value={routingSelect}
+                onFocus={() => setActiveField("routing_destination")}
+                onBlur={() => setActiveField(null)}
+                onChange={(e) => setRoutingSelect(e.target.value)}
+                data-active={act("routing_destination")}
+              >
+                <option value="" disabled>Select CRM integration target</option>
+                <option value="AccuLynx CRM">AccuLynx CRM (Lead integration)</option>
+                <option value="JobNimbus CRM">JobNimbus CRM (Lead webhook)</option>
+                <option value="HubSpot / Salesforce">HubSpot or Salesforce CRM</option>
+                <option value="Email Intake Routing">Direct Email Inbox</option>
+              </select>
+            </div>
+            {routingSelect && (
+              <div style={{ marginTop: "14px" }}>
+                <label className="fl fl-sm" data-active={true}>
+                  {routingSelect === "Email Intake Routing" ? "Enter your intake email" : "Enter CRM webhook, API key name, or link details"}
+                </label>
+                <input className="gi" type="text" required value={routingDetails}
+                  onFocus={() => setActiveField("routing_destination")}
+                  onBlur={() => setActiveField(null)}
+                  onChange={(e) => setRoutingDetails(e.target.value)}
+                  data-active={act("routing_destination")}
+                />
               </div>
+            )}
+          </div>
 
-              <div className="fg" data-active={act("routing_destination")}>
-                <label className="fl" data-active={act("routing_destination")}>14. Which CRM or routing method should booked estimates route to?</label>
-                <div style={{ position: "relative" }}>
-                  <select className="gi gi-sel" required value={routingSelect}
-                    onFocus={() => setActiveField("routing_destination")}
-                    onBlur={() => setActiveField(null)}
-                    onChange={(e) => setRoutingSelect(e.target.value)}
-                    data-active={act("routing_destination")}
-                  >
-                    <option value="" disabled>Select CRM integration target</option>
-                    <option value="AccuLynx CRM">AccuLynx CRM (Lead integration)</option>
-                    <option value="JobNimbus CRM">JobNimbus CRM (Lead webhook)</option>
-                    <option value="HubSpot / Salesforce">HubSpot or Salesforce CRM</option>
-                    <option value="Email Intake Routing">Direct Email Inbox</option>
-                  </select>
-                </div>
-                {routingSelect && (
-                  <div style={{ marginTop: "14px" }}>
-                    <label className="fl fl-sm" data-active={true}>
-                      {routingSelect === "Email Intake Routing" ? "Enter your intake email" : "Enter CRM webhook, API key name, or link details"}
-                    </label>
-                    <input className="gi" type="text" required value={routingDetails}
-                      onFocus={() => setActiveField("routing_destination")}
+          <div className="fg" data-active={activeField?.startsWith("email_names")} style={{ borderBottom: "none", marginBottom: 0 }}>
+            <label className="fl" data-active={activeField?.startsWith("email_names")}>15. First names of 5 team members to set up as outbound sender profiles</label>
+            <p style={{ fontSize: "13px", color: C.textMuted, marginBottom: "20px", lineHeight: 1.5 }}>Real first names only (e.g. bob, john). Emails will be sent from name@{domain}.</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {form.email_names.map((name, i) => {
+                const ba = activeField === `email_names_${i}`;
+                return (
+                  <div key={i}>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px" }}>
+                      <span style={{ fontSize: "11px", fontFamily: "monospace", color: ba ? C.textPrimary : C.textMuted, fontWeight: 600 }}>Sender {i + 1}</span>
+                      <span style={{ fontSize: "11px", fontFamily: "monospace", color: name ? C.textSecondary : C.textMuted }}>{name || "name"}@{domain}</span>
+                    </div>
+                    <input className="gi" type="text" required value={name}
+                      onFocus={() => setActiveField(`email_names_${i}`)}
                       onBlur={() => setActiveField(null)}
-                      onChange={(e) => setRoutingDetails(e.target.value)}
-                      data-active={act("routing_destination")}
+                      onChange={(e) => handleNameBoxChange(i, e.target.value)}
+                      data-active={ba}
                     />
                   </div>
-                )}
-              </div>
-
-              <div className="fg" data-active={activeField?.startsWith("email_names")} style={{ borderBottom: "none", marginBottom: "48px" }}>
-                <label className="fl" data-active={activeField?.startsWith("email_names")}>15. First names of 5 team members to set up as outbound sender profiles</label>
-                <p style={{ fontSize: "13px", color: C.textMuted, marginBottom: "20px", lineHeight: 1.5 }}>Real first names only (e.g. bob, john). Emails will be sent from name@{domain}.</p>
-                <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                  {form.email_names.map((name, i) => {
-                    const ba = activeField === `email_names_${i}`;
-                    return (
-                      <div key={i}>
-                        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px" }}>
-                          <span style={{ fontSize: "11px", fontFamily: "monospace", color: ba ? C.textPrimary : C.textMuted, fontWeight: 600 }}>Sender {i + 1}</span>
-                          <span style={{ fontSize: "11px", fontFamily: "monospace", color: name ? C.textSecondary : C.textMuted }}>{name || "name"}@{domain}</span>
-                        </div>
-                        <input className="gi" type="text" required value={name}
-                          onFocus={() => setActiveField(`email_names_${i}`)}
-                          onBlur={() => setActiveField(null)}
-                          onChange={(e) => handleNameBoxChange(i, e.target.value)}
-                          data-active={ba}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {status === "error" && (
-                <div style={{ padding: "14px 18px", background: "rgba(255,59,48,0.1)", border: "1px solid rgba(255,59,48,0.3)", borderRadius: "0px", fontSize: "13px", color: "#FF3B30", marginBottom: "24px", lineHeight: 1.5 }}>
-                  {errorMsg}
-                </div>
-              )}
-
-              <button type="submit" disabled={status === "submitting"} className="submit-btn submit-btn-full" style={{ borderRadius: "0px" }}>
-                {status === "submitting" ? (
-                  <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}>
-                    <span className="spin" /> Submitting Settings...
-                  </span>
-                ) : (
-                  "Deploy Campaign Settings"
-                )}
-              </button>
+                );
+              })}
             </div>
           </div>
-        </div>
+
+          {status === "error" && (
+            <div style={{ padding: "14px 18px", background: "rgba(255,59,48,0.1)", border: "1px solid rgba(255,59,48,0.3)", borderRadius: "0px", fontSize: "13px", color: "#FF3B30", margin: "24px 0", lineHeight: 1.5 }}>
+              {errorMsg}
+            </div>
+          )}
+
+          <button type="submit" disabled={status === "submitting"} className="submit-btn submit-btn-full" style={{ borderRadius: "0px", marginTop: "32px" }}>
+            {status === "submitting" ? (
+              <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}>
+                <span className="spin" /> Submitting Settings...
+              </span>
+            ) : (
+              "Deploy Campaign Settings"
+            )}
+          </button>
+        </Sec>
 
       </form>
     </div>
   );
 }
 
-function Sec({ i, label, title, children }: { i: number; label: string; title: string; children: React.ReactNode }) {
+function Sec({ i, label, title, isActive, children }: { i: number; label: string; title: string; isActive: boolean; children: React.ReactNode }) {
   const a = ACCENTS[i];
   return (
-    <div className="sec" style={{ padding: "32px 24px" }}>
+    <div className="sec sec-layout" style={{ padding: "24px 24px" }} data-active={isActive}>
       <div className="sec-tint" style={{ background: a.tint }} />
-      <div style={{ maxWidth: "640px", margin: "0 auto", position: "relative", zIndex: 2 }}>
-        <div className="sec-card" style={{ padding: "48px 40px" }}>
-          <div style={{ marginBottom: "44px", position: "relative" }}>
-            <span className="sec-tag" style={{ color: a.dot }}>{label}</span>
+      
+      <div className="sec-grid">
+        {/* Left column (Rail) */}
+        <div className="sec-rail">
+          <div className="sec-circle" data-active={isActive} style={{ borderColor: isActive ? C.accentBlue : a.border }}>
+            {String(i + 1).padStart(2, "0")}
+          </div>
+          {i < 4 && (
+            <div className="sec-line" data-active={isActive} style={{ background: isActive ? `linear-gradient(to bottom, ${C.accentBlue}99, rgba(255,255,255,0.01))` : `linear-gradient(to bottom, ${a.dot}33, rgba(255,255,255,0.01))` }} />
+          )}
+        </div>
+        
+        {/* Right column (Card) */}
+        <div className="sec-card" data-active={isActive}>
+          <div style={{ marginBottom: "40px", position: "relative" }}>
+            <span className="sec-tag" style={{ color: isActive ? C.accentBlue : a.dot }}>{label}</span>
             <h2 className="sec-heading" style={{ color: C.textPrimary }}>{title}</h2>
-            <span className="sec-ghost">{String(i + 1).padStart(2, "0")}</span>
           </div>
           {children}
         </div>
@@ -595,7 +606,7 @@ const CSS = `
   box-shadow: 0 0 10px rgba(56,189,248,0.6);
 }
 
-/* ── Section & Card ── */
+/* ── Section & Grid ── */
 .sec {
   position: relative;
   opacity: 0;
@@ -610,11 +621,76 @@ const CSS = `
   pointer-events: none;
   z-index: 0;
 }
+.sec-grid {
+  display: block;
+}
+@media (min-width: 768px) {
+  .sec-grid {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 32px;
+    align-items: start;
+    max-width: 690px;
+    margin: 0 auto;
+  }
+}
+
+/* ── Timeline Rail ── */
+.sec-rail {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sec-rail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    margin-top: 6px;
+  }
+}
+.sec-circle {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748B;
+  background: #0C0D0E;
+  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.sec-circle[data-active="true"] {
+  color: #38BDF8;
+  background: rgba(56, 189, 248, 0.05);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+}
+.sec-line {
+  position: absolute;
+  top: 38px;
+  bottom: -48px;
+  left: 50%;
+  width: 1px;
+  z-index: 1;
+  transition: background 0.3s ease;
+}
+
+/* ── Card Container ── */
 .sec-card {
   background: linear-gradient(180deg, rgba(9, 18, 35, 0.85) 0%, rgba(12, 13, 14, 0.98) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 0px;
+  padding: 48px 40px;
   box-shadow: 0 24px 64px rgba(0,0,0,0.8);
+  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.sec-card[data-active="true"] {
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.9), 0 0 32px rgba(56, 189, 248, 0.05);
 }
 .sec-tag {
   display: block;
@@ -624,22 +700,13 @@ const CSS = `
   letter-spacing: 0.16em;
   text-transform: uppercase;
   margin-bottom: 6px;
+  transition: color 0.3s ease;
 }
 .sec-heading {
   font-size: 24px;
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.2;
-}
-.sec-ghost {
-  position: absolute;
-  right: 0; top: -8px;
-  font-size: 80px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.015);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
 }
 
 /* ── Field group ── */
@@ -671,7 +738,7 @@ const CSS = `
 /* ── Glass input ── */
 .gi {
   width: 100%;
-  background: rgba(7, 18, 36, 0.4);
+  background: rgba(7, 18, 36, 0.45);
   border: 1px solid #1E293B;
   border-radius: 0px;
   padding: 14px 18px;
@@ -679,10 +746,10 @@ const CSS = `
   color: #FFFFFF;
   outline: none;
   transition: all 0.25s cubic-bezier(0.16,1,0.3,1);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.01);
 }
 .gi::placeholder {
-  color: #64748B;
+  color: #7A8B9E;
 }
 .gi:hover {
   border-color: rgba(255,255,255,0.3);
@@ -715,7 +782,7 @@ const CSS = `
 }
 .gi-sel:invalid,
 .gi-sel option[value=""] {
-  color: #64748B;
+  color: #7A8B9E;
 }
 
 /* ── Glass card ── */
@@ -762,8 +829,8 @@ const CSS = `
 }
 
 /* ── Responsive ── */
-@media (max-width: 640px) {
-  .sec-ghost { display: none; }
+@media (max-width: 767px) {
+  .sec-grid { display: block; }
   .gi { padding: 12px 14px; font-size: 14px; }
   .sec-card { padding: 32px 24px; }
 }

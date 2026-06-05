@@ -334,7 +334,7 @@ export default function OnboardingPage() {
       <form ref={formRef} onSubmit={handleSubmit} style={{ position: "relative", zIndex: 2 }}>
 
         {/* SECTION 1 */}
-        <Sec i={0} label="The Basics" title="Contact Details" isActive={activeSec === 0}>
+        <Sec i={0} label="01 / BRAND IDENTIFICATION" title="Corporate Anchor & Direct Lines" isActive={activeSec === 0}>
           <Field field="company_name" label="1. Legal Entity / Commercial Roofing Brand" active={act("company_name")}>
             <input className="gi" {...ip("company_name", form, handleChange, setActiveField, "e.g. Apex Roofing & Contracting")} data-active={act("company_name")} />
           </Field>
@@ -347,7 +347,7 @@ export default function OnboardingPage() {
         </Sec>
 
         {/* SECTION 2 */}
-        <Sec i={1} label="Targeting" title="B2B Commercial Focus & Density" isActive={activeSec === 1}>
+        <Sec i={1} label="02 / ICP CALIBRATION" title="Algorithmic Zoning & Property Density" isActive={activeSec === 1}>
           <Field field="primary_icp" label="4. Select your prime commercial target profiles & strategic referral partners." active={act("primary_icp")}>
             <div style={{ position: "relative" }}>
               <select className="gi gi-sel" required value={form.primary_icp}
@@ -364,7 +364,7 @@ export default function OnboardingPage() {
               </select>
             </div>
           </Field>
-          <Field field="geographic_target" label="5. Geographic Parameters (Filtered via industrial park density, commercial zoning, & property tax rolls)" active={act("geographic_target")}>
+          <Field field="geographic_target" label="5. Geographic Parameters (Our system cross-references local industrial corridor zoning maps and property tax rolls to isolate high-probability opportunities.)" active={act("geographic_target")}>
             <input className="gi" {...ip("geographic_target", form, handleChange, setActiveField, "e.g. Cook County industrial corridors, or 50 miles radius from Chicago")} data-active={act("geographic_target")} />
           </Field>
           <Field field="ideal_job_size" label="6. Authorized Manufacturer Certifications & Systems (e.g. TPO, EPDM, Silicone Coatings, Metal)" active={act("ideal_job_size")} last>
@@ -373,7 +373,7 @@ export default function OnboardingPage() {
         </Sec>
 
         {/* SECTION 3 */}
-        <Sec i={2} label="The Strategy" title="Foot-In-The-Door Offers & Risk Bypassing" isActive={activeSec === 2}>
+        <Sec i={2} label="03 / VALUE COUPLING" title="Low-Friction Offers & Risk Bypassing" isActive={activeSec === 2}>
           <Field field="intro_offer" label="7. High-Conversion Low-Friction Offer (e.g. Drone Thermal Inspections, Capital Expenditure Budgeting Plan)" active={act("intro_offer")}>
             <input className="gi" {...ip("intro_offer", form, handleChange, setActiveField, "e.g. Free Drone Thermal Assessment, or Capital Expenditure Budget Plan Estimate")} data-active={act("intro_offer")} />
             <p style={{ fontSize: "12.5px", color: C.textMuted, marginTop: "8px", lineHeight: 1.5 }}>Boilerplate sales pitches fail commercial gatekeepers. We recommend diagnostic or capital budgeting offers.</p>
@@ -387,7 +387,7 @@ export default function OnboardingPage() {
         </Sec>
 
         {/* SECTION 4 */}
-        <Sec i={3} label="Objection Gates" title="Disarming gatekeepers & local credibility" isActive={activeSec === 3}>
+        <Sec i={3} label="04 / OBJECTION BYPASS" title="Gatekeeper Mitigation & Trust Leverage" isActive={activeSec === 3}>
           <Field field="main_objection" label="10. When gatekeepers or property managers use the 'we already have a preferred roofer' defense, what secondary leverage do you offer?" active={act("main_objection")}>
             <textarea className="gi gi-ta" {...tp("main_objection", form, handleChange, setActiveField, "e.g. We provide 2-hour emergency leak response when their vendor is busy, or act as secondary competitive bids to keep primary vendors honest")} data-active={act("main_objection")} />
           </Field>
@@ -404,7 +404,7 @@ export default function OnboardingPage() {
         </Sec>
 
         {/* SECTION 5 */}
-        <Sec i={4} label="Campaign Setup" title="CRM Integration & Mailbox Sender Setup" isActive={activeSec === 4}>
+        <Sec i={4} label="05 / PIPELINE ROUTING" title="CRM Integration & Mailbox Sender Setup" isActive={activeSec === 4}>
           <div className="fg" data-active={act("routing_destination")}>
             <label className="fl" data-active={act("routing_destination")}>14. Which CRM or routing method should booked estimates route to?</label>
             <div style={{ position: "relative" }}>
@@ -595,7 +595,7 @@ const CSS = `
 .prog-pip {
   height: 3px; flex: 1;
   border-radius: 0px !important;
-  background: rgba(255,255,255,0.12);
+  background: #102240; /* Inactive track to sapphire */
   transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
 }
 .prog-pip[data-done="true"] {
@@ -657,12 +657,13 @@ const CSS = `
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   font-weight: 600;
   color: #64748B;
   background: #0C0D0E;
   transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  letter-spacing: 0.05em;
 }
 .sec-circle[data-active="true"] {
   color: #38BDF8;
@@ -683,6 +684,7 @@ const CSS = `
 .sec-card {
   background: linear-gradient(180deg, rgba(9, 18, 35, 0.85) 0%, rgba(12, 13, 14, 0.98) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  border-image: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 100%) 1;
   border-radius: 0px !important;
   padding: 48px 40px;
   box-shadow: 0 24px 64px rgba(0,0,0,0.8);
@@ -694,7 +696,7 @@ const CSS = `
 }
 .sec-tag {
   display: block;
-  font-family: monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -761,7 +763,7 @@ const CSS = `
   box-shadow: 0 0 0 4px rgba(56,189,248,0.15), 0 0 16px rgba(56,189,248,0.2) !important;
 }
 .gi-ta {
-  resize: vertical;
+  resize: none !important; /* Eliminate raw browser resize handle */
   min-height: 96px;
   line-height: 1.6;
 }
@@ -789,6 +791,7 @@ const CSS = `
 .gcard {
   background: linear-gradient(180deg, rgba(9, 18, 35, 0.85) 0%, rgba(12, 13, 14, 0.98) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  border-image: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 100%) 1;
   border-radius: 0px !important;
   box-shadow: 0 24px 64px rgba(0,0,0,0.8);
 }

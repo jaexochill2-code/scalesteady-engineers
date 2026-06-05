@@ -13,6 +13,10 @@ export default function MarketFitLayout({
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: `
+        html, body {
+          background-color: #0C0D0E !important;
+          background: #0C0D0E !important;
+        }
         nav, footer, header { display: none !important; }
         main { padding-top: 0 !important; }
       `}} />

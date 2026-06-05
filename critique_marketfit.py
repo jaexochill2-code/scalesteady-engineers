@@ -19,32 +19,26 @@ async def main():
         print(f"Error loading API key from vault: {e}")
         return
 
-    # 2. Reference captured screenshots
-    screenshots = {
-        "Marketfit Top": os.path.join(artifact_dir, "marketfit_top.png"),
-        "Marketfit Middle": os.path.join(artifact_dir, "marketfit_middle.png"),
-        "Marketfit Bottom": os.path.join(artifact_dir, "marketfit_bottom.png"),
-    }
-
-    for label, path in screenshots.items():
-        if not os.path.exists(path):
-            print(f"Error: Screenshot path not found: {path}")
-            return
+    # 2. Reference full page screenshot
+    full_image_path = os.path.join(artifact_dir, "marketfit_full.png")
+    if not os.path.exists(full_image_path):
+        print(f"Error: Screenshot path not found: {full_image_path}")
+        return
 
     # 3. Formulate the prestigious 2026 Visual Designer superprompt for the onboarding form
     superprompt = """
 You are the absolute leading Visual Design Director and Motion Architect for ultra-prestigious B2B, consumer tech, and luxury products in 2026.
-You are reviewing screenshots of the ScaleSteady Outbound Campaign Onboarding form at /marketfit-roofing.
+You are reviewing a full-page screenshot of the ScaleSteady Outbound Campaign Onboarding form at /marketfit-roofing.
 
 The user's core brand identity is matched to scalesteady.pro:
 - High-contrast premium dark theme: background linear-gradient(135deg, #071224 0%, #0C0D0E 60%, #161719 100%), with sapphire navy, sky blue, and cobalt accents.
 - Modern typography, high readability, pristine contrast (WCAG-compliant), and micro-animations.
-- Input boxes should look premium, sharp, and high-contrast (using 0px border-radius, clean thin borders, and solid cobalt or blue active glow states).
-- No jargon, clear and punchy copy, highly targeted commercial roofing questionnaire (TPO/EPDM, GAF Master Elite, property management targets, CRM integrations).
+- Input boxes must look premium, sharp, and high-contrast (using 0px border-radius, clean thin borders, and solid cobalt or blue active glow states).
+- No jargon, clear and punchy copy, highly targeted B2B commercial roofing questionnaire (TPO/EPDM, GAF Master Elite, property management targets, CRM integrations).
 
-Analyze the provided screenshots and perform a strict E2E visual and structural audit. Address:
+Analyze the provided full-page screenshot and perform a strict E2E visual and structural audit. Address:
 1. Visual contrast & readability (ensure all labels and inputs have supreme contrast on the dark gradient).
-2. Layout rhythm and card container alignment (ensure consistent padding, spacing, and vertical alignment).
+2. Layout rhythm, vertical timeline rail connecting the step circles, and card container alignment (ensure consistent padding, spacing, and vertical alignment).
 3. Copy excellence (no boilerplate, every question makes the prospect think and feel they are talking to commercial roofing experts).
 4. Overall aesthetic prestige: does it feel like a $100K bespoke engineering setup form or a basic web form?
 
@@ -53,20 +47,20 @@ Ensure your response uses clean, high-status, professional B2B engineering tone.
 """
 
     # 4. Call Gemini 3.5 Flash API (as VM-01)
-    parts = []
-    for label, path in screenshots.items():
-        with open(path, "rb") as img_f:
-            img_data = base64.b64encode(img_f.read()).decode("utf-8")
-        parts.append({"text": f"--- SCREENSHOT: {label} ---"})
-        parts.append({
+    with open(full_image_path, "rb") as img_f:
+        img_data = base64.b64encode(img_f.read()).decode("utf-8")
+        
+    parts = [
+        {"text": "--- FULL PAGE SCREENSHOT ---"},
+        {
             "inline_data": {
                 "mime_type": "image/png",
                 "data": img_data
             }
-        })
-    parts.append({"text": superprompt})
+        },
+        {"text": superprompt}
+    ]
 
-    # Model name: gemini-3.5-flash is VM-01
     model_name = "gemini-3.5-flash"
     endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
     payload = {
@@ -77,7 +71,7 @@ Ensure your response uses clean, high-status, professional B2B engineering tone.
         }
     }
 
-    print(f"Submitting screenshots to {model_name}...")
+    print(f"Submitting screenshot to {model_name}...")
     try:
         async with httpx.AsyncClient(timeout=180.0) as client:
             resp = await client.post(endpoint, json=payload)

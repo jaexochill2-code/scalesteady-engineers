@@ -491,18 +491,18 @@ function Sec({ i, label, title, isActive, children }: { i: number; label: string
       <div className="sec-grid">
         {/* Left column (Rail) */}
         <div className="sec-rail">
-          <div className="sec-circle" data-active={isActive} style={{ borderColor: isActive ? C.accentBlue : a.border }}>
+          <div className="sec-circle" data-active={isActive} style={{ borderColor: isActive ? C.accentBlue : "rgba(255, 255, 255, 0.08)" }}>
             {String(i + 1).padStart(2, "0")}
           </div>
           {i < 4 && (
-            <div className="sec-line" data-active={isActive} style={{ background: isActive ? `linear-gradient(to bottom, ${C.accentBlue}99, rgba(255,255,255,0.01))` : `linear-gradient(to bottom, ${a.dot}33, rgba(255,255,255,0.01))` }} />
+            <div className="sec-line" data-active={isActive} style={{ background: isActive ? `linear-gradient(to bottom, ${C.accentBlue}99, rgba(255,255,255,0.01))` : `linear-gradient(to bottom, rgba(56, 189, 248, 0.15), rgba(255,255,255,0.01))` }} />
           )}
         </div>
         
         {/* Right column (Card) */}
         <div className="sec-card" data-active={isActive}>
           <div style={{ marginBottom: "40px", position: "relative" }}>
-            <span className="sec-tag" style={{ color: isActive ? C.accentBlue : a.dot }}>{label}</span>
+            <span className="sec-tag" style={{ color: isActive ? C.accentBlue : "#7A8B9E" }}>{label}</span>
             <h2 className="sec-heading" style={{ color: C.textPrimary }}>{title}</h2>
           </div>
           {children}

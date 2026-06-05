@@ -7,15 +7,17 @@ async def main():
         page = await browser.new_page()
         await page.goto("https://scalesteady.pro/marketfit-roofing", wait_until="networkidle")
         
-        # Check title
-        title = await page.title()
-        print(f"Page Title: {title}")
-        
-        # Check rendered labels
-        labels = await page.locator(".fl").all_inner_texts()
-        print(f"Rendered Labels Count: {len(labels)}")
-        for idx, label in enumerate(labels):
-            print(f"Label {idx+1}: {label}")
+        # Check all tags
+        tags = await page.locator(".sec-tag").all_inner_texts()
+        print("Section Tags:")
+        for idx, tag in enumerate(tags):
+            print(f"Tag {idx+1}: {tag}")
+            
+        # Check all headings
+        headings = await page.locator(".sec-heading").all_inner_texts()
+        print("\nSection Headings:")
+        for idx, heading in enumerate(headings):
+            print(f"Heading {idx+1}: {heading}")
             
         await browser.close()
 

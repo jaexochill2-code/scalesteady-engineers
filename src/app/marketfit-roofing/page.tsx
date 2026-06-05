@@ -335,7 +335,7 @@ export default function OnboardingPage() {
 
         {/* SECTION 1 */}
         <Sec i={0} label="The Basics" title="Contact Details" isActive={activeSec === 0}>
-          <Field field="company_name" label="1. Roofing Company Name" active={act("company_name")}>
+          <Field field="company_name" label="1. Legal Entity / Commercial Roofing Brand" active={act("company_name")}>
             <input className="gi" {...ip("company_name", form, handleChange, setActiveField, "e.g. Apex Roofing & Contracting")} data-active={act("company_name")} />
           </Field>
           <Field field="contact_name" label="2. Your Name & Title" active={act("contact_name")}>
@@ -348,7 +348,7 @@ export default function OnboardingPage() {
 
         {/* SECTION 2 */}
         <Sec i={1} label="Targeting" title="B2B Commercial Focus & Density" isActive={activeSec === 1}>
-          <Field field="primary_icp" label="4. Select your prime B2B target profiles and strategic referral partners." active={act("primary_icp")}>
+          <Field field="primary_icp" label="4. Select your prime commercial target profiles & strategic referral partners." active={act("primary_icp")}>
             <div style={{ position: "relative" }}>
               <select className="gi gi-sel" required value={form.primary_icp}
                 onFocus={() => setActiveField("primary_icp")}
@@ -364,21 +364,21 @@ export default function OnboardingPage() {
               </select>
             </div>
           </Field>
-          <Field field="geographic_target" label="5. Geographic parameters (Filtered via industrial park density and commercial zoning)" active={act("geographic_target")}>
+          <Field field="geographic_target" label="5. Geographic Parameters (Filtered via industrial park density, commercial zoning, & property tax rolls)" active={act("geographic_target")}>
             <input className="gi" {...ip("geographic_target", form, handleChange, setActiveField, "e.g. Cook County industrial corridors, or 50 miles radius from Chicago")} data-active={act("geographic_target")} />
           </Field>
-          <Field field="ideal_job_size" label="6. Which commercial roofing systems are you equipped to handle? (e.g. TPO, EPDM, Silicone Coatings, Metal)" active={act("ideal_job_size")} last>
+          <Field field="ideal_job_size" label="6. Authorized Manufacturer Certifications & Systems (e.g. TPO, EPDM, Silicone Coatings, Metal)" active={act("ideal_job_size")} last>
             <textarea className="gi gi-ta" {...tp("ideal_job_size", form, handleChange, setActiveField, "List TPO thickness limits, coating preferences, or specific metal profiles...")} data-active={act("ideal_job_size")} />
           </Field>
         </Sec>
 
         {/* SECTION 3 */}
         <Sec i={2} label="The Strategy" title="Foot-In-The-Door Offers & Risk Bypassing" isActive={activeSec === 2}>
-          <Field field="intro_offer" label="7. High-conversion low-friction offer (e.g. Drone Thermal Inspections, Capital Expenditure Budgeting Plan)" active={act("intro_offer")}>
+          <Field field="intro_offer" label="7. High-Conversion Low-Friction Offer (e.g. Drone Thermal Inspections, Capital Expenditure Budgeting Plan)" active={act("intro_offer")}>
             <input className="gi" {...ip("intro_offer", form, handleChange, setActiveField, "e.g. Free Drone Thermal Assessment, or Capital Expenditure Budget Plan Estimate")} data-active={act("intro_offer")} />
             <p style={{ fontSize: "12.5px", color: C.textMuted, marginTop: "8px", lineHeight: 1.5 }}>Boilerplate sales pitches fail commercial gatekeepers. We recommend diagnostic or capital budgeting offers.</p>
           </Field>
-          <Field field="copy_constraints" label="8. What specific liability credentials can we leverage to instantly bypass corporate risk assessors? (e.g. GAF Master Elite, OSHA-10, $5M GL, 20-Year NDL)" active={act("copy_constraints")}>
+          <Field field="copy_constraints" label="8. Corporate Risk Mitigation Credentials & Warranty Limits (e.g. GAF Master Elite, OSHA-10, $5M GL, 20-Year NDL)" active={act("copy_constraints")}>
             <textarea className="gi gi-ta" {...tp("copy_constraints", form, handleChange, setActiveField, "e.g. GAF Master Elite, OSHA-10 crew, $5M General Liability, or a 20-Year NDL (No Dollar Limit) manufacturer warranty")} data-active={act("copy_constraints")} />
           </Field>
           <Field field="best_win" label="9. Describe one major local commercial project completed (sq footage, roofing type, and how you prevented tenant business downtime)" active={act("best_win")} last>
@@ -565,7 +565,7 @@ const CSS = `
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 0px;
+  border-radius: 0px !important;
   font-family: monospace;
   font-size: 10px;
   letter-spacing: 0.14em;
@@ -577,7 +577,7 @@ const CSS = `
 }
 .pill-dot {
   width: 6px; height: 6px;
-  border-radius: 50%;
+  border-radius: 50% !important;
   background: #38BDF8;
   animation: dotPulse 2.5s infinite ease-in-out;
 }
@@ -594,7 +594,7 @@ const CSS = `
 }
 .prog-pip {
   height: 3px; flex: 1;
-  border-radius: 0px;
+  border-radius: 0px !important;
   background: rgba(255,255,255,0.12);
   transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
 }
@@ -653,7 +653,7 @@ const CSS = `
   width: 38px;
   height: 38px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0px;
+  border-radius: 0px !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -683,13 +683,13 @@ const CSS = `
 .sec-card {
   background: linear-gradient(180deg, rgba(9, 18, 35, 0.85) 0%, rgba(12, 13, 14, 0.98) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0px;
+  border-radius: 0px !important;
   padding: 48px 40px;
   box-shadow: 0 24px 64px rgba(0,0,0,0.8);
   transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
 }
 .sec-card[data-active="true"] {
-  border-color: rgba(56, 189, 248, 0.3);
+  border-color: rgba(56, 189, 248, 0.3) !important;
   box-shadow: 0 24px 64px rgba(0,0,0,0.9), 0 0 32px rgba(56, 189, 248, 0.05);
 }
 .sec-tag {
@@ -740,7 +740,7 @@ const CSS = `
   width: 100%;
   background: rgba(7, 18, 36, 0.45);
   border: 1px solid #1E293B;
-  border-radius: 0px;
+  border-radius: 0px !important;
   padding: 14px 18px;
   font-size: 15px;
   color: #FFFFFF;
@@ -756,9 +756,9 @@ const CSS = `
   background: rgba(7, 18, 36, 0.6);
 }
 .gi:focus, .gi[data-active="true"] {
-  border-color: #38BDF8;
+  border-color: #38BDF8 !important;
   background: rgba(7, 18, 36, 0.8);
-  box-shadow: 0 0 0 4px rgba(56,189,248,0.15), 0 0 16px rgba(56,189,248,0.2);
+  box-shadow: 0 0 0 4px rgba(56,189,248,0.15), 0 0 16px rgba(56,189,248,0.2) !important;
 }
 .gi-ta {
   resize: vertical;
@@ -789,7 +789,7 @@ const CSS = `
 .gcard {
   background: linear-gradient(180deg, rgba(9, 18, 35, 0.85) 0%, rgba(12, 13, 14, 0.98) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0px;
+  border-radius: 0px !important;
   box-shadow: 0 24px 64px rgba(0,0,0,0.8);
 }
 
@@ -800,7 +800,7 @@ const CSS = `
   justify-content: center;
   background: linear-gradient(135deg, #0052FF 0%, #1B4F8A 100%);
   border: none;
-  border-radius: 0px;
+  border-radius: 0px !important;
   padding: 16px 36px;
   font-size: 13.5px;
   font-weight: 600;
@@ -824,7 +824,7 @@ const CSS = `
   width: 14px; height: 14px;
   border: 2px solid rgba(255,255,255,0.25);
   border-top-color: #fff;
-  border-radius: 50%;
+  border-radius: 50% !important;
   animation: spin 0.6s linear infinite;
 }
 

@@ -7,13 +7,13 @@ import { supabase } from "@/lib/supabase";
 // ScaleSteady Premium Dark Theme Palette (matched to home page)
 const C = {
   bg: "linear-gradient(135deg, #0A0B0C 0%, #0E1012 50%, #121417 100%)", // Matte Obsidian Black/Charcoal Base
-  cardBg: "linear-gradient(180deg, rgba(17, 18, 20, 0.95) 0%, rgba(14, 15, 16, 0.99) 100%)", // premium granite/charcoal card container
-  border: "rgba(255, 255, 255, 0.08)",   // thin subtle border
-  borderHover: "rgba(255, 255, 255, 0.18)",
+  cardBg: "#F9F9FB", // premium warm gray/white card container
+  border: "rgba(0, 0, 0, 0.08)",   // thin subtle border
+  borderHover: "rgba(0, 0, 0, 0.18)",
   borderFocus: "#C8B395",    // warm sand / titanium focus accent
   textPrimary: "#FFFFFF",    // crisp white
   textSecondary: "#E5E5EA",  // Apple-grade secondary white/silver
-  textMuted: "#9CA3AF",      // neutral gray description text
+  textMuted: "#636366",      // dark slate gray description text inside card
   accentSand: "#C8B395",     // warm sand gold highlights
   accentSandMuted: "rgba(200, 179, 149, 0.15)",
   accentObsidian: "#181A1F",  // deep dark graphite
@@ -560,8 +560,8 @@ export default function OnboardingPage() {
                 return (
                   <div key={i}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px" }}>
-                      <span style={{ fontSize: "11px", fontFamily: "monospace", color: ba ? C.textPrimary : C.textMuted, fontWeight: 600 }}>Sender {i + 1}</span>
-                      <span style={{ fontSize: "11px", fontFamily: "monospace", color: name ? C.textSecondary : C.textMuted }}>{name || "name"}@{domain}</span>
+                      <span style={{ fontSize: "11px", fontFamily: "monospace", color: ba ? "#1C1C1E" : "#8E8E93", fontWeight: 600 }}>Sender {i + 1}</span>
+                      <span style={{ fontSize: "11px", fontFamily: "monospace", color: name ? "#2C2C2E" : "#8E8E93" }}>{name || "name"}@{domain}</span>
                     </div>
                     <input className="gi" type="text" required value={name}
                       onFocus={() => setActiveField(`email_names_${i}`)}
@@ -618,7 +618,7 @@ function Sec({ i, label, title, isActive, children }: { i: number; label: string
         <div className="sec-card" data-active={isActive}>
           <div style={{ marginBottom: "40px", position: "relative" }}>
             <span className="sec-tag" style={{ color: isActive ? C.accentSand : "#7A8B9E" }}>{label}</span>
-            <h2 className="sec-heading" style={{ color: C.textPrimary }}>{title}</h2>
+            <h2 className="sec-heading" style={{ color: "#1C1C1E" }}>{title}</h2>
           </div>
           {children}
         </div>
@@ -797,17 +797,17 @@ const CSS = `
 
 /* ── Card Container ── */
 .sec-card {
-  background: linear-gradient(180deg, rgba(9, 18, 35, 0.85) 0%, rgba(12, 13, 14, 0.98) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-image: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 100%) 1;
+  background: #F9F9FB; /* Crisp clean light paper gray */
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 0px !important;
   padding: 48px 40px;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.8);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
   transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  color: #1C1C1E; /* Dark text default inside card */
 }
 .sec-card[data-active="true"] {
   border-color: rgba(200, 179, 149, 0.25) !important;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.9), 0 0 32px rgba(200, 179, 149, 0.03);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 0 32px rgba(200, 179, 149, 0.03);
 }
 .sec-tag {
   display: block;
@@ -830,7 +830,7 @@ const CSS = `
 .fg {
   padding-bottom: 28px;
   margin-bottom: 28px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   padding-left: 20px;
   border-left: 2px solid transparent;
   transition: border-color 0.3s, opacity 0.4s;
@@ -844,37 +844,37 @@ const CSS = `
   display: block;
   font-size: 14.5px;
   font-weight: 500;
-  color: #FFFFFF;
+  color: #1C1C1E;
   margin-bottom: 10px;
   letter-spacing: -0.01em;
   transition: color 0.25s;
 }
-.fl[data-active="true"] { color: #FFFFFF; }
-.fl-sm { font-size: 12px; color: #A3B3C8; }
+.fl[data-active="true"] { color: #000000; }
+.fl-sm { font-size: 12px; color: #636366; }
 
 /* ── Glass input ── */
 .gi {
   width: 100%;
-  background: rgba(7, 18, 36, 0.45);
-  border: 1px solid #1E293B;
+  background: #FFFFFF;
+  border: 1px solid #D1D1D6;
   border-radius: 0px !important;
   padding: 14px 18px;
   font-size: 15px;
-  color: #FFFFFF;
+  color: #1C1C1E;
   outline: none;
   transition: all 0.25s cubic-bezier(0.16,1,0.3,1);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.01);
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.01);
 }
 .gi::placeholder {
-  color: #7A8B9E;
+  color: #8E8E93;
 }
 .gi:hover {
-  border-color: rgba(255,255,255,0.3);
-  background: rgba(7, 18, 36, 0.6);
+  border-color: rgba(0,0,0,0.25);
+  background: #FFFFFF;
 }
 .gi:focus, .gi[data-active="true"] {
   border-color: #C8B395 !important;
-  background: rgba(7, 18, 36, 0.8);
+  background: #FFFFFF;
   box-shadow: 0 0 0 4px rgba(200, 179, 149, 0.15), 0 0 16px rgba(200, 179, 149, 0.15) !important;
 }
 .gi-ta {
@@ -894,46 +894,46 @@ const CSS = `
   background-size: 14px;
 }
 .gi-sel option {
-  background: #121315;
-  color: #FFFFFF;
+  background: #FFFFFF;
+  color: #1C1C1E;
 }
 .gi-sel:invalid,
 .gi-sel option[value=""] {
-  color: #7A8B9E;
+  color: #8E8E93;
 }
 
 /* ── Multiselect Bento Card Option Toggles ── */
 .icp-card-btn {
   width: 100%;
-  background: rgba(7, 18, 36, 0.45);
-  border: 1px solid #1E293B;
+  background: #F2F2F7;
+  border: 1px solid #E5E5EA;
   border-radius: 0px !important;
   padding: 14px 18px;
-  color: #E2E8F0;
+  color: #2C2C2E;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
 }
 .icp-card-btn:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(7, 18, 36, 0.6);
+  border-color: rgba(0, 0, 0, 0.25);
+  background: #E5E5EA;
 }
 .icp-card-btn[data-selected="true"] {
   border-color: #C8B395 !important;
-  background: rgba(200, 179, 149, 0.05);
-  color: #FFFFFF;
-  box-shadow: 0 0 0 4px rgba(200, 179, 149, 0.05), 0 0 16px rgba(200, 179, 149, 0.1);
+  background: #F5EFE6;
+  color: #1C1C1E;
+  box-shadow: 0 0 0 4px rgba(200, 179, 149, 0.05);
 }
 .icp-chk {
   width: 18px;
   height: 18px;
-  border: 1px solid #1E293B;
+  border: 1px solid #C7C7CC;
   border-radius: 0px !important;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: rgba(0, 0, 0, 0.2);
+  background: #FFFFFF;
   color: #C8B395;
   font-size: 11px;
   font-weight: bold;
@@ -946,11 +946,11 @@ const CSS = `
 
 /* ── Glass card ── */
 .gcard {
-  background: linear-gradient(180deg, rgba(17, 18, 20, 0.95) 0%, rgba(14, 15, 16, 0.99) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-image: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 100%) 1;
+  background: #F9F9FB;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 0px !important;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.8);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+  color: #1C1C1E;
 }
 
 /* ── Submit ── */

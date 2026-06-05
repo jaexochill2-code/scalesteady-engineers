@@ -27,6 +27,22 @@ const ACCENTS = [
   { dot: "#0052FF", tint: "rgba(0,82,255,0.03)", border: "rgba(0,82,255,0.15)" },
 ];
 
+const ICP_OPTIONS = [
+  { value: "Commercial Property Managers & Facility Directors", label: "Commercial Property Managers & Facility Directors (Flat Roof Agreements)" },
+  { value: "Real Estate Agents & Escrow Officers", label: "Real Estate Agents & Escrow Officers (Certifications & Escrow Repairs)" },
+  { value: "General Contractors & Commercial Builders", label: "General Contractors & Commercial Builders (Tenant Improvement Bids)" },
+  { value: "Industrial & Warehouse Owners", label: "Industrial & Warehouse Owners (Silicone Roof Coatings/Restorations)" },
+];
+
+const ZONING_OPTIONS = [
+  { value: "Light Industrial & Manufacturing", label: "Light Industrial & Manufacturing (High flat-roof density)" },
+  { value: "Heavy Industrial & Warehouses", label: "Heavy Industrial & Warehouses (Large footprint flat-roofs)" },
+  { value: "Commercial Retail & Strip Malls", label: "Commercial Retail & Strip Malls (Multi-tenant property setups)" },
+  { value: "Professional Office Parks", label: "Professional Office Parks (Low-rise corporate plazas)" },
+  { value: "Multi-Family Residential", label: "Multi-Family Residential (Apartments & condominium HOAs)" },
+];
+
+
 interface OnboardingForm {
   company_name: string;
   contact_name: string;
@@ -105,6 +121,8 @@ export default function OnboardingPage() {
 
   const [routingSelect, setRoutingSelect] = useState<string>("");
   const [routingDetails, setRoutingDetails] = useState<string>("");
+  const [zoningTargets, setZoningTargets] = useState<string[]>([]);
+  const [geoRadius, setGeoRadius] = useState<string>("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [activeField, setActiveField] = useState<string | null>(null);
@@ -142,6 +160,16 @@ export default function OnboardingPage() {
             setRoutingDetails(parsed.routing_destination);
           }
         }
+        if (parsed.geographic_target) {
+          const parts = parsed.geographic_target.split(" | Area: ");
+          if (parts.length > 1) {
+            setGeoRadius(parts[1]);
+            const zonesPart = parts[0].replace("Zones: ", "");
+            setZoningTargets(zonesPart ? zonesPart.split(", ") : []);
+          } else {
+            setGeoRadius(parsed.geographic_target);
+          }
+        }
       }
     } catch (e) {
       console.error(e);
@@ -169,6 +197,16 @@ export default function OnboardingPage() {
     }
   }, [routingSelect, routingDetails]);
 
+  useEffect(() => {
+    const zonesStr = zoningTargets.join(", ");
+    const combined = zonesStr || geoRadius ? `Zones: ${zonesStr} | Area: ${geoRadius}` : "";
+    if (combined !== form.geographic_target) {
+      const u = { ...form, geographic_target: combined };
+      setForm(u);
+      save(u);
+    }
+  }, [zoningTargets, geoRadius]);
+
   const handleNameBoxChange = (i: number, value: string) => {
     const clean = value.replace(/@.*$/, "").replace(/\s+/g, "").toLowerCase();
     const names = [...form.email_names];
@@ -180,6 +218,16 @@ export default function OnboardingPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (zoningTargets.length === 0) {
+      setStatus("error");
+      setErrorMsg("Please select at least one zoning target profile under Question 5.");
+      return;
+    }
+    if (!geoRadius.trim()) {
+      setStatus("error");
+      setErrorMsg("Please enter your target geography focus area under Question 5.");
+      return;
+    }
     const f = [
       form.company_name,
       form.contact_name,
@@ -335,37 +383,104 @@ export default function OnboardingPage() {
 
         {/* SECTION 1 */}
         <Sec i={0} label="01 / BRAND IDENTIFICATION" title="Corporate Anchor & Direct Lines" isActive={activeSec === 0}>
-          <Field field="company_name" label="1. Legal Entity / Commercial Roofing Brand" active={act("company_name")}>
+          <Field field="company_name" label="1. Registered Corporate Entity & Brand Name" active={act("company_name")}>
             <input className="gi" {...ip("company_name", form, handleChange, setActiveField, "e.g. Apex Roofing & Contracting")} data-active={act("company_name")} />
           </Field>
-          <Field field="contact_name" label="2. Your Name & Title" active={act("contact_name")}>
+          <Field field="contact_name" label="2. Authorized Representative & Corporate Title" active={act("contact_name")}>
             <input className="gi" {...ip("contact_name", form, handleChange, setActiveField, "e.g. John Miller, Commercial Accounts Director")} data-active={act("contact_name")} />
           </Field>
-          <Field field="contact_details" label="3. Best Direct Email or Mobile Phone" active={act("contact_details")} last>
+          <Field field="contact_details" label="3. Secure Corporate Email & Direct Line" active={act("contact_details")} last>
             <input className="gi" {...ip("contact_details", form, handleChange, setActiveField, "e.g. john@apexroofing.com or 555-0199")} data-active={act("contact_details")} />
           </Field>
         </Sec>
 
         {/* SECTION 2 */}
         <Sec i={1} label="02 / ICP CALIBRATION" title="Algorithmic Zoning & Property Density" isActive={activeSec === 1}>
-          <Field field="primary_icp" label="4. Select your prime commercial target profiles & strategic referral partners." active={act("primary_icp")}>
-            <div style={{ position: "relative" }}>
-              <select className="gi gi-sel" required value={form.primary_icp}
-                onFocus={() => setActiveField("primary_icp")}
-                onBlur={() => setActiveField(null)}
-                onChange={(e) => handleChange("primary_icp", e.target.value)}
-                data-active={act("primary_icp")}
-              >
-                <option value="" disabled>Select your B2B targets</option>
-                <option value="Commercial Property Managers & Facility Directors">Commercial Property Managers & Facility Directors (Flat Roof Agreements)</option>
-                <option value="Real Estate Agents & Escrow Officers">Real Estate Agents & Escrow Officers (Certifications & Escrow Repairs)</option>
-                <option value="General Contractors & Commercial Builders">General Contractors & Commercial Builders (Tenant Improvement Bids)</option>
-                <option value="Industrial & Warehouse Owners">Industrial & Warehouse Owners (Silicone Roof Coatings/Restorations)</option>
-              </select>
+          <Field field="primary_icp" label="4. Select your prime B2B target profiles & strategic referral partners (Select all that apply):" active={act("primary_icp")}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginTop: "8px" }}>
+              {ICP_OPTIONS.map((opt) => {
+                const selectedList = form.primary_icp ? form.primary_icp.split(", ") : [];
+                const isSelected = selectedList.includes(opt.value);
+                
+                const handleToggle = () => {
+                  let newList;
+                  if (isSelected) {
+                    newList = selectedList.filter((v) => v !== opt.value);
+                  } else {
+                    newList = [...selectedList, opt.value];
+                  }
+                  handleChange("primary_icp", newList.join(", "));
+                };
+                
+                return (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={handleToggle}
+                    onFocus={() => setActiveField("primary_icp")}
+                    onBlur={() => setActiveField(null)}
+                    className="icp-card-btn"
+                    data-selected={isSelected}
+                  >
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                      <div className="icp-chk" data-selected={isSelected}>
+                        {isSelected && <span>&#10003;</span>}
+                      </div>
+                      <span style={{ fontSize: "14px", textAlign: "left", lineHeight: 1.4 }}>{opt.label}</span>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </Field>
-          <Field field="geographic_target" label="5. Geographic Parameters (Our system cross-references local industrial corridor zoning maps and property tax rolls to isolate high-probability opportunities.)" active={act("geographic_target")}>
-            <input className="gi" {...ip("geographic_target", form, handleChange, setActiveField, "e.g. Cook County industrial corridors, or 50 miles radius from Chicago")} data-active={act("geographic_target")} />
+          <Field field="geographic_target" label="5. Algorithmic Zoning & Property Density targets (Select all that apply):" active={act("geographic_target")}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginTop: "8px", marginBottom: "20px" }}>
+              {ZONING_OPTIONS.map((opt) => {
+                const isSelected = zoningTargets.includes(opt.value);
+                
+                const handleToggle = () => {
+                  let newList;
+                  if (isSelected) {
+                    newList = zoningTargets.filter((v) => v !== opt.value);
+                  } else {
+                    newList = [...zoningTargets, opt.value];
+                  }
+                  setZoningTargets(newList);
+                };
+                
+                return (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={handleToggle}
+                    onFocus={() => setActiveField("geographic_target")}
+                    onBlur={() => setActiveField(null)}
+                    className="icp-card-btn"
+                    data-selected={isSelected}
+                  >
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                      <div className="icp-chk" data-selected={isSelected}>
+                        {isSelected && <span>&#10003;</span>}
+                      </div>
+                      <span style={{ fontSize: "14px", textAlign: "left", lineHeight: 1.4 }}>{opt.label}</span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+            
+            <label className="fl fl-sm" style={{ display: "block", marginBottom: "8px" }}>Target Locations / Geography (e.g. Cook County industrial corridors, or 50 miles radius from Chicago)</label>
+            <input 
+              className="gi" 
+              type="text"
+              required
+              value={geoRadius}
+              placeholder="e.g. Cook County, or within 50 miles of Chicago"
+              onFocus={() => setActiveField("geographic_target")}
+              onBlur={() => setActiveField(null)}
+              onChange={(e) => setGeoRadius(e.target.value)}
+              data-active={act("geographic_target")} 
+            />
           </Field>
           <Field field="ideal_job_size" label="6. Authorized Manufacturer Certifications & Systems (e.g. TPO, EPDM, Silicone Coatings, Metal)" active={act("ideal_job_size")} last>
             <textarea className="gi gi-ta" {...tp("ideal_job_size", form, handleChange, setActiveField, "List TPO thickness limits, coating preferences, or specific metal profiles...")} data-active={act("ideal_job_size")} />
@@ -785,6 +900,48 @@ const CSS = `
 .gi-sel:invalid,
 .gi-sel option[value=""] {
   color: #7A8B9E;
+}
+
+/* ── Multiselect Bento Card Option Toggles ── */
+.icp-card-btn {
+  width: 100%;
+  background: rgba(7, 18, 36, 0.45);
+  border: 1px solid #1E293B;
+  border-radius: 0px !important;
+  padding: 14px 18px;
+  color: #E2E8F0;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+.icp-card-btn:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(7, 18, 36, 0.6);
+}
+.icp-card-btn[data-selected="true"] {
+  border-color: #38BDF8 !important;
+  background: rgba(56, 189, 248, 0.05);
+  color: #FFFFFF;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1), 0 0 16px rgba(56, 189, 248, 0.15);
+}
+.icp-chk {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #1E293B;
+  border-radius: 0px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.2);
+  color: #38BDF8;
+  font-size: 11px;
+  font-weight: bold;
+  transition: all 0.25s ease;
+}
+.icp-chk[data-selected="true"] {
+  border-color: #38BDF8;
+  background: rgba(56, 189, 248, 0.1);
 }
 
 /* ── Glass card ── */

@@ -19,6 +19,8 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const pathname = usePathname();
+  const isOnboardingPage = pathname === "/marketfit-roofing" || pathname === "/marketfit-health";
+  if (isOnboardingPage) return null;
 
   React.useEffect(() => {
     const handleScroll = () => {

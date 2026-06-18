@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const pathname = usePathname();
-  if (pathname === "/build" || pathname === "/marketfit-roofing" || pathname === "/marketfit-health") return null;
+  if (pathname === "/build" || pathname === "/marketfit-roofing" || pathname === "/marketfit-health" || pathname === "/marketfit-painmanagement") return null;
   return (
     <>
       {/* ── DARK ZONE: Brand / Nav / Office ── */}

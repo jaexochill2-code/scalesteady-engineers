@@ -56,41 +56,31 @@ export default function StrategyPage() {
       {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Member injury retention",
-            "body": "Hi {{first_name}},\n\n    It sounds like referring members to external clinics feels like a risk of losing them to a provider who doesn't understand functional fitness.\n\n    Injured members face 35% higher churn. We coordinate movement modifications with your coaches and want to host a free Saturday mobility screening at {{company_name}}.\n\n    Would you be open to checking out how we structure this?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Member recovery -- {{company_name}}",
-            "body": "Hi {{first_name}},\n\n    Sounds like protecting your members from injury churn isn't a priority right now.\n\n    If that changes, we are here. Otherwise, I will get out of your inbox.\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
+            "body": "Hi {{first_name}},\n\n    It sounds like referring members to external clinics feels like a risk of losing them to a provider who doesn't understand functional fitness.\n\n    Injured members face 35% higher churn. We coordinate movement modifications with your coaches and want to host a free Saturday mobility screening at {{company_name}} -- no pitch, just movement.\n\n    Would it be a bad idea to host that free mobility screen at {{company_name}}?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
     {
       id: "auto_body",
       title: "Auto Body & Collision Repair",
-      pain: "After a collision repair, customers walk out the door asking 'should I see a doctor?' The shop has no answer -- a missed trust moment that goes to whoever the adjuster recommends.",
-      angle: "We give your service writers a co-branded Post-Collision Care card to hand every customer at pickup. You become the first referral they trust after an accident.",
-      valueProp: "We handle the whiplash care. You get the loyalty, the Google review, and the customer who remembers your shop took care of them twice.",
-      evidence: "Independent collision centers lose the post-repair customer relationship the moment the car leaves the bay. Adjusters fill that vacuum with their preferred providers. A shop that hands customers a trusted next step -- chiro care, cash-based, no insurance headache -- becomes the only shop in town that actually cares about the person, not just the car.",
-      numbers: "Studies show 68% of motor vehicle accident patients experience delayed-onset neck and back pain within 72 hours of a collision. Most never seek care because no one tells them to. One accident referral generates 4-8 clinic visits at $100 each -- $400-$800 per car your shop touches.",
-      caseStudy: "Shop owners are fiercely loyal to businesses that make them look good to their customers. A simple referral card positioned as 'we look out for you even after you leave the lot' is a retention tool disguised as a health resource -- and the shop owner pays nothing for it.",
+      pain: "After a collision repair, customers walk out asking 'should I see a doctor?' -- and the shop has no answer. That trust moment goes to whoever the adjuster recommends, not the shop that spent three days fixing their car.",
+      angle: "A two-sided deal: we provide your mechanics free monthly alignments (keeps your best techs from burning out) and supply co-branded Post-Collision Care cards your writers hand every customer at pickup.",
+      valueProp: "Your mechanics stay physically capable and feel valued. Your collision customers get a trusted next step. You become the shop that cared about the person, not just the car.",
+      evidence: "Independent collision centers lose their best technicians to burnout and their post-repair customers to adjusters -- two separate revenue leaks from the same shop. A chiropractic partner solves both: free mechanic care as a no-cost retention perk, and referral cards that fill the 'what now?' gap customers have at pickup. The shop pays nothing and gains on both sides.",
+      numbers: "80% of body techs suffer occupational back strain, directly costing labor hours. Separately, 68% of collision patients develop neck or back pain within 72 hours -- most never seek care because no one told them to. One referral card per car generates 4-8 clinic visits at $100 each. Your shop becomes the referral, not the adjuster.",
+      caseStudy: "Shop owners respond to deals where they get something real in return. Free mechanic alignments are a genuine, tangible perk that costs the shop nothing -- and makes hard-to-replace technicians feel looked after. Pairing that with customer referral cards means the shop owner has two concrete reasons to say yes, not one.",
       icon: ShieldCheck,
-      tag: "Customer Referral Pipeline",
+      tag: "Bilateral Referral Partner",
       emails: [
       {
             "iteration": "Email 1 (Hook & Core Offer)",
-            "subject": "Post-collision customer care -- {{company_name}}",
-            "body": "Hi {{first_name}},\n\n    When a customer picks up their car after a collision, they are walking out with a repaired vehicle and unresolved neck pain they haven't connected yet.\n\n    We provide {{company_name}} with a small stack of co-branded Post-Collision Care cards your writers hand at pickup. We handle the chiropractic care, cash-based -- no insurance maze. You become the shop that looked out for them even after they drove off.\n\n    Would you be open to keeping a stack at your front desk?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
+            "subject": "Your mechanics and your collision customers -- {{company_name}}",
+            "body": "Hi {{first_name}},\n\n    Two things happen at every collision shop: techs burn out their backs hauling panels all day, and customers pick up their car after an accident with neck pain they haven't connected yet.\n\n    We want to offer {{company_name}} free monthly alignments for your mechanics -- no cost, no workers' comp paperwork. In exchange, we supply a stack of co-branded Post-Collision Care cards your writers hand at pickup so your customers know where to go.\n\n    Your techs feel taken care of. Your customers remember the shop that looked out for them twice.\n\n    Would you be open to a quick call to set this up?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       },
       {
             "iteration": "Email 2 (Value & Proof)",
-            "subject": "Referral cards -- your collision customers",
-            "body": "Hi {{first_name}},\n\n    It sounds like handing customers health cards feels like an awkward add-on when your writers are already moving through a busy pickup line.\n\n    68% of accident patients develop neck or back pain within 72 hours. Most never seek care because no one told them to. Your writer hands the card in 10 seconds -- we handle everything else. The customer remembers your shop took care of them twice.\n\n    Would it be a bad idea to try it on the next 10 collision pickups?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Customer referral cards",
-            "body": "Hi {{first_name}},\n\n    Sounds like adding a post-collision care referral for your customers is not a priority right now.\n\n    If that changes, let me know. Otherwise, I will get out of your inbox.\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
+            "subject": "Free tech alignments + customer referral cards",
+            "body": "Hi {{first_name}},\n\n    It sounds like adding another vendor relationship feels like overhead when you are already managing a full shop.\n\n    This one runs itself: we show up once a month for your mechanics, you keep a card stack at the front desk. 80% of body techs carry chronic back strain -- free care is a perk that keeps your best people from burning out. And 68% of collision customers develop neck pain within 72 hours but never seek care because no one points them anywhere.\n\n    Your writer hands the card in 10 seconds. We handle everything after that.\n\n    Would it be a bad idea to try this for one month?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -109,17 +99,12 @@ export default function StrategyPage() {
       {
             "iteration": "Email 1 (Hook & Core Offer)",
             "subject": "Joint lock release -- {{company_name}}",
-            "body": "Hi {{first_name}},\n\n    Your therapists release client spasms, only for the tension to return because the joint underneath is subluxated.\n\n    We provide adjustments in {{city}} to clear joint locks so your work holds. We have a strict 'no-massage' policy to protect your client base.\n\n    Would it be a bad idea to coordinate a reciprocal referral loop?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
+            "body": "Hi {{first_name}},\n\n    Your therapists release client spasms, only for the tension to return because the joint underneath is subluxated.\n\n    We provide adjustments in {{city}} to clear joint locks so your work holds. We have a strict 'no-massage' policy to protect your client base.\n\n    Are you against a quick call to set up a strict two-way referral?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       },
       {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Client recovery synergy",
             "body": "Hi {{first_name}},\n\n    It sounds like partnering with a chiropractor feels like inviting client poaching to a clinic that might try to sell massage.\n\n    Co-management studies show combining joint adjustments with massage cuts client recovery times by 40%. We want to refer our patients who need soft-tissue maintenance directly to {{company_name}}.\n\n    Would it be unreasonable to try a strict two-way referral test?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Client co-management",
-            "body": "Hi {{first_name}},\n\n    Sounds like establishing a collaborative massage and joint referral loop isn't a priority right now.\n\n    If that changes, let me know. Otherwise, I will get out of your inbox.\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -144,11 +129,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Patient compliance barriers",
             "body": "Hi {{first_name}},\n\n    It sounds like bringing a chiropractor into the mix feels like care duplication that confuses the patient and overlaps treatment plans.\n\n    Combining joint manipulation with active exercise yields a 28% higher patient satisfaction score. We want to clear the mechanical locks and return the patient immediately to {{company_name}} for stabilizing rehab.\n\n    Would it be a bad idea to review our clinical boundary checklist?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Patient co-management",
-            "body": "Hi {{first_name}},\n\n    Sounds like setting up a joint mobilization referral loop is not a focus for your clinic right now.\n\n    If that changes, let me know. Otherwise, I will get out of your inbox.\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -172,12 +152,7 @@ export default function StrategyPage() {
       {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Runner alignment clinics",
-            "body": "Hi {{first_name}},\n\n    It sounds like hosting medical sponsors feels like a sales pitch that distracts your runners from training.\n\n    Since 65% of marathon runners get sidelined annually, we want to host a free 30-minute running biomechanics clinic at {{company_name}} and offer a co-branded $70 massage/stretch recovery slot for members.\n\n    Would it be a terrible idea to check this out?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Runner sideline support",
-            "body": "Hi {{first_name}},\n\n    Sounds like sponsoring your club and run recovery support isn't a priority right now.\n\n    If that changes, let me know. Otherwise, I will get out of your inbox.\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
+            "body": "Hi {{first_name}},\n\n    It sounds like hosting medical sponsors feels like a sales pitch that distracts your runners from training.\n\n    Since 65% of marathon runners get sidelined annually, we want to host a free 30-minute running biomechanics clinic at {{company_name}} and offer a co-branded $70 massage/stretch recovery slot for members.\n\n    Are you against a quick call to put this on the calendar before your next club run?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -202,11 +177,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Back pain absenteeism",
             "body": "Hi {{first_name}},\n\n    It sounds like organizing an on-site audit feels like operational disruption that pulls employees away from their desks.\n\n    Musculoskeletal issues represent 33% of all worker injury cases. We keep our sessions to 15-minute posture screens in the breakroom, and offer staff cash-pay $70 spinal wellness checks at our clinic so it bypasses corporate billing.\n\n    Is it a bad idea to review a posture day outline?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Workplace ergonomics",
-            "body": "Hi {{first_name}},\n\n    Sounds like workplace posture wellness is not a priority for your team right now.\n\n    If that changes, let me know. Otherwise, I will get out of your inbox.\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -231,11 +201,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Congregant wellness support",
             "body": "Hi Pastor {{last_name}},\n\n    It sounds like introducing external health providers feels like a commercial distraction inside the church.\n\n    We are a faith-aligned family practice in {{city}}. By offering cash-only, affordable exam structures, we bypass insurance paperwork entirely. We want to support your ministry with charity donations and senior care.\n\n    Would it be a bad idea to coordinate a simple bulletin announcement?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Ministry health workshop",
-            "body": "Hi Pastor {{last_name}},\n\n    Sounds like coordinating congregant health workshops and youth donations isn't a focus for {{company_name}} right now.\n\n    If that changes, let me know. Otherwise, I will get out of your inbox.\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -260,11 +225,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Youth injury prevention",
             "body": "Hi {{first_name}},\n\n    It sounds like setting up screenings feels like extra administrative work for your coaching staff during a busy season.\n\n    Repetitive strain affects 45% of middle-school athletes. We provide a $70 cash-pay recovery massage and stretch special for league families to remove cost barriers and keep kids playing.\n\n    Would it be a terrible idea to offer this safety resource to your parents?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Player safety checks",
-            "body": "Hi {{first_name}},\n\n    Sounds like sponsoring your league and player safety checks isn't a priority right now.\n\n    If that changes, let me know. Otherwise, I will get out of your inbox.\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -289,11 +249,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Co-branded client safety guides",
             "body": "Hi {{first_name}},\n\n    It sounds like recommending specific health providers feels like policy liability for your brokerage.\n\n    Utilizing chiropractic care for soft-tissue injuries reduces workers' comp claim costs by 20%. We want to provide {{company_name}} with co-branded post-collision safety folders so your clients have clear directions.\n\n    Would it be a bad idea to review these guides?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Managing claim loss",
-            "body": "Hi {{first_name}},\n\n    Sounds like coordinating client safety folders and conservative care pathways isn't a focus right now.\n\n    If that changes, let me know. Otherwise, I will get out of your inbox.\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -317,12 +272,7 @@ export default function StrategyPage() {
       {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "LOP documentation -- {{city}} cases",
-            "body": "Hi {{first_name}},\n\n    It sounds like coordinating client care feels like administrative overhead for your legal team when they are trying to process litigation.\n\n    Early conservative care documented with range of motion scans reduces medical spend, preserving the policy limit for settlement. We provide audit-proof files that satisfy adjuster software.\n\n    Would it be a crazy idea to check out our documentation checklist?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Case co-management",
-            "body": "Hi {{first_name}},\n\n    Sounds like resolving your medical records turnaround bottleneck isn't a priority for your firm right now.\n\n    If that changes, let me know. Otherwise, I will get out of your inbox.\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
+            "body": "Hi {{first_name}},\n\n    It sounds like coordinating client care feels like administrative overhead for your legal team when they are trying to process litigation.\n\n    Early conservative care documented with range of motion scans reduces medical spend, preserving the policy limit for settlement. We provide audit-proof files that satisfy adjuster software.\n\n    Are you against a quick call to run through our documentation checklist?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -350,11 +300,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "PE educator recovery",
             "body": "Hi {{first_name}},\n\n    It sounds like the lower back ache has just become part of teaching -- you stop noticing it until you can't bend over.\n\n    Our therapist set aside a cash-pay $70 deep tissue and stretch session for school staff this month. No insurance paperwork, no HMO referral chain. Walk in, walk out recovered.\n\n    Would it be unreasonable to hold one for you?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Coach recovery slot",
-            "body": "Hi {{first_name}},\n\n    Sounds like spinal recovery is not a priority for your schedule right now.\n\n    If that changes, the slot is yours. Otherwise, I will get out of your inbox.\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -379,11 +324,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "CDL driver lower back tightness",
             "body": "Hi {{first_name}},\n\n    It sounds like you have been managing that back tightness yourself because seeing a doctor might flag something on your CDL card.\n\n    CDL drivers face 4x higher herniation risk. We provide cash-pay care off your employer file. Our therapist has a $70 deep tissue session -- 30 minutes, no paperwork.\n\n    Would it be ridiculous to try one session before your next run?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "CDL driver lower back tightness",
-            "body": "Hi {{first_name}},\n\n    Sounds like this is not a priority for your haul schedule right now.\n\n    If that changes, the walk-in slot is yours. Otherwise, I will get out of your inbox.\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -408,11 +348,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Accountant desk tension",
             "body": "Hi {{first_name}},\n\n    It sounds like the neck stiffness has just become part of tax season -- something you power through with ibuprofen and coffee.\n\n    Our therapist holds a cash-pay $70 deep tissue and neck release session for local finance professionals. No insurance dance, no wait. Walk in during lunch, walk out sharp.\n\n    Would it be crazy to hold one for you this week?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Posture checkup slot",
-            "body": "Hi {{first_name}},\n\n    Sounds like neck relief is not on the priority list right now.\n\n    If that changes, the slot is yours. Otherwise, I will get out of your inbox.\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -437,11 +372,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Realtor pelvic fatigue",
             "body": "Hi {{first_name}},\n\n    It sounds like the hip stiffness is just something you push through because stopping feels like losing momentum on a deal.\n\n    Long driving hours shorten hip flexors, leaving your lower back to take the entire load. Our therapist has a cash-pay $70 deep tissue release for agents. 30 minutes, no referral.\n\n    Would it be crazy to try one between closings?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Realtor posture slot",
-            "body": "Hi {{first_name}},\n\n    Sounds like this is not a priority for your listing schedule right now.\n\n    If that changes, the slot is yours. Otherwise, I will get out of your inbox.\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -466,11 +396,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Nurse standing recovery",
             "body": "Hi {{first_name}},\n\n    It sounds like you tell yourself the back pain is fine, the same way you reassure borderline patients.\n\n    52% of nurses carry chronic pain. Our therapist holds a $70 deep tissue session for staff. Cash-pay, walk-in friendly.\n\n    Would it be a bad idea to try one on your next day off?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Nurse alignment checkup",
-            "body": "Hi {{first_name}},\n\n    Sounds like your own recovery is not on the list right now.\n\n    If that changes, the slot is yours. Otherwise, I will get out of your inbox.\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -495,11 +420,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Driver standing recovery",
             "body": "Hi {{first_name}},\n\n    It sounds like the lower back pinch is just something you manage with ibuprofen so you do not miss your delivery quotas.\n\n    Couriers face the highest injury rate of any non-agricultural trade. Our therapist set aside a cash-pay $70 stretch and deep tissue release for route drivers. No medical referral needed, walk-in friendly.\n\n    Would it be ridiculous to hold a slot for you this week?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Driver posture checkup",
-            "body": "Hi {{first_name}},\n\n    Sounds like this is not a priority for your route schedule right now.\n\n    If that changes, the walk-in slot is yours. Otherwise, I will get out of your inbox.\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -524,11 +444,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Site PM standing recovery",
             "body": "Hi {{first_name}},\n\n    It sounds like the hip stiffness has become background noise -- just part of the job, like hard hats and change orders.\n\n    Rigid boots block ankle rotation, sending shock waves to your pelvis. Our therapist has a $70 deep tissue session to decompress joint fatigue. 30 minutes, walk in.\n\n    Would it be crazy to try one after your next site walk?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Site manager alignment",
-            "body": "Hi {{first_name}},\n\n    Since I haven't heard back, I'm assuming resolving your site walking joint fatigue isn't a priority right now.\n\n    If that changes, let me know. Otherwise, I won't crowd your inbox.\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -553,11 +468,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Keyboard hand and scapular strain",
             "body": "Hi {{first_name}},\n\n    It sounds like the hand numbness and mid-back burning have become part of the job -- something you manage with a standing desk switch every few hours.\n\n    Tight pecs pull shoulders forward, compressing nerves that feed your hands. Our therapist has a $70 session to release that tension. Walk in, 30 minutes.\n\n    Would it be unreasonable to try one session?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Desk posture recovery",
-            "body": "Hi {{first_name}},\n\n    Since I haven't heard back, I'm assuming reversing office neck strain isn't a priority for your code schedule right now.\n\n    If that changes, let me know. Otherwise, I won't crowd your inbox.\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -582,11 +492,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Dental shoulder spasms",
             "body": "Hi {{first_name}},\n\n    It sounds like the neck stiffness has become normal -- you only notice it when checking your blind spot driving home.\n\n    Leaning forward triples cervical pressure. Our therapist has a $70 cash-pay session to release that asymmetric tension. 30 minutes.\n\n    Would it be ridiculous to try one on a half-day?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Dental alignment slot",
-            "body": "Hi {{first_name}},\n\n    Since I haven't heard back, I'm assuming resolving your cervical alignment issues isn't a priority for your practice schedule right now.\n\n    If that changes, let me know. Otherwise, I won't crowd your inbox.\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },
@@ -611,11 +516,6 @@ export default function StrategyPage() {
             "iteration": "Email 2 (Value & Proof)",
             "subject": "Stylist calf and back fatigue",
             "body": "Hi {{first_name}},\n\n    It sounds like lower back pain and swollen calves have just become part of working behind the chair.\n\n    Static standing causes venous pooling and locks your lumbar muscles in constant contraction. Our therapist has a $70 cash-pay deep tissue session to decompress exactly that. Walk in, 30 minutes, done.\n\n    Would it be a bad idea to try one this week?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
-      },
-      {
-            "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Stylist alignment checkup",
-            "body": "Hi {{first_name}},\n\n    Since I haven't heard back, I'm assuming resolving your standing spinal strain isn't a priority for your styling schedule right now.\n\n    If that changes, let me know. Otherwise, I won't crowd your inbox.\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },

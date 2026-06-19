@@ -68,29 +68,29 @@ export default function StrategyPage() {
     {
       id: "auto_body",
       title: "Auto Body & Collision Repair",
-      pain: "Mechanic physical burnout and bay delays caused by chronic lower back strain.",
-      angle: "We provide ergonomic maintenance to reduce technician downtime and co-branded customer whiplash guides.",
-      valueProp: "We keep your mechanics physically fit to prevent bay delays, adding massive trust to your customer handoffs.",
-      evidence: "Independent collision centers face fierce competition from corporate consolidators. Offering holistic safety checklists and caring for mechanic wellness acts as a unique, high-trust differentiator that drives customer loyalty and Google reviews.",
-      numbers: "Over 80% of auto body technicians suffer from occupational lower back strain due to repetitive lifting and contortion, directly correlating with a 15% drop in weekly labor hours output.",
-      caseStudy: "Shop operators value practical, no-fluff solutions that keep their bays turning. Providing preventative mechanic alignment is viewed as an elite retention perk for hard-to-replace technicians.",
+      pain: "After a collision repair, customers walk out the door asking 'should I see a doctor?' The shop has no answer -- a missed trust moment that goes to whoever the adjuster recommends.",
+      angle: "We give your service writers a co-branded Post-Collision Care card to hand every customer at pickup. You become the first referral they trust after an accident.",
+      valueProp: "We handle the whiplash care. You get the loyalty, the Google review, and the customer who remembers your shop took care of them twice.",
+      evidence: "Independent collision centers lose the post-repair customer relationship the moment the car leaves the bay. Adjusters fill that vacuum with their preferred providers. A shop that hands customers a trusted next step -- chiro care, cash-based, no insurance headache -- becomes the only shop in town that actually cares about the person, not just the car.",
+      numbers: "Studies show 68% of motor vehicle accident patients experience delayed-onset neck and back pain within 72 hours of a collision. Most never seek care because no one tells them to. One accident referral generates 4-8 clinic visits at $100 each -- $400-$800 per car your shop touches.",
+      caseStudy: "Shop owners are fiercely loyal to businesses that make them look good to their customers. A simple referral card positioned as 'we look out for you even after you leave the lot' is a retention tool disguised as a health resource -- and the shop owner pays nothing for it.",
       icon: ShieldCheck,
-      tag: "Operational Efficiency",
+      tag: "Customer Referral Pipeline",
       emails: [
       {
             "iteration": "Email 1 (Hook & Core Offer)",
-            "subject": "Whiplash folders -- {{company_name}}",
-            "body": "Hi {{first_name}},\n\n    A tech calling out with lower back strain leaves a bay empty and pushes your cycle times out by days.\n\n    80% of body techs suffer back strain, dropping output by 15%. We want to drop off co-branded Whiplash Care customer checklists and offer your techs free alignments.\n\n    Would you be open to dropping off a stack of checklists for your writers?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
+            "subject": "Post-collision customer care -- {{company_name}}",
+            "body": "Hi {{first_name}},\n\n    When a customer picks up their car after a collision, they are walking out with a repaired vehicle and unresolved neck pain they haven't connected yet.\n\n    We provide {{company_name}} with a small stack of co-branded Post-Collision Care cards your writers hand at pickup. We handle the chiropractic care, cash-based -- no insurance maze. You become the shop that looked out for them even after they drove off.\n\n    Would you be open to keeping a stack at your front desk?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       },
       {
             "iteration": "Email 2 (Value & Proof)",
-            "subject": "Mechanic downtime -- {{company_name}}",
-            "body": "Hi {{first_name}},\n\n    It sounds like adding customer folders feels like extra paperwork for your service writers when they are already slammed.\n\n    We keep our care cash-based so it doesn't touch your workers' comp files, and we keep your technicians physically aligned to protect your labor hours.\n\n    Would it be a terrible idea to check out our shop wellness alignments next Tuesday?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
+            "subject": "Referral cards -- your collision customers",
+            "body": "Hi {{first_name}},\n\n    It sounds like handing customers health cards feels like an awkward add-on when your writers are already moving through a busy pickup line.\n\n    68% of accident patients develop neck or back pain within 72 hours. Most never seek care because no one told them to. Your writer hands the card in 10 seconds -- we handle everything else. The customer remembers your shop took care of them twice.\n\n    Would it be a bad idea to try it on the next 10 collision pickups?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       },
       {
             "iteration": "Email 3 (Direct Breakup)",
-            "subject": "Whiplash guides",
-            "body": "Hi {{first_name}},\n\n    Sounds like reducing mechanic downtime and sharing customer whiplash guides isn't a focus right now.\n\n    If that changes, let me know. Otherwise, I will get out of your inbox.\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
+            "subject": "Customer referral cards",
+            "body": "Hi {{first_name}},\n\n    Sounds like adding a post-collision care referral for your customers is not a priority right now.\n\n    If that changes, let me know. Otherwise, I will get out of your inbox.\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       }
 ]
     },

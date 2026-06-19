@@ -171,7 +171,7 @@ export default function StrategyPage() {
       {
             "iteration": "Email 1 (Hook & Core Offer)",
             "subject": "Desk fatigue audits -- {{company_name}}",
-            "body": "Hi {{first_name}},\n\n    Employees sitting 9 hours daily suffer desk fatigue that drops productivity and drives workers' comp claims.\n\n    We want to host a complimentary, on-site workspace posture audit for {{company_name}} in {{city}}. We check monitors and align spines to relieve tech neck without touching your corporate insurance premiums.\n\n    Are you against a brief call to see if this fits your wellness calendar?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
+            "body": "Hi {{first_name}},\n\n    Musculoskeletal complaints -- neck pain, back strain -- are 33% of your workers' comp caseload. The same employees filing those claims are sitting 9 hours daily with no intervention between flare-ups.\n\n    We host a free 30-minute posture screening in your breakroom. Every employee walks out with a personalized spinal report. You hand leadership a wellness initiative that costs {{company_name}} nothing and gives you something concrete for the next benefits review.\n\n    Are you against a quick call before your next all-hands?\n\n    Best,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       },
       {
             "iteration": "Email 2 (Value & Proof)",
@@ -195,7 +195,7 @@ export default function StrategyPage() {
       {
             "iteration": "Email 1 (Hook & Core Offer)",
             "subject": "Community health resources -- {{company_name}}",
-            "body": "Hi Pastor {{last_name}},\n\n    Congregants delay spine care because rising deductibles make traditional clinics too expensive.\n\n    We want to host a free spinal wellness workshop and donate $10 of every new patient exam back to your youth programs.\n\n    Are you against a quick call to check if this aligns with your outreach?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
+            "body": "Hi Pastor {{last_name}},\n\n    Most clinics see your congregation as a patient pool. We don't operate that way.\n\n    We are a faith-based family practice in {{city}}. We want to offer {{company_name}} a free health education workshop for your seniors -- no clinic pitch, no sales table. For every new patient who comes to us from your ministry, we donate $10 back to your youth programs.\n\n    Are you against a quick call to see if this is a fit for your community?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       },
       {
             "iteration": "Email 2 (Value & Proof)",
@@ -219,7 +219,7 @@ export default function StrategyPage() {
       {
             "iteration": "Email 1 (Hook & Core Offer)",
             "subject": "Player alignment screenings -- {{company_name}}",
-            "body": "Hi {{first_name}},\n\n    Young athletes are absorbing heavy impact on the field, leading to repetitive strain that parents worry about but want to manage without using painkillers.\n\n    We sponsor league jerseys and want to offer {{company_name}} players complimentary pre-season spinal and posture screenings in {{city}} to establish drug-free safety baselines.\n\n    Are you against a brief call to coordinate player checks?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
+            "body": "Hi {{first_name}},\n\n    When a player takes a hit and the coach has no protocol, parents start asking questions you can't answer. Most leagues handle it with ice packs and 'shake it off.'\n\n    We want to offer {{company_name}} free pre-season spinal screenings for your roster in {{city}} -- a documented baseline that shows parents their child was cleared before the season started. We sponsor the jerseys. You get a safety protocol.\n\n    Are you against a quick call to set this up before next season?\n\n    Regards,\n    {kelly.s | kelly | kelly.soto | soto.k | s.kelly}\n    Chiro Factory"
       },
       {
             "iteration": "Email 2 (Value & Proof)",

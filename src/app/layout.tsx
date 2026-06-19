@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/components/client/SmoothScroll";
-import Navigation from "@/components/server/Navigation";
-import Footer from "@/components/server/Footer";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -39,15 +36,7 @@ export default function RootLayout({
       className={`${dmSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-
-        <SmoothScroll>
-          <Navigation />
-          <main className="flex-grow pt-[80px]">
-            {children}
-          </main>
-          <Footer />
-        </SmoothScroll>
-
+        {children}
         <Analytics />
         <SpeedInsights />
       </body>

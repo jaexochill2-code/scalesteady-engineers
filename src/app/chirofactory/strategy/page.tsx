@@ -614,51 +614,27 @@ export default function StrategyPage() {
         >
           {activeMainTab === "intelligence" ? (
             <div className="flex flex-col gap-8">
-              {/* Strategic Briefing */}
+              {/* Operational Orientation */}
               <div className="bg-white/60 backdrop-blur-xl border border-white/60 rounded-3xl p-8 shadow-sm relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-slate-900 to-emerald-600" />
-                <div className="flex flex-col gap-5">
-                  <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-500">
-                    Strategic Briefing -- Outbound Architecture
-                  </span>
-                  <h2 className="text-2xl font-black text-slate-900 tracking-tight leading-none">
-                    Why We Built an Outbound Machine Instead of Buying Ads
-                  </h2>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
-                    <div className="flex flex-col gap-3 p-5 bg-slate-900 rounded-2xl text-white">
-                      <span className="text-[9px] font-black uppercase tracking-[0.2em] text-emerald-400">What Every Other Chiropractor in DFW Does</span>
-                      <p className="text-[12.5px] font-medium text-slate-300 leading-relaxed">
-                        Runs the same Facebook "new patient special" ad. Pays $150-300 per patient acquisition. Competes with 400+ clinics for the same eyeball. The moment you stop paying, the pipeline dies. You are renting attention at retail price.
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-3 p-5 bg-slate-900 rounded-2xl text-white">
-                      <span className="text-[9px] font-black uppercase tracking-[0.2em] text-emerald-400">What We Do Instead</span>
-                      <p className="text-[12.5px] font-medium text-slate-300 leading-relaxed">
-                        30,000 targeted emails to people who are already in pain or already sending injured people somewhere. One attorney referral generates 5-15 patients per year, every year. One gym partnership generates 3-8 per month. Ads stop. Referral networks compound.
-                      </p>
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                  <div className="flex flex-col gap-1.5">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-emerald-600">Track 1: B2B Referral Networks</span>
+                    <p className="text-[12px] font-semibold text-slate-600 leading-relaxed">
+                      We solve operational problems for local businesses -- member churn, case file delays, mechanic downtime. Patient flow follows. We never sell chiropractic care to businesses. We sell solutions to their revenue leaks.
+                    </p>
                   </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-2 pt-5 border-t border-slate-100">
-                    <div className="flex flex-col gap-1.5">
-                      <span className="text-[10px] font-black uppercase tracking-wider text-emerald-600">Track 1: B2B Referral Networks</span>
-                      <p className="text-[12px] font-semibold text-slate-600 leading-relaxed">
-                        We solve operational problems for local businesses -- member churn, case file delays, mechanic downtime. Patient flow follows. We never sell chiropractic care to businesses. We sell solutions to their revenue leaks.
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <span className="text-[10px] font-black uppercase tracking-wider text-blue-600">Track 2: B2C Occupational Outreach</span>
-                      <p className="text-[12px] font-semibold text-slate-600 leading-relaxed">
-                        We target professionals in high-pain occupations through their business directories. We name their exact daily physical strain, prove we understand why it happens, and remove the two barriers: cost ($100 exam, $70 massage) and time (walk-in, 15 minutes).
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <span className="text-[10px] font-black uppercase tracking-wider text-purple-600">How to Read This Page</span>
-                      <p className="text-[12px] font-semibold text-slate-600 leading-relaxed">
-                        Each ICP profile below maps a vertical: who they are, what keeps them up at night, why they would trust us, and the exact email sequences we send. Research data and patient sentiment back every angle. Nothing here is theoretical.
-                      </p>
-                    </div>
+                  <div className="flex flex-col gap-1.5">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-blue-600">Track 2: B2C Occupational Outreach</span>
+                    <p className="text-[12px] font-semibold text-slate-600 leading-relaxed">
+                      We target professionals in high-pain occupations through their business directories. We name their exact daily physical strain, prove we understand why it happens, and remove the two barriers: cost ($100 exam, $70 massage) and time (walk-in, 15 minutes).
+                    </p>
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-purple-600">How to Read This Page</span>
+                    <p className="text-[12px] font-semibold text-slate-600 leading-relaxed">
+                      Each ICP profile below maps a vertical: who they are, what keeps them up at night, why they would trust us, and the exact email sequences we send. Research data and patient sentiment back every angle. Nothing here is theoretical.
+                    </p>
                   </div>
                 </div>
               </div>

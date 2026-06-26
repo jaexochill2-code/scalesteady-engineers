@@ -78,7 +78,8 @@ Would it be a bad idea to keep a direct line to a 24-hour backup inspector?
 
 William Roberts
 Owner | Renegade Roofing Co.
-(954) 336-8538`
+(954) 336-8538
+FL Lic # CCC1328895 / CGC1514572`
       },
       variantB: {
         label: "Variant B -- The Wind-Mit Differentiator",
@@ -88,7 +89,7 @@ Owner | Renegade Roofing Co.
 
 Most roofers in {{city}} can't legally sign off on wind-mitigation reports -- they have to outsource it, adding days to your closing timeline.
 
-We hold both a roofing license (CCC1328895) and a GC license (CGC1514572), so we run wind-mits in-house. Same-day turnaround.
+We hold both a roofing and a GC license, so we run wind-mits in-house. Same-day turnaround.
 
 When an underwriter pushes back on a roof, we're the call that gets the deal back on track.
 
@@ -96,7 +97,8 @@ Are you against having that number in your back pocket?
 
 William Roberts
 Owner | Renegade Roofing Co.
-(954) 336-8538`
+(954) 336-8538
+FL Lic # CCC1328895 / CGC1514572`
       },
       followUp: {
         label: "Follow-Up -- 4-5 Days Later",
@@ -104,7 +106,7 @@ Owner | Renegade Roofing Co.
         subject: "Roofer + GC license -- Broward deals",
         body: `Hi {{first_name}},
 
-Quick follow-up -- one credential worth knowing: we hold a GC license (CGC1514572) alongside our roofing license (CCC1328895). That means wind-mits are done in-house, same day. No third-party delay when a deal is on the line.
+Quick follow-up -- one credential worth knowing: we hold a GC license alongside our roofing license. That means wind-mits are done in-house, same day. No third-party delay when a deal is on the line.
 
 We've worked in Broward for years -- active local permits on DBPR, $3M GL, COI on request.
 
@@ -114,7 +116,8 @@ Would it be a bad idea to keep us in your vendor contacts?
 
 William Roberts
 Owner | Renegade Roofing Co.
-(954) 336-8538`
+(954) 336-8538
+FL Lic # CCC1328895 / CGC1514572`
       }
     },
     {
@@ -125,7 +128,7 @@ Owner | Renegade Roofing Co.
       valueProp: "Free drone thermal-imaging roof scan + no-obligation 5-year CapEx budget report: moisture map + repair-vs-restore-vs-replace cost forecast the PM can hand straight to ownership as a planning asset.",
       evidence: "Named storms trigger severe post-event backup. Primary roofers take 7+ days to respond during peak demand. A 2-hour emergency storm response guarantee prevents catastrophic water infiltration and the mold litigation that follows.",
       numbers: "Commercial roof leaks cost US businesses $1B+ annually in property damage and business interruption. In South Florida, Q3 storm season creates 4-8x the normal service demand -- and that's when primary vendor relationships fail.",
-      credentials: "FL CRC (CCC1328895) + FL GC (CGC1514572). $3M GL + Workers' Comp. Deerfield Beach, FL -- here year-round, not a storm chaser. Active local permits on DBPR. Country Squire Townhomes (Sunrise, FL) -- full multi-building occupied HOA re-roof, phased without disruption.",
+      credentials: "FL CRC (CCC1328895) + FL GC (CGC1514572). $3M GL + Workers' Comp. Deerfield Beach, FL -- here year-round, not a storm chaser. Active local permits on DBPR. Multi-building occupied HOA re-roofs in Broward, completed with zero disruption.",
       icon: Users,
       tag: "Asset Protection",
       variantA: {
@@ -144,7 +147,8 @@ Would it be a bad idea to have a verified backup on file?
 
 William Roberts
 Owner | Renegade Roofing Co.
-(954) 336-8538`
+(954) 336-8538
+FL Lic # CCC1328895 / CGC1514572`
       },
       variantB: {
         label: "Variant B -- The CapEx Planning Angle",
@@ -154,13 +158,14 @@ Owner | Renegade Roofing Co.
 
 When ownership asks about deferred roof maintenance in Q3/Q4, the PMs who hand them a thermal moisture map with a cost forecast look prepared. Everyone else is guessing.
 
-We run free drone thermal scans for Broward PMs -- no-obligation 5-year budget report delivered within 48 hours. Country Squire Townhomes (Sunrise) -- full occupied HOA re-roof, zero tenant disruption.
+We run free drone thermal scans for Broward PMs -- no-obligation 5-year budget report delivered within 48 hours. A full occupied HOA re-roof in Broward, completed with zero tenant disruption.
 
 Are you against a free scan before Q4?
 
 William Roberts
 Owner | Renegade Roofing Co.
-(954) 336-8538`
+(954) 336-8538
+FL Lic # CCC1328895 / CGC1514572`
       },
       followUp: {
         label: "Follow-Up -- 4-5 Days Later",
@@ -170,7 +175,7 @@ Owner | Renegade Roofing Co.
 
 The thermal scan offer is still open.
 
-For context: FL CRC (CCC1328895) + GC license (CGC1514572) out of Deerfield Beach. $3M GL, Workers' Comp, COI on request. Active local permits -- not an out-of-state storm chaser.
+For context: We are a licensed roofing contractor and general contractor out of Deerfield Beach. $3M GL, Workers' Comp, COI on request. Active local permits -- not an out-of-state storm chaser.
 
 The scan takes under 2 hours. You get a moisture map + cost-tiered forecast to file or send to ownership as-is. No contractor relationship required.
 
@@ -178,7 +183,8 @@ Would it be a bad idea to get the data before storm season?
 
 William Roberts
 Owner | Renegade Roofing Co.
-(954) 336-8538`
+(954) 336-8538
+FL Lic # CCC1328895 / CGC1514572`
       }
     },
     {
@@ -200,13 +206,14 @@ Owner | Renegade Roofing Co.
 
 Getting a clean Xactimate estimate and full photo documentation from a Broward roofer usually takes a week and three follow-up calls.
 
-We deliver adjuster-ready scope + timestamped photo sheets within 48 hours of inspection. We accept LOPs and hold both a roofing license (CCC1328895) and GC license (CGC1514572) -- so our field reports carry double the legal weight in carrier disputes.
+We deliver adjuster-ready scope + timestamped photo sheets within 48 hours of inspection. We accept LOPs and hold both a roofing and GC license -- so our field reports carry double the legal weight in carrier disputes.
 
 Are you against a priority channel for your next Broward storm file?
 
 William Roberts
 Owner | Renegade Roofing Co.
-(954) 336-8538`
+(954) 336-8538
+FL Lic # CCC1328895 / CGC1514572`
       },
       variantB: {
         label: "Variant B -- The Dual-License Technical Authority",
@@ -216,7 +223,7 @@ Owner | Renegade Roofing Co.
 
 Most Broward roofers can't certify wind-mitigation or sign structural scope documentation -- they don't hold a GC license.
 
-We carry both (CCC1328895 + CGC1514572). Our scopes are GC-certified -- harder to dispute, cleaner for supplements, less time spent chasing corrections.
+We carry both licenses. Our scopes are GC-certified -- harder to dispute, cleaner for supplements, less time spent chasing corrections.
 
 LOPs accepted. Xactimate-aligned photo files within 48 hours.
 
@@ -224,7 +231,8 @@ Would it be a bad idea to try us on your next open Broward file?
 
 William Roberts
 Owner | Renegade Roofing Co.
-(954) 336-8538`
+(954) 336-8538
+FL Lic # CCC1328895 / CGC1514572`
       },
       followUp: {
         label: "Follow-Up -- 4-5 Days Later",
@@ -240,7 +248,8 @@ Are you against putting us on one open Broward file to see the difference?
 
 William Roberts
 Owner | Renegade Roofing Co.
-(954) 336-8538`
+(954) 336-8538
+FL Lic # CCC1328895 / CGC1514572`
       }
     },
     {
@@ -270,7 +279,8 @@ Would it be a bad idea to get the scan data before year-end?
 
 William Roberts
 Owner | Renegade Roofing Co.
-(954) 336-8538`
+(954) 336-8538
+FL Lic # CCC1328895 / CGC1514572`
       },
       variantB: {
         label: "Variant B -- The Operational Continuity Angle",
@@ -288,7 +298,8 @@ Are you against a free scan?
 
 William Roberts
 Owner | Renegade Roofing Co.
-(954) 336-8538`
+(954) 336-8538
+FL Lic # CCC1328895 / CGC1514572`
       },
       followUp: {
         label: "Follow-Up -- 4-5 Days Later",
@@ -306,7 +317,8 @@ Would it be a bad idea to have the data before your next ownership conversation?
 
 William Roberts
 Owner | Renegade Roofing Co.
-(954) 336-8538`
+(954) 336-8538
+FL Lic # CCC1328895 / CGC1514572`
       }
     }
   ]
@@ -468,25 +480,7 @@ Owner | Renegade Roofing Co.
                 })}
               </div>
 
-              {/* Benchmark Card */}
-              <div className="bg-white/85 backdrop-blur-xl border border-slate-200/60 rounded-[2rem] p-8 text-slate-900 mt-4 shadow-[0_8px_30px_rgba(0,0,0,0.02)]">
-                <span className="text-[9px] font-black uppercase tracking-[0.2em] text-emerald-600 block mb-2">Copy Performance Benchmarks</span>
-                <h3 className="text-xl font-black text-slate-900 tracking-tight mb-6">What good looks like (2026 data)</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {[
-                    { label: "Industry Avg Reply Rate", val: "3.4%", note: "Cold B2B outreach" },
-                    { label: "Top-Tier Reply Rate", val: "7-10%+", note: "Targeted + Voss CTAs" },
-                    { label: "Optimal Email Length", val: "40-80 words", note: "Longer = skimmed/deleted" },
-                    { label: "Voss CTA Lift", val: "+23%", note: "No-oriented vs yes-oriented CTAs" },
-                  ].map(stat => (
-                    <div key={stat.label} className="bg-slate-50/80 rounded-2xl p-4 border border-slate-200/40 shadow-sm">
-                      <p className="text-2xl font-black text-emerald-600 mb-1">{stat.val}</p>
-                      <p className="text-[10px] font-black uppercase tracking-wider text-slate-600">{stat.label}</p>
-                      <p className="text-[9px] text-slate-400 mt-1">{stat.note}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+
             </motion.div>
           )}
 
